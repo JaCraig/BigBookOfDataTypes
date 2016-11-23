@@ -1,0 +1,90 @@
+﻿using BigBook.DataMapper.Default;
+using Xunit;
+
+namespace BigBook.Tests.DataMapper.Default
+{
+    public class MappingA
+    {
+        public int Item1 { get; set; }
+
+        public string Item2 { get; set; }
+    }
+
+    public class MappingB
+    {
+        public int Item1 { get; set; }
+
+        public string Item2 { get; set; }
+    }
+
+    public class MappingTests
+    {
+        [Fact]
+        public void CreationTest()
+        {
+            Mapping<MappingA, MappingB> TempObject = null;
+            TempObject = new Mapping<MappingA, MappingB>(x => x.Item1, x => x.Item1);
+            Assert.NotNull(TempObject);
+        }
+
+        [Fact]
+        public void LeftToRight()
+        {
+            var TempObject = new Mapping<MappingA, MappingB>(x => x.Item1, x => x.Item1);
+            var A = new MappingA();
+            A.Item1 = 12;
+            A.Item2 = "ASDF";
+            var B = new MappingB();
+            B.Item1 = 13;
+            B.Item2 = "ZXCV";
+            TempObject.CopyLeftToRight(A, B);
+            Assert.Equal(B.Item1, 12);
+            Assert.NotEqual(B.Item2, "ASDF");
+        }
+
+        [Fact]
+        public void NullLeftToRight()
+        {
+            var TempObject = new Mapping<MappingA, MappingB>(null, x => x.Item1);
+            var A = new MappingA();
+            A.Item1 = 12;
+            A.Item2 = "ASDF";
+            var B = new MappingB();
+            B.Item1 = 13;
+            B.Item2 = "ZXCV";
+            TempObject.CopyLeftToRight(A, B);
+            Assert.Equal(13, B.Item1);
+            Assert.Equal("ZXCV", B.Item2);
+        }
+
+        [Fact]
+        public void NullRightToLeft()
+        {
+            var TempObject = new Mapping<MappingA, MappingB>(x => x.Item1, null);
+            var A = new MappingA();
+            A.Item1 = 12;
+            A.Item2 = "ASDF";
+            var B = new MappingB();
+            B.Item1 = 13;
+            B.Item2 = "ZXCV";
+            TempObject.CopyRightToLeft(B, A);
+            Assert.Equal(12, A.Item1);
+            Assert.Equal("ASDF", A.Item2);
+        }
+
+        [Fact]
+        public void RightToLeft()
+        {
+            var TempObject = new Mapping<MappingA, MappingB>(x => x.Item1, x => x.Item1);
+            var A = new MappingA();
+            A.Item1 = 12;
+            A.Item2 = "ASDF";
+            var B = new MappingB();
+            B.Item1 = 13;
+            B.Item2 = "ZXCV";
+            TempObject.CopyRightToLeft(B, A);
+            Assert.Equal(A.Item1, 13);
+            Assert.NotEqual(A.Item2, "ZXCV");
+        }
+    }
+}

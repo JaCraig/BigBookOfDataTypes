@@ -273,7 +273,7 @@ namespace BigBook
                                     return false;
                                 for (int y = 0; y < MethodInputTypes.Length; ++y)
                                 {
-                                    if (MethodInputTypes[y].GetType() != TempParameters[y].GetType())
+                                    if (MethodInputTypes[y] != TempParameters[y].ParameterType)
                                         return false;
                                 }
                                 return true;

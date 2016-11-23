@@ -1,0 +1,21 @@
+﻿using BigBook;
+using System.Linq;
+using Xunit;
+
+namespace BigBook.Tests
+{
+    public class TagDictionaryTests
+    {
+        [Fact]
+        public void BasicTest()
+        {
+            var TestObject = new TagDictionary<string, string>();
+            10.Times(x => TestObject.Add("Object" + x, (x + 1).Times(y => "Key" + y).ToArray()));
+            11.Times(x => Assert.Equal(10 - x, TestObject["Key" + x].Count()));
+            Assert.Equal(10, TestObject["Key0"].Count());
+            TestObject.Remove("Key0");
+            Assert.Equal(0, TestObject["Key0"].Count());
+            11.Times(x => Assert.Equal(0, TestObject["Key" + x].Count()));
+        }
+    }
+}

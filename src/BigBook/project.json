@@ -21,10 +21,11 @@
     "System.Reflection.TypeExtensions": "4.1.0",
     "System.Runtime": "4.1.0",
     "System.Threading.Tasks.Parallel": "4.0.1",
-    "System.Threading.Thread": "4.0.0"
+    "System.Threading.Thread": "4.0.0",
+    "Aspectus": "2.0.1"
   },
   "frameworks": {
-    "netstandard1.1": {
+    "netstandard1.6": {
       "imports": "dnxcore50"
     }
   },

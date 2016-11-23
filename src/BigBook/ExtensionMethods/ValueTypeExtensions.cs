@@ -82,7 +82,6 @@ namespace BigBook
         /// the index)
         /// </param>
         /// <param name="index">Index to start at</param>
-        /// <param name="options">Base 64 formatting options</param>
         /// <returns>The equivalent byte array in a base 64 string</returns>
         public static string ToString(this byte[] input, int index = 0, int count = -1)
         {

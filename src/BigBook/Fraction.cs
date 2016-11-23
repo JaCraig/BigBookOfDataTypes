@@ -42,8 +42,8 @@ namespace BigBook
         /// <param name="denominator">Denominator</param>
         public Fraction(double numerator, double denominator)
         {
-            while (numerator != Math.Round(numerator, MidpointRounding.AwayFromZero)
-                || denominator != Math.Round(denominator, MidpointRounding.AwayFromZero))
+            while (Math.Abs(numerator - Math.Round(numerator, MidpointRounding.AwayFromZero)
+) > EPSILON || Math.Abs(denominator - Math.Round(denominator, MidpointRounding.AwayFromZero)) > EPSILON)
             {
                 numerator *= 10;
                 denominator *= 10;
@@ -81,10 +81,10 @@ namespace BigBook
         /// <exception cref="ArgumentException">denominator</exception>
         public Fraction(float numerator, float denominator)
         {
-            if (denominator == int.MinValue)
+            if (Math.Abs(denominator - int.MinValue) < EPSILON)
                 throw new ArgumentException(nameof(denominator) + " can't be int.MinValue");
-            while (numerator != Math.Round(numerator, MidpointRounding.AwayFromZero)
-                || denominator != Math.Round(denominator, MidpointRounding.AwayFromZero))
+            while (Math.Abs(numerator - Math.Round(numerator, MidpointRounding.AwayFromZero)
+) > EPSILON || Math.Abs(denominator - Math.Round(denominator, MidpointRounding.AwayFromZero)) > EPSILON)
             {
                 numerator *= 10;
                 denominator *= 10;
@@ -105,6 +105,12 @@ namespace BigBook
         /// Numerator of the faction
         /// </summary>
         public int Numerator { get; set; }
+
+        /// <summary>
+        /// Gets the epsilon.
+        /// </summary>
+        /// <value>The epsilon.</value>
+        private double EPSILON => 0.001d;
 
         /// <summary>
         /// Converts the fraction to a decimal

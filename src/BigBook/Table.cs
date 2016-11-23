@@ -14,8 +14,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 
 namespace BigBook
@@ -111,6 +113,40 @@ namespace BigBook
             {
                 if (!ColumnNameHash.ContainsKey(ColumnName))
                     ColumnNameHash.Add(ColumnName, x++);
+            }
+        }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="reader">Data reader to get the data from</param>
+        public Table(DbDataReader reader)
+        {
+            if (reader == null)
+                throw new ArgumentNullException(nameof(reader));
+            if (reader.FieldCount == 0)
+                throw new ArgumentOutOfRangeException(nameof(reader), "reader.FieldCount needs to have at least 0 fields");
+            ColumnNames = new string[reader.FieldCount];
+            for (int x = 0; x < reader.FieldCount; ++x)
+            {
+                ColumnNames[x] = reader.GetName(x);
+            }
+            ColumnNameHash = new Hashtable();
+            int y = 0;
+            foreach (string ColumnName in ColumnNames)
+            {
+                if (!ColumnNameHash.ContainsKey(ColumnName))
+                    ColumnNameHash.Add(ColumnName, y++);
+            }
+            Rows = new List<Row>();
+            while (reader.Read())
+            {
+                object[] Values = new object[ColumnNames.Length];
+                for (int x = 0; x < reader.FieldCount; ++x)
+                {
+                    Values[x] = reader[x];
+                }
+                Rows.Add(new Row(ColumnNameHash, ColumnNames, Values));
             }
         }
 

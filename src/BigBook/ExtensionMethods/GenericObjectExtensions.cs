@@ -16,6 +16,9 @@ limitations under the License.
 
 using BigBook.Comparison;
 using BigBook.Conversion;
+using BigBook.Conversion.BaseClasses;
+using BigBook.Conversion.Interfaces;
+using BigBook.DataMapper.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -209,6 +212,52 @@ namespace BigBook
         }
 
         /// <summary>
+        /// Sets up a mapping between two types
+        /// </summary>
+        /// <param name="leftType">Left type</param>
+        /// <param name="rightType">Right type</param>
+        /// <returns>The type mapping</returns>
+        public static ITypeMapping MapTo(this Type leftType, Type rightType)
+        {
+            if (leftType == null || rightType == null)
+                return null;
+            var TempManager = Canister.Builder.Bootstrapper.Resolve<DataMapper.Manager>();
+            if (TempManager == null)
+                return null;
+            return TempManager.Map(leftType, rightType);
+        }
+
+        /// <summary>
+        /// Sets up a mapping between two types
+        /// </summary>
+        /// <typeparam name="Left">Left type</typeparam>
+        /// <typeparam name="Right">Right type</typeparam>
+        /// <param name="item">Object to set up mapping for</param>
+        /// <returns>The type mapping</returns>
+        public static ITypeMapping<Left, Right> MapTo<Left, Right>(this Left item)
+        {
+            var TempManager = Canister.Builder.Bootstrapper.Resolve<DataMapper.Manager>();
+            if (TempManager == null)
+                return null;
+            return TempManager.Map<Left, Right>();
+        }
+
+        /// <summary>
+        /// Sets up a mapping between two types
+        /// </summary>
+        /// <typeparam name="Left">Left type</typeparam>
+        /// <typeparam name="Right">Right type</typeparam>
+        /// <param name="objectType">Object type to set up mapping for</param>
+        /// <returns>The type mapping</returns>
+        public static ITypeMapping<Left, Right> MapTo<Left, Right>(this Type objectType)
+        {
+            var TempManager = Canister.Builder.Bootstrapper.Resolve<DataMapper.Manager>();
+            if (TempManager == null)
+                return null;
+            return TempManager.Map<Left, Right>();
+        }
+
+        /// <summary>
         /// Throws the specified exception if the predicate is true for the item
         /// </summary>
         /// <typeparam name="T">Item type</typeparam>
@@ -336,7 +385,7 @@ namespace BigBook
         public static T ThrowIfNotNull<T>(this T item, Exception exception)
             where T : class
         {
-            return item.ThrowIf(x => x != null, exception);
+            return item.ThrowIf(x => x != null && x != DBNull.Value, exception);
         }
 
         /// <summary>
@@ -385,7 +434,7 @@ namespace BigBook
         public static T ThrowIfNull<T>(this T item, Exception exception)
             where T : class
         {
-            return item.ThrowIf(x => x == null, exception);
+            return item.ThrowIf(x => x == null || x == DBNull.Value, exception);
         }
 
         /// <summary>
@@ -457,7 +506,7 @@ namespace BigBook
         /// </returns>
         public static R To<T, R>(this T item, R defaultValue = default(R))
         {
-            return (R)item.To(typeof(T), defaultValue);
+            return (R)item.To(typeof(R), defaultValue);
         }
 
         /// <summary>
@@ -503,17 +552,32 @@ namespace BigBook
                 Converter = TypeDescriptor.GetConverter(resultType);
                 if (Converter.CanConvertFrom(ObjectType))
                     return Converter.ConvertFrom(item);
-                Converter = Converters.FirstOrDefault(x => (x.CanConvertFrom(ObjectType) && x.CanConvertTo(resultType)));
-                if (Converter != null)
-                    return Converter.ConvertTo(item, resultType);
-                Converter = Converters.FirstOrDefault(x => (x.CanConvertFrom(resultType) && x.CanConvertTo(ObjectType)));
-                if (Converter != null)
-                    return Converter.ConvertFrom(item);
+                var TempConverter = Converters.FirstOrDefault(x => x.CanConvertTo(resultType)
+                                                                && x as TypeConverterBase<T> != null);
+                if (TempConverter != null)
+                    return TempConverter.ConvertTo(item, resultType);
+
+                TempConverter = Converters.FirstOrDefault(x => x.CanConvertFrom(ObjectType)
+                                                            && ((IConverter)x).AssociatedType == resultType);
+                if (TempConverter != null)
+                    return TempConverter.ConvertFrom(item);
+
                 if (resultType.GetTypeInfo().IsEnum)
                 {
                     if (ObjectType == typeof(string))
                         return Enum.Parse(resultType, item as string, true);
                     return Enum.ToObject(resultType, item);
+                }
+                if (resultType.GetTypeInfo().IsClass)
+                {
+                    object ReturnValue = Activator.CreateInstance(resultType);
+                    var TempMapping = ObjectType.MapTo(resultType);
+                    if (TempMapping == null)
+                        return ReturnValue;
+                    TempMapping
+                        .AutoMap()
+                        .Copy(item, ReturnValue);
+                    return ReturnValue;
                 }
             }
             catch

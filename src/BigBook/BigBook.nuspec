@@ -23,10 +23,11 @@
       <dependency id="System.Data.Common" version="4.1.0" />
       <dependency id="System.Runtime" version="4.1.0" />
       <dependency id="System.Data.SqlClient" version="4.1.0" />
+      <dependency id="Aspectus" version="2.0.1" />
     </dependencies>
   </metadata>
   <files>
-    <file src="bin\Release\netstandard1.1\BigBook.dll" target="lib\netstandard1.1\BigBook.dll" />
-    <file src="bin\Release\netstandard1.1\BigBook.xml" target="lib\netstandard1.1\BigBook.xml" />
+    <file src="bin\Release\netstandard1.6\BigBook.dll" target="lib\netstandard1.6\BigBook.dll" />
+    <file src="bin\Release\netstandard1.6\BigBook.xml" target="lib\netstandard1.6\BigBook.xml" />
   </files>
 </package>

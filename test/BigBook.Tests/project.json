@@ -16,7 +16,8 @@
   "dependencies": {
     "xunit": "2.2.0-*",
     "BigBook": "1.0.*",
-    "dotnet-test-xunit": "2.2.0-*"
+    "dotnet-test-xunit": "2.2.0-*",
+    "FileCurator": "1.0.3"
   },
   "runtimes": {
     "win7-x64": {},
