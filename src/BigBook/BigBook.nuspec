@@ -24,6 +24,7 @@
       <dependency id="System.Runtime" version="4.1.0" />
       <dependency id="System.Data.SqlClient" version="4.1.0" />
       <dependency id="Aspectus" version="2.0.1" />
+      <dependency id="System.ComponentModel.TypeConverter" version="4.1.0" />
     </dependencies>
   </metadata>
   <files>
