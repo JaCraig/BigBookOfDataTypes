@@ -1,5 +1,4 @@
-﻿using BigBook;
-using System;
+﻿using System;
 using Xunit;
 
 namespace BigBook.Tests.ExtensionMethods
@@ -38,7 +37,7 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void ConvertToTimeZone()
         {
-            Assert.Equal(new DateTime(2009, 1, 14, 23, 3, 4), new DateTime(2009, 1, 15, 2, 3, 4).To(TimeZoneInfo.FindSystemTimeZoneById("Pacific Standard Time")));
+            Assert.Equal(new DateTime(2009, 1, 14, 18, 3, 4), new DateTime(2009, 1, 15, 2, 3, 4, DateTimeKind.Utc).To(TimeZoneInfo.FindSystemTimeZoneById("Pacific Standard Time")));
         }
 
         [Fact]
@@ -124,13 +123,13 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void ToUnix()
         {
-            Assert.Equal(915166800, new DateTime(1999, 1, 1).To());
+            Assert.Equal(915148800, new DateTime(1999, 1, 1, 0, 0, 0, DateTimeKind.Utc).To());
         }
 
         [Fact]
         public void UTCOffset()
         {
-            Assert.Equal(-5, new DateTime(1999, 1, 2, 23, 1, 1, DateTimeKind.Local).UTCOffset());
+            Assert.Equal(DateTime.Now.Hour - DateTime.UtcNow.Hour, new DateTime(1999, 1, 2, 23, 1, 1, DateTimeKind.Local).UTCOffset());
         }
     }
 }

@@ -203,7 +203,7 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void ToLongVersionString()
         {
-            Assert.Equal("1.0.0.0", typeof(TestClass).GetTypeInfo().Assembly.ToString(VersionInfo.LongVersion));
+            Assert.StartsWith("1.0.", typeof(TestClass).GetTypeInfo().Assembly.ToString(VersionInfo.LongVersion));
         }
 
         [Fact]
