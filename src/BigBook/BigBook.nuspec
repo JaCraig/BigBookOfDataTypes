@@ -13,18 +13,18 @@
     <copyright>Copyright 2016</copyright>
     <tags>DataTypes DateSpan Fraction ObservableList Set</tags>
     <dependencies>
-      <dependency id="NETStandard.Library" version="1.6.0" />
-      <dependency id="System.Threading.Tasks.Parallel" version="4.0.1" />
-      <dependency id="System.Threading.Thread" version="4.0.0" />
-      <dependency id="System.Diagnostics.Process" version="4.1.0" />
-      <dependency id="System.Diagnostics.StackTrace" version="4.0.2" />
-      <dependency id="System.Reflection.TypeExtensions" version="4.1.0" />
-      <dependency id="System.Collections.NonGeneric" version="4.0.1" />
-      <dependency id="System.Data.Common" version="4.1.0" />
-      <dependency id="System.Runtime" version="4.1.0" />
-      <dependency id="System.Data.SqlClient" version="4.1.0" />
-      <dependency id="Aspectus" version="2.0.1" />
-      <dependency id="System.ComponentModel.TypeConverter" version="4.1.0" />
+      <dependency id="NETStandard.Library" version="1.6.1" />
+      <dependency id="System.Threading.Tasks.Parallel" version="4.3.0" />
+      <dependency id="System.Threading.Thread" version="4.3.0" />
+      <dependency id="System.Diagnostics.Process" version="4.3.0" />
+      <dependency id="System.Diagnostics.StackTrace" version="4.3.0" />
+      <dependency id="System.Reflection.TypeExtensions" version="4.3.0" />
+      <dependency id="System.Collections.NonGeneric" version="4.3.0" />
+      <dependency id="System.Data.Common" version="4.3.0" />
+      <dependency id="System.Runtime" version="4.3.0" />
+      <dependency id="System.Data.SqlClient" version="4.3.0" />
+      <dependency id="Aspectus" version="2.0.3" />
+      <dependency id="System.ComponentModel.TypeConverter" version="4.3.0" />
     </dependencies>
   </metadata>
   <files>

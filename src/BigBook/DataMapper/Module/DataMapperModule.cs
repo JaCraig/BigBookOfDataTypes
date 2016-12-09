@@ -16,6 +16,7 @@ limitations under the License.
 
 using BigBook.DataMapper.Interfaces;
 using Canister.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace BigBook.DataMapper.Module
 {
@@ -39,7 +40,7 @@ namespace BigBook.DataMapper.Module
                 return;
             bootstrapper.RegisterAll<IDataMapper>();
             bootstrapper.RegisterAll<IMapperModule>();
-            bootstrapper.Register(new Manager(bootstrapper.ResolveAll<IDataMapper>(), bootstrapper.ResolveAll<IMapperModule>()));
+            bootstrapper.Register<Manager>(ServiceLifetime.Singleton);
         }
     }
 }

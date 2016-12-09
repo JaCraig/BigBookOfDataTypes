@@ -16,6 +16,7 @@ limitations under the License.
 
 using BigBook.Caching.Interfaces;
 using Canister.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace BigBook.Caching.Module
 {
@@ -38,7 +39,7 @@ namespace BigBook.Caching.Module
             if (bootstrapper == null)
                 return;
             bootstrapper.RegisterAll<ICache>();
-            bootstrapper.Register(new Manager(bootstrapper.ResolveAll<ICache>()));
+            bootstrapper.Register<Manager>(ServiceLifetime.Singleton);
         }
     }
 }
