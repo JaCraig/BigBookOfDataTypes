@@ -72,6 +72,8 @@ namespace BigBook.Conversion
             Conversions.AddOrUpdate(typeof(DateTime?), DbType.DateTime2, (x, y) => y);
             Conversions.AddOrUpdate(typeof(DateTimeOffset), DbType.DateTimeOffset, (x, y) => y);
             Conversions.AddOrUpdate(typeof(DateTimeOffset?), DbType.DateTimeOffset, (x, y) => y);
+            Conversions.AddOrUpdate(typeof(TimeSpan), DbType.Time, (x, y) => y);
+            Conversions.AddOrUpdate(typeof(TimeSpan?), DbType.Time, (x, y) => y);
             Conversions.AddOrUpdate(typeof(byte[]), DbType.Binary, (x, y) => y);
         }
 
@@ -170,6 +172,9 @@ namespace BigBook.Conversion
 
                 case DbType.Binary:
                     return typeof(byte[]);
+
+                case DbType.Time:
+                    return typeof(TimeSpan);
             }
 
             return typeof(int);

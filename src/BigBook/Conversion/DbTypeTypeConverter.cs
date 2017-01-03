@@ -117,6 +117,9 @@ namespace BigBook.Conversion
 
                 case DbType.Binary:
                     return typeof(byte[]);
+
+                case DbType.Time:
+                    return typeof(TimeSpan);
             }
 
             return typeof(int);
@@ -156,6 +159,7 @@ namespace BigBook.Conversion
             else if (TempValue == typeof(Guid)) return DbType.Guid;
             else if (TempValue == typeof(DateTime)) return DbType.DateTime2;
             else if (TempValue == typeof(DateTimeOffset)) return DbType.DateTimeOffset;
+            else if (TempValue == typeof(TimeSpan)) return DbType.Time;
             else if (TempValue == typeof(byte[])) return DbType.Binary;
             else if (TempValue == typeof(byte?)) return DbType.Byte;
             else if (TempValue == typeof(sbyte?)) return DbType.SByte;
@@ -173,6 +177,7 @@ namespace BigBook.Conversion
             else if (TempValue == typeof(Guid?)) return DbType.Guid;
             else if (TempValue == typeof(DateTime?)) return DbType.DateTime2;
             else if (TempValue == typeof(DateTimeOffset?)) return DbType.DateTimeOffset;
+            else if (TempValue == typeof(TimeSpan?)) return DbType.Time;
             return DbType.Int32;
         }
     }
