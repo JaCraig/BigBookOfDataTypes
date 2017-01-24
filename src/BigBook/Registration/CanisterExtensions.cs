@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using Aspectus.ExtensionMethods;
 using Canister.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -35,7 +36,8 @@ namespace BigBook.Registration
         /// <returns>The bootstrapper</returns>
         public static IBootstrapper RegisterBigBookOfDataTypes(this IBootstrapper bootstrapper)
         {
-            return bootstrapper.AddAssembly(typeof(CanisterExtensions).GetTypeInfo().Assembly);
+            return bootstrapper.AddAssembly(typeof(CanisterExtensions).GetTypeInfo().Assembly)
+                               .RegisterAspectus();
         }
     }
 }
