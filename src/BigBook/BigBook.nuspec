@@ -23,8 +23,9 @@
       <dependency id="System.Data.Common" version="4.3.0" />
       <dependency id="System.Runtime" version="4.3.0" />
       <dependency id="System.Data.SqlClient" version="4.3.0" />
-      <dependency id="Aspectus" version="2.0.3" />
+      <dependency id="Aspectus" version="2.0.5" />
       <dependency id="System.ComponentModel.TypeConverter" version="4.3.0" />
+      <dependency id="Canister.IoC" version="1.0.35" />
     </dependencies>
   </metadata>
   <files>

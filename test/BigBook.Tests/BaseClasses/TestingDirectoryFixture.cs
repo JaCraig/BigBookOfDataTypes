@@ -1,4 +1,7 @@
-﻿using FileCurator;
+﻿using Aspectus.ExtensionMethods;
+using BigBook.Registration;
+using FileCurator;
+using FileCurator.Registration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -12,11 +15,12 @@ namespace BigBook.Tests.BaseClasses
     {
         public TestingDirectoryFixture()
         {
-            Canister.Builder.CreateContainer(new List<ServiceDescriptor>(),
-                typeof(TestingDirectoryFixture).GetTypeInfo().Assembly,
-                typeof(BigBook.ArrayExtensions).GetTypeInfo().Assembly,
-                typeof(FileInfo).GetTypeInfo().Assembly,
-                typeof(Aspectus.Aspectus).GetTypeInfo().Assembly);
+            Canister.Builder.CreateContainer(new List<ServiceDescriptor>())
+                .AddAssembly(typeof(TestingDirectoryFixture).GetTypeInfo().Assembly)
+                .RegisterBigBookOfDataTypes()
+                .RegisterAspectus()
+                .RegisterFileCurator()
+                .Build();
             new DirectoryInfo(@".\Testing").Create();
             new DirectoryInfo(@".\App_Data").Create();
             new DirectoryInfo(@".\Logs").Create();

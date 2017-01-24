@@ -17,7 +17,7 @@
     "xunit": "2.2.0-*",
     "BigBook": "1.0.*",
     "dotnet-test-xunit": "2.2.0-*",
-    "FileCurator": "1.0.5",
+    "FileCurator": "1.0.6",
     "Microsoft.NETCore.App": "1.1.0"
   },
   "runtimes": {

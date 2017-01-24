@@ -22,7 +22,8 @@
     "System.Runtime": "4.3.0",
     "System.Threading.Tasks.Parallel": "4.3.0",
     "System.Threading.Thread": "4.3.0",
-    "Aspectus": "2.0.3"
+    "Aspectus": "2.0.5",
+    "Canister.IoC": "1.0.35"
   },
   "frameworks": {
     "netstandard1.6": {
