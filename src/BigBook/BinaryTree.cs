@@ -188,6 +188,18 @@ namespace BigBook
         }
 
         /// <summary>
+        /// Gets the enumerator
+        /// </summary>
+        /// <returns>The enumerator</returns>
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            foreach (TreeNode<T> TempNode in Traversal(Root))
+            {
+                yield return TempNode.Value;
+            }
+        }
+
+        /// <summary>
         /// Removes an item from the tree
         /// </summary>
         /// <param name="item">Item to remove</param>
@@ -218,18 +230,6 @@ namespace BigBook
             foreach (T Value in Values)
                 Add(Value);
             return true;
-        }
-
-        /// <summary>
-        /// Gets the enumerator
-        /// </summary>
-        /// <returns>The enumerator</returns>
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            foreach (TreeNode<T> TempNode in Traversal(Root))
-            {
-                yield return TempNode.Value;
-            }
         }
 
         /// <summary>
