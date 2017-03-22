@@ -8,7 +8,7 @@ namespace BigBook.Tests.ExtensionMethods
     {
         public StreamExtensionsTests()
         {
-            new DirectoryInfo(@"..\..\Data\Testing").CopyTo(new DirectoryInfo(@".\Testing"));
+            new DirectoryInfo(@".\Testing").Create();
         }
 
         [Fact]

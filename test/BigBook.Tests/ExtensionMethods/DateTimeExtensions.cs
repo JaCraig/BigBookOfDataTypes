@@ -129,7 +129,7 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void UTCOffset()
         {
-            Assert.Equal(DateTime.Now.Hour - DateTime.UtcNow.Hour, new DateTime(1999, 1, 2, 23, 1, 1, DateTimeKind.Local).UTCOffset());
+            Assert.Equal(DateTime.Now.Hour - DateTime.UtcNow.Hour, DateTime.Now.ToLocalTime().UTCOffset());
         }
     }
 }

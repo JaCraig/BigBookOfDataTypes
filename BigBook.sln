@@ -1,20 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7CBC4576-531F-4D1E-A5A4-9DA17AED676F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4423A719-917F-4908-9586-67B0C8CF2EFE}"
-	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
-	EndProjectSection
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "BigBook", "src\BigBook\BigBook.xproj", "{BA2B2595-CD55-4639-9E5D-BE4BDACCA1AB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{8D8A6F73-03CC-4CDC-876A-240A613228E1}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "BigBook.Tests", "test\BigBook.Tests\BigBook.Tests.xproj", "{C75E2943-501D-40E6-9DCB-8620DE9C02E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BigBook", "src\BigBook\BigBook.csproj", "{BA2B2595-CD55-4639-9E5D-BE4BDACCA1AB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BigBook.Tests", "test\BigBook.Tests\BigBook.Tests.csproj", "{C75E2943-501D-40E6-9DCB-8620DE9C02E9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
