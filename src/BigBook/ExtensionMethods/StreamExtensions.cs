@@ -48,8 +48,7 @@ namespace BigBook
         {
             if (input == null)
                 return new byte[0];
-            var TempInput = input as MemoryStream;
-            if (TempInput != null)
+            if (input is MemoryStream TempInput)
                 return TempInput.ToArray();
             byte[] Buffer = new byte[1024];
             byte[] ReturnValue = null;

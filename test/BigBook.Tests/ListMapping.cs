@@ -9,9 +9,11 @@ namespace BigBook.Tests
         [Fact]
         public void ContainsTest()
         {
-            var TestObject = new ListMapping<string, int>();
-            TestObject.Add("A", 0);
-            TestObject.Add("A", 1);
+            var TestObject = new ListMapping<string, int>
+            {
+                { "A", 0 },
+                { "A", 1 }
+            };
             Assert.True(TestObject.Contains("A", 0));
             Assert.False(TestObject.Contains("A", 2));
         }
@@ -38,9 +40,11 @@ namespace BigBook.Tests
         [Fact]
         public void RemoveTest()
         {
-            var TestObject = new ListMapping<string, int>();
-            TestObject.Add("A", 0);
-            TestObject.Add("A", 1);
+            var TestObject = new ListMapping<string, int>
+            {
+                { "A", 0 },
+                { "A", 1 }
+            };
             TestObject.Remove("A", 0);
             Assert.Equal(1, TestObject["A"].Count());
             Assert.Equal(1, TestObject["A"].FirstOrDefault());

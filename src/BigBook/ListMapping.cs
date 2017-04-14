@@ -241,7 +241,7 @@ namespace BigBook
             Items.AddOrUpdate(key,
                 new ConcurrentBag<T2>(TempValue),
                 (x, y) => new ConcurrentBag<T2>(TempValue));
-            if (this[key].Count() == 0)
+            if (!this[key].Any())
                 Remove(key);
             return true;
         }

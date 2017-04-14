@@ -30,11 +30,13 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void GetValue()
         {
-            var Test = new Dictionary<string, int>();
-            Test.Add("Q", 4);
-            Test.Add("Z", 2);
-            Test.Add("C", 3);
-            Test.Add("A", 1);
+            var Test = new Dictionary<string, int>
+            {
+                { "Q", 4 },
+                { "Z", 2 },
+                { "C", 3 },
+                { "A", 1 }
+            };
             Assert.Equal(4, Test.GetValue("Q"));
             Assert.Equal(0, Test.GetValue("V"));
             Assert.Equal(123, Test.GetValue("B", 123));
@@ -43,11 +45,13 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void SetValue()
         {
-            var Test = new Dictionary<string, int>();
-            Test.Add("Q", 4);
-            Test.Add("Z", 2);
-            Test.Add("C", 3);
-            Test.Add("A", 1);
+            var Test = new Dictionary<string, int>
+            {
+                { "Q", 4 },
+                { "Z", 2 },
+                { "C", 3 },
+                { "A", 1 }
+            };
             Assert.Equal(4, Test.GetValue("Q"));
             Test.SetValue("Q", 40);
             Assert.Equal(40, Test.GetValue("Q"));
@@ -56,11 +60,13 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void SortByValueTest()
         {
-            IDictionary<string, int> Test = new Dictionary<string, int>();
-            Test.Add("Q", 4);
-            Test.Add("Z", 2);
-            Test.Add("C", 3);
-            Test.Add("A", 1);
+            IDictionary<string, int> Test = new Dictionary<string, int>
+            {
+                { "Q", 4 },
+                { "Z", 2 },
+                { "C", 3 },
+                { "A", 1 }
+            };
             Test = Test.Sort(x => x.Value);
             string Value = "";
             foreach (string Key in Test.Keys)
@@ -71,11 +77,13 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void SortTest()
         {
-            IDictionary<string, int> Test = new Dictionary<string, int>();
-            Test.Add("Q", 4);
-            Test.Add("Z", 2);
-            Test.Add("C", 3);
-            Test.Add("A", 1);
+            IDictionary<string, int> Test = new Dictionary<string, int>
+            {
+                { "Q", 4 },
+                { "Z", 2 },
+                { "C", 3 },
+                { "A", 1 }
+            };
             Test = Test.Sort();
             string Value = "";
             foreach (string Key in Test.Keys)

@@ -31,12 +31,16 @@ namespace BigBook.Tests.DataMapper.Default
         public void LeftToRight()
         {
             var TempObject = new Mapping<MappingA, MappingB>(x => x.Item1, x => x.Item1);
-            var A = new MappingA();
-            A.Item1 = 12;
-            A.Item2 = "ASDF";
-            var B = new MappingB();
-            B.Item1 = 13;
-            B.Item2 = "ZXCV";
+            var A = new MappingA
+            {
+                Item1 = 12,
+                Item2 = "ASDF"
+            };
+            var B = new MappingB
+            {
+                Item1 = 13,
+                Item2 = "ZXCV"
+            };
             TempObject.CopyLeftToRight(A, B);
             Assert.Equal(B.Item1, 12);
             Assert.NotEqual(B.Item2, "ASDF");
@@ -46,12 +50,16 @@ namespace BigBook.Tests.DataMapper.Default
         public void NullLeftToRight()
         {
             var TempObject = new Mapping<MappingA, MappingB>(null, x => x.Item1);
-            var A = new MappingA();
-            A.Item1 = 12;
-            A.Item2 = "ASDF";
-            var B = new MappingB();
-            B.Item1 = 13;
-            B.Item2 = "ZXCV";
+            var A = new MappingA
+            {
+                Item1 = 12,
+                Item2 = "ASDF"
+            };
+            var B = new MappingB
+            {
+                Item1 = 13,
+                Item2 = "ZXCV"
+            };
             TempObject.CopyLeftToRight(A, B);
             Assert.Equal(13, B.Item1);
             Assert.Equal("ZXCV", B.Item2);
@@ -61,12 +69,16 @@ namespace BigBook.Tests.DataMapper.Default
         public void NullRightToLeft()
         {
             var TempObject = new Mapping<MappingA, MappingB>(x => x.Item1, null);
-            var A = new MappingA();
-            A.Item1 = 12;
-            A.Item2 = "ASDF";
-            var B = new MappingB();
-            B.Item1 = 13;
-            B.Item2 = "ZXCV";
+            var A = new MappingA
+            {
+                Item1 = 12,
+                Item2 = "ASDF"
+            };
+            var B = new MappingB
+            {
+                Item1 = 13,
+                Item2 = "ZXCV"
+            };
             TempObject.CopyRightToLeft(B, A);
             Assert.Equal(12, A.Item1);
             Assert.Equal("ASDF", A.Item2);
@@ -76,12 +88,16 @@ namespace BigBook.Tests.DataMapper.Default
         public void RightToLeft()
         {
             var TempObject = new Mapping<MappingA, MappingB>(x => x.Item1, x => x.Item1);
-            var A = new MappingA();
-            A.Item1 = 12;
-            A.Item2 = "ASDF";
-            var B = new MappingB();
-            B.Item1 = 13;
-            B.Item2 = "ZXCV";
+            var A = new MappingA
+            {
+                Item1 = 12,
+                Item2 = "ASDF"
+            };
+            var B = new MappingB
+            {
+                Item1 = 13,
+                Item2 = "ZXCV"
+            };
             TempObject.CopyRightToLeft(B, A);
             Assert.Equal(A.Item1, 13);
             Assert.NotEqual(A.Item2, "ZXCV");

@@ -410,7 +410,7 @@ namespace BigBook
         /// <returns>Returns Item</returns>
         public static IEnumerable<T> ThrowIfNotNullOrEmpty<T>(this IEnumerable<T> item, Exception exception)
         {
-            return item.ThrowIf(x => x != null && x.Count() > 0, exception);
+            return item.ThrowIf(x => x != null && x.Any(), exception);
         }
 
         /// <summary>
@@ -458,7 +458,7 @@ namespace BigBook
         /// <returns>Returns Item</returns>
         public static IEnumerable<T> ThrowIfNullOrEmpty<T>(this IEnumerable<T> item, Exception exception)
         {
-            return item.ThrowIf(x => x == null || x.Count() == 0, exception);
+            return item.ThrowIf(x => x == null || !x.Any(), exception);
         }
 
         /// <summary>

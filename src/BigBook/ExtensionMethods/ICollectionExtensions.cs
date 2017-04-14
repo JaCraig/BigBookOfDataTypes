@@ -109,7 +109,7 @@ namespace BigBook
         {
             if (collection == null || predicate == null)
                 return false;
-            if (items == null || items.Count() == 0)
+            if (items == null || !items.Any())
                 return true;
             return collection.AddIf(predicate, items.ToArray());
         }

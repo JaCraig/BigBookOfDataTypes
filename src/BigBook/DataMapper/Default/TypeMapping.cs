@@ -86,9 +86,9 @@ namespace BigBook.DataMapper.Default
         /// <param name="destination">Destination object</param>
         public override void Copy(Left source, Right destination)
         {
-            foreach (Mapping<Left, Right> Mapping in Mappings.OfType<Mapping<Left, Right>>())
+            foreach (Mapping<Left, Right> TempMapping in Mappings.OfType<Mapping<Left, Right>>())
             {
-                Mapping.Copy(source, destination);
+                TempMapping.Copy(source, destination);
             }
         }
 
@@ -99,9 +99,9 @@ namespace BigBook.DataMapper.Default
         /// <param name="destination">Destination object</param>
         public override void Copy(Right source, Left destination)
         {
-            foreach (Mapping<Left, Right> Mapping in Mappings.OfType<Mapping<Left, Right>>())
+            foreach (Mapping<Left, Right> TempMapping in Mappings.OfType<Mapping<Left, Right>>())
             {
-                Mapping.Copy(source, destination);
+                TempMapping.Copy(source, destination);
             }
         }
 
@@ -113,9 +113,9 @@ namespace BigBook.DataMapper.Default
         /// <param name="destination">Destination</param>
         public override void CopyLeftToRight(Left source, Right destination)
         {
-            foreach (Mapping<Left, Right> Mapping in Mappings.OfType<Mapping<Left, Right>>())
+            foreach (Mapping<Left, Right> TempMapping in Mappings.OfType<Mapping<Left, Right>>())
             {
-                Mapping.CopyLeftToRight(source, destination);
+                TempMapping.CopyLeftToRight(source, destination);
             }
         }
 
@@ -127,9 +127,9 @@ namespace BigBook.DataMapper.Default
         /// <param name="destination">Destination</param>
         public override void CopyRightToLeft(Right source, Left destination)
         {
-            foreach (Mapping<Left, Right> Mapping in Mappings.OfType<Mapping<Left, Right>>())
+            foreach (Mapping<Left, Right> TempMapping in Mappings.OfType<Mapping<Left, Right>>())
             {
-                Mapping.CopyRightToLeft(source, destination);
+                TempMapping.CopyRightToLeft(source, destination);
             }
         }
     }

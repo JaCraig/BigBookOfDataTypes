@@ -92,8 +92,10 @@ namespace BigBook.Conversion
             if (!(value is DbType))
                 return SqlDbType.Int;
             var TempValue = (DbType)value;
-            var Parameter = new SqlParameter();
-            Parameter.DbType = TempValue;
+            var Parameter = new SqlParameter
+            {
+                DbType = TempValue
+            };
             return Parameter.SqlDbType;
         }
 
@@ -102,8 +104,10 @@ namespace BigBook.Conversion
             if (!(sqlDbType is SqlDbType))
                 return DbType.Int32;
             var Temp = (SqlDbType)sqlDbType;
-            var Parameter = new SqlParameter();
-            Parameter.SqlDbType = Temp;
+            var Parameter = new SqlParameter
+            {
+                SqlDbType = Temp
+            };
             return Parameter.DbType;
         }
 
@@ -112,8 +116,10 @@ namespace BigBook.Conversion
             if (!(arg is SqlDbType))
                 return typeof(int);
             var Item = (SqlDbType)arg;
-            var Parameter = new SqlParameter();
-            Parameter.SqlDbType = Item;
+            var Parameter = new SqlParameter
+            {
+                SqlDbType = Item
+            };
             switch (Parameter.DbType)
             {
                 case DbType.Byte:
@@ -189,8 +195,10 @@ namespace BigBook.Conversion
             if (TempValue.GetTypeInfo().IsEnum)
                 TempValue = Enum.GetUnderlyingType(TempValue);
             Item = Conversions.GetValue(TempValue, DbType.Int32);
-            var Parameter = new SqlParameter();
-            Parameter.DbType = Item;
+            var Parameter = new SqlParameter
+            {
+                DbType = Item
+            };
             return Parameter.SqlDbType;
         }
     }

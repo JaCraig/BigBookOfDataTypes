@@ -25,6 +25,22 @@ using System.Text;
 namespace BigBook
 {
     /// <summary>
+    /// Version info
+    /// </summary>
+    public enum VersionInfo
+    {
+        /// <summary>
+        /// Short version
+        /// </summary>
+        ShortVersion = 1,
+
+        /// <summary>
+        /// Long version
+        /// </summary>
+        LongVersion = 2
+    }
+
+    /// <summary>
     /// Reflection oriented extensions
     /// </summary>
     [EditorBrowsable(EditorBrowsableState.Never)]
@@ -45,9 +61,9 @@ namespace BigBook
                 return default(T);
             if (provider.IsDefined(typeof(T), inherit))
             {
-                var Attributes = provider.Attributes<T>(inherit);
-                if (Attributes.Length > 0)
-                    return Attributes[0];
+                var TempAttributes = provider.Attributes<T>(inherit);
+                if (TempAttributes.Length > 0)
+                    return TempAttributes[0];
             }
             return default(T);
         }
@@ -236,7 +252,7 @@ namespace BigBook
         /// <returns>The newly created instance of the types</returns>
         public static IEnumerable<ClassType> Create<ClassType>(this IEnumerable<Type> types, params object[] args)
         {
-            if (types == null || types.Count() == 0)
+            if (types == null || !types.Any())
                 yield break;
             foreach (var Type in types)
                 yield return Type.Create<ClassType>(args);
@@ -250,7 +266,7 @@ namespace BigBook
         /// <returns>The newly created instance of the types</returns>
         public static IEnumerable<object> Create(this IEnumerable<Type> types, params object[] args)
         {
-            if (types == null || types.Count() == 0)
+            if (types == null || !types.Any())
                 yield break;
             foreach (var Type in types)
                 yield return Type.Create(args);
@@ -405,17 +421,17 @@ namespace BigBook
                 return default(T);
             var ObjectType = inputObject.GetType();
             var ClassInstance = ObjectType.Create<T>();
-            foreach (PropertyInfo Property in ObjectType.GetProperties())
+            foreach (PropertyInfo TempProperty in ObjectType.GetProperties())
             {
-                if (Property.CanRead
-                        && Property.CanWrite
+                if (TempProperty.CanRead
+                        && TempProperty.CanWrite
                         && simpleTypesOnly
-                        && Property.PropertyType.GetTypeInfo().IsValueType)
-                    Property.SetValue(ClassInstance, Property.GetValue(inputObject, null), null);
+                        && TempProperty.PropertyType.GetTypeInfo().IsValueType)
+                    TempProperty.SetValue(ClassInstance, TempProperty.GetValue(inputObject, null), null);
                 else if (!simpleTypesOnly
-                            && Property.CanRead
-                            && Property.CanWrite)
-                    Property.SetValue(ClassInstance, Property.GetValue(inputObject, null), null);
+                            && TempProperty.CanRead
+                            && TempProperty.CanWrite)
+                    TempProperty.SetValue(ClassInstance, TempProperty.GetValue(inputObject, null), null);
             }
 
             foreach (FieldInfo Field in ObjectType.GetFields())
@@ -471,7 +487,7 @@ namespace BigBook
         /// <returns>A list of objects that are of the type specified</returns>
         public static IEnumerable<ClassType> Objects<ClassType>(this IEnumerable<Assembly> assemblies, params object[] args)
         {
-            if (assemblies == null || assemblies.Count() == 0)
+            if (assemblies == null || !assemblies.Any())
                 yield break;
             foreach (var Assembly in assemblies)
                 foreach (var Object in Assembly.Objects<ClassType>(args))
@@ -649,8 +665,8 @@ namespace BigBook
         {
             if (property == null)
                 throw new ArgumentNullException(nameof(property));
-            var PropertyName = property.PropertyName();
-            var SplitName = PropertyName.Split(new string[] { "." }, StringSplitOptions.RemoveEmptyEntries);
+            var TempPropertyName = property.PropertyName();
+            var SplitName = TempPropertyName.Split(new string[] { "." }, StringSplitOptions.RemoveEmptyEntries);
             if (SplitName.Length == 0)
                 return null;
             var PropertyInfo = typeof(ClassType).GetProperty(SplitName[0]);
@@ -773,7 +789,7 @@ namespace BigBook
         /// <returns>The version information as a string</returns>
         public static string ToString(this IEnumerable<Assembly> assemblies, VersionInfo infoType)
         {
-            if (assemblies == null || assemblies.Count() == 0)
+            if (assemblies == null || !assemblies.Any())
                 return "";
             var Builder = new StringBuilder();
             assemblies.OrderBy(x => x.FullName).ForEach<Assembly>(x => Builder.AppendLine(x.GetName().Name + ": " + x.ToString(infoType)));
@@ -788,7 +804,7 @@ namespace BigBook
         /// <returns>An HTML formatted string containing the assembly information</returns>
         public static string ToString(this IEnumerable<Assembly> assemblies, bool htmlOutput)
         {
-            if (assemblies == null || assemblies.Count() == 0)
+            if (assemblies == null || !assemblies.Any())
                 return "";
             var Builder = new StringBuilder();
             Builder.Append(htmlOutput ? "<strong>Assembly Information</strong><br />" : "Assembly Information\r\n");
@@ -809,15 +825,15 @@ namespace BigBook
             var TempValue = new StringBuilder();
             TempValue.Append(htmlOutput ? "<table><thead><tr><th>Property Name</th><th>Property Value</th></tr></thead><tbody>" : "Property Name\t\t\t\tProperty Value");
             var ObjectType = inputObject.GetType();
-            foreach (PropertyInfo Property in ObjectType.GetProperties())
+            foreach (PropertyInfo TempProperty in ObjectType.GetProperties())
             {
-                TempValue.Append(htmlOutput ? "<tr><td>" : Environment.NewLine).Append(Property.Name).Append(htmlOutput ? "</td><td>" : "\t\t\t\t");
-                var Parameters = Property.GetIndexParameters();
-                if (Property.CanRead && Parameters.Length == 0)
+                TempValue.Append(htmlOutput ? "<tr><td>" : Environment.NewLine).Append(TempProperty.Name).Append(htmlOutput ? "</td><td>" : "\t\t\t\t");
+                var Parameters = TempProperty.GetIndexParameters();
+                if (TempProperty.CanRead && Parameters.Length == 0)
                 {
                     try
                     {
-                        var Value = Property.GetValue(inputObject, null);
+                        var Value = TempProperty.GetValue(inputObject, null);
                         TempValue.Append(Value == null ? "null" : Value.ToString());
                     }
                     catch { }
@@ -841,14 +857,14 @@ namespace BigBook
             var TempValue = new StringBuilder();
             TempValue.Append(htmlOutput ? "<table><thead><tr><th>Property Name</th><th>Property Value</th></tr></thead><tbody>" : "Property Name\t\t\t\tProperty Value");
             var Properties = objectType.GetProperties();
-            foreach (PropertyInfo Property in Properties)
+            foreach (PropertyInfo TempProperty in Properties)
             {
-                TempValue.Append(htmlOutput ? "<tr><td>" : System.Environment.NewLine).Append(Property.Name).Append(htmlOutput ? "</td><td>" : "\t\t\t\t");
-                if (Property.CanRead && Property.GetIndexParameters().Length == 0)
+                TempValue.Append(htmlOutput ? "<tr><td>" : Environment.NewLine).Append(TempProperty.Name).Append(htmlOutput ? "</td><td>" : "\t\t\t\t");
+                if (TempProperty.CanRead && TempProperty.GetIndexParameters().Length == 0)
                 {
                     try
                     {
-                        TempValue.Append(Property.GetValue(null, null) == null ? "null" : Property.GetValue(null, null).ToString());
+                        TempValue.Append(TempProperty.GetValue(null, null) == null ? "null" : TempProperty.GetValue(null, null).ToString());
                     }
                     catch { }
                 }
@@ -896,7 +912,7 @@ namespace BigBook
         /// <returns>List of types that use the interface</returns>
         public static IEnumerable<Type> Types<BaseType>(this IEnumerable<Assembly> assemblies)
         {
-            if (assemblies == null || assemblies.Count() == 0)
+            if (assemblies == null || !assemblies.Any())
                 return new List<Type>();
             return assemblies.Types(typeof(BaseType));
         }
@@ -909,7 +925,7 @@ namespace BigBook
         /// <returns>List of types that use the interface</returns>
         public static IEnumerable<Type> Types(this IEnumerable<Assembly> assemblies, Type baseType)
         {
-            if (assemblies == null || assemblies.Count() == 0 || baseType == null)
+            if (assemblies == null || !assemblies.Any() || baseType == null)
                 yield break;
             foreach (var Assembly in assemblies)
             {
@@ -927,7 +943,7 @@ namespace BigBook
         /// <returns>List of types</returns>
         public static IEnumerable<Type> Types(this IEnumerable<Assembly> assemblies)
         {
-            if (assemblies == null || assemblies.Count() == 0)
+            if (assemblies == null || !assemblies.Any())
                 yield break;
             foreach (var Assembly in assemblies)
             {
@@ -937,21 +953,5 @@ namespace BigBook
                 }
             }
         }
-    }
-
-    /// <summary>
-    /// Version info
-    /// </summary>
-    public enum VersionInfo
-    {
-        /// <summary>
-        /// Short version
-        /// </summary>
-        ShortVersion = 1,
-
-        /// <summary>
-        /// Long version
-        /// </summary>
-        LongVersion = 2
     }
 }

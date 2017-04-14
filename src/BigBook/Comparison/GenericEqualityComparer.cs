@@ -64,14 +64,11 @@ namespace BigBook.Comparison
                         return false;
                 }
             }
-            var TempEquality = x as IEqualityComparer<T>;
-            if (TempEquality != null)
+            if (x is IEqualityComparer<T> TempEquality)
                 return TempEquality.Equals(y);
-            var TempComparable = x as IComparable<T>;
-            if (TempComparable != null)
+            if (x is IComparable<T> TempComparable)
                 return TempComparable.CompareTo(y) == 0;
-            var TempComparable2 = x as IComparable;
-            if (TempComparable2 != null)
+            if (x is IComparable TempComparable2)
                 return TempComparable2.CompareTo(y) == 0;
             return x.Equals(y);
         }

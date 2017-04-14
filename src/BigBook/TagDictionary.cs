@@ -162,9 +162,21 @@ namespace BigBook
         /// <returns>The enumerator</returns>
         public IEnumerator<KeyValuePair<Key, IEnumerable<Value>>> GetEnumerator()
         {
-            foreach (Key Key in Keys)
+            foreach (Key TempKey in Keys)
             {
-                yield return new KeyValuePair<Key, IEnumerable<Value>>(Key, this[Key]);
+                yield return new KeyValuePair<Key, IEnumerable<Value>>(TempKey, this[TempKey]);
+            }
+        }
+
+        /// <summary>
+        /// Gets the enumerator
+        /// </summary>
+        /// <returns>The enumerator</returns>
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            foreach (Key TempKey in Keys)
+            {
+                yield return this[TempKey];
             }
         }
 
@@ -192,18 +204,6 @@ namespace BigBook
         }
 
         /// <summary>
-        /// Gets the enumerator
-        /// </summary>
-        /// <returns>The enumerator</returns>
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            foreach (Key Key in Keys)
-            {
-                yield return this[Key];
-            }
-        }
-
-        /// <summary>
         /// Attempts to get the values associated with a key
         /// </summary>
         /// <param name="key">Key</param>
@@ -217,7 +217,7 @@ namespace BigBook
                 value = this[key];
             }
             catch { }
-            return value.Count() > 0;
+            return value.Any();
         }
 
         /// <summary>

@@ -9,7 +9,7 @@ using Xunit;
 
 namespace BigBook.Tests.ExtensionMethods
 {
-    public interface TestInterface
+    public interface ITestInterface
     {
         int Value { get; set; }
 
@@ -29,7 +29,7 @@ namespace BigBook.Tests.ExtensionMethods
         public void CreateInstanceTest()
         {
             Assert.NotNull(typeof(TestClass).Create());
-            Assert.IsType<TestClass>(typeof(TestClass).Create<TestInterface>());
+            Assert.IsType<TestClass>(typeof(TestClass).Create<ITestInterface>());
         }
 
         [Fact]
@@ -81,8 +81,10 @@ namespace BigBook.Tests.ExtensionMethods
         public void GetPropertyGetterTest()
         {
             var TestObject = typeof(TestClass).GetProperty("Value").PropertyGetter<TestClass, int>();
-            var TestObject2 = new TestClass();
-            TestObject2.Value = 10;
+            var TestObject2 = new TestClass
+            {
+                Value = 10
+            };
             Assert.Equal(10, TestObject.Compile()(TestObject2));
         }
 
@@ -135,7 +137,7 @@ namespace BigBook.Tests.ExtensionMethods
             Assert.Equal(3, typeof(ReflectionExtensionsTests)
                                         .GetTypeInfo()
                                         .Assembly
-                                        .Types<TestInterface>()
+                                        .Types<ITestInterface>()
                                         .Count());
         }
 
@@ -162,9 +164,11 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void MakeShallowCopyTest()
         {
-            var TestObject1 = new TestClass();
-            TestObject1.Value = 3;
-            TestObject1.Value3 = "This is a test";
+            var TestObject1 = new TestClass
+            {
+                Value = 3,
+                Value3 = "This is a test"
+            };
             var TestObject2 = TestObject1.MakeShallowCopy<TestClass>();
             Assert.Equal(TestObject1.Value, TestObject2.Value);
             Assert.Equal(TestObject1.Value2, TestObject2.Value2);
@@ -174,9 +178,11 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void MakeShallowCopyTest2()
         {
-            var TestObject1 = new TestClass();
-            TestObject1.Value = 3;
-            var TestObject2 = TestObject1.MakeShallowCopy<TestInterface>();
+            var TestObject1 = new TestClass
+            {
+                Value = 3
+            };
+            var TestObject2 = TestObject1.MakeShallowCopy<ITestInterface>();
             Assert.Equal(TestObject1.Value, TestObject2.Value);
             Assert.Equal(TestObject1.Value2, TestObject2.Value2);
         }
@@ -187,7 +193,7 @@ namespace BigBook.Tests.ExtensionMethods
             Assert.Equal(1, typeof(ReflectionExtensionsTests)
                                         .GetTypeInfo()
                                         .Assembly
-                                        .Types<TestInterface>()
+                                        .Types<ITestInterface>()
                                         .MarkedWith<TestingAttribute>()
                                         .Count());
         }
@@ -214,28 +220,27 @@ namespace BigBook.Tests.ExtensionMethods
     }
 
     [Testing]
-    public class TestClass : TestInterface
+    public class TestClass : ITestInterface
     {
         public TestClass()
         {
             Value = 1; Value2 = 2;
         }
 
+        public string Value3 = "ASDF";
         public int Value { get; set; }
 
         public int Value2 { get; set; }
-
-        public string Value3 = "ASDF";
     }
 
-    public class TestClass2 : TestInterface
+    public class TestClass2 : ITestInterface
     {
         public int Value { get; set; }
 
         public int Value2 { get; set; }
     }
 
-    public class TestClass3<T> : TestInterface
+    public class TestClass3<T> : ITestInterface
     {
         public int Value { get; set; }
 

@@ -115,17 +115,6 @@ namespace BigBook
         }
 
         /// <summary>
-        /// Removes an item from the bag
-        /// </summary>
-        /// <param name="item">Item to remove</param>
-        /// <returns>True if it is removed, false otherwise</returns>
-        public virtual bool Remove(T item)
-        {
-            int Value = 0;
-            return Items.TryRemove(item, out Value);
-        }
-
-        /// <summary>
         /// Gets the enumerator
         /// </summary>
         /// <returns>The enumerator</returns>
@@ -133,6 +122,16 @@ namespace BigBook
         {
             foreach (T Key in Items.Keys)
                 yield return Key;
+        }
+
+        /// <summary>
+        /// Removes an item from the bag
+        /// </summary>
+        /// <param name="item">Item to remove</param>
+        /// <returns>True if it is removed, false otherwise</returns>
+        public virtual bool Remove(T item)
+        {
+            return Items.TryRemove(item, out int Value);
         }
     }
 }

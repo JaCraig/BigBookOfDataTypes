@@ -7,11 +7,13 @@ namespace BigBook.Tests
         [Fact]
         public void Creation()
         {
-            var Tree = new BinaryTree<int>();
-            Tree.Add(1);
-            Tree.Add(2);
-            Tree.Add(0);
-            Tree.Add(-1);
+            var Tree = new BinaryTree<int>
+            {
+                1,
+                2,
+                0,
+                -1
+            };
             Assert.Equal(-1, Tree.MinValue);
             Assert.Equal(2, Tree.MaxValue);
         }

@@ -124,8 +124,7 @@ namespace BigBook.Caching.Default
         /// <returns>True if it is removed, false otherwise</returns>
         public override bool Remove(string key)
         {
-            object Value = null;
-            return InternalCache.TryRemove(key, out Value);
+            return InternalCache.TryRemove(key, out object Value);
         }
 
         /// <summary>
@@ -135,8 +134,7 @@ namespace BigBook.Caching.Default
         /// <returns>True if it is removed, false otherwise</returns>
         public override bool Remove(KeyValuePair<string, object> item)
         {
-            object Value = null;
-            return InternalCache.TryRemove(item.Key, out Value);
+            return InternalCache.TryRemove(item.Key, out object Value);
         }
 
         /// <summary>

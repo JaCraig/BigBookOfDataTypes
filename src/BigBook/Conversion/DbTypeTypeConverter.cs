@@ -49,8 +49,10 @@ namespace BigBook.Conversion
             if (!(value is DbType))
                 return SqlDbType.Int;
             var TempValue = (DbType)value;
-            var Parameter = new SqlParameter();
-            Parameter.DbType = TempValue;
+            var Parameter = new SqlParameter
+            {
+                DbType = TempValue
+            };
             return Parameter.SqlDbType;
         }
 
@@ -130,8 +132,10 @@ namespace BigBook.Conversion
             if (!(sqlDbType is SqlDbType))
                 return DbType.Int32;
             var Temp = (SqlDbType)sqlDbType;
-            var Parameter = new SqlParameter();
-            Parameter.SqlDbType = Temp;
+            var Parameter = new SqlParameter
+            {
+                SqlDbType = Temp
+            };
             return Parameter.DbType;
         }
 

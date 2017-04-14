@@ -9,8 +9,10 @@ namespace BigBook.Tests
         [Fact]
         public void CallMethod()
         {
-            dynamic Temp = new TestClass();
-            Temp.A = "Testing";
+            dynamic Temp = new TestClass
+            {
+                A = "Testing"
+            };
             Temp.B = new Func<string>(() => Temp.A);
             Assert.Equal("Testing", Temp.B());
             Assert.Equal("Testing", Temp.A);
@@ -19,8 +21,10 @@ namespace BigBook.Tests
         [Fact]
         public void ChangeLog()
         {
-            dynamic Temp = new TestClass();
-            Temp.A = "Testing";
+            dynamic Temp = new TestClass
+            {
+                A = "Testing"
+            };
             Temp.B = new Func<string>(() => Temp.A);
             Assert.Equal(1, Temp.ChangeLog.Count);
             Assert.Contains("B", Temp.ChangeLog.Keys);
@@ -92,8 +96,10 @@ namespace BigBook.Tests
             dynamic Temp = new TestClass();
             Temp.A = "Testing";
             Temp.B = 1;
-            dynamic Temp2 = new TestClass2();
-            Temp2.A = "A";
+            dynamic Temp2 = new TestClass2
+            {
+                A = "A"
+            };
             Temp.CopyTo(Temp2);
             Assert.Equal("Testing", Temp2.A);
             Assert.Equal(1, Temp2.B);
@@ -130,8 +136,10 @@ namespace BigBook.Tests
         [Fact]
         public void Keys()
         {
-            dynamic Temp = new TestClass();
-            Temp.A = "Testing";
+            dynamic Temp = new TestClass
+            {
+                A = "Testing"
+            };
             Temp.B = new Func<string>(() => Temp.A);
             Assert.Equal(2, Temp.Keys.Count);
             Assert.Contains("A", Temp.Keys);
@@ -170,8 +178,10 @@ namespace BigBook.Tests
         [Fact]
         public void Values()
         {
-            dynamic Temp = new TestClass();
-            Temp.A = "Testing";
+            dynamic Temp = new TestClass
+            {
+                A = "Testing"
+            };
             Temp.B = new Func<string>(() => Temp.A);
             Assert.Equal(2, Temp.Values.Count);
             Assert.Contains("Testing", Temp.Values);

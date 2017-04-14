@@ -215,7 +215,7 @@ namespace BigBook
         {
             if (values == null)
                 return default(T);
-            if (values.Count() == 0)
+            if (!values.Any())
                 return default(T);
             average = average ?? ((x, y) => x);
             orderBy = orderBy ?? (x => x);
@@ -239,7 +239,7 @@ namespace BigBook
         {
             if (values == null)
                 return default(T);
-            if (values.Count() == 0)
+            if (!values.Any())
                 return default(T);
             var Items = new Bag<T>();
             foreach (T Value in values)
@@ -564,7 +564,7 @@ namespace BigBook
         /// <returns>The variance</returns>
         public static double Variance<T>(this IEnumerable<T> values, Func<T, decimal> selector)
         {
-            if (values == null || values.Count() == 0)
+            if (values == null || !values.Any())
                 return 0;
             var MeanValue = values.Average(selector);
             var Sum = values.Sum(x => (selector(x) - MeanValue).Pow(2));

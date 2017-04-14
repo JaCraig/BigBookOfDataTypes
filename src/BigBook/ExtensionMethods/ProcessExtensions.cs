@@ -87,7 +87,7 @@ namespace BigBook
         /// <returns>The list of processes</returns>
         public static async Task<IEnumerable<Process>> KillProcessAsync(this IEnumerable<Process> processes, int timeToKill = 0)
         {
-            if (processes == null || processes.Count() == 0)
+            if (processes == null || !processes.Any())
                 return new List<Process>();
             await Task.Run(() => processes.ForEach(x => KillProcessAsyncHelper(x, timeToKill)));
             return processes;

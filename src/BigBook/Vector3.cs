@@ -125,10 +125,12 @@ namespace BigBook
         {
             v1 = v1 ?? new Vector3(0, 0, 0);
             v2 = v2 ?? new Vector3(0, 0, 0);
-            var TempVector = new Vector3(0.0, 0.0, 0.0);
-            TempVector.X = (v1.X * (1 - control)) + (v2.X * control);
-            TempVector.Y = (v1.Y * (1 - control)) + (v2.Y * control);
-            TempVector.Z = (v1.Z * (1 - control)) - (v2.Z * control);
+            var TempVector = new Vector3(0.0, 0.0, 0.0)
+            {
+                X = (v1.X * (1 - control)) + (v2.X * control),
+                Y = (v1.Y * (1 - control)) + (v2.Y * control),
+                Z = (v1.Z * (1 - control)) - (v2.Z * control)
+            };
             return TempVector;
         }
 
@@ -201,10 +203,12 @@ namespace BigBook
         {
             v1 = v1 ?? new Vector3(0, 0, 0);
             v2 = v2 ?? new Vector3(0, 0, 0);
-            var TempVector = new Vector3(0.0, 0.0, 0.0);
-            TempVector.X = (v1.Y * v2.Z) - (v1.Z * v2.Y);
-            TempVector.Y = (v1.Z * v2.X) - (v1.X * v2.Z);
-            TempVector.Z = (v1.X * v2.Y) - (v1.Y * v2.X);
+            var TempVector = new Vector3(0.0, 0.0, 0.0)
+            {
+                X = (v1.Y * v2.Z) - (v1.Z * v2.Y),
+                Y = (v1.Z * v2.X) - (v1.X * v2.Z),
+                Z = (v1.X * v2.Y) - (v1.Y * v2.X)
+            };
             return TempVector;
         }
 

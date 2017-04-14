@@ -173,9 +173,9 @@ namespace BigBook
                 return null;
             if (!Overlap(span))
                 return null;
-            DateTime Start = span.Start > this.Start ? span.Start : this.Start;
-            DateTime End = span.End < this.End ? span.End : this.End;
-            return new DateSpan(Start, End);
+            DateTime TempStart = span.Start > Start ? span.Start : Start;
+            DateTime TempEnd = span.End < End ? span.End : End;
+            return new DateSpan(TempStart, TempEnd);
         }
 
         /// <summary>

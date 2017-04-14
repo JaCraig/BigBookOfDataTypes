@@ -9,8 +9,10 @@ namespace BigBook.Tests.Caching.Default
         [Fact]
         public void Add()
         {
-            var Temp = new BigBook.Caching.Default.Cache();
-            Temp.Add("A", 1);
+            var Temp = new BigBook.Caching.Default.Cache
+            {
+                { "A", 1 }
+            };
             Assert.NotNull(Temp);
             Assert.Equal(1, Temp.Count);
             Assert.False(Temp.IsReadOnly);
@@ -25,8 +27,10 @@ namespace BigBook.Tests.Caching.Default
         [Fact]
         public void Clear()
         {
-            var Temp = new BigBook.Caching.Default.Cache();
-            Temp.Add("A", 1);
+            var Temp = new BigBook.Caching.Default.Cache
+            {
+                { "A", 1 }
+            };
             Assert.NotNull(Temp);
             Assert.Equal(1, Temp.Count);
             Assert.False(Temp.IsReadOnly);
@@ -56,8 +60,10 @@ namespace BigBook.Tests.Caching.Default
         [Fact]
         public void Remove()
         {
-            var Temp = new BigBook.Caching.Default.Cache();
-            Temp.Add("A", 1);
+            var Temp = new BigBook.Caching.Default.Cache
+            {
+                { "A", 1 }
+            };
             Assert.NotNull(Temp);
             Assert.Equal(1, Temp.Count);
             Assert.False(Temp.IsReadOnly);
@@ -77,8 +83,10 @@ namespace BigBook.Tests.Caching.Default
         [Fact]
         public void TagAdd()
         {
-            var Temp = new BigBook.Caching.Default.Cache();
-            Temp.Add("A", 1, new string[] { "Tag1", "Tag2" });
+            var Temp = new BigBook.Caching.Default.Cache
+            {
+                { "A", 1, new string[] { "Tag1", "Tag2" } }
+            };
             Assert.NotNull(Temp);
             Assert.Equal(1, Temp.Count);
             Assert.False(Temp.IsReadOnly);
@@ -96,10 +104,12 @@ namespace BigBook.Tests.Caching.Default
         [Fact]
         public void TagGet()
         {
-            var Temp = new BigBook.Caching.Default.Cache();
-            Temp.Add("A", 1, new string[] { "Tag1", "Tag2" });
-            Temp.Add("B", 2, new string[] { "Tag2" });
-            Temp.Add("C", 3);
+            var Temp = new BigBook.Caching.Default.Cache
+            {
+                { "A", 1, new string[] { "Tag1", "Tag2" } },
+                { "B", 2, new string[] { "Tag2" } },
+                { "C", 3 }
+            };
             Assert.Equal(2, Temp.GetByTag("Tag2").Count());
             Assert.Equal(1, Temp.GetByTag("Tag1").Count());
             Assert.Equal(0, Temp.GetByTag("Tag3").Count());
@@ -109,10 +119,12 @@ namespace BigBook.Tests.Caching.Default
         [Fact]
         public void TagRemove()
         {
-            var Temp = new BigBook.Caching.Default.Cache();
-            Temp.Add("A", 1, new string[] { "Tag1", "Tag2" });
-            Temp.Add("B", 2, new string[] { "Tag2" });
-            Temp.Add("C", 3);
+            var Temp = new BigBook.Caching.Default.Cache
+            {
+                { "A", 1, new string[] { "Tag1", "Tag2" } },
+                { "B", 2, new string[] { "Tag2" } },
+                { "C", 3 }
+            };
             Temp.RemoveByTag("Tag1");
             Assert.Equal(1, Temp.GetByTag("Tag2").Count());
             Assert.Equal(0, Temp.GetByTag("Tag1").Count());
@@ -123,16 +135,17 @@ namespace BigBook.Tests.Caching.Default
         [Fact]
         public void TryGetValue()
         {
-            var Temp = new BigBook.Caching.Default.Cache();
-            Temp.Add("A", 1);
+            var Temp = new BigBook.Caching.Default.Cache
+            {
+                { "A", 1 }
+            };
             Assert.NotNull(Temp);
             Assert.Equal(1, Temp.Count);
             Assert.False(Temp.IsReadOnly);
             Assert.Equal(1, Temp.Keys.Count);
             Assert.Equal("Default", Temp.Name);
             Assert.Equal(1, Temp.Values.Count);
-            object Value = 0;
-            Assert.True(Temp.TryGetValue("A", out Value));
+            Assert.True(Temp.TryGetValue("A", out object Value));
             Assert.Equal(1, Value);
         }
     }

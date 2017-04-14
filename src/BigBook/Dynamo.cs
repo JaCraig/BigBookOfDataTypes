@@ -94,8 +94,10 @@ namespace BigBook
         {
             get
             {
-                var Temp = new List<string>();
-                Temp.Add(base.Keys);
+                var Temp = new List<string>
+                {
+                    base.Keys
+                };
                 Type ObjectType = GetType();
                 foreach (PropertyInfo Property in ObjectType.GetProperties().Where(x => x.DeclaringType != typeof(Dynamo<T>) && x.DeclaringType != typeof(Dynamo)))
                 {
@@ -214,6 +216,21 @@ namespace BigBook
         }
 
         /// <summary>
+        /// The get value end_
+        /// </summary>
+        private Action<Dynamo, string, EventArgs.OnEndEventArgs> getValueEnd_;
+
+        /// <summary>
+        /// The get value start_
+        /// </summary>
+        private Action<Dynamo, EventArgs.OnStartEventArgs> getValueStart_;
+
+        /// <summary>
+        /// The property changed_
+        /// </summary>
+        private PropertyChangedEventHandler propertyChanged_;
+
+        /// <summary>
         /// Change log
         /// </summary>
         public ConcurrentDictionary<string, Change> ChangeLog { get; private set; }
@@ -276,21 +293,6 @@ namespace BigBook
                 SetValue(key, value);
             }
         }
-
-        /// <summary>
-        /// The get value end_
-        /// </summary>
-        private Action<Dynamo, string, EventArgs.OnEndEventArgs> getValueEnd_;
-
-        /// <summary>
-        /// The get value start_
-        /// </summary>
-        private Action<Dynamo, EventArgs.OnStartEventArgs> getValueStart_;
-
-        /// <summary>
-        /// The property changed_
-        /// </summary>
-        private PropertyChangedEventHandler propertyChanged_;
 
         /// <summary>
         /// Called when the value/property is found but before it is returned to the caller Sends
@@ -474,6 +476,15 @@ namespace BigBook
         }
 
         /// <summary>
+        /// Gets the enumerator for the object
+        /// </summary>
+        /// <returns>The enumerator</returns>
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return InternalValues.GetEnumerator();
+        }
+
+        /// <summary>
         /// Gets the hash code
         /// </summary>
         /// <returns>The hash code</returns>
@@ -504,15 +515,6 @@ namespace BigBook
         }
 
         /// <summary>
-        /// Gets the enumerator for the object
-        /// </summary>
-        /// <returns>The enumerator</returns>
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return InternalValues.GetEnumerator();
-        }
-
-        /// <summary>
         /// Reads the data from an XML doc
         /// </summary>
         /// <param name="reader">XML reader</param>
@@ -533,8 +535,7 @@ namespace BigBook
         public bool Remove(string key)
         {
             RaisePropertyChanged(key, null);
-            object TempObject = null;
-            return InternalValues.TryRemove(key, out TempObject);
+            return InternalValues.TryRemove(key, out object TempObject);
         }
 
         /// <summary>
@@ -545,8 +546,7 @@ namespace BigBook
         public bool Remove(KeyValuePair<string, object> item)
         {
             RaisePropertyChanged(item.Key, null);
-            object TempObject = null;
-            return InternalValues.TryRemove(item.Key, out TempObject);
+            return InternalValues.TryRemove(item.Key, out object TempObject);
         }
 
         /// <summary>

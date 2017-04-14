@@ -157,8 +157,10 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void AddNull()
         {
-            var TestObject = new ConcurrentBag<int>(new int[] { 1, 2, 3, 4, 5, 6 });
-            TestObject.Add(null);
+            var TestObject = new ConcurrentBag<int>(new int[] { 1, 2, 3, 4, 5, 6 })
+            {
+                null
+            };
             Assert.Equal(6, TestObject.Count);
         }
 

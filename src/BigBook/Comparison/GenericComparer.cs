@@ -46,8 +46,7 @@ namespace BigBook.Comparison
             }
             if (x.GetType() != y.GetType())
                 return -1;
-            var TempComparable = x as IComparable<T>;
-            if (TempComparable != null)
+            if (x is IComparable<T> TempComparable)
                 return TempComparable.CompareTo(y);
             return x.CompareTo(y);
         }

@@ -77,8 +77,7 @@ namespace BigBook.Caching.BaseClasses
         {
             get
             {
-                object Value = null;
-                TryGetValue(key, out Value);
+                TryGetValue(key, out object Value);
                 return Value;
             }
             set
