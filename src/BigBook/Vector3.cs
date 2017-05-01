@@ -327,7 +327,8 @@ namespace BigBook
         /// <summary>
         /// Normalizes the vector
         /// </summary>
-        public void Normalize()
+        /// <returns>This</returns>
+        public Vector3 Normalize()
         {
             double Normal = Magnitude;
             if (Normal > 0)
@@ -337,6 +338,7 @@ namespace BigBook
                 Y *= Normal;
                 Z *= Normal;
             }
+            return this;
         }
 
         /// <summary>

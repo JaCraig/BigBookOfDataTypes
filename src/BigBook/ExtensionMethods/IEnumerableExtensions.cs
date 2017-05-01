@@ -71,7 +71,7 @@ namespace BigBook
         /// <returns>An IEnumerable of only the distinct items</returns>
         public static IEnumerable<T> Distinct<T>(this IEnumerable<T> enumerable, Func<T, T, bool> predicate)
         {
-            if (enumerable == null)
+            if (enumerable == null || !enumerable.Any())
                 yield break;
             var TempGenericComparer = new GenericEqualityComparer<T>();
             predicate = predicate ?? TempGenericComparer.Equals;
@@ -96,7 +96,7 @@ namespace BigBook
         /// <returns>The items between the start and end index</returns>
         public static IEnumerable<T> ElementsBetween<T>(this IEnumerable<T> list, int start, int end)
         {
-            if (list == null)
+            if (list == null || !list.Any())
                 yield break;
             if (end > list.Count())
                 end = list.Count();
@@ -122,7 +122,7 @@ namespace BigBook
         /// <returns>An IEnumerable with the objects that meet the criteria removed</returns>
         public static IEnumerable<T> Except<T>(this IEnumerable<T> value, Func<T, bool> predicate)
         {
-            if (value == null)
+            if (value == null || !value.Any())
                 return new List<T>();
             if (predicate == null)
                 return value;
@@ -140,7 +140,7 @@ namespace BigBook
         /// <returns>The original list</returns>
         public static IEnumerable<T> For<T>(this IEnumerable<T> list, int start, int end, Action<T, int> action)
         {
-            if (list == null)
+            if (list == null || !list.Any())
                 return new List<T>();
             var TempList = list.ElementsBetween(start, end + 1).ToArray();
             for (int x = 0; x < TempList.Length; ++x)
@@ -163,7 +163,7 @@ namespace BigBook
         /// <returns>The resulting list</returns>
         public static IEnumerable<R> For<T, R>(this IEnumerable<T> list, int start, int end, Func<T, int, R> function)
         {
-            if (list == null || function == null)
+            if (list == null || function == null || !list.Any())
                 return new R[0];
             var TempList = list.ElementsBetween(start, end + 1).ToArray();
             var ReturnList = new R[TempList.Length];
@@ -183,7 +183,7 @@ namespace BigBook
         /// <returns>The original list</returns>
         public static IEnumerable<T> ForEach<T>(this IEnumerable<T> list, Action<T> action)
         {
-            if (list == null)
+            if (list == null || !list.Any())
                 return new List<T>();
             if (action == null)
                 return list;
@@ -202,7 +202,7 @@ namespace BigBook
         /// <returns>The resulting list</returns>
         public static IEnumerable<R> ForEach<T, R>(this IEnumerable<T> list, Func<T, R> function)
         {
-            if (list == null || function == null)
+            if (list == null || function == null || !list.Any())
                 return new List<R>();
             var ReturnList = new List<R>(list.Count());
             foreach (T Item in list)
@@ -220,7 +220,7 @@ namespace BigBook
         /// <returns>The original list</returns>
         public static IEnumerable<T> ForEach<T>(this IEnumerable<T> list, Action<T> action, Action<T, Exception> catchAction)
         {
-            if (list == null)
+            if (list == null || !list.Any())
                 return new List<T>();
             if (action == null || catchAction == null)
                 return list;
@@ -246,7 +246,7 @@ namespace BigBook
         /// <returns>The resulting list</returns>
         public static IEnumerable<R> ForEach<T, R>(this IEnumerable<T> list, Func<T, R> function, Action<T, Exception> catchAction)
         {
-            if (list == null || function == null || catchAction == null)
+            if (list == null || function == null || catchAction == null || !list.Any())
                 return new R[0];
             var ReturnValue = new List<R>();
             foreach (T Item in list)
@@ -269,7 +269,7 @@ namespace BigBook
         /// <returns>The original list</returns>
         public static IEnumerable<T> ForEachParallel<T>(this IEnumerable<T> list, Action<T> action)
         {
-            if (list == null)
+            if (list == null || !list.Any())
                 return new List<T>();
             if (action == null)
                 return list;
@@ -287,7 +287,7 @@ namespace BigBook
         /// <returns>The results in an IEnumerable list</returns>
         public static IEnumerable<R> ForEachParallel<T, R>(this IEnumerable<T> list, Func<T, R> function)
         {
-            if (list == null || function == null)
+            if (list == null || function == null || !list.Any())
                 return new List<R>();
             return list.ForParallel(0, list.Count() - 1, (x, y) => function(x));
         }
@@ -302,7 +302,7 @@ namespace BigBook
         /// <returns>The original list</returns>
         public static IEnumerable<T> ForEachParallel<T>(this IEnumerable<T> list, Action<T> action, Action<T, Exception> catchAction)
         {
-            if (list == null)
+            if (list == null || !list.Any())
                 return new List<T>();
             if (action == null || catchAction == null)
                 return list;
@@ -328,7 +328,7 @@ namespace BigBook
         /// <returns>The resulting list</returns>
         public static IEnumerable<R> ForEachParallel<T, R>(this IEnumerable<T> list, Func<T, R> function, Action<T, Exception> catchAction)
         {
-            if (list == null || function == null || catchAction == null)
+            if (list == null || function == null || catchAction == null || !list.Any())
                 return new List<R>();
             var ReturnValues = new ConcurrentBag<R>();
             Parallel.ForEach<T>(list, delegate (T Item)
@@ -353,7 +353,7 @@ namespace BigBook
         /// <returns>The original list</returns>
         public static IEnumerable<T> ForParallel<T>(this IEnumerable<T> list, int start, int end, Action<T, int> action)
         {
-            if (list == null)
+            if (list == null || !list.Any())
                 return new List<T>();
             if (action == null)
                 return list;
@@ -384,7 +384,7 @@ namespace BigBook
         /// <returns>The resulting list</returns>
         public static IEnumerable<R> ForParallel<T, R>(this IEnumerable<T> list, int start, int end, Func<T, int, R> function)
         {
-            if (list == null || function == null)
+            if (list == null || function == null || !list.Any())
                 return new List<R>();
             if (end > list.Count())
                 end = list.Count();
@@ -411,7 +411,7 @@ namespace BigBook
         /// <returns>The last X items from the list</returns>
         public static IEnumerable<T> Last<T>(this IEnumerable<T> list, int count)
         {
-            if (list == null)
+            if (list == null || !list.Any())
                 return new List<T>();
             return list.ElementsBetween(list.Count() - count, list.Count());
         }
@@ -491,7 +491,7 @@ namespace BigBook
         /// <returns>The position of the object if it is present, otherwise -1</returns>
         public static int PositionOf<T>(this IEnumerable<T> list, T item, IEqualityComparer<T> equalityComparer = null)
         {
-            if (list == null)
+            if (list == null || !list.Any())
                 return -1;
             equalityComparer = equalityComparer ?? new GenericEqualityComparer<T>();
             int Count = 0;
@@ -545,7 +545,7 @@ namespace BigBook
         /// <returns>the original Item</returns>
         public static IEnumerable<T> ThrowIfAll<T>(this IEnumerable<T> list, Func<T, bool> predicate, Func<Exception> exception)
         {
-            if (list == null)
+            if (list == null || !list.Any())
                 return new List<T>();
             if (predicate == null || exception == null)
                 return list;
@@ -564,7 +564,7 @@ namespace BigBook
         /// <returns>the original Item</returns>
         public static IEnumerable<T> ThrowIfAll<T>(this IEnumerable<T> list, Func<T, bool> predicate, Exception exception)
         {
-            if (list == null)
+            if (list == null || !list.Any())
                 return new List<T>();
             if (predicate == null || exception == null)
                 return list;
@@ -583,7 +583,7 @@ namespace BigBook
         /// <returns>the original Item</returns>
         public static IEnumerable<T> ThrowIfAny<T>(this IEnumerable<T> list, Func<T, bool> predicate, Func<Exception> exception)
         {
-            if (list == null)
+            if (list == null || !list.Any())
                 return new List<T>();
             if (predicate == null || exception == null)
                 return list;
@@ -602,7 +602,7 @@ namespace BigBook
         /// <returns>the original Item</returns>
         public static IEnumerable<T> ThrowIfAny<T>(this IEnumerable<T> list, Func<T, bool> predicate, Exception exception)
         {
-            if (list == null)
+            if (list == null || !list.Any())
                 return new List<T>();
             if (predicate == null || exception == null)
                 return list;
@@ -621,7 +621,7 @@ namespace BigBook
         /// <returns>The array containing the items from the list</returns>
         public static Target[] ToArray<Source, Target>(this IEnumerable<Source> list, Func<Source, Target> convertingFunction)
         {
-            if (list == null || convertingFunction == null)
+            if (list == null || convertingFunction == null || !list.Any())
                 return new Target[0];
             return list.ForEach(convertingFunction).ToArray();
         }
@@ -636,7 +636,7 @@ namespace BigBook
         /// <returns>The list containing the items from the IEnumerable</returns>
         public static List<Target> ToList<Source, Target>(this IEnumerable<Source> list, Func<Source, Target> convertingFunction)
         {
-            if (list == null || convertingFunction == null)
+            if (list == null || convertingFunction == null || !list.Any())
                 return new List<Target>();
             return list.ForEach(convertingFunction).ToList();
         }
@@ -653,7 +653,7 @@ namespace BigBook
         /// <returns>The string version of the list</returns>
         public static string ToString<T>(this IEnumerable<T> list, Func<T, string> itemOutput = null, string seperator = ",")
         {
-            if (list == null)
+            if (list == null || !list.Any())
                 return "";
             seperator = seperator ?? "";
             itemOutput = itemOutput ?? (x => x.ToString());
@@ -676,7 +676,7 @@ namespace BigBook
         /// <returns>The transversed hierarchy.</returns>
         public static IEnumerable<T> Transverse<T>(this IEnumerable<T> collection, Func<T, IEnumerable<T>> property)
         {
-            if (collection == null)
+            if (collection == null || !collection.Any())
                 yield break;
             foreach (T item in collection)
             {

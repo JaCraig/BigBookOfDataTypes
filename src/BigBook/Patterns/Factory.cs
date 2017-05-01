@@ -64,9 +64,10 @@ namespace BigBook.Patterns
         /// </summary>
         /// <param name="key">Item to register</param>
         /// <param name="result">The object to be returned</param>
-        public void Register(Key key, T result)
+        /// <returns>This</returns>
+        public Factory<Key, T> Register(Key key, T result)
         {
-            Register(key, () => result);
+            return Register(key, () => result);
         }
 
         /// <summary>
@@ -74,9 +75,11 @@ namespace BigBook.Patterns
         /// </summary>
         /// <param name="key">Item to register</param>
         /// <param name="constructor">The function to call when creating the item</param>
-        public void Register(Key key, Func<T> constructor)
+        /// <returns>This</returns>
+        public Factory<Key, T> Register(Key key, Func<T> constructor)
         {
             Constructors.SetValue(key, constructor);
+            return this;
         }
     }
 }
