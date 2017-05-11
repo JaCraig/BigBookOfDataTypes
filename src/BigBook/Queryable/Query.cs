@@ -61,7 +61,7 @@ namespace BigBook.Queryable
         /// <summary>
         /// The internal provider
         /// </summary>
-        private QueryProviderBase InternalProvider;
+        private readonly QueryProviderBase InternalProvider;
 
         /// <summary>
         /// Gets the type of the element(s) that are returned when the expression tree associated
