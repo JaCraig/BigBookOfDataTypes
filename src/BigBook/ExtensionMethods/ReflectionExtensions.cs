@@ -273,6 +273,18 @@ namespace BigBook
         }
 
         /// <summary>
+        /// Gets the type of the element within the IEnumerable. Or the type itself if it is not an IEnumerable.
+        /// </summary>
+        /// <param name="type">The object type.</param>
+        /// <returns>The element type if it is an IEnumerable, otherwise the type sent in.</returns>
+        public static Type GetIEnumerableElementType(this Type type)
+        {
+            Type IEnum = FindIEnumerableElementType(type);
+
+            return IEnum == null ? type : IEnum.GetGenericArguments()[0];
+        }
+
+        /// <summary>
         /// Gets the method specified based on name and parameter types
         /// </summary>
         /// <param name="ObjectType">Type of the object.</param>
@@ -952,6 +964,49 @@ namespace BigBook
                     yield return Type;
                 }
             }
+        }
+
+        /// <summary>
+        /// Finds the type of the IEnumerable element.
+        /// </summary>
+        /// <param name="type">The original type.</param>
+        /// <returns>Either null or the type of the IEnumerable</returns>
+        private static Type FindIEnumerableElementType(Type type)
+        {
+            if (type == null || type == typeof(string))
+                return null;
+            if (type.IsArray)
+                return typeof(IEnumerable<>).MakeGenericType(type.GetElementType());
+
+            var TypeInfo = type.GetTypeInfo();
+            if (TypeInfo.IsGenericType)
+            {
+                int maxLength = type.GetGenericArguments().Length;
+                for (int x = 0; x < maxLength; ++x)
+                {
+                    Type Arg = type.GetGenericArguments()[x];
+                    Type IEnum = typeof(IEnumerable<>).MakeGenericType(Arg);
+
+                    if (IEnum.IsAssignableFrom(type)) return IEnum;
+                }
+            }
+
+            Type[] Interfaces = type.GetInterfaces();
+            if (Interfaces != null && Interfaces.Length > 0)
+            {
+                var InterfacesLength = Interfaces.Length;
+                for (int x = 0; x < InterfacesLength; ++x)
+                {
+                    Type InterfaceUsed = Interfaces[x];
+                    Type IEnum = FindIEnumerableElementType(InterfaceUsed);
+
+                    if (IEnum != null) return IEnum;
+                }
+            }
+
+            return TypeInfo.BaseType != null && TypeInfo.BaseType != typeof(object) ?
+                FindIEnumerableElementType(TypeInfo.BaseType) :
+                null;
         }
     }
 }
