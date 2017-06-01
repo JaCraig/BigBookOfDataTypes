@@ -150,7 +150,11 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void IsDebug()
         {
+#if DEBUG
             Assert.True(GetType().GetTypeInfo().Assembly.IsDebug());
+#else
+            Assert.False(GetType().GetTypeInfo().Assembly.IsDebug());
+#endif
         }
 
         [Fact]
@@ -163,7 +167,11 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void IsJitOptimized()
         {
+#if DEBUG
+            Assert.True(GetType().GetTypeInfo().Assembly.IsJitOptimized());
+#else
             Assert.False(GetType().GetTypeInfo().Assembly.IsJitOptimized());
+#endif
         }
 
         [Fact]
