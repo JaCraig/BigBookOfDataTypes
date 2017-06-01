@@ -17,6 +17,7 @@ limitations under the License.
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -417,6 +418,20 @@ namespace BigBook
                 return false;
             return objectType.Is(typeof(BaseObjectType));
         }
+
+        /// <summary>
+        /// Determines whether this instance is debug.
+        /// </summary>
+        /// <param name="assembly">The assembly.</param>
+        /// <returns><c>true</c> if the specified assembly is debug; otherwise, <c>false</c>.</returns>
+        public static bool IsDebug(this Assembly assembly) => assembly.GetCustomAttributes().OfType<DebuggableAttribute>().SingleOrDefault().IsJitTrackingEnabled();
+
+        /// <summary>
+        /// Determines whether [is JIT optimized].
+        /// </summary>
+        /// <param name="assembly">The assembly.</param>
+        /// <returns><c>true</c> if [is JIT optimized] [the specified assembly]; otherwise, <c>false</c>.</returns>
+        public static bool IsJitOptimized(this Assembly assembly) => assembly.GetCustomAttributes().OfType<DebuggableAttribute>().SingleOrDefault().IsJitOptimized();
 
         /// <summary>
         /// Makes a shallow copy of the object
@@ -1008,5 +1023,23 @@ namespace BigBook
                 FindIEnumerableElementType(TypeInfo.BaseType) :
                 null;
         }
+
+        /// <summary>
+        /// Determines whether [is JIT optimizer disabled].
+        /// </summary>
+        /// <param name="attribute">The attribute.</param>
+        /// <returns>
+        /// <c>true</c> if [is JIT optimizer disabled] [the specified attribute]; otherwise, <c>false</c>.
+        /// </returns>
+        private static bool IsJitOptimized(this DebuggableAttribute attribute) => !(bool)attribute.Property("IsJITOptimizerDisabled");
+
+        /// <summary>
+        /// Determines whether [is JIT tracking enabled].
+        /// </summary>
+        /// <param name="attribute">The attribute.</param>
+        /// <returns>
+        /// <c>true</c> if [is JIT tracking enabled] [the specified attribute]; otherwise, <c>false</c>.
+        /// </returns>
+        private static bool IsJitTrackingEnabled(this DebuggableAttribute attribute) => (bool)attribute.Property("IsJITTrackingEnabled");
     }
 }

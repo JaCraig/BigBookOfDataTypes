@@ -148,10 +148,22 @@ namespace BigBook.Tests.ExtensionMethods
         }
 
         [Fact]
+        public void IsDebug()
+        {
+            Assert.True(GetType().GetTypeInfo().Assembly.IsDebug());
+        }
+
+        [Fact]
         public void IsIEnumerableTest()
         {
             var TestObject = new List<int>();
             Assert.True(TestObject.GetType().Is(typeof(IEnumerable)));
+        }
+
+        [Fact]
+        public void IsJitOptimized()
+        {
+            Assert.False(GetType().GetTypeInfo().Assembly.IsJitOptimized());
         }
 
         [Fact]
