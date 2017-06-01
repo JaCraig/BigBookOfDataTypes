@@ -168,9 +168,9 @@ namespace BigBook.Tests.ExtensionMethods
         public void IsJitOptimized()
         {
 #if DEBUG
-            Assert.True(GetType().GetTypeInfo().Assembly.IsJitOptimized());
-#else
             Assert.False(GetType().GetTypeInfo().Assembly.IsJitOptimized());
+#else
+            Assert.True(GetType().GetTypeInfo().Assembly.IsJitOptimized());
 #endif
         }
 
