@@ -558,7 +558,7 @@ namespace BigBook
             }
             DestinationProperty = TempObjectType.GetProperty(Properties[Properties.Length - 1]);
             if (DestinationProperty == null)
-                throw new NullReferenceException("PropertyInfo can't be null");
+                return null;
             return TempObject.Property(DestinationProperty);
         }
 
