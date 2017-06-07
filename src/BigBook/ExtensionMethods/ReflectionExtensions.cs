@@ -1031,7 +1031,7 @@ namespace BigBook
         /// <returns>
         /// <c>true</c> if [is JIT optimizer disabled] [the specified attribute]; otherwise, <c>false</c>.
         /// </returns>
-        private static bool IsJitOptimized(this DebuggableAttribute attribute) => !(bool)attribute.Property("IsJITOptimizerDisabled");
+        private static bool IsJitOptimized(this DebuggableAttribute attribute) => !(bool)(attribute.Property("IsJITOptimizerDisabled") ?? true);
 
         /// <summary>
         /// Determines whether [is JIT tracking enabled].
@@ -1040,6 +1040,6 @@ namespace BigBook
         /// <returns>
         /// <c>true</c> if [is JIT tracking enabled] [the specified attribute]; otherwise, <c>false</c>.
         /// </returns>
-        private static bool IsJitTrackingEnabled(this DebuggableAttribute attribute) => (bool)attribute.Property("IsJITTrackingEnabled");
+        private static bool IsJitTrackingEnabled(this DebuggableAttribute attribute) => (bool)(attribute.Property("IsJITTrackingEnabled") ?? false);
     }
 }
