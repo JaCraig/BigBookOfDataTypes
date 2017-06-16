@@ -147,13 +147,13 @@ namespace BigBook.Conversion
             if (TempValue.GetTypeInfo().IsEnum)
                 TempValue = Enum.GetUnderlyingType(TempValue);
             if (TempValue == typeof(byte)) return DbType.Byte;
-            else if (TempValue == typeof(sbyte)) return DbType.SByte;
+            else if (TempValue == typeof(sbyte)) return DbType.Byte;
             else if (TempValue == typeof(short)) return DbType.Int16;
-            else if (TempValue == typeof(ushort)) return DbType.UInt16;
+            else if (TempValue == typeof(ushort)) return DbType.Int16;
             else if (TempValue == typeof(int)) return DbType.Int32;
-            else if (TempValue == typeof(uint)) return DbType.UInt32;
+            else if (TempValue == typeof(uint)) return DbType.Int32;
             else if (TempValue == typeof(long)) return DbType.Int64;
-            else if (TempValue == typeof(ulong)) return DbType.UInt64;
+            else if (TempValue == typeof(ulong)) return DbType.Int64;
             else if (TempValue == typeof(float)) return DbType.Single;
             else if (TempValue == typeof(double)) return DbType.Double;
             else if (TempValue == typeof(decimal)) return DbType.Decimal;
@@ -166,13 +166,13 @@ namespace BigBook.Conversion
             else if (TempValue == typeof(TimeSpan)) return DbType.Time;
             else if (TempValue == typeof(byte[])) return DbType.Binary;
             else if (TempValue == typeof(byte?)) return DbType.Byte;
-            else if (TempValue == typeof(sbyte?)) return DbType.SByte;
+            else if (TempValue == typeof(sbyte?)) return DbType.Byte;
             else if (TempValue == typeof(short?)) return DbType.Int16;
-            else if (TempValue == typeof(ushort?)) return DbType.UInt16;
+            else if (TempValue == typeof(ushort?)) return DbType.Int16;
             else if (TempValue == typeof(int?)) return DbType.Int32;
-            else if (TempValue == typeof(uint?)) return DbType.UInt32;
+            else if (TempValue == typeof(uint?)) return DbType.Int32;
             else if (TempValue == typeof(long?)) return DbType.Int64;
-            else if (TempValue == typeof(ulong?)) return DbType.UInt64;
+            else if (TempValue == typeof(ulong?)) return DbType.Int64;
             else if (TempValue == typeof(float?)) return DbType.Single;
             else if (TempValue == typeof(double?)) return DbType.Double;
             else if (TempValue == typeof(decimal?)) return DbType.Decimal;
