@@ -642,6 +642,35 @@ namespace BigBook
         }
 
         /// <summary>
+        /// Converts the IEnumerable to an observable list
+        /// </summary>
+        /// <typeparam name="Source">The type of the source.</typeparam>
+        /// <typeparam name="Target">The type of the target.</typeparam>
+        /// <param name="list">The list to convert</param>
+        /// <param name="convertingFunction">The converting function.</param>
+        /// <returns>The observable list version of the original list</returns>
+        public static ObservableList<Target> ToObservableList<Source, Target>(this IEnumerable<Source> list, Func<Source, Target> convertingFunction)
+        {
+            if (list == null)
+                return new ObservableList<Target>();
+            convertingFunction = convertingFunction ?? new Func<Source, Target>(x => x.To<Source, Target>());
+            return new ObservableList<Target>(list.ForEach(convertingFunction));
+        }
+
+        /// <summary>
+        /// Converts the IEnumerable to an observable list
+        /// </summary>
+        /// <typeparam name="Source">The type of the source.</typeparam>
+        /// <param name="list">The list to convert</param>
+        /// <returns>The observable list version of the original list</returns>
+        public static ObservableList<Source> ToObservableList<Source>(this IEnumerable<Source> list)
+        {
+            if (list == null)
+                return new ObservableList<Source>();
+            return new ObservableList<Source>(list);
+        }
+
+        /// <summary>
         /// Converts the list to a string where each item is seperated by the Seperator
         /// </summary>
         /// <typeparam name="T">Item type</typeparam>
