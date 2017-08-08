@@ -225,6 +225,13 @@ namespace BigBook.Tests.ExtensionMethods
         }
 
         [Fact]
+        public void ToObservableListTest()
+        {
+            var Temp = new int[] { 0, 0, 1, 2, 3 }.ToObservableList(x => x + .5f);
+            Assert.Equal(new float[] { 0.5f, 0.5f, 1.5f, 2.5f, 3.5f }, Temp);
+        }
+
+        [Fact]
         public void ToStringTest()
         {
             var Temp = new int[] { 0, 0, 1, 2, 3 }.ToList();
