@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
@@ -27,7 +28,7 @@ namespace BigBook
     /// Observable List class
     /// </summary>
     /// <typeparam name="T">Object type that the list holds</typeparam>
-    public class ObservableList<T> : IList<T>, INotifyCollectionChanged, INotifyPropertyChanged
+    public class ObservableList<T> : IList<T>, INotifyCollectionChanged, INotifyPropertyChanged, IList
     {
         /// <summary>
         /// Initializes a virtual instance of the <see cref="ObservableList{T}"/> class.
@@ -56,9 +57,34 @@ namespace BigBook
         }
 
         /// <summary>
+        /// The collection changed
+        /// </summary>
+        private NotifyCollectionChangedEventHandler collectionChanged_;
+
+        /// <summary>
+        /// The delegates_
+        /// </summary>
+        private List<NotifyCollectionChangedEventHandler> CollectionChangedDelegates = new List<NotifyCollectionChangedEventHandler>();
+
+        /// <summary>
+        /// The property changed
+        /// </summary>
+        private PropertyChangedEventHandler propertyChanged_;
+
+        /// <summary>
+        /// The property changed delegates
+        /// </summary>
+        private List<PropertyChangedEventHandler> PropertyChangedDelegates = new List<PropertyChangedEventHandler>();
+
+        /// <summary>
         /// Gets the number of elements contained in the <see cref="T:System.Collections.Generic.ICollection`1"/>.
         /// </summary>
         public int Count => BaseList.Count;
+
+        /// <summary>
+        /// Gets a value indicating whether the <see cref="T:System.Collections.IList"/> has a fixed size.
+        /// </summary>
+        public bool IsFixedSize => false;
 
         /// <summary>
         /// Gets a value indicating whether the collection is read-only.
@@ -66,10 +92,29 @@ namespace BigBook
         public bool IsReadOnly => false;
 
         /// <summary>
+        /// Gets a value indicating whether access to the <see
+        /// cref="T:System.Collections.ICollection"/> is synchronized (thread safe).
+        /// </summary>
+        public bool IsSynchronized => false;
+
+        /// <summary>
+        /// Gets an object that can be used to synchronize access to the <see cref="T:System.Collections.ICollection"/>.
+        /// </summary>
+        public object SyncRoot => null;
+
+        /// <summary>
         /// Gets or sets the base list.
         /// </summary>
         /// <value>The base list.</value>
         private List<T> BaseList { get; set; }
+
+        /// <summary>
+        /// Gets or sets the <see cref="System.Object"/> at the specified index.
+        /// </summary>
+        /// <value>The <see cref="System.Object"/>.</value>
+        /// <param name="index">The index.</param>
+        /// <returns></returns>
+        object IList.this[int index] { get { return this[index]; } set { this[index] = (T)value; } }
 
         /// <summary>
         /// Gets or sets the element at the specified index.
@@ -89,26 +134,6 @@ namespace BigBook
                 BaseList[index] = value;
             }
         }
-
-        /// <summary>
-        /// The collection changed
-        /// </summary>
-        private NotifyCollectionChangedEventHandler collectionChanged_;
-
-        /// <summary>
-        /// The delegates_
-        /// </summary>
-        private List<NotifyCollectionChangedEventHandler> CollectionChangedDelegates = new List<NotifyCollectionChangedEventHandler>();
-
-        /// <summary>
-        /// The property changed
-        /// </summary>
-        private PropertyChangedEventHandler propertyChanged_;
-
-        /// <summary>
-        /// The property changed delegates
-        /// </summary>
-        private List<PropertyChangedEventHandler> PropertyChangedDelegates = new List<PropertyChangedEventHandler>();
 
         /// <summary>
         /// Occurs when the collection changes.
@@ -168,6 +193,20 @@ namespace BigBook
         }
 
         /// <summary>
+        /// Adds an item to the <see cref="T:System.Collections.IList"/>.
+        /// </summary>
+        /// <param name="value">The object to add to the <see cref="T:System.Collections.IList"/>.</param>
+        /// <returns>
+        /// The position into which the new element was inserted, or -1 to indicate that the item was
+        /// not inserted into the collection.
+        /// </returns>
+        public int Add(object value)
+        {
+            Add((T)value);
+            return Count;
+        }
+
+        /// <summary>
         /// Adds the range.
         /// </summary>
         /// <param name="collection">The collection.</param>
@@ -211,6 +250,19 @@ namespace BigBook
         }
 
         /// <summary>
+        /// Determines whether the <see cref="T:System.Collections.IList"/> contains a specific value.
+        /// </summary>
+        /// <param name="value">The object to locate in the <see cref="T:System.Collections.IList"/>.</param>
+        /// <returns>
+        /// true if the <see cref="T:System.Object"/> is found in the <see
+        /// cref="T:System.Collections.IList"/>; otherwise, false.
+        /// </returns>
+        public bool Contains(object value)
+        {
+            return Contains((T)value);
+        }
+
+        /// <summary>
         /// Copies to.
         /// </summary>
         /// <param name="array">The array.</param>
@@ -218,6 +270,23 @@ namespace BigBook
         public void CopyTo(T[] array, int arrayIndex)
         {
             BaseList.CopyTo(array, arrayIndex);
+        }
+
+        /// <summary>
+        /// Copies the elements of the <see cref="T:System.Collections.ICollection"/> to an <see
+        /// cref="T:System.Array"/>, starting at a particular <see cref="T:System.Array"/> index.
+        /// </summary>
+        /// <param name="array">
+        /// The one-dimensional <see cref="T:System.Array"/> that is the destination of the elements
+        /// copied from <see cref="T:System.Collections.ICollection"/>. The <see
+        /// cref="T:System.Array"/> must have zero-based indexing.
+        /// </param>
+        /// <param name="index">
+        /// The zero-based index in <paramref name="array"/> at which copying begins.
+        /// </param>
+        public void CopyTo(Array array, int index)
+        {
+            CopyTo((T[])array, index);
         }
 
         /// <summary>
@@ -233,6 +302,18 @@ namespace BigBook
         }
 
         /// <summary>
+        /// Returns an enumerator that iterates through a collection.
+        /// </summary>
+        /// <returns>
+        /// An <see cref="T:System.Collections.IEnumerator"/> object that can be used to iterate
+        /// through the collection.
+        /// </returns>
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return BaseList.GetEnumerator();
+        }
+
+        /// <summary>
         /// Determines the index of a specific item in the <see cref="T:System.Collections.Generic.IList`1"/>.
         /// </summary>
         /// <param name="item">The object to locate in the <see cref="T:System.Collections.Generic.IList`1"/>.</param>
@@ -240,6 +321,16 @@ namespace BigBook
         public int IndexOf(T item)
         {
             return BaseList.IndexOf(item);
+        }
+
+        /// <summary>
+        /// Determines the index of a specific item in the <see cref="T:System.Collections.IList"/>.
+        /// </summary>
+        /// <param name="value">The object to locate in the <see cref="T:System.Collections.IList"/>.</param>
+        /// <returns>The index of <paramref name="value"/> if found in the list; otherwise, -1.</returns>
+        public int IndexOf(object value)
+        {
+            return IndexOf((T)value);
         }
 
         /// <summary>
@@ -255,6 +346,18 @@ namespace BigBook
             NotifyCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, item, index));
             NotifyPropertyChanged("Count");
             BaseList.Insert(index, item);
+        }
+
+        /// <summary>
+        /// Inserts an item to the <see cref="T:System.Collections.IList"/> at the specified index.
+        /// </summary>
+        /// <param name="index">
+        /// The zero-based index at which <paramref name="value"/> should be inserted.
+        /// </param>
+        /// <param name="value">The object to insert into the <see cref="T:System.Collections.IList"/>.</param>
+        public void Insert(int index, object value)
+        {
+            Insert(index, (T)value);
         }
 
         /// <summary>
@@ -297,6 +400,15 @@ namespace BigBook
         }
 
         /// <summary>
+        /// Removes the first occurrence of a specific object from the <see cref="T:System.Collections.IList"/>.
+        /// </summary>
+        /// <param name="value">The object to remove from the <see cref="T:System.Collections.IList"/>.</param>
+        public void Remove(object value)
+        {
+            Remove((T)value);
+        }
+
+        /// <summary>
         /// Removes all.
         /// </summary>
         /// <param name="match">The match.</param>
@@ -331,18 +443,6 @@ namespace BigBook
                                                                                     index));
             NotifyPropertyChanged("Count");
             BaseList.RemoveRange(index, count);
-        }
-
-        /// <summary>
-        /// Returns an enumerator that iterates through a collection.
-        /// </summary>
-        /// <returns>
-        /// An <see cref="T:System.Collections.IEnumerator"/> object that can be used to iterate
-        /// through the collection.
-        /// </returns>
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            return BaseList.GetEnumerator();
         }
 
         /// <summary>
