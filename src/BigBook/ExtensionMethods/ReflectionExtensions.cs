@@ -349,6 +349,30 @@ namespace BigBook
         }
 
         /// <summary>
+        /// Gets the property recursively.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <param name="name">The name.</param>
+        /// <param name="recursively">if set to <c>true</c> [recursively].</param>
+        /// <returns>The property</returns>
+        public static PropertyInfo GetProperty(this Type type, string name, bool recursively)
+        {
+            if (type == null || string.IsNullOrEmpty(name))
+                return null;
+            var ReturnValue = type.GetProperty(name);
+            if (ReturnValue != null || !recursively)
+                return ReturnValue;
+            var Interfaces = type.GetInterfaces();
+            for (int x = 0; x < Interfaces.Length; ++x)
+            {
+                ReturnValue = Interfaces[x].GetProperty(name, recursively);
+                if (ReturnValue != null)
+                    return ReturnValue;
+            }
+            return type.GetTypeInfo().BaseType.GetProperty(name, recursively);
+        }
+
+        /// <summary>
         /// Determines if the type has a default constructor
         /// </summary>
         /// <param name="type">Type to check</param>
@@ -550,13 +574,13 @@ namespace BigBook
             PropertyInfo DestinationProperty = null;
             for (int x = 0; x < Properties.Length - 1; ++x)
             {
-                DestinationProperty = TempObjectType.GetProperty(Properties[x]);
+                DestinationProperty = TempObjectType.GetProperty(Properties[x], true);
                 TempObjectType = DestinationProperty.PropertyType;
                 TempObject = DestinationProperty.GetValue(TempObject, null);
                 if (TempObject == null)
                     return null;
             }
-            DestinationProperty = TempObjectType.GetProperty(Properties[Properties.Length - 1]);
+            DestinationProperty = TempObjectType.GetProperty(Properties[Properties.Length - 1], true);
             if (DestinationProperty == null)
                 return null;
             return TempObject.Property(DestinationProperty);
@@ -600,13 +624,13 @@ namespace BigBook
             PropertyInfo DestinationProperty = null;
             for (int x = 0; x < Properties.Length - 1; ++x)
             {
-                DestinationProperty = TempObjectType.GetProperty(Properties[x]);
+                DestinationProperty = TempObjectType.GetProperty(Properties[x], true);
                 TempObjectType = DestinationProperty.PropertyType;
                 TempObject = DestinationProperty.GetValue(TempObject, null);
                 if (TempObject == null)
                     return inputObject;
             }
-            DestinationProperty = TempObjectType.GetProperty(Properties[Properties.Length - 1]);
+            DestinationProperty = TempObjectType.GetProperty(Properties[Properties.Length - 1], true);
             if (DestinationProperty == null)
                 throw new NullReferenceException("PropertyInfo can't be null");
             TempObject.Property(DestinationProperty, value, format);
@@ -696,7 +720,7 @@ namespace BigBook
             var SplitName = TempPropertyName.Split(new string[] { "." }, StringSplitOptions.RemoveEmptyEntries);
             if (SplitName.Length == 0)
                 return null;
-            var PropertyInfo = typeof(ClassType).GetProperty(SplitName[0]);
+            var PropertyInfo = typeof(ClassType).GetProperty(SplitName[0], true);
             var ObjectInstance = Expression.Parameter(PropertyInfo.DeclaringType, "x");
             var PropertySet = Expression.Parameter(typeof(DataType), "y");
             var DefaultConstant = Expression.Constant(((object)null).To(PropertyInfo.PropertyType, null), PropertyInfo.PropertyType);
@@ -707,12 +731,12 @@ namespace BigBook
                 PropertyGet = Expression.Property(ObjectInstance, PropertyInfo);
                 for (int x = 1; x < SplitName.Length - 1; ++x)
                 {
-                    PropertyInfo = PropertyInfo.PropertyType.GetProperty(SplitName[x]);
+                    PropertyInfo = PropertyInfo.PropertyType.GetProperty(SplitName[x], true);
                     if (PropertyInfo == null)
                         throw new NullReferenceException("PropertyInfo can't be null");
                     PropertyGet = Expression.Property(PropertyGet, PropertyInfo);
                 }
-                PropertyInfo = PropertyInfo.PropertyType.GetProperty(SplitName[SplitName.Length - 1]);
+                PropertyInfo = PropertyInfo.PropertyType.GetProperty(SplitName[SplitName.Length - 1], true);
             }
             var SetMethod = PropertyInfo.GetSetMethod();
             if (SetMethod != null)
@@ -781,7 +805,7 @@ namespace BigBook
             PropertyInfo PropertyInfo = null;
             for (int x = 0; x < SourceProperties.Length; ++x)
             {
-                PropertyInfo = objectType.GetProperty(SourceProperties[x]);
+                PropertyInfo = objectType.GetProperty(SourceProperties[x], true);
                 objectType = PropertyInfo.PropertyType;
             }
             return objectType;

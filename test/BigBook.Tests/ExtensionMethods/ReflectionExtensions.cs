@@ -16,6 +16,10 @@ namespace BigBook.Tests.ExtensionMethods
         int Value2 { get; set; }
     }
 
+    public interface ITestInterface2 : ITestInterface
+    {
+    }
+
     public class ReflectionExtensionsTests : TestingDirectoryFixture
     {
         [Fact]
@@ -108,6 +112,16 @@ namespace BigBook.Tests.ExtensionMethods
         }
 
         [Fact]
+        public void GetPropertySetterFromInterfacesTest()
+        {
+            Expression<Func<ITestInterface2, int>> TestObject = x => x.Value;
+            var TestObject2 = TestObject.PropertySetter<ITestInterface2, int>();
+            var TestObject3 = new TestClassTwoInterfaces();
+            TestObject2.Compile()(TestObject3, 10);
+            Assert.Equal(10, TestObject3.Value);
+        }
+
+        [Fact]
         public void GetPropertySetterTest2()
         {
             Expression<Func<TestClass4, int>> TestObject = x => x.Temp.Value;
@@ -134,7 +148,7 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void GetTypesTest()
         {
-            Assert.Equal(3, typeof(ReflectionExtensionsTests)
+            Assert.Equal(4, typeof(ReflectionExtensionsTests)
                                         .GetTypeInfo()
                                         .Assembly
                                         .Types<ITestInterface>()
@@ -250,6 +264,12 @@ namespace BigBook.Tests.ExtensionMethods
         public string Value3 = "ASDF";
         public int Value { get; set; }
 
+        public int Value2 { get; set; }
+    }
+
+    public class TestClassTwoInterfaces : ITestInterface2
+    {
+        public int Value { get; set; }
         public int Value2 { get; set; }
     }
 
