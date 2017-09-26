@@ -20,7 +20,6 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace BigBook
@@ -686,14 +685,7 @@ namespace BigBook
                 return "";
             seperator = seperator ?? "";
             itemOutput = itemOutput ?? (x => x.ToString());
-            var Builder = new StringBuilder();
-            string TempSeperator = "";
-            list.ForEach(x =>
-            {
-                Builder.Append(TempSeperator).Append(itemOutput(x));
-                TempSeperator = seperator;
-            });
-            return Builder.ToString();
+            return string.Join(seperator, list.Select(itemOutput));
         }
 
         /// <summary>
