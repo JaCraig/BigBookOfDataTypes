@@ -121,9 +121,9 @@ namespace BigBook
         {
             if (IsCanceled)
                 return false;
+            Add(item);
             if (IsComplete)
                 StartTasks(Capacity);
-            Add(item);
             return true;
         }
 
