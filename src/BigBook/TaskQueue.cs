@@ -122,8 +122,7 @@ namespace BigBook
             if (IsCanceled)
                 return false;
             Add(item);
-            if (IsComplete)
-                StartTasks(Capacity);
+            StartTasks(Capacity);
             return true;
         }
 
@@ -183,7 +182,8 @@ namespace BigBook
         {
             for (int x = 0; x < capacity; ++x)
             {
-                Tasks[x] = Task.Factory.StartNew(Process);
+                if (Tasks[x] == null || Tasks[x].IsCompleted || Tasks[x].IsCanceled)
+                    Tasks[x] = Task.Factory.StartNew(Process);
             }
         }
     }
