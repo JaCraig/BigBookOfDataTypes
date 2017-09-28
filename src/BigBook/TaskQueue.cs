@@ -40,7 +40,7 @@ namespace BigBook
         /// <param name="handleError">
         /// Handles an exception if it occurs (defaults to eating the error)
         /// </param>
-        public TaskQueue(int capacity, Func<T, bool> processItem, int timeOut = 100, Action<Exception> handleError = null)
+        public TaskQueue(int capacity, Func<T, bool> processItem, int timeOut = 100, Action<Exception, T> handleError = null)
             : base(new ConcurrentQueue<T>())
         {
             Capacity = capacity;
@@ -48,7 +48,7 @@ namespace BigBook
             if (capacity < 1)
                 capacity = 1;
             ProcessItem = processItem;
-            HandleError = handleError.Check(x => { });
+            HandleError = handleError.Check((x, y) => { });
             CancellationToken = new CancellationTokenSource();
             Tasks = new Task[capacity];
         }
@@ -83,7 +83,7 @@ namespace BigBook
         /// <summary>
         /// Called when an exception occurs when processing the queue
         /// </summary>
-        private Action<Exception> HandleError { get; set; }
+        private Action<Exception, T> HandleError { get; set; }
 
         /// <summary>
         /// Action used to process an individual item in the queue
@@ -156,9 +156,10 @@ namespace BigBook
                 return;
             while (true)
             {
+                T Item = default(T);
                 try
                 {
-                    if (!TryTake(out T Item, TimeOut, CancellationToken.Token))
+                    if (!TryTake(out Item, TimeOut, CancellationToken.Token))
                         break;
                     if (!ProcessItem(Item))
                         break;
@@ -169,7 +170,7 @@ namespace BigBook
                 }
                 catch (Exception ex)
                 {
-                    HandleError(ex);
+                    HandleError(ex, Item);
                 }
             }
         }
