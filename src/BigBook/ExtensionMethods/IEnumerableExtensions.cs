@@ -356,8 +356,8 @@ namespace BigBook
                 return new List<T>();
             if (action == null)
                 return list;
-            if (end > list.Count())
-                end = list.Count();
+            if (end >= list.Count())
+                end = list.Count() - 1;
             if (start < 0)
                 start = 0;
             if (start > end)
@@ -385,8 +385,8 @@ namespace BigBook
         {
             if (list == null || function == null || !list.Any())
                 return new List<R>();
-            if (end > list.Count())
-                end = list.Count();
+            if (end >= list.Count())
+                end = list.Count() - 1;
             if (start < 0)
                 start = 0;
             if (start > end)
