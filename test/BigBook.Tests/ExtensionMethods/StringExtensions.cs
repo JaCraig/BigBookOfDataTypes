@@ -1,11 +1,14 @@
 ﻿using BigBook.Formatters;
+using BigBook.Tests.BaseClasses;
+
+using FileCurator;
 using System.Collections.Generic;
 using System.Text;
 using Xunit;
 
 namespace BigBook.Tests.ExtensionMethods
 {
-    public class StringExtensionsTests
+    public class StringExtensionsTests : TestingDirectoryFixture
     {
         [Fact]
         public void AlphaCharactersOnly()
@@ -56,6 +59,15 @@ namespace BigBook.Tests.ExtensionMethods
         }
 
         [Fact]
+        public void CSSMinify()
+        {
+            var FileContent = new FileInfo(@"..\..\..\..\..\Data\Web\RandomCSS.css").Read();
+            var MinifiedFileContent = new FileInfo(@"..\..\..\..\..\Data\Web\RandomCSS.css").Read().Minify(MinificationType.CSS);
+            Assert.NotEqual(FileContent.Length, MinifiedFileContent.Length);
+            Assert.True(FileContent.Length > MinifiedFileContent.Length);
+        }
+
+        [Fact]
         public void FilterOutText()
         {
             string Value = "The brown fox is awsome. But the blue fox is not";
@@ -84,6 +96,15 @@ namespace BigBook.Tests.ExtensionMethods
         }
 
         [Fact]
+        public void HTMLMinify()
+        {
+            var FileContent = new FileInfo(@"..\..\..\..\..\Data\Web\HanselmanSite.html").Read();
+            var MinifiedFileContent = new FileInfo(@"..\..\..\..\..\Data\Web\HanselmanSite.html").Read().Minify(MinificationType.HTML);
+            Assert.NotEqual(FileContent.Length, MinifiedFileContent.Length);
+            Assert.True(FileContent.Length > MinifiedFileContent.Length);
+        }
+
+        [Fact]
         public void IsCreditCard()
         {
             Assert.True("4408041234567893".Is(StringCompare.CreditCard));
@@ -94,6 +115,15 @@ namespace BigBook.Tests.ExtensionMethods
         {
             string Value = "\u25EF\u25EF\u25EF";
             Assert.True(Value.Is(StringCompare.Unicode));
+        }
+
+        [Fact]
+        public void JavaScriptMinify()
+        {
+            var FileContent = new FileInfo(@"..\..\..\..\..\Data\Web\RandomJS.js").Read();
+            var MinifiedFileContent = new FileInfo(@"..\..\..\..\..\Data\Web\RandomJS.js").Read().Minify(MinificationType.JavaScript);
+            Assert.NotEqual(FileContent.Length, MinifiedFileContent.Length);
+            Assert.True(FileContent.Length > MinifiedFileContent.Length);
         }
 
         [Fact]
@@ -184,6 +214,15 @@ namespace BigBook.Tests.ExtensionMethods
         }
 
         [Fact]
+        public void StripHTML()
+        {
+            var FileContent = new FileInfo(@"..\..\..\..\..\Data\Web\HanselmanSite.html").Read();
+            var MinifiedFileContent = new FileInfo(@"..\..\..\..\..\Data\Web\HanselmanSite.html").Read().StripHTML();
+            Assert.NotEqual(FileContent.Length, MinifiedFileContent.Length);
+            Assert.True(FileContent.Length > MinifiedFileContent.Length);
+        }
+
+        [Fact]
         public void StripLeft()
         {
             Assert.Equal("1010", "5555551010".StripLeft("5432"));
@@ -216,6 +255,12 @@ namespace BigBook.Tests.ExtensionMethods
             Assert.Equal(" This is a Test", Value.ToString(StringCase.TitleCase));
         }
 
+        private enum EnumValues
+        {
+            Value1,
+            Value2
+        }
+
         public class StringFormatClass
         {
             public StringFormatClass()
@@ -230,12 +275,6 @@ namespace BigBook.Tests.ExtensionMethods
             public int B { get; set; }
 
             public float C { get; set; }
-        }
-
-        private enum EnumValues
-        {
-            Value1,
-            Value2
         }
     }
 }

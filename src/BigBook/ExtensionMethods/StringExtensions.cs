@@ -28,11 +28,106 @@ using System.Text.RegularExpressions;
 namespace BigBook
 {
     /// <summary>
+    /// Minification type
+    /// </summary>
+    public enum MinificationType
+    {
+        /// <summary>
+        /// The HTML
+        /// </summary>
+        HTML = 1,
+
+        /// <summary>
+        /// The java script
+        /// </summary>
+        JavaScript = 2,
+
+        /// <summary>
+        /// The CSS
+        /// </summary>
+        CSS = 3
+    }
+
+    /// <summary>
+    /// What sort of string capitalization should be used?
+    /// </summary>
+    public enum StringCase
+    {
+        /// <summary>
+        /// Sentence capitalization
+        /// </summary>
+        SentenceCapitalize,
+
+        /// <summary>
+        /// First character upper case
+        /// </summary>
+        FirstCharacterUpperCase,
+
+        /// <summary>
+        /// Title case
+        /// </summary>
+        TitleCase
+    }
+
+    /// <summary>
+    /// What type of string comparison are we doing?
+    /// </summary>
+    public enum StringCompare
+    {
+        /// <summary>
+        /// Is this a credit card number?
+        /// </summary>
+        CreditCard,
+
+        /// <summary>
+        /// Is this an anagram?
+        /// </summary>
+        Anagram,
+
+        /// <summary>
+        /// Is this Unicode
+        /// </summary>
+        Unicode
+    }
+
+    /// <summary>
+    /// Predefined filters
+    /// </summary>
+    [Flags]
+    public enum StringFilter
+    {
+        /// <summary>
+        /// Alpha characters
+        /// </summary>
+        Alpha = 1,
+
+        /// <summary>
+        /// Numeric characters
+        /// </summary>
+        Numeric = 2,
+
+        /// <summary>
+        /// Numbers with period, basically allows for decimal point
+        /// </summary>
+        FloatNumeric = 4,
+
+        /// <summary>
+        /// Multiple spaces
+        /// </summary>
+        ExtraSpaces = 8
+    }
+
+    /// <summary>
     /// String and StringBuilder extensions
     /// </summary>
     [EditorBrowsable(EditorBrowsableState.Never)]
     public static class StringExtensions
     {
+        /// <summary>
+        /// The strip HTML regex
+        /// </summary>
+        private static readonly Regex STRIP_HTML_REGEX = new Regex("<[^>]*>", RegexOptions.Compiled);
+
         /// <summary>
         /// Does an AppendFormat and then an AppendLine on the StringBuilder
         /// </summary>
@@ -286,6 +381,23 @@ namespace BigBook
         }
 
         /// <summary>
+        /// Minifies the file based on the data type specified
+        /// </summary>
+        /// <param name="Input">Input file</param>
+        /// <param name="Type">Type of minification to run</param>
+        /// <returns>A stripped file</returns>
+        public static string Minify(this string Input, MinificationType Type = MinificationType.HTML)
+        {
+            if (string.IsNullOrEmpty(Input))
+                return "";
+            if (Type == MinificationType.CSS)
+                return CSSMinify(Input);
+            if (Type == MinificationType.JavaScript)
+                return JavaScriptMinify(Input);
+            return HTMLMinify(Input);
+        }
+
+        /// <summary>
         /// returns the number of times a string occurs within the text
         /// </summary>
         /// <param name="input">input text</param>
@@ -364,6 +476,20 @@ namespace BigBook
                 return "";
             length = input.Length > length ? length : input.Length;
             return input.Substring(input.Length - length, length);
+        }
+
+        /// <summary>
+        /// Removes HTML elements from a string
+        /// </summary>
+        /// <param name="html">HTML laiden string</param>
+        /// <returns>HTML-less string</returns>
+        public static string StripHTML(this string html)
+        {
+            if (string.IsNullOrEmpty(html))
+                return "";
+            html = STRIP_HTML_REGEX.Replace(html, string.Empty);
+            return html.Replace("&nbsp;", " ")
+                       .Replace("&#160;", string.Empty);
         }
 
         /// <summary>
@@ -622,74 +748,100 @@ namespace BigBook
             }
             return FilterValue;
         }
-    }
-
-    /// <summary>
-    /// What sort of string capitalization should be used?
-    /// </summary>
-    public enum StringCase
-    {
-        /// <summary>
-        /// Sentence capitalization
-        /// </summary>
-        SentenceCapitalize,
 
         /// <summary>
-        /// First character upper case
+        /// Minifies CSS
         /// </summary>
-        FirstCharacterUpperCase,
+        /// <param name="input">The input.</param>
+        /// <returns>The resulting value.</returns>
+        private static string CSSMinify(string input)
+        {
+            if (string.IsNullOrEmpty(input))
+                return "";
+            input = Regex.Replace(input, @"(/\*\*/)|(/\*[^!][\s\S]*?\*/)", string.Empty);
+            input = Regex.Replace(input, @"\s+", " ");
+            input = Regex.Replace(input, @"(\s([\{:,;\}\(\)]))", "$2");
+            input = Regex.Replace(input, @"(([\{:,;\}\(\)])\s)", "$2");
+            input = Regex.Replace(input, ":0 0 0 0;", ":0;");
+            input = Regex.Replace(input, ":0 0 0;", ":0;");
+            input = Regex.Replace(input, ":0 0;", ":0;");
+            input = Regex.Replace(input, ";}", "}");
+            input = Regex.Replace(input, @"(?<=[>])\s{2,}(?=[<])|(?<=[>])\s{2,}(?=&nbsp;)|(?<=&nbsp;)\s{2,}(?=[<])", string.Empty);
+            input = Regex.Replace(input, @"([!{}:;>+([,])\s+", "$1");
+            input = Regex.Replace(input, @"([\s:])(0)(px|em|%|in|cm|mm|pc|pt|ex)", "$1$2");
+            input = Regex.Replace(input, "background-position:0", "background-position:0 0");
+            input = Regex.Replace(input, @"(:|\s)0+\.(\d+)", "$1.$2");
+            input = Regex.Replace(input, @"[^\}]+\{;\}", "");
+            return input;
+        }
 
         /// <summary>
-        /// Title case
+        /// Evaluates the specified matcher.
         /// </summary>
-        TitleCase
-    }
-
-    /// <summary>
-    /// What type of string comparison are we doing?
-    /// </summary>
-    public enum StringCompare
-    {
-        /// <summary>
-        /// Is this a credit card number?
-        /// </summary>
-        CreditCard,
-
-        /// <summary>
-        /// Is this an anagram?
-        /// </summary>
-        Anagram,
+        /// <param name="matcher">The matcher.</param>
+        /// <returns>The resulting value.</returns>
+        private static string Evaluate(Match matcher)
+        {
+            if (matcher == null)
+                return "";
+            var MyString = matcher.ToString();
+            if (string.IsNullOrEmpty(MyString))
+                return "";
+            MyString = Regex.Replace(MyString, @"\r\n\s*", "");
+            return MyString;
+        }
 
         /// <summary>
-        /// Is this Unicode
+        /// Minifies HTML
         /// </summary>
-        Unicode
-    }
-
-    /// <summary>
-    /// Predefined filters
-    /// </summary>
-    [Flags]
-    public enum StringFilter
-    {
-        /// <summary>
-        /// Alpha characters
-        /// </summary>
-        Alpha = 1,
-
-        /// <summary>
-        /// Numeric characters
-        /// </summary>
-        Numeric = 2,
+        /// <param name="input">The input.</param>
+        /// <returns>The resulting value</returns>
+        private static string HTMLMinify(string input)
+        {
+            if (string.IsNullOrEmpty(input))
+                return "";
+            input = Regex.Replace(input, "/// <.+>", "");
+            if (string.IsNullOrEmpty(input))
+                return "";
+            input = Regex.Replace(input, @">[\s\S]*?<", new MatchEvaluator(Evaluate));
+            return input;
+        }
 
         /// <summary>
-        /// Numbers with period, basically allows for decimal point
+        /// Minifies javascript.
         /// </summary>
-        FloatNumeric = 4,
+        /// <param name="input">The input.</param>
+        /// <returns>The resulting value.</returns>
+        private static string JavaScriptMinify(string input)
+        {
+            if (string.IsNullOrEmpty(input))
+                return "";
+            var CodeLines = input.Split(new string[] { System.Environment.NewLine, "\n" }, StringSplitOptions.RemoveEmptyEntries);
+            var Builder = new StringBuilder();
+            foreach (string Line in CodeLines)
+            {
+                var Temp = Line.Trim();
+                if (Temp.Length > 0 && !Temp.StartsWith("//", StringComparison.Ordinal))
+                    Builder.AppendLine(Temp);
+            }
 
-        /// <summary>
-        /// Multiple spaces
-        /// </summary>
-        ExtraSpaces = 8
+            input = Builder.ToString();
+            input = Regex.Replace(input, @"(/\*\*/)|(/\*[^!][\s\S]*?\*/)", string.Empty);
+            input = Regex.Replace(input, @"^[\s]+|[ \f\r\t\v]+$", String.Empty);
+            input = Regex.Replace(input, @"^[\s]+|[ \f\r\t\v]+$", String.Empty);
+            input = Regex.Replace(input, @"([+-])\n\1", "$1 $1");
+            input = Regex.Replace(input, @"([^+-][+-])\n", "$1");
+            input = Regex.Replace(input, @"([^+]) ?(\+)", "$1$2");
+            input = Regex.Replace(input, @"(\+) ?([^+])", "$1$2");
+            input = Regex.Replace(input, @"([^-]) ?(\-)", "$1$2");
+            input = Regex.Replace(input, @"(\-) ?([^-])", "$1$2");
+            input = Regex.Replace(input, @"\n([{}()[\],<>/*%&|^!~?:=.;+-])", "$1");
+            input = Regex.Replace(input, @"(\W(if|while|for)\([^{]*?\))\n", "$1");
+            input = Regex.Replace(input, @"(\W(if|while|for)\([^{]*?\))((if|while|for)\([^{]*?\))\n", "$1$3");
+            input = Regex.Replace(input, @"([;}]else)\n", "$1 ");
+            input = Regex.Replace(input, @"(?<=[>])\s{2,}(?=[<])|(?<=[>])\s{2,}(?=&nbsp;)|(?<=&nbsp;)\s{2,}(?=[<])", String.Empty);
+
+            return input;
+        }
     }
 }
