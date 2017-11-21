@@ -21,7 +21,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using System.Threading.Tasks;
 
 namespace BigBook.DataMapper.BaseClasses
 {
@@ -104,7 +103,7 @@ namespace BigBook.DataMapper.BaseClasses
             else
             {
                 PropertyInfo[] Properties = typeof(Left).GetProperties();
-                Parallel.For(0, Properties.Length, x =>
+                for (int x = 0; x < Properties.Length; ++x)
                 {
                     PropertyInfo DestinationProperty = RightType.GetProperty(Properties[x].Name);
                     if (DestinationProperty != null)
@@ -113,7 +112,7 @@ namespace BigBook.DataMapper.BaseClasses
                         Expression<Func<Right, object>> RightGet = DestinationProperty.PropertyGetter<Right>();
                         AddMapping(LeftGet, RightGet);
                     }
-                });
+                }
             }
             return this;
         }
@@ -181,7 +180,7 @@ namespace BigBook.DataMapper.BaseClasses
             if (rightType == null || leftType == null)
                 return;
             PropertyInfo[] Properties = rightType.GetProperties();
-            Parallel.For(0, Properties.Length, x =>
+            for (int x = 0; x < Properties.Length; ++x)
             {
                 PropertyInfo Property = Properties[x];
                 Expression<Func<Right, object>> RightGet = Properties[x].PropertyGetter<Right>();
@@ -219,7 +218,7 @@ namespace BigBook.DataMapper.BaseClasses
                             RightSet(y, z);
                     }));
                 }
-            });
+            }
         }
 
         private void AddRightIDictionaryMapping(Type leftType, Type rightType)
@@ -227,7 +226,7 @@ namespace BigBook.DataMapper.BaseClasses
             if (rightType == null || leftType == null)
                 return;
             PropertyInfo[] Properties = leftType.GetProperties();
-            Parallel.For(0, Properties.Length, x =>
+            for (int x = 0; x < Properties.Length; ++x)
             {
                 PropertyInfo Property = Properties[x];
                 Expression<Func<Left, object>> LeftGet = Property.PropertyGetter<Left>();
@@ -265,7 +264,7 @@ namespace BigBook.DataMapper.BaseClasses
                             LeftSide.Add(Property.Name, z);
                     }));
                 }
-            });
+            }
         }
     }
 }
