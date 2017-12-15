@@ -20,6 +20,7 @@ using BigBook.Conversion.BaseClasses;
 using BigBook.Conversion.Interfaces;
 using BigBook.DataMapper.Interfaces;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
@@ -562,13 +563,31 @@ namespace BigBook
                 if (TempConverter != null)
                     return TempConverter.ConvertFrom(item);
 
-                if (resultType.GetTypeInfo().IsEnum)
+                var ResultTypeInfo = resultType.GetTypeInfo();
+                if (ResultTypeInfo.IsEnum)
                 {
                     if (ObjectType == typeof(string))
                         return Enum.Parse(resultType, item as string, true);
                     return Enum.ToObject(resultType, item);
                 }
-                if (resultType.GetTypeInfo().IsClass)
+                var IEnumerableResultType = resultType.GetIEnumerableElementType();
+                var IEnumerableObjectType = ObjectType.GetIEnumerableElementType();
+                if (resultType != IEnumerableResultType && ObjectType != IEnumerableObjectType)
+                {
+                    IList TempList = (IList)Activator.CreateInstance(typeof(List<>).MakeGenericType(IEnumerableResultType));
+                    foreach (var Item in (IEnumerable)item)
+                    {
+                        var TempMapping = Item.GetType().MapTo(IEnumerableResultType);
+                        if (TempMapping == null)
+                            return TempList;
+                        TempMapping.AutoMap();
+                        var ResultItem = Activator.CreateInstance(IEnumerableResultType);
+                        TempMapping.Copy(Item, ResultItem);
+                        TempList.Add(ResultItem);
+                    }
+                    return TempList;
+                }
+                if (ResultTypeInfo.IsClass)
                 {
                     object ReturnValue = Activator.CreateInstance(resultType);
                     var TempMapping = ObjectType.MapTo(resultType);

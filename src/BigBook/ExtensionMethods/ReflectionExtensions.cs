@@ -712,7 +712,7 @@ namespace BigBook
         /// <typeparam name="DataType">Data type expecting</typeparam>
         /// <param name="property">Property</param>
         /// <returns>A lambda expression that calls a specific property's setter function</returns>
-        public static Expression<Action<ClassType, DataType>> PropertySetter<ClassType, DataType>(this LambdaExpression property)//Expression<Func<ClassType, DataType>> Property)
+        public static Expression<Action<ClassType, DataType>> PropertySetter<ClassType, DataType>(this LambdaExpression property)
         {
             if (property == null)
                 throw new ArgumentNullException(nameof(property));

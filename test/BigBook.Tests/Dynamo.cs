@@ -1,5 +1,7 @@
 ﻿using BigBook.Tests.BaseClasses;
 using System;
+using System.Collections.Generic;
+using System.Dynamic;
 using Xunit;
 
 namespace BigBook.Tests
@@ -57,6 +59,29 @@ namespace BigBook.Tests
             Temp2 = Temp.To<TestClass2>();
             Assert.Equal("Testing", Temp2.A);
             Assert.Equal(1, Temp2.B);
+        }
+
+        [Fact]
+        public void ConvertToClassWithLists()
+        {
+            dynamic Temp = new BigBook.Dynamo();
+            dynamic ListItem1 = new ExpandoObject();
+            ListItem1.A = "A";
+            ListItem1.B = 1;
+            dynamic ListItem2 = new ExpandoObject();
+            ListItem2.A = "B";
+            ListItem2.B = 2;
+            Temp.ListProperty = new List<object>();
+            Temp.ListProperty.Add(ListItem1);
+            Temp.ListProperty.Add(ListItem2);
+            Temp.BoolProperty = true;
+            TestClass3 Temp2 = Temp.To<TestClass3>();
+            Assert.True(Temp2.BoolProperty);
+            Assert.Equal(2, Temp2.ListProperty.Count);
+            Assert.Equal("A", Temp2.ListProperty[0].A);
+            Assert.Equal(1, Temp2.ListProperty[0].B);
+            Assert.Equal("B", Temp2.ListProperty[1].A);
+            Assert.Equal(2, Temp2.ListProperty[1].B);
         }
 
         [Fact]
@@ -197,6 +222,17 @@ namespace BigBook.Tests
             public string A { get; set; }
 
             public int B { get; set; }
+        }
+
+        public class TestClass3
+        {
+            public TestClass3()
+            {
+                ListProperty = new List<TestClass2>();
+            }
+
+            public bool BoolProperty { get; set; }
+            public IList<TestClass2> ListProperty { get; set; }
         }
     }
 }
