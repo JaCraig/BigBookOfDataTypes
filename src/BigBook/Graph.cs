@@ -224,8 +224,14 @@ namespace BigBook
         /// <returns>This</returns>
         public Vertex<T> Remove()
         {
-            IncomingEdges.ForEach(x => x.Remove());
-            OutgoingEdges.ForEach(x => x.Remove());
+            for (int x = 0; x < IncomingEdges.Count; ++x)
+            {
+                IncomingEdges[x].Remove();
+            }
+            for (int x = 0; x < OutgoingEdges.Count; ++x)
+            {
+                OutgoingEdges[x].Remove();
+            }
             IncomingEdges.Clear();
             OutgoingEdges.Clear();
             Graph.Vertices.Remove(this);
