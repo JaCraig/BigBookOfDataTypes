@@ -109,8 +109,9 @@ namespace BigBook
             Rows = new List<Row>();
             ColumnNameHash = new Hashtable();
             int x = 0;
-            foreach (string ColumnName in columnNames)
+            for (int i = 0, columnNamesLength = columnNames.Length; i < columnNamesLength; i++)
             {
+                string ColumnName = columnNames[i];
                 if (!ColumnNameHash.ContainsKey(ColumnName))
                     ColumnNameHash.Add(ColumnName, x++);
             }
@@ -133,11 +134,13 @@ namespace BigBook
             }
             ColumnNameHash = new Hashtable();
             int y = 0;
-            foreach (string ColumnName in ColumnNames)
+            for (int i = 0, ColumnNamesLength = ColumnNames.Length; i < ColumnNamesLength; i++)
             {
+                string ColumnName = ColumnNames[i];
                 if (!ColumnNameHash.ContainsKey(ColumnName))
                     ColumnNameHash.Add(ColumnName, y++);
             }
+
             Rows = new List<Row>();
             while (reader.Read())
             {

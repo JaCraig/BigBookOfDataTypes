@@ -53,8 +53,12 @@ namespace BigBook
                         Current[y - 1] = Current[y];
                         Current[y] = TempHolder;
                         --y;
-                        foreach (T Item in Current)
+                        for (int i = 0, CurrentCount = Current.Count; i < CurrentCount; i++)
+                        {
+                            T Item = Current[i];
                             ReturnValue.Add(CurrentValue, Item);
+                        }
+
                         ++z;
                         ++CurrentValue;
                         if (z == Max)

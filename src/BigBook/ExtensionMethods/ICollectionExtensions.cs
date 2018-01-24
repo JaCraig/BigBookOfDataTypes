@@ -86,14 +86,16 @@ namespace BigBook
             if (items == null || items.Length == 0)
                 return true;
             bool ReturnValue = false;
-            foreach (T Item in items)
+            for (int x = 0, itemsLength = items.Length; x < itemsLength; x++)
             {
+                T Item = items[x];
                 if (predicate(Item))
                 {
                     collection.Add(Item);
                     ReturnValue = true;
                 }
             }
+
             return ReturnValue;
         }
 

@@ -37,9 +37,12 @@ namespace BigBook
         {
             if (predicate == null || collection == null)
                 yield break;
-            foreach (Match Item in collection)
+            for (int x = 0, collectionCount = collection.Count; x < collectionCount; x++)
+            {
+                Match Item = collection[x];
                 if (predicate(Item))
                     yield return Item;
+            }
         }
     }
 }

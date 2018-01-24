@@ -55,6 +55,8 @@ namespace BigBook
             Buffer = new T[maxCapacity];
         }
 
+        private object Root;
+
         /// <summary>
         /// Is overflow allowed?
         /// </summary>
@@ -129,8 +131,6 @@ namespace BigBook
             }
         }
 
-        private object Root;
-
         /// <summary>
         /// Converts the object to a string
         /// </summary>
@@ -168,7 +168,7 @@ namespace BigBook
         {
             if (items == null)
                 return;
-            items.ForEach(x => Add(x));
+            items.ForEach(Add);
         }
 
         /// <summary>

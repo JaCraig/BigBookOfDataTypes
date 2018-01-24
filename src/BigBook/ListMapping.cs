@@ -149,10 +149,7 @@ namespace BigBook
         {
             if (!ContainsKey(key))
                 return false;
-            foreach (T2 Value in values)
-                if (!Contains(key, Value))
-                    return false;
-            return true;
+            return values.All(x => Contains(key, x));
         }
 
         /// <summary>
@@ -201,6 +198,16 @@ namespace BigBook
         }
 
         /// <summary>
+        /// Gets the enumerator
+        /// </summary>
+        /// <returns>The enumerator for this object</returns>
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            foreach (T1 Key in Keys)
+                yield return this[Key];
+        }
+
+        /// <summary>
         /// Remove a list of items associated with a key
         /// </summary>
         /// <param name="key">Key to use</param>
@@ -244,16 +251,6 @@ namespace BigBook
             if (!this[key].Any())
                 Remove(key);
             return true;
-        }
-
-        /// <summary>
-        /// Gets the enumerator
-        /// </summary>
-        /// <returns>The enumerator for this object</returns>
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            foreach (T1 Key in Keys)
-                yield return this[Key];
         }
 
         /// <summary>

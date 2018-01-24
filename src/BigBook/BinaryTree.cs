@@ -227,8 +227,12 @@ namespace BigBook
             {
                 Root = null;
             }
-            foreach (T Value in Values)
+            for (int x = 0, ValuesCount = Values.Count; x < ValuesCount; x++)
+            {
+                T Value = Values[x];
                 Add(Value);
+            }
+
             return true;
         }
 

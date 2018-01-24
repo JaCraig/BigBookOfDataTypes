@@ -43,8 +43,11 @@ namespace BigBook
                    .AppendLineFormat("Exception Type: {0}", exception.GetType().FullName);
             if (exception.Data != null)
             {
-                foreach (object Object in exception.Data)
+                for (int x = 0, exceptionDataCount = exception.Data.Count; x < exceptionDataCount; x++)
+                {
+                    object Object = exception.Data[x];
                     Builder.AppendLineFormat("Data: {0}:{1}", Object, exception.Data[Object]);
+                }
             }
             Builder.AppendLineFormat("StackTrace: {0}", exception.StackTrace)
                    .AppendLineFormat("Source: {0}", exception.Source);

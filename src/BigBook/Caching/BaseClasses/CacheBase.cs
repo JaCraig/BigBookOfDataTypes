@@ -165,6 +165,15 @@ namespace BigBook.Caching.BaseClasses
         public abstract IEnumerator<KeyValuePair<string, object>> GetEnumerator();
 
         /// <summary>
+        /// Gets the enumerator
+        /// </summary>
+        /// <returns>The enumerator</returns>
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        /// <summary>
         /// Removes an item from the cache
         /// </summary>
         /// <param name="key">key to remove</param>
@@ -186,17 +195,8 @@ namespace BigBook.Caching.BaseClasses
         {
             if (!TagMappings.ContainsKey(tag))
                 return;
-            TagMappings[tag].ForEach(x => Remove(x));
+            TagMappings[tag].ForEach(Remove);
             TagMappings.Remove(tag);
-        }
-
-        /// <summary>
-        /// Gets the enumerator
-        /// </summary>
-        /// <returns>The enumerator</returns>
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
         }
 
         /// <summary>

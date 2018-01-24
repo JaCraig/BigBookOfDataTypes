@@ -98,7 +98,7 @@ namespace BigBook.Tests.ExtensionMethods
             var Result = new ConcurrentBag<int>();
             Temp.ForParallel(0, Temp.Length - 1, (x, y) => Result.Add(x));
             Assert.Equal(5, Result.Count);
-            Result.ForEach(x => Builder.Append(x));
+            Result.ForEach(Builder.Append);
             var OrderedString = new string(Builder.ToString().OrderBy(x => x).ToArray());
             Assert.Equal("00123", OrderedString);
         }

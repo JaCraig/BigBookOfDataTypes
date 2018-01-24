@@ -47,9 +47,8 @@ namespace BigBook.Comparison
             }
             if (x.GetType() != y.GetType())
                 return false;
-            var IEnumerablex = x as IEnumerable;
             var IEnumerabley = y as IEnumerable;
-            if (IEnumerablex != null && IEnumerabley != null)
+            if (x is IEnumerable IEnumerablex && IEnumerabley != null)
             {
                 var Comparer = new GenericEqualityComparer<object>();
                 var XEnumerator = IEnumerablex.GetEnumerator();

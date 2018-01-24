@@ -333,11 +333,13 @@ namespace BigBook
                     Output.Append(objectType.Name.Remove(objectType.Name.IndexOf("`", StringComparison.OrdinalIgnoreCase)))
                         .Append("<");
                     string Seperator = "";
-                    foreach (Type GenericType in GenericTypes)
+                    for (int x = 0, GenericTypesLength = GenericTypes.Length; x < GenericTypesLength; x++)
                     {
+                        Type GenericType = GenericTypes[x];
                         Output.Append(Seperator).Append(GenericType.GetName());
                         Seperator = ",";
                     }
+
                     Output.Append(">");
                 }
                 else
@@ -472,8 +474,10 @@ namespace BigBook
                 return default(T);
             var ObjectType = inputObject.GetType();
             var ClassInstance = ObjectType.Create<T>();
-            foreach (PropertyInfo TempProperty in ObjectType.GetProperties())
+            var TempProperties = ObjectType.GetProperties();
+            for (int x = 0, maxLength = TempProperties.Length; x < maxLength; x++)
             {
+                PropertyInfo TempProperty = TempProperties[x];
                 if (TempProperty.CanRead
                         && TempProperty.CanWrite
                         && simpleTypesOnly
@@ -484,9 +488,10 @@ namespace BigBook
                             && TempProperty.CanWrite)
                     TempProperty.SetValue(ClassInstance, TempProperty.GetValue(inputObject, null), null);
             }
-
-            foreach (FieldInfo Field in ObjectType.GetFields())
+            var TempFields = ObjectType.GetFields();
+            for (int x = 0, TempFieldsLength = TempFields.Length; x < TempFieldsLength; x++)
             {
+                FieldInfo Field = TempFields[x];
                 if (simpleTypesOnly && Field.IsPublic)
                     Field.SetValue(ClassInstance, Field.GetValue(inputObject));
                 else if (!simpleTypesOnly && Field.IsPublic)
@@ -876,8 +881,10 @@ namespace BigBook
             var TempValue = new StringBuilder();
             TempValue.Append(htmlOutput ? "<table><thead><tr><th>Property Name</th><th>Property Value</th></tr></thead><tbody>" : "Property Name\t\t\t\tProperty Value");
             var ObjectType = inputObject.GetType();
-            foreach (PropertyInfo TempProperty in ObjectType.GetProperties())
+            var TempProperties = ObjectType.GetProperties();
+            for (int x = 0, TempPropertiesLength = TempProperties.Length; x < TempPropertiesLength; x++)
             {
+                PropertyInfo TempProperty = TempProperties[x];
                 TempValue.Append(htmlOutput ? "<tr><td>" : Environment.NewLine).Append(TempProperty.Name).Append(htmlOutput ? "</td><td>" : "\t\t\t\t");
                 var Parameters = TempProperty.GetIndexParameters();
                 if (TempProperty.CanRead && Parameters.Length == 0)
@@ -891,6 +898,7 @@ namespace BigBook
                 }
                 TempValue.Append(htmlOutput ? "</td></tr>" : "");
             }
+
             TempValue.Append(htmlOutput ? "</tbody></table>" : "");
             return TempValue.ToString();
         }
@@ -908,8 +916,9 @@ namespace BigBook
             var TempValue = new StringBuilder();
             TempValue.Append(htmlOutput ? "<table><thead><tr><th>Property Name</th><th>Property Value</th></tr></thead><tbody>" : "Property Name\t\t\t\tProperty Value");
             var Properties = objectType.GetProperties();
-            foreach (PropertyInfo TempProperty in Properties)
+            for (int x = 0, PropertiesLength = Properties.Length; x < PropertiesLength; x++)
             {
+                PropertyInfo TempProperty = Properties[x];
                 TempValue.Append(htmlOutput ? "<tr><td>" : Environment.NewLine).Append(TempProperty.Name).Append(htmlOutput ? "</td><td>" : "\t\t\t\t");
                 if (TempProperty.CanRead && TempProperty.GetIndexParameters().Length == 0)
                 {
@@ -921,6 +930,7 @@ namespace BigBook
                 }
                 TempValue.Append(htmlOutput ? "</td></tr>" : "");
             }
+
             TempValue.Append(htmlOutput ? "</tbody></table>" : "");
             return TempValue.ToString();
         }

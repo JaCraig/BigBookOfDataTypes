@@ -113,19 +113,24 @@ namespace BigBook
         public Graph<T> Copy()
         {
             var Result = new Graph<T>();
-            foreach (var TempVertex in Vertices)
+            for (int x = 0, VerticesCount = Vertices.Count; x < VerticesCount; x++)
             {
+                var TempVertex = Vertices[x];
                 Result.AddVertex(TempVertex.Data);
             }
-            foreach (var TempVertex in Vertices)
+
+            for (int x = 0, VerticesCount = Vertices.Count; x < VerticesCount; x++)
             {
-                var TempSource = Result.Vertices.First(x => x.Data.Equals(TempVertex.Data));
-                foreach (var TempEdge in TempVertex.OutgoingEdges)
+                var TempVertex = Vertices[x];
+                var TempSource = Result.Vertices.First(z => z.Data.Equals(TempVertex.Data));
+                for (int y = 0, TempVertexOutgoingEdgesCount = TempVertex.OutgoingEdges.Count; y < TempVertexOutgoingEdgesCount; y++)
                 {
-                    var TempSink = Result.Vertices.First(x => x.Data.Equals(TempEdge.Sink.Data));
+                    var TempEdge = TempVertex.OutgoingEdges[y];
+                    var TempSink = Result.Vertices.First(z => z.Data.Equals(TempEdge.Sink.Data));
                     Result.AddEdge(TempSource, TempSink);
                 }
             }
+
             return Result;
         }
 

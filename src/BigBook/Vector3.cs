@@ -271,9 +271,9 @@ namespace BigBook
         /// <returns>The resulting vector</returns>
         public static bool operator ==(Vector3 v1, Vector3 v2)
         {
-            if (ReferenceEquals(v1, null) && ReferenceEquals(v2, null))
+            if (v1 is null && v2 is null)
                 return true;
-            if (ReferenceEquals(v1, null) || ReferenceEquals(v2, null))
+            if (v1 is null || v2 is null)
                 return false;
             return Equals(v1.X, v2.X) && Equals(v1.Y, v2.Y) && Equals(v1.Z, v2.Z);
         }

@@ -286,8 +286,12 @@ namespace BigBook
             var TempRegex = new Regex(filter);
             var Collection = TempRegex.Matches(input);
             var Builder = new StringBuilder();
-            foreach (Match Match in Collection)
+            for (int x = 0, CollectionCount = Collection.Count; x < CollectionCount; x++)
+            {
+                Match Match = Collection[x];
                 Builder.Append(Match.Value);
+            }
+
             return Builder.ToString();
         }
 
@@ -502,8 +506,9 @@ namespace BigBook
             if (string.IsNullOrEmpty(content))
                 return "";
             var Builder = new StringBuilder();
-            foreach (char Char in content)
+            for (int x = 0, contentLength = content.Length; x < contentLength; x++)
             {
+                char Char = content[x];
                 if (Char == 0x9
                     || Char == 0xA
                     || Char == 0xD
@@ -511,6 +516,7 @@ namespace BigBook
                     || (Char >= 0xE000 && Char <= 0xFFFD))
                     Builder.Append(Char);
             }
+
             return Builder.ToString().Replace('\u2013', '-').Replace('\u2014', '-')
                 .Replace('\u2015', '-').Replace('\u2017', '_').Replace('\u2018', '\'')
                 .Replace('\u2019', '\'').Replace('\u201a', ',').Replace('\u201b', '\'')
@@ -818,8 +824,9 @@ namespace BigBook
                 return "";
             var CodeLines = input.Split(new string[] { System.Environment.NewLine, "\n" }, StringSplitOptions.RemoveEmptyEntries);
             var Builder = new StringBuilder();
-            foreach (string Line in CodeLines)
+            for (int x = 0, CodeLinesLength = CodeLines.Length; x < CodeLinesLength; x++)
             {
+                string Line = CodeLines[x];
                 var Temp = Line.Trim();
                 if (Temp.Length > 0 && !Temp.StartsWith("//", StringComparison.Ordinal))
                     Builder.AppendLine(Temp);
