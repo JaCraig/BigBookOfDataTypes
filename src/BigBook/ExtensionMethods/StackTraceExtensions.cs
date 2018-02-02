@@ -57,10 +57,10 @@ namespace BigBook
             foreach (StackFrame Frame in frames)
             {
                 Methods.AddIf(x => x.DeclaringType != null
-                    && !excludedAssemblies.Contains(x.DeclaringType.GetTypeInfo().Assembly)
-                    && !x.DeclaringType.GetTypeInfo().Assembly.FullName.StartsWith("System", StringComparison.Ordinal)
-                    && !x.DeclaringType.GetTypeInfo().Assembly.FullName.StartsWith("mscorlib", StringComparison.Ordinal)
-                    && !x.DeclaringType.GetTypeInfo().Assembly.FullName.StartsWith("WebDev.WebHost40", StringComparison.Ordinal),
+                    && !excludedAssemblies.Contains(x.DeclaringType.Assembly)
+                    && !x.DeclaringType.Assembly.FullName.StartsWith("System", StringComparison.Ordinal)
+                    && !x.DeclaringType.Assembly.FullName.StartsWith("mscorlib", StringComparison.Ordinal)
+                    && !x.DeclaringType.Assembly.FullName.StartsWith("WebDev.WebHost40", StringComparison.Ordinal),
                         Frame.GetMethod());
             }
             return Methods;

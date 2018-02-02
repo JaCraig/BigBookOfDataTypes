@@ -17,10 +17,10 @@ namespace BigBook.Tests
             {
                 Value = Rand.Next();
                 TestObject.Add(Value);
-                Assert.Equal(1, TestObject.Count);
+                Assert.Single(TestObject);
                 Assert.Equal(Value, TestObject.Remove());
             }
-            Assert.Equal(0, TestObject.Count);
+            Assert.Empty(TestObject);
             var Values = new System.Collections.Generic.List<int>();
             for (int x = 0; x < 10; ++x)
             {

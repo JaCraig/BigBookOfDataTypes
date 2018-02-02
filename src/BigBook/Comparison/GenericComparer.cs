@@ -34,7 +34,7 @@ namespace BigBook.Comparison
         /// <returns>0 if they're equal, any other value they are not</returns>
         public int Compare(T x, T y)
         {
-            var TypeInfo = typeof(T).GetTypeInfo();
+            var TypeInfo = typeof(T);
             if (!TypeInfo.IsValueType
                 || (TypeInfo.IsGenericType
                 && TypeInfo.GetGenericTypeDefinition().IsAssignableFrom(typeof(Nullable<>))))

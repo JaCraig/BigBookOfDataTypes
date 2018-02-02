@@ -144,7 +144,7 @@ namespace BigBook.Conversion
             var TempValue = Object as Type;
             if (TempValue == null)
                 return DbType.Int32;
-            if (TempValue.GetTypeInfo().IsEnum)
+            if (TempValue.IsEnum)
                 TempValue = Enum.GetUnderlyingType(TempValue);
             if (TempValue == typeof(byte)) return DbType.Byte;
             else if (TempValue == typeof(sbyte)) return DbType.Byte;

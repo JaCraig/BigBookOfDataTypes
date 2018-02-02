@@ -23,8 +23,8 @@ namespace BigBook.Tests.DataMapper.Default
                 Item2 = "ZXCV"
             };
             TestObject.CopyLeftToRight(A, B);
-            Assert.Equal(B.Item1, 12);
-            Assert.Equal(B.Item2, "ASDF");
+            Assert.Equal(12, B.Item1);
+            Assert.Equal("ASDF", B.Item2);
         }
 
         [Fact]
@@ -54,8 +54,8 @@ namespace BigBook.Tests.DataMapper.Default
                 Item2 = "ZXCV"
             };
             TestObject.CopyLeftToRight(A, B);
-            Assert.Equal(B.Item1, 12);
-            Assert.Equal(B.Item2, "ASDF");
+            Assert.Equal(12, B.Item1);
+            Assert.Equal("ASDF", B.Item2);
             A = new MappingA
             {
                 Item1 = 12,
@@ -67,8 +67,8 @@ namespace BigBook.Tests.DataMapper.Default
                 Item2 = "ZXCV"
             };
             TestObject.CopyRightToLeft(B, A);
-            Assert.Equal(A.Item1, 13);
-            Assert.Equal(A.Item2, "ZXCV");
+            Assert.Equal(13, A.Item1);
+            Assert.Equal("ZXCV", A.Item2);
         }
     }
 }

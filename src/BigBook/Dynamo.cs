@@ -192,14 +192,15 @@ namespace BigBook
             var DictItem = item as IDictionary<string, object>;
             if (item == null)
                 return;
-            if (item is string || item.GetType().GetTypeInfo().IsValueType)
+            Type ItemType = item.GetType();
+            if (item is string || ItemType.IsValueType)
                 SetValue("Value", item);
             else if (DictItem != null)
                 InternalValues = new ConcurrentDictionary<string, object>(DictItem, StringComparer.OrdinalIgnoreCase);
             else if (item is IEnumerable)
                 SetValue("Items", item);
             else
-                DataMapper.Map(item.GetType(), GetType())
+                DataMapper.Map(ItemType, GetType())
                           .AutoMap()
                           .Copy(item, this);
         }
@@ -401,7 +402,7 @@ namespace BigBook
             if (item == null)
                 return;
             var DictItem = item as IDictionary<string, object>;
-            if (item is string || item.GetType().GetTypeInfo().IsValueType)
+            if (item is string || item.GetType().IsValueType)
                 SetValue("Value", item);
             else if (DictItem != null)
             {

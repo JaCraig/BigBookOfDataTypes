@@ -50,22 +50,9 @@ namespace BigBook
                 return new byte[0];
             if (input is MemoryStream TempInput)
                 return TempInput.ToArray();
-            byte[] Buffer = new byte[1024];
-            byte[] ReturnValue = null;
-            using (MemoryStream Temp = new MemoryStream())
-            {
-                while (true)
-                {
-                    var Count = input.Read(Buffer, 0, Buffer.Length);
-                    if (Count <= 0)
-                    {
-                        ReturnValue = Temp.ToArray();
-                        break;
-                    }
-                    Temp.Write(Buffer, 0, Count);
-                }
-            }
-            return ReturnValue;
+            byte[] Buffer = new byte[input.Length];
+            input.Read(Buffer, 0, Buffer.Length);
+            return Buffer;
         }
     }
 }

@@ -16,7 +16,6 @@ limitations under the License.
 
 using System;
 using System.Linq;
-using System.Reflection;
 
 namespace BigBook.Patterns.BaseClasses
 {
@@ -34,6 +33,10 @@ namespace BigBook.Patterns.BaseClasses
         {
         }
 
+        private static T _Instance;
+
+        private static object Temp = 1;
+
         /// <summary>
         /// Gets the instance of the singleton
         /// </summary>
@@ -47,8 +50,7 @@ namespace BigBook.Patterns.BaseClasses
                     {
                         if (_Instance == null)
                         {
-                            var Constructor = typeof(T).GetTypeInfo()
-                                                                   .DeclaredConstructors
+                            var Constructor = typeof(T).GetConstructors()
                                                                    .FirstOrDefault(x => !x.IsPublic
                                                                                      && !x.IsStatic
                                                                                      && x.GetParameters().Length == 0);
@@ -61,9 +63,5 @@ namespace BigBook.Patterns.BaseClasses
                 return _Instance;
             }
         }
-
-        private static T _Instance;
-
-        private static object Temp = 1;
     }
 }

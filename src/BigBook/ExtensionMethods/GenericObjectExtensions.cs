@@ -529,14 +529,14 @@ namespace BigBook
             {
                 if (item == null)
                 {
-                    return (defaultValue == null && resultType.GetTypeInfo().IsValueType) ?
+                    return (defaultValue == null && resultType.IsValueType) ?
                         Activator.CreateInstance(resultType) :
                         defaultValue;
                 }
                 var ObjectType = item.GetType();
                 if (ObjectType == typeof(DBNull))
                 {
-                    return (defaultValue == null && resultType.GetTypeInfo().IsValueType) ?
+                    return (defaultValue == null && resultType.IsValueType) ?
                         Activator.CreateInstance(resultType) :
                         defaultValue;
                 }
@@ -563,7 +563,7 @@ namespace BigBook
                 if (TempConverter != null)
                     return TempConverter.ConvertFrom(item);
 
-                var ResultTypeInfo = resultType.GetTypeInfo();
+                var ResultTypeInfo = resultType;
                 if (ResultTypeInfo.IsEnum)
                 {
                     if (ObjectType == typeof(string))
@@ -602,7 +602,7 @@ namespace BigBook
             catch
             {
             }
-            return (defaultValue == null && resultType.GetTypeInfo().IsValueType) ?
+            return (defaultValue == null && resultType.IsValueType) ?
                 Activator.CreateInstance(resultType) :
                 defaultValue;
         }

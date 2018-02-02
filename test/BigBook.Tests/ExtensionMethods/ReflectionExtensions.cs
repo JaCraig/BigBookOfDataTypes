@@ -70,7 +70,7 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void GetAttributes()
         {
-            Assert.Equal(1, typeof(TestClass).GetTypeInfo().Attributes<TestingAttribute>().Length);
+            Assert.Single(typeof(TestClass).GetTypeInfo().Attributes<TestingAttribute>());
         }
 
         [Fact]
@@ -224,12 +224,12 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void MarkedWith()
         {
-            Assert.Equal(1, typeof(ReflectionExtensionsTests)
+            Assert.Single(typeof(ReflectionExtensionsTests)
                                         .GetTypeInfo()
                                         .Assembly
                                         .Types<ITestInterface>()
                                         .MarkedWith<TestingAttribute>()
-                                        .Count());
+);
         }
 
         [Fact]

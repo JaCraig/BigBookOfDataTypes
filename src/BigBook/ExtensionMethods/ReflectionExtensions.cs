@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -47,6 +48,8 @@ namespace BigBook
     [EditorBrowsable(EditorBrowsableState.Never)]
     public static class ReflectionExtensions
     {
+        private static ConcurrentDictionary<Type, PropertyInfo[]> PropertyCache = new ConcurrentDictionary<Type, PropertyInfo[]>();
+
         /// <summary>
         /// Gets the attribute from the item
         /// </summary>
@@ -294,9 +297,10 @@ namespace BigBook
         /// <returns>The method found or null if it is not available</returns>
         public static MethodInfo GetMethod(this Type ObjectType, string methodName, Type[] MethodInputTypes)
         {
-            return ObjectType.GetTypeInfo().GetDeclaredMethods(methodName)
+            return ObjectType.GetMethods()
                             .FirstOrDefault(x =>
                             {
+                                if (x.Name != methodName) return false;
                                 var TempParameters = x.GetParameters();
                                 if (TempParameters.Length != MethodInputTypes.Length)
                                     return false;
@@ -371,7 +375,7 @@ namespace BigBook
                 if (ReturnValue != null)
                     return ReturnValue;
             }
-            return type.GetTypeInfo().BaseType.GetProperty(name, recursively);
+            return type.BaseType.GetProperty(name, recursively);
         }
 
         /// <summary>
@@ -414,9 +418,9 @@ namespace BigBook
                 return true;
             if (type == objectType || objectType.GetInterfaces().Any(x => x == type))
                 return true;
-            if (objectType.GetTypeInfo().BaseType == null)
+            if (objectType.BaseType == null)
                 return false;
-            return objectType.GetTypeInfo().BaseType.Is(type);
+            return objectType.BaseType.Is(type);
         }
 
         /// <summary>
@@ -481,7 +485,7 @@ namespace BigBook
                 if (TempProperty.CanRead
                         && TempProperty.CanWrite
                         && simpleTypesOnly
-                        && TempProperty.PropertyType.GetTypeInfo().IsValueType)
+                        && TempProperty.PropertyType.IsValueType)
                     TempProperty.SetValue(ClassInstance, TempProperty.GetValue(inputObject, null), null);
                 else if (!simpleTypesOnly
                             && TempProperty.CanRead
@@ -515,7 +519,7 @@ namespace BigBook
         {
             if (types == null)
                 return null;
-            return types.Where(x => x.GetTypeInfo().IsDefined(typeof(T), inherit) && !x.GetTypeInfo().IsAbstract);
+            return types.Where(x => x.IsDefined(typeof(T), inherit) && !x.IsAbstract);
         }
 
         /// <summary>
@@ -530,7 +534,7 @@ namespace BigBook
         {
             if (assembly == null)
                 return new List<ClassType>();
-            return assembly.Types<ClassType>().Where(x => !x.GetTypeInfo().ContainsGenericParameters).Create<ClassType>(args);
+            return assembly.Types<ClassType>().Where(x => !x.ContainsGenericParameters).Create<ClassType>(args);
         }
 
         /// <summary>
@@ -960,7 +964,7 @@ namespace BigBook
                 return new List<Type>();
             try
             {
-                return assembly.GetTypes().Where(x => x.Is(baseType) && x.GetTypeInfo().IsClass && !x.GetTypeInfo().IsAbstract);
+                return assembly.GetTypes().Where(x => x.Is(baseType) && x.IsClass && !x.IsAbstract);
             }
             catch { return new List<Type>(); }
         }
@@ -1027,7 +1031,7 @@ namespace BigBook
             if (type.IsArray)
                 return typeof(IEnumerable<>).MakeGenericType(type.GetElementType());
 
-            var TypeInfo = type.GetTypeInfo();
+            var TypeInfo = type;
             if (TypeInfo.IsGenericType)
             {
                 int maxLength = type.GetGenericArguments().Length;

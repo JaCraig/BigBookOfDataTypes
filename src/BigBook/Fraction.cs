@@ -42,8 +42,8 @@ namespace BigBook
         /// <param name="denominator">Denominator</param>
         public Fraction(double numerator, double denominator)
         {
-            while (Math.Abs(numerator - Math.Round(numerator, MidpointRounding.AwayFromZero)
-) > EPSILON || Math.Abs(denominator - Math.Round(denominator, MidpointRounding.AwayFromZero)) > EPSILON)
+            while (Math.Abs(numerator - Math.Round(numerator, MidpointRounding.AwayFromZero)) > EPSILON
+                || Math.Abs(denominator - Math.Round(denominator, MidpointRounding.AwayFromZero)) > EPSILON)
             {
                 numerator *= 10;
                 denominator *= 10;
@@ -83,8 +83,8 @@ namespace BigBook
         {
             if (Math.Abs(denominator - int.MinValue) < EPSILON)
                 throw new ArgumentException(nameof(denominator) + " can't be int.MinValue");
-            while (Math.Abs(numerator - Math.Round(numerator, MidpointRounding.AwayFromZero)
-) > EPSILON || Math.Abs(denominator - Math.Round(denominator, MidpointRounding.AwayFromZero)) > EPSILON)
+            while (Math.Abs(numerator - Math.Round(numerator, MidpointRounding.AwayFromZero)) > EPSILON
+                || Math.Abs(denominator - Math.Round(denominator, MidpointRounding.AwayFromZero)) > EPSILON)
             {
                 numerator *= 10;
                 denominator *= 10;

@@ -133,9 +133,9 @@ namespace BigBook.Tests.ExtensionMethods
             };
             var Result = Temp1.LeftJoin(Temp2, x => x.ID, x => x.ID, (x, y) => new { A = x == null ? "" : x.A, B = y == null ? "" : y.B }).ToList();
             Assert.Equal(3, Result.Count);
-            Assert.True(Result.Any(x => x.A == "A" && x.B == "D"));
-            Assert.True(Result.Any(x => x.A == "B" && x.B == "E"));
-            Assert.True(Result.Any(x => x.A == "C" && x.B == ""));
+            Assert.Contains(Result, x => x.A == "A" && x.B == "D");
+            Assert.Contains(Result, x => x.A == "B" && x.B == "E");
+            Assert.Contains(Result, x => x.A == "C" && x.B == "");
         }
 
         [Fact]
@@ -153,10 +153,10 @@ namespace BigBook.Tests.ExtensionMethods
             };
             var Result = Temp1.OuterJoin(Temp2, x => x.ID, x => x.ID, (x, y) => new { A = x == null ? "" : x.A, B = y == null ? "" : y.B }).ToList();
             Assert.Equal(4, Result.Count);
-            Assert.True(Result.Any(x => x.A == "A" && x.B == "D"));
-            Assert.True(Result.Any(x => x.A == "B" && x.B == "E"));
-            Assert.True(Result.Any(x => x.A == "C" && x.B == ""));
-            Assert.True(Result.Any(x => x.A == "" && x.B == "F"));
+            Assert.Contains(Result, x => x.A == "A" && x.B == "D");
+            Assert.Contains(Result, x => x.A == "B" && x.B == "E");
+            Assert.Contains(Result, x => x.A == "C" && x.B == "");
+            Assert.Contains(Result, x => x.A == "" && x.B == "F");
         }
 
         [Fact]
@@ -181,9 +181,9 @@ namespace BigBook.Tests.ExtensionMethods
             };
             var Result = Temp1.RightJoin(Temp2, x => x.ID, x => x.ID, (x, y) => new { A = y == null ? "" : y.A, B = x == null ? "" : x.B }).ToList();
             Assert.Equal(3, Result.Count);
-            Assert.True(Result.Any(x => x.A == "A" && x.B == "D"));
-            Assert.True(Result.Any(x => x.A == "B" && x.B == "E"));
-            Assert.True(Result.Any(x => x.A == "C" && x.B == ""));
+            Assert.Contains(Result, x => x.A == "A" && x.B == "D");
+            Assert.Contains(Result, x => x.A == "B" && x.B == "E");
+            Assert.Contains(Result, x => x.A == "C" && x.B == "");
         }
 
         [Fact]

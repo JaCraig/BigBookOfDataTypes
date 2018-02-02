@@ -14,8 +14,8 @@ namespace BigBook.Tests
             11.Times(x => Assert.Equal(10 - x, TestObject["Key" + x].Count()));
             Assert.Equal(10, TestObject["Key0"].Count());
             TestObject.Remove("Key0");
-            Assert.Equal(0, TestObject["Key0"].Count());
-            11.Times(x => Assert.Equal(0, TestObject["Key" + x].Count()));
+            Assert.Empty(TestObject["Key0"]);
+            11.Times(x => Assert.Empty(TestObject["Key" + x]));
         }
     }
 }

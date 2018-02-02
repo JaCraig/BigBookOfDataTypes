@@ -77,7 +77,7 @@ namespace BigBook.Tests.Caching.Default
             Assert.Equal(0, Temp.Keys.Count);
             Assert.Equal("Default", Temp.Name);
             Assert.Equal(0, Temp.Values.Count);
-            Assert.Equal(null, Temp["A"]);
+            Assert.Null(Temp["A"]);
         }
 
         [Fact]
@@ -97,8 +97,8 @@ namespace BigBook.Tests.Caching.Default
             Assert.True(Temp.ContainsKey("A"));
             Assert.True(Temp.Contains(new KeyValuePair<string, object>("A", 1)));
             Assert.Equal(2, Temp.Tags.Count());
-            Assert.True(Temp.Tags.Contains("Tag1"));
-            Assert.True(Temp.Tags.Contains("Tag2"));
+            Assert.Contains("Tag1", Temp.Tags);
+            Assert.Contains("Tag2", Temp.Tags);
         }
 
         [Fact]
@@ -111,8 +111,8 @@ namespace BigBook.Tests.Caching.Default
                 { "C", 3 }
             };
             Assert.Equal(2, Temp.GetByTag("Tag2").Count());
-            Assert.Equal(1, Temp.GetByTag("Tag1").Count());
-            Assert.Equal(0, Temp.GetByTag("Tag3").Count());
+            Assert.Single(Temp.GetByTag("Tag1"));
+            Assert.Empty(Temp.GetByTag("Tag3"));
             Assert.Equal(1, Temp.GetByTag("Tag1").First());
         }
 
@@ -126,8 +126,8 @@ namespace BigBook.Tests.Caching.Default
                 { "C", 3 }
             };
             Temp.RemoveByTag("Tag1");
-            Assert.Equal(1, Temp.GetByTag("Tag2").Count());
-            Assert.Equal(0, Temp.GetByTag("Tag1").Count());
+            Assert.Single(Temp.GetByTag("Tag2"));
+            Assert.Empty(Temp.GetByTag("Tag1"));
             Assert.Equal(2, Temp.GetByTag("Tag2").First());
             Temp.RemoveByTag("Tag1");
         }

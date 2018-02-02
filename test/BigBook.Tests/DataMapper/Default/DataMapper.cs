@@ -22,8 +22,8 @@ namespace BigBook.Tests.DataMapper.Default
                 Item2 = "ZXCV"
             };
             Manager.Map<MappingA, MappingB>().CopyLeftToRight(A, B);
-            Assert.Equal(B.Item1, 12);
-            Assert.Equal(B.Item2, "ASDF");
+            Assert.Equal(12, B.Item1);
+            Assert.Equal("ASDF", B.Item2);
         }
     }
 }

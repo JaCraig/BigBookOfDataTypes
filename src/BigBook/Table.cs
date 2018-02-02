@@ -166,7 +166,7 @@ namespace BigBook
         /// <summary>
         /// Rows within the table
         /// </summary>
-        public ICollection<Row> Rows { get; private set; }
+        public List<Row> Rows { get; private set; }
 
         /// <summary>
         /// Gets a specific row

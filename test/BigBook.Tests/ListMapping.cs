@@ -1,5 +1,4 @@
-﻿using BigBook;
-using System.Linq;
+﻿using System.Linq;
 using Xunit;
 
 namespace BigBook.Tests
@@ -31,7 +30,7 @@ namespace BigBook.Tests
                     var Value = Rand.Next();
                     TestObject.Add(Name, Value);
                     Assert.Equal(y + 1, TestObject[Name].Count());
-                    Assert.True(TestObject[Name].Contains(Value));
+                    Assert.Contains(Value, TestObject[Name]);
                 }
             }
             Assert.Equal(10, TestObject.Count);
@@ -46,7 +45,7 @@ namespace BigBook.Tests
                 { "A", 1 }
             };
             TestObject.Remove("A", 0);
-            Assert.Equal(1, TestObject["A"].Count());
+            Assert.Single(TestObject["A"]);
             Assert.Equal(1, TestObject["A"].FirstOrDefault());
         }
     }

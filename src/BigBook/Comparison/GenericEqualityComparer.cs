@@ -35,7 +35,7 @@ namespace BigBook.Comparison
         /// <returns>True if they are, false otherwise</returns>
         public bool Equals(T x, T y)
         {
-            var TypeInfo = typeof(T).GetTypeInfo();
+            var TypeInfo = typeof(T);
             if (!TypeInfo.IsValueType
                 || (TypeInfo.IsGenericType
                 && TypeInfo.GetGenericTypeDefinition().IsAssignableFrom(typeof(Nullable<>))))

@@ -201,7 +201,7 @@ namespace BigBook.Tests.ExtensionMethods
         public void RemoveNullObject()
         {
             ConcurrentBag<int> TestObject = null;
-            Assert.Equal(0, TestObject.Remove(x => true).Count);
+            Assert.Empty(TestObject.Remove(x => true));
             TestObject = new ConcurrentBag<int>(new int[] { 1, 2, 3, 4, 5, 6 });
             Assert.Equal(6, TestObject.Remove(null).Count);
         }
@@ -210,25 +210,25 @@ namespace BigBook.Tests.ExtensionMethods
         public void RemoveRange()
         {
             var TestObject = new ConcurrentBag<int>(new int[] { 1, 2, 3, 4, 5, 6 });
-            Assert.Equal(0, TestObject.Remove(new int[] { 1, 2, 3, 4, 5, 6, 7, 8 }).Count);
+            Assert.Empty(TestObject.Remove(new int[] { 1, 2, 3, 4, 5, 6, 7, 8 }));
         }
 
         [Fact]
         public void RemoveRange2()
         {
             var TestObject = new ConcurrentBag<int>(new int[] { 1, 2, 3, 4, 5, 6 });
-            Assert.Equal(0, TestObject.Remove(new int[] { 1, 2, 3, 4, 5, 6, 7, 8 }).Count);
+            Assert.Empty(TestObject.Remove(new int[] { 1, 2, 3, 4, 5, 6, 7, 8 }));
             TestObject = new ConcurrentBag<int>(new int[] { 1, 2, 3, 4, 5, 6 });
-            Assert.Equal(1, TestObject.Remove(new int[] { 1, 2, 3, 4, 5 }).Count);
+            Assert.Single(TestObject.Remove(new int[] { 1, 2, 3, 4, 5 }));
             TestObject = new ConcurrentBag<int>(new int[] { 1, 2, 3, 4, 5, 6 });
-            Assert.Equal(1, TestObject.Remove(new int[] { 1, 2, 3, 4, 5 }).Count);
+            Assert.Single(TestObject.Remove(new int[] { 1, 2, 3, 4, 5 }));
         }
 
         [Fact]
         public void RemoveRangeNullObject()
         {
             ConcurrentBag<int> TestObject = null;
-            Assert.Equal(0, TestObject.Remove(new int[] { }).Count);
+            Assert.Empty(TestObject.Remove(new int[] { }));
             TestObject = new ConcurrentBag<int>(new int[] { 1, 2, 3, 4, 5, 6 });
             Assert.Equal(6, TestObject.Remove((IEnumerable<int>)null).Count);
         }

@@ -175,15 +175,15 @@ namespace BigBook.Tests
         public void SetAndGetMember()
         {
             dynamic Temp = new TestClass();
-            Assert.Equal<string>((string)null, Temp.A);
+            Assert.Equal((string)null, Temp.A);
             Temp.A = "Testing";
             Temp.B = 1;
             int B = Temp.B;
-            Assert.Equal<string>("Testing", Temp.A);
+            Assert.Equal("Testing", Temp.A);
             Assert.Equal<int>(1, B);
-            Assert.Equal<string>("TestClass this\r\n\tSystem.String A = Testing\r\n\tSystem.Int32 B = 1\r\n", Temp.ToString());
+            Assert.Equal("TestClass this\r\n\tSystem.String A = Testing\r\n\tSystem.Int32 B = 1\r\n", Temp.ToString());
             Temp.C = new Func<int>(() => 1);
-            Assert.Equal<string>("TestClass this\r\n\tSystem.String A = Testing\r\n\tSystem.Int32 B = 1\r\n\tSystem.Func<System.Int32> C = System.Func`1[System.Int32]\r\n", Temp.ToString());
+            Assert.Equal("TestClass this\r\n\tSystem.String A = Testing\r\n\tSystem.Int32 B = 1\r\n\tSystem.Func<System.Int32> C = System.Func`1[System.Int32]\r\n", Temp.ToString());
             Assert.Equal<int>(1, Temp.C());
         }
 

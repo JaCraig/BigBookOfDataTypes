@@ -192,7 +192,7 @@ namespace BigBook.Conversion
             if (TempValue == null)
                 return SqlDbType.Int;
             DbType Item = DbType.Int32;
-            if (TempValue.GetTypeInfo().IsEnum)
+            if (TempValue.IsEnum)
                 TempValue = Enum.GetUnderlyingType(TempValue);
             Item = Conversions.GetValue(TempValue, DbType.Int32);
             var Parameter = new SqlParameter

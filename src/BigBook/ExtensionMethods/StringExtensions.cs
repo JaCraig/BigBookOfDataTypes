@@ -21,7 +21,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -686,7 +685,8 @@ namespace BigBook
         {
             if (inputObject == null)
                 return input;
-            inputObject.GetType().GetTypeInfo().DeclaredProperties
+            inputObject.GetType()
+                .GetProperties()
                 .Where(x => x.CanRead)
                 .ForEach(x =>
                 {

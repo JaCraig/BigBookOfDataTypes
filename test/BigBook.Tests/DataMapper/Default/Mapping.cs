@@ -42,8 +42,8 @@ namespace BigBook.Tests.DataMapper.Default
                 Item2 = "ZXCV"
             };
             TempObject.CopyLeftToRight(A, B);
-            Assert.Equal(B.Item1, 12);
-            Assert.NotEqual(B.Item2, "ASDF");
+            Assert.Equal(12, B.Item1);
+            Assert.NotEqual("ASDF", B.Item2);
         }
 
         [Fact]
@@ -99,8 +99,8 @@ namespace BigBook.Tests.DataMapper.Default
                 Item2 = "ZXCV"
             };
             TempObject.CopyRightToLeft(B, A);
-            Assert.Equal(A.Item1, 13);
-            Assert.NotEqual(A.Item2, "ZXCV");
+            Assert.Equal(13, A.Item1);
+            Assert.NotEqual("ZXCV", A.Item2);
         }
     }
 }
