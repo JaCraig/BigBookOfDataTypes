@@ -13,4 +13,8 @@
     <ProjectReference Include="..\src\BigBook\BigBook.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Tests\" />
+  </ItemGroup>
+
 </Project>
