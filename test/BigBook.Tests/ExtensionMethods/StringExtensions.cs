@@ -11,6 +11,13 @@ namespace BigBook.Tests.ExtensionMethods
     public class StringExtensionsTests : TestingDirectoryFixture
     {
         [Fact]
+        public void AddSpaces()
+        {
+            string Value = "TheBrownFoxIsAwesome.ButTheBlueFoxIsNot.2222";
+            Assert.Equal("The Brown Fox Is Awesome. But The Blue Fox Is Not.2222", Value.AddSpaces());
+        }
+
+        [Fact]
         public void AlphaCharactersOnly()
         {
             string Value = "The brown fox is awsome. But the blue fox is not. 2222";

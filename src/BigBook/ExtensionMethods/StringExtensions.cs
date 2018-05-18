@@ -128,6 +128,32 @@ namespace BigBook
         private static readonly Regex STRIP_HTML_REGEX = new Regex("<[^>]*>", RegexOptions.Compiled);
 
         /// <summary>
+        /// Adds spaces to a string before capital letters. Acronyms are respected and left alone.
+        /// </summary>
+        /// <param name="input">The input.</param>
+        /// <returns>The resulting string.</returns>
+        public static string AddSpaces(this string input)
+        {
+            if (string.IsNullOrWhiteSpace(input))
+                return string.Empty;
+            StringBuilder newText = new StringBuilder(input.Length * 2);
+            newText.Append(input[0]);
+            for (int x = 1, inputLength = input.Length; x < inputLength; ++x)
+            {
+                if (char.IsUpper(input[x]))
+                {
+                    if ((input[x - 1] != ' ' && !char.IsUpper(input[x - 1])
+                        || char.IsUpper(input[x - 1]) && x < input.Length - 1 && !char.IsUpper(input[x + 1])))
+                    {
+                        newText.Append(' ');
+                    }
+                }
+                newText.Append(input[x]);
+            }
+            return newText.ToString();
+        }
+
+        /// <summary>
         /// Does an AppendFormat and then an AppendLine on the StringBuilder
         /// </summary>
         /// <param name="builder">Builder object</param>
@@ -728,6 +754,11 @@ namespace BigBook
             return Regex.Replace(input, format, outputFormat, options);
         }
 
+        /// <summary>
+        /// Builds the filter.
+        /// </summary>
+        /// <param name="filter">The filter.</param>
+        /// <returns></returns>
         private static string BuildFilter(StringFilter filter)
         {
             string FilterValue = "";
