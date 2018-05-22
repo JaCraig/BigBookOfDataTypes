@@ -110,7 +110,11 @@ namespace BigBook.DataMapper.Default
         /// <param name="destination">Destination object</param>
         public virtual void Copy(Left source, Right destination)
         {
-            if (LeftGet == null) return;
+            if (LeftGet == null)
+            {
+                return;
+            }
+
             RightSet(destination, LeftGet(source));
         }
 
@@ -121,7 +125,11 @@ namespace BigBook.DataMapper.Default
         /// <param name="destination">Destination object</param>
         public virtual void Copy(Right source, Left destination)
         {
-            if (RightGet == null) return;
+            if (RightGet == null)
+            {
+                return;
+            }
+
             LeftSet(destination, RightGet(source));
         }
 
@@ -133,7 +141,11 @@ namespace BigBook.DataMapper.Default
         /// <param name="destination">Destination object</param>
         public virtual void CopyLeftToRight(Left source, Right destination)
         {
-            if (LeftGet == null) return;
+            if (LeftGet == null)
+            {
+                return;
+            }
+
             RightSet(destination, LeftGet(source));
         }
 
@@ -145,7 +157,11 @@ namespace BigBook.DataMapper.Default
         /// <param name="destination">Destination object</param>
         public virtual void CopyRightToLeft(Right source, Left destination)
         {
-            if (RightGet == null) return;
+            if (RightGet == null)
+            {
+                return;
+            }
+
             LeftSet(destination, RightGet(source));
         }
     }

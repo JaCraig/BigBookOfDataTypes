@@ -65,10 +65,16 @@ namespace BigBook
             get
             {
                 if (IsEmpty || Root == null)
+                {
                     return default(T);
+                }
+
                 TreeNode<T> TempNode = Root;
                 while (TempNode.Right != null)
+                {
                     TempNode = TempNode.Right;
+                }
+
                 return TempNode.Value;
             }
         }
@@ -81,10 +87,16 @@ namespace BigBook
             get
             {
                 if (IsEmpty || Root == null)
+                {
                     return default(T);
+                }
+
                 TreeNode<T> TempNode = Root;
                 while (TempNode.Left != null)
+                {
                     TempNode = TempNode.Left;
+                }
+
                 return TempNode.Value;
             }
         }
@@ -107,7 +119,10 @@ namespace BigBook
         public static implicit operator string(BinaryTree<T> value)
         {
             if (value == null)
+            {
                 return "";
+            }
+
             return value.ToString();
         }
 
@@ -145,14 +160,19 @@ namespace BigBook
         public bool Contains(T item)
         {
             if (IsEmpty)
+            {
                 return false;
+            }
 
             TreeNode<T> TempNode = Root;
             while (TempNode != null)
             {
                 var ComparedValue = TempNode.Value.CompareTo(item);
                 if (ComparedValue == 0)
+                {
                     return true;
+                }
+
                 TempNode = ComparedValue < 0 ? TempNode.Left : TempNode.Right;
             }
             return false;
@@ -208,19 +228,33 @@ namespace BigBook
         {
             var Item = Find(item);
             if (Item == null)
+            {
                 return false;
+            }
+
             --NumberOfNodes;
             var Values = new List<T>();
             foreach (TreeNode<T> TempNode in Traversal(Item.Left))
+            {
                 Values.Add(TempNode.Value);
+            }
+
             foreach (TreeNode<T> TempNode in Traversal(Item.Right))
+            {
                 Values.Add(TempNode.Value);
+            }
+
             if (Item.Parent != null)
             {
                 if (Item.Parent.Left == Item)
+                {
                     Item.Parent.Left = null;
+                }
                 else
+                {
                     Item.Parent.Right = null;
+                }
+
                 Item.Parent = null;
             }
             else
@@ -253,8 +287,13 @@ namespace BigBook
         protected TreeNode<T> Find(T item)
         {
             foreach (TreeNode<T> Item in Traversal(Root))
+            {
                 if (Item.Value.Equals(item))
+                {
                     return Item;
+                }
+            }
+
             return null;
         }
 
@@ -265,10 +304,12 @@ namespace BigBook
         protected void Insert(T item)
         {
             if (Root == null)
+            {
                 return;
+            }
+
             TreeNode<T> TempNode = Root;
-            bool Found = false;
-            while (!Found)
+            while (true)
             {
                 var ComparedValue = TempNode.Value.CompareTo(item);
                 if (ComparedValue > 0)
@@ -310,13 +351,17 @@ namespace BigBook
                 if (node.Left != null)
                 {
                     foreach (TreeNode<T> LeftNode in Traversal(node.Left))
+                    {
                         yield return LeftNode;
+                    }
                 }
                 yield return node;
                 if (node.Right != null)
                 {
                     foreach (TreeNode<T> RightNode in Traversal(node.Right))
+                    {
                         yield return RightNode;
+                    }
                 }
             }
         }

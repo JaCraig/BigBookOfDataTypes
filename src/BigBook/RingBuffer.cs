@@ -44,7 +44,10 @@ namespace BigBook
         public RingBuffer(int maxCapacity, bool allowOverflow = false)
         {
             if (maxCapacity <= 0)
+            {
                 maxCapacity = 1;
+            }
+
             Count = 0;
             IsReadOnly = false;
             AllowOverflow = allowOverflow;
@@ -90,7 +93,10 @@ namespace BigBook
             get
             {
                 if (Root == null)
+                {
                     Interlocked.CompareExchange(ref Root, new object(), null);
+                }
+
                 return Root;
             }
         }
@@ -139,7 +145,10 @@ namespace BigBook
         public static implicit operator string(RingBuffer<T> value)
         {
             if (value == null)
+            {
                 return "";
+            }
+
             return value.ToString();
         }
 
@@ -150,14 +159,22 @@ namespace BigBook
         public void Add(T item)
         {
             if (Count >= MaxCapacity && !AllowOverflow)
+            {
                 throw new InvalidOperationException("Unable to add item to circular buffer because the buffer is full");
+            }
+
             Buffer[WritePosition] = item;
             ++Count;
             ++WritePosition;
             if (WritePosition >= MaxCapacity)
+            {
                 WritePosition = 0;
+            }
+
             if (Count >= MaxCapacity)
+            {
                 Count = MaxCapacity;
+            }
         }
 
         /// <summary>
@@ -167,7 +184,10 @@ namespace BigBook
         public void Add(IEnumerable<T> items)
         {
             if (items == null)
+            {
                 return;
+            }
+
             items.ForEach(Add);
         }
 
@@ -181,15 +201,27 @@ namespace BigBook
         {
             buffer = buffer ?? new T[0];
             if (offset < 0)
+            {
                 offset = 0;
+            }
             else if (offset >= buffer.Length)
+            {
                 offset = buffer.Length - 1;
+            }
+
             if (count < 0)
+            {
                 count = 0;
+            }
             else if (offset + count > buffer.Length)
+            {
                 count = buffer.Length - offset;
+            }
+
             for (int x = offset; x < offset + count; ++x)
+            {
                 Add(buffer[x]);
+            }
         }
 
         /// <summary>
@@ -201,7 +233,9 @@ namespace BigBook
             WritePosition = 0;
             Count = 0;
             for (int x = 0; x < MaxCapacity; ++x)
+            {
                 Buffer[x] = default(T);
+            }
         }
 
         /// <summary>
@@ -216,10 +250,15 @@ namespace BigBook
             for (int x = 0; x < Count; ++x)
             {
                 if (Comparer.Equals(Buffer[y], item))
+                {
                     return true;
+                }
+
                 ++y;
                 if (y >= MaxCapacity)
+                {
                     y = 0;
+                }
             }
             return false;
         }
@@ -240,7 +279,9 @@ namespace BigBook
                 ++y2;
                 ++y;
                 if (y >= MaxCapacity)
+                {
                     y = 0;
+                }
             }
         }
 
@@ -260,7 +301,9 @@ namespace BigBook
                 ++y2;
                 ++y;
                 if (y >= MaxCapacity)
+                {
                     y = 0;
+                }
             }
         }
 
@@ -276,7 +319,9 @@ namespace BigBook
                 yield return Buffer[y];
                 ++y;
                 if (y >= MaxCapacity)
+                {
                     y = 0;
+                }
             }
         }
 
@@ -296,7 +341,10 @@ namespace BigBook
         public T Remove()
         {
             if (Count == 0)
+            {
                 return default(T);
+            }
+
             T ReturnValue = Buffer[ReadPosition];
             Buffer[ReadPosition] = default(T);
             ++ReadPosition;
@@ -313,10 +361,16 @@ namespace BigBook
         public IEnumerable<T> Remove(int amount)
         {
             if (Count == 0)
+            {
                 return new List<T>();
+            }
+
             var ReturnValue = new List<T>();
             for (int x = 0; x < amount; ++x)
+            {
                 ReturnValue.Add(Remove());
+            }
+
             return ReturnValue;
         }
 
@@ -338,7 +392,9 @@ namespace BigBook
                 }
                 ++y;
                 if (y >= MaxCapacity)
+                {
                     y = 0;
+                }
             }
             return false;
         }
@@ -354,15 +410,28 @@ namespace BigBook
         {
             array = array ?? new T[0];
             if (offset < 0)
+            {
                 offset = 0;
+            }
             else if (offset >= array.Length)
+            {
                 offset = array.Length - 1;
+            }
+
             if (count < 0)
+            {
                 count = 0;
+            }
             else if (offset + count > array.Length)
+            {
                 count = array.Length - offset;
+            }
+
             if (Count == 0)
+            {
                 return 0;
+            }
+
             int y = ReadPosition;
             int y2 = offset;
             int MaxLength = count < Count ? count : Count;
@@ -372,7 +441,9 @@ namespace BigBook
                 ++y2;
                 ++y;
                 if (y >= MaxCapacity)
+                {
                     y = 0;
+                }
             }
             Count -= MaxLength;
             return MaxLength;
@@ -385,11 +456,16 @@ namespace BigBook
         public void Skip(int count)
         {
             if (count > Count)
+            {
                 count = Count;
+            }
+
             ReadPosition += count;
             Count -= count;
             if (ReadPosition >= MaxCapacity)
+            {
                 ReadPosition %= MaxCapacity;
+            }
         }
 
         /// <summary>

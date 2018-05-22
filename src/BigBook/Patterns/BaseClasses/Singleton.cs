@@ -15,7 +15,6 @@ limitations under the License.
 */
 
 using System;
-using System.Linq;
 
 namespace BigBook.Patterns.BaseClasses
 {
@@ -33,9 +32,8 @@ namespace BigBook.Patterns.BaseClasses
         {
         }
 
+        private static readonly object Temp = 1;
         private static T _Instance;
-
-        private static object Temp = 1;
 
         /// <summary>
         /// Gets the instance of the singleton
@@ -50,12 +48,14 @@ namespace BigBook.Patterns.BaseClasses
                     {
                         if (_Instance == null)
                         {
-                            var Constructor = typeof(T).GetConstructors()
-                                                                   .FirstOrDefault(x => !x.IsPublic
+                            var Constructor = Array.Find(typeof(T).GetConstructors(), x => !x.IsPublic
                                                                                      && !x.IsStatic
                                                                                      && x.GetParameters().Length == 0);
-                            if (Constructor == null || Constructor.IsAssembly)
+                            if (Constructor?.IsAssembly != false)
+                            {
                                 throw new InvalidOperationException("Constructor is not private or protected for type " + typeof(T).Name);
+                            }
+
                             _Instance = (T)Constructor.Invoke(null);
                         }
                     }

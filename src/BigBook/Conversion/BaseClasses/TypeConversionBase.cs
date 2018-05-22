@@ -41,17 +41,17 @@ namespace BigBook.Conversion.BaseClasses
         /// <summary>
         /// Associated type
         /// </summary>
-        public Type AssociatedType { get; private set; }
+        public Type AssociatedType { get; }
 
         /// <summary>
         /// Types it can convert from and mapped functions
         /// </summary>
-        protected IDictionary<Type, Func<object, object>> ConvertFromTypes { get; private set; }
+        protected IDictionary<Type, Func<object, object>> ConvertFromTypes { get; }
 
         /// <summary>
         /// Types it can convert to and mapped functions
         /// </summary>
-        protected IDictionary<Type, Func<object, object>> ConvertToTypes { get; private set; }
+        protected IDictionary<Type, Func<object, object>> ConvertToTypes { get; }
 
         /// <summary>
         /// Converter used internally if this can not convert the object
@@ -90,10 +90,16 @@ namespace BigBook.Conversion.BaseClasses
         public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
         {
             if (value == null)
+            {
                 return null;
+            }
+
             var ValueType = value.GetType();
             if (ConvertFromTypes.ContainsKey(ValueType))
+            {
                 return ConvertFromTypes[ValueType](value);
+            }
+
             return base.ConvertFrom(context, culture, value);
         }
 
@@ -108,9 +114,15 @@ namespace BigBook.Conversion.BaseClasses
         public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
         {
             if (value == null)
+            {
                 return null;
+            }
+
             if (ConvertToTypes.ContainsKey(destinationType))
+            {
                 return ConvertToTypes[destinationType](value);
+            }
+
             return base.ConvertFrom(context, culture, value);
         }
     }

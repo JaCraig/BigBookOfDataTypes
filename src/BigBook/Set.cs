@@ -50,15 +50,26 @@ namespace BigBook
         public static Set<T> GetIntersection(Set<T> set1, Set<T> set2)
         {
             if (set1 == null || set2 == null || !set1.Intersect(set2))
+            {
                 return null;
+            }
+
             var ReturnValue = new Set<T>();
             for (int x = 0; x < set1.Count; ++x)
+            {
                 if (set2.Contains(set1[x]))
+                {
                     ReturnValue.Add(set1[x]);
+                }
+            }
 
             for (int x = 0; x < set2.Count; ++x)
+            {
                 if (set1.Contains(set2[x]))
+                {
                     ReturnValue.Add(set2[x]);
+                }
+            }
 
             return ReturnValue;
         }
@@ -75,8 +86,13 @@ namespace BigBook
             set2 = set2 ?? new Set<T>();
             var ReturnValue = new Set<T>();
             for (int x = 0; x < set1.Count; ++x)
+            {
                 if (!set2.Contains(set1[x]))
+                {
                     ReturnValue.Add(set1[x]);
+                }
+            }
+
             return ReturnValue;
         }
 
@@ -103,9 +119,15 @@ namespace BigBook
             set2 = set2 ?? new Set<T>();
             var ReturnValue = new Set<T>();
             for (int x = 0; x < set1.Count; ++x)
+            {
                 ReturnValue.Add(set1[x]);
+            }
+
             for (int x = 0; x < set2.Count; ++x)
+            {
                 ReturnValue.Add(set2[x]);
+            }
+
             return ReturnValue;
         }
 
@@ -118,9 +140,15 @@ namespace BigBook
         public static bool operator ==(Set<T> set1, Set<T> set2)
         {
             if (((object)set1) == null && ((object)set2) == null)
+            {
                 return true;
+            }
+
             if (((object)set1) == null || ((object)set2) == null)
+            {
                 return false;
+            }
+
             return set1.Contains(set2) && set2.Contains(set1);
         }
 
@@ -132,7 +160,10 @@ namespace BigBook
         public bool Contains(Set<T> set)
         {
             if (set == null)
+            {
                 return false;
+            }
+
             return set.IsSubset(this);
         }
 
@@ -163,10 +194,18 @@ namespace BigBook
         public bool Intersect(Set<T> set)
         {
             if (set == null)
+            {
                 return false;
+            }
+
             for (int x = 0; x < this.Count; ++x)
+            {
                 if (set.Contains(this[x]))
+                {
                     return true;
+                }
+            }
+
             return false;
         }
 
@@ -178,11 +217,18 @@ namespace BigBook
         public bool IsSubset(Set<T> set)
         {
             if (set == null || Count > set.Count)
+            {
                 return false;
+            }
 
             for (int x = 0; x < Count; ++x)
+            {
                 if (!set.Contains(this[x]))
+                {
                     return false;
+                }
+            }
+
             return true;
         }
 

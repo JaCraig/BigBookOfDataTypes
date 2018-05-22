@@ -7,6 +7,13 @@ using Xunit;
 
 namespace BigBook.Tests.ExtensionMethods
 {
+    public enum MyEnumTest
+    {
+        Item1,
+        Item2,
+        Item3
+    }
+
     public interface IMyTestClass
     {
     }
@@ -114,12 +121,5 @@ namespace BigBook.Tests.ExtensionMethods
             Assert.Equal(SqlDbType.Real, typeof(float).To(SqlDbType.Int));
             Assert.Equal(SqlDbType.Int, typeof(MyEnumTest).To(SqlDbType.Int));
         }
-    }
-
-    public enum MyEnumTest
-    {
-        Item1,
-        Item2,
-        Item3
     }
 }

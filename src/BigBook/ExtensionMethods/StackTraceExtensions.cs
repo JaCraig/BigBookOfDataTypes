@@ -38,7 +38,10 @@ namespace BigBook
         public static IEnumerable<MethodBase> GetMethods(this StackTrace stack, params Assembly[] excludedAssemblies)
         {
             if (stack == null)
+            {
                 return new List<MethodBase>();
+            }
+
             excludedAssemblies = excludedAssemblies ?? new Assembly[0];
             return stack.GetFrames().GetMethods(excludedAssemblies);
         }
@@ -53,7 +56,10 @@ namespace BigBook
         {
             var Methods = new List<MethodBase>();
             if (frames == null)
+            {
                 return Methods;
+            }
+
             foreach (StackFrame Frame in frames)
             {
                 Methods.AddIf(x => x.DeclaringType != null

@@ -51,7 +51,10 @@ namespace BigBook
             Numerator = (int)numerator;
             Denominator = (int)denominator;
             if (Denominator == int.MinValue)
+            {
                 return;
+            }
+
             Reduce();
         }
 
@@ -82,7 +85,10 @@ namespace BigBook
         public Fraction(float numerator, float denominator)
         {
             if (Math.Abs(denominator - int.MinValue) < EPSILON)
+            {
                 throw new ArgumentException(nameof(denominator) + " can't be int.MinValue");
+            }
+
             while (Math.Abs(numerator - Math.Round(numerator, MidpointRounding.AwayFromZero)) > EPSILON
                 || Math.Abs(denominator - Math.Round(denominator, MidpointRounding.AwayFromZero)) > EPSILON)
             {
@@ -92,7 +98,10 @@ namespace BigBook
             Numerator = (int)numerator;
             Denominator = (int)denominator;
             if (Denominator == int.MinValue)
+            {
                 return;
+            }
+
             Reduce();
         }
 
@@ -120,8 +129,11 @@ namespace BigBook
         public static implicit operator decimal(Fraction fraction)
         {
             if (fraction == null)
+            {
                 throw new ArgumentNullException(nameof(fraction));
-            return ((decimal)fraction.Numerator / (decimal)fraction.Denominator);
+            }
+
+            return (decimal)fraction.Numerator / (decimal)fraction.Denominator;
         }
 
         /// <summary>
@@ -132,8 +144,11 @@ namespace BigBook
         public static implicit operator double(Fraction fraction)
         {
             if (fraction == null)
+            {
                 throw new ArgumentNullException(nameof(fraction));
-            return ((double)fraction.Numerator / (double)fraction.Denominator);
+            }
+
+            return (double)fraction.Numerator / (double)fraction.Denominator;
         }
 
         /// <summary>
@@ -144,8 +159,11 @@ namespace BigBook
         public static implicit operator float(Fraction fraction)
         {
             if (fraction == null)
+            {
                 throw new ArgumentNullException(nameof(fraction));
-            return ((float)fraction.Numerator / (float)fraction.Denominator);
+            }
+
+            return (float)fraction.Numerator / (float)fraction.Denominator;
         }
 
         /// <summary>
@@ -206,7 +224,10 @@ namespace BigBook
         public static implicit operator string(Fraction fraction)
         {
             if (fraction == null)
+            {
                 return "";
+            }
+
             return fraction.ToString();
         }
 
@@ -219,9 +240,15 @@ namespace BigBook
         public static Fraction operator -(Fraction first, Fraction second)
         {
             if (first == null)
+            {
                 throw new ArgumentNullException(nameof(first));
+            }
+
             if (second == null)
+            {
                 throw new ArgumentNullException(nameof(second));
+            }
+
             var Value1 = new Fraction(first.Numerator * (int)second.Denominator, first.Denominator * second.Denominator);
             var Value2 = new Fraction(second.Numerator * (int)first.Denominator, second.Denominator * first.Denominator);
             var Result = new Fraction(Value1.Numerator - Value2.Numerator, Value1.Denominator);
@@ -237,7 +264,10 @@ namespace BigBook
         public static Fraction operator -(Fraction first)
         {
             if (first == null)
+            {
                 throw new ArgumentNullException(nameof(first));
+            }
+
             return new Fraction(-first.Numerator, first.Denominator);
         }
 
@@ -283,9 +313,15 @@ namespace BigBook
         public static Fraction operator *(Fraction first, Fraction second)
         {
             if (first == null)
+            {
                 throw new ArgumentNullException(nameof(first));
+            }
+
             if (second == null)
+            {
                 throw new ArgumentNullException(nameof(second));
+            }
+
             var Result = new Fraction(first.Numerator * second.Numerator, first.Denominator * second.Denominator);
             Result.Reduce();
             return Result;
@@ -300,9 +336,15 @@ namespace BigBook
         public static Fraction operator /(Fraction first, Fraction second)
         {
             if (first == null)
+            {
                 throw new ArgumentNullException(nameof(first));
+            }
+
             if (second == null)
+            {
                 throw new ArgumentNullException(nameof(second));
+            }
+
             return first * second.Inverse();
         }
 
@@ -315,9 +357,15 @@ namespace BigBook
         public static Fraction operator +(Fraction first, Fraction second)
         {
             if (first == null)
+            {
                 throw new ArgumentNullException(nameof(first));
+            }
+
             if (second == null)
+            {
                 throw new ArgumentNullException(nameof(second));
+            }
+
             var Value1 = new Fraction(first.Numerator * (int)second.Denominator, first.Denominator * second.Denominator);
             var Value2 = new Fraction(second.Numerator * (int)first.Denominator, second.Denominator * first.Denominator);
             var Result = new Fraction(Value1.Numerator + Value2.Numerator, Value1.Denominator);
@@ -365,9 +413,11 @@ namespace BigBook
         /// <returns>True if they are, false otherwise</returns>
         public override bool Equals(object obj)
         {
-            var Other = obj as Fraction;
-            if (((object)Other) == null)
+            if (!(obj is Fraction Other))
+            {
                 return false;
+            }
+
             decimal Value1 = this;
             decimal Value2 = Other;
             return Value1 == Value2;
@@ -398,9 +448,15 @@ namespace BigBook
         public void Reduce()
         {
             if (Numerator == int.MinValue)
+            {
                 Numerator = int.MinValue + 1;
+            }
+
             if (Denominator == int.MinValue)
+            {
                 Denominator = int.MinValue + 1;
+            }
+
             var GCD = Numerator.GreatestCommonDenominator(Denominator);
             if (GCD != 0)
             {

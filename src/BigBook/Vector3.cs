@@ -44,7 +44,7 @@ namespace BigBook
             get { return new double[] { X, Y, Z }; }
             set
             {
-                if (value != null && value.Length == 3)
+                if (value?.Length == 3)
                 {
                     X = value[0];
                     Y = value[1];
@@ -272,9 +272,15 @@ namespace BigBook
         public static bool operator ==(Vector3 v1, Vector3 v2)
         {
             if (v1 is null && v2 is null)
+            {
                 return true;
+            }
+
             if (v1 is null || v2 is null)
+            {
                 return false;
+            }
+
             return Equals(v1.X, v2.X) && Equals(v1.Y, v2.Y) && Equals(v1.Z, v2.Z);
         }
 
@@ -311,8 +317,7 @@ namespace BigBook
         /// <returns>true if they are, false otherwise</returns>
         public override bool Equals(object obj)
         {
-            var Tempobj = obj as Vector3;
-            return (object)Tempobj != null && this == Tempobj;
+            return obj is Vector3 Tempobj && this == Tempobj;
         }
 
         /// <summary>

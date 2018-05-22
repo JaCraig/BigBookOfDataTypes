@@ -21,6 +21,74 @@ using System.Globalization;
 namespace BigBook
 {
     /// <summary>
+    /// Date comparison type
+    /// </summary>
+    [Flags]
+    public enum DateCompare
+    {
+        /// <summary>
+        /// The none
+        /// </summary>
+        None = 0,
+
+        /// <summary>
+        /// In the future
+        /// </summary>
+        InFuture = 1,
+
+        /// <summary>
+        /// In the past
+        /// </summary>
+        InPast = 2,
+
+        /// <summary>
+        /// Today
+        /// </summary>
+        Today = 4,
+
+        /// <summary>
+        /// Weekday
+        /// </summary>
+        WeekDay = 8,
+
+        /// <summary>
+        /// Weekend
+        /// </summary>
+        WeekEnd = 16
+    }
+
+    /// <summary>
+    /// Time frame
+    /// </summary>
+    public enum TimeFrame
+    {
+        /// <summary>
+        /// Day
+        /// </summary>
+        Day,
+
+        /// <summary>
+        /// Week
+        /// </summary>
+        Week,
+
+        /// <summary>
+        /// Month
+        /// </summary>
+        Month,
+
+        /// <summary>
+        /// Quarter
+        /// </summary>
+        Quarter,
+
+        /// <summary>
+        /// Year
+        /// </summary>
+        Year
+    }
+
+    /// <summary>
     /// DateTime extension methods
     /// </summary>
     [EditorBrowsable(EditorBrowsableState.Never)]
@@ -46,7 +114,10 @@ namespace BigBook
         public static int Age(this DateTime date, DateTime calculateFrom = default(DateTime))
         {
             if (calculateFrom == default(DateTime))
+            {
                 calculateFrom = DateTime.Now;
+            }
+
             return (calculateFrom - date).Years();
         }
 
@@ -61,13 +132,25 @@ namespace BigBook
         {
             culture = culture ?? CultureInfo.CurrentCulture;
             if (timeFrame == TimeFrame.Day)
+            {
                 return date.Date;
+            }
+
             if (timeFrame == TimeFrame.Week)
+            {
                 return date.AddDays(culture.DateTimeFormat.FirstDayOfWeek - date.DayOfWeek).Date;
+            }
+
             if (timeFrame == TimeFrame.Month)
+            {
                 return new DateTime(date.Year, date.Month, 1);
+            }
+
             if (timeFrame == TimeFrame.Quarter)
+            {
                 return date.BeginningOf(TimeFrame.Quarter, date.BeginningOf(TimeFrame.Year, culture), culture);
+            }
+
             return new DateTime(date.Year, 1, 1);
         }
 
@@ -82,14 +165,24 @@ namespace BigBook
         public static DateTime BeginningOf(this DateTime date, TimeFrame timeFrame, DateTime startOfQuarter1, CultureInfo culture = null)
         {
             if (timeFrame != TimeFrame.Quarter)
+            {
                 return date.BeginningOf(timeFrame, culture);
+            }
+
             culture = culture ?? CultureInfo.CurrentCulture;
             if (date.Between(startOfQuarter1, startOfQuarter1.AddMonths(3).AddDays(-1).EndOf(TimeFrame.Day, CultureInfo.CurrentCulture)))
+            {
                 return startOfQuarter1.Date;
+            }
             else if (date.Between(startOfQuarter1.AddMonths(3), startOfQuarter1.AddMonths(6).AddDays(-1).EndOf(TimeFrame.Day, CultureInfo.CurrentCulture)))
+            {
                 return startOfQuarter1.AddMonths(3).Date;
+            }
             else if (date.Between(startOfQuarter1.AddMonths(6), startOfQuarter1.AddMonths(9).AddDays(-1).EndOf(TimeFrame.Day, CultureInfo.CurrentCulture)))
+            {
                 return startOfQuarter1.AddMonths(6).Date;
+            }
+
             return startOfQuarter1.AddMonths(9).Date;
         }
 
@@ -104,13 +197,25 @@ namespace BigBook
         {
             culture = culture ?? CultureInfo.CurrentCulture;
             if (timeFrame == TimeFrame.Day)
+            {
                 return 1;
+            }
+
             if (timeFrame == TimeFrame.Week)
+            {
                 return 7;
+            }
+
             if (timeFrame == TimeFrame.Month)
+            {
                 return culture.Calendar.GetDaysInMonth(date.Year, date.Month);
+            }
+
             if (timeFrame == TimeFrame.Quarter)
+            {
                 return date.EndOf(TimeFrame.Quarter, culture).DayOfYear - date.BeginningOf(TimeFrame.Quarter, culture).DayOfYear;
+            }
+
             return culture.Calendar.GetDaysInYear(date.Year);
         }
 
@@ -125,7 +230,10 @@ namespace BigBook
         public static int DaysIn(this DateTime date, TimeFrame timeFrame, DateTime startOfQuarter1, CultureInfo culture = null)
         {
             if (timeFrame != TimeFrame.Quarter)
+            {
                 date.DaysIn(timeFrame, culture);
+            }
+
             culture = culture ?? CultureInfo.CurrentCulture;
             return date.EndOf(TimeFrame.Quarter, culture).DayOfYear - startOfQuarter1.DayOfYear;
         }
@@ -141,13 +249,25 @@ namespace BigBook
         {
             culture = culture ?? CultureInfo.CurrentCulture;
             if (timeFrame == TimeFrame.Day)
+            {
                 return 1;
+            }
+
             if (timeFrame == TimeFrame.Week)
+            {
                 return 7 - ((int)date.DayOfWeek + 1);
+            }
+
             if (timeFrame == TimeFrame.Month)
+            {
                 return date.DaysIn(TimeFrame.Month, culture) - date.Day;
+            }
+
             if (timeFrame == TimeFrame.Quarter)
+            {
                 return date.DaysIn(TimeFrame.Quarter, culture) - (date.DayOfYear - date.BeginningOf(TimeFrame.Quarter, culture).DayOfYear);
+            }
+
             return date.DaysIn(TimeFrame.Year, culture) - date.DayOfYear;
         }
 
@@ -162,7 +282,10 @@ namespace BigBook
         public static int DaysLeftIn(this DateTime date, TimeFrame timeFrame, DateTime startOfQuarter1, CultureInfo culture = null)
         {
             if (timeFrame != TimeFrame.Quarter)
+            {
                 return date.DaysLeftIn(timeFrame, culture);
+            }
+
             culture = culture ?? CultureInfo.CurrentCulture;
             return date.DaysIn(TimeFrame.Quarter, startOfQuarter1, culture) - (date.DayOfYear - startOfQuarter1.DayOfYear);
         }
@@ -181,13 +304,25 @@ namespace BigBook
         {
             culture = culture ?? CultureInfo.CurrentCulture;
             if (timeFrame == TimeFrame.Day)
+            {
                 return new DateTime(date.Year, date.Month, date.Day, 23, 59, 59);
+            }
+
             if (timeFrame == TimeFrame.Week)
+            {
                 return date.BeginningOf(TimeFrame.Week, culture).AddDays(6);
+            }
+
             if (timeFrame == TimeFrame.Month)
+            {
                 return date.AddMonths(1).BeginningOf(TimeFrame.Month, culture).AddDays(-1).Date;
+            }
+
             if (timeFrame == TimeFrame.Quarter)
+            {
                 return date.EndOf(TimeFrame.Quarter, date.BeginningOf(TimeFrame.Year, culture), culture);
+            }
+
             return new DateTime(date.Year, 12, 31);
         }
 
@@ -205,14 +340,24 @@ namespace BigBook
         public static DateTime EndOf(this DateTime date, TimeFrame timeFrame, DateTime startOfQuarter1, CultureInfo culture = null)
         {
             if (timeFrame != TimeFrame.Quarter)
+            {
                 return date.EndOf(timeFrame, culture);
+            }
+
             culture = culture ?? CultureInfo.CurrentCulture;
             if (date.Between(startOfQuarter1, startOfQuarter1.AddMonths(3).AddDays(-1).EndOf(TimeFrame.Day, culture)))
+            {
                 return startOfQuarter1.AddMonths(3).AddDays(-1).Date;
+            }
             else if (date.Between(startOfQuarter1.AddMonths(3), startOfQuarter1.AddMonths(6).AddDays(-1).EndOf(TimeFrame.Day, culture)))
+            {
                 return startOfQuarter1.AddMonths(6).AddDays(-1).Date;
+            }
             else if (date.Between(startOfQuarter1.AddMonths(6), startOfQuarter1.AddMonths(9).AddDays(-1).EndOf(TimeFrame.Day, culture)))
+            {
                 return startOfQuarter1.AddMonths(9).AddDays(-1).Date;
+            }
+
             return startOfQuarter1.AddYears(1).AddDays(-1).Date;
         }
 
@@ -226,16 +371,31 @@ namespace BigBook
         /// <returns>True if it is, false otherwise</returns>
         public static bool Is(this DateTime date, DateCompare comparison)
         {
-            if (comparison.HasFlag(DateCompare.InFuture) && DateTime.Now >= date)
+            if ((comparison & DateCompare.InFuture) != 0 && DateTime.Now >= date)
+            {
                 return false;
-            if (comparison.HasFlag(DateCompare.InPast) && DateTime.Now <= date)
+            }
+
+            if ((comparison & DateCompare.InPast) != 0 && DateTime.Now <= date)
+            {
                 return false;
-            if (comparison.HasFlag(DateCompare.Today) && DateTime.Today != date.Date)
+            }
+
+            if ((comparison & DateCompare.Today) != 0 && DateTime.Today != date.Date)
+            {
                 return false;
-            if (comparison.HasFlag(DateCompare.WeekDay) && ((int)date.DayOfWeek == 6 || (int)date.DayOfWeek == 0))
+            }
+
+            if ((comparison & DateCompare.WeekDay) != 0 && ((int)date.DayOfWeek == 6 || (int)date.DayOfWeek == 0))
+            {
                 return false;
-            if (comparison.HasFlag(DateCompare.WeekEnd) && (int)date.DayOfWeek != 6 && (int)date.DayOfWeek != 0)
+            }
+
+            if ((comparison & DateCompare.WeekEnd) != 0 && (int)date.DayOfWeek != 6 && (int)date.DayOfWeek != 0)
+            {
                 return false;
+            }
+
             return true;
         }
 
@@ -294,7 +454,10 @@ namespace BigBook
         public static int To(this DateTime date, DateTime epoch = default(DateTime))
         {
             if (epoch == default(DateTime))
+            {
                 epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            }
+
             return (int)((date.ToUniversalTime() - epoch).Ticks / TimeSpan.TicksPerSecond);
         }
 
@@ -307,7 +470,10 @@ namespace BigBook
         public static DateTime To(this int date, DateTime epoch = default(DateTime))
         {
             if (epoch == default(DateTime))
+            {
                 epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            }
+
             return new DateTime((date * TimeSpan.TicksPerSecond) + epoch.Ticks, DateTimeKind.Utc);
         }
 
@@ -320,7 +486,10 @@ namespace BigBook
         public static DateTime To(this long date, DateTime epoch = default(DateTime))
         {
             if (epoch == default(DateTime))
+            {
                 epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            }
+
             return new DateTime((date * TimeSpan.TicksPerSecond) + epoch.Ticks, DateTimeKind.Utc);
         }
 
@@ -336,7 +505,10 @@ namespace BigBook
         public static string ToString(this DateTime input, DateTime epoch)
         {
             if (epoch == input)
+            {
                 return "now";
+            }
+
             return epoch > input ? (epoch - input).ToStringFull() + " ago" : (input - epoch).ToStringFull() + " from now";
         }
 
@@ -349,68 +521,5 @@ namespace BigBook
         {
             return (date - date.ToUniversalTime()).TotalHours;
         }
-    }
-
-    /// <summary>
-    /// Date comparison type
-    /// </summary>
-    [Flags]
-    public enum DateCompare
-    {
-        /// <summary>
-        /// In the future
-        /// </summary>
-        InFuture = 1,
-
-        /// <summary>
-        /// In the past
-        /// </summary>
-        InPast = 2,
-
-        /// <summary>
-        /// Today
-        /// </summary>
-        Today = 4,
-
-        /// <summary>
-        /// Weekday
-        /// </summary>
-        WeekDay = 8,
-
-        /// <summary>
-        /// Weekend
-        /// </summary>
-        WeekEnd = 16
-    }
-
-    /// <summary>
-    /// Time frame
-    /// </summary>
-    public enum TimeFrame
-    {
-        /// <summary>
-        /// Day
-        /// </summary>
-        Day,
-
-        /// <summary>
-        /// Week
-        /// </summary>
-        Week,
-
-        /// <summary>
-        /// Month
-        /// </summary>
-        Month,
-
-        /// <summary>
-        /// Quarter
-        /// </summary>
-        Quarter,
-
-        /// <summary>
-        /// Year
-        /// </summary>
-        Year
     }
 }

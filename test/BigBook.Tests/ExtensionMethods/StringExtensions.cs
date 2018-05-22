@@ -13,21 +13,21 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void AddSpaces()
         {
-            string Value = "TheBrownFoxIsAwesome.ButTheBlueFoxIsNot.2222";
+            const string Value = "TheBrownFoxIsAwesome.ButTheBlueFoxIsNot.2222";
             Assert.Equal("The Brown Fox Is Awesome. But The Blue Fox Is Not.2222", Value.AddSpaces());
         }
 
         [Fact]
         public void AlphaCharactersOnly()
         {
-            string Value = "The brown fox is awsome. But the blue fox is not. 2222";
+            const string Value = "The brown fox is awsome. But the blue fox is not. 2222";
             Assert.Equal("ThebrownfoxisawsomeButthebluefoxisnot", Value.Keep(StringFilter.Alpha));
         }
 
         [Fact]
         public void AlphaNumericOnly()
         {
-            string Value = "The brown fox is awsome. But the blue fox is not. 2222";
+            const string Value = "The brown fox is awsome. But the blue fox is not. 2222";
             Assert.Equal("ThebrownfoxisawsomeButthebluefoxisnot2222", Value.Keep(StringFilter.Alpha | StringFilter.Numeric));
         }
 
@@ -46,7 +46,7 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void Base64Test()
         {
-            string Value = "ASDF";
+            const string Value = "ASDF";
             Assert.Equal("ASDF", Value.ToBase64String().FromBase64(new ASCIIEncoding()));
             Assert.Equal("QVNERg==", Value.ToBase64String());
         }
@@ -54,7 +54,7 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void ByteArrayTest()
         {
-            string Value = "ASDF";
+            const string Value = "ASDF";
             Assert.Equal("ASDF", Value.ToByteArray().ToString(null));
         }
 
@@ -77,7 +77,7 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void FilterOutText()
         {
-            string Value = "The brown fox is awsome. But the blue fox is not";
+            const string Value = "The brown fox is awsome. But the blue fox is not";
             Assert.Equal("The brown  is awsome. But the blue  is not", Value.Remove("fox"));
         }
 
@@ -120,7 +120,7 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void IsUnicode()
         {
-            string Value = "\u25EF\u25EF\u25EF";
+            const string Value = "\u25EF\u25EF\u25EF";
             Assert.True(Value.Is(StringCompare.Unicode));
         }
 
@@ -136,14 +136,14 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void KeepFilterText()
         {
-            string Value = "The brown fox is awsome. But the blue fox is not";
+            const string Value = "The brown fox is awsome. But the blue fox is not";
             Assert.Equal("foxfox", Value.Keep("fox"));
         }
 
         [Fact]
         public void LeftTest()
         {
-            string Value = "ASDF";
+            const string Value = "ASDF";
             Assert.Equal("AS", Value.Left(2));
             Assert.Equal("", Value.Left(-2));
         }
@@ -174,14 +174,14 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void NumberTimesOccurs()
         {
-            string Value = "The brown fox is awsome. But the blue fox is not";
+            const string Value = "The brown fox is awsome. But the blue fox is not";
             Assert.Equal(2, Value.NumberTimesOccurs("is"));
         }
 
         [Fact]
         public void NumericOnly()
         {
-            string Value = "The brown fox is awsome. But the blue fox is not. 2222";
+            const string Value = "The brown fox is awsome. But the blue fox is not. 2222";
             Assert.Equal("2222", Value.Keep(StringFilter.Numeric));
         }
 
@@ -200,14 +200,14 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void Reverse()
         {
-            string Value = " this is a test";
+            const string Value = " this is a test";
             Assert.Equal("tset a si siht ", Value.Reverse());
         }
 
         [Fact]
         public void RightTest()
         {
-            string Value = "ASDF";
+            const string Value = "ASDF";
             Assert.Equal("DF", Value.Right(2));
             Assert.Equal("", Value.Left(-2));
         }
@@ -215,7 +215,7 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void StringEncodingTest()
         {
-            string Value = "ASDF";
+            const string Value = "ASDF";
             Assert.Equal("ASDF", Value.Encode());
             Assert.Equal("ASDF", Value.Encode(new ASCIIEncoding(), new UTF32Encoding()).Encode(new UTF32Encoding(), new ASCIIEncoding()));
         }
@@ -244,21 +244,21 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void ToFirstCharacterUppercase()
         {
-            string Value = " this is a test";
+            const string Value = " this is a test";
             Assert.Equal(" This is a test", Value.ToString(StringCase.FirstCharacterUpperCase));
         }
 
         [Fact]
         public void ToSentenceCapitalize()
         {
-            string Value = " this is a test. of the sytem.";
+            const string Value = " this is a test. of the sytem.";
             Assert.Equal(" This is a test. Of the sytem.", Value.ToString(StringCase.SentenceCapitalize));
         }
 
         [Fact]
         public void ToTitleCase()
         {
-            string Value = " this is a test";
+            const string Value = " this is a test";
             Assert.Equal(" This is a Test", Value.ToString(StringCase.TitleCase));
         }
 

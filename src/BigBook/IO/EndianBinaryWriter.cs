@@ -51,11 +51,24 @@ namespace BigBook.IO
             stream = stream ?? new MemoryStream();
             encoding = encoding ?? Encoding.UTF8;
             if (!stream.CanWrite)
+            {
                 throw new ArgumentException("Stream is not writable", nameof(stream));
+            }
+
             BaseStream = stream;
             BitConverter = bitConverter;
             Encoding = encoding;
         }
+
+        /// <summary>
+        /// Buffer used for temporary storage during conversion from primitives
+        /// </summary>
+        private readonly byte[] buffer = new byte[16];
+
+        /// <summary>
+        /// Buffer used for Write(char)
+        /// </summary>
+        private readonly char[] charBuffer = new char[1];
 
         /// <summary>
         /// Gets the underlying stream of the EndianBinaryWriter.
@@ -74,16 +87,6 @@ namespace BigBook.IO
         /// </summary>
         /// <value>The encoding.</value>
         public Encoding Encoding { get; }
-
-        /// <summary>
-        /// Buffer used for temporary storage during conversion from primitives
-        /// </summary>
-        private readonly byte[] buffer = new byte[16];
-
-        /// <summary>
-        /// Buffer used for Write(char)
-        /// </summary>
-        private readonly char[] charBuffer = new char[1];
 
         /// <summary>
         /// Closes the writer, including the underlying stream.
@@ -112,7 +115,10 @@ namespace BigBook.IO
         public void Flush()
         {
             if (BaseStream == null)
+            {
                 throw new NullReferenceException("Base stream is null");
+            }
+
             BaseStream.Flush();
         }
 
@@ -124,7 +130,10 @@ namespace BigBook.IO
         public void Seek(int offset, SeekOrigin origin)
         {
             if (BaseStream == null)
+            {
                 throw new NullReferenceException("Base stream is null");
+            }
+
             BaseStream.Seek(offset, origin);
         }
 
@@ -276,7 +285,10 @@ namespace BigBook.IO
         public void Write(byte[] value, int offset, int count)
         {
             if (BaseStream == null)
+            {
                 throw new NullReferenceException("Base stream is null");
+            }
+
             value = value ?? new byte[0];
             BaseStream.Write(value, offset, count);
         }
@@ -299,7 +311,10 @@ namespace BigBook.IO
         {
             value = value ?? new char[0];
             if (BaseStream == null)
+            {
                 throw new NullReferenceException("Base stream is null");
+            }
+
             var data = Encoding.GetBytes(value, 0, value.Length);
             WriteInternal(data, data.Length);
         }
@@ -313,7 +328,10 @@ namespace BigBook.IO
         {
             value = value ?? "";
             if (BaseStream == null)
+            {
                 throw new NullReferenceException("Base stream is null");
+            }
+
             var data = Encoding.GetBytes(value);
             Write7BitEncodedInt(data.Length);
             WriteInternal(data, data.Length);
@@ -328,13 +346,16 @@ namespace BigBook.IO
         public void Write7BitEncodedInt(int value)
         {
             if (BaseStream == null)
+            {
                 throw new NullReferenceException("Base stream is null");
+            }
+
             value = value < 0 ? 0 : value;
             int index = 0;
             while (value >= 128)
             {
                 buffer[index++] = (byte)((value & 0x7f) | 0x80);
-                value = value >> 7;
+                value >>= 7;
                 index++;
             }
 
@@ -351,7 +372,10 @@ namespace BigBook.IO
         private void WriteInternal(byte[] bytes, int length)
         {
             if (BaseStream == null)
+            {
                 throw new NullReferenceException("Base stream is null");
+            }
+
             BaseStream.Write(bytes, 0, length);
         }
     }

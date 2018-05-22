@@ -93,7 +93,10 @@ namespace BigBook
         public static implicit operator string(DateSpan value)
         {
             if (value == null)
+            {
                 return "";
+            }
+
             return value.ToString();
         }
 
@@ -117,11 +120,20 @@ namespace BigBook
         public static DateSpan operator +(DateSpan span1, DateSpan span2)
         {
             if (span1 == null && span2 == null)
+            {
                 return null;
+            }
+
             if (span1 == null)
+            {
                 return new DateSpan(span2.Start, span2.End);
+            }
+
             if (span2 == null)
+            {
                 return new DateSpan(span1.Start, span1.End);
+            }
+
             DateTime Start = span1.Start < span2.Start ? span1.Start : span2.Start;
             DateTime End = span1.End > span2.End ? span1.End : span2.End;
             return new DateSpan(Start, End);
@@ -136,9 +148,15 @@ namespace BigBook
         public static bool operator ==(DateSpan span1, DateSpan span2)
         {
             if ((object)span1 == null && (object)span2 == null)
+            {
                 return true;
+            }
+
             if ((object)span1 == null || (object)span2 == null)
+            {
                 return false;
+            }
+
             return span1.Start == span2.Start && span1.End == span2.End;
         }
 
@@ -170,9 +188,15 @@ namespace BigBook
         public DateSpan Intersection(DateSpan span)
         {
             if (span == null)
+            {
                 return null;
+            }
+
             if (!Overlap(span))
+            {
                 return null;
+            }
+
             DateTime TempStart = span.Start > Start ? span.Start : Start;
             DateTime TempEnd = span.End < End ? span.End : End;
             return new DateSpan(TempStart, TempEnd);
@@ -186,8 +210,11 @@ namespace BigBook
         public bool Overlap(DateSpan span)
         {
             if (span == null)
+            {
                 return false;
-            return ((Start >= span.Start && Start < span.End) || (End <= span.End && End > span.Start) || (Start <= span.Start && End >= span.End));
+            }
+
+            return (Start >= span.Start && Start < span.End) || (End <= span.End && End > span.Start) || (Start <= span.Start && End >= span.End);
         }
 
         /// <summary>

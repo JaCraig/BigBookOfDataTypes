@@ -17,7 +17,6 @@ limitations under the License.
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Reflection;
 
 namespace BigBook.Comparison
 {
@@ -41,12 +40,20 @@ namespace BigBook.Comparison
                 && TypeInfo.GetGenericTypeDefinition().IsAssignableFrom(typeof(Nullable<>))))
             {
                 if (object.Equals(x, default(T)))
+                {
                     return object.Equals(y, default(T));
+                }
+
                 if (object.Equals(y, default(T)))
+                {
                     return false;
+                }
             }
             if (x.GetType() != y.GetType())
+            {
                 return false;
+            }
+
             var IEnumerabley = y as IEnumerable;
             if (x is IEnumerable IEnumerablex && IEnumerabley != null)
             {
@@ -58,17 +65,31 @@ namespace BigBook.Comparison
                     bool XFinished = !XEnumerator.MoveNext();
                     bool YFinished = !YEnumerator.MoveNext();
                     if (XFinished || YFinished)
+                    {
                         return XFinished & YFinished;
+                    }
+
                     if (!Comparer.Equals(XEnumerator.Current, YEnumerator.Current))
+                    {
                         return false;
+                    }
                 }
             }
             if (x is IEqualityComparer<T> TempEquality)
+            {
                 return TempEquality.Equals(y);
+            }
+
             if (x is IComparable<T> TempComparable)
+            {
                 return TempComparable.CompareTo(y) == 0;
+            }
+
             if (x is IComparable TempComparable2)
+            {
                 return TempComparable2.CompareTo(y) == 0;
+            }
+
             return x.Equals(y);
         }
 

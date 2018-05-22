@@ -9,7 +9,7 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void FactorialTest()
         {
-            int Value = 8;
+            const int Value = 8;
             Assert.Equal(40320, Value.Factorial());
         }
 
@@ -35,21 +35,21 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void PowTest()
         {
-            double Value = 4;
+            const double Value = 4;
             Assert.Equal(256, Value.Pow(4));
         }
 
         [Fact]
         public void Round()
         {
-            double Value = 4.1234;
+            const double Value = 4.1234;
             Assert.Equal(4.12, Value.Round());
         }
 
         [Fact]
         public void SqrtTest()
         {
-            double Value = 4;
+            const double Value = 4;
             Assert.Equal(2, Value.Sqrt());
         }
 

@@ -40,17 +40,17 @@ namespace BigBook
         /// <summary>
         /// Height of the matrix
         /// </summary>
-        public int Height { get; private set; }
+        public int Height { get; }
 
         /// <summary>
         /// Values for the matrix
         /// </summary>
-        public double[,] Values { get; private set; }
+        public double[,] Values { get; }
 
         /// <summary>
         /// Width of the matrix
         /// </summary>
-        public int Width { get; private set; }
+        public int Width { get; }
 
         /// <summary>
         /// Sets the values of the matrix
@@ -63,26 +63,46 @@ namespace BigBook
             get
             {
                 if (x < 0)
+                {
                     x = 0;
+                }
                 else if (x >= Width)
+                {
                     x = Width - 1;
+                }
+
                 if (y < 0)
+                {
                     y = 0;
+                }
                 else if (y >= Height)
+                {
                     y = Height - 1;
+                }
+
                 return Values[x, y];
             }
 
             set
             {
                 if (x < 0)
+                {
                     x = 0;
+                }
                 else if (x >= Width)
+                {
                     x = Width - 1;
+                }
+
                 if (y < 0)
+                {
                     y = 0;
+                }
                 else if (y >= Height)
+                {
                     y = Height - 1;
+                }
+
                 Values[x, y] = value;
             }
         }
@@ -98,11 +118,19 @@ namespace BigBook
             m1 = m1 ?? new Matrix(0, 0);
             m2 = m2 ?? new Matrix(0, 0);
             if (m1.Width != m2.Width || m1.Height != m2.Height)
+            {
                 throw new ArgumentException("Both matrices must be the same dimensions.");
+            }
+
             var TempMatrix = new Matrix(m1.Width, m1.Height);
             for (int x = 0; x < m1.Width; ++x)
+            {
                 for (int y = 0; y < m1.Height; ++y)
+                {
                     TempMatrix[x, y] = m1[x, y] - m2[x, y];
+                }
+            }
+
             return TempMatrix;
         }
 
@@ -116,8 +144,13 @@ namespace BigBook
             m1 = m1 ?? new Matrix(0, 0);
             var TempMatrix = new Matrix(m1.Width, m1.Height);
             for (int x = 0; x < m1.Width; ++x)
+            {
                 for (int y = 0; y < m1.Height; ++y)
+                {
                     TempMatrix[x, y] = -m1[x, y];
+                }
+            }
+
             return TempMatrix;
         }
 
@@ -143,7 +176,10 @@ namespace BigBook
             m1 = m1 ?? new Matrix(0, 0);
             m2 = m2 ?? new Matrix(0, 0);
             if (m1.Width != m2.Width || m1.Height != m2.Height)
+            {
                 throw new ArgumentException("Both matrices must be the same dimensions.");
+            }
+
             var TempMatrix = new Matrix(m2.Width, m1.Height);
             for (int x = 0; x < m2.Width; ++x)
             {
@@ -151,8 +187,12 @@ namespace BigBook
                 {
                     TempMatrix[x, y] = 0.0;
                     for (int i = 0; i < m1.Width; ++i)
+                    {
                         for (int j = 0; j < m2.Height; ++j)
+                        {
                             TempMatrix[x, y] += (m1[i, y] * m2[x, j]);
+                        }
+                    }
                 }
             }
             return TempMatrix;
@@ -169,8 +209,13 @@ namespace BigBook
             m1 = m1 ?? new Matrix(0, 0);
             var TempMatrix = new Matrix(m1.Width, m1.Height);
             for (int x = 0; x < m1.Width; ++x)
+            {
                 for (int y = 0; y < m1.Height; ++y)
+                {
                     TempMatrix[x, y] = m1[x, y] * d;
+                }
+            }
+
             return TempMatrix;
         }
 
@@ -185,8 +230,13 @@ namespace BigBook
             m1 = m1 ?? new Matrix(0, 0);
             var TempMatrix = new Matrix(m1.Width, m1.Height);
             for (int x = 0; x < m1.Width; ++x)
+            {
                 for (int y = 0; y < m1.Height; ++y)
+                {
                     TempMatrix[x, y] = m1[x, y] * d;
+                }
+            }
+
             return TempMatrix;
         }
 
@@ -225,11 +275,19 @@ namespace BigBook
             m1 = m1 ?? new Matrix(0, 0);
             m2 = m2 ?? new Matrix(0, 0);
             if (m1.Width != m2.Width || m1.Height != m2.Height)
+            {
                 throw new ArgumentException("Both matrices must be the same dimensions.");
+            }
+
             var TempMatrix = new Matrix(m1.Width, m1.Height);
             for (int x = 0; x < m1.Width; ++x)
+            {
                 for (int y = 0; y < m1.Height; ++y)
+                {
                     TempMatrix[x, y] = m1[x, y] + m2[x, y];
+                }
+            }
+
             return TempMatrix;
         }
 
@@ -242,17 +300,36 @@ namespace BigBook
         public static bool operator ==(Matrix m1, Matrix m2)
         {
             if ((object)m1 == null && (object)m2 == null)
+            {
                 return true;
+            }
+
             if ((object)m1 == null)
+            {
                 return false;
+            }
+
             if ((object)m2 == null)
+            {
                 return false;
+            }
+
             if (m1.Width != m2.Width || m1.Height != m2.Height)
+            {
                 return false;
+            }
+
             for (int x = 0; x <= m1.Width; ++x)
+            {
                 for (int y = 0; y <= m1.Height; ++y)
+                {
                     if (m1[x, y] != m2[x, y])
+                    {
                         return false;
+                    }
+                }
+            }
+
             return true;
         }
 
@@ -263,9 +340,15 @@ namespace BigBook
         public double Determinant()
         {
             if (Width != Height)
+            {
                 throw new InvalidOperationException("The determinant can not be calculated for a non square matrix");
+            }
+
             if (Width == 2)
+            {
                 return (this[0, 0] * this[1, 1]) - (this[0, 1] * this[1, 0]);
+            }
+
             double Answer = 0.0;
             for (int x = 0; x < Width; ++x)
             {
@@ -276,7 +359,10 @@ namespace BigBook
                     if (y != x)
                     {
                         for (int z = 1; z < Height; ++z)
+                        {
                             TempMatrix[WidthCounter, z - 1] = this[y, z];
+                        }
+
                         ++WidthCounter;
                     }
                 }
@@ -311,8 +397,13 @@ namespace BigBook
         {
             double Hash = 0;
             for (int x = 0; x < Width; ++x)
+            {
                 for (int y = 0; y < Height; ++y)
+                {
                     Hash += this[x, y];
+                }
+            }
+
             return (int)Hash;
         }
 
@@ -348,8 +439,13 @@ namespace BigBook
         {
             var TempValues = new Matrix(Height, Width);
             for (int x = 0; x < Width; ++x)
+            {
                 for (int y = 0; y < Height; ++y)
+                {
                     TempValues[y, x] = Values[x, y];
+                }
+            }
+
             return TempValues;
         }
     }

@@ -31,19 +31,22 @@ namespace BigBook.Caching
         /// <summary>
         /// Constructor
         /// </summary>
+        /// <param name="caches">The caches.</param>
         public Manager(IEnumerable<ICache> caches)
         {
             caches = caches ?? new List<ICache>();
             Caches = caches.Where(x => !x.GetType().Namespace.StartsWith("BIGBOOK", StringComparison.OrdinalIgnoreCase))
                                 .ToDictionary(x => x.Name);
             if (!Caches.ContainsKey("Default"))
+            {
                 Caches.Add("Default", new Cache());
+            }
         }
 
         /// <summary>
         /// Caches
         /// </summary>
-        protected IDictionary<string, ICache> Caches { get; private set; }
+        protected IDictionary<string, ICache> Caches { get; }
 
         /// <summary>
         /// Gets the specified cache
@@ -56,7 +59,10 @@ namespace BigBook.Caching
         public ICache Cache(string name = "Default")
         {
             if (!Caches.ContainsKey(name))
+            {
                 Caches.Add(name, new Cache());
+            }
+
             return Caches[name];
         }
 

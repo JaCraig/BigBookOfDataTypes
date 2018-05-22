@@ -9,7 +9,7 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void Cache()
         {
-            int A = 1;
+            const int A = 1;
             A.Cache("A");
             Assert.Equal(A, "A".GetFromCache<int>());
         }

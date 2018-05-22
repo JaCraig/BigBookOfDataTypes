@@ -37,7 +37,10 @@ namespace BigBook.Caching.Module
         public void Load(IBootstrapper bootstrapper)
         {
             if (bootstrapper == null)
+            {
                 return;
+            }
+
             bootstrapper.RegisterAll<ICache>();
             bootstrapper.Register<Manager>(ServiceLifetime.Singleton);
         }

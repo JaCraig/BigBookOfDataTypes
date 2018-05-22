@@ -16,7 +16,6 @@ limitations under the License.
 
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 
 namespace BigBook.Comparison
 {
@@ -40,14 +39,25 @@ namespace BigBook.Comparison
                 && TypeInfo.GetGenericTypeDefinition().IsAssignableFrom(typeof(Nullable<>))))
             {
                 if (Equals(x, default(T)))
+                {
                     return Equals(y, default(T)) ? 0 : -1;
+                }
+
                 if (Equals(y, default(T)))
+                {
                     return -1;
+                }
             }
             if (x.GetType() != y.GetType())
+            {
                 return -1;
+            }
+
             if (x is IComparable<T> TempComparable)
+            {
                 return TempComparable.CompareTo(y);
+            }
+
             return x.CompareTo(y);
         }
     }

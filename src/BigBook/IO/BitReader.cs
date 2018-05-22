@@ -86,15 +86,23 @@ namespace BigBook.IO
             {
                 var TempByte = InternalStream.ReadByte();
                 if (TempByte == -1)
+                {
                     return null;
+                }
+
                 CurrentBit = 0;
                 CurrentByte = (byte)TempByte;
             }
             bool TempValue;
             if (bigEndian)
+            {
                 TempValue = (CurrentByte & (1 << CurrentBit)) > 0;
+            }
             else
+            {
                 TempValue = (CurrentByte & (1 << (7 - CurrentBit))) > 0;
+            }
+
             ++CurrentBit;
             return TempValue;
         }
@@ -109,7 +117,10 @@ namespace BigBook.IO
             {
                 var TempByte = InternalStream.ReadByte();
                 if (TempByte == -1)
+                {
                     return;
+                }
+
                 CurrentBit = 0;
                 CurrentByte = (byte)TempByte;
             }
@@ -120,7 +131,10 @@ namespace BigBook.IO
                 {
                     var TempByte = InternalStream.ReadByte();
                     if (TempByte == -1)
+                    {
                         return;
+                    }
+
                     CurrentBit = 0;
                     CurrentByte = (byte)TempByte;
                 }

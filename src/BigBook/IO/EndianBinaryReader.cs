@@ -51,7 +51,10 @@ namespace BigBook.IO
             stream = stream ?? new MemoryStream();
             encoding = encoding ?? Encoding.UTF8;
             if (!stream.CanRead)
+            {
                 throw new ArgumentException("Stream is not readable", nameof(stream));
+            }
+
             BaseStream = stream;
             BitConverter = bitConverter;
             Encoding = encoding;
@@ -63,21 +66,6 @@ namespace BigBook.IO
                 minBytesPerChar = 2;
             }
         }
-
-        /// <summary>
-        /// Gets the underlying stream of the EndianBinaryReader.
-        /// </summary>
-        public Stream BaseStream { get; private set; }
-
-        /// <summary>
-        /// Gets the bit converter used to read values from the stream.
-        /// </summary>
-        public EndianBitConverterBase BitConverter { get; }
-
-        /// <summary>
-        /// Gets the encoding used to read strings
-        /// </summary>
-        public Encoding Encoding { get; }
 
         /// <summary>
         /// Buffer used for temporary storage before conversion into primitives
@@ -98,6 +86,21 @@ namespace BigBook.IO
         /// Minimum number of bytes used to encode a character
         /// </summary>
         private readonly int minBytesPerChar;
+
+        /// <summary>
+        /// Gets the underlying stream of the EndianBinaryReader.
+        /// </summary>
+        public Stream BaseStream { get; private set; }
+
+        /// <summary>
+        /// Gets the bit converter used to read values from the stream.
+        /// </summary>
+        public EndianBitConverterBase BitConverter { get; }
+
+        /// <summary>
+        /// Gets the encoding used to read strings
+        /// </summary>
+        public Encoding Encoding { get; }
 
         /// <summary>
         /// Closes the reader, including the underlying stream.
@@ -140,11 +143,17 @@ namespace BigBook.IO
         public int Read(char[] data, int index, int count)
         {
             if (BaseStream == null)
+            {
                 throw new NullReferenceException("Base stream is currently null.");
+            }
+
             count = count > data.Length ? data.Length : count;
             data = data ?? new char[0];
             if (index > data.Length - count)
+            {
                 index = data.Length - count;
+            }
+
             index = index < 0 ? 0 : index;
             count = count < 0 ? 0 : count;
 
@@ -200,11 +209,17 @@ namespace BigBook.IO
         public int Read(byte[] buffer, int index, int count)
         {
             if (BaseStream == null)
+            {
                 throw new NullReferenceException("Base stream is currently null.");
+            }
+
             count = count > buffer.Length ? buffer.Length : count;
             buffer = buffer ?? new byte[0];
             if (index > buffer.Length - count)
+            {
                 index = buffer.Length - count;
+            }
+
             index = index < 0 ? 0 : index;
             count = count < 0 ? 0 : count;
 
@@ -235,7 +250,9 @@ namespace BigBook.IO
         public int Read7BitEncodedInt()
         {
             if (BaseStream == null)
+            {
                 throw new NullReferenceException("Base stream is currently null.");
+            }
 
             int ret = 0;
             for (int shift = 0; shift < 35; shift += 7)
@@ -246,7 +263,7 @@ namespace BigBook.IO
                     throw new EndOfStreamException();
                 }
 
-                ret = ret | ((b & 0x7f) << shift);
+                ret |= ((b & 0x7f) << shift);
                 if ((b & 0x80) == 0)
                 {
                     return ret;
@@ -265,7 +282,9 @@ namespace BigBook.IO
         public int ReadBigEndian7BitEncodedInt()
         {
             if (BaseStream == null)
+            {
                 throw new NullReferenceException("Base stream is currently null.");
+            }
 
             int ret = 0;
             for (int i = 0; i < 5; i++)
@@ -314,7 +333,10 @@ namespace BigBook.IO
         public byte[] ReadBytes(int count)
         {
             if (BaseStream == null)
+            {
                 throw new NullReferenceException("Base stream is currently null.");
+            }
+
             count = count < 0 ? 0 : count;
             byte[] ret = new byte[count];
             int index = 0;
@@ -479,7 +501,10 @@ namespace BigBook.IO
         public void Seek(int offset, SeekOrigin origin)
         {
             if (BaseStream == null)
+            {
                 throw new NullReferenceException("Base stream is currently null.");
+            }
+
             BaseStream.Seek(offset, origin);
         }
 
@@ -492,7 +517,10 @@ namespace BigBook.IO
         private void ReadInternal(byte[] data, int size)
         {
             if (BaseStream == null)
+            {
                 throw new NullReferenceException("Base stream is currently null.");
+            }
+
             int index = 0;
             while (index < size)
             {
@@ -522,7 +550,10 @@ namespace BigBook.IO
         private int TryReadInternal(byte[] data, int size)
         {
             if (BaseStream == null)
+            {
                 throw new NullReferenceException("Base stream is currently null.");
+            }
+
             int index = 0;
             while (index < size)
             {

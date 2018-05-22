@@ -39,7 +39,7 @@ namespace BigBook
         /// <summary>
         /// Number of items in the dictionary
         /// </summary>
-        public int Count => Items.Count();
+        public int Count => Items.Count;
 
         /// <summary>
         /// Always false
@@ -64,7 +64,7 @@ namespace BigBook
         /// <summary>
         /// List of keys that have been entered
         /// </summary>
-        private List<Key> KeyList { get; set; }
+        private List<Key> KeyList { get; }
 
         /// <summary>
         /// Gets the values based on a key

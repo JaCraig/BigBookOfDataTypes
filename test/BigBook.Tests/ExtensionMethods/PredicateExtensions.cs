@@ -1,5 +1,4 @@
-﻿using BigBook;
-using System;
+﻿using System;
 using Xunit;
 
 namespace BigBook.Tests.ExtensionMethods
@@ -26,9 +25,9 @@ namespace BigBook.Tests.ExtensionMethods
         {
             Predicate<int> Even = x => x % 2 == 0;
             Predicate<int> Multiple3 = x => x % 3 == 0;
-            var CartesianProduct = Even.CartesianProduct(Multiple3);
-            Assert.True(CartesianProduct(6, 12));
-            Assert.False(CartesianProduct(3, 9));
+            var CartesianProductResult = Even.CartesianProduct(Multiple3);
+            Assert.True(CartesianProductResult(6, 12));
+            Assert.False(CartesianProductResult(3, 9));
         }
 
         [Fact]

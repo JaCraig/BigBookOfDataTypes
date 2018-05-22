@@ -135,7 +135,7 @@ namespace BigBook.Tests.ExtensionMethods
             Assert.Equal(3, Result.Count);
             Assert.Contains(Result, x => x.A == "A" && x.B == "D");
             Assert.Contains(Result, x => x.A == "B" && x.B == "E");
-            Assert.Contains(Result, x => x.A == "C" && x.B == "");
+            Assert.Contains(Result, x => x.A == "C" && x.B?.Length == 0);
         }
 
         [Fact]
@@ -155,8 +155,8 @@ namespace BigBook.Tests.ExtensionMethods
             Assert.Equal(4, Result.Count);
             Assert.Contains(Result, x => x.A == "A" && x.B == "D");
             Assert.Contains(Result, x => x.A == "B" && x.B == "E");
-            Assert.Contains(Result, x => x.A == "C" && x.B == "");
-            Assert.Contains(Result, x => x.A == "" && x.B == "F");
+            Assert.Contains(Result, x => x.A == "C" && x.B?.Length == 0);
+            Assert.Contains(Result, x => x.A?.Length == 0 && x.B == "F");
         }
 
         [Fact]
@@ -183,7 +183,7 @@ namespace BigBook.Tests.ExtensionMethods
             Assert.Equal(3, Result.Count);
             Assert.Contains(Result, x => x.A == "A" && x.B == "D");
             Assert.Contains(Result, x => x.A == "B" && x.B == "E");
-            Assert.Contains(Result, x => x.A == "C" && x.B == "");
+            Assert.Contains(Result, x => x.A == "C" && x.B?.Length == 0);
         }
 
         [Fact]
@@ -293,7 +293,10 @@ namespace BigBook.Tests.ExtensionMethods
         public override bool Equals(object obj)
         {
             if (!(obj is PreDataTable))
+            {
                 return false;
+            }
+
             return GetHashCode() == obj.GetHashCode();
         }
 

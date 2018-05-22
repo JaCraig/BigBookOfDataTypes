@@ -82,7 +82,10 @@ namespace BigBook.Formatters
         public string Format(string input, string formatPattern)
         {
             if (!IsValid(formatPattern))
+            {
                 throw new ArgumentException("FormatPattern is not valid");
+            }
+
             var ReturnValue = new StringBuilder();
             for (int x = 0; x < formatPattern.Length; ++x)
             {
@@ -96,7 +99,9 @@ namespace BigBook.Formatters
                     char NextValue = char.MinValue;
                     input = GetMatchingInput(input, formatPattern[x], out NextValue);
                     if (NextValue != char.MinValue)
+                    {
                         ReturnValue.Append(NextValue);
+                    }
                 }
             }
             return ReturnValue.ToString();
@@ -150,17 +155,28 @@ namespace BigBook.Formatters
         protected bool IsValid(string formatPattern)
         {
             if (string.IsNullOrEmpty(formatPattern))
+            {
                 return false;
+            }
+
             bool EscapeCharFound = false;
             for (int x = 0; x < formatPattern.Length; ++x)
             {
                 if (EscapeCharFound && formatPattern[x] != DigitChar
                         && formatPattern[x] != AlphaChar
                         && formatPattern[x] != EscapeChar)
+                {
                     return false;
+                }
+
                 if (EscapeCharFound)
+                {
                     EscapeCharFound = false;
-                else EscapeCharFound |= formatPattern[x] == EscapeChar;
+                }
+                else
+                {
+                    EscapeCharFound |= formatPattern[x] == EscapeChar;
+                }
             }
             return !EscapeCharFound;
         }

@@ -46,6 +46,7 @@ namespace BigBook
         /// <summary>
         /// Clamps a value between two values
         /// </summary>
+        /// <typeparam name="T"></typeparam>
         /// <param name="value">Value sent in</param>
         /// <param name="max">Max value it can be (inclusive)</param>
         /// <param name="min">Min value it can be (inclusive)</param>
@@ -56,15 +57,22 @@ namespace BigBook
         {
             comparer = comparer ?? new GenericComparer<T>();
             if (comparer.Compare(max, value) < 0)
+            {
                 return max;
+            }
+
             if (comparer.Compare(value, min) < 0)
+            {
                 return min;
+            }
+
             return value;
         }
 
         /// <summary>
         /// Returns the maximum value between the two
         /// </summary>
+        /// <typeparam name="T"></typeparam>
         /// <param name="inputA">Input A</param>
         /// <param name="inputB">Input B</param>
         /// <param name="comparer">Comparer to use (defaults to GenericComparer)</param>
@@ -79,6 +87,7 @@ namespace BigBook
         /// <summary>
         /// Returns the minimum value between the two
         /// </summary>
+        /// <typeparam name="T"></typeparam>
         /// <param name="inputA">Input A</param>
         /// <param name="inputB">Input B</param>
         /// <param name="comparer">Comparer to use (defaults to GenericComparer)</param>

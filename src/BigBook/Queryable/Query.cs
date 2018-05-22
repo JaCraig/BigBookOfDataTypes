@@ -20,7 +20,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Reflection;
 
 namespace BigBook.Queryable
 {
@@ -50,9 +49,15 @@ namespace BigBook.Queryable
         /// <exception cref="System.ArgumentOutOfRangeException">expression</exception>
         public Query(QueryProviderBase provider, Expression expression)
         {
-            if (expression == null) throw new ArgumentNullException(nameof(expression));
+            if (expression == null)
+            {
+                throw new ArgumentNullException(nameof(expression));
+            }
 
-            if (!typeof(IQueryable<T>).IsAssignableFrom(expression.Type)) throw new ArgumentOutOfRangeException(nameof(expression));
+            if (!typeof(IQueryable<T>).IsAssignableFrom(expression.Type))
+            {
+                throw new ArgumentOutOfRangeException(nameof(expression));
+            }
 
             InternalProvider = provider ?? throw new ArgumentNullException(nameof(provider));
             Expression = expression;
@@ -72,7 +77,7 @@ namespace BigBook.Queryable
         /// <summary>
         /// Gets the expression tree that is associated with the instance of <see cref="T:System.Linq.IQueryable"/>.
         /// </summary>
-        public Expression Expression { get; private set; }
+        public Expression Expression { get; }
 
         /// <summary>
         /// Gets the query provider that is associated with this data source.

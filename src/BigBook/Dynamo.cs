@@ -46,12 +46,12 @@ namespace BigBook
         /// <summary>
         /// New value
         /// </summary>
-        public object NewValue { get; private set; }
+        public object NewValue { get; }
 
         /// <summary>
         /// Original value
         /// </summary>
-        public object OriginalValue { get; private set; }
+        public object OriginalValue { get; }
     }
 
     /// <summary>
@@ -132,7 +132,10 @@ namespace BigBook
         protected override object GetValue(string name, Type returnType)
         {
             if (ContainsKey(name))
+            {
                 return InternalValues[name].To(returnType, null);
+            }
+
             if (!ChildValues.ContainsKey(name))
             {
                 Type ObjectType = GetType();
@@ -143,7 +146,9 @@ namespace BigBook
                     ChildValues.AddOrUpdate(name, x => () => Temp((T)this), (x, y) => () => Temp((T)this));
                 }
                 else
+                {
                     ChildValues.AddOrUpdate(name, x => () => null, (x, y) => null);
+                }
             }
             return ChildValues[name]().To(returnType, null);
         }
@@ -157,13 +162,15 @@ namespace BigBook
         {
             Type ObjectType = GetType();
             PropertyInfo Property = ObjectType.GetProperty(key);
-            if (Property != null && Property.CanWrite)
+            if (Property?.CanWrite == true)
             {
                 RaisePropertyChanged(key, value);
                 Property.SetValue(this, value);
             }
             else if (Property == null)
+            {
                 base.SetValue(key, value);
+            }
         }
     }
 
@@ -191,18 +198,29 @@ namespace BigBook
             ChangeLog = new ConcurrentDictionary<string, Change>(StringComparer.OrdinalIgnoreCase);
             var DictItem = item as IDictionary<string, object>;
             if (item == null)
+            {
                 return;
+            }
+
             Type ItemType = item.GetType();
             if (item is string || ItemType.IsValueType)
+            {
                 SetValue("Value", item);
+            }
             else if (DictItem != null)
+            {
                 InternalValues = new ConcurrentDictionary<string, object>(DictItem, StringComparer.OrdinalIgnoreCase);
+            }
             else if (item is IEnumerable)
+            {
                 SetValue("Items", item);
+            }
             else
+            {
                 DataMapper.Map(ItemType, GetType())
                           .AutoMap()
                           .Copy(item, this);
+            }
         }
 
         /// <summary>
@@ -234,7 +252,7 @@ namespace BigBook
         /// <summary>
         /// Change log
         /// </summary>
-        public ConcurrentDictionary<string, Change> ChangeLog { get; private set; }
+        public ConcurrentDictionary<string, Change> ChangeLog { get; }
 
         /// <summary>
         /// Number of items
@@ -400,10 +418,15 @@ namespace BigBook
         public void Copy(object item)
         {
             if (item == null)
+            {
                 return;
+            }
+
             var DictItem = item as IDictionary<string, object>;
             if (item is string || item.GetType().IsValueType)
+            {
                 SetValue("Value", item);
+            }
             else if (DictItem != null)
             {
                 foreach (string Key in DictItem.Keys)
@@ -412,11 +435,15 @@ namespace BigBook
                 }
             }
             else if (item is IEnumerable)
+            {
                 SetValue("Items", item);
+            }
             else
+            {
                 DataMapper.Map(item.GetType(), GetType())
                           .AutoMap()
                           .Copy(item, this);
+            }
         }
 
         /// <summary>
@@ -436,7 +463,10 @@ namespace BigBook
         public void CopyTo(object result)
         {
             if (result == null)
+            {
                 return;
+            }
+
             DataMapper.Map(GetType(), result.GetType())
                       .AutoMap()
                       .Copy(this, result);
@@ -449,9 +479,11 @@ namespace BigBook
         /// <returns>True if they're equal, false otherwise</returns>
         public override bool Equals(object obj)
         {
-            var TempObj = obj as Dynamo;
-            if (TempObj == null)
+            if (!(obj is Dynamo TempObj))
+            {
                 return false;
+            }
+
             return TempObj.GetHashCode() == GetHashCode();
         }
 
@@ -497,7 +529,7 @@ namespace BigBook
                 unchecked
                 {
                     object TempValue = GetValue(Key, typeof(object));
-                    if (TempValue != null && !TempValue.GetType().Is<Delegate>())
+                    if (TempValue?.GetType().Is<Delegate>() == false)
                     {
                         Value = (Value * TempValue.GetHashCode()) % int.MaxValue;
                     }
@@ -558,7 +590,10 @@ namespace BigBook
         public dynamic SubSet(params string[] keys)
         {
             if (keys == null)
+            {
                 return new Dynamo();
+            }
+
             var ReturnValue = new Dynamo();
             ReturnValue.Clear();
             foreach (string Key in keys)
@@ -604,9 +639,13 @@ namespace BigBook
             {
                 object Item = GetValue(Key, typeof(object));
                 if (Item != null)
+                {
                     Builder.AppendLineFormat("\t{0} {1} = {2}", Item.GetType().GetName(), Key, Item.ToString());
+                }
                 else
+                {
                     Builder.AppendLineFormat("\t{0} {1} = {2}", "object", Key, "null");
+                }
             }
             return Builder.ToString();
         }
@@ -704,11 +743,16 @@ namespace BigBook
         {
             object Value = RaiseGetValueStart(name);
             if (Value != null)
+            {
                 return Value;
+            }
+
             if (ContainsKey(name))
             {
                 if (InternalValues.TryGetValue(name, out Value))
+                {
                     return Value.To(returnType, null);
+                }
             }
             if (!ChildValues.ContainsKey(name))
             {
@@ -720,7 +764,9 @@ namespace BigBook
                     ChildValues.AddOrUpdate(name, x => () => Temp(this), (x, y) => () => Temp(this));
                 }
                 else
+                {
                     ChildValues.AddOrUpdate(name, x => () => null, (x, y) => null);
+                }
             }
             object ReturnValue = ChildValues[name]().To(returnType, null);
             Value = RaiseGetValueEnd(name, ReturnValue);
@@ -768,9 +814,13 @@ namespace BigBook
             if (ChangeLog != null)
             {
                 if (ChangeLog.ContainsKey(propertyName))
+                {
                     ChangeLog.SetValue(propertyName, new Change(this[propertyName], newValue));
+                }
                 else
+                {
                     ChangeLog.SetValue(propertyName, new Change(newValue, newValue));
+                }
             }
             propertyChanged_?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
@@ -784,9 +834,13 @@ namespace BigBook
         {
             RaisePropertyChanged(key, value);
             if (InternalValues.ContainsKey(key))
+            {
                 InternalValues[key] = value;
+            }
             else
+            {
                 InternalValues.AddOrUpdate(key, value, (x, y) => value);
+            }
         }
     }
 }

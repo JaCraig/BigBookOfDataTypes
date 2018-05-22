@@ -65,7 +65,10 @@ namespace BigBook
         public static int Absolute(this int value)
         {
             if (value == int.MinValue)
+            {
                 throw new ArgumentOutOfRangeException(nameof(value), "value can not be int.MinValue");
+            }
+
             return Math.Abs(value);
         }
 
@@ -77,7 +80,10 @@ namespace BigBook
         public static long Absolute(this long value)
         {
             if (value == -9223372036854775808)
+            {
                 throw new ArgumentOutOfRangeException(nameof(value), "value can not be -9223372036854775808");
+            }
+
             return Math.Abs(value);
         }
 
@@ -89,7 +95,10 @@ namespace BigBook
         public static short Absolute(this short value)
         {
             if (value == -32768)
+            {
                 throw new ArgumentOutOfRangeException(nameof(value), "value can not be -32768");
+            }
+
             return Math.Abs(value);
         }
 
@@ -112,7 +121,10 @@ namespace BigBook
         {
             int Value1 = 1;
             for (int x = 2; x <= input; ++x)
-                Value1 = Value1 * x;
+            {
+                Value1 *= x;
+            }
+
             return Value1;
         }
 
@@ -125,17 +137,27 @@ namespace BigBook
         public static int GreatestCommonDenominator(this int value1, int value2)
         {
             if (value1 == int.MinValue)
+            {
                 throw new ArgumentOutOfRangeException(nameof(value1), "value1 can not be int.MinValue");
+            }
+
             if (value2 == int.MinValue)
+            {
                 throw new ArgumentOutOfRangeException(nameof(value2), "value2 can not be int.MinValue");
+            }
+
             value1 = value1.Absolute();
             value2 = value2.Absolute();
             while (value1 != 0 && value2 != 0)
             {
                 if (value1 > value2)
+                {
                     value1 %= value2;
+                }
                 else
+                {
                     value2 %= value1;
+                }
             }
             return value1 == 0 ? value2 : value1;
         }
@@ -149,9 +171,15 @@ namespace BigBook
         public static int GreatestCommonDenominator(this int value1, uint value2)
         {
             if (value1 == int.MinValue)
+            {
                 throw new ArgumentOutOfRangeException(nameof(value1), "value1 can not be int.MinValue");
+            }
+
             if (value2 == 2147483648)
+            {
                 throw new ArgumentOutOfRangeException(nameof(value2), "value2 can not be 2147483648");
+            }
+
             return value1.GreatestCommonDenominator((int)value2);
         }
 
@@ -164,9 +192,15 @@ namespace BigBook
         public static int GreatestCommonDenominator(this uint value1, uint value2)
         {
             if (value1 == 2147483648)
+            {
                 throw new ArgumentOutOfRangeException(nameof(value1), "value1 can not be 2147483648");
+            }
+
             if (value2 == 2147483648)
+            {
                 throw new ArgumentOutOfRangeException(nameof(value2), "value2 can not be 2147483648");
+            }
+
             return ((int)value1).GreatestCommonDenominator((int)value2);
         }
 
@@ -214,19 +248,25 @@ namespace BigBook
         public static T Median<T>(this IEnumerable<T> values, Func<T, T, T> average = null, Func<T, T> orderBy = null)
         {
             if (values == null)
+            {
                 return default(T);
+            }
+
             if (!values.Any())
+            {
                 return default(T);
+            }
+
             average = average ?? ((x, y) => x);
             orderBy = orderBy ?? (x => x);
             values = values.OrderBy(orderBy);
             if (values.Count() % 2 == 0)
             {
-                var Element1 = values.ElementAt((values.Count() / 2));
+                var Element1 = values.ElementAt(values.Count() / 2);
                 var Element2 = values.ElementAt((values.Count() / 2) - 1);
                 return average(Element1, Element2);
             }
-            return values.ElementAt((values.Count() / 2));
+            return values.ElementAt(values.Count() / 2);
         }
 
         /// <summary>
@@ -238,12 +278,21 @@ namespace BigBook
         public static T Mode<T>(this IEnumerable<T> values)
         {
             if (values == null)
+            {
                 return default(T);
+            }
+
             if (!values.Any())
+            {
                 return default(T);
+            }
+
             var Items = new Bag<T>();
             foreach (T Value in values)
+            {
                 Items.Add(Value);
+            }
+
             int MaxValue = 0;
             T MaxIndex = default(T);
             foreach (T Key in Items)
@@ -289,9 +338,15 @@ namespace BigBook
         public static double Round(this double value, int digits = 2, MidpointRounding rounding = MidpointRounding.AwayFromZero)
         {
             if (digits < 0)
+            {
                 digits = 0;
+            }
+
             if (digits > 15)
+            {
                 digits = 15;
+            }
+
             return Math.Round(value, digits, rounding);
         }
 
@@ -515,7 +570,10 @@ namespace BigBook
         public static double Variance<T>(this IEnumerable<T> values, Func<T, double> selector)
         {
             if (selector == null)
+            {
                 throw new ArgumentNullException(nameof(selector));
+            }
+
             return values.Variance(x => (decimal)selector(x));
         }
 
@@ -564,8 +622,11 @@ namespace BigBook
         /// <returns>The variance</returns>
         public static double Variance<T>(this IEnumerable<T> values, Func<T, decimal> selector)
         {
-            if (values == null || !values.Any())
+            if (values?.Any() != true)
+            {
                 return 0;
+            }
+
             var MeanValue = values.Average(selector);
             var Sum = values.Sum(x => (selector(x) - MeanValue).Pow(2));
             return Sum / values.Count();

@@ -15,11 +15,14 @@ namespace BigBook.Tests.BaseClasses
         public TestingDirectoryFixture()
         {
             if (Canister.Builder.Bootstrapper == null)
+            {
                 Canister.Builder.CreateContainer(new List<ServiceDescriptor>())
                     .AddAssembly(typeof(TestingDirectoryFixture).GetTypeInfo().Assembly)
                     .RegisterBigBookOfDataTypes()
                     .RegisterFileCurator()
                     .Build();
+            }
+
             new DirectoryInfo(@".\Testing").Create();
             new DirectoryInfo(@".\App_Data").Create();
             new DirectoryInfo(@".\Logs").Create();

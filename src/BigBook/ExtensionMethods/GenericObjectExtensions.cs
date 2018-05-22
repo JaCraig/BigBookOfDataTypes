@@ -25,7 +25,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
-using System.Reflection;
 using System.Threading;
 
 namespace BigBook
@@ -53,7 +52,10 @@ namespace BigBook
         public static T Check<T>(this T inputObject, Predicate<T> predicate, T defaultValue = default(T))
         {
             if (predicate == null)
+            {
                 return inputObject;
+            }
+
             return predicate(inputObject) ? inputObject : defaultValue;
         }
 
@@ -69,7 +71,10 @@ namespace BigBook
         public static T Check<T>(this T inputObject, Predicate<T> predicate, Func<T> defaultValue)
         {
             if (predicate == null || defaultValue == null)
+            {
                 return inputObject;
+            }
+
             return predicate(inputObject) ? inputObject : defaultValue();
         }
 
@@ -97,7 +102,10 @@ namespace BigBook
         public static T Check<T>(this T inputObject, Func<T> defaultValue)
         {
             if (defaultValue == null)
+            {
                 return inputObject;
+            }
+
             return inputObject.Check(x => !Equals(x, default(T)), defaultValue);
         }
 
@@ -116,7 +124,10 @@ namespace BigBook
         public static T Execute<T>(this Func<T> function, int attempts = 3, int retryDelay = 0, int timeOut = int.MaxValue)
         {
             if (function == null)
+            {
                 return default(T);
+            }
+
             Exception Holder = null;
             long Start = Environment.TickCount;
             while (attempts > 0)
@@ -127,12 +138,18 @@ namespace BigBook
                 }
                 catch (Exception e) { Holder = e; }
                 if (Environment.TickCount - Start > timeOut)
+                {
                     break;
+                }
+
                 Thread.Sleep(retryDelay);
                 --attempts;
             }
             if (Holder != null)
+            {
                 throw Holder;
+            }
+
             return default(T);
         }
 
@@ -150,7 +167,10 @@ namespace BigBook
         public static bool Execute(this Action action, int attempts = 3, int retryDelay = 0, int timeOut = int.MaxValue)
         {
             if (action == null)
+            {
                 return false;
+            }
+
             Exception Holder = null;
             long Start = Environment.TickCount;
             while (attempts > 0)
@@ -162,12 +182,18 @@ namespace BigBook
                 }
                 catch (Exception e) { Holder = e; }
                 if (Environment.TickCount - Start > timeOut)
+                {
                     break;
+                }
+
                 Thread.Sleep(retryDelay);
                 --attempts;
             }
             if (Holder != null)
+            {
                 throw Holder;
+            }
+
             return false;
         }
 
@@ -180,7 +206,10 @@ namespace BigBook
         public static string FormatToString(this object input, string format)
         {
             if (input == null)
+            {
                 return "";
+            }
+
             return !string.IsNullOrEmpty(format) ? input.Call<string>("ToString", format) : input.ToString();
         }
 
@@ -194,7 +223,10 @@ namespace BigBook
         public static bool Is<T>(this T inputObject, Predicate<T> predicate)
         {
             if (predicate == null)
+            {
                 return false;
+            }
+
             return predicate(inputObject);
         }
 
@@ -221,10 +253,16 @@ namespace BigBook
         public static ITypeMapping MapTo(this Type leftType, Type rightType)
         {
             if (leftType == null || rightType == null)
+            {
                 return null;
+            }
+
             var TempManager = Canister.Builder.Bootstrapper.Resolve<DataMapper.Manager>();
             if (TempManager == null)
+            {
                 return null;
+            }
+
             return TempManager.Map(leftType, rightType);
         }
 
@@ -239,7 +277,10 @@ namespace BigBook
         {
             var TempManager = Canister.Builder.Bootstrapper.Resolve<DataMapper.Manager>();
             if (TempManager == null)
+            {
                 return null;
+            }
+
             return TempManager.Map<Left, Right>();
         }
 
@@ -254,7 +295,10 @@ namespace BigBook
         {
             var TempManager = Canister.Builder.Bootstrapper.Resolve<DataMapper.Manager>();
             if (TempManager == null)
+            {
                 return null;
+            }
+
             return TempManager.Map<Left, Right>();
         }
 
@@ -269,9 +313,15 @@ namespace BigBook
         public static T ThrowIf<T>(this T item, Predicate<T> predicate, Func<Exception> exception)
         {
             if (predicate == null)
+            {
                 return item;
+            }
+
             if (predicate(item))
+            {
                 throw exception();
+            }
+
             return item;
         }
 
@@ -286,9 +336,15 @@ namespace BigBook
         public static T ThrowIf<T>(this T item, Predicate<T> predicate, Exception exception)
         {
             if (predicate == null)
+            {
                 return item;
+            }
+
             if (predicate(item))
+            {
                 throw exception;
+            }
+
             return item;
         }
 
@@ -296,11 +352,12 @@ namespace BigBook
         /// Determines if the object is equal to default value and throws an ArgumentNullException if
         /// it is
         /// </summary>
+        /// <typeparam name="T"></typeparam>
         /// <param name="item">The object to check</param>
+        /// <param name="name">Name of the argument</param>
         /// <param name="equalityComparer">
         /// Equality comparer used to determine if the object is equal to default
         /// </param>
-        /// <param name="name">Name of the argument</param>
         /// <returns>Returns Item</returns>
         public static T ThrowIfDefault<T>(this T item, string name, IEqualityComparer<T> equalityComparer = null)
         {
@@ -311,11 +368,12 @@ namespace BigBook
         /// Determines if the object is equal to default value and throws the exception that is
         /// passed in if it is
         /// </summary>
+        /// <typeparam name="T"></typeparam>
         /// <param name="item">The object to check</param>
+        /// <param name="exception">Exception to throw</param>
         /// <param name="equalityComparer">
         /// Equality comparer used to determine if the object is equal to default
         /// </param>
-        /// <param name="exception">Exception to throw</param>
         /// <returns>Returns Item</returns>
         public static T ThrowIfDefault<T>(this T item, Exception exception, IEqualityComparer<T> equalityComparer = null)
         {
@@ -339,11 +397,12 @@ namespace BigBook
         /// Determines if the object is not equal to default value and throws an ArgumentException if
         /// it is
         /// </summary>
+        /// <typeparam name="T"></typeparam>
         /// <param name="item">The object to check</param>
+        /// <param name="name">Name of the argument</param>
         /// <param name="equalityComparer">
         /// Equality comparer used to determine if the object is equal to default
         /// </param>
-        /// <param name="name">Name of the argument</param>
         /// <returns>Returns Item</returns>
         public static T ThrowIfNotDefault<T>(this T item, string name, IEqualityComparer<T> equalityComparer = null)
         {
@@ -354,11 +413,12 @@ namespace BigBook
         /// Determines if the object is not equal to default value and throws the exception that is
         /// passed in if it is
         /// </summary>
+        /// <typeparam name="T"></typeparam>
         /// <param name="item">The object to check</param>
+        /// <param name="exception">Exception to throw</param>
         /// <param name="equalityComparer">
         /// Equality comparer used to determine if the object is equal to default
         /// </param>
-        /// <param name="exception">Exception to throw</param>
         /// <returns>Returns Item</returns>
         public static T ThrowIfNotDefault<T>(this T item, Exception exception, IEqualityComparer<T> equalityComparer = null)
         {
@@ -368,6 +428,7 @@ namespace BigBook
         /// <summary>
         /// Determines if the object is not null and throws an ArgumentException if it is
         /// </summary>
+        /// <typeparam name="T"></typeparam>
         /// <param name="item">The object to check</param>
         /// <param name="name">Name of the argument</param>
         /// <returns>Returns Item</returns>
@@ -380,6 +441,7 @@ namespace BigBook
         /// <summary>
         /// Determines if the object is not null and throws the exception passed in if it is
         /// </summary>
+        /// <typeparam name="T"></typeparam>
         /// <param name="item">The object to check</param>
         /// <param name="exception">Exception to throw</param>
         /// <returns>Returns Item</returns>
@@ -411,12 +473,13 @@ namespace BigBook
         /// <returns>Returns Item</returns>
         public static IEnumerable<T> ThrowIfNotNullOrEmpty<T>(this IEnumerable<T> item, Exception exception)
         {
-            return item.ThrowIf(x => x != null && x.Any(), exception);
+            return item.ThrowIf(x => x?.Any() == true, exception);
         }
 
         /// <summary>
         /// Determines if the object is null and throws an ArgumentNullException if it is
         /// </summary>
+        /// <typeparam name="T"></typeparam>
         /// <param name="item">The object to check</param>
         /// <param name="name">Name of the argument</param>
         /// <returns>Returns Item</returns>
@@ -429,6 +492,7 @@ namespace BigBook
         /// <summary>
         /// Determines if the object is null and throws the exception passed in if it is
         /// </summary>
+        /// <typeparam name="T"></typeparam>
         /// <param name="item">The object to check</param>
         /// <param name="exception">Exception to throw</param>
         /// <returns>Returns Item</returns>
@@ -459,7 +523,7 @@ namespace BigBook
         /// <returns>Returns Item</returns>
         public static IEnumerable<T> ThrowIfNullOrEmpty<T>(this IEnumerable<T> item, Exception exception)
         {
-            return item.ThrowIf(x => x == null || !x.Any(), exception);
+            return item.ThrowIf(x => x?.Any() != true, exception);
         }
 
         /// <summary>
@@ -472,9 +536,14 @@ namespace BigBook
         public static IEnumerable<T> Times<T>(this int count, Func<int, T> function)
         {
             if (function == null)
+            {
                 yield break;
+            }
+
             for (int x = 0; x < count; ++x)
+            {
                 yield return function(x);
+            }
         }
 
         /// <summary>
@@ -486,9 +555,15 @@ namespace BigBook
         public static int Times(this int count, Action<int> action)
         {
             if (action == null)
+            {
                 return count;
+            }
+
             for (int x = 0; x < count; ++x)
+            {
                 action(x);
+            }
+
             return count;
         }
 
@@ -541,7 +616,10 @@ namespace BigBook
                         defaultValue;
                 }
                 if (resultType.IsAssignableFrom(ObjectType))
+                {
                     return item;
+                }
+
                 try
                 {
                     return Convert.ChangeType(item, resultType, CultureInfo.InvariantCulture);
@@ -549,25 +627,38 @@ namespace BigBook
                 catch { }
                 var Converter = TypeDescriptor.GetConverter(ObjectType);
                 if (Converter.CanConvertTo(resultType))
+                {
                     return Converter.ConvertTo(item, resultType);
+                }
+
                 Converter = TypeDescriptor.GetConverter(resultType);
                 if (Converter.CanConvertFrom(ObjectType))
+                {
                     return Converter.ConvertFrom(item);
-                var TempConverter = Converters.FirstOrDefault(x => x.CanConvertTo(resultType)
+                }
+
+                var TempConverter = Array.Find(Converters, x => x.CanConvertTo(resultType)
                                                                 && x as TypeConverterBase<T> != null);
                 if (TempConverter != null)
+                {
                     return TempConverter.ConvertTo(item, resultType);
+                }
 
-                TempConverter = Converters.FirstOrDefault(x => x.CanConvertFrom(ObjectType)
+                TempConverter = Array.Find(Converters, x => x.CanConvertFrom(ObjectType)
                                                             && ((IConverter)x).AssociatedType == resultType);
                 if (TempConverter != null)
+                {
                     return TempConverter.ConvertFrom(item);
+                }
 
                 var ResultTypeInfo = resultType;
                 if (ResultTypeInfo.IsEnum)
                 {
                     if (ObjectType == typeof(string))
+                    {
                         return Enum.Parse(resultType, item as string, true);
+                    }
+
                     return Enum.ToObject(resultType, item);
                 }
                 var IEnumerableResultType = resultType.GetIEnumerableElementType();
@@ -579,7 +670,10 @@ namespace BigBook
                     {
                         var TempMapping = Item.GetType().MapTo(IEnumerableResultType);
                         if (TempMapping == null)
+                        {
                             return TempList;
+                        }
+
                         TempMapping.AutoMap();
                         var ResultItem = Activator.CreateInstance(IEnumerableResultType);
                         TempMapping.Copy(Item, ResultItem);
@@ -592,7 +686,10 @@ namespace BigBook
                     object ReturnValue = Activator.CreateInstance(resultType);
                     var TempMapping = ObjectType.MapTo(resultType);
                     if (TempMapping == null)
+                    {
                         return ReturnValue;
+                    }
+
                     TempMapping
                         .AutoMap()
                         .Copy(item, ReturnValue);

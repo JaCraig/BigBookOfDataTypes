@@ -36,7 +36,10 @@ namespace BigBook
         public static string ToString(this Exception exception, string prefix, string suffix = "")
         {
             if (exception == null)
+            {
                 return "";
+            }
+
             var Builder = new StringBuilder();
             Builder.AppendLine(prefix);
             Builder.AppendLineFormat("Exception: {0}", exception.Message)
@@ -52,7 +55,10 @@ namespace BigBook
             Builder.AppendLineFormat("StackTrace: {0}", exception.StackTrace)
                    .AppendLineFormat("Source: {0}", exception.Source);
             if (exception.InnerException != null)
+            {
                 Builder.Append(exception.InnerException.ToString(prefix, suffix));
+            }
+
             Builder.AppendLine(suffix);
             return Builder.ToString();
         }

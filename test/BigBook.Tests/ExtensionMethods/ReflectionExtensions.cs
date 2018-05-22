@@ -25,7 +25,7 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void CallMethodTest()
         {
-            int Value = 10;
+            const int Value = 10;
             Assert.Equal("10", Value.Call<string>("ToString"));
         }
 
@@ -41,7 +41,10 @@ namespace BigBook.Tests.ExtensionMethods
         {
             var TestObject = new List<int>();
             for (int x = 0; x < 10; ++x)
+            {
                 TestObject.Add(x);
+            }
+
             Assert.Equal("<table><thead><tr><th>Property Name</th><th>Property Value</th></tr></thead><tbody><tr><td>Capacity</td><td>16</td></tr><tr><td>Count</td><td>10</td></tr><tr><td>Item</td><td></td></tr></tbody></table>", TestObject.ToString(true));
         }
 
@@ -50,7 +53,9 @@ namespace BigBook.Tests.ExtensionMethods
         {
             var TestObject = new List<int>();
             for (int x = 0; x < 10; ++x)
+            {
                 TestObject.Add(x);
+            }
 
             string Output = "Property Name\t\t\t\tProperty Value" + Environment.NewLine +
                             "Capacity\t\t\t\t16" + Environment.NewLine +

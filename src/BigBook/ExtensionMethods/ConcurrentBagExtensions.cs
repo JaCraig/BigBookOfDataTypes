@@ -41,7 +41,10 @@ namespace BigBook
         {
             collection = collection ?? new ConcurrentBag<T>();
             if (items == null)
+            {
                 return collection;
+            }
+
             Parallel.ForEach(items, collection.Add);
             return collection;
         }
@@ -68,7 +71,10 @@ namespace BigBook
         public static T AddAndReturn<T>(this ConcurrentBag<T> collection, T item)
         {
             if (collection == null)
+            {
                 throw new ArgumentNullException(nameof(collection));
+            }
+
             collection.Add(item);
             return item;
         }
@@ -84,9 +90,15 @@ namespace BigBook
         public static bool AddIf<T>(this ConcurrentBag<T> collection, Predicate<T> predicate, params T[] items)
         {
             if (collection == null || predicate == null)
+            {
                 return false;
+            }
+
             if (items == null || items.Length == 0)
+            {
                 return true;
+            }
+
             return items.ForEachParallel(Item =>
             {
                 if (predicate(Item))
@@ -151,7 +163,10 @@ namespace BigBook
         public static bool AddIfUnique<T>(this ConcurrentBag<T> collection, Func<T, T, bool> predicate, params T[] items)
         {
             if (predicate == null)
+            {
                 return false;
+            }
+
             return collection.AddIf(x => !collection.Any(y => predicate(x, y)), items);
         }
 
@@ -197,7 +212,10 @@ namespace BigBook
         public static bool AddIfUnique<T>(this ConcurrentBag<T> collection, Func<T, T, bool> predicate, IEnumerable<T> items)
         {
             if (predicate == null)
+            {
                 return false;
+            }
+
             return collection.AddIf(x => !collection.Any(y => predicate(x, y)), items);
         }
 
@@ -212,12 +230,17 @@ namespace BigBook
         public static bool Contains<T>(this ConcurrentBag<T> collection, T item, IEqualityComparer<T> comparer = null)
         {
             if (collection == null)
+            {
                 return false;
+            }
+
             comparer = comparer ?? new GenericEqualityComparer<T>();
             foreach (T TempValue in collection)
             {
                 if (comparer.Equals(TempValue, item))
+                {
                     return true;
+                }
             }
             return false;
         }
@@ -231,9 +254,15 @@ namespace BigBook
         public static ConcurrentBag<T> Remove<T>(this ConcurrentBag<T> collection, Func<T, bool> predicate)
         {
             if (collection == null)
+            {
                 return new ConcurrentBag<T>();
+            }
+
             if (predicate == null)
+            {
                 return collection;
+            }
+
             return new ConcurrentBag<T>(collection.Where(x => !predicate(x)));
         }
 
@@ -250,9 +279,15 @@ namespace BigBook
         public static ConcurrentBag<T> Remove<T>(this ConcurrentBag<T> collection, IEnumerable<T> items, IEqualityComparer<T> comparer = null)
         {
             if (collection == null)
+            {
                 return new ConcurrentBag<T>();
+            }
+
             if (items == null)
+            {
                 return collection;
+            }
+
             comparer = comparer ?? new GenericEqualityComparer<T>();
             return collection.Remove<T>(x => items.Contains(x, comparer));
         }

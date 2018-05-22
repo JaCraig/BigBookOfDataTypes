@@ -54,7 +54,7 @@ namespace BigBook
         /// <summary>
         /// Actual internal container
         /// </summary>
-        protected ConcurrentDictionary<T, int> Items { get; private set; }
+        protected ConcurrentDictionary<T, int> Items { get; }
 
         /// <summary>
         /// Gets a specified item
@@ -111,7 +111,9 @@ namespace BigBook
         public virtual IEnumerator<T> GetEnumerator()
         {
             foreach (T Key in Items.Keys)
+            {
                 yield return Key;
+            }
         }
 
         /// <summary>
@@ -121,7 +123,9 @@ namespace BigBook
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
             foreach (T Key in Items.Keys)
+            {
                 yield return Key;
+            }
         }
 
         /// <summary>

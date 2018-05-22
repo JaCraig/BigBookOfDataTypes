@@ -12,7 +12,7 @@ namespace BigBook.Tests.ExtensionMethods
         public void AddAndReturnNull()
         {
             ConcurrentBag<int> TestObject = null;
-            int Item = 7;
+            const int Item = 7;
             Assert.ThrowsAny<ArgumentNullException>(() => TestObject.AddAndReturn(Item));
         }
 
@@ -20,7 +20,7 @@ namespace BigBook.Tests.ExtensionMethods
         public void AddAndReturnTest()
         {
             var TestObject = new ConcurrentBag<int>(new int[] { 1, 2, 3, 4, 5, 6 });
-            int Item = 7;
+            const int Item = 7;
             Assert.Equal(Item, TestObject.AddAndReturn(Item));
         }
 
@@ -240,7 +240,9 @@ namespace BigBook.Tests.ExtensionMethods
             TestObject = new ConcurrentBag<int>(TestObject.Remove((x) => x % 2 == 0));
             Assert.Equal(3, TestObject.Count);
             foreach (int Item in TestObject)
+            {
                 Assert.False(Item % 2 == 0);
+            }
         }
 
         [Fact]
@@ -250,7 +252,9 @@ namespace BigBook.Tests.ExtensionMethods
             TestObject = new ConcurrentBag<int>(TestObject.Remove((x) => x % 2 == 0));
             Assert.Equal(3, TestObject.Count);
             foreach (int Item in TestObject)
+            {
                 Assert.False(Item % 2 == 0);
+            }
         }
     }
 }

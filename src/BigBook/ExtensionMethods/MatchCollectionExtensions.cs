@@ -36,12 +36,17 @@ namespace BigBook
         public static IEnumerable<Match> Where(this MatchCollection collection, Predicate<Match> predicate)
         {
             if (predicate == null || collection == null)
+            {
                 yield break;
+            }
+
             for (int x = 0, collectionCount = collection.Count; x < collectionCount; x++)
             {
                 Match Item = collection[x];
                 if (predicate(Item))
+                {
                     yield return Item;
+                }
             }
         }
     }

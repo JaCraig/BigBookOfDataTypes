@@ -46,7 +46,10 @@ namespace BigBook
             Capacity = capacity;
             TimeOut = timeOut;
             if (capacity < 1)
+            {
                 capacity = 1;
+            }
+
             ProcessItem = processItem;
             HandleError = handleError.Check((x, y) => { });
             CancellationToken = new CancellationTokenSource();
@@ -67,7 +70,7 @@ namespace BigBook
         /// <summary>
         /// Determines if it has completed all tasks
         /// </summary>
-        public bool IsComplete => Tasks.All(x => x == null || x.IsCompleted);
+        public bool IsComplete => Tasks.All(x => x?.IsCompleted != false);
 
         /// <summary>
         /// Gets the time out.
@@ -83,12 +86,12 @@ namespace BigBook
         /// <summary>
         /// Called when an exception occurs when processing the queue
         /// </summary>
-        private Action<Exception, T> HandleError { get; set; }
+        private Action<Exception, T> HandleError { get; }
 
         /// <summary>
         /// Action used to process an individual item in the queue
         /// </summary>
-        private Func<T, bool> ProcessItem { get; set; }
+        private Func<T, bool> ProcessItem { get; }
 
         /// <summary>
         /// Group of tasks that the queue uses
@@ -105,10 +108,16 @@ namespace BigBook
         public bool Cancel(bool wait = false)
         {
             if (IsCompleted || IsCanceled)
+            {
                 return true;
+            }
+
             CancellationToken.Cancel(false);
             if (wait)
+            {
                 Task.WaitAll(Tasks);
+            }
+
             return true;
         }
 
@@ -120,7 +129,10 @@ namespace BigBook
         public bool Enqueue(T item)
         {
             if (IsCanceled)
+            {
                 return false;
+            }
+
             Add(item);
             StartTasks(Capacity);
             return true;
@@ -153,16 +165,24 @@ namespace BigBook
         private void Process()
         {
             if (CancellationToken == null || ProcessItem == null)
+            {
                 return;
+            }
+
             while (true)
             {
                 T Item = default(T);
                 try
                 {
                     if (!TryTake(out Item, TimeOut, CancellationToken.Token))
+                    {
                         break;
+                    }
+
                     if (!ProcessItem(Item))
+                    {
                         break;
+                    }
                 }
                 catch (OperationCanceledException)
                 {
@@ -183,8 +203,10 @@ namespace BigBook
         {
             for (int x = 0; x < capacity; ++x)
             {
-                if (Tasks[x] == null || Tasks[x].IsCompleted || Tasks[x].IsCanceled)
+                if (Tasks[x]?.IsCompleted != false || Tasks[x].IsCanceled)
+                {
                     Tasks[x] = Task.Factory.StartNew(Process);
+                }
             }
         }
     }

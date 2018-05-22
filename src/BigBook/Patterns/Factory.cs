@@ -37,7 +37,7 @@ namespace BigBook.Patterns
         /// <summary>
         /// List of constructors/initializers
         /// </summary>
-        protected Dictionary<Key, Func<T>> Constructors { get; private set; }
+        protected Dictionary<Key, Func<T>> Constructors { get; }
 
         /// <summary>
         /// Creates an instance associated with the key

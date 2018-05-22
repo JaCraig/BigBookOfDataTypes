@@ -1,5 +1,4 @@
-﻿using BigBook;
-using Xunit;
+﻿using Xunit;
 
 namespace BigBook.Tests.ExtensionMethods
 {
@@ -16,8 +15,12 @@ namespace BigBook.Tests.ExtensionMethods
             var Results = TestObject.Permute();
             Assert.Equal(24, Results.Keys.Count);
             foreach (int Key in Results.Keys)
+            {
                 foreach (string Item in Results[Key])
+                {
                     Assert.True(Item == "this" || Item == "is" || Item == "a" || Item == "test");
+                }
+            }
         }
     }
 }

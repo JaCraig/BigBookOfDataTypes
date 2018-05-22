@@ -39,7 +39,10 @@ namespace BigBook
         public static string GetInformation(this Process process, bool htmlFormat = true)
         {
             if (process == null)
+            {
                 return "";
+            }
+
             var Builder = new StringBuilder();
             return Builder.Append(htmlFormat ? "<strong>" : "")
                    .Append(process.ProcessName)
@@ -59,7 +62,10 @@ namespace BigBook
         public static string GetInformation(this IEnumerable<Process> processes, bool htmlFormat = true)
         {
             if (processes == null)
+            {
                 return "";
+            }
+
             var Builder = new StringBuilder();
             processes.ForEach(x => Builder.Append(x.GetInformation(htmlFormat)));
             return Builder.ToString();
@@ -74,8 +80,11 @@ namespace BigBook
         public static async Task<Process> KillProcessAsync(this Process process, int timeToKill = 0)
         {
             if (process == null)
+            {
                 return null;
-            await Task.Run(() => KillProcessAsyncHelper(process, timeToKill));
+            }
+
+            await Task.Run(() => KillProcessAsyncHelper(process, timeToKill)).ConfigureAwait(false);
             return process;
         }
 
@@ -87,9 +96,12 @@ namespace BigBook
         /// <returns>The list of processes</returns>
         public static async Task<IEnumerable<Process>> KillProcessAsync(this IEnumerable<Process> processes, int timeToKill = 0)
         {
-            if (processes == null || !processes.Any())
+            if (processes?.Any() != true)
+            {
                 return new List<Process>();
-            await Task.Run(() => processes.ForEach(x => KillProcessAsyncHelper(x, timeToKill)));
+            }
+
+            await Task.Run(() => processes.ForEach(x => KillProcessAsyncHelper(x, timeToKill))).ConfigureAwait(false);
             return processes;
         }
 
@@ -101,9 +113,15 @@ namespace BigBook
         private static void KillProcessAsyncHelper(Process process, int timeToKill)
         {
             if (process == null)
+            {
                 return;
+            }
+
             if (timeToKill > 0)
+            {
                 Thread.Sleep(timeToKill);
+            }
+
             process.Kill();
         }
     }

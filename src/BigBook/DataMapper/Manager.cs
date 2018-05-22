@@ -35,16 +35,15 @@ namespace BigBook.DataMapper
         {
             dataMappers = dataMappers ?? new List<IDataMapper>();
             mapperModules = mapperModules ?? new List<IMapperModule>();
-            DataMapper = dataMappers.FirstOrDefault(x => !x.GetType().Namespace.StartsWith("BIGBOOK", StringComparison.OrdinalIgnoreCase));
-            if (DataMapper == null)
-                DataMapper = new Default.DataMapper();
+            DataMapper = dataMappers.FirstOrDefault(x => !x.GetType().Namespace.StartsWith("BIGBOOK", StringComparison.OrdinalIgnoreCase)) ?? new Default.DataMapper();
+
             mapperModules.ForEach(x => x.Map(this));
         }
 
         /// <summary>
         /// Data mapper
         /// </summary>
-        private IDataMapper DataMapper { get; set; }
+        private IDataMapper DataMapper { get; }
 
         /// <summary>
         /// Adds or returns a mapping between two types
@@ -74,7 +73,7 @@ namespace BigBook.DataMapper
         /// <returns>The string info about the manager</returns>
         public override string ToString()
         {
-            return "Data mapper: " + DataMapper.ToString() + "\r\n";
+            return $"Data mapper: {DataMapper}\r\n";
         }
     }
 }

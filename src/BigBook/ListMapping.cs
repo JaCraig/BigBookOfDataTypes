@@ -61,7 +61,10 @@ namespace BigBook
             {
                 var Lists = new List<IEnumerable<T2>>();
                 foreach (T1 Key in Keys)
+                {
                     Lists.Add(this[Key]);
+                }
+
                 return Lists;
             }
         }
@@ -69,7 +72,7 @@ namespace BigBook
         /// <summary>
         /// Container holding the data
         /// </summary>
-        protected ConcurrentDictionary<T1, ConcurrentBag<T2>> Items { get; private set; }
+        protected ConcurrentDictionary<T1, ConcurrentBag<T2>> Items { get; }
 
         /// <summary>
         /// Gets a list of values associated with a key
@@ -133,9 +136,15 @@ namespace BigBook
         public bool Contains(KeyValuePair<T1, IEnumerable<T2>> item)
         {
             if (!ContainsKey(item.Key))
+            {
                 return false;
+            }
+
             if (!Contains(item.Key, item.Value))
+            {
                 return false;
+            }
+
             return true;
         }
 
@@ -148,7 +157,10 @@ namespace BigBook
         public bool Contains(T1 key, IEnumerable<T2> values)
         {
             if (!ContainsKey(key))
+            {
                 return false;
+            }
+
             return values.All(x => Contains(key, x));
         }
 
@@ -161,9 +173,15 @@ namespace BigBook
         public bool Contains(T1 key, T2 value)
         {
             if (!ContainsKey(key))
+            {
                 return false;
+            }
+
             if (!Items[key].Contains(value))
+            {
                 return false;
+            }
+
             return true;
         }
 
@@ -194,7 +212,9 @@ namespace BigBook
         public IEnumerator<KeyValuePair<T1, IEnumerable<T2>>> GetEnumerator()
         {
             foreach (T1 Key in Keys)
+            {
                 yield return new KeyValuePair<T1, IEnumerable<T2>>(Key, this[Key]);
+            }
         }
 
         /// <summary>
@@ -204,7 +224,9 @@ namespace BigBook
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
             foreach (T1 Key in Keys)
+            {
                 yield return this[Key];
+            }
         }
 
         /// <summary>
@@ -226,10 +248,18 @@ namespace BigBook
         public bool Remove(KeyValuePair<T1, IEnumerable<T2>> item)
         {
             if (!Contains(item))
+            {
                 return false;
+            }
+
             foreach (T2 Value in item.Value)
+            {
                 if (!Remove(item.Key, Value))
+                {
                     return false;
+                }
+            }
+
             return true;
         }
 
@@ -242,14 +272,20 @@ namespace BigBook
         public bool Remove(T1 key, T2 value)
         {
             if (!Contains(key, value))
+            {
                 return false;
+            }
+
             var TempValue = Items[key].ToList(z => z);
             TempValue.Remove(value);
             Items.AddOrUpdate(key,
                 new ConcurrentBag<T2>(TempValue),
                 (x, y) => new ConcurrentBag<T2>(TempValue));
             if (!this[key].Any())
+            {
                 Remove(key);
+            }
+
             return true;
         }
 

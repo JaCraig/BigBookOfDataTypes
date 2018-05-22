@@ -21,6 +21,9 @@ namespace BigBook.DataMapper.BaseClasses
     /// <summary>
     /// Mapping base class
     /// </summary>
+    /// <typeparam name="Left">The type of the eft.</typeparam>
+    /// <typeparam name="Right">The type of the ight.</typeparam>
+    /// <seealso cref="BigBook.DataMapper.Interfaces.IMapping{Left, Right}"/>
     public abstract class MappingBase<Left, Right> : IMapping<Left, Right>
     {
         /// <summary>

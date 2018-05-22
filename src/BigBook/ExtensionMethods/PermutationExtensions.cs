@@ -35,7 +35,10 @@ namespace BigBook
         public static ListMapping<int, T> Permute<T>(this IEnumerable<T> input)
         {
             if (input == null)
+            {
                 return new ListMapping<int, T>();
+            }
+
             var Current = new List<T>();
             Current.AddRange(input);
             var ReturnValue = new ListMapping<int, T>();
@@ -62,7 +65,9 @@ namespace BigBook
                         ++z;
                         ++CurrentValue;
                         if (z == Max)
+                        {
                             break;
+                        }
                     }
                 }
                 if (x + 1 != input.Count())

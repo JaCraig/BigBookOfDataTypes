@@ -129,7 +129,7 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void ThrowIfNotNullOrEmpty()
         {
-            string TempObject = "";
+            const string TempObject = "";
             TempObject.ThrowIfNotNullOrEmpty("TempName");
             TempObject.ThrowIfNotNullOrEmpty(new ArgumentNullException("TempName"));
         }
@@ -155,7 +155,7 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void ThrowIfNullOrEmpty()
         {
-            string TempObject = "";
+            const string TempObject = "";
             Assert.Throws<ArgumentNullException>(() => TempObject.ThrowIfNullOrEmpty("TempName"));
             Assert.Throws<ArgumentNullException>(() => TempObject.ThrowIfNullOrEmpty(new ArgumentNullException("TempName")));
         }

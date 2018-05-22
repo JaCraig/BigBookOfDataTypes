@@ -14,7 +14,10 @@ namespace BigBook.Tests
                 var Value = x.ToString();
                 var Count = Rand.Next(1, 10);
                 for (int y = 0; y < Count; ++y)
+                {
                     BagObject.Add(Value);
+                }
+
                 Assert.Equal(Count, BagObject[Value]);
             }
             Assert.Equal(10, BagObject.Count);

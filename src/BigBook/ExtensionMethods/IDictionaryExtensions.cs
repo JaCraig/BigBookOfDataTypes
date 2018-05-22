@@ -40,9 +40,15 @@ namespace BigBook
             IDictionary<TKey, TValue> target)
         {
             if (dictionary == null)
+            {
                 return new Dictionary<TKey, TValue>();
+            }
+
             if (target == null)
+            {
                 return dictionary;
+            }
+
             foreach (KeyValuePair<TKey, TValue> Pair in dictionary)
             {
                 target.SetValue(Pair.Key, Pair.Value);
@@ -66,7 +72,10 @@ namespace BigBook
             TValue defaultValue = default(TValue))
         {
             if (dictionary == null)
+            {
                 return defaultValue;
+            }
+
             TValue ReturnValue = defaultValue;
             return dictionary.TryGetValue(key, out ReturnValue) ? ReturnValue : defaultValue;
         }
@@ -85,11 +94,19 @@ namespace BigBook
             TValue value)
         {
             if (dictionary == null)
+            {
                 return new Dictionary<TKey, TValue>();
+            }
+
             if (dictionary.ContainsKey(key))
+            {
                 dictionary[key] = value;
+            }
             else
+            {
                 dictionary.Add(key, value);
+            }
+
             return dictionary;
         }
 
@@ -105,7 +122,10 @@ namespace BigBook
             where T1 : IComparable
         {
             if (dictionary == null)
+            {
                 return new Dictionary<T1, T2>();
+            }
+
             comparer = comparer ?? new GenericComparer<T1>();
             return dictionary.Sort(x => x.Key, comparer);
         }
@@ -126,9 +146,15 @@ namespace BigBook
             where T3 : IComparable
         {
             if (dictionary == null)
+            {
                 return new Dictionary<T1, T2>();
+            }
+
             if (orderBy == null)
+            {
                 return dictionary;
+            }
+
             comparer = comparer ?? new GenericComparer<T3>();
             return dictionary.OrderBy(orderBy, comparer).ToDictionary(x => x.Key, x => x.Value);
         }

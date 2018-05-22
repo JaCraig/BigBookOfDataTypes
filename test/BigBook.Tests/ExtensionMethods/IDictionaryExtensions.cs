@@ -70,7 +70,10 @@ namespace BigBook.Tests.ExtensionMethods
             Test = Test.Sort(x => x.Value);
             string Value = "";
             foreach (string Key in Test.Keys)
+            {
                 Value += Test[Key].ToString();
+            }
+
             Assert.Equal("1234", Value);
         }
 
@@ -87,7 +90,10 @@ namespace BigBook.Tests.ExtensionMethods
             Test = Test.Sort();
             string Value = "";
             foreach (string Key in Test.Keys)
+            {
                 Value += Key;
+            }
+
             Assert.Equal("ACQZ", Value);
         }
     }

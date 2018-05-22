@@ -96,6 +96,11 @@ namespace BigBook
     public enum StringFilter
     {
         /// <summary>
+        /// The none
+        /// </summary>
+        None = 0,
+
+        /// <summary>
         /// Alpha characters
         /// </summary>
         Alpha = 1,
@@ -135,15 +140,18 @@ namespace BigBook
         public static string AddSpaces(this string input)
         {
             if (string.IsNullOrWhiteSpace(input))
+            {
                 return string.Empty;
+            }
+
             StringBuilder newText = new StringBuilder(input.Length * 2);
             newText.Append(input[0]);
             for (int x = 1, inputLength = input.Length; x < inputLength; ++x)
             {
                 if (char.IsUpper(input[x]))
                 {
-                    if ((input[x - 1] != ' ' && !char.IsUpper(input[x - 1])
-                        || char.IsUpper(input[x - 1]) && x < input.Length - 1 && !char.IsUpper(input[x + 1])))
+                    if ((input[x - 1] != ' ' && !char.IsUpper(input[x - 1]))
+                        || (char.IsUpper(input[x - 1]) && x < input.Length - 1 && !char.IsUpper(input[x + 1])))
                     {
                         newText.Append(' ');
                     }
@@ -164,7 +172,10 @@ namespace BigBook
         public static StringBuilder AppendLineFormat(this StringBuilder builder, IFormatProvider provider, string format, params object[] objects)
         {
             if (builder == null || string.IsNullOrEmpty(format))
+            {
                 return builder;
+            }
+
             objects = objects ?? new object[0];
             provider = provider ?? CultureInfo.InvariantCulture;
             return builder.AppendFormat(provider, format, objects).AppendLine();
@@ -192,7 +203,10 @@ namespace BigBook
         public static string Center(this string input, int length, string padding = " ")
         {
             if (string.IsNullOrEmpty(input))
+            {
                 input = "";
+            }
+
             string Output = "";
             for (int x = 0; x < (length - input.Length) / 2; ++x)
             {
@@ -220,7 +234,10 @@ namespace BigBook
         public static string Encode(this string input, Encoding originalEncodingUsing = null, Encoding encodingUsing = null)
         {
             if (string.IsNullOrEmpty(input))
+            {
                 return "";
+            }
+
             originalEncodingUsing = originalEncodingUsing ?? Encoding.UTF8;
             encodingUsing = encodingUsing ?? Encoding.UTF8;
             return Encoding.Convert(originalEncodingUsing, encodingUsing, input.ToByteArray(originalEncodingUsing))
@@ -236,7 +253,10 @@ namespace BigBook
         public static string FromBase64(this string input, Encoding encodingUsing)
         {
             if (string.IsNullOrEmpty(input))
+            {
                 return "";
+            }
+
             var TempArray = Convert.FromBase64String(input);
             encodingUsing = encodingUsing ?? Encoding.UTF8;
             return encodingUsing.GetString(TempArray, 0, TempArray.Length);
@@ -267,7 +287,10 @@ namespace BigBook
                 for (int x = 0; x < value.Length; ++x)
                 {
                     if (!value[x].Is(CharIs.Digit))
+                    {
                         return false;
+                    }
+
                     int Tempvalue = (value[x] - '0') * (x % 2 == 1 ? 2 : 1);
                     while (Tempvalue > 0)
                     {
@@ -294,7 +317,10 @@ namespace BigBook
         public static bool Is(this string value1, string value2, StringCompare comparisonType)
         {
             if (comparisonType != StringCompare.Anagram)
+            {
                 return value1.Is(comparisonType);
+            }
+
             return new string(value1.ToCharArray().OrderBy(x => x).ToArray()) == new string(value2.ToCharArray().OrderBy(x => x).ToArray());
         }
 
@@ -307,7 +333,10 @@ namespace BigBook
         public static string Keep(this string input, string filter)
         {
             if (string.IsNullOrEmpty(input) || string.IsNullOrEmpty(filter))
+            {
                 return "";
+            }
+
             var TempRegex = new Regex(filter);
             var Collection = TempRegex.Matches(input);
             var Builder = new StringBuilder();
@@ -329,7 +358,10 @@ namespace BigBook
         public static string Keep(this string input, StringFilter filter)
         {
             if (string.IsNullOrEmpty(input))
+            {
                 return "";
+            }
+
             var Value = BuildFilter(filter);
             return input.Keep(Value);
         }
@@ -343,7 +375,10 @@ namespace BigBook
         public static string Left(this string input, int length)
         {
             if (length <= 0)
+            {
                 return "";
+            }
+
             return string.IsNullOrEmpty(input) ? "" : input.Substring(0, input.Length > length ? length : input.Length);
         }
 
@@ -356,12 +391,21 @@ namespace BigBook
         public static int LevenshteinDistance(this string value1, string value2)
         {
             if (value1 == null || value2 == null)
+            {
                 return -1;
+            }
+
             int[,] Matrix = new int[value1.Length + 1, value2.Length + 1];
             for (int x = 0; x <= value1.Length; ++x)
+            {
                 Matrix[x, 0] = x;
+            }
+
             for (int x = 0; x <= value2.Length; ++x)
+            {
                 Matrix[0, x] = x;
+            }
+
             for (int x = 1; x <= value1.Length; ++x)
             {
                 for (int y = 1; y <= value2.Length; ++y)
@@ -369,7 +413,9 @@ namespace BigBook
                     int Cost = value1[x - 1] == value2[y - 1] ? 0 : 1;
                     Matrix[x, y] = new int[] { Matrix[x - 1, y] + 1, Matrix[x, y - 1] + 1, Matrix[x - 1, y - 1] + Cost }.Min();
                     if (x > 1 && y > 1 && value1[x - 1] == value2[y - 2] && value1[x - 2] == value2[y - 1])
+                    {
                         Matrix[x, y] = new int[] { Matrix[x, y], Matrix[x - 2, y - 2] + Cost }.Min();
+                    }
                 }
             }
             return Matrix[value1.Length, value2.Length];
@@ -386,7 +432,10 @@ namespace BigBook
         {
             string Appending = "";
             for (int x = 0; x < endPosition; ++x)
+            {
                 Appending += mask;
+            }
+
             return Appending + input.Remove(0, endPosition);
         }
 
@@ -400,12 +449,21 @@ namespace BigBook
         public static string MaskRight(this string input, int startPosition = 4, char mask = '#')
         {
             if (string.IsNullOrEmpty(input))
+            {
                 return "";
+            }
+
             if (startPosition > input.Length)
+            {
                 return input;
+            }
+
             string Appending = "";
             for (int x = 0; x < input.Length - startPosition; ++x)
+            {
                 Appending += mask;
+            }
+
             return input.Remove(startPosition) + Appending;
         }
 
@@ -418,11 +476,20 @@ namespace BigBook
         public static string Minify(this string Input, MinificationType Type = MinificationType.HTML)
         {
             if (string.IsNullOrEmpty(Input))
+            {
                 return "";
+            }
+
             if (Type == MinificationType.CSS)
+            {
                 return CSSMinify(Input);
+            }
+
             if (Type == MinificationType.JavaScript)
+            {
                 return JavaScriptMinify(Input);
+            }
+
             return HTMLMinify(Input);
         }
 
@@ -446,7 +513,10 @@ namespace BigBook
         public static string Remove(this string input, string filter)
         {
             if (string.IsNullOrEmpty(input) || string.IsNullOrEmpty(filter))
+            {
                 return input;
+            }
+
             return new Regex(filter).Replace(input, "");
         }
 
@@ -459,7 +529,10 @@ namespace BigBook
         public static string Remove(this string input, StringFilter filter)
         {
             if (string.IsNullOrEmpty(input))
+            {
                 return "";
+            }
+
             var Value = BuildFilter(filter);
             return input.Remove(Value);
         }
@@ -474,7 +547,10 @@ namespace BigBook
         public static string Replace(this string input, StringFilter filter, string value = "")
         {
             if (string.IsNullOrEmpty(input))
+            {
                 return "";
+            }
+
             var FilterValue = BuildFilter(filter);
             return new Regex(FilterValue).Replace(input, value);
         }
@@ -487,7 +563,10 @@ namespace BigBook
         public static string Reverse(this string input)
         {
             if (string.IsNullOrEmpty(input))
+            {
                 return "";
+            }
+
             return new string(input.ToCharArray().Reverse().ToArray());
         }
 
@@ -500,9 +579,15 @@ namespace BigBook
         public static string Right(this string input, int length)
         {
             if (string.IsNullOrEmpty(input))
+            {
                 return "";
+            }
+
             if (length <= 0)
+            {
                 return "";
+            }
+
             length = input.Length > length ? length : input.Length;
             return input.Substring(input.Length - length, length);
         }
@@ -515,7 +600,10 @@ namespace BigBook
         public static string StripHTML(this string html)
         {
             if (string.IsNullOrEmpty(html))
+            {
                 return "";
+            }
+
             html = STRIP_HTML_REGEX.Replace(html, string.Empty);
             return html.Replace("&nbsp;", " ")
                        .Replace("&#160;", string.Empty);
@@ -529,7 +617,10 @@ namespace BigBook
         public static string StripIllegalXML(this string content)
         {
             if (string.IsNullOrEmpty(content))
+            {
                 return "";
+            }
+
             var Builder = new StringBuilder();
             for (int x = 0, contentLength = content.Length; x < contentLength; x++)
             {
@@ -539,7 +630,9 @@ namespace BigBook
                     || Char == 0xD
                     || (Char >= 0x20 && Char <= 0xD7FF)
                     || (Char >= 0xE000 && Char <= 0xFFFD))
+                {
                     Builder.Append(Char);
+                }
             }
 
             return Builder.ToString().Replace('\u2013', '-').Replace('\u2014', '-')
@@ -562,9 +655,15 @@ namespace BigBook
         public static string StripLeft(this string input, string characters = " ")
         {
             if (string.IsNullOrEmpty(input))
+            {
                 return input;
+            }
+
             if (string.IsNullOrEmpty(characters))
+            {
                 return input;
+            }
+
             return input.ToCharArray().SkipWhile(x => characters.ToCharArray().Contains(x)).ToString(x => x.ToString(), "");
         }
 
@@ -578,9 +677,15 @@ namespace BigBook
         public static string StripRight(this string input, string characters = " ")
         {
             if (string.IsNullOrEmpty(input))
+            {
                 return input;
+            }
+
             if (string.IsNullOrEmpty(characters))
+            {
                 return input;
+            }
+
             int Position = input.Length - 1;
             for (int x = input.Length - 1; x >= 0; --x)
             {
@@ -604,7 +709,10 @@ namespace BigBook
         public static string ToBase64String(this string input, Encoding originalEncodingUsing = null)
         {
             if (string.IsNullOrEmpty(input))
+            {
                 return "";
+            }
+
             originalEncodingUsing = originalEncodingUsing ?? Encoding.UTF8;
             var TempArray = originalEncodingUsing.GetBytes(input);
             return Convert.ToBase64String(TempArray);
@@ -632,7 +740,10 @@ namespace BigBook
         public static string ToString(this string input, StringCase caseOfString, CultureInfo provider = null)
         {
             if (string.IsNullOrEmpty(input))
+            {
                 return "";
+            }
+
             provider = provider ?? CultureInfo.InvariantCulture;
             if (caseOfString == StringCase.FirstCharacterUpperCase)
             {
@@ -710,7 +821,10 @@ namespace BigBook
         public static string ToString(this string input, object inputObject, string startSeperator = "{", string endSeperator = "}")
         {
             if (inputObject == null)
+            {
                 return input;
+            }
+
             inputObject.GetType()
                 .GetProperties()
                 .Where(x => x.CanRead)
@@ -731,7 +845,10 @@ namespace BigBook
         public static string ToString(this string input, params KeyValuePair<string, string>[] pairs)
         {
             if (string.IsNullOrEmpty(input))
+            {
                 return input;
+            }
+
             foreach (KeyValuePair<string, string> Pair in pairs)
             {
                 input = input.Replace(Pair.Key, Pair.Value);
@@ -750,7 +867,10 @@ namespace BigBook
         public static string ToString(this string input, string format, string outputFormat, RegexOptions options = RegexOptions.None)
         {
             if (string.IsNullOrEmpty(input) || string.IsNullOrEmpty(format) || string.IsNullOrEmpty(outputFormat))
+            {
                 return "";
+            }
+
             return Regex.Replace(input, format, outputFormat, options);
         }
 
@@ -763,24 +883,24 @@ namespace BigBook
         {
             string FilterValue = "";
             string Separator = "";
-            if (filter.HasFlag(StringFilter.Alpha))
+            if ((filter & StringFilter.Alpha) != 0)
             {
                 FilterValue += Separator + "[a-zA-Z]";
                 Separator = "|";
             }
-            if (filter.HasFlag(StringFilter.Numeric))
+            if ((filter & StringFilter.Numeric) != 0)
             {
                 FilterValue += Separator + "[0-9]";
                 Separator = "|";
             }
-            if (filter.HasFlag(StringFilter.FloatNumeric))
+            if ((filter & StringFilter.FloatNumeric) != 0)
             {
                 FilterValue += Separator + @"[0-9\.]";
                 Separator = "|";
             }
-            if (filter.HasFlag(StringFilter.ExtraSpaces))
+            if ((filter & StringFilter.ExtraSpaces) != 0)
             {
-                FilterValue += Separator + @"[ ]{2,}";
+                FilterValue += Separator + "[ ]{2,}";
                 Separator = "|";
             }
             return FilterValue;
@@ -794,7 +914,10 @@ namespace BigBook
         private static string CSSMinify(string input)
         {
             if (string.IsNullOrEmpty(input))
+            {
                 return "";
+            }
+
             input = Regex.Replace(input, @"(/\*\*/)|(/\*[^!][\s\S]*?\*/)", string.Empty);
             input = Regex.Replace(input, @"\s+", " ");
             input = Regex.Replace(input, @"(\s([\{:,;\}\(\)]))", "$2");
@@ -808,8 +931,7 @@ namespace BigBook
             input = Regex.Replace(input, @"([\s:])(0)(px|em|%|in|cm|mm|pc|pt|ex)", "$1$2");
             input = Regex.Replace(input, "background-position:0", "background-position:0 0");
             input = Regex.Replace(input, @"(:|\s)0+\.(\d+)", "$1.$2");
-            input = Regex.Replace(input, @"[^\}]+\{;\}", "");
-            return input;
+            return Regex.Replace(input, @"[^\}]+\{;\}", "");
         }
 
         /// <summary>
@@ -820,12 +942,17 @@ namespace BigBook
         private static string Evaluate(Match matcher)
         {
             if (matcher == null)
+            {
                 return "";
+            }
+
             var MyString = matcher.ToString();
             if (string.IsNullOrEmpty(MyString))
+            {
                 return "";
-            MyString = Regex.Replace(MyString, @"\r\n\s*", "");
-            return MyString;
+            }
+
+            return Regex.Replace(MyString, @"\r\n\s*", "");
         }
 
         /// <summary>
@@ -836,12 +963,17 @@ namespace BigBook
         private static string HTMLMinify(string input)
         {
             if (string.IsNullOrEmpty(input))
+            {
                 return "";
+            }
+
             input = Regex.Replace(input, "/// <.+>", "");
             if (string.IsNullOrEmpty(input))
+            {
                 return "";
-            input = Regex.Replace(input, @">[\s\S]*?<", new MatchEvaluator(Evaluate));
-            return input;
+            }
+
+            return Regex.Replace(input, @">[\s\S]*?<", new MatchEvaluator(Evaluate));
         }
 
         /// <summary>
@@ -852,7 +984,10 @@ namespace BigBook
         private static string JavaScriptMinify(string input)
         {
             if (string.IsNullOrEmpty(input))
+            {
                 return "";
+            }
+
             var CodeLines = input.Split(new string[] { System.Environment.NewLine, "\n" }, StringSplitOptions.RemoveEmptyEntries);
             var Builder = new StringBuilder();
             for (int x = 0, CodeLinesLength = CodeLines.Length; x < CodeLinesLength; x++)
@@ -860,7 +995,9 @@ namespace BigBook
                 string Line = CodeLines[x];
                 var Temp = Line.Trim();
                 if (Temp.Length > 0 && !Temp.StartsWith("//", StringComparison.Ordinal))
+                {
                     Builder.AppendLine(Temp);
+                }
             }
 
             input = Builder.ToString();
@@ -877,9 +1014,7 @@ namespace BigBook
             input = Regex.Replace(input, @"(\W(if|while|for)\([^{]*?\))\n", "$1");
             input = Regex.Replace(input, @"(\W(if|while|for)\([^{]*?\))((if|while|for)\([^{]*?\))\n", "$1$3");
             input = Regex.Replace(input, @"([;}]else)\n", "$1 ");
-            input = Regex.Replace(input, @"(?<=[>])\s{2,}(?=[<])|(?<=[>])\s{2,}(?=&nbsp;)|(?<=&nbsp;)\s{2,}(?=[<])", String.Empty);
-
-            return input;
+            return Regex.Replace(input, @"(?<=[>])\s{2,}(?=[<])|(?<=[>])\s{2,}(?=&nbsp;)|(?<=&nbsp;)\s{2,}(?=[<])", String.Empty);
         }
     }
 }

@@ -18,7 +18,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
-using System.Linq;
 
 namespace BigBook
 {
@@ -46,7 +45,7 @@ namespace BigBook
         /// <summary>
         /// Column names
         /// </summary>
-        public Hashtable ColumnNameHash { get; private set; }
+        public Hashtable ColumnNameHash { get; }
 
         /// <summary>
         /// Column names
@@ -70,7 +69,10 @@ namespace BigBook
                 columnName = columnName ?? "";
                 var Column = (int)ColumnNameHash[columnName];
                 if (Column <= -1)
+                {
                     return null;
+                }
+
                 return this[Column];
             }
         }
@@ -85,9 +87,15 @@ namespace BigBook
             get
             {
                 if (column < 0)
+                {
                     column = 0;
+                }
+
                 if (ColumnValues.Length <= column)
+                {
                     return null;
+                }
+
                 return ColumnValues[column];
             }
         }
@@ -113,7 +121,9 @@ namespace BigBook
             {
                 string ColumnName = columnNames[i];
                 if (!ColumnNameHash.ContainsKey(ColumnName))
+                {
                     ColumnNameHash.Add(ColumnName, x++);
+                }
             }
         }
 
@@ -124,9 +134,15 @@ namespace BigBook
         public Table(DbDataReader reader)
         {
             if (reader == null)
+            {
                 throw new ArgumentNullException(nameof(reader));
+            }
+
             if (reader.FieldCount == 0)
+            {
                 throw new ArgumentOutOfRangeException(nameof(reader), "reader.FieldCount needs to have at least 0 fields");
+            }
+
             ColumnNames = new string[reader.FieldCount];
             for (int x = 0; x < reader.FieldCount; ++x)
             {
@@ -138,7 +154,9 @@ namespace BigBook
             {
                 string ColumnName = ColumnNames[i];
                 if (!ColumnNameHash.ContainsKey(ColumnName))
+                {
                     ColumnNameHash.Add(ColumnName, y++);
+                }
             }
 
             Rows = new List<Row>();
@@ -156,7 +174,7 @@ namespace BigBook
         /// <summary>
         /// Column Name hash table
         /// </summary>
-        public Hashtable ColumnNameHash { get; private set; }
+        public Hashtable ColumnNameHash { get; }
 
         /// <summary>
         /// Column names for the table
@@ -166,7 +184,7 @@ namespace BigBook
         /// <summary>
         /// Rows within the table
         /// </summary>
-        public List<Row> Rows { get; private set; }
+        public List<Row> Rows { get; }
 
         /// <summary>
         /// Gets a specific row
@@ -178,8 +196,11 @@ namespace BigBook
             get
             {
                 if (Rows == null)
+                {
                     return null;
-                return Rows.Count > rowNumber ? Rows.ElementAt(rowNumber) : null;
+                }
+
+                return Rows.Count > rowNumber ? Rows[rowNumber] : null;
             }
         }
 
@@ -191,9 +212,15 @@ namespace BigBook
         public Table AddRow(params object[] objects)
         {
             if (objects == null)
+            {
                 return this;
+            }
+
             if (Rows == null)
+            {
                 return this;
+            }
+
             Rows.Add(new Row(ColumnNameHash, ColumnNames, objects));
             return this;
         }

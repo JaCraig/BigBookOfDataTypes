@@ -37,7 +37,10 @@ namespace BigBook.DataMapper.Module
         public void Load(IBootstrapper bootstrapper)
         {
             if (bootstrapper == null)
+            {
                 return;
+            }
+
             bootstrapper.RegisterAll<IDataMapper>();
             bootstrapper.RegisterAll<IMapperModule>();
             bootstrapper.Register<Manager>(ServiceLifetime.Singleton);

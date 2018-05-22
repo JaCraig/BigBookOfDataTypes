@@ -81,7 +81,7 @@ namespace BigBook
         /// Gets the vertices.
         /// </summary>
         /// <value>The vertices.</value>
-        public List<Vertex<T>> Vertices { get; private set; }
+        public List<Vertex<T>> Vertices { get; }
 
         /// <summary>
         /// Adds the edge.
@@ -196,19 +196,19 @@ namespace BigBook
         /// Gets the incoming edges.
         /// </summary>
         /// <value>The incoming edges.</value>
-        public List<Edge<T>> IncomingEdges { get; private set; }
+        public List<Edge<T>> IncomingEdges { get; }
 
         /// <summary>
         /// Gets the outgoing edges.
         /// </summary>
         /// <value>The outgoing edges.</value>
-        public List<Edge<T>> OutgoingEdges { get; private set; }
+        public List<Edge<T>> OutgoingEdges { get; }
 
         /// <summary>
         /// Gets or sets the graph.
         /// </summary>
         /// <value>The graph.</value>
-        private Graph<T> Graph { get; set; }
+        private Graph<T> Graph { get; }
 
         /// <summary>
         /// Adds an outgoing edge to the vertex specified
@@ -251,9 +251,14 @@ namespace BigBook
         public Vertex<T> RemoveEdge(Edge<T> edge)
         {
             if (edge.Sink == this)
+            {
                 IncomingEdges.Remove(edge);
+            }
             else
+            {
                 OutgoingEdges.Remove(edge);
+            }
+
             return this;
         }
     }

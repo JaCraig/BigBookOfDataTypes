@@ -34,7 +34,10 @@ namespace BigBook
         public static Array Clear(this Array array)
         {
             if (array == null)
+            {
                 return null;
+            }
+
             Array.Clear(array, 0, array.Length);
             return array;
         }

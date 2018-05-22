@@ -31,16 +31,16 @@ namespace BigBook.IO.Converters.BaseClasses
         public static EndianBitConverterBase BigEndian => new BigEndianBitConverter();
 
         /// <summary>
-        /// Gets a value indicating whether this instance is little endian.
-        /// </summary>
-        /// <value><c>true</c> if this instance is little endian; otherwise, <c>false</c>.</value>
-        public abstract bool IsLittleEndian { get; }
-
-        /// <summary>
         /// Gets the little endian bit converter.
         /// </summary>
         /// <value>The little endian bit converter.</value>
         public static EndianBitConverterBase LittleEndian => new LittleEndianBitConverter();
+
+        /// <summary>
+        /// Gets a value indicating whether this instance is little endian.
+        /// </summary>
+        /// <value><c>true</c> if this instance is little endian; otherwise, <c>false</c>.</value>
+        public abstract bool IsLittleEndian { get; }
 
         /// <summary>
         /// Returns a <see cref="System.String"/> that represents this instance.
@@ -368,7 +368,10 @@ namespace BigBook.IO.Converters.BaseClasses
         {
             value = value ?? new byte[0];
             if (value.Length - 1 < startIndex || startIndex < 0)
+            {
                 throw new ArgumentOutOfRangeException(nameof(startIndex));
+            }
+
             return BitConverter.ToBoolean(value, startIndex);
         }
 
@@ -518,7 +521,10 @@ namespace BigBook.IO.Converters.BaseClasses
         {
             value = value ?? new byte[0];
             if (value.Length - bytesToConvert < startIndex || startIndex < 0)
+            {
                 throw new ArgumentOutOfRangeException(nameof(startIndex));
+            }
+
             return FromBytes(value, startIndex, bytesToConvert);
         }
 
@@ -534,7 +540,10 @@ namespace BigBook.IO.Converters.BaseClasses
         {
             buffer = buffer ?? new byte[0];
             if (buffer.Length - bytes < index || index < 0)
+            {
                 throw new ArgumentOutOfRangeException(nameof(index));
+            }
+
             CopyBytesImpl(value, bytes, buffer, index);
         }
 

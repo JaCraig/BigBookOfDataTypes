@@ -19,7 +19,6 @@ using System;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Reflection;
 
 namespace BigBook.Conversion
 {
@@ -47,7 +46,10 @@ namespace BigBook.Conversion
         private static object DbTypeToSqlDbType(object value)
         {
             if (!(value is DbType))
+            {
                 return SqlDbType.Int;
+            }
+
             var TempValue = (DbType)value;
             var Parameter = new SqlParameter
             {
@@ -59,7 +61,10 @@ namespace BigBook.Conversion
         private static object DbTypeToType(object value)
         {
             if (!(value is DbType))
+            {
                 return typeof(int);
+            }
+
             var TempValue = (DbType)value;
             switch (TempValue)
             {
@@ -130,7 +135,10 @@ namespace BigBook.Conversion
         private static object SqlDbTypeToDbType(object sqlDbType)
         {
             if (!(sqlDbType is SqlDbType))
+            {
                 return DbType.Int32;
+            }
+
             var Temp = (SqlDbType)sqlDbType;
             var Parameter = new SqlParameter
             {
@@ -141,47 +149,161 @@ namespace BigBook.Conversion
 
         private static object TypeToDbType(object Object)
         {
-            var TempValue = Object as Type;
-            if (TempValue == null)
+            if (!(Object is Type TempValue))
+            {
                 return DbType.Int32;
+            }
+
             if (TempValue.IsEnum)
+            {
                 TempValue = Enum.GetUnderlyingType(TempValue);
-            if (TempValue == typeof(byte)) return DbType.Byte;
-            else if (TempValue == typeof(sbyte)) return DbType.Byte;
-            else if (TempValue == typeof(short)) return DbType.Int16;
-            else if (TempValue == typeof(ushort)) return DbType.Int16;
-            else if (TempValue == typeof(int)) return DbType.Int32;
-            else if (TempValue == typeof(uint)) return DbType.Int32;
-            else if (TempValue == typeof(long)) return DbType.Int64;
-            else if (TempValue == typeof(ulong)) return DbType.Int64;
-            else if (TempValue == typeof(float)) return DbType.Single;
-            else if (TempValue == typeof(double)) return DbType.Double;
-            else if (TempValue == typeof(decimal)) return DbType.Decimal;
-            else if (TempValue == typeof(bool)) return DbType.Boolean;
-            else if (TempValue == typeof(string)) return DbType.String;
-            else if (TempValue == typeof(char)) return DbType.StringFixedLength;
-            else if (TempValue == typeof(Guid)) return DbType.Guid;
-            else if (TempValue == typeof(DateTime)) return DbType.DateTime2;
-            else if (TempValue == typeof(DateTimeOffset)) return DbType.DateTimeOffset;
-            else if (TempValue == typeof(TimeSpan)) return DbType.Time;
-            else if (TempValue == typeof(byte[])) return DbType.Binary;
-            else if (TempValue == typeof(byte?)) return DbType.Byte;
-            else if (TempValue == typeof(sbyte?)) return DbType.Byte;
-            else if (TempValue == typeof(short?)) return DbType.Int16;
-            else if (TempValue == typeof(ushort?)) return DbType.Int16;
-            else if (TempValue == typeof(int?)) return DbType.Int32;
-            else if (TempValue == typeof(uint?)) return DbType.Int32;
-            else if (TempValue == typeof(long?)) return DbType.Int64;
-            else if (TempValue == typeof(ulong?)) return DbType.Int64;
-            else if (TempValue == typeof(float?)) return DbType.Single;
-            else if (TempValue == typeof(double?)) return DbType.Double;
-            else if (TempValue == typeof(decimal?)) return DbType.Decimal;
-            else if (TempValue == typeof(bool?)) return DbType.Boolean;
-            else if (TempValue == typeof(char?)) return DbType.StringFixedLength;
-            else if (TempValue == typeof(Guid?)) return DbType.Guid;
-            else if (TempValue == typeof(DateTime?)) return DbType.DateTime2;
-            else if (TempValue == typeof(DateTimeOffset?)) return DbType.DateTimeOffset;
-            else if (TempValue == typeof(TimeSpan?)) return DbType.Time;
+            }
+
+            if (TempValue == typeof(byte))
+            {
+                return DbType.Byte;
+            }
+            else if (TempValue == typeof(sbyte))
+            {
+                return DbType.Byte;
+            }
+            else if (TempValue == typeof(short))
+            {
+                return DbType.Int16;
+            }
+            else if (TempValue == typeof(ushort))
+            {
+                return DbType.Int16;
+            }
+            else if (TempValue == typeof(int))
+            {
+                return DbType.Int32;
+            }
+            else if (TempValue == typeof(uint))
+            {
+                return DbType.Int32;
+            }
+            else if (TempValue == typeof(long))
+            {
+                return DbType.Int64;
+            }
+            else if (TempValue == typeof(ulong))
+            {
+                return DbType.Int64;
+            }
+            else if (TempValue == typeof(float))
+            {
+                return DbType.Single;
+            }
+            else if (TempValue == typeof(double))
+            {
+                return DbType.Double;
+            }
+            else if (TempValue == typeof(decimal))
+            {
+                return DbType.Decimal;
+            }
+            else if (TempValue == typeof(bool))
+            {
+                return DbType.Boolean;
+            }
+            else if (TempValue == typeof(string))
+            {
+                return DbType.String;
+            }
+            else if (TempValue == typeof(char))
+            {
+                return DbType.StringFixedLength;
+            }
+            else if (TempValue == typeof(Guid))
+            {
+                return DbType.Guid;
+            }
+            else if (TempValue == typeof(DateTime))
+            {
+                return DbType.DateTime2;
+            }
+            else if (TempValue == typeof(DateTimeOffset))
+            {
+                return DbType.DateTimeOffset;
+            }
+            else if (TempValue == typeof(TimeSpan))
+            {
+                return DbType.Time;
+            }
+            else if (TempValue == typeof(byte[]))
+            {
+                return DbType.Binary;
+            }
+            else if (TempValue == typeof(byte?))
+            {
+                return DbType.Byte;
+            }
+            else if (TempValue == typeof(sbyte?))
+            {
+                return DbType.Byte;
+            }
+            else if (TempValue == typeof(short?))
+            {
+                return DbType.Int16;
+            }
+            else if (TempValue == typeof(ushort?))
+            {
+                return DbType.Int16;
+            }
+            else if (TempValue == typeof(int?))
+            {
+                return DbType.Int32;
+            }
+            else if (TempValue == typeof(uint?))
+            {
+                return DbType.Int32;
+            }
+            else if (TempValue == typeof(long?))
+            {
+                return DbType.Int64;
+            }
+            else if (TempValue == typeof(ulong?))
+            {
+                return DbType.Int64;
+            }
+            else if (TempValue == typeof(float?))
+            {
+                return DbType.Single;
+            }
+            else if (TempValue == typeof(double?))
+            {
+                return DbType.Double;
+            }
+            else if (TempValue == typeof(decimal?))
+            {
+                return DbType.Decimal;
+            }
+            else if (TempValue == typeof(bool?))
+            {
+                return DbType.Boolean;
+            }
+            else if (TempValue == typeof(char?))
+            {
+                return DbType.StringFixedLength;
+            }
+            else if (TempValue == typeof(Guid?))
+            {
+                return DbType.Guid;
+            }
+            else if (TempValue == typeof(DateTime?))
+            {
+                return DbType.DateTime2;
+            }
+            else if (TempValue == typeof(DateTimeOffset?))
+            {
+                return DbType.DateTimeOffset;
+            }
+            else if (TempValue == typeof(TimeSpan?))
+            {
+                return DbType.Time;
+            }
+
             return DbType.Int32;
         }
     }

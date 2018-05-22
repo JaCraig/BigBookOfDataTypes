@@ -16,7 +16,7 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void UnicodeTest()
         {
-            string Value = "\u25EF\u25EF\u25EF";
+            const string Value = "\u25EF\u25EF\u25EF";
             Assert.True(Value.ToByteArray(new UnicodeEncoding()).IsUnicode());
         }
     }

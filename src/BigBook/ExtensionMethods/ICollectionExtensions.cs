@@ -49,9 +49,15 @@ namespace BigBook
         public static ICollection<T> Add<T>(this ICollection<T> collection, params T[] items)
         {
             if (collection == null)
+            {
                 return new List<T>();
+            }
+
             if (items == null)
+            {
                 return collection;
+            }
+
             items.ForEach(x => collection.Add(x));
             return collection;
         }
@@ -66,7 +72,10 @@ namespace BigBook
         public static T AddAndReturn<T>(this ICollection<T> collection, T item)
         {
             if (collection == null)
+            {
                 return item;
+            }
+
             collection.Add(item);
             return item;
         }
@@ -82,9 +91,15 @@ namespace BigBook
         public static bool AddIf<T>(this ICollection<T> collection, Predicate<T> predicate, params T[] items)
         {
             if (collection == null || predicate == null)
+            {
                 return false;
+            }
+
             if (items == null || items.Length == 0)
+            {
                 return true;
+            }
+
             bool ReturnValue = false;
             for (int x = 0, itemsLength = items.Length; x < itemsLength; x++)
             {
@@ -110,9 +125,15 @@ namespace BigBook
         public static bool AddIf<T>(this ICollection<T> collection, Predicate<T> predicate, IEnumerable<T> items)
         {
             if (collection == null || predicate == null)
+            {
                 return false;
-            if (items == null || !items.Any())
+            }
+
+            if (items?.Any() != true)
+            {
                 return true;
+            }
+
             return collection.AddIf(predicate, items.ToArray());
         }
 
@@ -126,9 +147,15 @@ namespace BigBook
         public static bool AddIfUnique<T>(this ICollection<T> collection, params T[] items)
         {
             if (collection == null)
+            {
                 return false;
+            }
+
             if (items == null)
+            {
                 return true;
+            }
+
             return collection.AddIf(x => !collection.Contains(x), items);
         }
 
@@ -146,9 +173,15 @@ namespace BigBook
         public static bool AddIfUnique<T>(this ICollection<T> collection, Func<T, T, bool> predicate, params T[] items)
         {
             if (collection == null || predicate == null)
+            {
                 return false;
+            }
+
             if (items == null)
+            {
                 return true;
+            }
+
             return collection.AddIf(x => !collection.Any(y => predicate(x, y)), items);
         }
 
@@ -162,9 +195,15 @@ namespace BigBook
         public static bool AddIfUnique<T>(this ICollection<T> collection, IEnumerable<T> items)
         {
             if (collection == null)
+            {
                 return false;
+            }
+
             if (items == null)
+            {
                 return true;
+            }
+
             return collection.AddIf(x => !collection.Contains(x), items);
         }
 
@@ -182,9 +221,15 @@ namespace BigBook
         public static bool AddIfUnique<T>(this ICollection<T> collection, Func<T, T, bool> predicate, IEnumerable<T> items)
         {
             if (collection == null || predicate == null)
+            {
                 return false;
+            }
+
             if (items == null)
+            {
                 return true;
+            }
+
             return collection.AddIf(x => !collection.Any(y => predicate(x, y)), items);
         }
 
@@ -200,7 +245,10 @@ namespace BigBook
         public static IList<T> For<T>(this IList<T> list, int start, int end, Action<T, int> action)
         {
             if (list == null)
+            {
                 return new List<T>();
+            }
+
             var TempList = list.ElementsBetween(start, end + 1).ToArray();
             for (int x = 0; x < TempList.Length; ++x)
             {
@@ -223,7 +271,10 @@ namespace BigBook
         public static IList<R> For<T, R>(this IList<T> list, int start, int end, Func<T, int, R> function)
         {
             if (list == null || function == null)
+            {
                 return new List<R>();
+            }
+
             var TempList = list.ElementsBetween(start, end + 1).ToArray();
             var ReturnList = new List<R>();
             for (int x = 0; x < TempList.Length; ++x)
@@ -242,7 +293,10 @@ namespace BigBook
         public static ICollection<T> Remove<T>(this ICollection<T> collection, Func<T, bool> predicate)
         {
             if (collection == null)
+            {
                 return new List<T>();
+            }
+
             return collection.Where(x => !predicate(x)).ToList();
         }
 
@@ -256,9 +310,15 @@ namespace BigBook
         public static ICollection<T> Remove<T>(this ICollection<T> collection, IEnumerable<T> items)
         {
             if (collection == null)
+            {
                 return new List<T>();
+            }
+
             if (items == null)
+            {
                 return collection;
+            }
+
             return collection.Where(x => !items.Contains(x)).ToList();
         }
     }

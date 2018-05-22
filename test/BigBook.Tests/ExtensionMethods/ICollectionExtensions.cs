@@ -11,7 +11,7 @@ namespace BigBook.Tests.ExtensionMethods
         public void AddAndReturnTest()
         {
             var TestObject = new int[] { 1, 2, 3, 4, 5, 6 }.ToList();
-            int Item = 7;
+            const int Item = 7;
             Assert.Equal(Item, TestObject.AddAndReturn(Item));
         }
 
@@ -93,9 +93,11 @@ namespace BigBook.Tests.ExtensionMethods
         {
             var TestObject = new int[] { 1, 2, 3, 4, 5, 6 }.ToList();
             TestObject = TestObject.Remove((x) => x % 2 == 0).ToList();
-            Assert.Equal(3, TestObject.Count());
+            Assert.Equal(3, TestObject.Count);
             foreach (int Item in TestObject)
+            {
                 Assert.False(Item % 2 == 0);
+            }
         }
 
         [Fact]
@@ -103,9 +105,11 @@ namespace BigBook.Tests.ExtensionMethods
         {
             int[] TestObject = { 1, 2, 3, 4, 5, 6 };
             TestObject = TestObject.Remove((x) => x % 2 == 0).ToArray();
-            Assert.Equal(3, TestObject.Count());
+            Assert.Equal(3, TestObject.Length);
             foreach (int Item in TestObject)
+            {
                 Assert.False(Item % 2 == 0);
+            }
         }
     }
 }

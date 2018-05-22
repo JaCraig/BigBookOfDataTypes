@@ -25,6 +25,9 @@ namespace BigBook.DataMapper.Default
     /// <summary>
     /// Type mapping default class
     /// </summary>
+    /// <typeparam name="Left">The type of the eft.</typeparam>
+    /// <typeparam name="Right">The type of the ight.</typeparam>
+    /// <seealso cref="BigBook.DataMapper.BaseClasses.TypeMappingBase{Left, Right}"/>
     public class TypeMapping<Left, Right> : TypeMappingBase<Left, Right>
     {
         /// <summary>

@@ -36,9 +36,15 @@ namespace BigBook
         public static Predicate<T> AddToSet<T>(this Predicate<T> predicate, params T[] values)
         {
             if (predicate == null)
+            {
                 return null;
+            }
+
             if (values == null || values.Length == 0)
+            {
                 return predicate;
+            }
+
             return x => values.Contains(x) || predicate(x);
         }
 
@@ -53,7 +59,10 @@ namespace BigBook
         public static Func<T1, T2, bool> CartesianProduct<T1, T2>(this Predicate<T1> predicate1, Predicate<T2> predicate2)
         {
             if (predicate1 == null || predicate2 == null)
+            {
                 return null;
+            }
+
             return (x, y) => predicate1(x) && predicate2(y);
         }
 
@@ -67,9 +76,15 @@ namespace BigBook
         public static Predicate<T> Difference<T>(this Predicate<T> predicate1, Predicate<T> predicate2)
         {
             if (predicate1 == null)
+            {
                 return null;
+            }
+
             if (predicate2 == null)
+            {
                 return predicate1;
+            }
+
             return x => predicate1(x) ^ predicate2(x);
         }
 
@@ -83,7 +98,10 @@ namespace BigBook
         public static Predicate<T> Intersect<T>(this Predicate<T> predicate1, Predicate<T> predicate2)
         {
             if (predicate1 == null || predicate2 == null)
+            {
                 return null;
+            }
+
             return x => predicate1(x) && predicate2(x);
         }
 
@@ -97,7 +115,10 @@ namespace BigBook
         public static Predicate<T> RelativeComplement<T>(this Predicate<T> predicate1, Predicate<T> predicate2)
         {
             if (predicate1 == null || predicate2 == null)
+            {
                 return null;
+            }
+
             return x => predicate1(x) && !predicate2(x);
         }
 
@@ -111,9 +132,15 @@ namespace BigBook
         public static Predicate<T> RemoveFromSet<T>(this Predicate<T> predicate, params T[] values)
         {
             if (predicate == null)
+            {
                 return null;
+            }
+
             if (values == null)
+            {
                 return predicate;
+            }
+
             return x => !values.Contains(x) && predicate(x);
         }
 
@@ -127,9 +154,15 @@ namespace BigBook
         public static Predicate<T> Union<T>(this Predicate<T> predicate1, Predicate<T> predicate2)
         {
             if (predicate1 == null)
+            {
                 return predicate2;
+            }
+
             if (predicate2 == null)
+            {
                 return predicate1;
+            }
+
             return x => predicate1(x) || predicate2(x);
         }
     }

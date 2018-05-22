@@ -7,7 +7,7 @@ namespace BigBook.Tests
 {
     public class TaskQueueTests
     {
-        private double EPSILON = 0.0001d;
+        private readonly double EPSILON = 0.0001d;
 
         [Fact]
         public void MoreComplexTasks()
@@ -18,7 +18,11 @@ namespace BigBook.Tests
             {
                 Assert.True(TestObject.Enqueue(x));
             }
-            while (!TestObject.IsComplete) Thread.Sleep(100);
+            while (!TestObject.IsComplete)
+            {
+                Thread.Sleep(100);
+            }
+
             Assert.True(Results.All(x => System.Math.Abs(x - 3.14159d) < EPSILON));
         }
 
@@ -32,7 +36,11 @@ namespace BigBook.Tests
             {
                 Assert.True(TestObject.Enqueue(Temp[x]));
             }
-            while (!TestObject.IsComplete) Thread.Sleep(100);
+            while (!TestObject.IsComplete)
+            {
+                Thread.Sleep(100);
+            }
+
             var OrderedString = new string(Builder.ToString().OrderBy(x => x).ToArray());
             Assert.Equal("00123", OrderedString);
         }
@@ -40,8 +48,11 @@ namespace BigBook.Tests
         private double F(int i)
         {
             if (i == 1000)
+            {
                 return 1;
-            return 1 + i / (2.0 * i + 1) * F(i + 1);
+            }
+
+            return 1 + (i / ((2.0 * i) + 1) * F(i + 1));
         }
     }
 }

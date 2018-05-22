@@ -66,7 +66,7 @@ namespace BigBook.Caching.BaseClasses
         /// <summary>
         /// Tag mappings
         /// </summary>
-        protected ListMapping<string, string> TagMappings { get; private set; }
+        protected ListMapping<string, string> TagMappings { get; }
 
         /// <summary>
         /// Indexer
@@ -149,11 +149,16 @@ namespace BigBook.Caching.BaseClasses
         {
             var ReturnValue = new List<object>();
             if (!TagMappings.ContainsKey(tag))
+            {
                 return ReturnValue;
+            }
+
             foreach (string Key in TagMappings[tag])
             {
                 if (ContainsKey(Key))
+                {
                     ReturnValue.Add(this[Key]);
+                }
             }
             return ReturnValue;
         }
@@ -194,7 +199,10 @@ namespace BigBook.Caching.BaseClasses
         public void RemoveByTag(string tag)
         {
             if (!TagMappings.ContainsKey(tag))
+            {
                 return;
+            }
+
             TagMappings[tag].ForEach(Remove);
             TagMappings.Remove(tag);
         }

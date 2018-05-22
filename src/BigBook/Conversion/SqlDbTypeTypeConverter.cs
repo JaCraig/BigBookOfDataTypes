@@ -20,7 +20,6 @@ using System.Collections.Concurrent;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Reflection;
 
 namespace BigBook.Conversion
 {
@@ -90,7 +89,10 @@ namespace BigBook.Conversion
         private static object DbTypeToSqlDbType(object value)
         {
             if (!(value is DbType))
+            {
                 return SqlDbType.Int;
+            }
+
             var TempValue = (DbType)value;
             var Parameter = new SqlParameter
             {
@@ -102,7 +104,10 @@ namespace BigBook.Conversion
         private static object SqlDbTypeToDbType(object sqlDbType)
         {
             if (!(sqlDbType is SqlDbType))
+            {
                 return DbType.Int32;
+            }
+
             var Temp = (SqlDbType)sqlDbType;
             var Parameter = new SqlParameter
             {
@@ -114,7 +119,10 @@ namespace BigBook.Conversion
         private static object SqlDbTypeToType(object arg)
         {
             if (!(arg is SqlDbType))
+            {
                 return typeof(int);
+            }
+
             var Item = (SqlDbType)arg;
             var Parameter = new SqlParameter
             {
@@ -188,12 +196,17 @@ namespace BigBook.Conversion
 
         private static object TypeToSqlDbType(object arg)
         {
-            var TempValue = arg as Type;
-            if (TempValue == null)
+            if (!(arg is Type TempValue))
+            {
                 return SqlDbType.Int;
+            }
+
             DbType Item = DbType.Int32;
             if (TempValue.IsEnum)
+            {
                 TempValue = Enum.GetUnderlyingType(TempValue);
+            }
+
             Item = Conversions.GetValue(TempValue, DbType.Int32);
             var Parameter = new SqlParameter
             {

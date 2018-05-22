@@ -27,6 +27,9 @@ namespace BigBook.DataMapper.BaseClasses
     /// <summary>
     /// Type mapping base class
     /// </summary>
+    /// <typeparam name="Left">The type of the eft.</typeparam>
+    /// <typeparam name="Right">The type of the ight.</typeparam>
+    /// <seealso cref="BigBook.DataMapper.Interfaces.ITypeMapping{Left, Right}"/>
     public abstract class TypeMappingBase<Left, Right> : ITypeMapping<Left, Right>
     {
         /// <summary>
@@ -40,7 +43,7 @@ namespace BigBook.DataMapper.BaseClasses
         /// <summary>
         /// List of mappings
         /// </summary>
-        protected ConcurrentBag<IMapping<Left, Right>> Mappings { get; private set; }
+        protected ConcurrentBag<IMapping<Left, Right>> Mappings { get; }
 
         /// <summary>
         /// Adds a mapping
@@ -85,7 +88,10 @@ namespace BigBook.DataMapper.BaseClasses
         public virtual ITypeMapping AutoMap()
         {
             if (Mappings.Count > 0)
+            {
                 return this;
+            }
+
             Type LeftType = typeof(Left);
             Type RightType = typeof(Right);
             if (RightType.Is<IDictionary<string, object>>() && LeftType.Is<IDictionary<string, object>>())
@@ -178,7 +184,10 @@ namespace BigBook.DataMapper.BaseClasses
         private void AddLeftIDictionaryMapping(Type leftType, Type rightType)
         {
             if (rightType == null || leftType == null)
+            {
                 return;
+            }
+
             PropertyInfo[] Properties = rightType.GetProperties();
             for (int x = 0; x < Properties.Length; ++x)
             {
@@ -197,25 +206,37 @@ namespace BigBook.DataMapper.BaseClasses
                     {
                         var Temp = (IDictionary<string, object>)y;
                         if (Temp.ContainsKey(Property.Name))
+                        {
                             return Temp[Property.Name];
+                        }
+
                         string Key = Temp.Keys.FirstOrDefault(z => string.Equals(z.Replace("_", ""), Property.Name, StringComparison.OrdinalIgnoreCase));
                         if (!string.IsNullOrEmpty(Key))
+                        {
                             return Temp[Key];
+                        }
+
                         return null;
                     }),
                     new Action<Left, object>((y, z) =>
                     {
                         var LeftSide = (IDictionary<string, object>)y;
                         if (LeftSide.ContainsKey(Property.Name))
+                        {
                             LeftSide[Property.Name] = z;
+                        }
                         else
+                        {
                             LeftSide.Add(Property.Name, z);
+                        }
                     }),
                     RightGet.Compile(),
                     new Action<Right, object>((y, z) =>
                     {
                         if (z != null)
+                        {
                             RightSet(y, z);
+                        }
                     }));
                 }
             }
@@ -224,7 +245,10 @@ namespace BigBook.DataMapper.BaseClasses
         private void AddRightIDictionaryMapping(Type leftType, Type rightType)
         {
             if (rightType == null || leftType == null)
+            {
                 return;
+            }
+
             PropertyInfo[] Properties = leftType.GetProperties();
             for (int x = 0; x < Properties.Length; ++x)
             {
@@ -243,25 +267,37 @@ namespace BigBook.DataMapper.BaseClasses
                     new Action<Left, object>((y, z) =>
                     {
                         if (z != null)
+                        {
                             LeftSet(y, z);
+                        }
                     }),
                     new Func<Right, object>(y =>
                     {
                         var Temp = (IDictionary<string, object>)y;
                         if (Temp.ContainsKey(Property.Name))
+                        {
                             return Temp[Property.Name];
+                        }
+
                         string Key = Temp.Keys.FirstOrDefault(z => string.Equals(z.Replace("_", ""), Property.Name, StringComparison.OrdinalIgnoreCase));
                         if (!string.IsNullOrEmpty(Key))
+                        {
                             return Temp[Key];
+                        }
+
                         return null;
                     }),
                     new Action<Right, object>((y, z) =>
                     {
                         var LeftSide = (IDictionary<string, object>)y;
                         if (LeftSide.ContainsKey(Property.Name))
+                        {
                             LeftSide[Property.Name] = z;
+                        }
                         else
+                        {
                             LeftSide.Add(Property.Name, z);
+                        }
                     }));
                 }
             }

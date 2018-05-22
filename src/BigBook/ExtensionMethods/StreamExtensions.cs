@@ -35,7 +35,10 @@ namespace BigBook
         public static string ReadAll(this Stream input, Encoding encodingUsing = null)
         {
             if (input == null)
+            {
                 return "";
+            }
+
             return input.ReadAllBinary().ToString(encodingUsing);
         }
 
@@ -47,9 +50,15 @@ namespace BigBook
         public static byte[] ReadAllBinary(this Stream input)
         {
             if (input == null)
+            {
                 return new byte[0];
+            }
+
             if (input is MemoryStream TempInput)
+            {
                 return TempInput.ToArray();
+            }
+
             byte[] Buffer = new byte[4096];
             using (MemoryStream Temp = new MemoryStream())
             {

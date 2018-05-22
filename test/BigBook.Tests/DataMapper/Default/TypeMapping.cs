@@ -8,8 +8,7 @@ namespace BigBook.Tests.DataMapper.Default
         [Fact]
         public void AutoMapping()
         {
-            BigBook.DataMapper.Default.TypeMapping<MappingA, MappingB> TestObject = null;
-            TestObject = new TypeMapping<MappingA, MappingB>();
+            BigBook.DataMapper.Default.TypeMapping<MappingA, MappingB> TestObject = new TypeMapping<MappingA, MappingB>();
             Assert.NotNull(TestObject);
             TestObject.AutoMap();
             var A = new MappingA
@@ -30,16 +29,14 @@ namespace BigBook.Tests.DataMapper.Default
         [Fact]
         public void CreationTest()
         {
-            BigBook.DataMapper.Default.TypeMapping<MappingA, MappingB> TestObject = null;
-            TestObject = new TypeMapping<MappingA, MappingB>();
+            BigBook.DataMapper.Default.TypeMapping<MappingA, MappingB> TestObject = new TypeMapping<MappingA, MappingB>();
             Assert.NotNull(TestObject);
         }
 
         [Fact]
         public void Mapping()
         {
-            BigBook.DataMapper.Default.TypeMapping<MappingA, MappingB> TestObject = null;
-            TestObject = new TypeMapping<MappingA, MappingB>();
+            BigBook.DataMapper.Default.TypeMapping<MappingA, MappingB> TestObject = new TypeMapping<MappingA, MappingB>();
             Assert.NotNull(TestObject);
             TestObject.AddMapping(x => x.Item1, x => x.Item1);
             TestObject.AddMapping(x => x.Item2, x => x.Item2);

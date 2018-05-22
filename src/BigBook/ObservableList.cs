@@ -57,24 +57,24 @@ namespace BigBook
         }
 
         /// <summary>
+        /// The delegates_
+        /// </summary>
+        private readonly List<NotifyCollectionChangedEventHandler> CollectionChangedDelegates = new List<NotifyCollectionChangedEventHandler>();
+
+        /// <summary>
+        /// The property changed delegates
+        /// </summary>
+        private readonly List<PropertyChangedEventHandler> PropertyChangedDelegates = new List<PropertyChangedEventHandler>();
+
+        /// <summary>
         /// The collection changed
         /// </summary>
         private NotifyCollectionChangedEventHandler collectionChanged_;
 
         /// <summary>
-        /// The delegates_
-        /// </summary>
-        private List<NotifyCollectionChangedEventHandler> CollectionChangedDelegates = new List<NotifyCollectionChangedEventHandler>();
-
-        /// <summary>
         /// The property changed
         /// </summary>
         private PropertyChangedEventHandler propertyChanged_;
-
-        /// <summary>
-        /// The property changed delegates
-        /// </summary>
-        private List<PropertyChangedEventHandler> PropertyChangedDelegates = new List<PropertyChangedEventHandler>();
 
         /// <summary>
         /// Gets the number of elements contained in the <see cref="T:System.Collections.Generic.ICollection`1"/>.
@@ -92,8 +92,8 @@ namespace BigBook
         public bool IsReadOnly => false;
 
         /// <summary>
-        /// Gets a value indicating whether access to the <see
-        /// cref="T:System.Collections.ICollection"/> is synchronized (thread safe).
+        /// Gets a value indicating whether access to the
+        /// <see cref="T:System.Collections.ICollection"/> is synchronized (thread safe).
         /// </summary>
         public bool IsSynchronized => false;
 
@@ -106,7 +106,7 @@ namespace BigBook
         /// Gets or sets the base list.
         /// </summary>
         /// <value>The base list.</value>
-        private List<T> BaseList { get; set; }
+        private List<T> BaseList { get; }
 
         /// <summary>
         /// Gets or sets the <see cref="System.Object"/> at the specified index.
@@ -254,8 +254,8 @@ namespace BigBook
         /// </summary>
         /// <param name="value">The object to locate in the <see cref="T:System.Collections.IList"/>.</param>
         /// <returns>
-        /// true if the <see cref="T:System.Object"/> is found in the <see
-        /// cref="T:System.Collections.IList"/>; otherwise, false.
+        /// true if the <see cref="T:System.Object"/> is found in the
+        /// <see cref="T:System.Collections.IList"/>; otherwise, false.
         /// </returns>
         public bool Contains(object value)
         {
@@ -273,13 +273,13 @@ namespace BigBook
         }
 
         /// <summary>
-        /// Copies the elements of the <see cref="T:System.Collections.ICollection"/> to an <see
-        /// cref="T:System.Array"/>, starting at a particular <see cref="T:System.Array"/> index.
+        /// Copies the elements of the <see cref="T:System.Collections.ICollection"/> to an
+        /// <see cref="T:System.Array"/>, starting at a particular <see cref="T:System.Array"/> index.
         /// </summary>
         /// <param name="array">
         /// The one-dimensional <see cref="T:System.Array"/> that is the destination of the elements
-        /// copied from <see cref="T:System.Collections.ICollection"/>. The <see
-        /// cref="T:System.Array"/> must have zero-based indexing.
+        /// copied from <see cref="T:System.Collections.ICollection"/>. The
+        /// <see cref="T:System.Array"/> must have zero-based indexing.
         /// </param>
         /// <param name="index">
         /// The zero-based index in <paramref name="array"/> at which copying begins.

@@ -41,7 +41,7 @@ namespace BigBook.DataMapper.BaseClasses
         /// <summary>
         /// Mappings
         /// </summary>
-        protected ConcurrentDictionary<Tuple<Type, Type>, ITypeMapping> Mappings { get; private set; }
+        protected ConcurrentDictionary<Tuple<Type, Type>, ITypeMapping> Mappings { get; }
 
         /// <summary>
         /// Adds or returns a mapping between two types
