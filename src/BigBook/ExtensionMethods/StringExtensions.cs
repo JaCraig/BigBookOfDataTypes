@@ -151,7 +151,9 @@ namespace BigBook
                 if (char.IsUpper(input[x]))
                 {
                     if ((input[x - 1] != ' ' && !char.IsUpper(input[x - 1]))
-                        || (char.IsUpper(input[x - 1]) && x < input.Length - 1 && !char.IsUpper(input[x + 1])))
+                        || (char.IsUpper(input[x - 1])
+                            && x < input.Length - 1
+                            && !(char.IsUpper(input[x + 1]) || input[x + 1] == ' ')))
                     {
                         newText.Append(' ');
                     }

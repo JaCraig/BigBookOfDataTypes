@@ -15,6 +15,8 @@ namespace BigBook.Tests.ExtensionMethods
         {
             const string Value = "TheBrownFoxIsAwesome.ButTheBlueFoxIsNot.2222";
             Assert.Equal("The Brown Fox Is Awesome. But The Blue Fox Is Not.2222", Value.AddSpaces());
+            const string Value2 = "IBM is an acronym, but IBM doesn't stand for IBM";
+            Assert.Equal("IBM is an acronym, but IBM doesn't stand for IBM", Value2.AddSpaces());
         }
 
         [Fact]
