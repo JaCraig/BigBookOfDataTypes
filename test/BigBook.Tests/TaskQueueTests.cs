@@ -31,7 +31,14 @@ namespace BigBook.Tests
         {
             var Builder = new StringBuilder();
             int[] Temp = { 0, 0, 1, 2, 3 };
-            var TestObject = new TaskQueue<int>(4, x => { Builder.Append(x); return true; });
+            object LockObject = new object();
+            var TestObject = new TaskQueue<int>(4, x =>
+            {
+                lock (LockObject)
+                {
+                    Builder.Append(x); return true;
+                }
+            });
             for (int x = 0; x < Temp.Length; ++x)
             {
                 Assert.True(TestObject.Enqueue(Temp[x]));
