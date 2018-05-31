@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BigBook", "src\BigBook\BigB
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BigBook.Tests", "test\BigBook.Tests\BigBook.Tests.csproj", "{C75E2943-501D-40E6-9DCB-8620DE9C02E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigBook.Benchmarks", "BigBook.Benchmarks\BigBook.Benchmarks.csproj", "{E6803AA6-ACB3-48F6-9798-7686499772BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BigBook.Benchmarks", "BigBook.Benchmarks\BigBook.Benchmarks.csproj", "{E6803AA6-ACB3-48F6-9798-7686499772BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -3,7 +3,6 @@ using FileCurator;
 using FileCurator.Registration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
 using System.Reflection;
 using Xunit;
 
@@ -16,7 +15,7 @@ namespace BigBook.Tests.BaseClasses
         {
             if (Canister.Builder.Bootstrapper == null)
             {
-                Canister.Builder.CreateContainer(new List<ServiceDescriptor>())
+                Canister.Builder.CreateContainer(new ServiceCollection())
                     .AddAssembly(typeof(TestingDirectoryFixture).GetTypeInfo().Assembly)
                     .RegisterBigBookOfDataTypes()
                     .RegisterFileCurator()
