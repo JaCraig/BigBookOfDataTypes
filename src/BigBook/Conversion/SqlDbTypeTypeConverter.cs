@@ -88,12 +88,13 @@ namespace BigBook.Conversion
 
         private static object DbTypeToSqlDbType(object value)
         {
-            if (!(value is DbType))
+            if (!(value is DbType TempValue))
             {
                 return SqlDbType.Int;
             }
+            if (TempValue == DbType.Time)
+                return SqlDbType.Time;
 
-            var TempValue = (DbType)value;
             var Parameter = new SqlParameter
             {
                 DbType = TempValue
@@ -103,12 +104,14 @@ namespace BigBook.Conversion
 
         private static object SqlDbTypeToDbType(object sqlDbType)
         {
-            if (!(sqlDbType is SqlDbType))
+            if (!(sqlDbType is SqlDbType Temp))
             {
                 return DbType.Int32;
             }
 
-            var Temp = (SqlDbType)sqlDbType;
+            if (Temp == SqlDbType.Time)
+                return DbType.Time;
+
             var Parameter = new SqlParameter
             {
                 SqlDbType = Temp
@@ -118,12 +121,13 @@ namespace BigBook.Conversion
 
         private static object SqlDbTypeToType(object arg)
         {
-            if (!(arg is SqlDbType))
+            if (!(arg is SqlDbType Item))
             {
                 return typeof(int);
             }
+            if (Item == SqlDbType.Time)
+                return typeof(TimeSpan);
 
-            var Item = (SqlDbType)arg;
             var Parameter = new SqlParameter
             {
                 SqlDbType = Item
@@ -208,6 +212,8 @@ namespace BigBook.Conversion
             }
 
             Item = Conversions.GetValue(TempValue, DbType.Int32);
+            if (Item == DbType.Time)
+                return SqlDbType.Time;
             var Parameter = new SqlParameter
             {
                 DbType = Item

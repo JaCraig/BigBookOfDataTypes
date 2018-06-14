@@ -45,12 +45,13 @@ namespace BigBook.Conversion
 
         private static object DbTypeToSqlDbType(object value)
         {
-            if (!(value is DbType))
+            if (!(value is DbType TempValue))
             {
                 return SqlDbType.Int;
             }
 
-            var TempValue = (DbType)value;
+            if (TempValue == DbType.Time)
+                return SqlDbType.Time;
             var Parameter = new SqlParameter
             {
                 DbType = TempValue
@@ -60,12 +61,11 @@ namespace BigBook.Conversion
 
         private static object DbTypeToType(object value)
         {
-            if (!(value is DbType))
+            if (!(value is DbType TempValue))
             {
                 return typeof(int);
             }
 
-            var TempValue = (DbType)value;
             switch (TempValue)
             {
                 case DbType.Byte:
@@ -134,12 +134,14 @@ namespace BigBook.Conversion
 
         private static object SqlDbTypeToDbType(object sqlDbType)
         {
-            if (!(sqlDbType is SqlDbType))
+            if (!(sqlDbType is SqlDbType Temp))
             {
                 return DbType.Int32;
             }
 
-            var Temp = (SqlDbType)sqlDbType;
+            if (Temp == SqlDbType.Time)
+                return DbType.Time;
+
             var Parameter = new SqlParameter
             {
                 SqlDbType = Temp

@@ -6,6 +6,36 @@ namespace BigBook.Tests.Conversion.Converter
 {
     public class DbTypeTypeConverterTests
     {
+        public static readonly TheoryData<DbType, Type> DBToTypeData = new TheoryData<DbType, Type>
+        {
+            {DbType.Int16,typeof(Int16) },
+            {DbType.Int64,typeof(Int64) },
+            {DbType.Int32,typeof(Int32) },
+            {DbType.Boolean,typeof(bool) },
+            {DbType.String,typeof(string) },
+            {DbType.DateTime2,typeof(DateTime) },
+            {DbType.Decimal,typeof(decimal) },
+            {DbType.Single,typeof(float) },
+            {DbType.String,typeof(string) },
+            {DbType.Time,typeof(TimeSpan) },
+            {DbType.Binary,typeof(byte[]) },
+        };
+
+        public static readonly TheoryData<SqlDbType, DbType> SQLToDbTypeData = new TheoryData<SqlDbType, DbType>
+        {
+            {SqlDbType.SmallInt,DbType.Int16 },
+            {SqlDbType.BigInt,DbType.Int64 },
+            {SqlDbType.Int,DbType.Int32 },
+            {SqlDbType.Bit,DbType.Boolean },
+            {SqlDbType.NVarChar,DbType.String },
+            {SqlDbType.DateTime2,DbType.DateTime2 },
+            {SqlDbType.Decimal,DbType.Decimal },
+            {SqlDbType.Real,DbType.Single },
+            {SqlDbType.NVarChar,DbType.String },
+            {SqlDbType.Time,DbType.Time },
+            {SqlDbType.VarBinary,DbType.Binary },
+        };
+
         [Fact]
         public void CanConvertTo()
         {
@@ -15,24 +45,36 @@ namespace BigBook.Tests.Conversion.Converter
             Assert.True(Temp.CanConvertTo(typeof(Type)));
         }
 
-        [Fact]
-        public void ConvertFrom()
+        [Theory]
+        [MemberData(nameof(DBToTypeData))]
+        public void ConvertFrom(DbType sqlDbType, Type type)
         {
             var Temp = new BigBook.Conversion.DbTypeTypeConverter();
-            Assert.Equal(DbType.Int16, Temp.ConvertFrom(SqlDbType.SmallInt));
-            Assert.Equal(DbType.Int32, Temp.ConvertFrom(SqlDbType.Int));
-            Assert.Equal(DbType.Int16, Temp.ConvertFrom(typeof(Int16)));
-            Assert.Equal(DbType.Int32, Temp.ConvertFrom(typeof(Int32)));
+            Assert.Equal(sqlDbType, Temp.ConvertFrom(type));
         }
 
-        [Fact]
-        public void ConvertTo()
+        [Theory]
+        [MemberData(nameof(SQLToDbTypeData))]
+        public void ConvertFrom2(SqlDbType sqlDbType, DbType dbType)
         {
             var Temp = new BigBook.Conversion.DbTypeTypeConverter();
-            Assert.Equal(SqlDbType.SmallInt, Temp.ConvertTo(DbType.Int16, typeof(SqlDbType)));
-            Assert.Equal(SqlDbType.Int, Temp.ConvertTo(DbType.Int32, typeof(SqlDbType)));
-            Assert.Equal(typeof(int), Temp.ConvertTo(DbType.Int32, typeof(Type)));
-            Assert.Equal(typeof(short), Temp.ConvertTo(DbType.Int16, typeof(Type)));
+            Assert.Equal(dbType, Temp.ConvertFrom(sqlDbType));
+        }
+
+        [Theory]
+        [MemberData(nameof(SQLToDbTypeData))]
+        public void ConvertTo(SqlDbType sqlDbType, DbType dbType)
+        {
+            var Temp = new BigBook.Conversion.DbTypeTypeConverter();
+            Assert.Equal(sqlDbType, Temp.ConvertTo(dbType, typeof(SqlDbType)));
+        }
+
+        [Theory]
+        [MemberData(nameof(DBToTypeData))]
+        public void ConvertTo2(DbType sqlDbType, Type type)
+        {
+            var Temp = new BigBook.Conversion.DbTypeTypeConverter();
+            Assert.Equal(type, Temp.ConvertTo(sqlDbType, typeof(Type)));
         }
     }
 }
