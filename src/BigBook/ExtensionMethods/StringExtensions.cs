@@ -65,7 +65,12 @@ namespace BigBook
         /// <summary>
         /// Title case
         /// </summary>
-        TitleCase
+        TitleCase,
+
+        /// <summary>
+        /// Camel case
+        /// </summary>
+        CamelCase
     }
 
     /// <summary>
@@ -790,6 +795,11 @@ namespace BigBook
                     }
                 }
                 return input;
+            }
+            if (caseOfString == StringCase.CamelCase)
+            {
+                input = input.Replace(" ", "");
+                return char.ToLower(input[0]) + input.Remove(0, 1);
             }
             return input;
         }

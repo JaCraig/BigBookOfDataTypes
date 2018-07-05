@@ -244,6 +244,17 @@ namespace BigBook.Tests.ExtensionMethods
         }
 
         [Fact]
+        public void ToCamelCase()
+        {
+            var Value = " this is a test";
+            Assert.Equal("thisisatest", Value.ToString(StringCase.CamelCase));
+            Value = " This is a test";
+            Assert.Equal("thisisatest", Value.ToString(StringCase.CamelCase));
+            Value = " This Is A Test";
+            Assert.Equal("thisIsATest", Value.ToString(StringCase.CamelCase));
+        }
+
+        [Fact]
         public void ToFirstCharacterUppercase()
         {
             const string Value = " this is a test";
