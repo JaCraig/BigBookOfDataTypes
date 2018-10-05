@@ -194,6 +194,19 @@ namespace BigBook.Tests.ExtensionMethods
         }
 
         [Fact]
+        public void RemoveDiacritics()
+        {
+            var Value = "Résumé";
+            Assert.Equal("Resume", Value.RemoveDiacritics());
+            Value = "lēad";
+            Assert.Equal("lead", Value.RemoveDiacritics());
+            Value = "über";
+            Assert.Equal("uber", Value.RemoveDiacritics());
+            Value = "Señor";
+            Assert.Equal("Senor", Value.RemoveDiacritics());
+        }
+
+        [Fact]
         public void RemoveExtraSpaces()
         {
             Assert.Equal("This is a test.", "This  is      a test.".Replace(StringFilter.ExtraSpaces, " "));

@@ -545,6 +545,20 @@ namespace BigBook
         }
 
         /// <summary>
+        /// Removes the diacritics from a string.
+        /// </summary>
+        /// <param name="input">The input.</param>
+        /// <returns>The resulting string with diacritics removed.</returns>
+        public static string RemoveDiacritics(this string input)
+        {
+            return new string(input
+                .Normalize(NormalizationForm.FormD)
+                .Where(x => CharUnicodeInfo.GetUnicodeCategory(x) != UnicodeCategory.NonSpacingMark)
+                .ToArray())
+            .Normalize(NormalizationForm.FormC);
+        }
+
+        /// <summary>
         /// Replaces everything that is in the filter text with the value specified.
         /// </summary>
         /// <param name="input">Input text</param>
