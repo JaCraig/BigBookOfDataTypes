@@ -5,6 +5,7 @@ namespace BigBook.Tests.DataMapper.Default
 {
     public class MappingA
     {
+        public static string StaticItem1 { get; set; }
         public int Item1 { get; set; }
 
         public string Item2 { get; set; }

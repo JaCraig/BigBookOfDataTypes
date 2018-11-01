@@ -112,7 +112,7 @@ namespace BigBook.DataMapper.BaseClasses
                 for (int x = 0; x < Properties.Length; ++x)
                 {
                     PropertyInfo DestinationProperty = RightType.GetProperty(Properties[x].Name);
-                    if (DestinationProperty != null)
+                    if (DestinationProperty != null && !(DestinationProperty.GetSetMethod()?.IsStatic ?? false))
                     {
                         Expression<Func<Left, object>> LeftGet = Properties[x].PropertyGetter<Left>();
                         Expression<Func<Right, object>> RightGet = DestinationProperty.PropertyGetter<Right>();
@@ -192,52 +192,55 @@ namespace BigBook.DataMapper.BaseClasses
             for (int x = 0; x < Properties.Length; ++x)
             {
                 PropertyInfo Property = Properties[x];
-                Expression<Func<Right, object>> RightGet = Properties[x].PropertyGetter<Right>();
-                Action<Right, object> RightSet = RightGet.PropertySetter<Right>().Compile();
-                PropertyInfo LeftProperty = leftType.GetProperty(Property.Name);
-                if (LeftProperty != null)
+                if (!(Property.GetSetMethod()?.IsStatic ?? false))
                 {
-                    Expression<Func<Left, object>> LeftGet = LeftProperty.PropertyGetter<Left>();
-                    AddMapping(LeftGet, RightGet);
-                }
-                else
-                {
-                    AddMapping(new Func<Left, object>(y =>
+                    Expression<Func<Right, object>> RightGet = Properties[x].PropertyGetter<Right>();
+                    Action<Right, object> RightSet = RightGet.PropertySetter<Right>().Compile();
+                    PropertyInfo LeftProperty = leftType.GetProperty(Property.Name);
+                    if (LeftProperty != null)
                     {
-                        var Temp = (IDictionary<string, object>)y;
-                        if (Temp.ContainsKey(Property.Name))
+                        Expression<Func<Left, object>> LeftGet = LeftProperty.PropertyGetter<Left>();
+                        AddMapping(LeftGet, RightGet);
+                    }
+                    else
+                    {
+                        AddMapping(new Func<Left, object>(y =>
                         {
-                            return Temp[Property.Name];
-                        }
+                            var Temp = (IDictionary<string, object>)y;
+                            if (Temp.ContainsKey(Property.Name))
+                            {
+                                return Temp[Property.Name];
+                            }
 
-                        string Key = Temp.Keys.FirstOrDefault(z => string.Equals(z.Replace("_", ""), Property.Name, StringComparison.OrdinalIgnoreCase));
-                        if (!string.IsNullOrEmpty(Key))
-                        {
-                            return Temp[Key];
-                        }
+                            string Key = Temp.Keys.FirstOrDefault(z => string.Equals(z.Replace("_", ""), Property.Name, StringComparison.OrdinalIgnoreCase));
+                            if (!string.IsNullOrEmpty(Key))
+                            {
+                                return Temp[Key];
+                            }
 
-                        return null;
-                    }),
-                    new Action<Left, object>((y, z) =>
-                    {
-                        var LeftSide = (IDictionary<string, object>)y;
-                        if (LeftSide.ContainsKey(Property.Name))
+                            return null;
+                        }),
+                        new Action<Left, object>((y, z) =>
                         {
-                            LeftSide[Property.Name] = z;
-                        }
-                        else
+                            var LeftSide = (IDictionary<string, object>)y;
+                            if (LeftSide.ContainsKey(Property.Name))
+                            {
+                                LeftSide[Property.Name] = z;
+                            }
+                            else
+                            {
+                                LeftSide.Add(Property.Name, z);
+                            }
+                        }),
+                        RightGet.Compile(),
+                        new Action<Right, object>((y, z) =>
                         {
-                            LeftSide.Add(Property.Name, z);
-                        }
-                    }),
-                    RightGet.Compile(),
-                    new Action<Right, object>((y, z) =>
-                    {
-                        if (z != null)
-                        {
-                            RightSet(y, z);
-                        }
-                    }));
+                            if (z != null)
+                            {
+                                RightSet(y, z);
+                            }
+                        }));
+                    }
                 }
             }
         }
@@ -253,52 +256,55 @@ namespace BigBook.DataMapper.BaseClasses
             for (int x = 0; x < Properties.Length; ++x)
             {
                 PropertyInfo Property = Properties[x];
-                Expression<Func<Left, object>> LeftGet = Property.PropertyGetter<Left>();
-                Action<Left, object> LeftSet = LeftGet.PropertySetter<Left>().Compile();
-                PropertyInfo RightProperty = rightType.GetProperty(Property.Name);
-                if (RightProperty != null)
+                if (!(Property.GetSetMethod()?.IsStatic ?? false))
                 {
-                    Expression<Func<Right, object>> RightGet = RightProperty.PropertyGetter<Right>();
-                    AddMapping(LeftGet, RightGet);
-                }
-                else
-                {
-                    AddMapping(LeftGet.Compile(),
-                    new Action<Left, object>((y, z) =>
+                    Expression<Func<Left, object>> LeftGet = Property.PropertyGetter<Left>();
+                    Action<Left, object> LeftSet = LeftGet.PropertySetter<Left>().Compile();
+                    PropertyInfo RightProperty = rightType.GetProperty(Property.Name);
+                    if (RightProperty != null)
                     {
-                        if (z != null)
-                        {
-                            LeftSet(y, z);
-                        }
-                    }),
-                    new Func<Right, object>(y =>
+                        Expression<Func<Right, object>> RightGet = RightProperty.PropertyGetter<Right>();
+                        AddMapping(LeftGet, RightGet);
+                    }
+                    else
                     {
-                        var Temp = (IDictionary<string, object>)y;
-                        if (Temp.ContainsKey(Property.Name))
+                        AddMapping(LeftGet.Compile(),
+                        new Action<Left, object>((y, z) =>
                         {
-                            return Temp[Property.Name];
-                        }
+                            if (z != null)
+                            {
+                                LeftSet(y, z);
+                            }
+                        }),
+                        new Func<Right, object>(y =>
+                        {
+                            var Temp = (IDictionary<string, object>)y;
+                            if (Temp.ContainsKey(Property.Name))
+                            {
+                                return Temp[Property.Name];
+                            }
 
-                        string Key = Temp.Keys.FirstOrDefault(z => string.Equals(z.Replace("_", ""), Property.Name, StringComparison.OrdinalIgnoreCase));
-                        if (!string.IsNullOrEmpty(Key))
-                        {
-                            return Temp[Key];
-                        }
+                            string Key = Temp.Keys.FirstOrDefault(z => string.Equals(z.Replace("_", ""), Property.Name, StringComparison.OrdinalIgnoreCase));
+                            if (!string.IsNullOrEmpty(Key))
+                            {
+                                return Temp[Key];
+                            }
 
-                        return null;
-                    }),
-                    new Action<Right, object>((y, z) =>
-                    {
-                        var LeftSide = (IDictionary<string, object>)y;
-                        if (LeftSide.ContainsKey(Property.Name))
+                            return null;
+                        }),
+                        new Action<Right, object>((y, z) =>
                         {
-                            LeftSide[Property.Name] = z;
-                        }
-                        else
-                        {
-                            LeftSide.Add(Property.Name, z);
-                        }
-                    }));
+                            var LeftSide = (IDictionary<string, object>)y;
+                            if (LeftSide.ContainsKey(Property.Name))
+                            {
+                                LeftSide[Property.Name] = z;
+                            }
+                            else
+                            {
+                                LeftSide.Add(Property.Name, z);
+                            }
+                        }));
+                    }
                 }
             }
         }
