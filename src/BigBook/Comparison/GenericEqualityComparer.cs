@@ -66,7 +66,7 @@ namespace BigBook.Comparison
                     bool YFinished = !YEnumerator.MoveNext();
                     if (XFinished || YFinished)
                     {
-                        return XFinished & YFinished;
+                        return XFinished && YFinished;
                     }
 
                     if (!Comparer.Equals(XEnumerator.Current, YEnumerator.Current))

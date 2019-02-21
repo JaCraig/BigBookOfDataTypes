@@ -193,11 +193,11 @@ namespace BigBook
         /// Converts a byte array into a base 64 string
         /// </summary>
         /// <param name="input">Input array</param>
+        /// <param name="index">Index to start at</param>
         /// <param name="count">
         /// Number of bytes starting at the index to convert (use -1 for the entire array starting at
         /// the index)
         /// </param>
-        /// <param name="index">Index to start at</param>
         /// <returns>The equivalent byte array in a base 64 string</returns>
         public static string ToString(this byte[] input, int index = 0, int count = -1)
         {
@@ -229,11 +229,11 @@ namespace BigBook
         /// </summary>
         /// <param name="input">input array</param>
         /// <param name="encodingUsing">The type of encoding the string is using (defaults to UTF8)</param>
+        /// <param name="index">Index to start at</param>
         /// <param name="count">
         /// Number of bytes starting at the index to convert (use -1 for the entire array starting at
         /// the index)
         /// </param>
-        /// <param name="index">Index to start at</param>
         /// <returns>string of the byte array</returns>
         public static string ToString(this byte[] input, Encoding encodingUsing, int index = 0, int count = -1)
         {

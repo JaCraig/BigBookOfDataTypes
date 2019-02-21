@@ -46,8 +46,8 @@ namespace BigBook
         /// </summary>
         /// <typeparam name="T">Object type</typeparam>
         /// <param name="inputObject">Object to check</param>
-        /// <param name="defaultValue">The default value to return</param>
         /// <param name="predicate">Predicate to check the object against</param>
+        /// <param name="defaultValue">The default value to return</param>
         /// <returns>The default object if it fails the criteria, the object otherwise</returns>
         public static T Check<T>(this T inputObject, Predicate<T> predicate, T defaultValue = default(T))
         {
@@ -65,8 +65,8 @@ namespace BigBook
         /// </summary>
         /// <typeparam name="T">Object type</typeparam>
         /// <param name="inputObject">Object to check</param>
-        /// <param name="defaultValue">The default value to return</param>
         /// <param name="predicate">Predicate to check the object against</param>
+        /// <param name="defaultValue">The default value to return</param>
         /// <returns>The default object if it fails the criteria, the object otherwise</returns>
         public static T Check<T>(this T inputObject, Predicate<T> predicate, Func<T> defaultValue)
         {
@@ -589,8 +589,8 @@ namespace BigBook
         /// Attempts to convert the object to another type and returns the value
         /// </summary>
         /// <typeparam name="T">Type to convert from</typeparam>
-        /// <param name="resultType">Result type</param>
         /// <param name="item">Object to convert</param>
+        /// <param name="resultType">Result type</param>
         /// <param name="defaultValue">
         /// Default value to return if there is an issue or it can't be converted
         /// </param>

@@ -78,9 +78,9 @@ namespace BigBook.DataMapper.Default
         public Mapping(Func<Left, object> leftGet, Action<Left, object> leftSet, Func<Right, object> rightGet, Action<Right, object> rightSet)
         {
             LeftGet = leftGet;
-            LeftSet = leftSet.Check((x, y) => { });
+            LeftSet = leftSet.Check((_, __) => { });
             RightGet = rightGet;
-            RightSet = rightSet.Check((x, y) => { });
+            RightSet = rightSet.Check((_, __) => { });
         }
 
         /// <summary>

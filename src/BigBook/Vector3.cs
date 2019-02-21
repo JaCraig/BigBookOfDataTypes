@@ -184,8 +184,8 @@ namespace BigBook
         /// <summary>
         /// Multiplication
         /// </summary>
-        /// <param name="v1">Item 1</param>
         /// <param name="d">Item 2</param>
+        /// <param name="v1">Item 1</param>
         /// <returns>The resulting vector</returns>
         public static Vector3 operator *(double d, Vector3 v1)
         {

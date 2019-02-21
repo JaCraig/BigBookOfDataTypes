@@ -52,7 +52,7 @@ namespace BigBook.DataMapper.BaseClasses
         public ITypeMapping<Left, Right> Map<Left, Right>()
         {
             var Key = new Tuple<Type, Type>(typeof(Left), typeof(Right));
-            Mappings.AddOrUpdate(Key, x => CreateTypeMapping<Left, Right>(), (x, y) => y);
+            Mappings.AddOrUpdate(Key, _ => CreateTypeMapping<Left, Right>(), (_, y) => y);
             Mappings.TryGetValue(Key, out ITypeMapping ReturnValue);
             return (ITypeMapping<Left, Right>)ReturnValue;
         }
@@ -66,7 +66,7 @@ namespace BigBook.DataMapper.BaseClasses
         public ITypeMapping Map(Type left, Type right)
         {
             var Key = new Tuple<Type, Type>(left, right);
-            Mappings.AddOrUpdate(Key, x => CreateTypeMapping(x.Item1, x.Item2), (x, y) => y);
+            Mappings.AddOrUpdate(Key, x => CreateTypeMapping(x.Item1, x.Item2), (_, y) => y);
             Mappings.TryGetValue(Key, out ITypeMapping ReturnValue);
             return ReturnValue;
         }

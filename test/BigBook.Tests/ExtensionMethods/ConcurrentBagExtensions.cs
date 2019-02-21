@@ -201,7 +201,7 @@ namespace BigBook.Tests.ExtensionMethods
         public void RemoveNullObject()
         {
             ConcurrentBag<int> TestObject = null;
-            Assert.Empty(TestObject.Remove(x => true));
+            Assert.Empty(TestObject.Remove(_ => true));
             TestObject = new ConcurrentBag<int>(new int[] { 1, 2, 3, 4, 5, 6 });
             Assert.Equal(6, TestObject.Remove(null).Count);
         }

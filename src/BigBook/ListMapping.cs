@@ -93,8 +93,8 @@ namespace BigBook
         public void Add(T1 key, T2 value)
         {
             Items.AddOrUpdate(key,
-                              x => new ConcurrentBag<T2>(),
-                              (x, y) => y)
+                              _ => new ConcurrentBag<T2>(),
+                              (_, y) => y)
                  .Add(value);
         }
 
@@ -115,8 +115,8 @@ namespace BigBook
         public void Add(T1 key, IEnumerable<T2> value)
         {
             Items.AddOrUpdate(key,
-                              x => new ConcurrentBag<T2>(),
-                              (x, y) => y)
+                              _ => new ConcurrentBag<T2>(),
+                              (_, y) => y)
                  .Add(value);
         }
 
@@ -280,7 +280,7 @@ namespace BigBook
             TempValue.Remove(value);
             Items.AddOrUpdate(key,
                 new ConcurrentBag<T2>(TempValue),
-                (x, y) => new ConcurrentBag<T2>(TempValue));
+                (_, __) => new ConcurrentBag<T2>(TempValue));
             if (!this[key].Any())
             {
                 Remove(key);

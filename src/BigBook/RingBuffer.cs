@@ -195,8 +195,8 @@ namespace BigBook
         /// Adds a number of items to the buffer
         /// </summary>
         /// <param name="buffer">Items to add</param>
-        /// <param name="count">Number of items to add</param>
         /// <param name="offset">Offset to start at</param>
+        /// <param name="count">Number of items to add</param>
         public void Add(T[] buffer, int offset, int count)
         {
             buffer = buffer ?? new T[0];

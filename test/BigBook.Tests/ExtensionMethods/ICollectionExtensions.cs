@@ -54,10 +54,10 @@ namespace BigBook.Tests.ExtensionMethods
         {
             var Builder = new StringBuilder();
             int[] Temp = { 0, 0, 1, 2, 3 };
-            Temp.For(0, Temp.Length - 1, (x, y) => Builder.Append(y));
+            Temp.For(0, Temp.Length - 1, (_, y) => Builder.Append(y));
             Assert.Equal("01234", Builder.ToString());
             Builder = new StringBuilder();
-            Temp.For(0, Temp.Length - 1, (x, y) => Builder.Append(x));
+            Temp.For(0, Temp.Length - 1, (x, _) => Builder.Append(x));
             Assert.Equal("00123", Builder.ToString());
         }
 

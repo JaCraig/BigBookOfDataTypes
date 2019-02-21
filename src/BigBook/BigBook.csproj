@@ -16,7 +16,7 @@
     <PackageId>BigBook</PackageId>
     <PackageTags>Data Types;DateSpan;Fraction;ObservableList;Set</PackageTags>
     <PackageProjectUrl>https://github.com/JaCraig/BigBookOfDataTypes</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/JaCraig/BigBookOfDataTypes/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
@@ -28,15 +28,15 @@
     <PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
     <PackageReference Include="System.ComponentModel.TypeConverter" Version="4.3.0" />
     <PackageReference Include="System.Data.Common" Version="4.3.0" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.5.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.6.0" />
     <PackageReference Include="System.Diagnostics.Process" Version="4.3.0" />
     <PackageReference Include="System.Diagnostics.StackTrace" Version="4.3.0" />
-    <PackageReference Include="System.Reflection.TypeExtensions" Version="4.5.0" />
-    <PackageReference Include="System.Runtime" Version="4.3.0" />
+    <PackageReference Include="System.Reflection.TypeExtensions" Version="4.5.1" />
+    <PackageReference Include="System.Runtime" Version="4.3.1" />
     <PackageReference Include="System.Threading.Tasks.Parallel" Version="4.3.0" />
     <PackageReference Include="System.Threading.Thread" Version="4.3.0" />
-    <PackageReference Include="Aspectus" Version="3.1.0" />
-    <PackageReference Include="Canister.IoC" Version="2.1.2" />
+    <PackageReference Include="Aspectus" Version="3.1.1" />
+    <PackageReference Include="Canister.IoC" Version="2.1.3" />
   </ItemGroup>
 
 </Project>

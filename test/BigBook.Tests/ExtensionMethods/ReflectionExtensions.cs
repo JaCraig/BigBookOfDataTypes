@@ -254,7 +254,7 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void ToShortVersionString()
         {
-            Assert.Equal("1.0", typeof(TestClass).GetTypeInfo().Assembly.ToString(VersionInfo.ShortVersion));
+            Assert.Equal("1.0.0.0", typeof(TestClass).GetTypeInfo().Assembly.ToString(VersionInfo.ShortVersion));
         }
     }
 

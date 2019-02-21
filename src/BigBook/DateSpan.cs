@@ -147,12 +147,12 @@ namespace BigBook
         /// <returns>True if they are, false otherwise</returns>
         public static bool operator ==(DateSpan span1, DateSpan span2)
         {
-            if ((object)span1 == null && (object)span2 == null)
+            if (span1 is null && span2 is null)
             {
                 return true;
             }
 
-            if ((object)span1 == null || (object)span2 == null)
+            if (span1 is null || span2 is null)
             {
                 return false;
             }

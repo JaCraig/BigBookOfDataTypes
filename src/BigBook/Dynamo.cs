@@ -143,11 +143,11 @@ namespace BigBook
                 if (Property != null)
                 {
                     Func<T, object> Temp = Property.PropertyGetter<T>().Compile();
-                    ChildValues.AddOrUpdate(name, x => () => Temp((T)this), (x, y) => () => Temp((T)this));
+                    ChildValues.AddOrUpdate(name, _ => () => Temp((T)this), (__, _) => () => Temp((T)this));
                 }
                 else
                 {
-                    ChildValues.AddOrUpdate(name, x => () => null, (x, y) => null);
+                    ChildValues.AddOrUpdate(name, _ => () => null, (__, _) => null);
                 }
             }
             return ChildValues[name]().To(returnType, null);
@@ -431,7 +431,7 @@ namespace BigBook
             {
                 foreach (string Key in DictItem.Keys)
                 {
-                    InternalValues.AddOrUpdate(Key, x => DictItem[Key], (x, y) => DictItem[Key]);
+                    InternalValues.AddOrUpdate(Key, _ => DictItem[Key], (_, __) => DictItem[Key]);
                 }
             }
             else if (item is IEnumerable)
@@ -761,11 +761,11 @@ namespace BigBook
                 if (Property != null)
                 {
                     Func<Dynamo, object> Temp = Property.PropertyGetter<Dynamo>().Compile();
-                    ChildValues.AddOrUpdate(name, x => () => Temp(this), (x, y) => () => Temp(this));
+                    ChildValues.AddOrUpdate(name, _ => () => Temp(this), (__, _) => () => Temp(this));
                 }
                 else
                 {
-                    ChildValues.AddOrUpdate(name, x => () => null, (x, y) => null);
+                    ChildValues.AddOrUpdate(name, _ => () => null, (__, _) => null);
                 }
             }
             object ReturnValue = ChildValues[name]().To(returnType, null);
@@ -839,7 +839,7 @@ namespace BigBook
             }
             else
             {
-                InternalValues.AddOrUpdate(key, value, (x, y) => value);
+                InternalValues.AddOrUpdate(key, value, (__, _) => value);
             }
         }
     }

@@ -257,7 +257,7 @@ namespace BigBook
                 return default(T);
             }
 
-            average = average ?? ((x, y) => x);
+            average = average ?? ((x, _) => x);
             orderBy = orderBy ?? (x => x);
             values = values.OrderBy(orderBy);
             if (values.Count() % 2 == 0)

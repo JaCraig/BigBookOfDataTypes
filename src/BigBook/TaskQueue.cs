@@ -51,7 +51,7 @@ namespace BigBook
             }
 
             ProcessItem = processItem;
-            HandleError = handleError.Check((x, y) => { });
+            HandleError = handleError.Check((_, __) => { });
             CancellationToken = new CancellationTokenSource();
             Tasks = new Task[capacity];
         }

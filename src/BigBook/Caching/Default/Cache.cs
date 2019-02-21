@@ -67,7 +67,7 @@ namespace BigBook.Caching.Default
         /// <param name="value">Value to add</param>
         public override void Add(string key, object value)
         {
-            InternalCache.AddOrUpdate(key, x => value, (x, y) => value);
+            InternalCache.AddOrUpdate(key, _ => value, (_, __) => value);
         }
 
         /// <summary>

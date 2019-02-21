@@ -84,8 +84,8 @@ namespace BigBook
         /// </summary>
         /// <typeparam name="T">Collection type</typeparam>
         /// <param name="collection">Collection to add to</param>
-        /// <param name="items">Items to add to the collection</param>
         /// <param name="predicate">Predicate that an item needs to satisfy in order to be added</param>
+        /// <param name="items">Items to add to the collection</param>
         /// <returns>True if any are added, false otherwise</returns>
         public static bool AddIf<T>(this ConcurrentBag<T> collection, Predicate<T> predicate, params T[] items)
         {
@@ -115,8 +115,8 @@ namespace BigBook
         /// </summary>
         /// <typeparam name="T">Collection type</typeparam>
         /// <param name="collection">Collection to add to</param>
-        /// <param name="items">Items to add to the collection</param>
         /// <param name="predicate">Predicate that an item needs to satisfy in order to be added</param>
+        /// <param name="items">Items to add to the collection</param>
         /// <returns>True if it is added, false otherwise</returns>
         public static bool AddIf<T>(this ConcurrentBag<T> collection, Predicate<T> predicate, IEnumerable<T> items)
         {
@@ -154,11 +154,11 @@ namespace BigBook
         /// </summary>
         /// <typeparam name="T">Collection type</typeparam>
         /// <param name="collection">Collection to add to</param>
-        /// <param name="items">Items to add to the collection</param>
         /// <param name="predicate">
         /// Predicate used to determine if two values are equal. Return true if they are the same,
         /// false otherwise
         /// </param>
+        /// <param name="items">Items to add to the collection</param>
         /// <returns>True if it is added, false otherwise</returns>
         public static bool AddIfUnique<T>(this ConcurrentBag<T> collection, Func<T, T, bool> predicate, params T[] items)
         {
@@ -175,10 +175,10 @@ namespace BigBook
         /// </summary>
         /// <typeparam name="T">Collection type</typeparam>
         /// <param name="collection">Collection to add to</param>
-        /// <param name="items">Items to add to the collection</param>
         /// <param name="comparer">
         /// Equality comparer, if null then a generic equality comparer is used
         /// </param>
+        /// <param name="items">Items to add to the collection</param>
         /// <returns>True if it is added, false otherwise</returns>
         public static bool AddIfUnique<T>(this ConcurrentBag<T> collection, IEqualityComparer<T> comparer, IEnumerable<T> items)
         {
@@ -203,11 +203,11 @@ namespace BigBook
         /// </summary>
         /// <typeparam name="T">Collection type</typeparam>
         /// <param name="collection">Collection to add to</param>
-        /// <param name="items">Items to add to the collection</param>
         /// <param name="predicate">
         /// Predicate used to determine if two values are equal. Return true if they are the same,
         /// false otherwise
         /// </param>
+        /// <param name="items">Items to add to the collection</param>
         /// <returns>True if it is added, false otherwise</returns>
         public static bool AddIfUnique<T>(this ConcurrentBag<T> collection, Func<T, T, bool> predicate, IEnumerable<T> items)
         {

@@ -84,7 +84,7 @@ namespace BigBook
                 return new ConcurrentDictionary<TKey, TValue>();
             }
 
-            dictionary.AddOrUpdate(key, value, (x, y) => value);
+            dictionary.AddOrUpdate(key, value, (_, __) => value);
             return dictionary;
         }
     }

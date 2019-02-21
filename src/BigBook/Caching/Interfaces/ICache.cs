@@ -38,8 +38,8 @@ namespace BigBook.Caching.Interfaces
         /// Adds a value/key combination and assigns tags to it
         /// </summary>
         /// <param name="key">Key to add</param>
-        /// <param name="tags">Tags to associate with the key/value pair</param>
         /// <param name="value">Value to add</param>
+        /// <param name="tags">Tags to associate with the key/value pair</param>
         void Add(string key, object value, IEnumerable<string> tags);
 
         /// <summary>

@@ -172,9 +172,9 @@ namespace BigBook
         /// Does an AppendFormat and then an AppendLine on the StringBuilder
         /// </summary>
         /// <param name="builder">Builder object</param>
+        /// <param name="provider">Format provider (CultureInfo) to use</param>
         /// <param name="format">Format string</param>
         /// <param name="objects">Objects to format</param>
-        /// <param name="provider">Format provider (CultureInfo) to use</param>
         /// <returns>The StringBuilder passed in</returns>
         public static StringBuilder AppendLineFormat(this StringBuilder builder, IFormatProvider provider, string format, params object[] objects)
         {
@@ -562,8 +562,8 @@ namespace BigBook
         /// Replaces everything that is in the filter text with the value specified.
         /// </summary>
         /// <param name="input">Input text</param>
-        /// <param name="value">Value to fill in</param>
         /// <param name="filter">Predefined filter to use (can be combined as they are flags)</param>
+        /// <param name="value">Value to fill in</param>
         /// <returns>The input text with the various items replaced</returns>
         public static string Replace(this string input, StringFilter filter, string value = "")
         {

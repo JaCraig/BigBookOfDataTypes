@@ -353,7 +353,7 @@ namespace BigBook
                 return new List<R>();
             }
 
-            return list.ForParallel(0, list.Count() - 1, (x, y) => function(x));
+            return list.ForParallel(0, list.Count() - 1, (x, _) => function(x));
         }
 
         /// <summary>

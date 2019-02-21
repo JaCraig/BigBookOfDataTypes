@@ -29,9 +29,9 @@ namespace BigBook
         /// <summary>
         /// Constructor
         /// </summary>
+        /// <param name="columnNameHash">Column name hash</param>
         /// <param name="columnNames">Column names</param>
         /// <param name="columnValues">Column values</param>
-        /// <param name="columnNameHash">Column name hash</param>
         public Row(Hashtable columnNameHash, string[] columnNames, params object[] columnValues)
         {
             columnValues = columnValues ?? new object[0];

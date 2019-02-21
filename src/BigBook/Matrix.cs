@@ -222,8 +222,8 @@ namespace BigBook
         /// <summary>
         /// Multiplies a matrix by a value
         /// </summary>
-        /// <param name="m1">Matrix 1</param>
         /// <param name="d">Value to multiply by</param>
+        /// <param name="m1">Matrix 1</param>
         /// <returns>The result</returns>
         public static Matrix operator *(double d, Matrix m1)
         {
@@ -255,8 +255,8 @@ namespace BigBook
         /// <summary>
         /// Divides a matrix by a value
         /// </summary>
-        /// <param name="m1">Matrix 1</param>
         /// <param name="d">Value to divide by</param>
+        /// <param name="m1">Matrix 1</param>
         /// <returns>The result</returns>
         public static Matrix operator /(double d, Matrix m1)
         {
@@ -299,17 +299,17 @@ namespace BigBook
         /// <returns>True if they are equal, false otherwise</returns>
         public static bool operator ==(Matrix m1, Matrix m2)
         {
-            if ((object)m1 == null && (object)m2 == null)
+            if (m1 is null && m2 is null)
             {
                 return true;
             }
 
-            if ((object)m1 == null)
+            if (m1 is null)
             {
                 return false;
             }
 
-            if ((object)m2 == null)
+            if (m2 is null)
             {
                 return false;
             }

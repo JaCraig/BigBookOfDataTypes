@@ -28,17 +28,18 @@ namespace BigBook
     /// <summary>
     /// Version info
     /// </summary>
+    [Flags]
     public enum VersionInfo
     {
         /// <summary>
         /// Short version
         /// </summary>
-        ShortVersion = 1,
+        ShortVersion = 0,
 
         /// <summary>
         /// Long version
         /// </summary>
-        LongVersion = 2
+        LongVersion = 1
     }
 
     /// <summary>
@@ -96,11 +97,15 @@ namespace BigBook
         /// <summary>
         /// Calls a method on an object
         /// </summary>
-        /// <param name="methodName">Method name</param>
-        /// <param name="inputObject">Object to call the method on</param>
-        /// <param name="inputVariables">(Optional)input variables for the method</param>
         /// <typeparam name="ReturnType">Return type expected</typeparam>
+        /// <param name="inputObject">Object to call the method on</param>
+        /// <param name="methodName">Method name</param>
+        /// <param name="inputVariables">(Optional)input variables for the method</param>
         /// <returns>The returned value of the method</returns>
+        /// <exception cref="ArgumentNullException">inputObject or methodName</exception>
+        /// <exception cref="InvalidOperationException">
+        /// Could not find method " + methodName + " with the appropriate input variables.
+        /// </exception>
         public static ReturnType Call<ReturnType>(this object inputObject, string methodName, params object[] inputVariables)
         {
             if (inputObject == null)
@@ -137,12 +142,16 @@ namespace BigBook
         /// <summary>
         /// Calls a method on an object
         /// </summary>
-        /// <param name="methodName">Method name</param>
-        /// <param name="inputObject">Object to call the method on</param>
-        /// <param name="inputVariables">(Optional)input variables for the method</param>
-        /// <typeparam name="ReturnType">Return type expected</typeparam>
         /// <typeparam name="GenericType1">Generic method type 1</typeparam>
+        /// <typeparam name="ReturnType">Return type expected</typeparam>
+        /// <param name="inputObject">Object to call the method on</param>
+        /// <param name="methodName">Method name</param>
+        /// <param name="inputVariables">(Optional)input variables for the method</param>
         /// <returns>The returned value of the method</returns>
+        /// <exception cref="ArgumentNullException">inputObject or methodName</exception>
+        /// <exception cref="InvalidOperationException">
+        /// Could not find method " + methodName + " with the appropriate input variables.
+        /// </exception>
         public static ReturnType Call<GenericType1, ReturnType>(this object inputObject, string methodName, params object[] inputVariables)
         {
             if (inputObject == null)
@@ -180,13 +189,17 @@ namespace BigBook
         /// <summary>
         /// Calls a method on an object
         /// </summary>
-        /// <param name="methodName">Method name</param>
-        /// <param name="inputObject">Object to call the method on</param>
-        /// <param name="inputVariables">(Optional)input variables for the method</param>
-        /// <typeparam name="ReturnType">Return type expected</typeparam>
         /// <typeparam name="GenericType1">Generic method type 1</typeparam>
         /// <typeparam name="GenericType2">Generic method type 2</typeparam>
+        /// <typeparam name="ReturnType">Return type expected</typeparam>
+        /// <param name="inputObject">Object to call the method on</param>
+        /// <param name="methodName">Method name</param>
+        /// <param name="inputVariables">(Optional)input variables for the method</param>
         /// <returns>The returned value of the method</returns>
+        /// <exception cref="ArgumentNullException">inputObject or methodName</exception>
+        /// <exception cref="InvalidOperationException">
+        /// Could not find method " + methodName + " with the appropriate input variables.
+        /// </exception>
         public static ReturnType Call<GenericType1, GenericType2, ReturnType>(this object inputObject, string methodName, params object[] inputVariables)
         {
             if (inputObject == null)
@@ -224,14 +237,18 @@ namespace BigBook
         /// <summary>
         /// Calls a method on an object
         /// </summary>
-        /// <param name="methodName">Method name</param>
-        /// <param name="inputObject">Object to call the method on</param>
-        /// <param name="inputVariables">(Optional)input variables for the method</param>
-        /// <typeparam name="ReturnType">Return type expected</typeparam>
         /// <typeparam name="GenericType1">Generic method type 1</typeparam>
         /// <typeparam name="GenericType2">Generic method type 2</typeparam>
         /// <typeparam name="GenericType3">Generic method type 3</typeparam>
+        /// <typeparam name="ReturnType">Return type expected</typeparam>
+        /// <param name="inputObject">Object to call the method on</param>
+        /// <param name="methodName">Method name</param>
+        /// <param name="inputVariables">(Optional)input variables for the method</param>
         /// <returns>The returned value of the method</returns>
+        /// <exception cref="ArgumentNullException">inputObject or methodName</exception>
+        /// <exception cref="InvalidOperationException">
+        /// Could not find method " + methodName + " with the appropriate input variables.
+        /// </exception>
         public static ReturnType Call<GenericType1, GenericType2, GenericType3, ReturnType>(this object inputObject, string methodName, params object[] inputVariables)
         {
             if (inputObject == null)
@@ -269,11 +286,12 @@ namespace BigBook
         /// <summary>
         /// Calls a method on an object
         /// </summary>
-        /// <param name="method">Method</param>
-        /// <param name="inputObject">Object to call the method on</param>
-        /// <param name="inputVariables">(Optional)input variables for the method</param>
         /// <typeparam name="ReturnType">Return type expected</typeparam>
+        /// <param name="inputObject">Object to call the method on</param>
+        /// <param name="method">Method</param>
+        /// <param name="inputVariables">(Optional)input variables for the method</param>
         /// <returns>The returned value of the method</returns>
+        /// <exception cref="ArgumentNullException">inputObject or method</exception>
         public static ReturnType Call<ReturnType>(this object inputObject, MethodInfo method, params object[] inputVariables)
         {
             if (inputObject == null)
@@ -588,14 +606,14 @@ namespace BigBook
         /// </summary>
         /// <param name="assembly">The assembly.</param>
         /// <returns><c>true</c> if the specified assembly is debug; otherwise, <c>false</c>.</returns>
-        public static bool IsDebug(this Assembly assembly) => assembly.GetCustomAttributes().OfType<DebuggableAttribute>().SingleOrDefault().IsJitTrackingEnabled();
+        public static bool IsDebug(this Assembly assembly) => assembly.GetCustomAttributes().OfType<DebuggableAttribute>().SingleOrDefault()?.IsJitTrackingEnabled() ?? false;
 
         /// <summary>
         /// Determines whether [is JIT optimized].
         /// </summary>
         /// <param name="assembly">The assembly.</param>
         /// <returns><c>true</c> if [is JIT optimized] [the specified assembly]; otherwise, <c>false</c>.</returns>
-        public static bool IsJitOptimized(this Assembly assembly) => assembly.GetCustomAttributes().OfType<DebuggableAttribute>().SingleOrDefault().IsJitOptimized();
+        public static bool IsJitOptimized(this Assembly assembly) => assembly.GetCustomAttributes().OfType<DebuggableAttribute>().SingleOrDefault()?.IsJitOptimized() ?? false;
 
         /// <summary>
         /// Makes a shallow copy of the object

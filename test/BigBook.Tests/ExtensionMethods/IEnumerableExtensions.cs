@@ -52,7 +52,7 @@ namespace BigBook.Tests.ExtensionMethods
         public void ForEachParallelTestEmptyList()
         {
             int[] Temp = { };
-            Temp.ForEachParallel(x => { });
+            Temp.ForEachParallel(_ => { });
             Assert.Empty(Temp);
         }
 
@@ -85,7 +85,7 @@ namespace BigBook.Tests.ExtensionMethods
         public void ForParallelTest()
         {
             int[] Temp = { 0, 0, 1, 2, 3 };
-            var Result = new string(Temp.ForParallel(0, Temp.Length - 1, (x, y) => x.ToString().First()).OrderBy(x => x).ToArray());
+            var Result = new string(Temp.ForParallel(0, Temp.Length - 1, (x, _) => x.ToString().First()).OrderBy(x => x).ToArray());
             Assert.Equal(5, Result.Length);
             Assert.Equal("00123", Result);
         }
@@ -96,7 +96,7 @@ namespace BigBook.Tests.ExtensionMethods
             var Builder = new StringBuilder();
             int[] Temp = { 0, 0, 1, 2, 3 };
             var Result = new ConcurrentBag<int>();
-            Temp.ForParallel(0, Temp.Length - 1, (x, y) => Result.Add(x));
+            Temp.ForParallel(0, Temp.Length - 1, (x, _) => Result.Add(x));
             Assert.Equal(5, Result.Count);
             Result.ForEach(Builder.Append);
             var OrderedString = new string(Builder.ToString().OrderBy(x => x).ToArray());
@@ -108,7 +108,7 @@ namespace BigBook.Tests.ExtensionMethods
         {
             var Builder = new StringBuilder();
             int[] Temp = { 0, 0, 1, 2, 3 };
-            Temp.For<int>(0, Temp.Length - 1, (x, y) => Builder.Append(x));
+            Temp.For<int>(0, Temp.Length - 1, (x, _) => Builder.Append(x));
             Assert.Equal("00123", Builder.ToString());
         }
 
@@ -259,7 +259,7 @@ namespace BigBook.Tests.ExtensionMethods
             Assert.Equal(3, Results[4]);
             var Temp2 = new int?[] { 0, 0, 1, 2, 3, null }.ToList();
             var Results2 = new List<int?>();
-            Temp2.ForEach(x => Results2.Add(x == 0 ? 4 : x.Value + 1), (x, y) => Results2.Add(5));
+            Temp2.ForEach(x => Results2.Add(x == 0 ? 4 : x.Value + 1), (_, __) => Results2.Add(5));
             Assert.Equal(4, Results2[0]);
             Assert.Equal(4, Results2[1]);
             Assert.Equal(2, Results2[2]);
@@ -278,7 +278,7 @@ namespace BigBook.Tests.ExtensionMethods
             Assert.Equal(14, Results.Sum());
             var Temp2 = new int?[] { 0, 0, 1, 2, 3, null }.ToList();
             var Results2 = new List<int?>(10);
-            Temp2.ForEachParallel(x => Results2.Add(x == 0 ? 4 : x.Value + 1), (x, y) => Results2.Add(5));
+            Temp2.ForEachParallel(x => Results2.Add(x == 0 ? 4 : x.Value + 1), (_, __) => Results2.Add(5));
             Assert.Equal(6, Results2.Count);
             Assert.Equal(22, Results2.Sum());
         }
@@ -303,11 +303,6 @@ namespace BigBook.Tests.ExtensionMethods
         public override int GetHashCode()
         {
             return ID.GetHashCode() + Value.GetHashCode();
-        }
-
-        public override string ToString()
-        {
-            return base.ToString();
         }
     }
 

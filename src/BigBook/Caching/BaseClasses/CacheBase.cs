@@ -106,8 +106,8 @@ namespace BigBook.Caching.BaseClasses
         /// Adds a value/key combination and assigns tags to it
         /// </summary>
         /// <param name="key">Key to add</param>
-        /// <param name="tags">Tags to associate with the key/value pair</param>
         /// <param name="value">Value to add</param>
+        /// <param name="tags">Tags to associate with the key/value pair</param>
         public void Add(string key, object value, IEnumerable<string> tags)
         {
             Add(key, value);
