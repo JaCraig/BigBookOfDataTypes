@@ -108,7 +108,7 @@ namespace BigBook.DataMapper.Default
         /// </summary>
         /// <param name="source">Source object</param>
         /// <param name="destination">Destination object</param>
-        public virtual void Copy(Left source, Right destination)
+        public override void Copy(Left source, Right destination)
         {
             if (LeftGet == null)
             {
@@ -123,39 +123,7 @@ namespace BigBook.DataMapper.Default
         /// </summary>
         /// <param name="source">Source object</param>
         /// <param name="destination">Destination object</param>
-        public virtual void Copy(Right source, Left destination)
-        {
-            if (RightGet == null)
-            {
-                return;
-            }
-
-            LeftSet(destination, RightGet(source));
-        }
-
-        /// <summary>
-        /// Copies from the source to the destination (used in instances when both Left and Right are
-        /// the same type and thus Copy is ambiguous)
-        /// </summary>
-        /// <param name="source">Source object</param>
-        /// <param name="destination">Destination object</param>
-        public virtual void CopyLeftToRight(Left source, Right destination)
-        {
-            if (LeftGet == null)
-            {
-                return;
-            }
-
-            RightSet(destination, LeftGet(source));
-        }
-
-        /// <summary>
-        /// Copies from the source to the destination (used in instances when both Left and Right are
-        /// the same type and thus Copy is ambiguous)
-        /// </summary>
-        /// <param name="source">Source object</param>
-        /// <param name="destination">Destination object</param>
-        public virtual void CopyRightToLeft(Right source, Left destination)
+        public override void Copy(Right source, Left destination)
         {
             if (RightGet == null)
             {

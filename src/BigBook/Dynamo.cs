@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using BigBook.DataMapper;
+using BigBook.Reflection;
 using System;
 using System.Collections;
 using System.Collections.Concurrent;
@@ -98,8 +99,7 @@ namespace BigBook
                 {
                     base.Keys
                 };
-                Type ObjectType = GetType();
-                foreach (PropertyInfo Property in ObjectType.GetProperties().Where(x => x.DeclaringType != typeof(Dynamo<T>) && x.DeclaringType != typeof(Dynamo)))
+                foreach (PropertyInfo Property in TypeCacheFor<T>.Properties.Where(x => x.DeclaringType != typeof(Dynamo<T>) && x.DeclaringType != typeof(Dynamo)))
                 {
                     Temp.Add(Property.Name);
                 }

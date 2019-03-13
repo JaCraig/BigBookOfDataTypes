@@ -59,20 +59,8 @@ namespace BigBook
         /// <returns>Attribute specified if it exists</returns>
         public static T Attribute<T>(this MemberInfo provider, bool inherit = true) where T : Attribute
         {
-            if (provider == null)
-            {
-                return default(T);
-            }
-
-            if (provider.IsDefined(typeof(T), inherit))
-            {
-                var TempAttributes = provider.Attributes<T>(inherit);
-                if (TempAttributes.Length > 0)
-                {
-                    return TempAttributes[0];
-                }
-            }
-            return default(T);
+            var TempAttributes = provider.Attributes<T>(inherit);
+            return TempAttributes.Length > 0 ? TempAttributes[0] : default(T);
         }
 
         /// <summary>
@@ -86,12 +74,7 @@ namespace BigBook
         /// <returns>Array of attributes</returns>
         public static T[] Attributes<T>(this MemberInfo provider, bool inherit = true) where T : Attribute
         {
-            if (provider == null)
-            {
-                return new T[0];
-            }
-
-            return provider.IsDefined(typeof(T), inherit) ? provider.GetCustomAttributes(typeof(T), inherit).ToArray(x => (T)x) : new T[0];
+            return provider?.GetCustomAttributes(typeof(T), inherit).ToArray(x => (T)x) ?? Array.Empty<T>();
         }
 
         /// <summary>
@@ -321,12 +304,7 @@ namespace BigBook
         /// <returns>The newly created instance of the type</returns>
         public static ClassType Create<ClassType>(this Type type, params object[] args)
         {
-            if (type == null)
-            {
-                return default(ClassType);
-            }
-
-            return (ClassType)type.Create(args);
+            return type == null ? default(ClassType) : (ClassType)type.Create(args);
         }
 
         /// <summary>
@@ -337,12 +315,7 @@ namespace BigBook
         /// <returns>The newly created instance of the type</returns>
         public static object Create(this Type type, params object[] args)
         {
-            if (type == null)
-            {
-                return null;
-            }
-
-            return Activator.CreateInstance(type, args);
+            return type == null ? null : Activator.CreateInstance(type, args);
         }
 
         /// <summary>
@@ -513,12 +486,9 @@ namespace BigBook
         /// <returns>True if it does, false otherwise</returns>
         public static bool HasDefaultConstructor(this Type type)
         {
-            if (type == null)
-            {
-                return false;
-            }
-
-            return type.GetConstructors()
+            return type == null
+                ? false
+                : type.GetConstructors()
                         .Any(x => x.GetParameters().Length == 0);
         }
 
@@ -530,12 +500,7 @@ namespace BigBook
         /// <returns>True if it is, false otherwise</returns>
         public static bool Is(this object inputObject, Type type)
         {
-            if (inputObject == null || type == null)
-            {
-                return false;
-            }
-
-            return inputObject.GetType().Is(type);
+            return inputObject?.GetType().Is(type) == true;
         }
 
         /// <summary>
@@ -546,27 +511,7 @@ namespace BigBook
         /// <returns>True if it is, false otherwise</returns>
         public static bool Is(this Type objectType, Type type)
         {
-            if (objectType == null || type == null)
-            {
-                return false;
-            }
-
-            if (type == typeof(object))
-            {
-                return true;
-            }
-
-            if (type == objectType || objectType.GetInterfaces().Any(x => x == type))
-            {
-                return true;
-            }
-
-            if (objectType.BaseType == null)
-            {
-                return false;
-            }
-
-            return objectType.BaseType.Is(type);
+            return type?.IsAssignableFrom(objectType) == true;
         }
 
         /// <summary>
@@ -577,12 +522,7 @@ namespace BigBook
         /// <returns>True if it is, false otherwise</returns>
         public static bool Is<BaseObjectType>(this object inputObject)
         {
-            if (inputObject == null)
-            {
-                return false;
-            }
-
-            return inputObject.Is(typeof(BaseObjectType));
+            return inputObject is BaseObjectType;
         }
 
         /// <summary>
@@ -593,12 +533,7 @@ namespace BigBook
         /// <returns>True if it is, false otherwise</returns>
         public static bool Is<BaseObjectType>(this Type objectType)
         {
-            if (objectType == null)
-            {
-                return false;
-            }
-
-            return objectType.Is(typeof(BaseObjectType));
+            return objectType?.Is(typeof(BaseObjectType)) == true;
         }
 
         /// <summary>
@@ -681,12 +616,7 @@ namespace BigBook
         public static IEnumerable<Type> MarkedWith<T>(this IEnumerable<Type> types, bool inherit = true)
             where T : Attribute
         {
-            if (types == null)
-            {
-                return null;
-            }
-
-            return types.Where(x => x.IsDefined(typeof(T), inherit) && !x.IsAbstract);
+            return types?.Where(x => x.IsDefined(typeof(T), inherit) && !x.IsAbstract);
         }
 
         /// <summary>
@@ -699,12 +629,9 @@ namespace BigBook
         /// <returns>A list of objects that are of the type specified</returns>
         public static IEnumerable<ClassType> Objects<ClassType>(this Assembly assembly, params object[] args)
         {
-            if (assembly == null)
-            {
-                return new List<ClassType>();
-            }
-
-            return assembly.Types<ClassType>().Where(x => !x.ContainsGenericParameters).Create<ClassType>(args);
+            return assembly == null
+                ? new List<ClassType>()
+                : assembly.Types<ClassType>().Where(x => !x.ContainsGenericParameters).Create<ClassType>(args);
         }
 
         /// <summary>
@@ -739,12 +666,7 @@ namespace BigBook
         /// <returns>Returns the property's value</returns>
         public static object Property(this object inputObject, PropertyInfo property)
         {
-            if (inputObject == null || property == null)
-            {
-                return null;
-            }
-
-            return property.GetValue(inputObject, null);
+            return inputObject == null || property == null ? null : property.GetValue(inputObject, null);
         }
 
         /// <summary>
@@ -775,12 +697,7 @@ namespace BigBook
                 }
             }
             DestinationProperty = TempObjectType.GetProperty(Properties[Properties.Length - 1], true);
-            if (DestinationProperty == null)
-            {
-                return null;
-            }
-
-            return TempObject.Property(DestinationProperty);
+            return DestinationProperty == null ? null : TempObject.Property(DestinationProperty);
         }
 
         /// <summary>
@@ -931,12 +848,9 @@ namespace BigBook
         /// <returns>The name of the property</returns>
         public static string PropertyName(this Expression expression)
         {
-            if (!(expression is MemberExpression TempExpression))
-            {
-                return "";
-            }
-
-            return TempExpression.Expression.PropertyName() + TempExpression.Member.Name + ".";
+            return !(expression is MemberExpression TempExpression)
+                ? ""
+                : TempExpression.Expression.PropertyName() + TempExpression.Member.Name + ".";
         }
 
         /// <summary>
@@ -1032,12 +946,7 @@ namespace BigBook
         /// <returns>The type of the property specified or null if it can not be reached.</returns>
         public static Type PropertyType(this object inputObject, string propertyPath)
         {
-            if (inputObject == null || string.IsNullOrEmpty(propertyPath))
-            {
-                return null;
-            }
-
-            return inputObject.GetType().PropertyType(propertyPath);
+            return inputObject == null || string.IsNullOrEmpty(propertyPath) ? null : inputObject.GetType().PropertyType(propertyPath);
         }
 
         /// <summary>
@@ -1208,12 +1117,7 @@ namespace BigBook
         /// <returns>List of types that use the interface</returns>
         public static IEnumerable<Type> Types<BaseType>(this Assembly assembly)
         {
-            if (assembly == null)
-            {
-                return new List<Type>();
-            }
-
-            return assembly.Types(typeof(BaseType));
+            return assembly == null ? new List<Type>() : assembly.Types(typeof(BaseType));
         }
 
         /// <summary>
@@ -1244,12 +1148,7 @@ namespace BigBook
         /// <returns>List of types that use the interface</returns>
         public static IEnumerable<Type> Types<BaseType>(this IEnumerable<Assembly> assemblies)
         {
-            if (assemblies?.Any() != true)
-            {
-                return new List<Type>();
-            }
-
-            return assemblies.Types(typeof(BaseType));
+            return assemblies?.Any() != true ? new List<Type>() : assemblies.Types(typeof(BaseType));
         }
 
         /// <summary>

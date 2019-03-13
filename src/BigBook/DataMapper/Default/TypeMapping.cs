@@ -17,7 +17,6 @@ limitations under the License.
 using BigBook.DataMapper.BaseClasses;
 using BigBook.DataMapper.Interfaces;
 using System;
-using System.Linq;
 using System.Linq.Expressions;
 
 namespace BigBook.DataMapper.Default
@@ -89,7 +88,7 @@ namespace BigBook.DataMapper.Default
         /// <param name="destination">Destination object</param>
         public override void Copy(Left source, Right destination)
         {
-            foreach (Mapping<Left, Right> TempMapping in Mappings.OfType<Mapping<Left, Right>>())
+            foreach (var TempMapping in Mappings)
             {
                 TempMapping.Copy(source, destination);
             }
@@ -102,7 +101,7 @@ namespace BigBook.DataMapper.Default
         /// <param name="destination">Destination object</param>
         public override void Copy(Right source, Left destination)
         {
-            foreach (Mapping<Left, Right> TempMapping in Mappings.OfType<Mapping<Left, Right>>())
+            foreach (var TempMapping in Mappings)
             {
                 TempMapping.Copy(source, destination);
             }
@@ -116,10 +115,7 @@ namespace BigBook.DataMapper.Default
         /// <param name="destination">Destination</param>
         public override void CopyLeftToRight(Left source, Right destination)
         {
-            foreach (Mapping<Left, Right> TempMapping in Mappings.OfType<Mapping<Left, Right>>())
-            {
-                TempMapping.CopyLeftToRight(source, destination);
-            }
+            Copy(source, destination);
         }
 
         /// <summary>
@@ -130,10 +126,7 @@ namespace BigBook.DataMapper.Default
         /// <param name="destination">Destination</param>
         public override void CopyRightToLeft(Right source, Left destination)
         {
-            foreach (Mapping<Left, Right> TempMapping in Mappings.OfType<Mapping<Left, Right>>())
-            {
-                TempMapping.CopyRightToLeft(source, destination);
-            }
+            Copy(source, destination);
         }
     }
 }

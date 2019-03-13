@@ -23,7 +23,7 @@ namespace BigBook.DataMapper.BaseClasses
     /// </summary>
     /// <typeparam name="Left">The type of the eft.</typeparam>
     /// <typeparam name="Right">The type of the ight.</typeparam>
-    /// <seealso cref="BigBook.DataMapper.Interfaces.IMapping{Left, Right}"/>
+    /// <seealso cref="Interfaces.IMapping{Left, Right}"/>
     public abstract class MappingBase<Left, Right> : IMapping<Left, Right>
     {
         /// <summary>
@@ -32,5 +32,19 @@ namespace BigBook.DataMapper.BaseClasses
         protected MappingBase()
         {
         }
+
+        /// <summary>
+        /// Copies the source to the destination
+        /// </summary>
+        /// <param name="source">Source object</param>
+        /// <param name="destination">Destination object</param>
+        public abstract void Copy(Left source, Right destination);
+
+        /// <summary>
+        /// Copies the source to the destination
+        /// </summary>
+        /// <param name="source">Source object</param>
+        /// <param name="destination">Destination object</param>
+        public abstract void Copy(Right source, Left destination);
     }
 }

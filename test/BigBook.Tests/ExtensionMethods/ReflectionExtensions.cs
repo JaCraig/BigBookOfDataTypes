@@ -70,12 +70,14 @@ namespace BigBook.Tests.ExtensionMethods
         {
             var TestObject = typeof(TestClass).GetTypeInfo().Attribute<TestingAttribute>();
             Assert.NotNull(TestObject);
+            Assert.Null(typeof(TestClass).GetTypeInfo().Attribute<NotUsedAttribute>());
         }
 
         [Fact]
         public void GetAttributes()
         {
             Assert.Single(typeof(TestClass).GetTypeInfo().Attributes<TestingAttribute>());
+            Assert.Empty(typeof(TestClass).GetTypeInfo().Attributes<NotUsedAttribute>());
         }
 
         [Fact]
@@ -305,4 +307,6 @@ namespace BigBook.Tests.ExtensionMethods
     public class TestingAttribute : Attribute
     {
     }
+
+    public class NotUsedAttribute : Attribute { }
 }

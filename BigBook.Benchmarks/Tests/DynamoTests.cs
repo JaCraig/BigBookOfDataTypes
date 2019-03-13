@@ -1,5 +1,6 @@
 ﻿using BenchmarkDotNet.Attributes;
 using BigBook.Registration;
+using System.Collections.Concurrent;
 using System.Dynamic;
 
 namespace BigBook.Benchmarks.Tests
@@ -30,6 +31,19 @@ namespace BigBook.Benchmarks.Tests
             for (int x = 0; x < Count; ++x)
             {
                 Data[x] = new TestClass { A = "Test data goes here" };
+            }
+            return Data;
+        }
+
+        [Benchmark]
+        public object[] ConcurrentDictionaryConversionTest()
+        {
+            Data = new ConcurrentDictionary<string, object>[Count];
+            for (int x = 0; x < Count; ++x)
+            {
+                var Temp = new ConcurrentDictionary<string, object>();
+                Temp.AddOrUpdate("A", "Test data goes here", (_, __) => "Test data goes here");
+                Data[x] = Temp;
             }
             return Data;
         }

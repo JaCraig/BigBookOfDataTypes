@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BigBook.Tests", "test\BigBo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BigBook.Benchmarks", "BigBook.Benchmarks\BigBook.Benchmarks.csproj", "{E6803AA6-ACB3-48F6-9798-7686499772BD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSize", "TestSize\TestSize.csproj", "{195CD080-F7E7-4E98-8D06-2C1FB2E019CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{E6803AA6-ACB3-48F6-9798-7686499772BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6803AA6-ACB3-48F6-9798-7686499772BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6803AA6-ACB3-48F6-9798-7686499772BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{195CD080-F7E7-4E98-8D06-2C1FB2E019CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{195CD080-F7E7-4E98-8D06-2C1FB2E019CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{195CD080-F7E7-4E98-8D06-2C1FB2E019CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{195CD080-F7E7-4E98-8D06-2C1FB2E019CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -41,6 +47,7 @@ Global
 		{BA2B2595-CD55-4639-9E5D-BE4BDACCA1AB} = {7CBC4576-531F-4D1E-A5A4-9DA17AED676F}
 		{C75E2943-501D-40E6-9DCB-8620DE9C02E9} = {8D8A6F73-03CC-4CDC-876A-240A613228E1}
 		{E6803AA6-ACB3-48F6-9798-7686499772BD} = {8D8A6F73-03CC-4CDC-876A-240A613228E1}
+		{195CD080-F7E7-4E98-8D06-2C1FB2E019CD} = {8D8A6F73-03CC-4CDC-876A-240A613228E1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2AFEF04D-34B1-4B23-BDE3-5A2C6825F727}
