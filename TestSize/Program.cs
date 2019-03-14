@@ -8,7 +8,6 @@ namespace TestSize
         private static void Main(string[] args)
         {
             Canister.Builder.CreateContainer(null).RegisterBigBookOfDataTypes().Build();
-
             for (int x = 0; x < 10000000; ++x)
             {
                 dynamic Item = new Dynamo(new { A = "This is a test" });
@@ -16,9 +15,25 @@ namespace TestSize
             }
         }
 
-        private class TestClass
+        private interface ITestInterface : ITestInterface2
         {
-            public string A { get; set; }
+        }
+
+        private interface ITestInterface2
+        {
+            string A { get; set; }
+        }
+
+        private abstract class TestAbstract : ITestInterface
+        {
+            public abstract string A { get; set; }
+
+            public string B { get; set; }
+        }
+
+        private class TestClass : TestAbstract
+        {
+            public override string A { get; set; }
         }
     }
 }

@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using BigBook.DataMapper.BaseClasses;
+using BigBook.DataMapper.Interfaces;
 using System;
 using System.Linq.Expressions;
 
@@ -131,6 +132,15 @@ namespace BigBook.DataMapper.Default
             }
 
             LeftSet(destination, RightGet(source));
+        }
+
+        /// <summary>
+        /// Creates the reversed.
+        /// </summary>
+        /// <returns>The mapping.</returns>
+        public override IMapping CreateReversed()
+        {
+            return new Mapping<Right, Left>(RightGet, RightSet, LeftGet, LeftSet);
         }
     }
 }

@@ -167,6 +167,12 @@ namespace BigBook.DataMapper.BaseClasses
         /// <param name="destination">Destination</param>
         public abstract void CopyRightToLeft(Right source, Left destination);
 
+        /// <summary>
+        /// Creates the reversed.
+        /// </summary>
+        /// <returns>The type mapping</returns>
+        public abstract ITypeMapping CreateReversed();
+
         private void AddIDictionaryMappings()
         {
             AddMapping(x => x,

@@ -128,5 +128,19 @@ namespace BigBook.DataMapper.Default
         {
             Copy(source, destination);
         }
+
+        /// <summary>
+        /// Creates the reversed.
+        /// </summary>
+        /// <returns>The type mapping</returns>
+        public override ITypeMapping CreateReversed()
+        {
+            var Result = new TypeMapping<Right, Left>();
+            foreach (var Mapping in Mappings)
+            {
+                Result.Mappings.Add((IMapping<Right, Left>)Mapping.CreateReversed());
+            }
+            return Result;
+        }
     }
 }

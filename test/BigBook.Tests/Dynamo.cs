@@ -30,7 +30,7 @@ namespace BigBook.Tests
             Temp.B = new Func<string>(() => Temp.A);
             Assert.Equal(1, Temp.ChangeLog.Count);
             Assert.Contains("B", Temp.ChangeLog.Keys);
-            dynamic Temp2 = new BigBook.Dynamo(new { A = "Testing" });
+            dynamic Temp2 = new BigBook.Dynamo(new { A = "Testing" }, true);
             Temp2.A = "Testing2";
             Assert.Equal("Testing", Temp2.ChangeLog["A"].OriginalValue);
             Assert.Equal("Testing2", Temp2.ChangeLog["A"].NewValue);
@@ -214,6 +214,11 @@ namespace BigBook.Tests
 
         public class TestClass : BigBook.Dynamo<TestClass>
         {
+            public TestClass()
+                : base(new Dictionary<string, object>(), true)
+            {
+            }
+
             public string A { get; set; }
         }
 

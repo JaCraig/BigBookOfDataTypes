@@ -35,6 +35,12 @@ namespace BigBook.DataMapper.Interfaces
         /// <param name="source">Source object</param>
         /// <param name="destination">Destination object</param>
         void Copy(object source, object destination);
+
+        /// <summary>
+        /// Creates the reversed.
+        /// </summary>
+        /// <returns>The type mapping</returns>
+        ITypeMapping CreateReversed();
     }
 
     /// <summary>

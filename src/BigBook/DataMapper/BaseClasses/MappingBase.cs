@@ -46,5 +46,11 @@ namespace BigBook.DataMapper.BaseClasses
         /// <param name="source">Source object</param>
         /// <param name="destination">Destination object</param>
         public abstract void Copy(Right source, Left destination);
+
+        /// <summary>
+        /// Creates the reversed.
+        /// </summary>
+        /// <returns>The mapping.</returns>
+        public abstract IMapping CreateReversed();
     }
 }

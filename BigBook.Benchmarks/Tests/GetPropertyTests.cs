@@ -13,7 +13,25 @@ namespace BigBook.Benchmarks.Tests
             var Result = typeof(TestClass).GetProperty("A");
         }
 
-        [Benchmark()]
+        [Benchmark]
+        public void OldPropertyExtensionFromTypeTest()
+        {
+            var Result = typeof(TestClass).GetProperty<TestClass>("A");
+        }
+
+        [Benchmark]
+        public void PropertyExtensionFromTypeTest()
+        {
+            var Result = typeof(TestClass).GetProperty("A", true);
+        }
+
+        [Benchmark]
+        public void PropertyLookUpFromTypeTest()
+        {
+            var Result = Array.Find(typeof(TestClass).GetProperties(), y => y.Name == "A");
+        }
+
+        [Benchmark]
         public void PropertyLookUpTest()
         {
             var Result = Array.Find(TypeCacheFor<TestClass>.Properties, y => y.Name == "A");

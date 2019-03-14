@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using BigBook.Reflection;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -103,7 +104,7 @@ namespace BigBook
 
             if (inputVariables == null)
             {
-                inputVariables = new object[0];
+                inputVariables = Array.Empty<object>();
             }
 
             var ObjectType = inputObject.GetType();
@@ -149,7 +150,7 @@ namespace BigBook
 
             if (inputVariables == null)
             {
-                inputVariables = new object[0];
+                inputVariables = Array.Empty<object>();
             }
 
             var ObjectType = inputObject.GetType();
@@ -197,7 +198,7 @@ namespace BigBook
 
             if (inputVariables == null)
             {
-                inputVariables = new object[0];
+                inputVariables = Array.Empty<object>();
             }
 
             var ObjectType = inputObject.GetType();
@@ -246,7 +247,7 @@ namespace BigBook
 
             if (inputVariables == null)
             {
-                inputVariables = new object[0];
+                inputVariables = Array.Empty<object>();
             }
 
             var ObjectType = inputObject.GetType();
@@ -289,7 +290,7 @@ namespace BigBook
 
             if (inputVariables == null)
             {
-                inputVariables = new object[0];
+                inputVariables = Array.Empty<object>();
             }
 
             return (ReturnType)method.Invoke(inputObject, inputVariables);
@@ -304,7 +305,7 @@ namespace BigBook
         /// <returns>The newly created instance of the type</returns>
         public static ClassType Create<ClassType>(this Type type, params object[] args)
         {
-            return type == null ? default(ClassType) : (ClassType)type.Create(args);
+            return type == null ? default(ClassType) : (ClassType)type?.Create(args);
         }
 
         /// <summary>
@@ -461,22 +462,42 @@ namespace BigBook
                 return null;
             }
 
-            var ReturnValue = type.GetProperty(name);
-            if (ReturnValue != null || !recursively)
+            if (recursively)
             {
-                return ReturnValue;
-            }
-
-            var Interfaces = type.GetInterfaces();
-            for (int x = 0; x < Interfaces.Length; ++x)
-            {
-                ReturnValue = Interfaces[x].GetProperty(name, recursively);
-                if (ReturnValue != null)
+                var Result = type.GetProperty(name, BindingFlags.FlattenHierarchy | BindingFlags.Instance | BindingFlags.Public);
+                if (Result != null || !type.IsInterface)
+                    return Result;
+                var Interfaces = type.GetInterfaces();
+                for (int x = 0; x < Interfaces.Length; ++x)
                 {
-                    return ReturnValue;
+                    Result = Interfaces[x].GetProperty(name);
+                    if (Result != null)
+                        return Result;
                 }
             }
-            return type.BaseType.GetProperty(name, recursively);
+            return type.GetProperty(name, BindingFlags.FlattenHierarchy | BindingFlags.Public | BindingFlags.Instance);
+        }
+
+        /// <summary>
+        /// Gets the property.
+        /// </summary>
+        /// <typeparam name="TObject">The type of the object.</typeparam>
+        /// <param name="type">The type.</param>
+        /// <param name="name">The name.</param>
+        /// <returns></returns>
+        public static PropertyInfo GetProperty<TObject>(this Type type, string name)
+        {
+            var Result = Array.Find(TypeCacheFor<TObject>.Properties, x => x.Name == name);
+            if (Result != null || !type.IsInterface)
+                return Result;
+            var Interfaces = TypeCacheFor<TObject>.Interfaces;
+            for (int x = 0; x < Interfaces.Length; ++x)
+            {
+                Result = Interfaces[x].GetProperty(name, false);
+                if (Result != null)
+                    return Result;
+            }
+            return null;
         }
 
         /// <summary>
@@ -486,10 +507,9 @@ namespace BigBook
         /// <returns>True if it does, false otherwise</returns>
         public static bool HasDefaultConstructor(this Type type)
         {
-            return type == null
-                ? false
-                : type.GetConstructors()
-                        .Any(x => x.GetParameters().Length == 0);
+            return type?
+                .GetConstructors()
+                .Any(x => x.GetParameters().Length == 0) == true;
         }
 
         /// <summary>
@@ -629,9 +649,10 @@ namespace BigBook
         /// <returns>A list of objects that are of the type specified</returns>
         public static IEnumerable<ClassType> Objects<ClassType>(this Assembly assembly, params object[] args)
         {
-            return assembly == null
-                ? new List<ClassType>()
-                : assembly.Types<ClassType>().Where(x => !x.ContainsGenericParameters).Create<ClassType>(args);
+            return assembly?
+                .Types<ClassType>()
+                .Where(x => !x.ContainsGenericParameters)
+                .Create<ClassType>(args) ?? new List<ClassType>();
         }
 
         /// <summary>
@@ -874,7 +895,7 @@ namespace BigBook
                 return null;
             }
 
-            var PropertyInfo = typeof(ClassType).GetProperty(SplitName[0], true);
+            var PropertyInfo = typeof(ClassType).GetProperty<ClassType>(SplitName[0]);
             var ObjectInstance = Expression.Parameter(PropertyInfo.DeclaringType, "x");
             var PropertySet = Expression.Parameter(typeof(DataType), "y");
             var DefaultConstant = Expression.Constant(((object)null).To(PropertyInfo.PropertyType, null), PropertyInfo.PropertyType);
@@ -1117,7 +1138,7 @@ namespace BigBook
         /// <returns>List of types that use the interface</returns>
         public static IEnumerable<Type> Types<BaseType>(this Assembly assembly)
         {
-            return assembly == null ? new List<Type>() : assembly.Types(typeof(BaseType));
+            return assembly?.Types(typeof(BaseType)) ?? new List<Type>();
         }
 
         /// <summary>

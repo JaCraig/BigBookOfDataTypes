@@ -51,10 +51,7 @@ namespace BigBook.DataMapper.BaseClasses
         /// <returns>A mapping object for the two types specified</returns>
         public ITypeMapping<Left, Right> Map<Left, Right>()
         {
-            var Key = new Tuple<Type, Type>(typeof(Left), typeof(Right));
-            Mappings.AddOrUpdate(Key, _ => CreateTypeMapping<Left, Right>(), (_, y) => y);
-            Mappings.TryGetValue(Key, out ITypeMapping ReturnValue);
-            return (ITypeMapping<Left, Right>)ReturnValue;
+            return (ITypeMapping<Left, Right>)Map(typeof(Left), typeof(Right));
         }
 
         /// <summary>
@@ -66,8 +63,19 @@ namespace BigBook.DataMapper.BaseClasses
         public ITypeMapping Map(Type left, Type right)
         {
             var Key = new Tuple<Type, Type>(left, right);
-            Mappings.AddOrUpdate(Key, x => CreateTypeMapping(x.Item1, x.Item2), (_, y) => y);
-            Mappings.TryGetValue(Key, out ITypeMapping ReturnValue);
+            if (Mappings.TryGetValue(Key, out ITypeMapping ReturnValue))
+                return ReturnValue;
+            var Key2 = new Tuple<Type, Type>(right, left);
+            if (Mappings.TryGetValue(Key2, out ReturnValue))
+            {
+                ReturnValue = ReturnValue.CreateReversed();
+                Mappings.AddOrUpdate(Key, ReturnValue, (_, y) => y);
+            }
+            else
+            {
+                ReturnValue = CreateTypeMapping(Key.Item1, Key.Item2);
+                Mappings.AddOrUpdate(Key, ReturnValue, (_, y) => y);
+            }
             return ReturnValue;
         }
 

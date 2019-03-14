@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Linq;
 using Xunit;
 
 namespace BigBook.Tests
@@ -8,7 +9,7 @@ namespace BigBook.Tests
         [Fact]
         public void GetInformation()
         {
-            var Value = Process.GetProcesses().GetInformation();
+            var Value = Process.GetProcesses().Take(4).GetInformation();
             Assert.NotNull(Value);
         }
     }

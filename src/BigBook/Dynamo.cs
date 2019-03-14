@@ -74,8 +74,9 @@ namespace BigBook
         /// Constructor
         /// </summary>
         /// <param name="item">Item to copy values from</param>
-        protected Dynamo(object item)
-            : base(item)
+        /// <param name="useChangeLog">if set to <c>true</c> [use change log].</param>
+        protected Dynamo(object item, bool useChangeLog = false)
+            : base(item, useChangeLog)
         {
         }
 
@@ -83,8 +84,9 @@ namespace BigBook
         /// Constructor
         /// </summary>
         /// <param name="dictionary">Dictionary to copy</param>
-        protected Dynamo(IDictionary<string, object> dictionary)
-            : base(dictionary)
+        /// <param name="useChangeLog"></param>
+        protected Dynamo(IDictionary<string, object> dictionary, bool useChangeLog = false)
+            : base(dictionary, useChangeLog)
         {
         }
 
@@ -191,18 +193,19 @@ namespace BigBook
         /// Constructor
         /// </summary>
         /// <param name="item">Item to copy values from</param>
-        public Dynamo(object item)
+        /// <param name="useChangeLog">if set to <c>true</c> [use change log].</param>
+        public Dynamo(object item, bool useChangeLog = false)
         {
             InternalValues = new ConcurrentDictionary<string, object>(StringComparer.OrdinalIgnoreCase);
             ChildValues = new ConcurrentDictionary<string, Func<object>>(StringComparer.OrdinalIgnoreCase);
-            ChangeLog = new ConcurrentDictionary<string, Change>(StringComparer.OrdinalIgnoreCase);
-            var DictItem = item as IDictionary<string, object>;
+            ChangeLog = useChangeLog ? new ConcurrentDictionary<string, Change>(StringComparer.OrdinalIgnoreCase) : null;
             if (item == null)
             {
                 return;
             }
 
             Type ItemType = item.GetType();
+            var DictItem = item as IDictionary<string, object>;
             if (item is string || ItemType.IsValueType)
             {
                 SetValue("Value", item);
@@ -227,11 +230,12 @@ namespace BigBook
         /// Constructor
         /// </summary>
         /// <param name="dictionary">Dictionary to copy</param>
-        public Dynamo(IDictionary<string, object> dictionary)
+        /// <param name="useChangeLog">if set to <c>true</c> [use change log].</param>
+        public Dynamo(IDictionary<string, object> dictionary, bool useChangeLog = false)
         {
             InternalValues = new ConcurrentDictionary<string, object>(dictionary, StringComparer.OrdinalIgnoreCase);
             ChildValues = new ConcurrentDictionary<string, Func<object>>(StringComparer.OrdinalIgnoreCase);
-            ChangeLog = new ConcurrentDictionary<string, Change>(StringComparer.OrdinalIgnoreCase);
+            ChangeLog = useChangeLog ? new ConcurrentDictionary<string, Change>(StringComparer.OrdinalIgnoreCase) : null;
         }
 
         /// <summary>
@@ -747,14 +751,11 @@ namespace BigBook
                 return Value;
             }
 
-            if (ContainsKey(name))
+            if (InternalValues.TryGetValue(name, out Value))
             {
-                if (InternalValues.TryGetValue(name, out Value))
-                {
-                    return Value.To(returnType, null);
-                }
+                return Value.To(returnType, null);
             }
-            if (!ChildValues.ContainsKey(name))
+            if (!ChildValues.TryGetValue(name, out Func<object> ChildValueMethod))
             {
                 Type ObjectType = GetType();
                 PropertyInfo Property = ObjectType.GetProperty(name);
@@ -768,7 +769,7 @@ namespace BigBook
                     ChildValues.AddOrUpdate(name, _ => () => null, (__, _) => null);
                 }
             }
-            object ReturnValue = ChildValues[name]().To(returnType, null);
+            object ReturnValue = ChildValueMethod().To(returnType, null);
             Value = RaiseGetValueEnd(name, ReturnValue);
             return Value ?? ReturnValue;
         }

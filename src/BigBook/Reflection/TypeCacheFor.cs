@@ -48,7 +48,7 @@ namespace BigBook.Reflection
         /// <summary>
         /// The properties
         /// </summary>
-        public static readonly PropertyInfo[] Properties = typeof(T).GetProperties();
+        public static readonly PropertyInfo[] Properties = typeof(T).GetProperties(BindingFlags.FlattenHierarchy | BindingFlags.Instance | BindingFlags.Public);
 
         /// <summary>
         /// The type

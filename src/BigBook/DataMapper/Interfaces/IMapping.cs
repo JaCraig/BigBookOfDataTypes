@@ -21,6 +21,11 @@ namespace BigBook.DataMapper.Interfaces
     /// </summary>
     public interface IMapping
     {
+        /// <summary>
+        /// Creates the reversed.
+        /// </summary>
+        /// <returns></returns>
+        IMapping CreateReversed();
     }
 
     /// <summary>
