@@ -638,7 +638,7 @@ namespace BigBook
                 }
 
                 var TempConverter = Array.Find(Converters, x => x.CanConvertTo(resultType)
-                                                                && x as TypeConverterBase<T> != null);
+                                                                && x is TypeConverterBase<T>);
                 if (TempConverter != null)
                 {
                     return TempConverter.ConvertTo(item, resultType);

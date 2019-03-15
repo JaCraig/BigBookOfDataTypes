@@ -834,14 +834,7 @@ namespace BigBook
         protected virtual void SetValue(string key, object value)
         {
             RaisePropertyChanged(key, value);
-            if (InternalValues.ContainsKey(key))
-            {
-                InternalValues[key] = value;
-            }
-            else
-            {
-                InternalValues.AddOrUpdate(key, value, (__, _) => value);
-            }
+            InternalValues.AddOrUpdate(key, value, (__, _) => value);
         }
     }
 }

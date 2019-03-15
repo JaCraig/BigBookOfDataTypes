@@ -4,38 +4,39 @@ using System.Collections.Concurrent;
 
 namespace BigBook.Benchmarks.Tests
 {
-    public class ConcurrentDictionaryTests
+    public class ConcurrentDictionarySetTests
     {
         public ConcurrentDictionary<string, object> Data { get; set; }
 
         [Benchmark(Baseline = true)]
-        public void ContainsKey()
+        public void AddOrUpdate()
+        {
+            Data.AddOrUpdate("A", "A", (x, y) => "A");
+        }
+
+        [Benchmark]
+        public void DoesContainKeyAssign()
         {
             if (Data.ContainsKey("A"))
             {
-                if (Data.TryGetValue("A", out object Value))
-                {
-                }
+                Data["A"] = "A";
+            }
+            else
+            {
+                Data.AddOrUpdate("A", "A", (x, y) => "A");
             }
         }
 
         [Benchmark]
-        public void ContainsKeyIndex()
-        {
-            if (Data.ContainsKey("A"))
-            {
-                var Value = Data["A"];
-            }
-        }
-
-        [Benchmark]
-        public void DoesNotContainsKey()
+        public void DoesNotContainKey()
         {
             if (Data.ContainsKey("B"))
             {
-                if (Data.TryGetValue("B", out object Value))
-                {
-                }
+                Data["B"] = "A";
+            }
+            else
+            {
+                Data.AddOrUpdate("B", "A", (x, y) => "A");
             }
         }
 
@@ -45,14 +46,6 @@ namespace BigBook.Benchmarks.Tests
             Data = new ConcurrentDictionary<string, object>();
             Data.AddOrUpdate("A", 1, (_, __) => 1);
             Canister.Builder.CreateContainer(null).RegisterBigBookOfDataTypes().Build();
-        }
-
-        [Benchmark]
-        public void TryGetValue()
-        {
-            if (Data.TryGetValue("A", out object Value))
-            {
-            }
         }
     }
 }
