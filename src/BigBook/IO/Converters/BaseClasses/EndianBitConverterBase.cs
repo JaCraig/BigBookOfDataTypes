@@ -28,19 +28,69 @@ namespace BigBook.IO.Converters.BaseClasses
         /// Gets the big endian bit converter.
         /// </summary>
         /// <value>The big endian bit converter.</value>
-        public static EndianBitConverterBase BigEndian => new BigEndianBitConverter();
+        public static EndianBitConverterBase BigEndian { get; } = new BigEndianBitConverter();
 
         /// <summary>
         /// Gets the little endian bit converter.
         /// </summary>
         /// <value>The little endian bit converter.</value>
-        public static EndianBitConverterBase LittleEndian => new LittleEndianBitConverter();
+        public static EndianBitConverterBase LittleEndian { get; } = new LittleEndianBitConverter();
 
         /// <summary>
         /// Gets a value indicating whether this instance is little endian.
         /// </summary>
         /// <value><c>true</c> if this instance is little endian; otherwise, <c>false</c>.</value>
         public abstract bool IsLittleEndian { get; }
+
+        /// <summary>
+        /// Converts a double to a long.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returns>The resulting long.</returns>
+        public static long DoubleToLong(double value)
+        {
+            return BitConverter.DoubleToInt64Bits(value);
+        }
+
+        /// <summary>
+        /// Converts a float to an integer
+        /// </summary>
+        /// <param name="value">Float value</param>
+        /// <returns>The integer equivalent.</returns>
+        public static int FloatToInt(float value)
+        {
+            return new IntFloatUnion(value).IntegerValue;
+        }
+
+        /// <summary>
+        /// Gets the bytes.
+        /// </summary>
+        /// <param name="value">if set to <c>true</c> [value].</param>
+        /// <returns>Gets the resulting byte array.</returns>
+        public static byte[] GetBytes(bool value)
+        {
+            return BitConverter.GetBytes(value);
+        }
+
+        /// <summary>
+        /// Converts an integer to a float.
+        /// </summary>
+        /// <param name="value">The integer value</param>
+        /// <returns>The float value.</returns>
+        public static float IntToFloat(int value)
+        {
+            return new IntFloatUnion(value).FloatValue;
+        }
+
+        /// <summary>
+        /// Converts a long to a double.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returns>The resulting double.</returns>
+        public static double LongToDouble(long value)
+        {
+            return BitConverter.Int64BitsToDouble(value);
+        }
 
         /// <summary>
         /// Returns a <see cref="System.String"/> that represents this instance.
@@ -201,26 +251,6 @@ namespace BigBook.IO.Converters.BaseClasses
         }
 
         /// <summary>
-        /// Converts a double to a long.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        /// <returns>The resulting long.</returns>
-        public long DoubleToLong(double value)
-        {
-            return BitConverter.DoubleToInt64Bits(value);
-        }
-
-        /// <summary>
-        /// Converts a float to an integer
-        /// </summary>
-        /// <param name="value">Float value</param>
-        /// <returns>The integer equivalent.</returns>
-        public int FloatToInt(float value)
-        {
-            return new IntFloatUnion(value).IntegerValue;
-        }
-
-        /// <summary>
         /// Gets the bytes.
         /// </summary>
         /// <param name="value">The value.</param>
@@ -235,16 +265,6 @@ namespace BigBook.IO.Converters.BaseClasses
             }
 
             return bytes;
-        }
-
-        /// <summary>
-        /// Gets the bytes.
-        /// </summary>
-        /// <param name="value">if set to <c>true</c> [value].</param>
-        /// <returns>Gets the resulting byte array.</returns>
-        public byte[] GetBytes(bool value)
-        {
-            return BitConverter.GetBytes(value);
         }
 
         /// <summary>
@@ -338,26 +358,6 @@ namespace BigBook.IO.Converters.BaseClasses
         }
 
         /// <summary>
-        /// Converts an integer to a float.
-        /// </summary>
-        /// <param name="value">The integer value</param>
-        /// <returns>The float value.</returns>
-        public float IntToFloat(int value)
-        {
-            return new IntFloatUnion(value).FloatValue;
-        }
-
-        /// <summary>
-        /// Converts a long to a double.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        /// <returns>The resulting double.</returns>
-        public double LongToDouble(long value)
-        {
-            return BitConverter.Int64BitsToDouble(value);
-        }
-
-        /// <summary>
         /// To the boolean.
         /// </summary>
         /// <param name="value">The value.</param>
@@ -366,7 +366,7 @@ namespace BigBook.IO.Converters.BaseClasses
         /// <exception cref="System.ArgumentOutOfRangeException"></exception>
         public bool ToBoolean(byte[] value, int startIndex)
         {
-            value = value ?? new byte[0];
+            value = value ?? Array.Empty<byte>();
             if (value.Length - 1 < startIndex || startIndex < 0)
             {
                 throw new ArgumentOutOfRangeException(nameof(startIndex));
@@ -519,7 +519,7 @@ namespace BigBook.IO.Converters.BaseClasses
         /// <exception cref="System.ArgumentOutOfRangeException"></exception>
         private long CheckedFromBytes(byte[] value, int startIndex, int bytesToConvert)
         {
-            value = value ?? new byte[0];
+            value = value ?? Array.Empty<byte>();
             if (value.Length - bytesToConvert < startIndex || startIndex < 0)
             {
                 throw new ArgumentOutOfRangeException(nameof(startIndex));
@@ -538,7 +538,7 @@ namespace BigBook.IO.Converters.BaseClasses
         /// <exception cref="System.ArgumentOutOfRangeException"></exception>
         private void CopyBytes(long value, int bytes, byte[] buffer, int index)
         {
-            buffer = buffer ?? new byte[0];
+            buffer = buffer ?? Array.Empty<byte>();
             if (buffer.Length - bytes < index || index < 0)
             {
                 throw new ArgumentOutOfRangeException(nameof(index));

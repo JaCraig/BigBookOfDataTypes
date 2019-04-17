@@ -119,7 +119,7 @@ namespace BigBook
         /// Gets the epsilon.
         /// </summary>
         /// <value>The epsilon.</value>
-        private double EPSILON => 0.001d;
+        private static double EPSILON => 0.001d;
 
         /// <summary>
         /// Converts the fraction to a decimal

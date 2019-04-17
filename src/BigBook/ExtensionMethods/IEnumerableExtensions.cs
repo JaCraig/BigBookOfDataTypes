@@ -47,7 +47,7 @@ namespace BigBook
         /// </example>
         public static IEnumerable<T> Concat<T>(this IEnumerable<T> enumerable1, params IEnumerable<T>[] additions)
         {
-            enumerable1 = enumerable1 ?? new T[0];
+            enumerable1 = enumerable1 ?? Array.Empty<T>();
             if (additions == null)
             {
                 return enumerable1;
@@ -193,7 +193,7 @@ namespace BigBook
         {
             if (list == null || function == null || !list.Any())
             {
-                return new R[0];
+                return Array.Empty<R>();
             }
 
             var TempList = list.ElementsBetween(start, end + 1).ToArray();
@@ -300,7 +300,7 @@ namespace BigBook
         {
             if (list == null || function == null || catchAction == null || !list.Any())
             {
-                return new R[0];
+                return Array.Empty<R>();
             }
 
             var ReturnValue = new List<R>();
@@ -771,7 +771,7 @@ namespace BigBook
         {
             if (list == null || convertingFunction == null || !list.Any())
             {
-                return new Target[0];
+                return Array.Empty<Target>();
             }
 
             return list.ForEach(convertingFunction).ToArray();

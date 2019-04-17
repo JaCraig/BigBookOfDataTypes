@@ -101,7 +101,7 @@ namespace BigBook
         /// <param name="keys">Keys to associate the value with</param>
         public void Add(Value value, params Key[] keys)
         {
-            keys = keys ?? new Key[0];
+            keys = keys ?? System.Array.Empty<Key>();
             Items.Add(new TaggedItem<Key, Value>(keys, value));
             keys.ForEach(x => KeyList.AddIfUnique(x));
         }

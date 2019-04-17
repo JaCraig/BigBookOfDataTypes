@@ -11,7 +11,7 @@ namespace BigBook.Benchmarks.Tests
         [Benchmark(Baseline = true)]
         public void AddOrUpdate()
         {
-            Data.AddOrUpdate("A", "A", (x, y) => "A");
+            Data.AddOrUpdate("A", "A", (_, __) => "A");
         }
 
         [Benchmark]
@@ -23,7 +23,7 @@ namespace BigBook.Benchmarks.Tests
             }
             else
             {
-                Data.AddOrUpdate("A", "A", (x, y) => "A");
+                Data.AddOrUpdate("A", "A", (_, __) => "A");
             }
         }
 
@@ -36,7 +36,7 @@ namespace BigBook.Benchmarks.Tests
             }
             else
             {
-                Data.AddOrUpdate("B", "A", (x, y) => "A");
+                Data.AddOrUpdate("B", "A", (__, _) => "A");
             }
         }
 

@@ -51,7 +51,7 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void ForEachParallelTestEmptyList()
         {
-            int[] Temp = { };
+            int[] Temp = Array.Empty<int>();
             Temp.ForEachParallel(_ => { });
             Assert.Empty(Temp);
         }

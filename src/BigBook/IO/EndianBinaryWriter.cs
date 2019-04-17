@@ -272,7 +272,7 @@ namespace BigBook.IO
         /// <param name="value">The values to write</param>
         public void Write(byte[] value)
         {
-            value = value ?? new byte[0];
+            value = value ?? Array.Empty<byte>();
             WriteInternal(value, value.Length);
         }
 
@@ -289,7 +289,7 @@ namespace BigBook.IO
                 throw new NullReferenceException("Base stream is null");
             }
 
-            value = value ?? new byte[0];
+            value = value ?? Array.Empty<byte>();
             BaseStream.Write(value, offset, count);
         }
 
@@ -309,7 +309,7 @@ namespace BigBook.IO
         /// <param name="value">An array containing the characters to write</param>
         public void Write(char[] value)
         {
-            value = value ?? new char[0];
+            value = value ?? Array.Empty<char>();
             if (BaseStream == null)
             {
                 throw new NullReferenceException("Base stream is null");

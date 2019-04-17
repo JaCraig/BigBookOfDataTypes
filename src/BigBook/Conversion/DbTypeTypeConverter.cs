@@ -41,7 +41,7 @@ namespace BigBook.Conversion
         /// <summary>
         /// Internal converter
         /// </summary>
-        protected override TypeConverter InternalConverter => new EnumConverter(typeof(DbType));
+        protected override TypeConverter InternalConverter { get; } = new EnumConverter(typeof(DbType));
 
         private static object DbTypeToSqlDbType(object value)
         {
