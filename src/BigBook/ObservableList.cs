@@ -188,7 +188,7 @@ namespace BigBook
         public virtual void Add(T item)
         {
             NotifyCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, item));
-            NotifyPropertyChanged("Count");
+            NotifyPropertyChanged(nameof(Count));
             BaseList.Add(item);
         }
 
@@ -213,7 +213,7 @@ namespace BigBook
         public virtual void AddRange(IEnumerable<T> collection)
         {
             NotifyCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, collection));
-            NotifyPropertyChanged("Count");
+            NotifyPropertyChanged(nameof(Count));
             BaseList.AddRange(collection);
         }
 
@@ -223,7 +223,7 @@ namespace BigBook
         public virtual void Clear()
         {
             NotifyCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
-            NotifyPropertyChanged("Count");
+            NotifyPropertyChanged(nameof(Count));
             BaseList.Clear();
         }
 
@@ -344,7 +344,7 @@ namespace BigBook
         public virtual void Insert(int index, T item)
         {
             NotifyCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, item, index));
-            NotifyPropertyChanged("Count");
+            NotifyPropertyChanged(nameof(Count));
             BaseList.Insert(index, item);
         }
 
@@ -368,7 +368,7 @@ namespace BigBook
         public virtual void InsertRange(int index, IEnumerable<T> collection)
         {
             NotifyCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, collection.ToList(), index));
-            NotifyPropertyChanged("Count");
+            NotifyPropertyChanged(nameof(Count));
             BaseList.InsertRange(index, collection);
         }
 
@@ -395,7 +395,7 @@ namespace BigBook
         public virtual bool Remove(T item)
         {
             NotifyCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, item));
-            NotifyPropertyChanged("Count");
+            NotifyPropertyChanged(nameof(Count));
             return BaseList.Remove(item);
         }
 
@@ -416,7 +416,7 @@ namespace BigBook
         public virtual int RemoveAll(Predicate<T> match)
         {
             NotifyCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, this.Where(x => match(x))));
-            NotifyPropertyChanged("Count");
+            NotifyPropertyChanged(nameof(Count));
             return BaseList.RemoveAll(match);
         }
 
@@ -427,7 +427,7 @@ namespace BigBook
         public virtual void RemoveAt(int index)
         {
             NotifyCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, this[index], index));
-            NotifyPropertyChanged("Count");
+            NotifyPropertyChanged(nameof(Count));
             BaseList.RemoveAt(index);
         }
 
@@ -441,7 +441,7 @@ namespace BigBook
             NotifyCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove,
                                                                                     this.ElementsBetween(index, index + count),
                                                                                     index));
-            NotifyPropertyChanged("Count");
+            NotifyPropertyChanged(nameof(Count));
             BaseList.RemoveRange(index, count);
         }
 

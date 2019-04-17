@@ -63,7 +63,7 @@ namespace BigBook
         public static ArrayType[] Concat<ArrayType>(this ArrayType[] array1, params ArrayType[][] additions)
         {
             array1 = array1 ?? Array.Empty<ArrayType>();
-            additions = additions ?? new ArrayType[0][];
+            additions = additions ?? Array.Empty<ArrayType[]>();
             var finalAdditions = additions.Where(x => x != null);
             ArrayType[] Result = new ArrayType[array1.Length + finalAdditions.Sum(x => x.Length)];
             int Offset = array1.Length;

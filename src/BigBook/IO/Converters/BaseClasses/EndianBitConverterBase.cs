@@ -43,6 +43,56 @@ namespace BigBook.IO.Converters.BaseClasses
         public abstract bool IsLittleEndian { get; }
 
         /// <summary>
+        /// Converts a double to a long.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returns>The resulting long.</returns>
+        public static long DoubleToLong(double value)
+        {
+            return BitConverter.DoubleToInt64Bits(value);
+        }
+
+        /// <summary>
+        /// Converts a float to an integer
+        /// </summary>
+        /// <param name="value">Float value</param>
+        /// <returns>The integer equivalent.</returns>
+        public static int FloatToInt(float value)
+        {
+            return new IntFloatUnion(value).IntegerValue;
+        }
+
+        /// <summary>
+        /// Gets the bytes.
+        /// </summary>
+        /// <param name="value">if set to <c>true</c> [value].</param>
+        /// <returns>Gets the resulting byte array.</returns>
+        public static byte[] GetBytes(bool value)
+        {
+            return BitConverter.GetBytes(value);
+        }
+
+        /// <summary>
+        /// Converts an integer to a float.
+        /// </summary>
+        /// <param name="value">The integer value</param>
+        /// <returns>The float value.</returns>
+        public static float IntToFloat(int value)
+        {
+            return new IntFloatUnion(value).FloatValue;
+        }
+
+        /// <summary>
+        /// Converts a long to a double.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returns>The resulting double.</returns>
+        public static double LongToDouble(long value)
+        {
+            return BitConverter.Int64BitsToDouble(value);
+        }
+
+        /// <summary>
         /// Returns a <see cref="System.String"/> that represents this instance.
         /// </summary>
         /// <param name="value">The value.</param>
@@ -201,26 +251,6 @@ namespace BigBook.IO.Converters.BaseClasses
         }
 
         /// <summary>
-        /// Converts a double to a long.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        /// <returns>The resulting long.</returns>
-        public long DoubleToLong(double value)
-        {
-            return BitConverter.DoubleToInt64Bits(value);
-        }
-
-        /// <summary>
-        /// Converts a float to an integer
-        /// </summary>
-        /// <param name="value">Float value</param>
-        /// <returns>The integer equivalent.</returns>
-        public int FloatToInt(float value)
-        {
-            return new IntFloatUnion(value).IntegerValue;
-        }
-
-        /// <summary>
         /// Gets the bytes.
         /// </summary>
         /// <param name="value">The value.</param>
@@ -235,16 +265,6 @@ namespace BigBook.IO.Converters.BaseClasses
             }
 
             return bytes;
-        }
-
-        /// <summary>
-        /// Gets the bytes.
-        /// </summary>
-        /// <param name="value">if set to <c>true</c> [value].</param>
-        /// <returns>Gets the resulting byte array.</returns>
-        public byte[] GetBytes(bool value)
-        {
-            return BitConverter.GetBytes(value);
         }
 
         /// <summary>
@@ -335,26 +355,6 @@ namespace BigBook.IO.Converters.BaseClasses
         public byte[] GetBytes(ulong value)
         {
             return GetBytes(unchecked((long)value), 8);
-        }
-
-        /// <summary>
-        /// Converts an integer to a float.
-        /// </summary>
-        /// <param name="value">The integer value</param>
-        /// <returns>The float value.</returns>
-        public float IntToFloat(int value)
-        {
-            return new IntFloatUnion(value).FloatValue;
-        }
-
-        /// <summary>
-        /// Converts a long to a double.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        /// <returns>The resulting double.</returns>
-        public double LongToDouble(long value)
-        {
-            return BitConverter.Int64BitsToDouble(value);
         }
 
         /// <summary>

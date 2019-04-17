@@ -57,7 +57,7 @@ namespace BigBook.Tests.ExtensionMethods
         public void AddIfParamsNull2()
         {
             var TestObject = new ConcurrentBag<int>(new int[] { 1, 2, 3, 4, 5, 6 });
-            Assert.True(TestObject.AddIf(x => x > 1, new int[] { }));
+            Assert.True(TestObject.AddIf(x => x > 1, Array.Empty<int>()));
             Assert.True(TestObject.AddIf(x => x > 1, null));
         }
 
@@ -228,7 +228,7 @@ namespace BigBook.Tests.ExtensionMethods
         public void RemoveRangeNullObject()
         {
             ConcurrentBag<int> TestObject = null;
-            Assert.Empty(TestObject.Remove(new int[] { }));
+            Assert.Empty(TestObject.Remove(Array.Empty<int>()));
             TestObject = new ConcurrentBag<int>(new int[] { 1, 2, 3, 4, 5, 6 });
             Assert.Equal(6, TestObject.Remove((IEnumerable<int>)null).Count);
         }
