@@ -62,7 +62,7 @@ namespace BigBook
         /// <returns>A new array containing both arrays' values</returns>
         public static ArrayType[] Concat<ArrayType>(this ArrayType[] array1, params ArrayType[][] additions)
         {
-            array1 = array1 ?? new ArrayType[0];
+            array1 = array1 ?? Array.Empty<ArrayType>();
             additions = additions ?? new ArrayType[0][];
             var finalAdditions = additions.Where(x => x != null);
             ArrayType[] Result = new ArrayType[array1.Length + finalAdditions.Sum(x => x.Length)];

@@ -183,7 +183,7 @@ namespace BigBook
                 return builder;
             }
 
-            objects = objects ?? new object[0];
+            objects = objects ?? Array.Empty<object>();
             provider = provider ?? CultureInfo.InvariantCulture;
             return builder.AppendFormat(provider, format, objects).AppendLine();
         }
@@ -276,7 +276,7 @@ namespace BigBook
         /// <returns>A byte array equivalent of the base 64 string</returns>
         public static byte[] FromBase64(this string input)
         {
-            return string.IsNullOrEmpty(input) ? new byte[0] : Convert.FromBase64String(input);
+            return string.IsNullOrEmpty(input) ? Array.Empty<byte>() : Convert.FromBase64String(input);
         }
 
         /// <summary>
@@ -748,7 +748,7 @@ namespace BigBook
         public static byte[] ToByteArray(this string input, Encoding encodingUsing = null)
         {
             encodingUsing = encodingUsing ?? Encoding.UTF8;
-            return string.IsNullOrEmpty(input) ? new byte[0] : encodingUsing.GetBytes(input);
+            return string.IsNullOrEmpty(input) ? Array.Empty<byte>() : encodingUsing.GetBytes(input);
         }
 
         /// <summary>

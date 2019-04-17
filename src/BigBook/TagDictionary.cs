@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
@@ -101,7 +102,7 @@ namespace BigBook
         /// <param name="keys">Keys to associate the value with</param>
         public void Add(Value value, params Key[] keys)
         {
-            keys = keys ?? new Key[0];
+            keys = keys ?? Array.Empty<Key>();
             Items.Add(new TaggedItem<Key, Value>(keys, value));
             keys.ForEach(x => KeyList.AddIfUnique(x));
         }

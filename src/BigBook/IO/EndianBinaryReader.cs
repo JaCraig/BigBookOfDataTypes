@@ -148,7 +148,7 @@ namespace BigBook.IO
             }
 
             count = count > data.Length ? data.Length : count;
-            data = data ?? new char[0];
+            data = data ?? Array.Empty<char>();
             if (index > data.Length - count)
             {
                 index = data.Length - count;
@@ -214,7 +214,7 @@ namespace BigBook.IO
             }
 
             count = count > buffer.Length ? buffer.Length : count;
-            buffer = buffer ?? new byte[0];
+            buffer = buffer ?? Array.Empty<byte>();
             if (index > buffer.Length - count)
             {
                 index = buffer.Length - count;

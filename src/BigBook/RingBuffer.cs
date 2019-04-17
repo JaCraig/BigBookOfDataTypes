@@ -199,7 +199,7 @@ namespace BigBook
         /// <param name="count">Number of items to add</param>
         public void Add(T[] buffer, int offset, int count)
         {
-            buffer = buffer ?? new T[0];
+            buffer = buffer ?? Array.Empty<T>();
             if (offset < 0)
             {
                 offset = 0;
@@ -408,7 +408,7 @@ namespace BigBook
         /// <returns>The number of items that were read</returns>
         public int Remove(T[] array, int offset, int count)
         {
-            array = array ?? new T[0];
+            array = array ?? Array.Empty<T>();
             if (offset < 0)
             {
                 offset = 0;

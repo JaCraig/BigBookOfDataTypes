@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using System;
 using System.ComponentModel;
 using System.IO;
 using System.Text;
@@ -51,7 +52,7 @@ namespace BigBook
         {
             if (input == null)
             {
-                return new byte[0];
+                return Array.Empty<byte>();
             }
 
             if (input is MemoryStream TempInput)

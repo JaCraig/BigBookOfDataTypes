@@ -39,10 +39,10 @@ namespace BigBook
         {
             if (stack == null)
             {
-                return new List<MethodBase>();
+                return Array.Empty<MethodBase>();
             }
 
-            excludedAssemblies = excludedAssemblies ?? new Assembly[0];
+            excludedAssemblies = excludedAssemblies ?? Array.Empty<Assembly>();
             return stack.GetFrames().GetMethods(excludedAssemblies);
         }
 

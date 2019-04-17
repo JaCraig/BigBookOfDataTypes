@@ -366,7 +366,7 @@ namespace BigBook.IO.Converters.BaseClasses
         /// <exception cref="System.ArgumentOutOfRangeException"></exception>
         public bool ToBoolean(byte[] value, int startIndex)
         {
-            value = value ?? new byte[0];
+            value = value ?? Array.Empty<byte>();
             if (value.Length - 1 < startIndex || startIndex < 0)
             {
                 throw new ArgumentOutOfRangeException(nameof(startIndex));
@@ -519,7 +519,7 @@ namespace BigBook.IO.Converters.BaseClasses
         /// <exception cref="System.ArgumentOutOfRangeException"></exception>
         private long CheckedFromBytes(byte[] value, int startIndex, int bytesToConvert)
         {
-            value = value ?? new byte[0];
+            value = value ?? Array.Empty<byte>();
             if (value.Length - bytesToConvert < startIndex || startIndex < 0)
             {
                 throw new ArgumentOutOfRangeException(nameof(startIndex));
@@ -538,7 +538,7 @@ namespace BigBook.IO.Converters.BaseClasses
         /// <exception cref="System.ArgumentOutOfRangeException"></exception>
         private void CopyBytes(long value, int bytes, byte[] buffer, int index)
         {
-            buffer = buffer ?? new byte[0];
+            buffer = buffer ?? Array.Empty<byte>();
             if (buffer.Length - bytes < index || index < 0)
             {
                 throw new ArgumentOutOfRangeException(nameof(index));

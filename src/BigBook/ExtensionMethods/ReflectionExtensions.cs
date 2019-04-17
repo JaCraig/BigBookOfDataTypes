@@ -1151,14 +1151,14 @@ namespace BigBook
         {
             if (assembly == null || baseType == null)
             {
-                return new List<Type>();
+                return Array.Empty<Type>();
             }
 
             try
             {
                 return assembly.GetTypes().Where(x => x.Is(baseType) && x.IsClass && !x.IsAbstract);
             }
-            catch { return new List<Type>(); }
+            catch { return Array.Empty<Type>(); }
         }
 
         /// <summary>

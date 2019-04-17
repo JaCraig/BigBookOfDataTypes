@@ -34,8 +34,8 @@ namespace BigBook
         /// <param name="columnValues">Column values</param>
         public Row(Hashtable columnNameHash, string[] columnNames, params object[] columnValues)
         {
-            columnValues = columnValues ?? new object[0];
-            columnNames = columnNames ?? new string[0];
+            columnValues = columnValues ?? Array.Empty<object>();
+            columnNames = columnNames ?? Array.Empty<string>();
             columnNameHash = columnNameHash ?? new Hashtable();
             ColumnNameHash = columnNameHash;
             ColumnNames = columnNames;
@@ -112,7 +112,7 @@ namespace BigBook
         /// <param name="columnNames">Column names</param>
         public Table(params string[] columnNames)
         {
-            columnNames = columnNames ?? new string[0];
+            columnNames = columnNames ?? Array.Empty<string>();
             ColumnNames = (string[])columnNames.Clone();
             Rows = new List<Row>();
             ColumnNameHash = new Hashtable();
