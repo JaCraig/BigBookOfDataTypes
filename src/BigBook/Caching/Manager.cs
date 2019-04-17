@@ -17,7 +17,6 @@ limitations under the License.
 using BigBook.Caching.Default;
 using BigBook.Caching.Interfaces;
 using BigBook.Patterns.BaseClasses;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -35,8 +34,7 @@ namespace BigBook.Caching
         public Manager(IEnumerable<ICache> caches)
         {
             caches = caches ?? new List<ICache>();
-            Caches = caches.Where(x => !x.GetType().Namespace.StartsWith("BIGBOOK", StringComparison.OrdinalIgnoreCase))
-                                .ToDictionary(x => x.Name);
+            Caches = caches.Where(x => x.GetType().Assembly != typeof(Manager).Assembly).ToDictionary(x => x.Name);
             if (!Caches.ContainsKey("Default"))
             {
                 Caches.Add("Default", new Cache());

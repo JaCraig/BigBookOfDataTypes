@@ -48,7 +48,7 @@ namespace BigBook.Caching.Default
         /// <summary>
         /// Name
         /// </summary>
-        public override string Name => "Default";
+        public override string Name { get; } = "Default";
 
         /// <summary>
         /// Values

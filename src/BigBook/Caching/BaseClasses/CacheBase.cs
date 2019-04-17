@@ -41,7 +41,7 @@ namespace BigBook.Caching.BaseClasses
         /// <summary>
         /// Read only
         /// </summary>
-        public bool IsReadOnly => false;
+        public bool IsReadOnly { get; }
 
         /// <summary>
         /// Keys

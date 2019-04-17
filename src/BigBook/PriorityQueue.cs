@@ -43,7 +43,7 @@ namespace BigBook
         /// <summary>
         /// Not read only
         /// </summary>
-        public bool IsReadOnly => false;
+        public bool IsReadOnly { get; }
 
         /// <summary>
         /// The list of keys within the mapping

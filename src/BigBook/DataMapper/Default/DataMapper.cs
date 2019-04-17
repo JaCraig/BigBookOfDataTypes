@@ -28,7 +28,7 @@ namespace BigBook.DataMapper.Default
         /// <summary>
         /// The name of the data mapper
         /// </summary>
-        public override string Name => "Default";
+        public override string Name { get; } = "Default";
 
         /// <summary>
         /// Used internally to create type mappings

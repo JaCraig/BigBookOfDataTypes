@@ -28,7 +28,7 @@ namespace BigBook.DataMapper.Module
         /// <summary>
         /// Order to run it in
         /// </summary>
-        public int Order => 0;
+        public int Order { get; } = 0;
 
         /// <summary>
         /// Loads the module

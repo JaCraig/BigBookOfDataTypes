@@ -72,7 +72,7 @@ namespace BigBook.Queryable
         /// Gets the type of the element(s) that are returned when the expression tree associated
         /// with this instance of <see cref="T:System.Linq.IQueryable"/> is executed.
         /// </summary>
-        Type IQueryable.ElementType => typeof(T);
+        Type IQueryable.ElementType { get; } = typeof(T);
 
         /// <summary>
         /// Gets the expression tree that is associated with the instance of <see cref="T:System.Linq.IQueryable"/>.

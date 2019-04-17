@@ -28,7 +28,7 @@ namespace BigBook.Caching.Module
         /// <summary>
         /// Order to run it in
         /// </summary>
-        public int Order => 1;
+        public int Order { get; } = 1;
 
         /// <summary>
         /// Loads the module

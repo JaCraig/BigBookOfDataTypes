@@ -28,7 +28,7 @@ namespace BigBook.IO.Converters
         /// Gets a value indicating whether this instance is little endian.
         /// </summary>
         /// <value><c>true</c> if this instance is little endian; otherwise, <c>false</c>.</value>
-        public override bool IsLittleEndian => false;
+        public override bool IsLittleEndian { get; }
 
         /// <summary>
         /// Copies the bytes implementation.

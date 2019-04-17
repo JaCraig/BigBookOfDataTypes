@@ -266,7 +266,7 @@ namespace BigBook
         /// <summary>
         /// Is this read only?
         /// </summary>
-        public bool IsReadOnly => false;
+        public bool IsReadOnly { get; }
 
         /// <summary>
         /// Keys

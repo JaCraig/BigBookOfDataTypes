@@ -38,52 +38,60 @@ namespace BigBook
             }
             Start = start;
             End = end;
+            var Diff = (End - Start);
+            Days = Diff.DaysRemainder();
+            Hours = Diff.Hours;
+            MilliSeconds = Diff.Milliseconds;
+            Minutes = Diff.Minutes;
+            Months = Diff.Months();
+            Seconds = Diff.Seconds;
+            Years = Diff.Years();
         }
 
         /// <summary>
         /// Days between the two dates
         /// </summary>
-        public int Days => (End - Start).DaysRemainder();
+        public int Days { get; }
 
         /// <summary>
         /// End date
         /// </summary>
-        public DateTime End { get; protected set; }
+        public DateTime End { get; }
 
         /// <summary>
         /// Hours between the two dates
         /// </summary>
-        public int Hours => (End - Start).Hours;
+        public int Hours { get; }
 
         /// <summary>
         /// Milliseconds between the two dates
         /// </summary>
-        public int MilliSeconds => (End - Start).Milliseconds;
+        public int MilliSeconds { get; }
 
         /// <summary>
         /// Minutes between the two dates
         /// </summary>
-        public int Minutes => (End - Start).Minutes;
+        public int Minutes { get; }
 
         /// <summary>
         /// Months between the two dates
         /// </summary>
-        public int Months => (End - Start).Months();
+        public int Months { get; }
 
         /// <summary>
         /// Seconds between the two dates
         /// </summary>
-        public int Seconds => (End - Start).Seconds;
+        public int Seconds { get; }
 
         /// <summary>
         /// Start date
         /// </summary>
-        public DateTime Start { get; protected set; }
+        public DateTime Start { get; }
 
         /// <summary>
         /// Years between the two dates
         /// </summary>
-        public int Years => (End - Start).Years();
+        public int Years { get; }
 
         /// <summary>
         /// Converts the object to a string

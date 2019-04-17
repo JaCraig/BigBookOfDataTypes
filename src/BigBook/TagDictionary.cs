@@ -44,7 +44,7 @@ namespace BigBook
         /// <summary>
         /// Always false
         /// </summary>
-        public bool IsReadOnly => false;
+        public bool IsReadOnly { get; }
 
         /// <summary>
         /// Gets the keys found in the dictionary

@@ -28,13 +28,13 @@ namespace BigBook.IO.Converters.BaseClasses
         /// Gets the big endian bit converter.
         /// </summary>
         /// <value>The big endian bit converter.</value>
-        public static EndianBitConverterBase BigEndian => new BigEndianBitConverter();
+        public static EndianBitConverterBase BigEndian { get; } = new BigEndianBitConverter();
 
         /// <summary>
         /// Gets the little endian bit converter.
         /// </summary>
         /// <value>The little endian bit converter.</value>
-        public static EndianBitConverterBase LittleEndian => new LittleEndianBitConverter();
+        public static EndianBitConverterBase LittleEndian { get; } = new LittleEndianBitConverter();
 
         /// <summary>
         /// Gets a value indicating whether this instance is little endian.

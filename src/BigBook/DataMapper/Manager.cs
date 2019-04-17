@@ -35,7 +35,7 @@ namespace BigBook.DataMapper
         {
             dataMappers = dataMappers ?? new List<IDataMapper>();
             mapperModules = mapperModules ?? new List<IMapperModule>();
-            DataMapper = dataMappers.FirstOrDefault(x => !x.GetType().Namespace.StartsWith("BIGBOOK", StringComparison.OrdinalIgnoreCase)) ?? new Default.DataMapper();
+            DataMapper = dataMappers.FirstOrDefault(x => x.GetType().Assembly != typeof(Manager).Assembly) ?? new Default.DataMapper();
 
             mapperModules.ForEach(x => x.Map(this));
         }

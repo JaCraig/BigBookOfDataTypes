@@ -84,23 +84,23 @@ namespace BigBook
         /// <summary>
         /// Gets a value indicating whether the <see cref="T:System.Collections.IList"/> has a fixed size.
         /// </summary>
-        public bool IsFixedSize => false;
+        public bool IsFixedSize { get; }
 
         /// <summary>
         /// Gets a value indicating whether the collection is read-only.
         /// </summary>
-        public bool IsReadOnly => false;
+        public bool IsReadOnly { get; }
 
         /// <summary>
         /// Gets a value indicating whether access to the
         /// <see cref="T:System.Collections.ICollection"/> is synchronized (thread safe).
         /// </summary>
-        public bool IsSynchronized => false;
+        public bool IsSynchronized { get; }
 
         /// <summary>
         /// Gets an object that can be used to synchronize access to the <see cref="T:System.Collections.ICollection"/>.
         /// </summary>
-        public object SyncRoot => null;
+        public object SyncRoot { get; }
 
         /// <summary>
         /// Gets or sets the base list.
