@@ -126,13 +126,13 @@ namespace BigBook
             get
             {
                 position %= Count;
-                int FinalPosition = (ReadPosition + position) % MaxCapacity;
+                var FinalPosition = (ReadPosition + position) % MaxCapacity;
                 return Buffer[FinalPosition];
             }
             set
             {
                 position %= Count;
-                int FinalPosition = (ReadPosition + position) % MaxCapacity;
+                var FinalPosition = (ReadPosition + position) % MaxCapacity;
                 Buffer[FinalPosition] = value;
             }
         }
@@ -218,7 +218,7 @@ namespace BigBook
                 count = buffer.Length - offset;
             }
 
-            for (int x = offset; x < offset + count; ++x)
+            for (var x = offset; x < offset + count; ++x)
             {
                 Add(buffer[x]);
             }
@@ -232,7 +232,7 @@ namespace BigBook
             ReadPosition = 0;
             WritePosition = 0;
             Count = 0;
-            for (int x = 0; x < MaxCapacity; ++x)
+            for (var x = 0; x < MaxCapacity; ++x)
             {
                 Buffer[x] = default(T);
             }
@@ -245,9 +245,9 @@ namespace BigBook
         /// <returns>True if the item is present, false otherwise</returns>
         public bool Contains(T item)
         {
-            int y = ReadPosition;
+            var y = ReadPosition;
             var Comparer = new GenericEqualityComparer<T>();
-            for (int x = 0; x < Count; ++x)
+            for (var x = 0; x < Count; ++x)
             {
                 if (Comparer.Equals(Buffer[y], item))
                 {
@@ -270,10 +270,10 @@ namespace BigBook
         /// <param name="arrayIndex">Array index to start at</param>
         public void CopyTo(T[] array, int arrayIndex)
         {
-            int y = ReadPosition;
-            int y2 = arrayIndex;
-            int MaxLength = (array.Length - arrayIndex) < Count ? (array.Length - arrayIndex) : Count;
-            for (int x = 0; x < MaxLength; ++x)
+            var y = ReadPosition;
+            var y2 = arrayIndex;
+            var MaxLength = (array.Length - arrayIndex) < Count ? (array.Length - arrayIndex) : Count;
+            for (var x = 0; x < MaxLength; ++x)
             {
                 array[y2] = Buffer[y];
                 ++y2;
@@ -292,10 +292,10 @@ namespace BigBook
         /// <param name="index">Array index to start at</param>
         public void CopyTo(Array array, int index)
         {
-            int y = ReadPosition;
-            int y2 = index;
-            int MaxLength = (array.Length - index) < Count ? (array.Length - index) : Count;
-            for (int x = 0; x < MaxLength; ++x)
+            var y = ReadPosition;
+            var y2 = index;
+            var MaxLength = (array.Length - index) < Count ? (array.Length - index) : Count;
+            for (var x = 0; x < MaxLength; ++x)
             {
                 array.SetValue(Buffer[y], y2);
                 ++y2;
@@ -313,8 +313,8 @@ namespace BigBook
         /// <returns>The enumerator</returns>
         public IEnumerator<T> GetEnumerator()
         {
-            int y = ReadPosition;
-            for (int x = 0; x < Count; ++x)
+            var y = ReadPosition;
+            for (var x = 0; x < Count; ++x)
             {
                 yield return Buffer[y];
                 ++y;
@@ -329,10 +329,7 @@ namespace BigBook
         /// Gets the enumerator for the buffer
         /// </summary>
         /// <returns>The enumerator</returns>
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
         /// <summary>
         /// Reads the next item from the buffer
@@ -345,7 +342,7 @@ namespace BigBook
                 return default(T);
             }
 
-            T ReturnValue = Buffer[ReadPosition];
+            var ReturnValue = Buffer[ReadPosition];
             Buffer[ReadPosition] = default(T);
             ++ReadPosition;
             ReadPosition %= MaxCapacity;
@@ -366,7 +363,7 @@ namespace BigBook
             }
 
             var ReturnValue = new List<T>();
-            for (int x = 0; x < amount; ++x)
+            for (var x = 0; x < amount; ++x)
             {
                 ReturnValue.Add(Remove());
             }
@@ -381,9 +378,9 @@ namespace BigBook
         /// <returns>True if it is removed, false otherwise</returns>
         public bool Remove(T item)
         {
-            int y = ReadPosition;
+            var y = ReadPosition;
             var Comparer = new GenericEqualityComparer<T>();
-            for (int x = 0; x < Count; ++x)
+            for (var x = 0; x < Count; ++x)
             {
                 if (Comparer.Equals(Buffer[y], item))
                 {
@@ -432,10 +429,10 @@ namespace BigBook
                 return 0;
             }
 
-            int y = ReadPosition;
-            int y2 = offset;
-            int MaxLength = count < Count ? count : Count;
-            for (int x = 0; x < MaxLength; ++x)
+            var y = ReadPosition;
+            var y2 = offset;
+            var MaxLength = count < Count ? count : Count;
+            for (var x = 0; x < MaxLength; ++x)
             {
                 array[y2] = Buffer[y];
                 ++y2;
@@ -472,9 +469,6 @@ namespace BigBook
         /// Returns the buffer as a string
         /// </summary>
         /// <returns>The buffer as a string</returns>
-        public override string ToString()
-        {
-            return Buffer.ToString<T>();
-        }
+        public override string ToString() => Buffer.ToString<T>();
     }
 }

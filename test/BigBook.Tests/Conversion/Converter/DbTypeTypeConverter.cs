@@ -8,9 +8,9 @@ namespace BigBook.Tests.Conversion.Converter
     {
         public static readonly TheoryData<DbType, Type> DBToTypeData = new TheoryData<DbType, Type>
         {
-            {DbType.Int16,typeof(Int16) },
-            {DbType.Int64,typeof(Int64) },
-            {DbType.Int32,typeof(Int32) },
+            {DbType.Int16,typeof(short) },
+            {DbType.Int64,typeof(long) },
+            {DbType.Int32,typeof(int) },
             {DbType.Boolean,typeof(bool) },
             {DbType.String,typeof(string) },
             {DbType.DateTime2,typeof(DateTime) },

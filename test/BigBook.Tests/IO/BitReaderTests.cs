@@ -22,7 +22,7 @@ namespace BigBook.IO.Tests
                 var Value = TestObject.ReadBit();
                 Assert.True(Value.HasValue);
                 Assert.False(Value.Value);
-                for (int x = 0; x < 6; ++x)
+                for (var x = 0; x < 6; ++x)
                 {
                     Value = TestObject.ReadBit();
                     Assert.True(Value.HasValue);
@@ -43,7 +43,7 @@ namespace BigBook.IO.Tests
                 var Value = TestObject.ReadBit(true);
                 Assert.True(Value.HasValue);
                 Assert.True(Value.Value);
-                for (int x = 0; x < 7; ++x)
+                for (var x = 0; x < 7; ++x)
                 {
                     Value = TestObject.ReadBit(true);
                     Assert.True(Value.HasValue);

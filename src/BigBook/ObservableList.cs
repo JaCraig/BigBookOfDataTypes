@@ -114,7 +114,7 @@ namespace BigBook
         /// <value>The <see cref="System.Object"/>.</value>
         /// <param name="index">The index.</param>
         /// <returns></returns>
-        object IList.this[int index] { get { return this[index]; } set { this[index] = (T)value; } }
+        object IList.this[int index] { get => this[index]; set => this[index] = (T)value; }
 
         /// <summary>
         /// Gets or sets the element at the specified index.
@@ -123,10 +123,7 @@ namespace BigBook
         /// <returns></returns>
         public T this[int index]
         {
-            get
-            {
-                return BaseList[index];
-            }
+            get => BaseList[index];
 
             set
             {
@@ -244,10 +241,7 @@ namespace BigBook
         /// </summary>
         /// <param name="item">The object to locate in the <see cref="T:System.Collections.Generic.ICollection`1"/>.</param>
         /// <returns>true if <paramref name="item"/> is found in the collection; otherwise, false.</returns>
-        public bool Contains(T item)
-        {
-            return BaseList.Contains(item);
-        }
+        public bool Contains(T item) => BaseList.Contains(item);
 
         /// <summary>
         /// Determines whether the <see cref="T:System.Collections.IList"/> contains a specific value.
@@ -257,20 +251,14 @@ namespace BigBook
         /// true if the <see cref="T:System.Object"/> is found in the
         /// <see cref="T:System.Collections.IList"/>; otherwise, false.
         /// </returns>
-        public bool Contains(object value)
-        {
-            return Contains((T)value);
-        }
+        public bool Contains(object value) => Contains((T)value);
 
         /// <summary>
         /// Copies to.
         /// </summary>
         /// <param name="array">The array.</param>
         /// <param name="arrayIndex">Index of the array.</param>
-        public void CopyTo(T[] array, int arrayIndex)
-        {
-            BaseList.CopyTo(array, arrayIndex);
-        }
+        public void CopyTo(T[] array, int arrayIndex) => BaseList.CopyTo(array, arrayIndex);
 
         /// <summary>
         /// Copies the elements of the <see cref="T:System.Collections.ICollection"/> to an
@@ -284,10 +272,7 @@ namespace BigBook
         /// <param name="index">
         /// The zero-based index in <paramref name="array"/> at which copying begins.
         /// </param>
-        public void CopyTo(Array array, int index)
-        {
-            CopyTo((T[])array, index);
-        }
+        public void CopyTo(Array array, int index) => CopyTo((T[])array, index);
 
         /// <summary>
         /// Returns an enumerator that iterates through the collection.
@@ -296,10 +281,7 @@ namespace BigBook
         /// A <see cref="T:System.Collections.Generic.IEnumerator`1"/> that can be used to iterate
         /// through the collection.
         /// </returns>
-        public IEnumerator<T> GetEnumerator()
-        {
-            return BaseList.GetEnumerator();
-        }
+        public IEnumerator<T> GetEnumerator() => BaseList.GetEnumerator();
 
         /// <summary>
         /// Returns an enumerator that iterates through a collection.
@@ -308,30 +290,21 @@ namespace BigBook
         /// An <see cref="T:System.Collections.IEnumerator"/> object that can be used to iterate
         /// through the collection.
         /// </returns>
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            return BaseList.GetEnumerator();
-        }
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() => BaseList.GetEnumerator();
 
         /// <summary>
         /// Determines the index of a specific item in the <see cref="T:System.Collections.Generic.IList`1"/>.
         /// </summary>
         /// <param name="item">The object to locate in the <see cref="T:System.Collections.Generic.IList`1"/>.</param>
         /// <returns>The index of <paramref name="item"/> if found in the list; otherwise, -1.</returns>
-        public int IndexOf(T item)
-        {
-            return BaseList.IndexOf(item);
-        }
+        public int IndexOf(T item) => BaseList.IndexOf(item);
 
         /// <summary>
         /// Determines the index of a specific item in the <see cref="T:System.Collections.IList"/>.
         /// </summary>
         /// <param name="value">The object to locate in the <see cref="T:System.Collections.IList"/>.</param>
         /// <returns>The index of <paramref name="value"/> if found in the list; otherwise, -1.</returns>
-        public int IndexOf(object value)
-        {
-            return IndexOf((T)value);
-        }
+        public int IndexOf(object value) => IndexOf((T)value);
 
         /// <summary>
         /// Inserts an element into the <see cref="T:System.Collections.Generic.List`1"/> at the
@@ -355,10 +328,7 @@ namespace BigBook
         /// The zero-based index at which <paramref name="value"/> should be inserted.
         /// </param>
         /// <param name="value">The object to insert into the <see cref="T:System.Collections.IList"/>.</param>
-        public void Insert(int index, object value)
-        {
-            Insert(index, (T)value);
-        }
+        public void Insert(int index, object value) => Insert(index, (T)value);
 
         /// <summary>
         /// Inserts the range.
@@ -376,10 +346,7 @@ namespace BigBook
         /// Notifies the list that an item in the list has been modified.
         /// </summary>
         /// <param name="itemChanged">The item that was changed.</param>
-        public void NotifyObjectChanged(object itemChanged)
-        {
-            collectionChanged_?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Replace, itemChanged, itemChanged));
-        }
+        public void NotifyObjectChanged(object itemChanged) => collectionChanged_?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Replace, itemChanged, itemChanged));
 
         /// <summary>
         /// Removes the first occurrence of a specific object from the <see cref="T:System.Collections.Generic.List`1"/>.
@@ -403,10 +370,7 @@ namespace BigBook
         /// Removes the first occurrence of a specific object from the <see cref="T:System.Collections.IList"/>.
         /// </summary>
         /// <param name="value">The object to remove from the <see cref="T:System.Collections.IList"/>.</param>
-        public void Remove(object value)
-        {
-            Remove((T)value);
-        }
+        public void Remove(object value) => Remove((T)value);
 
         /// <summary>
         /// Removes all.
@@ -451,18 +415,12 @@ namespace BigBook
         /// <param name="args">
         /// The <see cref="NotifyCollectionChangedEventArgs"/> instance containing the event data.
         /// </param>
-        protected void NotifyCollectionChanged(NotifyCollectionChangedEventArgs args)
-        {
-            collectionChanged_?.Invoke(this, args);
-        }
+        protected void NotifyCollectionChanged(NotifyCollectionChangedEventArgs args) => collectionChanged_?.Invoke(this, args);
 
         /// <summary>
         /// Notifies the property changed.
         /// </summary>
         /// <param name="propertyName">Name of the property.</param>
-        protected void NotifyPropertyChanged([CallerMemberName]string propertyName = "")
-        {
-            propertyChanged_?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        protected void NotifyPropertyChanged([CallerMemberName]string propertyName = "") => propertyChanged_?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }

@@ -82,22 +82,13 @@ namespace BigBook.Queryable
         /// <summary>
         /// Gets the query provider that is associated with this data source.
         /// </summary>
-        public IQueryProvider Provider
-        {
-            get
-            {
-                return InternalProvider;
-            }
-        }
+        public IQueryProvider Provider => InternalProvider;
 
         /// <summary>
         /// Returns an enumerator that iterates through the collection.
         /// </summary>
         /// <returns>An enumerator that can be used to iterate through the collection.</returns>
-        public IEnumerator<T> GetEnumerator()
-        {
-            return ((IEnumerable<T>)Provider.Execute(Expression)).GetEnumerator();
-        }
+        public IEnumerator<T> GetEnumerator() => ((IEnumerable<T>)Provider.Execute(Expression)).GetEnumerator();
 
         /// <summary>
         /// Returns an enumerator that iterates through a collection.
@@ -106,18 +97,12 @@ namespace BigBook.Queryable
         /// An <see cref="T:System.Collections.IEnumerator"/> object that can be used to iterate
         /// through the collection.
         /// </returns>
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return ((IEnumerable)Provider.Execute(Expression)).GetEnumerator();
-        }
+        IEnumerator IEnumerable.GetEnumerator() => ((IEnumerable)Provider.Execute(Expression)).GetEnumerator();
 
         /// <summary>
         /// Returns a <see cref="System.String"/> that represents this instance.
         /// </summary>
         /// <returns>A <see cref="System.String"/> that represents this instance.</returns>
-        public override string ToString()
-        {
-            return InternalProvider.GetQueryText(Expression);
-        }
+        public override string ToString() => InternalProvider.GetQueryText(Expression);
     }
 }

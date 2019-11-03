@@ -36,10 +36,7 @@ namespace BigBook.DataMapper.Default
         /// <typeparam name="Left">Left type</typeparam>
         /// <typeparam name="Right">Right type</typeparam>
         /// <returns>A mapping object for the two types specified</returns>
-        protected override ITypeMapping<Left, Right> CreateTypeMapping<Left, Right>()
-        {
-            return new TypeMapping<Left, Right>();
-        }
+        protected override ITypeMapping<Left, Right> CreateTypeMapping<Left, Right>() => new TypeMapping<Left, Right>();
 
         /// <summary>
         /// Used internally to create type mappings
@@ -47,9 +44,6 @@ namespace BigBook.DataMapper.Default
         /// <param name="left">Left type</param>
         /// <param name="right">Right type</param>
         /// <returns>A mapping object for the two types specified</returns>
-        protected override ITypeMapping CreateTypeMapping(Type left, Type right)
-        {
-            return (ITypeMapping)typeof(TypeMapping<,>).MakeGenericType(left, right).Create();
-        }
+        protected override ITypeMapping CreateTypeMapping(Type left, Type right) => (ITypeMapping)typeof(TypeMapping<,>).MakeGenericType(left, right).Create();
     }
 }

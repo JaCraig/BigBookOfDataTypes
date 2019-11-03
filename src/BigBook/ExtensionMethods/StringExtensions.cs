@@ -149,7 +149,7 @@ namespace BigBook
                 return string.Empty;
             }
 
-            StringBuilder newText = new StringBuilder(input.Length * 2);
+            var newText = new StringBuilder(input.Length * 2);
             newText.Append(input[0]);
             for (int x = 1, inputLength = input.Length; x < inputLength; ++x)
             {
@@ -195,10 +195,7 @@ namespace BigBook
         /// <param name="format">Format string</param>
         /// <param name="objects">Objects to format</param>
         /// <returns>The StringBuilder passed in</returns>
-        public static StringBuilder AppendLineFormat(this StringBuilder builder, string format, params object[] objects)
-        {
-            return builder.AppendLineFormat(CultureInfo.InvariantCulture, format, objects);
-        }
+        public static StringBuilder AppendLineFormat(this StringBuilder builder, string format, params object[] objects) => builder.AppendLineFormat(CultureInfo.InvariantCulture, format, objects);
 
         /// <summary>
         /// Centers the input string (if it's longer than the length) and pads it using the padding string
@@ -214,13 +211,13 @@ namespace BigBook
                 input = "";
             }
 
-            string Output = "";
-            for (int x = 0; x < (length - input.Length) / 2; ++x)
+            var Output = "";
+            for (var x = 0; x < (length - input.Length) / 2; ++x)
             {
                 Output += padding[x % padding.Length];
             }
             Output += input;
-            for (int x = 0; x < (length - input.Length) / 2; ++x)
+            for (var x = 0; x < (length - input.Length) / 2; ++x)
             {
                 Output += padding[x % padding.Length];
             }
@@ -274,10 +271,7 @@ namespace BigBook
         /// </summary>
         /// <param name="input">Input string</param>
         /// <returns>A byte array equivalent of the base 64 string</returns>
-        public static byte[] FromBase64(this string input)
-        {
-            return string.IsNullOrEmpty(input) ? Array.Empty<byte>() : Convert.FromBase64String(input);
-        }
+        public static byte[] FromBase64(this string input) => string.IsNullOrEmpty(input) ? Array.Empty<byte>() : Convert.FromBase64String(input);
 
         /// <summary>
         /// Is this value of the specified type
@@ -291,14 +285,14 @@ namespace BigBook
             {
                 long CheckSum = 0;
                 value = value.Replace("-", "").Reverse();
-                for (int x = 0; x < value.Length; ++x)
+                for (var x = 0; x < value.Length; ++x)
                 {
                     if (!value[x].Is(CharIs.Digit))
                     {
                         return false;
                     }
 
-                    int Tempvalue = (value[x] - '0') * (x % 2 == 1 ? 2 : 1);
+                    var Tempvalue = (value[x] - '0') * (x % 2 == 1 ? 2 : 1);
                     while (Tempvalue > 0)
                     {
                         CheckSum += Tempvalue % 10;
@@ -349,7 +343,7 @@ namespace BigBook
             var Builder = new StringBuilder();
             for (int x = 0, CollectionCount = Collection.Count; x < CollectionCount; x++)
             {
-                Match Match = Collection[x];
+                var Match = Collection[x];
                 Builder.Append(Match.Value);
             }
 
@@ -402,22 +396,22 @@ namespace BigBook
                 return -1;
             }
 
-            int[,] Matrix = new int[value1.Length + 1, value2.Length + 1];
-            for (int x = 0; x <= value1.Length; ++x)
+            var Matrix = new int[value1.Length + 1, value2.Length + 1];
+            for (var x = 0; x <= value1.Length; ++x)
             {
                 Matrix[x, 0] = x;
             }
 
-            for (int x = 0; x <= value2.Length; ++x)
+            for (var x = 0; x <= value2.Length; ++x)
             {
                 Matrix[0, x] = x;
             }
 
-            for (int x = 1; x <= value1.Length; ++x)
+            for (var x = 1; x <= value1.Length; ++x)
             {
-                for (int y = 1; y <= value2.Length; ++y)
+                for (var y = 1; y <= value2.Length; ++y)
                 {
-                    int Cost = value1[x - 1] == value2[y - 1] ? 0 : 1;
+                    var Cost = value1[x - 1] == value2[y - 1] ? 0 : 1;
                     Matrix[x, y] = new int[] { Matrix[x - 1, y] + 1, Matrix[x, y - 1] + 1, Matrix[x - 1, y - 1] + Cost }.Min();
                     if (x > 1 && y > 1 && value1[x - 1] == value2[y - 2] && value1[x - 2] == value2[y - 1])
                     {
@@ -437,8 +431,8 @@ namespace BigBook
         /// <returns>The masked string</returns>
         public static string MaskLeft(this string input, int endPosition = 4, char mask = '#')
         {
-            string Appending = "";
-            for (int x = 0; x < endPosition; ++x)
+            var Appending = "";
+            for (var x = 0; x < endPosition; ++x)
             {
                 Appending += mask;
             }
@@ -465,8 +459,8 @@ namespace BigBook
                 return input;
             }
 
-            string Appending = "";
-            for (int x = 0; x < input.Length - startPosition; ++x)
+            var Appending = "";
+            for (var x = 0; x < input.Length - startPosition; ++x)
             {
                 Appending += mask;
             }
@@ -506,10 +500,7 @@ namespace BigBook
         /// <param name="input">input text</param>
         /// <param name="match">The string to match (can be regex)</param>
         /// <returns>The number of times the string occurs</returns>
-        public static int NumberTimesOccurs(this string input, string match)
-        {
-            return string.IsNullOrEmpty(input) ? 0 : new Regex(match).Matches(input).Count;
-        }
+        public static int NumberTimesOccurs(this string input, string match) => string.IsNullOrEmpty(input) ? 0 : new Regex(match).Matches(input).Count;
 
         /// <summary>
         /// Removes everything that is in the filter text from the input.
@@ -645,7 +636,7 @@ namespace BigBook
             var Builder = new StringBuilder();
             for (int x = 0, contentLength = content.Length; x < contentLength; x++)
             {
-                char Char = content[x];
+                var Char = content[x];
                 if (Char == 0x9
                     || Char == 0xA
                     || Char == 0xD
@@ -707,8 +698,8 @@ namespace BigBook
                 return input;
             }
 
-            int Position = input.Length - 1;
-            for (int x = input.Length - 1; x >= 0; --x)
+            var Position = input.Length - 1;
+            for (var x = input.Length - 1; x >= 0; --x)
             {
                 if (!characters.ToCharArray().Contains(input[x]))
                 {
@@ -769,7 +760,7 @@ namespace BigBook
             if (caseOfString == StringCase.FirstCharacterUpperCase)
             {
                 var InputChars = input.ToCharArray();
-                for (int x = 0; x < InputChars.Length; ++x)
+                for (var x = 0; x < InputChars.Length; ++x)
                 {
                     if (InputChars[x] != ' ' && InputChars[x] != '\t')
                     {
@@ -783,7 +774,7 @@ namespace BigBook
             {
                 string[] Seperator = { ".", "?", "!" };
                 var InputStrings = input.Split(Seperator, StringSplitOptions.None);
-                for (int x = 0; x < InputStrings.Length; ++x)
+                for (var x = 0; x < InputStrings.Length; ++x)
                 {
                     if (!string.IsNullOrEmpty(InputStrings[x]))
                     {
@@ -798,7 +789,7 @@ namespace BigBook
             {
                 string[] Seperator = { " ", ".", "\t", Environment.NewLine, "!", "?" };
                 var InputStrings = input.Split(Seperator, StringSplitOptions.None);
-                for (int x = 0; x < InputStrings.Length; ++x)
+                for (var x = 0; x < InputStrings.Length; ++x)
                 {
                     if (!string.IsNullOrEmpty(InputStrings[x])
                         && InputStrings[x].Length > 3)
@@ -875,7 +866,7 @@ namespace BigBook
                 return input;
             }
 
-            foreach (KeyValuePair<string, string> Pair in pairs)
+            foreach (var Pair in pairs)
             {
                 input = input.Replace(Pair.Key, Pair.Value);
             }
@@ -907,8 +898,8 @@ namespace BigBook
         /// <returns></returns>
         private static string BuildFilter(StringFilter filter)
         {
-            string FilterValue = "";
-            string Separator = "";
+            var FilterValue = "";
+            var Separator = "";
             if ((filter & StringFilter.Alpha) != 0)
             {
                 FilterValue += Separator + "[a-zA-Z]";
@@ -1018,7 +1009,7 @@ namespace BigBook
             var Builder = new StringBuilder();
             for (int x = 0, CodeLinesLength = CodeLines.Length; x < CodeLinesLength; x++)
             {
-                string Line = CodeLines[x];
+                var Line = CodeLines[x];
                 var Temp = Line.Trim();
                 if (Temp.Length > 0 && !Temp.StartsWith("//", StringComparison.Ordinal))
                 {
@@ -1028,8 +1019,8 @@ namespace BigBook
 
             input = Builder.ToString();
             input = Regex.Replace(input, @"(/\*\*/)|(/\*[^!][\s\S]*?\*/)", string.Empty);
-            input = Regex.Replace(input, @"^[\s]+|[ \f\r\t\v]+$", String.Empty);
-            input = Regex.Replace(input, @"^[\s]+|[ \f\r\t\v]+$", String.Empty);
+            input = Regex.Replace(input, @"^[\s]+|[ \f\r\t\v]+$", string.Empty);
+            input = Regex.Replace(input, @"^[\s]+|[ \f\r\t\v]+$", string.Empty);
             input = Regex.Replace(input, @"([+-])\n\1", "$1 $1");
             input = Regex.Replace(input, @"([^+-][+-])\n", "$1");
             input = Regex.Replace(input, @"([^+]) ?(\+)", "$1$2");
@@ -1040,7 +1031,7 @@ namespace BigBook
             input = Regex.Replace(input, @"(\W(if|while|for)\([^{]*?\))\n", "$1");
             input = Regex.Replace(input, @"(\W(if|while|for)\([^{]*?\))((if|while|for)\([^{]*?\))\n", "$1$3");
             input = Regex.Replace(input, @"([;}]else)\n", "$1 ");
-            return Regex.Replace(input, @"(?<=[>])\s{2,}(?=[<])|(?<=[>])\s{2,}(?=&nbsp;)|(?<=&nbsp;)\s{2,}(?=[<])", String.Empty);
+            return Regex.Replace(input, @"(?<=[>])\s{2,}(?=[<])|(?<=[>])\s{2,}(?=&nbsp;)|(?<=&nbsp;)\s{2,}(?=[<])", string.Empty);
         }
     }
 }

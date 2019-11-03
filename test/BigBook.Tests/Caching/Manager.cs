@@ -10,9 +10,9 @@ namespace BigBook.Tests.Caching
         [Fact]
         public void Create()
         {
-            using (BigBook.Caching.Manager Test = new BigBook.Caching.Manager(new ICache[] { new Cache() }))
+            using (var Test = new BigBook.Caching.Manager(new ICache[] { new Cache() }))
             {
-                ICache Temp = Test.Cache();
+                var Temp = Test.Cache();
                 Assert.NotNull(Temp);
                 Assert.Equal(0, Temp.Count);
                 Assert.False(Temp.IsReadOnly);
@@ -20,7 +20,7 @@ namespace BigBook.Tests.Caching
                 Assert.Equal("Default", Temp.Name);
                 Assert.Equal(0, Temp.Values.Count);
 
-                ICache Temp2 = Test.Cache();
+                var Temp2 = Test.Cache();
                 Assert.Equal(Temp, Temp2);
             }
         }

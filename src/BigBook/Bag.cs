@@ -38,18 +38,12 @@ namespace BigBook
         /// <summary>
         /// Number of items in the bag
         /// </summary>
-        public virtual int Count
-        {
-            get { return Items.Count; }
-        }
+        public virtual int Count => Items.Count;
 
         /// <summary>
         /// Is this read only?
         /// </summary>
-        public virtual bool IsReadOnly
-        {
-            get { return false; }
-        }
+        public virtual bool IsReadOnly => false;
 
         /// <summary>
         /// Actual internal container
@@ -63,46 +57,34 @@ namespace BigBook
         /// <returns>The number of this item in the bag</returns>
         public virtual int this[T index]
         {
-            get { return Items.GetValue(index); }
-            set { Items.SetValue(index, value); }
+            get => Items.GetValue(index);
+            set => Items.SetValue(index, value);
         }
 
         /// <summary>
         /// Adds an item to the bag
         /// </summary>
         /// <param name="item">Item to add</param>
-        public virtual void Add(T item)
-        {
-            Items.SetValue(item, Items.GetValue(item, 0) + 1);
-        }
+        public virtual void Add(T item) => Items.SetValue(item, Items.GetValue(item, 0) + 1);
 
         /// <summary>
         /// Clears the bag
         /// </summary>
-        public virtual void Clear()
-        {
-            Items.Clear();
-        }
+        public virtual void Clear() => Items.Clear();
 
         /// <summary>
         /// Determines if the bag contains an item
         /// </summary>
         /// <param name="item">Item to check</param>
         /// <returns>True if it does, false otherwise</returns>
-        public virtual bool Contains(T item)
-        {
-            return Items.ContainsKey(item);
-        }
+        public virtual bool Contains(T item) => Items.ContainsKey(item);
 
         /// <summary>
         /// Copies the bag to an array
         /// </summary>
         /// <param name="array">Array to copy to</param>
         /// <param name="arrayIndex">Index to start at</param>
-        public virtual void CopyTo(T[] array, int arrayIndex)
-        {
-            Array.Copy(Items.ToList().ToArray(x => x.Key), 0, array, arrayIndex, Count);
-        }
+        public virtual void CopyTo(T[] array, int arrayIndex) => Array.Copy(Items.ToList().ToArray(x => x.Key), 0, array, arrayIndex, Count);
 
         /// <summary>
         /// Gets the enumerator
@@ -110,7 +92,7 @@ namespace BigBook
         /// <returns>The enumerator</returns>
         public virtual IEnumerator<T> GetEnumerator()
         {
-            foreach (T Key in Items.Keys)
+            foreach (var Key in Items.Keys)
             {
                 yield return Key;
             }
@@ -122,7 +104,7 @@ namespace BigBook
         /// <returns>The enumerator</returns>
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
-            foreach (T Key in Items.Keys)
+            foreach (var Key in Items.Keys)
             {
                 yield return Key;
             }
@@ -133,9 +115,6 @@ namespace BigBook
         /// </summary>
         /// <param name="item">Item to remove</param>
         /// <returns>True if it is removed, false otherwise</returns>
-        public virtual bool Remove(T item)
-        {
-            return Items.TryRemove(item, out int Value);
-        }
+        public virtual bool Remove(T item) => Items.TryRemove(item, out var Value);
     }
 }

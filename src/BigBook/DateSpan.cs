@@ -142,8 +142,8 @@ namespace BigBook
                 return new DateSpan(span1.Start, span1.End);
             }
 
-            DateTime Start = span1.Start < span2.Start ? span1.Start : span2.Start;
-            DateTime End = span1.End > span2.End ? span1.End : span2.End;
+            var Start = span1.Start < span2.Start ? span1.Start : span2.Start;
+            var End = span1.End > span2.End ? span1.End : span2.End;
             return new DateSpan(Start, End);
         }
 
@@ -183,10 +183,7 @@ namespace BigBook
         /// Gets the hash code for the date span
         /// </summary>
         /// <returns>The hash code</returns>
-        public override int GetHashCode()
-        {
-            return End.GetHashCode() & Start.GetHashCode();
-        }
+        public override int GetHashCode() => End.GetHashCode() & Start.GetHashCode();
 
         /// <summary>
         /// Returns the intersecting time span between the two values
@@ -205,8 +202,8 @@ namespace BigBook
                 return null;
             }
 
-            DateTime TempStart = span.Start > Start ? span.Start : Start;
-            DateTime TempEnd = span.End < End ? span.End : End;
+            var TempStart = span.Start > Start ? span.Start : Start;
+            var TempEnd = span.End < End ? span.End : End;
             return new DateSpan(TempStart, TempEnd);
         }
 
@@ -229,9 +226,6 @@ namespace BigBook
         /// Converts the DateSpan to a string
         /// </summary>
         /// <returns>The DateSpan as a string</returns>
-        public override string ToString()
-        {
-            return "Start: " + Start.ToString() + " End: " + End.ToString();
-        }
+        public override string ToString() => "Start: " + Start.ToString() + " End: " + End.ToString();
     }
 }

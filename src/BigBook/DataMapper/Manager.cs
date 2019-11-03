@@ -51,10 +51,7 @@ namespace BigBook.DataMapper
         /// <typeparam name="Left">Left type</typeparam>
         /// <typeparam name="Right">Right type</typeparam>
         /// <returns>A mapping object for the two types specified</returns>
-        public ITypeMapping<Left, Right> Map<Left, Right>()
-        {
-            return DataMapper.Map<Left, Right>();
-        }
+        public ITypeMapping<Left, Right> Map<Left, Right>() => DataMapper.Map<Left, Right>();
 
         /// <summary>
         /// Adds or returns a mapping between two types
@@ -62,18 +59,12 @@ namespace BigBook.DataMapper
         /// <param name="left">Left type</param>
         /// <param name="right">Right type</param>
         /// <returns>A mapping object for the two types specified</returns>
-        public ITypeMapping Map(Type left, Type right)
-        {
-            return DataMapper.Map(left, right);
-        }
+        public ITypeMapping Map(Type left, Type right) => DataMapper.Map(left, right);
 
         /// <summary>
         /// Outputs the string information about the manager
         /// </summary>
         /// <returns>The string info about the manager</returns>
-        public override string ToString()
-        {
-            return $"Data mapper: {DataMapper}\r\n";
-        }
+        public override string ToString() => $"Data mapper: {DataMapper}\r\n";
     }
 }

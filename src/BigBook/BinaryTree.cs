@@ -69,7 +69,7 @@ namespace BigBook
                     return default(T);
                 }
 
-                TreeNode<T> TempNode = Root;
+                var TempNode = Root;
                 while (TempNode.Right != null)
                 {
                     TempNode = TempNode.Right;
@@ -91,7 +91,7 @@ namespace BigBook
                     return default(T);
                 }
 
-                TreeNode<T> TempNode = Root;
+                var TempNode = Root;
                 while (TempNode.Left != null)
                 {
                     TempNode = TempNode.Left;
@@ -164,7 +164,7 @@ namespace BigBook
                 return false;
             }
 
-            TreeNode<T> TempNode = Root;
+            var TempNode = Root;
             while (TempNode != null)
             {
                 var ComparedValue = TempNode.Value.CompareTo(item);
@@ -185,9 +185,9 @@ namespace BigBook
         /// <param name="arrayIndex">Index to start at</param>
         public void CopyTo(T[] array, int arrayIndex)
         {
-            T[] TempArray = new T[NumberOfNodes];
-            int Counter = 0;
-            foreach (T Value in this)
+            var TempArray = new T[NumberOfNodes];
+            var Counter = 0;
+            foreach (var Value in this)
             {
                 TempArray[Counter] = Value;
                 ++Counter;
@@ -201,7 +201,7 @@ namespace BigBook
         /// <returns>The enumerator</returns>
         public IEnumerator<T> GetEnumerator()
         {
-            foreach (TreeNode<T> TempNode in Traversal(Root))
+            foreach (var TempNode in Traversal(Root))
             {
                 yield return TempNode.Value;
             }
@@ -213,7 +213,7 @@ namespace BigBook
         /// <returns>The enumerator</returns>
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
-            foreach (TreeNode<T> TempNode in Traversal(Root))
+            foreach (var TempNode in Traversal(Root))
             {
                 yield return TempNode.Value;
             }
@@ -234,12 +234,12 @@ namespace BigBook
 
             --NumberOfNodes;
             var Values = new List<T>();
-            foreach (TreeNode<T> TempNode in Traversal(Item.Left))
+            foreach (var TempNode in Traversal(Item.Left))
             {
                 Values.Add(TempNode.Value);
             }
 
-            foreach (TreeNode<T> TempNode in Traversal(Item.Right))
+            foreach (var TempNode in Traversal(Item.Right))
             {
                 Values.Add(TempNode.Value);
             }
@@ -263,7 +263,7 @@ namespace BigBook
             }
             for (int x = 0, ValuesCount = Values.Count; x < ValuesCount; x++)
             {
-                T Value = Values[x];
+                var Value = Values[x];
                 Add(Value);
             }
 
@@ -274,10 +274,7 @@ namespace BigBook
         /// Outputs the tree as a string
         /// </summary>
         /// <returns>The string representation of the tree</returns>
-        public override string ToString()
-        {
-            return this.ToString(x => x.ToString(), " ");
-        }
+        public override string ToString() => this.ToString(x => x.ToString(), " ");
 
         /// <summary>
         /// Finds a specific object
@@ -286,7 +283,7 @@ namespace BigBook
         /// <returns>The node if it is found</returns>
         protected TreeNode<T> Find(T item)
         {
-            foreach (TreeNode<T> Item in Traversal(Root))
+            foreach (var Item in Traversal(Root))
             {
                 if (Item.Value.Equals(item))
                 {
@@ -308,7 +305,7 @@ namespace BigBook
                 return;
             }
 
-            TreeNode<T> TempNode = Root;
+            var TempNode = Root;
             while (true)
             {
                 var ComparedValue = TempNode.Value.CompareTo(item);
@@ -350,7 +347,7 @@ namespace BigBook
             {
                 if (node.Left != null)
                 {
-                    foreach (TreeNode<T> LeftNode in Traversal(node.Left))
+                    foreach (var LeftNode in Traversal(node.Left))
                     {
                         yield return LeftNode;
                     }
@@ -358,7 +355,7 @@ namespace BigBook
                 yield return node;
                 if (node.Right != null)
                 {
-                    foreach (TreeNode<T> RightNode in Traversal(node.Right))
+                    foreach (var RightNode in Traversal(node.Right))
                     {
                         yield return RightNode;
                     }
@@ -427,9 +424,6 @@ namespace BigBook
         /// Returns the node as a string
         /// </summary>
         /// <returns>String representation of the node</returns>
-        public override string ToString()
-        {
-            return Value.ToString();
-        }
+        public override string ToString() => Value.ToString();
     }
 }

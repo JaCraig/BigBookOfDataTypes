@@ -55,7 +55,7 @@ namespace BigBook
             }
 
             var ReturnValue = new Set<T>();
-            for (int x = 0; x < set1.Count; ++x)
+            for (var x = 0; x < set1.Count; ++x)
             {
                 if (set2.Contains(set1[x]))
                 {
@@ -63,7 +63,7 @@ namespace BigBook
                 }
             }
 
-            for (int x = 0; x < set2.Count; ++x)
+            for (var x = 0; x < set2.Count; ++x)
             {
                 if (set1.Contains(set2[x]))
                 {
@@ -85,7 +85,7 @@ namespace BigBook
             set1 = set1 ?? new Set<T>();
             set2 = set2 ?? new Set<T>();
             var ReturnValue = new Set<T>();
-            for (int x = 0; x < set1.Count; ++x)
+            for (var x = 0; x < set1.Count; ++x)
             {
                 if (!set2.Contains(set1[x]))
                 {
@@ -118,12 +118,12 @@ namespace BigBook
             set1 = set1 ?? new Set<T>();
             set2 = set2 ?? new Set<T>();
             var ReturnValue = new Set<T>();
-            for (int x = 0; x < set1.Count; ++x)
+            for (var x = 0; x < set1.Count; ++x)
             {
                 ReturnValue.Add(set1[x]);
             }
 
-            for (int x = 0; x < set2.Count; ++x)
+            for (var x = 0; x < set2.Count; ++x)
             {
                 ReturnValue.Add(set2[x]);
             }
@@ -172,19 +172,13 @@ namespace BigBook
         /// </summary>
         /// <param name="obj">The object to compare to</param>
         /// <returns>True if they are, false otherwise</returns>
-        public override bool Equals(object obj)
-        {
-            return this == (obj as Set<T>);
-        }
+        public override bool Equals(object obj) => this == (obj as Set<T>);
 
         /// <summary>
         /// Returns the hash code for the object
         /// </summary>
         /// <returns>The hash code for the object</returns>
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
+        public override int GetHashCode() => base.GetHashCode();
 
         /// <summary>
         /// Determines if the sets intersect
@@ -198,7 +192,7 @@ namespace BigBook
                 return false;
             }
 
-            for (int x = 0; x < this.Count; ++x)
+            for (var x = 0; x < Count; ++x)
             {
                 if (set.Contains(this[x]))
                 {
@@ -221,7 +215,7 @@ namespace BigBook
                 return false;
             }
 
-            for (int x = 0; x < Count; ++x)
+            for (var x = 0; x < Count; ++x)
             {
                 if (!set.Contains(this[x]))
                 {
@@ -240,8 +234,8 @@ namespace BigBook
         {
             var Builder = new StringBuilder();
             Builder.Append("{ ");
-            string Splitter = "";
-            for (int x = 0; x < Count; ++x)
+            var Splitter = "";
+            for (var x = 0; x < Count; ++x)
             {
                 Builder.Append(Splitter)
                        .AppendFormat(System.Globalization.CultureInfo.InvariantCulture, "{0}", this[x]);

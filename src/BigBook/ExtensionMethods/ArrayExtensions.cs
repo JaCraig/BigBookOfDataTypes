@@ -48,10 +48,7 @@ namespace BigBook
         /// <typeparam name="ArrayType">Array type</typeparam>
         /// <param name="array">Array to clear</param>
         /// <returns>The final array</returns>
-        public static ArrayType[] Clear<ArrayType>(this ArrayType[] array)
-        {
-            return (ArrayType[])((Array)array).Clear();
-        }
+        public static ArrayType[] Clear<ArrayType>(this ArrayType[] array) => (ArrayType[])((Array)array).Clear();
 
         /// <summary>
         /// Combines two arrays and returns a new array containing both values
@@ -65,8 +62,8 @@ namespace BigBook
             array1 = array1 ?? Array.Empty<ArrayType>();
             additions = additions ?? Array.Empty<ArrayType[]>();
             var finalAdditions = additions.Where(x => x != null);
-            ArrayType[] Result = new ArrayType[array1.Length + finalAdditions.Sum(x => x.Length)];
-            int Offset = array1.Length;
+            var Result = new ArrayType[array1.Length + finalAdditions.Sum(x => x.Length)];
+            var Offset = array1.Length;
             Array.Copy(array1, 0, Result, 0, array1.Length);
             foreach (var item in finalAdditions)
             {

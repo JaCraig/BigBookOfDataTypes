@@ -8,7 +8,7 @@ namespace TestSize
         private static void Main(string[] args)
         {
             Canister.Builder.CreateContainer(null).RegisterBigBookOfDataTypes().Build();
-            for (int x = 0; x < 10000000; ++x)
+            for (var x = 0; x < 10000000; ++x)
             {
                 dynamic Item = new Dynamo(new { A = "This is a test" });
                 TestClass TestClass = Item;

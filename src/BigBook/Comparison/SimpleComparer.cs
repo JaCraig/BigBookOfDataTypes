@@ -46,9 +46,6 @@ namespace BigBook.Comparison
         /// <param name="x">Object 1</param>
         /// <param name="y">Object 2</param>
         /// <returns>0 if they're equal, any other value they are not</returns>
-        public int Compare(T x, T y)
-        {
-            return ComparisonFunction(x, y);
-        }
+        public int Compare(T x, T y) => ComparisonFunction(x, y);
     }
 }

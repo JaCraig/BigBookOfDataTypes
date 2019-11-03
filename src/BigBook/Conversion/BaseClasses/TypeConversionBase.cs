@@ -64,10 +64,7 @@ namespace BigBook.Conversion.BaseClasses
         /// <param name="context">Context object</param>
         /// <param name="sourceType">Source type</param>
         /// <returns>True if it can convert from it, false otherwise</returns>
-        public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
-        {
-            return ConvertFromTypes.Keys.Contains(sourceType) || base.CanConvertFrom(context, sourceType);
-        }
+        public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType) => ConvertFromTypes.Keys.Contains(sourceType) || base.CanConvertFrom(context, sourceType);
 
         /// <summary>
         /// Can convert to
@@ -75,10 +72,7 @@ namespace BigBook.Conversion.BaseClasses
         /// <param name="context">Context object</param>
         /// <param name="destinationType">Destination type</param>
         /// <returns>True if it can convert from it, false otherwise</returns>
-        public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
-        {
-            return ConvertToTypes.Keys.Contains(destinationType) || base.CanConvertTo(context, destinationType);
-        }
+        public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType) => ConvertToTypes.Keys.Contains(destinationType) || base.CanConvertTo(context, destinationType);
 
         /// <summary>
         /// Convert from an object to a DbType

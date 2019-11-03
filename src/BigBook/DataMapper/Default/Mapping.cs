@@ -138,9 +138,6 @@ namespace BigBook.DataMapper.Default
         /// Creates the reversed.
         /// </summary>
         /// <returns>The mapping.</returns>
-        public override IMapping CreateReversed()
-        {
-            return new Mapping<Right, Left>(RightGet, RightSet, LeftGet, LeftSet);
-        }
+        public override IMapping CreateReversed() => new Mapping<Right, Left>(RightGet, RightSet, LeftGet, LeftSet);
     }
 }

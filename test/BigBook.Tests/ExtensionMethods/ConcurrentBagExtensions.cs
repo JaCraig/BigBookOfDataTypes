@@ -239,7 +239,7 @@ namespace BigBook.Tests.ExtensionMethods
             var TestObject = new ConcurrentBag<int>(new int[] { 1, 2, 3, 4, 5, 6 });
             TestObject = new ConcurrentBag<int>(TestObject.Remove((x) => x % 2 == 0));
             Assert.Equal(3, TestObject.Count);
-            foreach (int Item in TestObject)
+            foreach (var Item in TestObject)
             {
                 Assert.False(Item % 2 == 0);
             }
@@ -251,7 +251,7 @@ namespace BigBook.Tests.ExtensionMethods
             var TestObject = new ConcurrentBag<int>(new int[] { 1, 2, 3, 4, 5, 6 });
             TestObject = new ConcurrentBag<int>(TestObject.Remove((x) => x % 2 == 0));
             Assert.Equal(3, TestObject.Count);
-            foreach (int Item in TestObject)
+            foreach (var Item in TestObject)
             {
                 Assert.False(Item % 2 == 0);
             }

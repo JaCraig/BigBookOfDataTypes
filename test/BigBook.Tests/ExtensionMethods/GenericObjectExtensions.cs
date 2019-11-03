@@ -74,11 +74,6 @@ namespace BigBook.Tests.ExtensionMethods
             Assert.Equal(new DateTime(1999, 1, 2), TestObject.Check(x => x != null, new DateTime(1999, 1, 2)));
         }
 
-        public void Test()
-        {
-            throw new Exception();
-        }
-
         [Fact]
         public void ThrowIf()
         {
@@ -175,5 +170,7 @@ namespace BigBook.Tests.ExtensionMethods
             5.Times(x => { Builder.Append(x); });
             Assert.Equal("01234", Builder.ToString());
         }
+
+        private void Test() => throw new Exception();
     }
 }

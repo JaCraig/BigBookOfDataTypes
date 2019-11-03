@@ -23,7 +23,7 @@ namespace BigBook.Benchmarks.Tests
         [Benchmark(Baseline = true)]
         public void IsTest()
         {
-            bool Result = Data is ITestClass[];
+            var Result = Data is ITestClass[];
         }
 
         [Benchmark]

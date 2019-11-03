@@ -86,10 +86,7 @@ namespace BigBook
         /// <param name="inputObject">Object to check</param>
         /// <param name="defaultValue">The default value to return</param>
         /// <returns>The default object if it is null, the object otherwise</returns>
-        public static T Check<T>(this T inputObject, T defaultValue = default(T))
-        {
-            return inputObject.Check(x => !Equals(x, default(T)), defaultValue);
-        }
+        public static T Check<T>(this T inputObject, T defaultValue = default(T)) => inputObject.Check(x => !Equals(x, default(T)), defaultValue);
 
         /// <summary>
         /// Checks to see if the object is null. If it is, it returns the default object, otherwise
@@ -359,10 +356,7 @@ namespace BigBook
         /// Equality comparer used to determine if the object is equal to default
         /// </param>
         /// <returns>Returns Item</returns>
-        public static T ThrowIfDefault<T>(this T item, string name, IEqualityComparer<T> equalityComparer = null)
-        {
-            return item.ThrowIfDefault(new ArgumentNullException(name), equalityComparer);
-        }
+        public static T ThrowIfDefault<T>(this T item, string name, IEqualityComparer<T> equalityComparer = null) => item.ThrowIfDefault(new ArgumentNullException(name), equalityComparer);
 
         /// <summary>
         /// Determines if the object is equal to default value and throws the exception that is
@@ -375,10 +369,7 @@ namespace BigBook
         /// Equality comparer used to determine if the object is equal to default
         /// </param>
         /// <returns>Returns Item</returns>
-        public static T ThrowIfDefault<T>(this T item, Exception exception, IEqualityComparer<T> equalityComparer = null)
-        {
-            return item.ThrowIf(x => equalityComparer.Check(() => new GenericEqualityComparer<T>()).Equals(x, default(T)), exception);
-        }
+        public static T ThrowIfDefault<T>(this T item, Exception exception, IEqualityComparer<T> equalityComparer = null) => item.ThrowIf(x => equalityComparer.Check(() => new GenericEqualityComparer<T>()).Equals(x, default(T)), exception);
 
         /// <summary>
         /// Throws the specified exception if the predicate is false for the item
@@ -388,10 +379,7 @@ namespace BigBook
         /// <param name="predicate">Predicate to check</param>
         /// <param name="exception">Exception to throw if predicate is false</param>
         /// <returns>the original Item</returns>
-        public static T ThrowIfNot<T>(this T item, Predicate<T> predicate, Exception exception)
-        {
-            return item.ThrowIf(x => !predicate(x), exception);
-        }
+        public static T ThrowIfNot<T>(this T item, Predicate<T> predicate, Exception exception) => item.ThrowIf(x => !predicate(x), exception);
 
         /// <summary>
         /// Determines if the object is not equal to default value and throws an ArgumentException if
@@ -404,10 +392,7 @@ namespace BigBook
         /// Equality comparer used to determine if the object is equal to default
         /// </param>
         /// <returns>Returns Item</returns>
-        public static T ThrowIfNotDefault<T>(this T item, string name, IEqualityComparer<T> equalityComparer = null)
-        {
-            return item.ThrowIfNotDefault(new ArgumentException(name), equalityComparer);
-        }
+        public static T ThrowIfNotDefault<T>(this T item, string name, IEqualityComparer<T> equalityComparer = null) => item.ThrowIfNotDefault(new ArgumentException(name), equalityComparer);
 
         /// <summary>
         /// Determines if the object is not equal to default value and throws the exception that is
@@ -420,10 +405,7 @@ namespace BigBook
         /// Equality comparer used to determine if the object is equal to default
         /// </param>
         /// <returns>Returns Item</returns>
-        public static T ThrowIfNotDefault<T>(this T item, Exception exception, IEqualityComparer<T> equalityComparer = null)
-        {
-            return item.ThrowIf(x => !equalityComparer.Check(() => new GenericEqualityComparer<T>()).Equals(x, default(T)), exception);
-        }
+        public static T ThrowIfNotDefault<T>(this T item, Exception exception, IEqualityComparer<T> equalityComparer = null) => item.ThrowIf(x => !equalityComparer.Check(() => new GenericEqualityComparer<T>()).Equals(x, default(T)), exception);
 
         /// <summary>
         /// Determines if the object is not null and throws an ArgumentException if it is
@@ -433,10 +415,7 @@ namespace BigBook
         /// <param name="name">Name of the argument</param>
         /// <returns>Returns Item</returns>
         public static T ThrowIfNotNull<T>(this T item, string name)
-            where T : class
-        {
-            return item.ThrowIfNotNull(new ArgumentException(name));
-        }
+            where T : class => item.ThrowIfNotNull(new ArgumentException(name));
 
         /// <summary>
         /// Determines if the object is not null and throws the exception passed in if it is
@@ -446,10 +425,7 @@ namespace BigBook
         /// <param name="exception">Exception to throw</param>
         /// <returns>Returns Item</returns>
         public static T ThrowIfNotNull<T>(this T item, Exception exception)
-            where T : class
-        {
-            return item.ThrowIf(x => x != null && x != DBNull.Value, exception);
-        }
+            where T : class => item.ThrowIf(x => x != null && x != DBNull.Value, exception);
 
         /// <summary>
         /// Determines if the IEnumerable is not null or empty and throws an ArgumentException if it is
@@ -458,10 +434,7 @@ namespace BigBook
         /// <param name="item">The object to check</param>
         /// <param name="name">Name of the argument</param>
         /// <returns>Returns Item</returns>
-        public static IEnumerable<T> ThrowIfNotNullOrEmpty<T>(this IEnumerable<T> item, string name)
-        {
-            return item.ThrowIfNotNullOrEmpty(new ArgumentException(name));
-        }
+        public static IEnumerable<T> ThrowIfNotNullOrEmpty<T>(this IEnumerable<T> item, string name) => item.ThrowIfNotNullOrEmpty(new ArgumentException(name));
 
         /// <summary>
         /// Determines if the IEnumerable is not null or empty and throws the exception passed in if
@@ -471,10 +444,7 @@ namespace BigBook
         /// <param name="item">The object to check</param>
         /// <param name="exception">Exception to throw</param>
         /// <returns>Returns Item</returns>
-        public static IEnumerable<T> ThrowIfNotNullOrEmpty<T>(this IEnumerable<T> item, Exception exception)
-        {
-            return item.ThrowIf(x => x?.Any() == true, exception);
-        }
+        public static IEnumerable<T> ThrowIfNotNullOrEmpty<T>(this IEnumerable<T> item, Exception exception) => item.ThrowIf(x => x?.Any() == true, exception);
 
         /// <summary>
         /// Determines if the object is null and throws an ArgumentNullException if it is
@@ -484,10 +454,7 @@ namespace BigBook
         /// <param name="name">Name of the argument</param>
         /// <returns>Returns Item</returns>
         public static T ThrowIfNull<T>(this T item, string name)
-            where T : class
-        {
-            return item.ThrowIfNull(new ArgumentNullException(name));
-        }
+            where T : class => item.ThrowIfNull(new ArgumentNullException(name));
 
         /// <summary>
         /// Determines if the object is null and throws the exception passed in if it is
@@ -497,10 +464,7 @@ namespace BigBook
         /// <param name="exception">Exception to throw</param>
         /// <returns>Returns Item</returns>
         public static T ThrowIfNull<T>(this T item, Exception exception)
-            where T : class
-        {
-            return item.ThrowIf(x => x == null || x == DBNull.Value, exception);
-        }
+            where T : class => item.ThrowIf(x => x == null || x == DBNull.Value, exception);
 
         /// <summary>
         /// Determines if the IEnumerable is null or empty and throws an ArgumentNullException if it is
@@ -509,10 +473,7 @@ namespace BigBook
         /// <param name="item">The object to check</param>
         /// <param name="name">Name of the argument</param>
         /// <returns>Returns Item</returns>
-        public static IEnumerable<T> ThrowIfNullOrEmpty<T>(this IEnumerable<T> item, string name)
-        {
-            return item.ThrowIfNullOrEmpty(new ArgumentNullException(name));
-        }
+        public static IEnumerable<T> ThrowIfNullOrEmpty<T>(this IEnumerable<T> item, string name) => item.ThrowIfNullOrEmpty(new ArgumentNullException(name));
 
         /// <summary>
         /// Determines if the IEnumerable is null or empty and throws the exception passed in if it is
@@ -521,10 +482,7 @@ namespace BigBook
         /// <param name="item">The object to check</param>
         /// <param name="exception">Exception to throw</param>
         /// <returns>Returns Item</returns>
-        public static IEnumerable<T> ThrowIfNullOrEmpty<T>(this IEnumerable<T> item, Exception exception)
-        {
-            return item.ThrowIf(x => x?.Any() != true, exception);
-        }
+        public static IEnumerable<T> ThrowIfNullOrEmpty<T>(this IEnumerable<T> item, Exception exception) => item.ThrowIf(x => x?.Any() != true, exception);
 
         /// <summary>
         /// Runs a function based on the number of times specified and returns the results
@@ -540,7 +498,7 @@ namespace BigBook
                 yield break;
             }
 
-            for (int x = 0; x < count; ++x)
+            for (var x = 0; x < count; ++x)
             {
                 yield return function(x);
             }
@@ -559,7 +517,7 @@ namespace BigBook
                 return count;
             }
 
-            for (int x = 0; x < count; ++x)
+            for (var x = 0; x < count; ++x)
             {
                 action(x);
             }
@@ -580,10 +538,7 @@ namespace BigBook
         /// The object converted to the other type or the default value if there is an error or can't
         /// be converted
         /// </returns>
-        public static R To<T, R>(this T item, R defaultValue = default(R))
-        {
-            return (R)item.To(typeof(R), defaultValue);
-        }
+        public static R To<T, R>(this T item, R defaultValue = default(R)) => (R)item.To(typeof(R), defaultValue);
 
         /// <summary>
         /// Attempts to convert the object to another type and returns the value
@@ -665,7 +620,7 @@ namespace BigBook
                 var IEnumerableObjectType = ObjectType.GetIEnumerableElementType();
                 if (resultType != IEnumerableResultType && ObjectType != IEnumerableObjectType)
                 {
-                    IList TempList = (IList)Activator.CreateInstance(typeof(List<>).MakeGenericType(IEnumerableResultType));
+                    var TempList = (IList)Activator.CreateInstance(typeof(List<>).MakeGenericType(IEnumerableResultType));
                     foreach (var Item in (IEnumerable)item)
                     {
                         var TempMapping = Item.GetType().MapTo(IEnumerableResultType);
@@ -683,7 +638,7 @@ namespace BigBook
                 }
                 if (ResultTypeInfo.IsClass)
                 {
-                    object ReturnValue = Activator.CreateInstance(resultType);
+                    var ReturnValue = Activator.CreateInstance(resultType);
                     var TempMapping = ObjectType.MapTo(resultType);
                     if (TempMapping == null)
                     {

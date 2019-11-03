@@ -21,7 +21,6 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Reflection;
 
 namespace BigBook.DataMapper.BaseClasses
 {
@@ -112,14 +111,14 @@ namespace BigBook.DataMapper.BaseClasses
             }
             else
             {
-                PropertyInfo[] Properties = TypeCacheFor<Left>.Properties;
-                for (int x = 0; x < Properties.Length; ++x)
+                var Properties = TypeCacheFor<Left>.Properties;
+                for (var x = 0; x < Properties.Length; ++x)
                 {
-                    PropertyInfo DestinationProperty = Array.Find(TypeCacheFor<Right>.Properties, y => y.Name == Properties[x].Name);
+                    var DestinationProperty = Array.Find(TypeCacheFor<Right>.Properties, y => y.Name == Properties[x].Name);
                     if (!(DestinationProperty?.GetSetMethod()?.IsStatic ?? true))
                     {
-                        Expression<Func<Left, object>> LeftGet = Properties[x].PropertyGetter<Left>();
-                        Expression<Func<Right, object>> RightGet = DestinationProperty.PropertyGetter<Right>();
+                        var LeftGet = Properties[x].PropertyGetter<Left>();
+                        var RightGet = DestinationProperty.PropertyGetter<Right>();
                         AddMapping(LeftGet, RightGet);
                     }
                 }
@@ -132,10 +131,7 @@ namespace BigBook.DataMapper.BaseClasses
         /// </summary>
         /// <param name="source">Source object</param>
         /// <param name="destination">Destination object</param>
-        public void Copy(object source, object destination)
-        {
-            Copy((Left)source, (Right)destination);
-        }
+        public void Copy(object source, object destination) => Copy((Left)source, (Right)destination);
 
         /// <summary>
         /// Copies from the source to the destination
@@ -193,19 +189,19 @@ namespace BigBook.DataMapper.BaseClasses
 
         private void AddLeftIDictionaryMapping()
         {
-            for (int x = 0; x < TypeCacheFor<Right>.Properties.Length; ++x)
+            for (var x = 0; x < TypeCacheFor<Right>.Properties.Length; ++x)
             {
-                PropertyInfo Property = TypeCacheFor<Right>.Properties[x];
-                Expression<Func<Right, object>> RightGet = Property.PropertyGetter<Right>();
-                PropertyInfo LeftProperty = Array.Find(TypeCacheFor<Left>.Properties, y => y.Name == Property.Name);
+                var Property = TypeCacheFor<Right>.Properties[x];
+                var RightGet = Property.PropertyGetter<Right>();
+                var LeftProperty = Array.Find(TypeCacheFor<Left>.Properties, y => y.Name == Property.Name);
                 if (LeftProperty != null)
                 {
-                    Expression<Func<Left, object>> LeftGet = LeftProperty.PropertyGetter<Left>();
+                    var LeftGet = LeftProperty.PropertyGetter<Left>();
                     AddMapping(LeftGet, RightGet);
                 }
                 else
                 {
-                    Action<Right, object> RightSet = RightGet.PropertySetter<Right>()?.Compile();
+                    var RightSet = RightGet.PropertySetter<Right>()?.Compile();
                     AddMapping(new Func<Left, object>(y =>
                     {
                         var Temp = (IDictionary<string, object>)y;
@@ -214,7 +210,7 @@ namespace BigBook.DataMapper.BaseClasses
                             return Temp[Property.Name];
                         }
 
-                        string Key = Temp.Keys.FirstOrDefault(z => string.Equals(z.Replace("_", ""), Property.Name, StringComparison.OrdinalIgnoreCase));
+                        var Key = Temp.Keys.FirstOrDefault(z => string.Equals(z.Replace("_", ""), Property.Name, StringComparison.OrdinalIgnoreCase));
                         if (!string.IsNullOrEmpty(Key))
                         {
                             return Temp[Key];
@@ -251,19 +247,19 @@ namespace BigBook.DataMapper.BaseClasses
         /// </summary>
         private void AddRightIDictionaryMapping()
         {
-            for (int x = 0; x < TypeCacheFor<Left>.Properties.Length; ++x)
+            for (var x = 0; x < TypeCacheFor<Left>.Properties.Length; ++x)
             {
-                PropertyInfo Property = TypeCacheFor<Left>.Properties[x];
-                Expression<Func<Left, object>> LeftGet = Property.PropertyGetter<Left>();
-                PropertyInfo RightProperty = Array.Find(TypeCacheFor<Right>.Properties, y => y.Name == Property.Name);
+                var Property = TypeCacheFor<Left>.Properties[x];
+                var LeftGet = Property.PropertyGetter<Left>();
+                var RightProperty = Array.Find(TypeCacheFor<Right>.Properties, y => y.Name == Property.Name);
                 if (RightProperty != null)
                 {
-                    Expression<Func<Right, object>> RightGet = RightProperty.PropertyGetter<Right>();
+                    var RightGet = RightProperty.PropertyGetter<Right>();
                     AddMapping(LeftGet, RightGet);
                 }
                 else
                 {
-                    Action<Left, object> LeftSet = LeftGet.PropertySetter<Left>()?.Compile();
+                    var LeftSet = LeftGet.PropertySetter<Left>()?.Compile();
                     AddMapping(LeftGet?.Compile(),
                     new Action<Left, object>((y, z) =>
                     {
@@ -280,7 +276,7 @@ namespace BigBook.DataMapper.BaseClasses
                             return Temp[Property.Name];
                         }
 
-                        string Key = Temp.Keys.FirstOrDefault(z => string.Equals(z.Replace("_", ""), Property.Name, StringComparison.OrdinalIgnoreCase));
+                        var Key = Temp.Keys.FirstOrDefault(z => string.Equals(z.Replace("_", ""), Property.Name, StringComparison.OrdinalIgnoreCase));
                         if (!string.IsNullOrEmpty(Key))
                         {
                             return Temp[Key];

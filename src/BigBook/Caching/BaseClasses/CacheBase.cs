@@ -77,13 +77,10 @@ namespace BigBook.Caching.BaseClasses
         {
             get
             {
-                TryGetValue(key, out object Value);
+                TryGetValue(key, out var Value);
                 return Value;
             }
-            set
-            {
-                Add(key, value);
-            }
+            set => Add(key, value);
         }
 
         /// <summary>
@@ -97,10 +94,7 @@ namespace BigBook.Caching.BaseClasses
         /// Adds an item to the cache
         /// </summary>
         /// <param name="item">item to add</param>
-        public void Add(KeyValuePair<string, object> item)
-        {
-            Add(item.Key, item.Value);
-        }
+        public void Add(KeyValuePair<string, object> item) => Add(item.Key, item.Value);
 
         /// <summary>
         /// Adds a value/key combination and assigns tags to it
@@ -153,7 +147,7 @@ namespace BigBook.Caching.BaseClasses
                 return ReturnValue;
             }
 
-            foreach (string Key in TagMappings[tag])
+            foreach (var Key in TagMappings[tag])
             {
                 if (ContainsKey(Key))
                 {
@@ -173,10 +167,7 @@ namespace BigBook.Caching.BaseClasses
         /// Gets the enumerator
         /// </summary>
         /// <returns>The enumerator</returns>
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() => GetEnumerator();
 
         /// <summary>
         /// Removes an item from the cache

@@ -60,8 +60,8 @@ namespace BigBook
                 return TempInput.ToArray();
             }
 
-            byte[] Buffer = new byte[4096];
-            using (MemoryStream Temp = new MemoryStream())
+            var Buffer = new byte[4096];
+            using (var Temp = new MemoryStream())
             {
                 while (true)
                 {

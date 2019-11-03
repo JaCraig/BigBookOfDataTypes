@@ -24,13 +24,13 @@ namespace BigBook.Tests
             var Tree = new BinaryTree<int>();
             var Values = new System.Collections.Generic.List<int>();
             var Rand = new System.Random();
-            for (int x = 0; x < 10; ++x)
+            for (var x = 0; x < 10; ++x)
             {
                 var Value = Rand.Next();
                 Values.Add(Value);
                 Tree.Add(Value);
             }
-            for (int x = 0; x < 10; ++x)
+            for (var x = 0; x < 10; ++x)
             {
                 Assert.Contains(Values[x], Tree);
             }

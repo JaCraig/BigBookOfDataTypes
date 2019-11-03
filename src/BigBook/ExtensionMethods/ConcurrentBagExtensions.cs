@@ -56,10 +56,7 @@ namespace BigBook
         /// <param name="collection">Collection</param>
         /// <param name="items">Items to add</param>
         /// <returns>The collection with the added items</returns>
-        public static ConcurrentBag<T> Add<T>(this ConcurrentBag<T> collection, params T[] items)
-        {
-            return collection.Add((IEnumerable<T>)items);
-        }
+        public static ConcurrentBag<T> Add<T>(this ConcurrentBag<T> collection, params T[] items) => collection.Add((IEnumerable<T>)items);
 
         /// <summary>
         /// Adds an item to a list and returns the item
@@ -118,10 +115,7 @@ namespace BigBook
         /// <param name="predicate">Predicate that an item needs to satisfy in order to be added</param>
         /// <param name="items">Items to add to the collection</param>
         /// <returns>True if it is added, false otherwise</returns>
-        public static bool AddIf<T>(this ConcurrentBag<T> collection, Predicate<T> predicate, IEnumerable<T> items)
-        {
-            return collection.AddIf(predicate, items.ToArray());
-        }
+        public static bool AddIf<T>(this ConcurrentBag<T> collection, Predicate<T> predicate, IEnumerable<T> items) => collection.AddIf(predicate, items.ToArray());
 
         /// <summary>
         /// Adds an item to the collection if it isn't already in the collection
@@ -144,10 +138,7 @@ namespace BigBook
         /// <param name="collection">Collection to add to</param>
         /// <param name="items">Items to add to the collection</param>
         /// <returns>True if it is added, false otherwise</returns>
-        public static bool AddIfUnique<T>(this ConcurrentBag<T> collection, params T[] items)
-        {
-            return collection.AddIfUnique(new GenericEqualityComparer<T>(), items);
-        }
+        public static bool AddIfUnique<T>(this ConcurrentBag<T> collection, params T[] items) => collection.AddIfUnique(new GenericEqualityComparer<T>(), items);
 
         /// <summary>
         /// Adds an item to the collection if it isn't already in the collection
@@ -193,10 +184,7 @@ namespace BigBook
         /// <param name="collection">Collection to add to</param>
         /// <param name="items">Items to add to the collection</param>
         /// <returns>True if it is added, false otherwise</returns>
-        public static bool AddIfUnique<T>(this ConcurrentBag<T> collection, IEnumerable<T> items)
-        {
-            return collection.AddIfUnique(new GenericEqualityComparer<T>(), items);
-        }
+        public static bool AddIfUnique<T>(this ConcurrentBag<T> collection, IEnumerable<T> items) => collection.AddIfUnique(new GenericEqualityComparer<T>(), items);
 
         /// <summary>
         /// Adds an item to the collection if it isn't already in the collection
@@ -235,7 +223,7 @@ namespace BigBook
             }
 
             comparer = comparer ?? new GenericEqualityComparer<T>();
-            foreach (T TempValue in collection)
+            foreach (var TempValue in collection)
             {
                 if (comparer.Equals(TempValue, item))
                 {

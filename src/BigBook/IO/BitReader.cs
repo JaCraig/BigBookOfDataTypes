@@ -124,7 +124,7 @@ namespace BigBook.IO
                 CurrentBit = 0;
                 CurrentByte = (byte)TempByte;
             }
-            for (int x = 0; x < bitCount; ++x)
+            for (var x = 0; x < bitCount; ++x)
             {
                 ++CurrentBit;
                 if (CurrentBit == 8)

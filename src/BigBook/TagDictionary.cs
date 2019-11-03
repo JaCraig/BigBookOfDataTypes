@@ -74,14 +74,8 @@ namespace BigBook
         /// <returns>The values associated with the key</returns>
         public IEnumerable<Value> this[Key key]
         {
-            get
-            {
-                return Items.Where(x => x.Keys.Contains(key)).ToArray(x => x.Value);
-            }
-            set
-            {
-                Add(key, value);
-            }
+            get => Items.Where(x => x.Keys.Contains(key)).ToArray(x => x.Value);
+            set => Add(key, value);
         }
 
         /// <summary>
@@ -111,38 +105,26 @@ namespace BigBook
         /// Adds an item to the dictionary
         /// </summary>
         /// <param name="item">item to add</param>
-        public void Add(KeyValuePair<Key, IEnumerable<Value>> item)
-        {
-            Add(item.Key, item.Value);
-        }
+        public void Add(KeyValuePair<Key, IEnumerable<Value>> item) => Add(item.Key, item.Value);
 
         /// <summary>
         /// Clears the dictionary
         /// </summary>
-        public void Clear()
-        {
-            Items = new ConcurrentBag<TaggedItem<Key, Value>>();
-        }
+        public void Clear() => Items = new ConcurrentBag<TaggedItem<Key, Value>>();
 
         /// <summary>
         /// Determines if the dictionary contains the key/value pair
         /// </summary>
         /// <param name="item">item to check</param>
         /// <returns>True if it is, false otherwise</returns>
-        public bool Contains(KeyValuePair<Key, IEnumerable<Value>> item)
-        {
-            return ContainsKey(item.Key);
-        }
+        public bool Contains(KeyValuePair<Key, IEnumerable<Value>> item) => ContainsKey(item.Key);
 
         /// <summary>
         /// Determines if a key is in the dictionary
         /// </summary>
         /// <param name="key">Key to check</param>
         /// <returns>True if it exists, false otherwise</returns>
-        public bool ContainsKey(Key key)
-        {
-            return KeyList.Contains(key);
-        }
+        public bool ContainsKey(Key key) => KeyList.Contains(key);
 
         /// <summary>
         /// Copies itself to an array
@@ -151,7 +133,7 @@ namespace BigBook
         /// <param name="arrayIndex">Array index</param>
         public void CopyTo(KeyValuePair<Key, IEnumerable<Value>>[] array, int arrayIndex)
         {
-            for (int x = 0; x < Keys.Count; ++x)
+            for (var x = 0; x < Keys.Count; ++x)
             {
                 array[arrayIndex + x] = new KeyValuePair<Key, IEnumerable<Value>>(Keys.ElementAt(x), this[Keys.ElementAt(x)]);
             }
@@ -163,7 +145,7 @@ namespace BigBook
         /// <returns>The enumerator</returns>
         public IEnumerator<KeyValuePair<Key, IEnumerable<Value>>> GetEnumerator()
         {
-            foreach (Key TempKey in Keys)
+            foreach (var TempKey in Keys)
             {
                 yield return new KeyValuePair<Key, IEnumerable<Value>>(TempKey, this[TempKey]);
             }
@@ -175,7 +157,7 @@ namespace BigBook
         /// <returns>The enumerator</returns>
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
-            foreach (Key TempKey in Keys)
+            foreach (var TempKey in Keys)
             {
                 yield return this[TempKey];
             }
@@ -199,10 +181,7 @@ namespace BigBook
         /// </summary>
         /// <param name="item">item to remove</param>
         /// <returns>True if it is removed, false otherwise</returns>
-        public bool Remove(KeyValuePair<Key, IEnumerable<Value>> item)
-        {
-            return Remove(item.Key);
-        }
+        public bool Remove(KeyValuePair<Key, IEnumerable<Value>> item) => Remove(item.Key);
 
         /// <summary>
         /// Attempts to get the values associated with a key

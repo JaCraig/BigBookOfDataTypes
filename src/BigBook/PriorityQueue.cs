@@ -58,7 +58,7 @@ namespace BigBook
             get
             {
                 var Lists = new List<ICollection<T>>();
-                foreach (int Key in Keys)
+                foreach (var Key in Keys)
                 {
                     Lists.Add(this[Key]);
                 }
@@ -84,8 +84,8 @@ namespace BigBook
         /// <returns>The list of values</returns>
         public ICollection<T> this[int key]
         {
-            get { return Items.GetValue(key, new List<T>()); }
-            set { Items.SetValue(key, value); }
+            get => Items.GetValue(key, new List<T>());
+            set => Items.SetValue(key, value);
         }
 
         /// <summary>
@@ -135,10 +135,7 @@ namespace BigBook
         /// <summary>
         /// Clears all items from the listing
         /// </summary>
-        public void Clear()
-        {
-            Items.Clear();
-        }
+        public void Clear() => Items.Clear();
 
         /// <summary>
         /// Does this contain the key value pairs?
@@ -173,7 +170,7 @@ namespace BigBook
                 return false;
             }
 
-            foreach (T Value in values)
+            foreach (var Value in values)
             {
                 if (!Contains(key, Value))
                 {
@@ -210,20 +207,14 @@ namespace BigBook
         /// </summary>
         /// <param name="key">Key to check on</param>
         /// <returns>True if it exists, false otherwise</returns>
-        public bool ContainsKey(int key)
-        {
-            return Items.ContainsKey(key);
-        }
+        public bool ContainsKey(int key) => Items.ContainsKey(key);
 
         /// <summary>
         /// Not implemented
         /// </summary>
         /// <param name="array">Array to copy to</param>
         /// <param name="arrayIndex">array index</param>
-        public void CopyTo(KeyValuePair<int, ICollection<T>>[] array, int arrayIndex)
-        {
-            throw new NotImplementedException();
-        }
+        public void CopyTo(KeyValuePair<int, ICollection<T>>[] array, int arrayIndex) => throw new NotImplementedException();
 
         /// <summary>
         /// Gets the enumerator
@@ -231,7 +222,7 @@ namespace BigBook
         /// <returns>The enumerator for this object</returns>
         public IEnumerator<KeyValuePair<int, ICollection<T>>> GetEnumerator()
         {
-            foreach (int Key in Keys)
+            foreach (var Key in Keys)
             {
                 yield return new KeyValuePair<int, ICollection<T>>(Key, this[Key]);
             }
@@ -243,7 +234,7 @@ namespace BigBook
         /// <returns>The enumerator for this object</returns>
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
-            foreach (int Key in Keys)
+            foreach (var Key in Keys)
             {
                 yield return this[Key];
             }
@@ -269,7 +260,7 @@ namespace BigBook
         /// <returns>The next item in the queue</returns>
         public T Pop()
         {
-            T ReturnValue = default(T);
+            var ReturnValue = default(T);
             if (Items.ContainsKey(HighestKey) && Items[HighestKey].Count > 0)
             {
                 ReturnValue = Items[HighestKey].FirstOrDefault();
@@ -277,7 +268,7 @@ namespace BigBook
                 if (!ContainsKey(HighestKey))
                 {
                     HighestKey = int.MinValue;
-                    foreach (int Key in Items.Keys)
+                    foreach (var Key in Items.Keys)
                     {
                         if (Key > HighestKey)
                         {
@@ -294,10 +285,7 @@ namespace BigBook
         /// </summary>
         /// <param name="key">Key to use</param>
         /// <returns>True if the key is found, false otherwise</returns>
-        public bool Remove(int key)
-        {
-            return Items.Remove(key);
-        }
+        public bool Remove(int key) => Items.Remove(key);
 
         /// <summary>
         /// Removes a key value pair from the list mapping
@@ -311,7 +299,7 @@ namespace BigBook
                 return false;
             }
 
-            foreach (T Value in item.Value)
+            foreach (var Value in item.Value)
             {
                 if (!Remove(item.Key, Value))
                 {

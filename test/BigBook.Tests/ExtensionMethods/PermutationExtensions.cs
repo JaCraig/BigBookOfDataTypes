@@ -14,9 +14,9 @@ namespace BigBook.Tests.ExtensionMethods
             TestObject.AddRange(new string[] { "this", "is", "a", "test" });
             var Results = TestObject.Permute();
             Assert.Equal(24, Results.Keys.Count);
-            foreach (int Key in Results.Keys)
+            foreach (var Key in Results.Keys)
             {
-                foreach (string Item in Results[Key])
+                foreach (var Item in Results[Key])
                 {
                     Assert.True(Item == "this" || Item == "is" || Item == "a" || Item == "test");
                 }

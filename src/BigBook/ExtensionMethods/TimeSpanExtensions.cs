@@ -43,20 +43,14 @@ namespace BigBook
         /// </summary>
         /// <param name="span">TimeSpan to get the days from</param>
         /// <returns>The number of days minus the months and years that the TimeSpan has</returns>
-        public static int DaysRemainder(this TimeSpan span)
-        {
-            return (DateTime.MinValue + span).Day - 1;
-        }
+        public static int DaysRemainder(this TimeSpan span) => (DateTime.MinValue + span).Day - 1;
 
         /// <summary>
         /// Months in the TimeSpan
         /// </summary>
         /// <param name="span">TimeSpan to get the months from</param>
         /// <returns>The number of months that the TimeSpan has</returns>
-        public static int Months(this TimeSpan span)
-        {
-            return (DateTime.MinValue + span).Month - 1;
-        }
+        public static int Months(this TimeSpan span) => (DateTime.MinValue + span).Month - 1;
 
         /// <summary>
         /// Converts the input to a string in this format: (Years) years, (Months) months,
@@ -66,8 +60,8 @@ namespace BigBook
         /// <returns>The TimeSpan as a string</returns>
         public static string ToStringFull(this TimeSpan input)
         {
-            string Result = "";
-            string Splitter = "";
+            var Result = "";
+            var Splitter = "";
             if (input.Years() > 0) { Result += input.Years() + " year" + (input.Years() > 1 ? "s" : ""); Splitter = ", "; }
             if (input.Months() > 0) { Result += Splitter + input.Months() + " month" + (input.Months() > 1 ? "s" : ""); Splitter = ", "; }
             if (input.DaysRemainder() > 0) { Result += Splitter + input.DaysRemainder() + " day" + (input.DaysRemainder() > 1 ? "s" : ""); Splitter = ", "; }
@@ -82,9 +76,6 @@ namespace BigBook
         /// </summary>
         /// <param name="span">TimeSpan to get the years from</param>
         /// <returns>The number of years that the TimeSpan has</returns>
-        public static int Years(this TimeSpan span)
-        {
-            return (DateTime.MinValue + span).Year - 1;
-        }
+        public static int Years(this TimeSpan span) => (DateTime.MinValue + span).Year - 1;
     }
 }

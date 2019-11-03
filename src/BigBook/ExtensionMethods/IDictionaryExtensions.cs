@@ -49,7 +49,7 @@ namespace BigBook
                 return dictionary;
             }
 
-            foreach (KeyValuePair<TKey, TValue> Pair in dictionary)
+            foreach (var Pair in dictionary)
             {
                 target.SetValue(Pair.Key, Pair.Value);
             }
@@ -76,7 +76,7 @@ namespace BigBook
                 return defaultValue;
             }
 
-            TValue ReturnValue = defaultValue;
+            var ReturnValue = defaultValue;
             return dictionary.TryGetValue(key, out ReturnValue) ? ReturnValue : defaultValue;
         }
 

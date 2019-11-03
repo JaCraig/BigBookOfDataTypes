@@ -145,7 +145,7 @@ namespace BigBook.Tests.Caching.Default
             Assert.Equal(1, Temp.Keys.Count);
             Assert.Equal("Default", Temp.Name);
             Assert.Equal(1, Temp.Values.Count);
-            Assert.True(Temp.TryGetValue("A", out object Value));
+            Assert.True(Temp.TryGetValue("A", out var Value));
             Assert.Equal(1, Value);
         }
     }

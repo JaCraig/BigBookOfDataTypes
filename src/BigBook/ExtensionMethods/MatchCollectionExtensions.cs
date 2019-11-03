@@ -42,7 +42,7 @@ namespace BigBook
 
             for (int x = 0, collectionCount = collection.Count; x < collectionCount; x++)
             {
-                Match Item = collection[x];
+                var Item = collection[x];
                 if (predicate(Item))
                 {
                     yield return Item;

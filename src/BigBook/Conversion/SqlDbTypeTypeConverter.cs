@@ -84,7 +84,7 @@ namespace BigBook.Conversion
         /// <summary>
         /// Internal converter
         /// </summary>
-        protected override TypeConverter InternalConverter { get { return new EnumConverter(typeof(SqlDbType)); } }
+        protected override TypeConverter InternalConverter => new EnumConverter(typeof(SqlDbType));
 
         private static object DbTypeToSqlDbType(object value)
         {
@@ -205,7 +205,7 @@ namespace BigBook.Conversion
                 return SqlDbType.Int;
             }
 
-            DbType Item = DbType.Int32;
+            var Item = DbType.Int32;
             if (TempValue.IsEnum)
             {
                 TempValue = Enum.GetUnderlyingType(TempValue);

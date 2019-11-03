@@ -60,7 +60,7 @@ namespace BigBook.Tests
         {
             var Span1 = new BigBook.DateSpan(new DateTime(1999, 1, 1), new DateTime(2003, 1, 1));
             var Span2 = new BigBook.DateSpan(new DateTime(2002, 1, 1), new DateTime(2009, 1, 1));
-            BigBook.DateSpan Span3 = Span1 + Span2;
+            var Span3 = Span1 + Span2;
             Assert.Equal(new DateTime(1999, 1, 1), Span3.Start);
             Assert.Equal(new DateTime(2009, 1, 1), Span3.End);
         }

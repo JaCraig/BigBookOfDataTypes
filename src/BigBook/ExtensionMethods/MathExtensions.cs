@@ -32,30 +32,21 @@ namespace BigBook
         /// </summary>
         /// <param name="value">Value</param>
         /// <returns>The absolute value</returns>
-        public static decimal Absolute(this decimal value)
-        {
-            return Math.Abs(value);
-        }
+        public static decimal Absolute(this decimal value) => Math.Abs(value);
 
         /// <summary>
         /// Returns the absolute value
         /// </summary>
         /// <param name="value">Value</param>
         /// <returns>The absolute value</returns>
-        public static double Absolute(this double value)
-        {
-            return Math.Abs(value);
-        }
+        public static double Absolute(this double value) => Math.Abs(value);
 
         /// <summary>
         /// Returns the absolute value
         /// </summary>
         /// <param name="value">Value</param>
         /// <returns>The absolute value</returns>
-        public static float Absolute(this float value)
-        {
-            return Math.Abs(value);
-        }
+        public static float Absolute(this float value) => Math.Abs(value);
 
         /// <summary>
         /// Returns the absolute value
@@ -107,10 +98,7 @@ namespace BigBook
         /// </summary>
         /// <param name="value">Power to raise E by</param>
         /// <returns>E raised to the specified power</returns>
-        public static double Exp(this double value)
-        {
-            return Math.Exp(value);
-        }
+        public static double Exp(this double value) => Math.Exp(value);
 
         /// <summary>
         /// Calculates the factorial for a number
@@ -119,8 +107,8 @@ namespace BigBook
         /// <returns>The factorial specified</returns>
         public static int Factorial(this int input)
         {
-            int Value1 = 1;
-            for (int x = 2; x <= input; ++x)
+            var Value1 = 1;
+            for (var x = 2; x <= input; ++x)
             {
                 Value1 *= x;
             }
@@ -209,10 +197,7 @@ namespace BigBook
         /// </summary>
         /// <param name="value">Specified number</param>
         /// <returns>The natural logarithm of the specified number</returns>
-        public static double Log(this double value)
-        {
-            return Math.Log(value);
-        }
+        public static double Log(this double value) => Math.Log(value);
 
         /// <summary>
         /// Returns the logarithm of a specified number in a specified base
@@ -220,20 +205,14 @@ namespace BigBook
         /// <param name="value">Value</param>
         /// <param name="baseValue">Base</param>
         /// <returns>The logarithm of a specified number in a specified base</returns>
-        public static double Log(this double value, double baseValue)
-        {
-            return Math.Log(value, baseValue);
-        }
+        public static double Log(this double value, double baseValue) => Math.Log(value, baseValue);
 
         /// <summary>
         /// Returns the base 10 logarithm of a specified number
         /// </summary>
         /// <param name="value">Value</param>
         /// <returns>The base 10 logarithm of the specified number</returns>
-        public static double Log10(this double value)
-        {
-            return Math.Log10(value);
-        }
+        public static double Log10(this double value) => Math.Log10(value);
 
         /// <summary>
         /// Gets the median from the list
@@ -288,14 +267,14 @@ namespace BigBook
             }
 
             var Items = new Bag<T>();
-            foreach (T Value in values)
+            foreach (var Value in values)
             {
                 Items.Add(Value);
             }
 
-            int MaxValue = 0;
-            T MaxIndex = default(T);
-            foreach (T Key in Items)
+            var MaxValue = 0;
+            var MaxIndex = default(T);
+            foreach (var Key in Items)
             {
                 if (Items[Key] > MaxValue)
                 {
@@ -312,10 +291,7 @@ namespace BigBook
         /// <param name="value">Value to raise</param>
         /// <param name="power">Power</param>
         /// <returns>The resulting value</returns>
-        public static double Pow(this double value, double power)
-        {
-            return Math.Pow(value, power);
-        }
+        public static double Pow(this double value, double power) => Math.Pow(value, power);
 
         /// <summary>
         /// Raises Value to the power of Power
@@ -323,10 +299,7 @@ namespace BigBook
         /// <param name="value">Value to raise</param>
         /// <param name="power">Power</param>
         /// <returns>The resulting value</returns>
-        public static double Pow(this decimal value, decimal power)
-        {
-            return Math.Pow((double)value, (double)power);
-        }
+        public static double Pow(this decimal value, decimal power) => Math.Pow((double)value, (double)power);
 
         /// <summary>
         /// Rounds the value to the number of digits
@@ -355,100 +328,70 @@ namespace BigBook
         /// </summary>
         /// <param name="value">Value to take the square root of</param>
         /// <returns>The square root</returns>
-        public static double Sqrt(this double value)
-        {
-            return Math.Sqrt(value);
-        }
+        public static double Sqrt(this double value) => Math.Sqrt(value);
 
         /// <summary>
         /// Returns the square root of a value
         /// </summary>
         /// <param name="value">Value to take the square root of</param>
         /// <returns>The square root</returns>
-        public static double Sqrt(this float value)
-        {
-            return Math.Sqrt(value);
-        }
+        public static double Sqrt(this float value) => Math.Sqrt(value);
 
         /// <summary>
         /// Returns the square root of a value
         /// </summary>
         /// <param name="value">Value to take the square root of</param>
         /// <returns>The square root</returns>
-        public static double Sqrt(this int value)
-        {
-            return Math.Sqrt(value);
-        }
+        public static double Sqrt(this int value) => Math.Sqrt(value);
 
         /// <summary>
         /// Returns the square root of a value
         /// </summary>
         /// <param name="value">Value to take the square root of</param>
         /// <returns>The square root</returns>
-        public static double Sqrt(this long value)
-        {
-            return Math.Sqrt(value);
-        }
+        public static double Sqrt(this long value) => Math.Sqrt(value);
 
         /// <summary>
         /// Returns the square root of a value
         /// </summary>
         /// <param name="value">Value to take the square root of</param>
         /// <returns>The square root</returns>
-        public static double Sqrt(this short value)
-        {
-            return Math.Sqrt(value);
-        }
+        public static double Sqrt(this short value) => Math.Sqrt(value);
 
         /// <summary>
         /// Gets the standard deviation
         /// </summary>
         /// <param name="values">List of values</param>
         /// <returns>The standard deviation</returns>
-        public static double StandardDeviation(this IEnumerable<double> values)
-        {
-            return values.StandardDeviation(x => x);
-        }
+        public static double StandardDeviation(this IEnumerable<double> values) => values.StandardDeviation(x => x);
 
         /// <summary>
         /// Gets the standard deviation
         /// </summary>
         /// <param name="values">List of values</param>
         /// <returns>The standard deviation</returns>
-        public static double StandardDeviation(this IEnumerable<decimal> values)
-        {
-            return values.StandardDeviation(x => x);
-        }
+        public static double StandardDeviation(this IEnumerable<decimal> values) => values.StandardDeviation(x => x);
 
         /// <summary>
         /// Gets the standard deviation
         /// </summary>
         /// <param name="values">List of values</param>
         /// <returns>The standard deviation</returns>
-        public static double StandardDeviation(this IEnumerable<float> values)
-        {
-            return values.StandardDeviation(x => x);
-        }
+        public static double StandardDeviation(this IEnumerable<float> values) => values.StandardDeviation(x => x);
 
         /// <summary>
         /// Gets the standard deviation
         /// </summary>
         /// <param name="values">List of values</param>
         /// <returns>The standard deviation</returns>
-        public static double StandardDeviation(this IEnumerable<long> values)
-        {
-            return values.StandardDeviation(x => x);
-        }
+        public static double StandardDeviation(this IEnumerable<long> values) => values.StandardDeviation(x => x);
 
         /// <summary>
         /// Gets the standard deviation
         /// </summary>
         /// <param name="values">List of values</param>
         /// <returns>The standard deviation</returns>
-        public static double StandardDeviation(this IEnumerable<int> values)
-        {
-            return values.StandardDeviation(x => x);
-        }
+        public static double StandardDeviation(this IEnumerable<int> values) => values.StandardDeviation(x => x);
 
         /// <summary>
         /// Gets the standard deviation
@@ -457,10 +400,7 @@ namespace BigBook
         /// <param name="values">List of values</param>
         /// <param name="selector">The selector.</param>
         /// <returns>The standard deviation</returns>
-        public static double StandardDeviation<T>(this IEnumerable<T> values, Func<T, double> selector = null)
-        {
-            return values.Variance(selector).Sqrt();
-        }
+        public static double StandardDeviation<T>(this IEnumerable<T> values, Func<T, double> selector = null) => values.Variance(selector).Sqrt();
 
         /// <summary>
         /// Gets the standard deviation
@@ -469,10 +409,7 @@ namespace BigBook
         /// <param name="values">List of values</param>
         /// <param name="selector">The selector.</param>
         /// <returns>The standard deviation</returns>
-        public static double StandardDeviation<T>(this IEnumerable<T> values, Func<T, decimal> selector)
-        {
-            return values.Variance(selector).Sqrt();
-        }
+        public static double StandardDeviation<T>(this IEnumerable<T> values, Func<T, decimal> selector) => values.Variance(selector).Sqrt();
 
         /// <summary>
         /// Gets the standard deviation
@@ -481,10 +418,7 @@ namespace BigBook
         /// <param name="values">List of values</param>
         /// <param name="selector">The selector.</param>
         /// <returns>The standard deviation</returns>
-        public static double StandardDeviation<T>(this IEnumerable<T> values, Func<T, float> selector)
-        {
-            return values.Variance(selector).Sqrt();
-        }
+        public static double StandardDeviation<T>(this IEnumerable<T> values, Func<T, float> selector) => values.Variance(selector).Sqrt();
 
         /// <summary>
         /// Gets the standard deviation
@@ -493,10 +427,7 @@ namespace BigBook
         /// <param name="values">List of values</param>
         /// <param name="selector">The selector.</param>
         /// <returns>The standard deviation</returns>
-        public static double StandardDeviation<T>(this IEnumerable<T> values, Func<T, long> selector)
-        {
-            return values.Variance(selector).Sqrt();
-        }
+        public static double StandardDeviation<T>(this IEnumerable<T> values, Func<T, long> selector) => values.Variance(selector).Sqrt();
 
         /// <summary>
         /// Gets the standard deviation
@@ -505,60 +436,42 @@ namespace BigBook
         /// <param name="values">List of values</param>
         /// <param name="selector">The selector.</param>
         /// <returns>The standard deviation</returns>
-        public static double StandardDeviation<T>(this IEnumerable<T> values, Func<T, int> selector)
-        {
-            return values.Variance(selector).Sqrt();
-        }
+        public static double StandardDeviation<T>(this IEnumerable<T> values, Func<T, int> selector) => values.Variance(selector).Sqrt();
 
         /// <summary>
         /// Calculates the variance of a list of values
         /// </summary>
         /// <param name="values">List of values</param>
         /// <returns>The variance</returns>
-        public static double Variance(this IEnumerable<double> values)
-        {
-            return values.Variance(x => x);
-        }
+        public static double Variance(this IEnumerable<double> values) => values.Variance(x => x);
 
         /// <summary>
         /// Calculates the variance of a list of values
         /// </summary>
         /// <param name="values">List of values</param>
         /// <returns>The variance</returns>
-        public static double Variance(this IEnumerable<int> values)
-        {
-            return values.Variance(x => x);
-        }
+        public static double Variance(this IEnumerable<int> values) => values.Variance(x => x);
 
         /// <summary>
         /// Calculates the variance of a list of values
         /// </summary>
         /// <param name="values">List of values</param>
         /// <returns>The variance</returns>
-        public static double Variance(this IEnumerable<long> values)
-        {
-            return values.Variance(x => x);
-        }
+        public static double Variance(this IEnumerable<long> values) => values.Variance(x => x);
 
         /// <summary>
         /// Calculates the variance of a list of values
         /// </summary>
         /// <param name="values">List of values</param>
         /// <returns>The variance</returns>
-        public static double Variance(this IEnumerable<decimal> values)
-        {
-            return values.Variance(x => (double)x);
-        }
+        public static double Variance(this IEnumerable<decimal> values) => values.Variance(x => (double)x);
 
         /// <summary>
         /// Calculates the variance of a list of values
         /// </summary>
         /// <param name="values">List of values</param>
         /// <returns>The variance</returns>
-        public static double Variance(this IEnumerable<float> values)
-        {
-            return values.Variance(x => x);
-        }
+        public static double Variance(this IEnumerable<float> values) => values.Variance(x => x);
 
         /// <summary>
         /// Calculates the variance of a list of values
@@ -584,10 +497,7 @@ namespace BigBook
         /// <param name="values">List of values</param>
         /// <param name="selector">The selector.</param>
         /// <returns>The variance</returns>
-        public static double Variance<T>(this IEnumerable<T> values, Func<T, int> selector)
-        {
-            return values.Variance(x => (decimal)selector(x));
-        }
+        public static double Variance<T>(this IEnumerable<T> values, Func<T, int> selector) => values.Variance(x => (decimal)selector(x));
 
         /// <summary>
         /// Calculates the variance of a list of values
@@ -596,10 +506,7 @@ namespace BigBook
         /// <param name="values">List of values</param>
         /// <param name="selector">The selector.</param>
         /// <returns>The variance</returns>
-        public static double Variance<T>(this IEnumerable<T> values, Func<T, long> selector)
-        {
-            return values.Variance(x => (decimal)selector(x));
-        }
+        public static double Variance<T>(this IEnumerable<T> values, Func<T, long> selector) => values.Variance(x => (decimal)selector(x));
 
         /// <summary>
         /// Calculates the variance of a list of values
@@ -608,10 +515,7 @@ namespace BigBook
         /// <param name="values">List of values</param>
         /// <param name="selector">The selector.</param>
         /// <returns>The variance</returns>
-        public static double Variance<T>(this IEnumerable<T> values, Func<T, float> selector)
-        {
-            return values.Variance(x => (decimal)selector(x));
-        }
+        public static double Variance<T>(this IEnumerable<T> values, Func<T, float> selector) => values.Variance(x => (decimal)selector(x));
 
         /// <summary>
         /// Calculates the variance of a list of values

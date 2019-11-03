@@ -44,20 +44,14 @@ namespace BigBook.Patterns
         /// </summary>
         /// <param name="key">Registered item</param>
         /// <returns>The type returned by the initializer</returns>
-        public T Create(Key key)
-        {
-            return Constructors.GetValue(key, () => default(T))();
-        }
+        public T Create(Key key) => Constructors.GetValue(key, () => default(T))();
 
         /// <summary>
         /// Determines if a key has been registered
         /// </summary>
         /// <param name="key">Key to check</param>
         /// <returns>True if it exists, false otherwise</returns>
-        public bool Exists(Key key)
-        {
-            return Constructors.ContainsKey(key);
-        }
+        public bool Exists(Key key) => Constructors.ContainsKey(key);
 
         /// <summary>
         /// Registers an item
@@ -65,10 +59,7 @@ namespace BigBook.Patterns
         /// <param name="key">Item to register</param>
         /// <param name="result">The object to be returned</param>
         /// <returns>This</returns>
-        public Factory<Key, T> Register(Key key, T result)
-        {
-            return Register(key, () => result);
-        }
+        public Factory<Key, T> Register(Key key, T result) => Register(key, () => result);
 
         /// <summary>
         /// Registers an item

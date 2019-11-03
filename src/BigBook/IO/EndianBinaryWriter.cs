@@ -91,10 +91,7 @@ namespace BigBook.IO
         /// <summary>
         /// Closes the writer, including the underlying stream.
         /// </summary>
-        public void Close()
-        {
-            Dispose();
-        }
+        public void Close() => Dispose();
 
         /// <summary>
         /// Disposes of the underlying stream.
@@ -351,7 +348,7 @@ namespace BigBook.IO
             }
 
             value = value < 0 ? 0 : value;
-            int index = 0;
+            var index = 0;
             while (value >= 128)
             {
                 buffer[index++] = (byte)((value & 0x7f) | 0x80);

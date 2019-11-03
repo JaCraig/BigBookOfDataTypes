@@ -38,10 +38,7 @@ namespace BigBook.Benchmarks.Tests
         }
 
         [GlobalSetup]
-        public void Setup()
-        {
-            Canister.Builder.CreateContainer(null).RegisterBigBookOfDataTypes().Build();
-        }
+        public void Setup() => Canister.Builder.CreateContainer(null).RegisterBigBookOfDataTypes().Build();
 
         private class TestClass
         {

@@ -40,7 +40,7 @@ namespace BigBook.Tests.ExtensionMethods
         public void DumpPropertiesTest()
         {
             var TestObject = new List<int>();
-            for (int x = 0; x < 10; ++x)
+            for (var x = 0; x < 10; ++x)
             {
                 TestObject.Add(x);
             }
@@ -52,12 +52,12 @@ namespace BigBook.Tests.ExtensionMethods
         public void DumpPropertiesWithNoHtmlTest()
         {
             var TestObject = new List<int>();
-            for (int x = 0; x < 10; ++x)
+            for (var x = 0; x < 10; ++x)
             {
                 TestObject.Add(x);
             }
 
-            string Output = "Property Name\t\t\t\tProperty Value" + Environment.NewLine +
+            var Output = "Property Name\t\t\t\tProperty Value" + Environment.NewLine +
                             "Capacity\t\t\t\t16" + Environment.NewLine +
                             "Count\t\t\t\t10" + Environment.NewLine +
                             "Item\t\t\t\t";
@@ -163,10 +163,7 @@ namespace BigBook.Tests.ExtensionMethods
         }
 
         [Fact]
-        public void HasDefaultConstructor()
-        {
-            Assert.True(typeof(TestClass).HasDefaultConstructor());
-        }
+        public void HasDefaultConstructor() => Assert.True(typeof(TestClass).HasDefaultConstructor());
 
         [Fact]
         public void IsDebug()
@@ -248,16 +245,10 @@ namespace BigBook.Tests.ExtensionMethods
         }
 
         [Fact]
-        public void ToLongVersionString()
-        {
-            Assert.StartsWith("1.0.", typeof(TestClass).GetTypeInfo().Assembly.ToString(VersionInfo.LongVersion));
-        }
+        public void ToLongVersionString() => Assert.StartsWith("1.0.", typeof(TestClass).GetTypeInfo().Assembly.ToString(VersionInfo.LongVersion));
 
         [Fact]
-        public void ToShortVersionString()
-        {
-            Assert.Equal("1.0.0.0", typeof(TestClass).GetTypeInfo().Assembly.ToString(VersionInfo.ShortVersion));
-        }
+        public void ToShortVersionString() => Assert.Equal("1.0.0.0", typeof(TestClass).GetTypeInfo().Assembly.ToString(VersionInfo.ShortVersion));
     }
 
     [Testing]

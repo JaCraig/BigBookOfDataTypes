@@ -11,7 +11,7 @@ namespace BigBook.Tests.DataMapper
         [Fact]
         public void CreationTest()
         {
-            BigBook.DataMapper.Manager TestObject = new BigBook.DataMapper.Manager(new List<IDataMapper>(), new List<IMapperModule>());
+            var TestObject = new BigBook.DataMapper.Manager(new List<IDataMapper>(), new List<IMapperModule>());
             Assert.NotNull(TestObject);
         }
 

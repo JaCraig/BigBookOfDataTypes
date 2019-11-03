@@ -113,10 +113,7 @@ namespace BigBook.DataMapper.Default
         /// </summary>
         /// <param name="source">Source</param>
         /// <param name="destination">Destination</param>
-        public override void CopyLeftToRight(Left source, Right destination)
-        {
-            Copy(source, destination);
-        }
+        public override void CopyLeftToRight(Left source, Right destination) => Copy(source, destination);
 
         /// <summary>
         /// Copies from the source to the destination (used in instances when both Left and Right are
@@ -124,10 +121,7 @@ namespace BigBook.DataMapper.Default
         /// </summary>
         /// <param name="source">Source</param>
         /// <param name="destination">Destination</param>
-        public override void CopyRightToLeft(Right source, Left destination)
-        {
-            Copy(source, destination);
-        }
+        public override void CopyRightToLeft(Right source, Left destination) => Copy(source, destination);
 
         /// <summary>
         /// Creates the reversed.

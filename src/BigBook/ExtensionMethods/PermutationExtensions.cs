@@ -43,22 +43,22 @@ namespace BigBook
             Current.AddRange(input);
             var ReturnValue = new ListMapping<int, T>();
             var Max = (input.Count() - 1).Factorial();
-            int CurrentValue = 0;
-            for (int x = 0; x < input.Count(); ++x)
+            var CurrentValue = 0;
+            for (var x = 0; x < input.Count(); ++x)
             {
-                int z = 0;
+                var z = 0;
                 while (z < Max)
                 {
-                    int y = input.Count() - 1;
+                    var y = input.Count() - 1;
                     while (y > 1)
                     {
-                        T TempHolder = Current[y - 1];
+                        var TempHolder = Current[y - 1];
                         Current[y - 1] = Current[y];
                         Current[y] = TempHolder;
                         --y;
                         for (int i = 0, CurrentCount = Current.Count; i < CurrentCount; i++)
                         {
-                            T Item = Current[i];
+                            var Item = Current[i];
                             ReturnValue.Add(CurrentValue, Item);
                         }
 
@@ -74,7 +74,7 @@ namespace BigBook
                 {
                     Current.Clear();
                     Current.AddRange(input);
-                    T TempHolder2 = Current[0];
+                    var TempHolder2 = Current[0];
                     Current[0] = Current[x + 1];
                     Current[x + 1] = TempHolder2;
                 }

@@ -51,7 +51,7 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void ForEachParallelTestEmptyList()
         {
-            int[] Temp = Array.Empty<int>();
+            var Temp = Array.Empty<int>();
             Temp.ForEachParallel(_ => { });
             Assert.Empty(Temp);
         }
@@ -78,7 +78,7 @@ namespace BigBook.Tests.ExtensionMethods
         public void ForEachTest3()
         {
             var Temp = new int[] { 0, 0, 1, 2, 3 }.ToList();
-            Temp.ForEach<int, float>(x => x > 0 ? (float)x : 1.0f);
+            Temp.ForEach<int, float>(x => x > 0 ? x : 1.0f);
         }
 
         [Fact]
@@ -204,8 +204,8 @@ namespace BigBook.Tests.ExtensionMethods
         public void ToArray()
         {
             var Temp = new int[] { 0, 0, 1, 2, 3 }.ToList();
-            Temp.ToArray<int, double>(x => (double)x);
-            var Temp2 = Temp.ToArray<int, double>(x => (double)x);
+            Temp.ToArray<int, double>(x => x);
+            var Temp2 = Temp.ToArray<int, double>(x => x);
             Assert.Equal(0, Temp2[0]);
             Assert.Equal(0, Temp2[1]);
             Assert.Equal(1, Temp2[2]);
@@ -300,10 +300,7 @@ namespace BigBook.Tests.ExtensionMethods
             return GetHashCode() == obj.GetHashCode();
         }
 
-        public override int GetHashCode()
-        {
-            return ID.GetHashCode() + Value.GetHashCode();
-        }
+        public override int GetHashCode() => ID.GetHashCode() + Value.GetHashCode();
     }
 
     public class TraverseClass

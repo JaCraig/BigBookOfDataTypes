@@ -9,10 +9,7 @@ namespace BigBook.Benchmarks.Tests
         public ConcurrentDictionary<string, object> Data { get; set; }
 
         [Benchmark(Baseline = true)]
-        public void AddOrUpdate()
-        {
-            Data.AddOrUpdate("A", "A", (_, __) => "A");
-        }
+        public void AddOrUpdate() => Data.AddOrUpdate("A", "A", (_, __) => "A");
 
         [Benchmark]
         public void DoesContainKeyAssign()

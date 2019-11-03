@@ -9,24 +9,24 @@ namespace BigBook.Tests
         {
             var TestObject = new PriorityQueue<int>();
             var Rand = new System.Random();
-            int Value = 0;
-            for (int x = 0; x < 10; ++x)
+            var Value = 0;
+            for (var x = 0; x < 10; ++x)
             {
                 Value = Rand.Next();
                 TestObject.Add(x, Value);
                 Assert.Equal(Value, TestObject.Peek());
             }
             var HighestValue = TestObject.Peek();
-            for (int x = 9; x >= 0; --x)
+            for (var x = 9; x >= 0; --x)
             {
                 Value = Rand.Next();
                 TestObject.Add(x, Value);
                 Assert.Equal(HighestValue, TestObject.Peek());
             }
-            int Count = 0;
-            foreach (int Priority in TestObject.Keys)
+            var Count = 0;
+            foreach (var Priority in TestObject.Keys)
             {
-                foreach (int Item in TestObject[Priority])
+                foreach (var Item in TestObject[Priority])
                 {
                     ++Count;
                 }

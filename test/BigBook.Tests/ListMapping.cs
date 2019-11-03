@@ -22,10 +22,10 @@ namespace BigBook.Tests
         {
             var TestObject = new ListMapping<string, int>();
             var Rand = new System.Random();
-            for (int x = 0; x < 10; ++x)
+            for (var x = 0; x < 10; ++x)
             {
                 var Name = x.ToString();
-                for (int y = 0; y < 5; ++y)
+                for (var y = 0; y < 5; ++y)
                 {
                     var Value = Rand.Next();
                     TestObject.Add(Name, Value);

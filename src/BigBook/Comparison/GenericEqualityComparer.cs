@@ -62,8 +62,8 @@ namespace BigBook.Comparison
                 var YEnumerator = IEnumerabley.GetEnumerator();
                 while (true)
                 {
-                    bool XFinished = !XEnumerator.MoveNext();
-                    bool YFinished = !YEnumerator.MoveNext();
+                    var XFinished = !XEnumerator.MoveNext();
+                    var YFinished = !YEnumerator.MoveNext();
                     if (XFinished || YFinished)
                     {
                         return XFinished && YFinished;
@@ -98,9 +98,6 @@ namespace BigBook.Comparison
         /// </summary>
         /// <param name="obj">Object to get the hash code of</param>
         /// <returns>The object's hash code</returns>
-        public int GetHashCode(T obj)
-        {
-            return obj.GetHashCode();
-        }
+        public int GetHashCode(T obj) => obj.GetHashCode();
     }
 }

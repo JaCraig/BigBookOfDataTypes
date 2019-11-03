@@ -60,7 +60,7 @@ namespace BigBook
                 return Methods;
             }
 
-            foreach (StackFrame Frame in frames)
+            foreach (var Frame in frames)
             {
                 Methods.AddIf(x => x.DeclaringType != null
                     && !excludedAssemblies.Contains(x.DeclaringType.Assembly)

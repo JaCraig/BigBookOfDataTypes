@@ -13,7 +13,7 @@ namespace BigBook.Benchmarks.Tests
         {
             if (Data.ContainsKey("A"))
             {
-                if (Data.TryGetValue("A", out object Value))
+                if (Data.TryGetValue("A", out var Value))
                 {
                 }
             }
@@ -33,7 +33,7 @@ namespace BigBook.Benchmarks.Tests
         {
             if (Data.ContainsKey("B"))
             {
-                if (Data.TryGetValue("B", out object Value))
+                if (Data.TryGetValue("B", out var Value))
                 {
                 }
             }
@@ -50,7 +50,7 @@ namespace BigBook.Benchmarks.Tests
         [Benchmark]
         public void TryGetValue()
         {
-            if (Data.TryGetValue("A", out object Value))
+            if (Data.TryGetValue("A", out var Value))
             {
             }
         }

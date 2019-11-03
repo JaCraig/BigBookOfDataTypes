@@ -47,60 +47,42 @@ namespace BigBook.IO.Converters.BaseClasses
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>The resulting long.</returns>
-        public static long DoubleToLong(double value)
-        {
-            return BitConverter.DoubleToInt64Bits(value);
-        }
+        public static long DoubleToLong(double value) => BitConverter.DoubleToInt64Bits(value);
 
         /// <summary>
         /// Converts a float to an integer
         /// </summary>
         /// <param name="value">Float value</param>
         /// <returns>The integer equivalent.</returns>
-        public static int FloatToInt(float value)
-        {
-            return new IntFloatUnion(value).IntegerValue;
-        }
+        public static int FloatToInt(float value) => new IntFloatUnion(value).IntegerValue;
 
         /// <summary>
         /// Gets the bytes.
         /// </summary>
         /// <param name="value">if set to <c>true</c> [value].</param>
         /// <returns>Gets the resulting byte array.</returns>
-        public static byte[] GetBytes(bool value)
-        {
-            return BitConverter.GetBytes(value);
-        }
+        public static byte[] GetBytes(bool value) => BitConverter.GetBytes(value);
 
         /// <summary>
         /// Converts an integer to a float.
         /// </summary>
         /// <param name="value">The integer value</param>
         /// <returns>The float value.</returns>
-        public static float IntToFloat(int value)
-        {
-            return new IntFloatUnion(value).FloatValue;
-        }
+        public static float IntToFloat(int value) => new IntFloatUnion(value).FloatValue;
 
         /// <summary>
         /// Converts a long to a double.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>The resulting double.</returns>
-        public static double LongToDouble(long value)
-        {
-            return BitConverter.Int64BitsToDouble(value);
-        }
+        public static double LongToDouble(long value) => BitConverter.Int64BitsToDouble(value);
 
         /// <summary>
         /// Returns a <see cref="System.String"/> that represents this instance.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>A <see cref="System.String"/> that represents this instance.</returns>
-        public static string ToString(byte[] value)
-        {
-            return BitConverter.ToString(value);
-        }
+        public static string ToString(byte[] value) => BitConverter.ToString(value);
 
         /// <summary>
         /// Returns a <see cref="System.String"/> that represents this instance.
@@ -108,10 +90,7 @@ namespace BigBook.IO.Converters.BaseClasses
         /// <param name="value">The value.</param>
         /// <param name="startIndex">The start index.</param>
         /// <returns>A <see cref="System.String"/> that represents this instance.</returns>
-        public static string ToString(byte[] value, int startIndex)
-        {
-            return BitConverter.ToString(value, startIndex);
-        }
+        public static string ToString(byte[] value, int startIndex) => BitConverter.ToString(value, startIndex);
 
         /// <summary>
         /// Returns a <see cref="System.String"/> that represents this instance.
@@ -120,10 +99,7 @@ namespace BigBook.IO.Converters.BaseClasses
         /// <param name="startIndex">The start index.</param>
         /// <param name="length">The length.</param>
         /// <returns>A <see cref="System.String"/> that represents this instance.</returns>
-        public static string ToString(byte[] value, int startIndex, int length)
-        {
-            return BitConverter.ToString(value, startIndex, length);
-        }
+        public static string ToString(byte[] value, int startIndex, int length) => BitConverter.ToString(value, startIndex, length);
 
         /// <summary>
         /// Copies the bytes.
@@ -134,7 +110,7 @@ namespace BigBook.IO.Converters.BaseClasses
         public void CopyBytes(decimal value, byte[] buffer, int index)
         {
             var parts = decimal.GetBits(value);
-            for (int i = 0; i < 4; i++)
+            for (var i = 0; i < 4; i++)
             {
                 CopyBytesImpl(parts[i], 4, buffer, (i * 4) + index);
             }
@@ -146,10 +122,7 @@ namespace BigBook.IO.Converters.BaseClasses
         /// <param name="value">if set to <c>true</c> [value].</param>
         /// <param name="buffer">The buffer.</param>
         /// <param name="index">The index.</param>
-        public void CopyBytes(bool value, byte[] buffer, int index)
-        {
-            CopyBytes(value ? 1 : 0, 1, buffer, index);
-        }
+        public void CopyBytes(bool value, byte[] buffer, int index) => CopyBytes(value ? 1 : 0, 1, buffer, index);
 
         /// <summary>
         /// Copies the bytes.
@@ -157,10 +130,7 @@ namespace BigBook.IO.Converters.BaseClasses
         /// <param name="value">The value.</param>
         /// <param name="buffer">The buffer.</param>
         /// <param name="index">The index.</param>
-        public void CopyBytes(char value, byte[] buffer, int index)
-        {
-            CopyBytes(value, 2, buffer, index);
-        }
+        public void CopyBytes(char value, byte[] buffer, int index) => CopyBytes(value, 2, buffer, index);
 
         /// <summary>
         /// Copies the bytes.
@@ -168,10 +138,7 @@ namespace BigBook.IO.Converters.BaseClasses
         /// <param name="value">The value.</param>
         /// <param name="buffer">The buffer.</param>
         /// <param name="index">The index.</param>
-        public void CopyBytes(double value, byte[] buffer, int index)
-        {
-            CopyBytes(DoubleToLong(value), 8, buffer, index);
-        }
+        public void CopyBytes(double value, byte[] buffer, int index) => CopyBytes(DoubleToLong(value), 8, buffer, index);
 
         /// <summary>
         /// Copies the bytes.
@@ -179,10 +146,7 @@ namespace BigBook.IO.Converters.BaseClasses
         /// <param name="value">The value.</param>
         /// <param name="buffer">The buffer.</param>
         /// <param name="index">The index.</param>
-        public void CopyBytes(short value, byte[] buffer, int index)
-        {
-            CopyBytes(value, 2, buffer, index);
-        }
+        public void CopyBytes(short value, byte[] buffer, int index) => CopyBytes(value, 2, buffer, index);
 
         /// <summary>
         /// Copies the bytes.
@@ -190,10 +154,7 @@ namespace BigBook.IO.Converters.BaseClasses
         /// <param name="value">The value.</param>
         /// <param name="buffer">The buffer.</param>
         /// <param name="index">The index.</param>
-        public void CopyBytes(int value, byte[] buffer, int index)
-        {
-            CopyBytes(value, 4, buffer, index);
-        }
+        public void CopyBytes(int value, byte[] buffer, int index) => CopyBytes(value, 4, buffer, index);
 
         /// <summary>
         /// Copies the bytes.
@@ -201,10 +162,7 @@ namespace BigBook.IO.Converters.BaseClasses
         /// <param name="value">The value.</param>
         /// <param name="buffer">The buffer.</param>
         /// <param name="index">The index.</param>
-        public void CopyBytes(long value, byte[] buffer, int index)
-        {
-            CopyBytes(value, 8, buffer, index);
-        }
+        public void CopyBytes(long value, byte[] buffer, int index) => CopyBytes(value, 8, buffer, index);
 
         /// <summary>
         /// Copies the bytes.
@@ -212,10 +170,7 @@ namespace BigBook.IO.Converters.BaseClasses
         /// <param name="value">The value.</param>
         /// <param name="buffer">The buffer.</param>
         /// <param name="index">The index.</param>
-        public void CopyBytes(float value, byte[] buffer, int index)
-        {
-            CopyBytes(FloatToInt(value), 4, buffer, index);
-        }
+        public void CopyBytes(float value, byte[] buffer, int index) => CopyBytes(FloatToInt(value), 4, buffer, index);
 
         /// <summary>
         /// Copies the bytes.
@@ -223,10 +178,7 @@ namespace BigBook.IO.Converters.BaseClasses
         /// <param name="value">The value.</param>
         /// <param name="buffer">The buffer.</param>
         /// <param name="index">The index.</param>
-        public void CopyBytes(ushort value, byte[] buffer, int index)
-        {
-            CopyBytes(value, 2, buffer, index);
-        }
+        public void CopyBytes(ushort value, byte[] buffer, int index) => CopyBytes(value, 2, buffer, index);
 
         /// <summary>
         /// Copies the bytes.
@@ -234,10 +186,7 @@ namespace BigBook.IO.Converters.BaseClasses
         /// <param name="value">The value.</param>
         /// <param name="buffer">The buffer.</param>
         /// <param name="index">The index.</param>
-        public void CopyBytes(uint value, byte[] buffer, int index)
-        {
-            CopyBytes(value, 4, buffer, index);
-        }
+        public void CopyBytes(uint value, byte[] buffer, int index) => CopyBytes(value, 4, buffer, index);
 
         /// <summary>
         /// Copies the bytes.
@@ -245,10 +194,7 @@ namespace BigBook.IO.Converters.BaseClasses
         /// <param name="value">The value.</param>
         /// <param name="buffer">The buffer.</param>
         /// <param name="index">The index.</param>
-        public void CopyBytes(ulong value, byte[] buffer, int index)
-        {
-            CopyBytes(unchecked((long)value), 8, buffer, index);
-        }
+        public void CopyBytes(ulong value, byte[] buffer, int index) => CopyBytes(unchecked((long)value), 8, buffer, index);
 
         /// <summary>
         /// Gets the bytes.
@@ -257,9 +203,9 @@ namespace BigBook.IO.Converters.BaseClasses
         /// <returns>The resulting byte array.</returns>
         public byte[] GetBytes(decimal value)
         {
-            byte[] bytes = new byte[16];
+            var bytes = new byte[16];
             var parts = decimal.GetBits(value);
-            for (int i = 0; i < 4; i++)
+            for (var i = 0; i < 4; i++)
             {
                 CopyBytesImpl(parts[i], 4, bytes, i * 4);
             }
@@ -272,90 +218,63 @@ namespace BigBook.IO.Converters.BaseClasses
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>The resulting byte array.</returns>
-        public byte[] GetBytes(char value)
-        {
-            return GetBytes(value, 2);
-        }
+        public byte[] GetBytes(char value) => GetBytes(value, 2);
 
         /// <summary>
         /// Gets the bytes.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>The resulting byte array.</returns>
-        public byte[] GetBytes(double value)
-        {
-            return GetBytes(DoubleToLong(value), 8);
-        }
+        public byte[] GetBytes(double value) => GetBytes(DoubleToLong(value), 8);
 
         /// <summary>
         /// Gets the bytes.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>The resulting byte array.</returns>
-        public byte[] GetBytes(short value)
-        {
-            return GetBytes(value, 2);
-        }
+        public byte[] GetBytes(short value) => GetBytes(value, 2);
 
         /// <summary>
         /// Gets the bytes.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>The resulting byte array.</returns>
-        public byte[] GetBytes(int value)
-        {
-            return GetBytes(value, 4);
-        }
+        public byte[] GetBytes(int value) => GetBytes(value, 4);
 
         /// <summary>
         /// Gets the bytes.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>The resulting byte array.</returns>
-        public byte[] GetBytes(long value)
-        {
-            return GetBytes(value, 8);
-        }
+        public byte[] GetBytes(long value) => GetBytes(value, 8);
 
         /// <summary>
         /// Gets the bytes.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>The resulting byte array.</returns>
-        public byte[] GetBytes(float value)
-        {
-            return GetBytes(FloatToInt(value), 4);
-        }
+        public byte[] GetBytes(float value) => GetBytes(FloatToInt(value), 4);
 
         /// <summary>
         /// Gets the bytes.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>The resulting byte array.</returns>
-        public byte[] GetBytes(ushort value)
-        {
-            return GetBytes(value, 2);
-        }
+        public byte[] GetBytes(ushort value) => GetBytes(value, 2);
 
         /// <summary>
         /// Gets the bytes.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>The resulting byte array.</returns>
-        public byte[] GetBytes(uint value)
-        {
-            return GetBytes(value, 4);
-        }
+        public byte[] GetBytes(uint value) => GetBytes(value, 4);
 
         /// <summary>
         /// Gets the bytes.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>The resulting byte array.</returns>
-        public byte[] GetBytes(ulong value)
-        {
-            return GetBytes(unchecked((long)value), 8);
-        }
+        public byte[] GetBytes(ulong value) => GetBytes(unchecked((long)value), 8);
 
         /// <summary>
         /// To the boolean.
@@ -381,10 +300,7 @@ namespace BigBook.IO.Converters.BaseClasses
         /// <param name="value">The value.</param>
         /// <param name="startIndex">The start index.</param>
         /// <returns>The resulting character.</returns>
-        public char ToChar(byte[] value, int startIndex)
-        {
-            return unchecked((char)CheckedFromBytes(value, startIndex, 2));
-        }
+        public char ToChar(byte[] value, int startIndex) => unchecked((char)CheckedFromBytes(value, startIndex, 2));
 
         /// <summary>
         /// To the decimal.
@@ -394,8 +310,8 @@ namespace BigBook.IO.Converters.BaseClasses
         /// <returns>The resulting decimal value</returns>
         public decimal ToDecimal(byte[] value, int startIndex)
         {
-            int[] parts = new int[4];
-            for (int i = 0; i < 4; i++)
+            var parts = new int[4];
+            for (var i = 0; i < 4; i++)
             {
                 parts[i] = ToInt(value, startIndex + (i * 4));
             }
@@ -409,10 +325,7 @@ namespace BigBook.IO.Converters.BaseClasses
         /// <param name="value">The value.</param>
         /// <param name="startIndex">The start index.</param>
         /// <returns>The resulting double.</returns>
-        public double ToDouble(byte[] value, int startIndex)
-        {
-            return LongToDouble(ToLong(value, startIndex));
-        }
+        public double ToDouble(byte[] value, int startIndex) => LongToDouble(ToLong(value, startIndex));
 
         /// <summary>
         /// To the float.
@@ -420,10 +333,7 @@ namespace BigBook.IO.Converters.BaseClasses
         /// <param name="value">The value.</param>
         /// <param name="startIndex">The start index.</param>
         /// <returns>The resulting float.</returns>
-        public float ToFloat(byte[] value, int startIndex)
-        {
-            return IntToFloat(ToInt(value, startIndex));
-        }
+        public float ToFloat(byte[] value, int startIndex) => IntToFloat(ToInt(value, startIndex));
 
         /// <summary>
         /// Converts the string representation of a number to an integer.
@@ -431,10 +341,7 @@ namespace BigBook.IO.Converters.BaseClasses
         /// <param name="value">The value.</param>
         /// <param name="startIndex">The start index.</param>
         /// <returns>The resulting integer.</returns>
-        public int ToInt(byte[] value, int startIndex)
-        {
-            return unchecked((int)CheckedFromBytes(value, startIndex, 4));
-        }
+        public int ToInt(byte[] value, int startIndex) => unchecked((int)CheckedFromBytes(value, startIndex, 4));
 
         /// <summary>
         /// To the long.
@@ -442,10 +349,7 @@ namespace BigBook.IO.Converters.BaseClasses
         /// <param name="value">The value.</param>
         /// <param name="startIndex">The start index.</param>
         /// <returns>The resulting long.</returns>
-        public long ToLong(byte[] value, int startIndex)
-        {
-            return CheckedFromBytes(value, startIndex, 8);
-        }
+        public long ToLong(byte[] value, int startIndex) => CheckedFromBytes(value, startIndex, 8);
 
         /// <summary>
         /// To the short.
@@ -453,10 +357,7 @@ namespace BigBook.IO.Converters.BaseClasses
         /// <param name="value">The value.</param>
         /// <param name="startIndex">The start index.</param>
         /// <returns>The resulting short.</returns>
-        public short ToShort(byte[] value, int startIndex)
-        {
-            return unchecked((short)CheckedFromBytes(value, startIndex, 2));
-        }
+        public short ToShort(byte[] value, int startIndex) => unchecked((short)CheckedFromBytes(value, startIndex, 2));
 
         /// <summary>
         /// To the unsigned integer.
@@ -464,10 +365,7 @@ namespace BigBook.IO.Converters.BaseClasses
         /// <param name="value">The value.</param>
         /// <param name="startIndex">The start index.</param>
         /// <returns>The resulting unsigned integer</returns>
-        public uint ToUnsignedInteger(byte[] value, int startIndex)
-        {
-            return unchecked((uint)CheckedFromBytes(value, startIndex, 4));
-        }
+        public uint ToUnsignedInteger(byte[] value, int startIndex) => unchecked((uint)CheckedFromBytes(value, startIndex, 4));
 
         /// <summary>
         /// To the unsigned long.
@@ -475,10 +373,7 @@ namespace BigBook.IO.Converters.BaseClasses
         /// <param name="value">The value.</param>
         /// <param name="startIndex">The start index.</param>
         /// <returns>The resulting unsigned long.</returns>
-        public ulong ToUnsignedLong(byte[] value, int startIndex)
-        {
-            return unchecked((ulong)CheckedFromBytes(value, startIndex, 8));
-        }
+        public ulong ToUnsignedLong(byte[] value, int startIndex) => unchecked((ulong)CheckedFromBytes(value, startIndex, 8));
 
         /// <summary>
         /// To the unsigned short.
@@ -486,10 +381,7 @@ namespace BigBook.IO.Converters.BaseClasses
         /// <param name="value">The value.</param>
         /// <param name="startIndex">The start index.</param>
         /// <returns>The resulting unsigned short.</returns>
-        public ushort ToUnsignedShort(byte[] value, int startIndex)
-        {
-            return unchecked((ushort)CheckedFromBytes(value, startIndex, 2));
-        }
+        public ushort ToUnsignedShort(byte[] value, int startIndex) => unchecked((ushort)CheckedFromBytes(value, startIndex, 2));
 
         /// <summary>
         /// Copies the bytes implementation.
@@ -555,7 +447,7 @@ namespace BigBook.IO.Converters.BaseClasses
         /// <returns>Gets the resulting byte array.</returns>
         private byte[] GetBytes(long value, int bytes)
         {
-            byte[] buffer = new byte[bytes];
+            var buffer = new byte[bytes];
             CopyBytes(value, bytes, buffer, 0);
             return buffer;
         }

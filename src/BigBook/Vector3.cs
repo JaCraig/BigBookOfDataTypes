@@ -41,7 +41,7 @@ namespace BigBook
         /// </summary>
         public double[] Array
         {
-            get { return new double[] { X, Y, Z }; }
+            get => new double[] { X, Y, Z };
             set
             {
                 if (value?.Length == 3)
@@ -315,19 +315,13 @@ namespace BigBook
         /// </summary>
         /// <param name="obj">Object to compare</param>
         /// <returns>true if they are, false otherwise</returns>
-        public override bool Equals(object obj)
-        {
-            return obj is Vector3 Tempobj && this == Tempobj;
-        }
+        public override bool Equals(object obj) => obj is Vector3 Tempobj && this == Tempobj;
 
         /// <summary>
         /// Gets the hash code
         /// </summary>
         /// <returns>The hash code</returns>
-        public override int GetHashCode()
-        {
-            return (int)(X + Y + Z) % int.MaxValue;
-        }
+        public override int GetHashCode() => (int)(X + Y + Z) % int.MaxValue;
 
         /// <summary>
         /// Normalizes the vector
@@ -335,7 +329,7 @@ namespace BigBook
         /// <returns>This</returns>
         public Vector3 Normalize()
         {
-            double Normal = Magnitude;
+            var Normal = Magnitude;
             if (Normal > 0)
             {
                 Normal = 1 / Normal;
@@ -350,9 +344,6 @@ namespace BigBook
         /// To string function
         /// </summary>
         /// <returns>String representation of the vector</returns>
-        public override string ToString()
-        {
-            return string.Format("({0},{1},{2})", X, Y, Z);
-        }
+        public override string ToString() => string.Format("({0},{1},{2})", X, Y, Z);
     }
 }

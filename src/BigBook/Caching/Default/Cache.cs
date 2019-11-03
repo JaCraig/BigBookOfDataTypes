@@ -65,77 +65,53 @@ namespace BigBook.Caching.Default
         /// </summary>
         /// <param name="key">Key of the item</param>
         /// <param name="value">Value to add</param>
-        public override void Add(string key, object value)
-        {
-            InternalCache.AddOrUpdate(key, _ => value, (_, __) => value);
-        }
+        public override void Add(string key, object value) => InternalCache.AddOrUpdate(key, _ => value, (_, __) => value);
 
         /// <summary>
         /// Clears the cache
         /// </summary>
-        public override void Clear()
-        {
-            InternalCache.Clear();
-        }
+        public override void Clear() => InternalCache.Clear();
 
         /// <summary>
         /// Determines if the item is in the cache
         /// </summary>
         /// <param name="item">item to check for</param>
         /// <returns></returns>
-        public override bool Contains(KeyValuePair<string, object> item)
-        {
-            return InternalCache.Contains(item);
-        }
+        public override bool Contains(KeyValuePair<string, object> item) => InternalCache.Contains(item);
 
         /// <summary>
         /// Checks if the cache contains the key
         /// </summary>
         /// <param name="key">Key to check</param>
         /// <returns>True if it is there, false otherwise</returns>
-        public override bool ContainsKey(string key)
-        {
-            return InternalCache.ContainsKey(key);
-        }
+        public override bool ContainsKey(string key) => InternalCache.ContainsKey(key);
 
         /// <summary>
         /// Copies to an array
         /// </summary>
         /// <param name="array">Array to copy to</param>
         /// <param name="arrayIndex">Index to start at</param>
-        public override void CopyTo(KeyValuePair<string, object>[] array, int arrayIndex)
-        {
-            InternalCache.ToArray().CopyTo(array, arrayIndex);
-        }
+        public override void CopyTo(KeyValuePair<string, object>[] array, int arrayIndex) => InternalCache.ToArray().CopyTo(array, arrayIndex);
 
         /// <summary>
         /// Gets the enumerator
         /// </summary>
         /// <returns>The enumerator</returns>
-        public override IEnumerator<KeyValuePair<string, object>> GetEnumerator()
-        {
-            return InternalCache.GetEnumerator();
-        }
+        public override IEnumerator<KeyValuePair<string, object>> GetEnumerator() => InternalCache.GetEnumerator();
 
         /// <summary>
         /// Removes an item from the cache
         /// </summary>
         /// <param name="key">key to remove</param>
         /// <returns>True if it is removed, false otherwise</returns>
-        public override bool Remove(string key)
-        {
-            return InternalCache.TryRemove(key, out object Value);
-        }
+        public override bool Remove(string key) => InternalCache.TryRemove(key, out var Value);
 
         /// <summary>
         /// Removes an item from an array
         /// </summary>
         /// <param name="item">Item to remove</param>
         /// <returns>True if it is removed, false otherwise</returns>
-        public override bool Remove(KeyValuePair<string, object> item)
-        {
-            return InternalCache.TryRemove(item.Key, out object Value);
-        }
+        public override bool Remove(KeyValuePair<string, object> item) => InternalCache.TryRemove(item.Key, out var Value);
 
         /// <summary>
         /// Attempt to get a value
@@ -143,10 +119,7 @@ namespace BigBook.Caching.Default
         /// <param name="key">Key to get</param>
         /// <param name="value">Value of the item</param>
         /// <returns>True if it is found, false otherwise</returns>
-        public override bool TryGetValue(string key, out object value)
-        {
-            return InternalCache.TryGetValue(key, out value);
-        }
+        public override bool TryGetValue(string key, out object value) => InternalCache.TryGetValue(key, out value);
 
         /// <summary>
         /// Disposes the cache
@@ -156,7 +129,7 @@ namespace BigBook.Caching.Default
         {
             if (InternalCache != null)
             {
-                foreach (IDisposable Item in InternalCache.Values.OfType<IDisposable>())
+                foreach (var Item in InternalCache.Values.OfType<IDisposable>())
                 {
                     Item.Dispose();
                 }

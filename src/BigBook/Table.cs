@@ -116,10 +116,10 @@ namespace BigBook
             ColumnNames = (string[])columnNames.Clone();
             Rows = new List<Row>();
             ColumnNameHash = new Hashtable();
-            int x = 0;
+            var x = 0;
             for (int i = 0, columnNamesLength = columnNames.Length; i < columnNamesLength; i++)
             {
-                string ColumnName = columnNames[i];
+                var ColumnName = columnNames[i];
                 if (!ColumnNameHash.ContainsKey(ColumnName))
                 {
                     ColumnNameHash.Add(ColumnName, x++);
@@ -144,15 +144,15 @@ namespace BigBook
             }
 
             ColumnNames = new string[reader.FieldCount];
-            for (int x = 0; x < reader.FieldCount; ++x)
+            for (var x = 0; x < reader.FieldCount; ++x)
             {
                 ColumnNames[x] = reader.GetName(x);
             }
             ColumnNameHash = new Hashtable();
-            int y = 0;
+            var y = 0;
             for (int i = 0, ColumnNamesLength = ColumnNames.Length; i < ColumnNamesLength; i++)
             {
-                string ColumnName = ColumnNames[i];
+                var ColumnName = ColumnNames[i];
                 if (!ColumnNameHash.ContainsKey(ColumnName))
                 {
                     ColumnNameHash.Add(ColumnName, y++);
@@ -162,8 +162,8 @@ namespace BigBook
             Rows = new List<Row>();
             while (reader.Read())
             {
-                object[] Values = new object[ColumnNames.Length];
-                for (int x = 0; x < reader.FieldCount; ++x)
+                var Values = new object[ColumnNames.Length];
+                for (var x = 0; x < reader.FieldCount; ++x)
                 {
                     Values[x] = reader[x];
                 }

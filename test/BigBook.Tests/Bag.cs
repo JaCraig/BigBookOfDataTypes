@@ -9,11 +9,11 @@ namespace BigBook.Tests
         {
             var BagObject = new Bag<string>();
             var Rand = new System.Random();
-            for (int x = 0; x < 10; ++x)
+            for (var x = 0; x < 10; ++x)
             {
                 var Value = x.ToString();
                 var Count = Rand.Next(1, 10);
-                for (int y = 0; y < Count; ++y)
+                for (var y = 0; y < Count; ++y)
                 {
                     BagObject.Add(Value);
                 }

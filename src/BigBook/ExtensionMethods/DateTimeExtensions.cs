@@ -100,10 +100,7 @@ namespace BigBook
         /// <param name="date">Date input</param>
         /// <param name="numberOfWeeks">Number of weeks to add</param>
         /// <returns>The date after the number of weeks are added</returns>
-        public static DateTime AddWeeks(this DateTime date, int numberOfWeeks)
-        {
-            return date.AddDays(numberOfWeeks * 7);
-        }
+        public static DateTime AddWeeks(this DateTime date, int numberOfWeeks) => date.AddDays(numberOfWeeks * 7);
 
         /// <summary>
         /// Calculates age based on date supplied
@@ -386,12 +383,12 @@ namespace BigBook
                 return false;
             }
 
-            if ((comparison & DateCompare.WeekDay) != 0 && ((int)date.DayOfWeek == 6 || (int)date.DayOfWeek == 0))
+            if ((comparison & DateCompare.WeekDay) != 0 && ((int)date.DayOfWeek == 6 || date.DayOfWeek == 0))
             {
                 return false;
             }
 
-            if ((comparison & DateCompare.WeekEnd) != 0 && (int)date.DayOfWeek != 6 && (int)date.DayOfWeek != 0)
+            if ((comparison & DateCompare.WeekEnd) != 0 && (int)date.DayOfWeek != 6 && date.DayOfWeek != 0)
             {
                 return false;
             }
@@ -404,10 +401,7 @@ namespace BigBook
         /// </summary>
         /// <param name="date">Date object</param>
         /// <returns>The local time zone</returns>
-        public static TimeZoneInfo LocalTimeZone(this DateTime date)
-        {
-            return TimeZoneInfo.Local;
-        }
+        public static TimeZoneInfo LocalTimeZone(this DateTime date) => TimeZoneInfo.Local;
 
         /// <summary>
         /// Sets the time portion of a specific date
@@ -417,10 +411,7 @@ namespace BigBook
         /// <param name="minutes">Minutes to set</param>
         /// <param name="seconds">Seconds to set</param>
         /// <returns>Sets the time portion of the specified date</returns>
-        public static DateTime SetTime(this DateTime date, int hour, int minutes, int seconds)
-        {
-            return date.SetTime(new TimeSpan(hour, minutes, seconds));
-        }
+        public static DateTime SetTime(this DateTime date, int hour, int minutes, int seconds) => date.SetTime(new TimeSpan(hour, minutes, seconds));
 
         /// <summary>
         /// Sets the time portion of a specific date
@@ -428,10 +419,7 @@ namespace BigBook
         /// <param name="date">Date input</param>
         /// <param name="time">Time to set</param>
         /// <returns>Sets the time portion of the specified date</returns>
-        public static DateTime SetTime(this DateTime date, TimeSpan time)
-        {
-            return date.Date.Add(time);
-        }
+        public static DateTime SetTime(this DateTime date, TimeSpan time) => date.Date.Add(time);
 
         /// <summary>
         /// Converts a DateTime to a specific time zone
@@ -517,9 +505,6 @@ namespace BigBook
         /// </summary>
         /// <param name="date">Date to get the offset of</param>
         /// <returns>UTC offset</returns>
-        public static double UTCOffset(this DateTime date)
-        {
-            return (date - date.ToUniversalTime()).TotalHours;
-        }
+        public static double UTCOffset(this DateTime date) => (date - date.ToUniversalTime()).TotalHours;
     }
 }

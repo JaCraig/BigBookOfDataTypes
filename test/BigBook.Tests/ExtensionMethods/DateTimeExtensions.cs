@@ -6,16 +6,10 @@ namespace BigBook.Tests.ExtensionMethods
     public class DateTimeExtensionTests
     {
         [Fact]
-        public void AddWeeks()
-        {
-            Assert.Equal(new DateTime(2009, 1, 15, 2, 3, 4), new DateTime(2009, 1, 1, 2, 3, 4).AddWeeks(2));
-        }
+        public void AddWeeks() => Assert.Equal(new DateTime(2009, 1, 15, 2, 3, 4), new DateTime(2009, 1, 1, 2, 3, 4).AddWeeks(2));
 
         [Fact]
-        public void Age()
-        {
-            Assert.Equal(41, new DateTime(1940, 1, 1).Age(new DateTime(1981, 1, 1)));
-        }
+        public void Age() => Assert.Equal(41, new DateTime(1940, 1, 1).Age(new DateTime(1981, 1, 1)));
 
         [Fact]
         public void BeginningOf()
@@ -35,10 +29,7 @@ namespace BigBook.Tests.ExtensionMethods
         }
 
         [Fact]
-        public void ConvertToTimeZone()
-        {
-            Assert.Equal(new DateTime(2009, 1, 14, 18, 3, 4), new DateTime(2009, 1, 15, 2, 3, 4, DateTimeKind.Utc).To(TimeZoneInfo.FindSystemTimeZoneById("Pacific Standard Time")));
-        }
+        public void ConvertToTimeZone() => Assert.Equal(new DateTime(2009, 1, 14, 18, 3, 4), new DateTime(2009, 1, 15, 2, 3, 4, DateTimeKind.Utc).To(TimeZoneInfo.FindSystemTimeZoneById("Pacific Standard Time")));
 
         [Fact]
         public void DaysIn()
@@ -72,40 +63,22 @@ namespace BigBook.Tests.ExtensionMethods
         }
 
         [Fact]
-        public void FromUnix()
-        {
-            Assert.Equal(new DateTime(2009, 2, 13, 23, 31, 30), 1234567890.To());
-        }
+        public void FromUnix() => Assert.Equal(new DateTime(2009, 2, 13, 23, 31, 30), 1234567890.To());
 
         [Fact]
-        public void IsInFutureTest()
-        {
-            Assert.True(new DateTime(2100, 1, 1).Is(DateCompare.InFuture));
-        }
+        public void IsInFutureTest() => Assert.True(new DateTime(2100, 1, 1).Is(DateCompare.InFuture));
 
         [Fact]
-        public void IsInPastTest()
-        {
-            Assert.True(new DateTime(1900, 1, 1).Is(DateCompare.InPast));
-        }
+        public void IsInPastTest() => Assert.True(new DateTime(1900, 1, 1).Is(DateCompare.InPast));
 
         [Fact]
-        public void IsToday()
-        {
-            Assert.True(DateTime.Now.Is(DateCompare.Today));
-        }
+        public void IsToday() => Assert.True(DateTime.Now.Is(DateCompare.Today));
 
         [Fact]
-        public void IsWeekDayTest()
-        {
-            Assert.False(new DateTime(1999, 1, 2).Is(DateCompare.WeekDay));
-        }
+        public void IsWeekDayTest() => Assert.False(new DateTime(1999, 1, 2).Is(DateCompare.WeekDay));
 
         [Fact]
-        public void IsWeekEndTest()
-        {
-            Assert.True(new DateTime(1999, 1, 2).Is(DateCompare.WeekEnd));
-        }
+        public void IsWeekEndTest() => Assert.True(new DateTime(1999, 1, 2).Is(DateCompare.WeekEnd));
 
         [Fact]
         public void RelativeTime()
@@ -115,16 +88,10 @@ namespace BigBook.Tests.ExtensionMethods
         }
 
         [Fact]
-        public void SetTime()
-        {
-            Assert.Equal(new DateTime(2009, 1, 1, 14, 2, 12), new DateTime(2009, 1, 1, 2, 3, 4).SetTime(14, 2, 12));
-        }
+        public void SetTime() => Assert.Equal(new DateTime(2009, 1, 1, 14, 2, 12), new DateTime(2009, 1, 1, 2, 3, 4).SetTime(14, 2, 12));
 
         [Fact]
-        public void ToUnix()
-        {
-            Assert.Equal(915148800, new DateTime(1999, 1, 1, 0, 0, 0, DateTimeKind.Utc).To());
-        }
+        public void ToUnix() => Assert.Equal(915148800, new DateTime(1999, 1, 1, 0, 0, 0, DateTimeKind.Utc).To());
 
         [Fact]
         public void UTCOffset()

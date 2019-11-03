@@ -46,10 +46,7 @@ namespace BigBook.Queryable.BaseClasses
         /// An <see cref="T:System.Linq.IQueryable`1"/> that can evaluate the query represented by
         /// the specified expression tree.
         /// </returns>
-        public IQueryable<TElement> CreateQuery<TElement>(Expression expression)
-        {
-            return new Query<TElement>(this, expression);
-        }
+        public IQueryable<TElement> CreateQuery<TElement>(Expression expression) => new Query<TElement>(this, expression);
 
         /// <summary>
         /// Constructs an <see cref="T:System.Linq.IQueryable"/> object that can evaluate the query
@@ -62,7 +59,7 @@ namespace BigBook.Queryable.BaseClasses
         /// </returns>
         public IQueryable CreateQuery(Expression expression)
         {
-            Type ElementType = expression.Type.GetIEnumerableElementType();
+            var ElementType = expression.Type.GetIEnumerableElementType();
 
             try
             {
@@ -80,10 +77,7 @@ namespace BigBook.Queryable.BaseClasses
         /// <typeparam name="TElement">The type of the element.</typeparam>
         /// <param name="expression">The expression.</param>
         /// <returns>The value that results from executing the specified query.</returns>
-        public TElement Execute<TElement>(Expression expression)
-        {
-            return (TElement)Execute(expression);
-        }
+        public TElement Execute<TElement>(Expression expression) => (TElement)Execute(expression);
 
         /// <summary>
         /// Executes the query represented by a specified expression tree.

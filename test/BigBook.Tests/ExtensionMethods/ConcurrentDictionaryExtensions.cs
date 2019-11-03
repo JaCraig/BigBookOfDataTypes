@@ -16,9 +16,9 @@ namespace BigBook.Tests.ExtensionMethods
             Test.AddOrUpdate("C", 3, (_, __) => 3);
             Test.AddOrUpdate("A", 1, (_, __) => 1);
             Test.CopyTo(Test2);
-            string Value = "";
-            int Value2 = 0;
-            foreach (string Key in Test2.Keys.OrderBy(x => x))
+            var Value = "";
+            var Value2 = 0;
+            foreach (var Key in Test2.Keys.OrderBy(x => x))
             {
                 Value += Key;
                 Value2 += Test2[Key];

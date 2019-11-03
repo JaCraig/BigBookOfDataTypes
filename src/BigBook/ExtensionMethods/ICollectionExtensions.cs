@@ -34,10 +34,7 @@ namespace BigBook
         /// <param name="collection">Collection</param>
         /// <param name="items">Items to add</param>
         /// <returns>The collection with the added items</returns>
-        public static ICollection<T> Add<T>(this ICollection<T> collection, IEnumerable<T> items)
-        {
-            return collection.Add(items.ToArray());
-        }
+        public static ICollection<T> Add<T>(this ICollection<T> collection, IEnumerable<T> items) => collection.Add(items.ToArray());
 
         /// <summary>
         /// Adds a list of items to the collection
@@ -100,10 +97,10 @@ namespace BigBook
                 return true;
             }
 
-            bool ReturnValue = false;
+            var ReturnValue = false;
             for (int x = 0, itemsLength = items.Length; x < itemsLength; x++)
             {
-                T Item = items[x];
+                var Item = items[x];
                 if (predicate(Item))
                 {
                     collection.Add(Item);
@@ -250,7 +247,7 @@ namespace BigBook
             }
 
             var TempList = list.ElementsBetween(start, end + 1).ToArray();
-            for (int x = 0; x < TempList.Length; ++x)
+            for (var x = 0; x < TempList.Length; ++x)
             {
                 action(TempList[x], x);
             }
@@ -277,7 +274,7 @@ namespace BigBook
 
             var TempList = list.ElementsBetween(start, end + 1).ToArray();
             var ReturnList = new List<R>();
-            for (int x = 0; x < TempList.Length; ++x)
+            for (var x = 0; x < TempList.Length; ++x)
             {
                 ReturnList.Add(function(TempList[x], x));
             }

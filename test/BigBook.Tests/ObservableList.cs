@@ -8,8 +8,8 @@ namespace BigBook.Tests
         [Fact]
         public void Add()
         {
-            string Value = "";
-            NotifyCollectionChangedAction Value2 = NotifyCollectionChangedAction.Move;
+            var Value = "";
+            var Value2 = NotifyCollectionChangedAction.Move;
             var ListVariable = new BigBook.ObservableList<int>();
             ListVariable.PropertyChanged += (x, y) => Value = y.PropertyName;
             ListVariable.CollectionChanged += (x, y) => Value2 = y.Action;
@@ -21,8 +21,8 @@ namespace BigBook.Tests
         [Fact]
         public void AddRange()
         {
-            string Value = "";
-            NotifyCollectionChangedAction Value2 = NotifyCollectionChangedAction.Move;
+            var Value = "";
+            var Value2 = NotifyCollectionChangedAction.Move;
             var ListVariable = new BigBook.ObservableList<int>();
             ListVariable.PropertyChanged += (x, y) => Value = y.PropertyName;
             ListVariable.CollectionChanged += (x, y) => Value2 = y.Action;
@@ -34,8 +34,8 @@ namespace BigBook.Tests
         [Fact]
         public void Clear()
         {
-            string Value = "";
-            NotifyCollectionChangedAction Value2 = NotifyCollectionChangedAction.Move;
+            var Value = "";
+            var Value2 = NotifyCollectionChangedAction.Move;
             var ListVariable = new BigBook.ObservableList<int>();
             ListVariable.PropertyChanged += (x, y) => Value = y.PropertyName;
             ListVariable.CollectionChanged += (x, y) => Value2 = y.Action;
@@ -47,8 +47,8 @@ namespace BigBook.Tests
         [Fact]
         public void IndexSet()
         {
-            string Value = "";
-            NotifyCollectionChangedAction Value2 = NotifyCollectionChangedAction.Move;
+            var Value = "";
+            var Value2 = NotifyCollectionChangedAction.Move;
             var ListVariable = new BigBook.ObservableList<int>();
             ListVariable.PropertyChanged += (x, y) => Value = y.PropertyName;
             ListVariable.CollectionChanged += (x, y) => Value2 = y.Action;
@@ -62,8 +62,8 @@ namespace BigBook.Tests
         [Fact]
         public void Insert()
         {
-            string Value = "";
-            NotifyCollectionChangedAction Value2 = NotifyCollectionChangedAction.Move;
+            var Value = "";
+            var Value2 = NotifyCollectionChangedAction.Move;
             var ListVariable = new BigBook.ObservableList<int>();
             ListVariable.PropertyChanged += (x, y) => Value = y.PropertyName;
             ListVariable.CollectionChanged += (x, y) => Value2 = y.Action;
@@ -75,8 +75,8 @@ namespace BigBook.Tests
         [Fact]
         public void InsertRange()
         {
-            string Value = "";
-            NotifyCollectionChangedAction Value2 = NotifyCollectionChangedAction.Move;
+            var Value = "";
+            var Value2 = NotifyCollectionChangedAction.Move;
             var ListVariable = new BigBook.ObservableList<int>();
             ListVariable.PropertyChanged += (x, y) => Value = y.PropertyName;
             ListVariable.CollectionChanged += (x, y) => Value2 = y.Action;
@@ -88,8 +88,8 @@ namespace BigBook.Tests
         [Fact]
         public void Remove()
         {
-            string Value = "";
-            NotifyCollectionChangedAction Value2 = NotifyCollectionChangedAction.Move;
+            var Value = "";
+            var Value2 = NotifyCollectionChangedAction.Move;
             var ListVariable = new BigBook.ObservableList<int>();
             ListVariable.PropertyChanged += (x, y) => Value = y.PropertyName;
             ListVariable.CollectionChanged += (x, y) => Value2 = y.Action;
@@ -102,8 +102,8 @@ namespace BigBook.Tests
         [Fact]
         public void RemoveAll()
         {
-            string Value = "";
-            NotifyCollectionChangedAction Value2 = NotifyCollectionChangedAction.Move;
+            var Value = "";
+            var Value2 = NotifyCollectionChangedAction.Move;
             var ListVariable = new BigBook.ObservableList<int>();
             ListVariable.PropertyChanged += (x, y) => Value = y.PropertyName;
             ListVariable.CollectionChanged += (x, y) => Value2 = y.Action;
@@ -116,8 +116,8 @@ namespace BigBook.Tests
         [Fact]
         public void RemoveAt()
         {
-            string Value = "";
-            NotifyCollectionChangedAction Value2 = NotifyCollectionChangedAction.Move;
+            var Value = "";
+            var Value2 = NotifyCollectionChangedAction.Move;
             var ListVariable = new BigBook.ObservableList<int>();
             ListVariable.PropertyChanged += (x, y) => Value = y.PropertyName;
             ListVariable.CollectionChanged += (x, y) => Value2 = y.Action;
@@ -130,8 +130,8 @@ namespace BigBook.Tests
         [Fact]
         public void RemoveRange()
         {
-            string Value = "";
-            NotifyCollectionChangedAction Value2 = NotifyCollectionChangedAction.Move;
+            var Value = "";
+            var Value2 = NotifyCollectionChangedAction.Move;
             var ListVariable = new BigBook.ObservableList<int>();
             ListVariable.PropertyChanged += (x, y) => Value = y.PropertyName;
             ListVariable.CollectionChanged += (x, y) => Value2 = y.Action;

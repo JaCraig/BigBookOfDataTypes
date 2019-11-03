@@ -171,7 +171,7 @@ namespace BigBook
 
             while (true)
             {
-                T Item = default(T);
+                var Item = default(T);
                 try
                 {
                     if (!TryTake(out Item, TimeOut, CancellationToken.Token))
@@ -201,7 +201,7 @@ namespace BigBook
         /// <param name="capacity">The capacity.</param>
         private void StartTasks(int capacity)
         {
-            for (int x = 0; x < capacity; ++x)
+            for (var x = 0; x < capacity; ++x)
             {
                 if (Tasks[x]?.IsCompleted != false || Tasks[x].IsCanceled)
                 {

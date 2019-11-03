@@ -123,9 +123,9 @@ namespace BigBook
             }
 
             var TempMatrix = new Matrix(m1.Width, m1.Height);
-            for (int x = 0; x < m1.Width; ++x)
+            for (var x = 0; x < m1.Width; ++x)
             {
-                for (int y = 0; y < m1.Height; ++y)
+                for (var y = 0; y < m1.Height; ++y)
                 {
                     TempMatrix[x, y] = m1[x, y] - m2[x, y];
                 }
@@ -143,9 +143,9 @@ namespace BigBook
         {
             m1 = m1 ?? new Matrix(0, 0);
             var TempMatrix = new Matrix(m1.Width, m1.Height);
-            for (int x = 0; x < m1.Width; ++x)
+            for (var x = 0; x < m1.Width; ++x)
             {
-                for (int y = 0; y < m1.Height; ++y)
+                for (var y = 0; y < m1.Height; ++y)
                 {
                     TempMatrix[x, y] = -m1[x, y];
                 }
@@ -181,14 +181,14 @@ namespace BigBook
             }
 
             var TempMatrix = new Matrix(m2.Width, m1.Height);
-            for (int x = 0; x < m2.Width; ++x)
+            for (var x = 0; x < m2.Width; ++x)
             {
-                for (int y = 0; y < m1.Height; ++y)
+                for (var y = 0; y < m1.Height; ++y)
                 {
                     TempMatrix[x, y] = 0.0;
-                    for (int i = 0; i < m1.Width; ++i)
+                    for (var i = 0; i < m1.Width; ++i)
                     {
-                        for (int j = 0; j < m2.Height; ++j)
+                        for (var j = 0; j < m2.Height; ++j)
                         {
                             TempMatrix[x, y] += (m1[i, y] * m2[x, j]);
                         }
@@ -208,9 +208,9 @@ namespace BigBook
         {
             m1 = m1 ?? new Matrix(0, 0);
             var TempMatrix = new Matrix(m1.Width, m1.Height);
-            for (int x = 0; x < m1.Width; ++x)
+            for (var x = 0; x < m1.Width; ++x)
             {
-                for (int y = 0; y < m1.Height; ++y)
+                for (var y = 0; y < m1.Height; ++y)
                 {
                     TempMatrix[x, y] = m1[x, y] * d;
                 }
@@ -229,9 +229,9 @@ namespace BigBook
         {
             m1 = m1 ?? new Matrix(0, 0);
             var TempMatrix = new Matrix(m1.Width, m1.Height);
-            for (int x = 0; x < m1.Width; ++x)
+            for (var x = 0; x < m1.Width; ++x)
             {
-                for (int y = 0; y < m1.Height; ++y)
+                for (var y = 0; y < m1.Height; ++y)
                 {
                     TempMatrix[x, y] = m1[x, y] * d;
                 }
@@ -280,9 +280,9 @@ namespace BigBook
             }
 
             var TempMatrix = new Matrix(m1.Width, m1.Height);
-            for (int x = 0; x < m1.Width; ++x)
+            for (var x = 0; x < m1.Width; ++x)
             {
-                for (int y = 0; y < m1.Height; ++y)
+                for (var y = 0; y < m1.Height; ++y)
                 {
                     TempMatrix[x, y] = m1[x, y] + m2[x, y];
                 }
@@ -319,9 +319,9 @@ namespace BigBook
                 return false;
             }
 
-            for (int x = 0; x <= m1.Width; ++x)
+            for (var x = 0; x <= m1.Width; ++x)
             {
-                for (int y = 0; y <= m1.Height; ++y)
+                for (var y = 0; y <= m1.Height; ++y)
                 {
                     if (m1[x, y] != m2[x, y])
                     {
@@ -349,16 +349,16 @@ namespace BigBook
                 return (this[0, 0] * this[1, 1]) - (this[0, 1] * this[1, 0]);
             }
 
-            double Answer = 0.0;
-            for (int x = 0; x < Width; ++x)
+            var Answer = 0.0;
+            for (var x = 0; x < Width; ++x)
             {
                 var TempMatrix = new Matrix(Width - 1, Height - 1);
-                int WidthCounter = 0;
-                for (int y = 0; y < Width; ++y)
+                var WidthCounter = 0;
+                for (var y = 0; y < Width; ++y)
                 {
                     if (y != x)
                     {
-                        for (int z = 1; z < Height; ++z)
+                        for (var z = 1; z < Height; ++z)
                         {
                             TempMatrix[WidthCounter, z - 1] = this[y, z];
                         }
@@ -396,9 +396,9 @@ namespace BigBook
         public override int GetHashCode()
         {
             double Hash = 0;
-            for (int x = 0; x < Width; ++x)
+            for (var x = 0; x < Width; ++x)
             {
-                for (int y = 0; y < Height; ++y)
+                for (var y = 0; y < Height; ++y)
                 {
                     Hash += this[x, y];
                 }
@@ -414,12 +414,12 @@ namespace BigBook
         public override string ToString()
         {
             var Builder = new StringBuilder();
-            string Seperator = "";
+            var Seperator = "";
             Builder.Append("{").Append(Environment.NewLine);
-            for (int x = 0; x < Width; ++x)
+            for (var x = 0; x < Width; ++x)
             {
                 Builder.Append("{");
-                for (int y = 0; y < Height; ++y)
+                for (var y = 0; y < Height; ++y)
                 {
                     Builder.Append(Seperator).Append(this[x, y]);
                     Seperator = ",";
@@ -438,9 +438,9 @@ namespace BigBook
         public Matrix Transpose()
         {
             var TempValues = new Matrix(Height, Width);
-            for (int x = 0; x < Width; ++x)
+            for (var x = 0; x < Width; ++x)
             {
-                for (int y = 0; y < Height; ++y)
+                for (var y = 0; y < Height; ++y)
                 {
                     TempValues[y, x] = Values[x, y];
                 }

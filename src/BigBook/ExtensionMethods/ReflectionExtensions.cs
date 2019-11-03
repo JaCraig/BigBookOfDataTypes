@@ -73,10 +73,7 @@ namespace BigBook
         /// When true, it looks up the heirarchy chain for the inherited custom attributes
         /// </param>
         /// <returns>Array of attributes</returns>
-        public static T[] Attributes<T>(this MemberInfo provider, bool inherit = true) where T : Attribute
-        {
-            return provider?.GetCustomAttributes(typeof(T), inherit).ToArray(x => (T)x) ?? Array.Empty<T>();
-        }
+        public static T[] Attributes<T>(this MemberInfo provider, bool inherit = true) where T : Attribute => provider?.GetCustomAttributes(typeof(T), inherit).ToArray(x => (T)x) ?? Array.Empty<T>();
 
         /// <summary>
         /// Calls a method on an object
@@ -108,8 +105,8 @@ namespace BigBook
             }
 
             var ObjectType = inputObject.GetType();
-            Type[] MethodInputTypes = new Type[inputVariables.Length];
-            for (int x = 0; x < inputVariables.Length; ++x)
+            var MethodInputTypes = new Type[inputVariables.Length];
+            for (var x = 0; x < inputVariables.Length; ++x)
             {
                 MethodInputTypes[x] = inputVariables[x].GetType();
             }
@@ -154,8 +151,8 @@ namespace BigBook
             }
 
             var ObjectType = inputObject.GetType();
-            Type[] MethodInputTypes = new Type[inputVariables.Length];
-            for (int x = 0; x < inputVariables.Length; ++x)
+            var MethodInputTypes = new Type[inputVariables.Length];
+            for (var x = 0; x < inputVariables.Length; ++x)
             {
                 MethodInputTypes[x] = inputVariables[x].GetType();
             }
@@ -202,8 +199,8 @@ namespace BigBook
             }
 
             var ObjectType = inputObject.GetType();
-            Type[] MethodInputTypes = new Type[inputVariables.Length];
-            for (int x = 0; x < inputVariables.Length; ++x)
+            var MethodInputTypes = new Type[inputVariables.Length];
+            for (var x = 0; x < inputVariables.Length; ++x)
             {
                 MethodInputTypes[x] = inputVariables[x].GetType();
             }
@@ -251,8 +248,8 @@ namespace BigBook
             }
 
             var ObjectType = inputObject.GetType();
-            Type[] MethodInputTypes = new Type[inputVariables.Length];
-            for (int x = 0; x < inputVariables.Length; ++x)
+            var MethodInputTypes = new Type[inputVariables.Length];
+            for (var x = 0; x < inputVariables.Length; ++x)
             {
                 MethodInputTypes[x] = inputVariables[x].GetType();
             }
@@ -303,10 +300,7 @@ namespace BigBook
         /// <param name="type">Type to create an instance of</param>
         /// <param name="args">Arguments sent into the constructor</param>
         /// <returns>The newly created instance of the type</returns>
-        public static ClassType Create<ClassType>(this Type type, params object[] args)
-        {
-            return type == null ? default(ClassType) : (ClassType)type?.Create(args);
-        }
+        public static ClassType Create<ClassType>(this Type type, params object[] args) => type == null ? default(ClassType) : (ClassType)type?.Create(args);
 
         /// <summary>
         /// Creates an instance of the type
@@ -314,10 +308,7 @@ namespace BigBook
         /// <param name="type">Type to create an instance of</param>
         /// <param name="args">Arguments sent into the constructor</param>
         /// <returns>The newly created instance of the type</returns>
-        public static object Create(this Type type, params object[] args)
-        {
-            return type == null ? null : Activator.CreateInstance(type, args);
-        }
+        public static object Create(this Type type, params object[] args) => type == null ? null : Activator.CreateInstance(type, args);
 
         /// <summary>
         /// Creates an instance of the types and casts it to the specified type
@@ -365,7 +356,7 @@ namespace BigBook
         /// <returns>The element type if it is an IEnumerable, otherwise the type sent in.</returns>
         public static Type GetIEnumerableElementType(this Type type)
         {
-            Type IEnum = FindIEnumerableElementType(type);
+            var IEnum = FindIEnumerableElementType(type);
 
             return IEnum == null ? type : IEnum.GetGenericArguments()[0];
         }
@@ -392,7 +383,7 @@ namespace BigBook
                                     return false;
                                 }
 
-                                for (int y = 0; y < MethodInputTypes.Length; ++y)
+                                for (var y = 0; y < MethodInputTypes.Length; ++y)
                                 {
                                     if (MethodInputTypes[y] != TempParameters[y].ParameterType)
                                     {
@@ -430,10 +421,10 @@ namespace BigBook
                     Output
                         .Append(objectType.Name, 0, objectType.Name.IndexOf("`", StringComparison.OrdinalIgnoreCase))
                         .Append("<");
-                    string Seperator = "";
+                    var Seperator = "";
                     for (int x = 0, GenericTypesLength = GenericTypes.Length; x < GenericTypesLength; x++)
                     {
-                        Type GenericType = GenericTypes[x];
+                        var GenericType = GenericTypes[x];
                         Output.Append(Seperator).Append(GenericType.GetName());
                         Seperator = ",";
                     }
@@ -468,7 +459,7 @@ namespace BigBook
                 if (Result != null || !type.IsInterface)
                     return Result;
                 var Interfaces = type.GetInterfaces();
-                for (int x = 0; x < Interfaces.Length; ++x)
+                for (var x = 0; x < Interfaces.Length; ++x)
                 {
                     Result = Interfaces[x].GetProperty(name);
                     if (Result != null)
@@ -491,7 +482,7 @@ namespace BigBook
             if (Result != null || !type.IsInterface)
                 return Result;
             var Interfaces = TypeCacheFor<TObject>.Interfaces;
-            for (int x = 0; x < Interfaces.Length; ++x)
+            for (var x = 0; x < Interfaces.Length; ++x)
             {
                 Result = Interfaces[x].GetProperty(name, false);
                 if (Result != null)
@@ -518,10 +509,7 @@ namespace BigBook
         /// <param name="inputObject">Object</param>
         /// <param name="type">Type</param>
         /// <returns>True if it is, false otherwise</returns>
-        public static bool Is(this object inputObject, Type type)
-        {
-            return inputObject?.GetType().Is(type) == true;
-        }
+        public static bool Is(this object inputObject, Type type) => inputObject?.GetType().Is(type) == true;
 
         /// <summary>
         /// Determines if an object is of a specific type
@@ -529,10 +517,7 @@ namespace BigBook
         /// <param name="objectType">Object type</param>
         /// <param name="type">Type</param>
         /// <returns>True if it is, false otherwise</returns>
-        public static bool Is(this Type objectType, Type type)
-        {
-            return type?.IsAssignableFrom(objectType) == true;
-        }
+        public static bool Is(this Type objectType, Type type) => type?.IsAssignableFrom(objectType) == true;
 
         /// <summary>
         /// Determines if an object is of a specific type
@@ -540,10 +525,7 @@ namespace BigBook
         /// <param name="inputObject">Object</param>
         /// <typeparam name="BaseObjectType">Base object type</typeparam>
         /// <returns>True if it is, false otherwise</returns>
-        public static bool Is<BaseObjectType>(this object inputObject)
-        {
-            return inputObject is BaseObjectType;
-        }
+        public static bool Is<BaseObjectType>(this object inputObject) => inputObject is BaseObjectType;
 
         /// <summary>
         /// Determines if an object is of a specific type
@@ -551,10 +533,7 @@ namespace BigBook
         /// <param name="objectType">Object type</param>
         /// <typeparam name="BaseObjectType">Base object type</typeparam>
         /// <returns>True if it is, false otherwise</returns>
-        public static bool Is<BaseObjectType>(this Type objectType)
-        {
-            return objectType?.Is(typeof(BaseObjectType)) == true;
-        }
+        public static bool Is<BaseObjectType>(this Type objectType) => objectType?.Is(typeof(BaseObjectType)) == true;
 
         /// <summary>
         /// Determines whether this instance is debug.
@@ -592,7 +571,7 @@ namespace BigBook
             var TempProperties = ObjectType.GetProperties();
             for (int x = 0, maxLength = TempProperties.Length; x < maxLength; x++)
             {
-                PropertyInfo TempProperty = TempProperties[x];
+                var TempProperty = TempProperties[x];
                 if (TempProperty.CanRead
                         && TempProperty.CanWrite
                         && simpleTypesOnly
@@ -610,7 +589,7 @@ namespace BigBook
             var TempFields = ObjectType.GetFields();
             for (int x = 0, TempFieldsLength = TempFields.Length; x < TempFieldsLength; x++)
             {
-                FieldInfo Field = TempFields[x];
+                var Field = TempFields[x];
                 if (simpleTypesOnly && Field.IsPublic)
                 {
                     Field.SetValue(ClassInstance, Field.GetValue(inputObject));
@@ -634,10 +613,7 @@ namespace BigBook
         /// </param>
         /// <returns>The list of types that are marked with an attribute</returns>
         public static IEnumerable<Type> MarkedWith<T>(this IEnumerable<Type> types, bool inherit = true)
-            where T : Attribute
-        {
-            return types?.Where(x => x.IsDefined(typeof(T), inherit) && !x.IsAbstract);
-        }
+            where T : Attribute => types?.Where(x => x.IsDefined(typeof(T), inherit) && !x.IsAbstract);
 
         /// <summary>
         /// Returns an instance of all classes that it finds within an assembly that are of the
@@ -685,10 +661,7 @@ namespace BigBook
         /// <param name="inputObject">The object to get the property of</param>
         /// <param name="property">The property to get</param>
         /// <returns>Returns the property's value</returns>
-        public static object Property(this object inputObject, PropertyInfo property)
-        {
-            return inputObject == null || property == null ? null : property.GetValue(inputObject, null);
-        }
+        public static object Property(this object inputObject, PropertyInfo property) => inputObject == null || property == null ? null : property.GetValue(inputObject, null);
 
         /// <summary>
         /// Gets the value of property
@@ -704,10 +677,10 @@ namespace BigBook
             }
 
             var Properties = property.Split(new string[] { "." }, StringSplitOptions.None);
-            object TempObject = inputObject;
+            var TempObject = inputObject;
             var TempObjectType = TempObject.GetType();
             PropertyInfo DestinationProperty = null;
-            for (int x = 0; x < Properties.Length - 1; ++x)
+            for (var x = 0; x < Properties.Length - 1; ++x)
             {
                 DestinationProperty = TempObjectType.GetProperty(Properties[x], true);
                 TempObjectType = DestinationProperty.PropertyType;
@@ -769,10 +742,10 @@ namespace BigBook
             }
 
             var Properties = property.Split(new string[] { "." }, StringSplitOptions.None);
-            object TempObject = inputObject;
+            var TempObject = inputObject;
             var TempObjectType = TempObject.GetType();
             PropertyInfo DestinationProperty = null;
-            for (int x = 0; x < Properties.Length - 1; ++x)
+            for (var x = 0; x < Properties.Length - 1; ++x)
             {
                 DestinationProperty = TempObjectType.GetProperty(Properties[x], true);
                 TempObjectType = DestinationProperty.PropertyType;
@@ -832,10 +805,7 @@ namespace BigBook
         /// <typeparam name="ClassType">Class type</typeparam>
         /// <param name="property">Property</param>
         /// <returns>A lambda expression that calls a specific property's getter function</returns>
-        public static Expression<Func<ClassType, object>> PropertyGetter<ClassType>(this PropertyInfo property)
-        {
-            return property.PropertyGetter<ClassType, object>();
-        }
+        public static Expression<Func<ClassType, object>> PropertyGetter<ClassType>(this PropertyInfo property) => property.PropertyGetter<ClassType, object>();
 
         /// <summary>
         /// Gets a property name
@@ -904,7 +874,7 @@ namespace BigBook
             if (SplitName.Length > 1)
             {
                 PropertyGet = Expression.Property(ObjectInstance, PropertyInfo);
-                for (int x = 1; x < SplitName.Length - 1; ++x)
+                for (var x = 1; x < SplitName.Length - 1; ++x)
                 {
                     PropertyInfo = PropertyInfo.PropertyType.GetProperty(SplitName[x], true);
                     if (PropertyInfo == null)
@@ -965,10 +935,7 @@ namespace BigBook
         /// which then has a Prop2 on it, which in turn has a Prop3 on it.)
         /// </param>
         /// <returns>The type of the property specified or null if it can not be reached.</returns>
-        public static Type PropertyType(this object inputObject, string propertyPath)
-        {
-            return inputObject == null || string.IsNullOrEmpty(propertyPath) ? null : inputObject.GetType().PropertyType(propertyPath);
-        }
+        public static Type PropertyType(this object inputObject, string propertyPath) => inputObject == null || string.IsNullOrEmpty(propertyPath) ? null : inputObject.GetType().PropertyType(propertyPath);
 
         /// <summary>
         /// Gets a property's type
@@ -988,7 +955,7 @@ namespace BigBook
 
             var SourceProperties = propertyPath.Split(new string[] { "." }, StringSplitOptions.None);
             PropertyInfo PropertyInfo = null;
-            for (int x = 0; x < SourceProperties.Length; ++x)
+            for (var x = 0; x < SourceProperties.Length; ++x)
             {
                 PropertyInfo = objectType.GetProperty(SourceProperties[x], true);
                 objectType = PropertyInfo.PropertyType;
@@ -1011,7 +978,7 @@ namespace BigBook
 
             if ((infoType & VersionInfo.ShortVersion) != 0)
             {
-                Version Version = assembly.GetName().Version;
+                var Version = assembly.GetName().Version;
                 return Version.Major + "." + Version.Minor;
             }
             else
@@ -1076,7 +1043,7 @@ namespace BigBook
             var TempProperties = ObjectType.GetProperties();
             for (int x = 0, TempPropertiesLength = TempProperties.Length; x < TempPropertiesLength; x++)
             {
-                PropertyInfo TempProperty = TempProperties[x];
+                var TempProperty = TempProperties[x];
                 TempValue.Append(htmlOutput ? "<tr><td>" : Environment.NewLine).Append(TempProperty.Name).Append(htmlOutput ? "</td><td>" : "\t\t\t\t");
                 var Parameters = TempProperty.GetIndexParameters();
                 if (TempProperty.CanRead && Parameters.Length == 0)
@@ -1113,7 +1080,7 @@ namespace BigBook
             var Properties = objectType.GetProperties();
             for (int x = 0, PropertiesLength = Properties.Length; x < PropertiesLength; x++)
             {
-                PropertyInfo TempProperty = Properties[x];
+                var TempProperty = Properties[x];
                 TempValue.Append(htmlOutput ? "<tr><td>" : Environment.NewLine).Append(TempProperty.Name).Append(htmlOutput ? "</td><td>" : "\t\t\t\t");
                 if (TempProperty.CanRead && TempProperty.GetIndexParameters().Length == 0)
                 {
@@ -1136,10 +1103,7 @@ namespace BigBook
         /// <param name="assembly">Assembly to check</param>
         /// <typeparam name="BaseType">Class type to search for</typeparam>
         /// <returns>List of types that use the interface</returns>
-        public static IEnumerable<Type> Types<BaseType>(this Assembly assembly)
-        {
-            return assembly?.Types(typeof(BaseType)) ?? new List<Type>();
-        }
+        public static IEnumerable<Type> Types<BaseType>(this Assembly assembly) => assembly?.Types(typeof(BaseType)) ?? new List<Type>();
 
         /// <summary>
         /// Gets a list of types based on an interface
@@ -1167,10 +1131,7 @@ namespace BigBook
         /// <param name="assemblies">Assemblies to check</param>
         /// <typeparam name="BaseType">Class type to search for</typeparam>
         /// <returns>List of types that use the interface</returns>
-        public static IEnumerable<Type> Types<BaseType>(this IEnumerable<Assembly> assemblies)
-        {
-            return assemblies?.Any() != true ? new List<Type>() : assemblies.Types(typeof(BaseType));
-        }
+        public static IEnumerable<Type> Types<BaseType>(this IEnumerable<Assembly> assemblies) => assemblies?.Any() != true ? new List<Type>() : assemblies.Types(typeof(BaseType));
 
         /// <summary>
         /// Gets a list of types based on an interface
@@ -1235,11 +1196,11 @@ namespace BigBook
             var TypeInfo = type;
             if (TypeInfo.IsGenericType)
             {
-                int maxLength = type.GetGenericArguments().Length;
-                for (int x = 0; x < maxLength; ++x)
+                var maxLength = type.GetGenericArguments().Length;
+                for (var x = 0; x < maxLength; ++x)
                 {
-                    Type Arg = type.GetGenericArguments()[x];
-                    Type IEnum = typeof(IEnumerable<>).MakeGenericType(Arg);
+                    var Arg = type.GetGenericArguments()[x];
+                    var IEnum = typeof(IEnumerable<>).MakeGenericType(Arg);
 
                     if (IEnum.IsAssignableFrom(type))
                     {
@@ -1248,14 +1209,14 @@ namespace BigBook
                 }
             }
 
-            Type[] Interfaces = type.GetInterfaces();
+            var Interfaces = type.GetInterfaces();
             if (Interfaces?.Length > 0)
             {
                 var InterfacesLength = Interfaces.Length;
-                for (int x = 0; x < InterfacesLength; ++x)
+                for (var x = 0; x < InterfacesLength; ++x)
                 {
-                    Type InterfaceUsed = Interfaces[x];
-                    Type IEnum = FindIEnumerableElementType(InterfaceUsed);
+                    var InterfaceUsed = Interfaces[x];
+                    var IEnum = FindIEnumerableElementType(InterfaceUsed);
 
                     if (IEnum != null)
                     {

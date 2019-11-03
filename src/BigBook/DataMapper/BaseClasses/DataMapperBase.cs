@@ -49,10 +49,7 @@ namespace BigBook.DataMapper.BaseClasses
         /// <typeparam name="Left">Left type</typeparam>
         /// <typeparam name="Right">Right type</typeparam>
         /// <returns>A mapping object for the two types specified</returns>
-        public ITypeMapping<Left, Right> Map<Left, Right>()
-        {
-            return (ITypeMapping<Left, Right>)Map(typeof(Left), typeof(Right));
-        }
+        public ITypeMapping<Left, Right> Map<Left, Right>() => (ITypeMapping<Left, Right>)Map(typeof(Left), typeof(Right));
 
         /// <summary>
         /// Adds or returns a mapping between two types
@@ -63,7 +60,7 @@ namespace BigBook.DataMapper.BaseClasses
         public ITypeMapping Map(Type left, Type right)
         {
             var Key = new Tuple<Type, Type>(left, right);
-            if (Mappings.TryGetValue(Key, out ITypeMapping ReturnValue))
+            if (Mappings.TryGetValue(Key, out var ReturnValue))
                 return ReturnValue;
             var Key2 = new Tuple<Type, Type>(right, left);
             if (Mappings.TryGetValue(Key2, out ReturnValue))
@@ -83,10 +80,7 @@ namespace BigBook.DataMapper.BaseClasses
         /// The name of the data mapper
         /// </summary>
         /// <returns>The name of the data mapper</returns>
-        public override string ToString()
-        {
-            return Name;
-        }
+        public override string ToString() => Name;
 
         /// <summary>
         /// Used internally to create type mappings

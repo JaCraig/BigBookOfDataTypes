@@ -91,10 +91,7 @@ namespace BigBook.Tests.ExtensionMethods
         }
 
         [Fact]
-        public void FormatString2()
-        {
-            Assert.Equal("<A>This is a test</A><B>10</B><C>1.5</C>", "<A>{A}</A><B>{B}</B><C>{C}</C>".ToString(new StringFormatClass()));
-        }
+        public void FormatString2() => Assert.Equal("<A>This is a test</A><B>10</B><C>1.5</C>", "<A>{A}</A><B>{B}</B><C>{C}</C>".ToString(new StringFormatClass()));
 
         [Fact]
         public void FormatString3()
@@ -114,10 +111,7 @@ namespace BigBook.Tests.ExtensionMethods
         }
 
         [Fact]
-        public void IsCreditCard()
-        {
-            Assert.True("4408041234567893".Is(StringCompare.CreditCard));
-        }
+        public void IsCreditCard() => Assert.True("4408041234567893".Is(StringCompare.CreditCard));
 
         [Fact]
         public void IsUnicode()
@@ -162,16 +156,10 @@ namespace BigBook.Tests.ExtensionMethods
         }
 
         [Fact]
-        public void MaskLeft()
-        {
-            Assert.Equal("####551010", "5555551010".MaskLeft());
-        }
+        public void MaskLeft() => Assert.Equal("####551010", "5555551010".MaskLeft());
 
         [Fact]
-        public void MaskRight()
-        {
-            Assert.Equal("5555######", "5555551010".MaskRight());
-        }
+        public void MaskRight() => Assert.Equal("5555######", "5555551010".MaskRight());
 
         [Fact]
         public void NumberTimesOccurs()
@@ -188,10 +176,7 @@ namespace BigBook.Tests.ExtensionMethods
         }
 
         [Fact]
-        public void RegexFormat()
-        {
-            Assert.Equal("(555) 555-1010", "5555551010".ToString(@"(\d{3})(\d{3})(\d{4})", "($1) $2-$3"));
-        }
+        public void RegexFormat() => Assert.Equal("(555) 555-1010", "5555551010".ToString(@"(\d{3})(\d{3})(\d{4})", "($1) $2-$3"));
 
         [Fact]
         public void RemoveDiacritics()
@@ -207,10 +192,7 @@ namespace BigBook.Tests.ExtensionMethods
         }
 
         [Fact]
-        public void RemoveExtraSpaces()
-        {
-            Assert.Equal("This is a test.", "This  is      a test.".Replace(StringFilter.ExtraSpaces, " "));
-        }
+        public void RemoveExtraSpaces() => Assert.Equal("This is a test.", "This  is      a test.".Replace(StringFilter.ExtraSpaces, " "));
 
         [Fact]
         public void Reverse()
@@ -245,16 +227,10 @@ namespace BigBook.Tests.ExtensionMethods
         }
 
         [Fact]
-        public void StripLeft()
-        {
-            Assert.Equal("1010", "5555551010".StripLeft("5432"));
-        }
+        public void StripLeft() => Assert.Equal("1010", "5555551010".StripLeft("5432"));
 
         [Fact]
-        public void StripRight()
-        {
-            Assert.Equal("555555", "5555551010".StripRight("10"));
-        }
+        public void StripRight() => Assert.Equal("555555", "5555551010".StripRight("10"));
 
         [Fact]
         public void ToCamelCase()

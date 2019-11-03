@@ -94,7 +94,7 @@ namespace BigBook.Tests.ExtensionMethods
             var TestObject = new int[] { 1, 2, 3, 4, 5, 6 }.ToList();
             TestObject = TestObject.Remove((x) => x % 2 == 0).ToList();
             Assert.Equal(3, TestObject.Count);
-            foreach (int Item in TestObject)
+            foreach (var Item in TestObject)
             {
                 Assert.False(Item % 2 == 0);
             }
@@ -106,7 +106,7 @@ namespace BigBook.Tests.ExtensionMethods
             int[] TestObject = { 1, 2, 3, 4, 5, 6 };
             TestObject = TestObject.Remove((x) => x % 2 == 0).ToArray();
             Assert.Equal(3, TestObject.Length);
-            foreach (int Item in TestObject)
+            foreach (var Item in TestObject)
             {
                 Assert.False(Item % 2 == 0);
             }

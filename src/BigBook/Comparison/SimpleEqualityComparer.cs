@@ -54,19 +54,13 @@ namespace BigBook.Comparison
         /// <param name="x">Object 1</param>
         /// <param name="y">Object 2</param>
         /// <returns>True if they are, false otherwise</returns>
-        public bool Equals(T x, T y)
-        {
-            return ComparisonFunction(x, y);
-        }
+        public bool Equals(T x, T y) => ComparisonFunction(x, y);
 
         /// <summary>
         /// Get hash code
         /// </summary>
         /// <param name="obj">Object to get the hash code of</param>
         /// <returns>The object's hash code</returns>
-        public int GetHashCode(T obj)
-        {
-            return HashFunction(obj);
-        }
+        public int GetHashCode(T obj) => HashFunction(obj);
     }
 }

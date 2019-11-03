@@ -23,7 +23,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Dynamic;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 
 namespace BigBook
@@ -101,7 +100,7 @@ namespace BigBook
                 {
                     base.Keys
                 };
-                foreach (PropertyInfo Property in TypeCacheFor<T>.Properties.Where(x => x.DeclaringType != typeof(Dynamo<T>) && x.DeclaringType != typeof(Dynamo)))
+                foreach (var Property in TypeCacheFor<T>.Properties.Where(x => x.DeclaringType != typeof(Dynamo<T>) && x.DeclaringType != typeof(Dynamo)))
                 {
                     Temp.Add(Property.Name);
                 }
@@ -117,7 +116,7 @@ namespace BigBook
             get
             {
                 var Temp = new List<object>();
-                foreach (string Key in Keys)
+                foreach (var Key in Keys)
                 {
                     Temp.Add(GetValue(Key, typeof(object)));
                 }
@@ -140,11 +139,11 @@ namespace BigBook
 
             if (!ChildValues.ContainsKey(name))
             {
-                Type ObjectType = GetType();
-                PropertyInfo Property = ObjectType.GetProperty(name);
+                var ObjectType = GetType();
+                var Property = ObjectType.GetProperty(name);
                 if (Property != null)
                 {
-                    Func<T, object> Temp = Property.PropertyGetter<T>().Compile();
+                    var Temp = Property.PropertyGetter<T>().Compile();
                     ChildValues.AddOrUpdate(name, _ => () => Temp((T)this), (__, _) => () => Temp((T)this));
                 }
                 else
@@ -162,8 +161,8 @@ namespace BigBook
         /// <param name="value">Value associated with the key</param>
         protected override void SetValue(string key, object value)
         {
-            Type ObjectType = GetType();
-            PropertyInfo Property = ObjectType.GetProperty(key);
+            var ObjectType = GetType();
+            var Property = ObjectType.GetProperty(key);
             if (Property?.CanWrite == true)
             {
                 RaisePropertyChanged(key, value);
@@ -204,7 +203,7 @@ namespace BigBook
                 return;
             }
 
-            Type ItemType = item.GetType();
+            var ItemType = item.GetType();
             var DictItem = item as IDictionary<string, object>;
             if (item is string || ItemType.IsValueType)
             {
@@ -307,14 +306,8 @@ namespace BigBook
         /// <returns>The object associated with the key</returns>
         public object this[string key]
         {
-            get
-            {
-                return GetValue(key, typeof(object));
-            }
-            set
-            {
-                SetValue(key, value);
-            }
+            get => GetValue(key, typeof(object));
+            set => SetValue(key, value);
         }
 
         /// <summary>
@@ -372,19 +365,13 @@ namespace BigBook
         /// </summary>
         /// <param name="key">key</param>
         /// <param name="value">value</param>
-        public void Add(string key, object value)
-        {
-            SetValue(key, value);
-        }
+        public void Add(string key, object value) => SetValue(key, value);
 
         /// <summary>
         /// Adds a key/value pair
         /// </summary>
         /// <param name="item">Item to add</param>
-        public void Add(KeyValuePair<string, object> item)
-        {
-            SetValue(item.Key, item.Value);
-        }
+        public void Add(KeyValuePair<string, object> item) => SetValue(item.Key, item.Value);
 
         /// <summary>
         /// Clears the key/value pairs
@@ -400,20 +387,14 @@ namespace BigBook
         /// </summary>
         /// <param name="item">Item to check</param>
         /// <returns>True if it is found, false otherwise</returns>
-        public bool Contains(KeyValuePair<string, object> item)
-        {
-            return InternalValues.Contains(item);
-        }
+        public bool Contains(KeyValuePair<string, object> item) => InternalValues.Contains(item);
 
         /// <summary>
         /// Determines if the object contains a key
         /// </summary>
         /// <param name="key">Key to check</param>
         /// <returns>True if it is found, false otherwise</returns>
-        public bool ContainsKey(string key)
-        {
-            return InternalValues.ContainsKey(key);
-        }
+        public bool ContainsKey(string key) => InternalValues.ContainsKey(key);
 
         /// <summary>
         /// Copies the properties from an item
@@ -433,7 +414,7 @@ namespace BigBook
             }
             else if (DictItem != null)
             {
-                foreach (string Key in DictItem.Keys)
+                foreach (var Key in DictItem.Keys)
                 {
                     InternalValues.AddOrUpdate(Key, _ => DictItem[Key], (_, __) => DictItem[Key]);
                 }
@@ -455,10 +436,7 @@ namespace BigBook
         /// </summary>
         /// <param name="array">Array to copy to</param>
         /// <param name="arrayIndex">Array index</param>
-        public void CopyTo(KeyValuePair<string, object>[] array, int arrayIndex)
-        {
-            InternalValues.ToArray().CopyTo(array, arrayIndex);
-        }
+        public void CopyTo(KeyValuePair<string, object>[] array, int arrayIndex) => InternalValues.ToArray().CopyTo(array, arrayIndex);
 
         /// <summary>
         /// Copies data from here to another object
@@ -495,10 +473,7 @@ namespace BigBook
         /// Gets the dynamic member names
         /// </summary>
         /// <returns>The keys used internally</returns>
-        public override IEnumerable<string> GetDynamicMemberNames()
-        {
-            return Keys;
-        }
+        public override IEnumerable<string> GetDynamicMemberNames() => Keys;
 
         /// <summary>
         /// Gets the enumerator for the object
@@ -506,7 +481,7 @@ namespace BigBook
         /// <returns>The enumerator</returns>
         public IEnumerator<KeyValuePair<string, object>> GetEnumerator()
         {
-            foreach (string Key in Keys)
+            foreach (var Key in Keys)
             {
                 yield return new KeyValuePair<string, object>(Key, this[Key]);
             }
@@ -516,10 +491,7 @@ namespace BigBook
         /// Gets the enumerator for the object
         /// </summary>
         /// <returns>The enumerator</returns>
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return InternalValues.GetEnumerator();
-        }
+        IEnumerator IEnumerable.GetEnumerator() => InternalValues.GetEnumerator();
 
         /// <summary>
         /// Gets the hash code
@@ -527,12 +499,12 @@ namespace BigBook
         /// <returns>The hash code</returns>
         public override int GetHashCode()
         {
-            int Value = 1;
-            foreach (string Key in Keys)
+            var Value = 1;
+            foreach (var Key in Keys)
             {
                 unchecked
                 {
-                    object TempValue = GetValue(Key, typeof(object));
+                    var TempValue = GetValue(Key, typeof(object));
                     if (TempValue?.GetType().Is<Delegate>() == false)
                     {
                         Value = (Value * TempValue.GetHashCode()) % int.MaxValue;
@@ -546,10 +518,7 @@ namespace BigBook
         /// Not used
         /// </summary>
         /// <returns>Null</returns>
-        public System.Xml.Schema.XmlSchema GetSchema()
-        {
-            return null;
-        }
+        public System.Xml.Schema.XmlSchema GetSchema() => null;
 
         /// <summary>
         /// Reads the data from an XML doc
@@ -572,7 +541,7 @@ namespace BigBook
         public bool Remove(string key)
         {
             RaisePropertyChanged(key, null);
-            return InternalValues.TryRemove(key, out object TempObject);
+            return InternalValues.TryRemove(key, out var TempObject);
         }
 
         /// <summary>
@@ -583,7 +552,7 @@ namespace BigBook
         public bool Remove(KeyValuePair<string, object> item)
         {
             RaisePropertyChanged(item.Key, null);
-            return InternalValues.TryRemove(item.Key, out object TempObject);
+            return InternalValues.TryRemove(item.Key, out var TempObject);
         }
 
         /// <summary>
@@ -600,7 +569,7 @@ namespace BigBook
 
             var ReturnValue = new Dynamo();
             ReturnValue.Clear();
-            foreach (string Key in keys)
+            foreach (var Key in keys)
             {
                 ReturnValue.Add(Key, this[Key]);
             }
@@ -612,10 +581,7 @@ namespace BigBook
         /// </summary>
         /// <typeparam name="T">Object type</typeparam>
         /// <returns>The object converted to the type specified</returns>
-        public T To<T>()
-        {
-            return (T)To(typeof(T));
-        }
+        public T To<T>() => (T)To(typeof(T));
 
         /// <summary>
         /// Converts the object to the type specified
@@ -624,7 +590,7 @@ namespace BigBook
         /// <returns>The object converted to the type specified</returns>
         public object To(Type ObjectType)
         {
-            object Result = AOPManager.Create(ObjectType);
+            var Result = AOPManager.Create(ObjectType);
             DataMapper.Map(GetType(), ObjectType)
                       .AutoMap()
                       .Copy(this, Result);
@@ -639,9 +605,9 @@ namespace BigBook
         {
             var Builder = new StringBuilder();
             Builder.AppendLineFormat("{0} this", GetType().Name);
-            foreach (string Key in Keys.OrderBy(x => x))
+            foreach (var Key in Keys.OrderBy(x => x))
             {
-                object Item = GetValue(Key, typeof(object));
+                var Item = GetValue(Key, typeof(object));
                 if (Item != null)
                 {
                     Builder.AppendLineFormat("\t{0} {1} = {2}", Item.GetType().GetName(), Key, Item.ToString());
@@ -684,10 +650,7 @@ namespace BigBook
         /// <param name="key">Key to get</param>
         /// <param name="value">Value object</param>
         /// <returns>True if it the key is found, false otherwise</returns>
-        public bool TryGetValue(string key, out object value)
-        {
-            return InternalValues.TryGetValue(key, out value);
-        }
+        public bool TryGetValue(string key, out object value) => InternalValues.TryGetValue(key, out value);
 
         /// <summary>
         /// Attempts to invoke a function
@@ -696,10 +659,7 @@ namespace BigBook
         /// <param name="args">Function args</param>
         /// <param name="result">Result</param>
         /// <returns>True if it invokes, false otherwise</returns>
-        public override bool TryInvoke(InvokeBinder binder, object[] args, out object result)
-        {
-            return base.TryInvoke(binder, args, out result);
-        }
+        public override bool TryInvoke(InvokeBinder binder, object[] args, out object result) => base.TryInvoke(binder, args, out result);
 
         /// <summary>
         /// Attempts to invoke a member
@@ -708,10 +668,7 @@ namespace BigBook
         /// <param name="args">Function args</param>
         /// <param name="result">Result</param>
         /// <returns>True if it invokes, false otherwise</returns>
-        public override bool TryInvokeMember(InvokeMemberBinder binder, object[] args, out object result)
-        {
-            return base.TryInvokeMember(binder, args, out result);
-        }
+        public override bool TryInvokeMember(InvokeMemberBinder binder, object[] args, out object result) => base.TryInvokeMember(binder, args, out result);
 
         /// <summary>
         /// Attempts to set the member
@@ -731,7 +688,7 @@ namespace BigBook
         /// <param name="writer">XML writer</param>
         public virtual void WriteXml(System.Xml.XmlWriter writer)
         {
-            foreach (string Key in Keys)
+            foreach (var Key in Keys)
             {
                 writer.WriteElementString(Key, (string)GetValue(Key, typeof(string)));
             }
@@ -745,7 +702,7 @@ namespace BigBook
         /// <returns>The returned value</returns>
         protected virtual object GetValue(string name, Type returnType)
         {
-            object Value = RaiseGetValueStart(name);
+            var Value = RaiseGetValueStart(name);
             if (Value != null)
             {
                 return Value;
@@ -755,13 +712,13 @@ namespace BigBook
             {
                 return Value.To(returnType, null);
             }
-            if (!ChildValues.TryGetValue(name, out Func<object> ChildValueMethod))
+            if (!ChildValues.TryGetValue(name, out var ChildValueMethod))
             {
-                Type ObjectType = GetType();
-                PropertyInfo Property = ObjectType.GetProperty(name);
+                var ObjectType = GetType();
+                var Property = ObjectType.GetProperty(name);
                 if (Property != null)
                 {
-                    Func<Dynamo, object> Temp = Property.PropertyGetter<Dynamo>().Compile();
+                    var Temp = Property.PropertyGetter<Dynamo>().Compile();
                     ChildValues.AddOrUpdate(name, _ => () => Temp(this), (__, _) => () => Temp(this));
                 }
                 else
@@ -769,7 +726,7 @@ namespace BigBook
                     ChildValues.AddOrUpdate(name, _ => () => null, (__, _) => null);
                 }
             }
-            object ReturnValue = ChildValueMethod().To(returnType, null);
+            var ReturnValue = ChildValueMethod().To(returnType, null);
             Value = RaiseGetValueEnd(name, ReturnValue);
             return Value ?? ReturnValue;
         }

@@ -16,9 +16,9 @@ namespace BigBook.Tests.ExtensionMethods
             Test.Add("C", 3);
             Test.Add("A", 1);
             Test.CopyTo(Test2);
-            string Value = "";
-            int Value2 = 0;
-            foreach (string Key in Test2.Keys.OrderBy(x => x))
+            var Value = "";
+            var Value2 = 0;
+            foreach (var Key in Test2.Keys.OrderBy(x => x))
             {
                 Value += Key;
                 Value2 += Test2[Key];
@@ -68,8 +68,8 @@ namespace BigBook.Tests.ExtensionMethods
                 { "A", 1 }
             };
             Test = Test.Sort(x => x.Value);
-            string Value = "";
-            foreach (string Key in Test.Keys)
+            var Value = "";
+            foreach (var Key in Test.Keys)
             {
                 Value += Test[Key].ToString();
             }
@@ -88,8 +88,8 @@ namespace BigBook.Tests.ExtensionMethods
                 { "A", 1 }
             };
             Test = Test.Sort();
-            string Value = "";
-            foreach (string Key in Test.Keys)
+            var Value = "";
+            foreach (var Key in Test.Keys)
             {
                 Value += Key;
             }

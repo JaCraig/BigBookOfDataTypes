@@ -105,10 +105,7 @@ namespace BigBook.IO
         /// <summary>
         /// Closes the reader, including the underlying stream.
         /// </summary>
-        public void Close()
-        {
-            Dispose();
-        }
+        public void Close() => Dispose();
 
         /// <summary>
         /// Disposes of the underlying stream.
@@ -157,9 +154,9 @@ namespace BigBook.IO
             index = index < 0 ? 0 : index;
             count = count < 0 ? 0 : count;
 
-            int read = 0;
-            bool firstTime = true;
-            byte[] byteBuffer = buffer;
+            var read = 0;
+            var firstTime = true;
+            var byteBuffer = buffer;
 
             if (byteBuffer.Length < count * minBytesPerChar)
             {
@@ -223,7 +220,7 @@ namespace BigBook.IO
             index = index < 0 ? 0 : index;
             count = count < 0 ? 0 : count;
 
-            int read = 0;
+            var read = 0;
             while (count > 0)
             {
                 var block = BaseStream.Read(buffer, index, count);
@@ -254,8 +251,8 @@ namespace BigBook.IO
                 throw new NullReferenceException("Base stream is currently null.");
             }
 
-            int ret = 0;
-            for (int shift = 0; shift < 35; shift += 7)
+            var ret = 0;
+            for (var shift = 0; shift < 35; shift += 7)
             {
                 var b = BaseStream.ReadByte();
                 if (b == -1)
@@ -286,8 +283,8 @@ namespace BigBook.IO
                 throw new NullReferenceException("Base stream is currently null.");
             }
 
-            int ret = 0;
-            for (int i = 0; i < 5; i++)
+            var ret = 0;
+            for (var i = 0; i < 5; i++)
             {
                 var b = BaseStream.ReadByte();
                 if (b == -1)
@@ -338,14 +335,14 @@ namespace BigBook.IO
             }
 
             count = count < 0 ? 0 : count;
-            byte[] ret = new byte[count];
-            int index = 0;
+            var ret = new byte[count];
+            var index = 0;
             while (index < count)
             {
                 var read = BaseStream.Read(ret, index, count - index);
                 if (read == 0)
                 {
-                    byte[] copy = new byte[index];
+                    var copy = new byte[index];
                     Buffer.BlockCopy(ret, 0, copy, 0, index);
                     return copy;
                 }
@@ -364,7 +361,7 @@ namespace BigBook.IO
         /// <returns>The bytes read</returns>
         public byte[] ReadBytesOrThrow(int count)
         {
-            byte[] ret = new byte[count];
+            var ret = new byte[count];
             ReadInternal(ret, count);
             return ret;
         }
@@ -455,7 +452,7 @@ namespace BigBook.IO
         {
             var bytesToRead = Read7BitEncodedInt();
 
-            byte[] data = new byte[bytesToRead];
+            var data = new byte[bytesToRead];
             ReadInternal(data, bytesToRead);
             return Encoding.GetString(data, 0, data.Length);
         }
@@ -521,7 +518,7 @@ namespace BigBook.IO
                 throw new NullReferenceException("Base stream is currently null.");
             }
 
-            int index = 0;
+            var index = 0;
             while (index < size)
             {
                 var read = BaseStream.Read(data, index, size - index);
@@ -554,7 +551,7 @@ namespace BigBook.IO
                 throw new NullReferenceException("Base stream is currently null.");
             }
 
-            int index = 0;
+            var index = 0;
             while (index < size)
             {
                 var read = BaseStream.Read(data, index, size - index);

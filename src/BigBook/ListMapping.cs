@@ -60,7 +60,7 @@ namespace BigBook
             get
             {
                 var Lists = new List<IEnumerable<T2>>();
-                foreach (T1 Key in Keys)
+                foreach (var Key in Keys)
                 {
                     Lists.Add(this[Key]);
                 }
@@ -81,8 +81,8 @@ namespace BigBook
         /// <returns>The list of values</returns>
         public IEnumerable<T2> this[T1 key]
         {
-            get { return Items.GetValue(key, new ConcurrentBag<T2>()); }
-            set { Items.SetValue(key, new ConcurrentBag<T2>(value)); }
+            get => Items.GetValue(key, new ConcurrentBag<T2>());
+            set => Items.SetValue(key, new ConcurrentBag<T2>(value));
         }
 
         /// <summary>
@@ -102,10 +102,7 @@ namespace BigBook
         /// Adds a key value pair
         /// </summary>
         /// <param name="item">Key value pair to add</param>
-        public void Add(KeyValuePair<T1, IEnumerable<T2>> item)
-        {
-            Add(item.Key, item.Value);
-        }
+        public void Add(KeyValuePair<T1, IEnumerable<T2>> item) => Add(item.Key, item.Value);
 
         /// <summary>
         /// Adds a list of items to the mapping
@@ -123,10 +120,7 @@ namespace BigBook
         /// <summary>
         /// Clears all items from the listing
         /// </summary>
-        public void Clear()
-        {
-            Items.Clear();
-        }
+        public void Clear() => Items.Clear();
 
         /// <summary>
         /// Does this contain the key value pairs?
@@ -190,20 +184,14 @@ namespace BigBook
         /// </summary>
         /// <param name="key">Key to check on</param>
         /// <returns>True if it exists, false otherwise</returns>
-        public bool ContainsKey(T1 key)
-        {
-            return Items.ContainsKey(key);
-        }
+        public bool ContainsKey(T1 key) => Items.ContainsKey(key);
 
         /// <summary>
         /// Not implemented
         /// </summary>
         /// <param name="array">Array to copy to</param>
         /// <param name="arrayIndex">array index</param>
-        public void CopyTo(KeyValuePair<T1, IEnumerable<T2>>[] array, int arrayIndex)
-        {
-            throw new NotImplementedException();
-        }
+        public void CopyTo(KeyValuePair<T1, IEnumerable<T2>>[] array, int arrayIndex) => throw new NotImplementedException();
 
         /// <summary>
         /// Gets the enumerator
@@ -211,7 +199,7 @@ namespace BigBook
         /// <returns>The enumerator for this object</returns>
         public IEnumerator<KeyValuePair<T1, IEnumerable<T2>>> GetEnumerator()
         {
-            foreach (T1 Key in Keys)
+            foreach (var Key in Keys)
             {
                 yield return new KeyValuePair<T1, IEnumerable<T2>>(Key, this[Key]);
             }
@@ -223,7 +211,7 @@ namespace BigBook
         /// <returns>The enumerator for this object</returns>
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
-            foreach (T1 Key in Keys)
+            foreach (var Key in Keys)
             {
                 yield return this[Key];
             }
@@ -252,7 +240,7 @@ namespace BigBook
                 return false;
             }
 
-            foreach (T2 Value in item.Value)
+            foreach (var Value in item.Value)
             {
                 if (!Remove(item.Key, Value))
                 {

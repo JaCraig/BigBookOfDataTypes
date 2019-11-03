@@ -133,7 +133,7 @@ namespace BigBook
                 throw new ArgumentNullException(nameof(fraction));
             }
 
-            return (decimal)fraction.Numerator / (decimal)fraction.Denominator;
+            return fraction.Numerator / (decimal)fraction.Denominator;
         }
 
         /// <summary>
@@ -148,7 +148,7 @@ namespace BigBook
                 throw new ArgumentNullException(nameof(fraction));
             }
 
-            return (double)fraction.Numerator / (double)fraction.Denominator;
+            return fraction.Numerator / (double)fraction.Denominator;
         }
 
         /// <summary>
@@ -163,7 +163,7 @@ namespace BigBook
                 throw new ArgumentNullException(nameof(fraction));
             }
 
-            return (float)fraction.Numerator / (float)fraction.Denominator;
+            return fraction.Numerator / (float)fraction.Denominator;
         }
 
         /// <summary>
@@ -249,8 +249,8 @@ namespace BigBook
                 throw new ArgumentNullException(nameof(second));
             }
 
-            var Value1 = new Fraction(first.Numerator * (int)second.Denominator, first.Denominator * second.Denominator);
-            var Value2 = new Fraction(second.Numerator * (int)first.Denominator, second.Denominator * first.Denominator);
+            var Value1 = new Fraction(first.Numerator * second.Denominator, first.Denominator * second.Denominator);
+            var Value2 = new Fraction(second.Numerator * first.Denominator, second.Denominator * first.Denominator);
             var Result = new Fraction(Value1.Numerator - Value2.Numerator, Value1.Denominator);
             Result.Reduce();
             return Result;
@@ -366,8 +366,8 @@ namespace BigBook
                 throw new ArgumentNullException(nameof(second));
             }
 
-            var Value1 = new Fraction(first.Numerator * (int)second.Denominator, first.Denominator * second.Denominator);
-            var Value2 = new Fraction(second.Numerator * (int)first.Denominator, second.Denominator * first.Denominator);
+            var Value1 = new Fraction(first.Numerator * second.Denominator, first.Denominator * second.Denominator);
+            var Value2 = new Fraction(second.Numerator * first.Denominator, second.Denominator * first.Denominator);
             var Result = new Fraction(Value1.Numerator + Value2.Numerator, Value1.Denominator);
             Result.Reduce();
             return Result;
@@ -427,19 +427,13 @@ namespace BigBook
         /// Gets the hash code of the fraction
         /// </summary>
         /// <returns>The hash code of the fraction</returns>
-        public override int GetHashCode()
-        {
-            return Numerator.GetHashCode() % Denominator.GetHashCode();
-        }
+        public override int GetHashCode() => Numerator.GetHashCode() % Denominator.GetHashCode();
 
         /// <summary>
         /// Returns the inverse of the fraction
         /// </summary>
         /// <returns>The inverse</returns>
-        public Fraction Inverse()
-        {
-            return new Fraction((int)Denominator, Numerator);
-        }
+        public Fraction Inverse() => new Fraction(Denominator, Numerator);
 
         /// <summary>
         /// Reduces the fraction (finds the greatest common denominator and divides the
@@ -469,9 +463,6 @@ namespace BigBook
         /// Displays the fraction as a string
         /// </summary>
         /// <returns>The fraction as a string</returns>
-        public override string ToString()
-        {
-            return string.Format(CultureInfo.InvariantCulture, "{0}/{1}", Numerator, Denominator);
-        }
+        public override string ToString() => string.Format(CultureInfo.InvariantCulture, "{0}/{1}", Numerator, Denominator);
     }
 }

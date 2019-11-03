@@ -14,10 +14,7 @@ namespace BigBook.Tests.ExtensionMethods
         }
 
         [Fact]
-        public void GCD()
-        {
-            Assert.Equal(3, 9.GreatestCommonDenominator(12));
-        }
+        public void GCD() => Assert.Equal(3, 9.GreatestCommonDenominator(12));
 
         [Fact]
         public void MedianTest()
@@ -27,10 +24,7 @@ namespace BigBook.Tests.ExtensionMethods
         }
 
         [Fact]
-        public void ModeTest()
-        {
-            Assert.Equal(20, new int[] { 5, 2, 20, 5, 20, 8, 9, 20, 10 }.ToList().Mode());
-        }
+        public void ModeTest() => Assert.Equal(20, new int[] { 5, 2, 20, 5, 20, 8, 9, 20, 10 }.ToList().Mode());
 
         [Fact]
         public void PowTest()

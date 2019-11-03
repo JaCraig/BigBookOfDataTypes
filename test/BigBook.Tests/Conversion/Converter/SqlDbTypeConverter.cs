@@ -23,9 +23,9 @@ namespace BigBook.Tests.Conversion.Converter
 
         public static readonly TheoryData<SqlDbType, Type> SQLToTypeData = new TheoryData<SqlDbType, Type>
         {
-            {SqlDbType.SmallInt,typeof(Int16) },
-            {SqlDbType.BigInt,typeof(Int64) },
-            {SqlDbType.Int,typeof(Int32) },
+            {SqlDbType.SmallInt,typeof(short) },
+            {SqlDbType.BigInt,typeof(long) },
+            {SqlDbType.Int,typeof(int) },
             {SqlDbType.Bit,typeof(bool) },
             {SqlDbType.NChar,typeof(char) },
             {SqlDbType.DateTime2,typeof(DateTime) },

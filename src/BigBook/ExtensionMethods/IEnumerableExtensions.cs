@@ -56,7 +56,7 @@ namespace BigBook
             var ActualAdditions = additions.Where(x => x != null).ToArray();
             var Results = new List<T>();
             Results.AddRange(enumerable1);
-            for (int x = 0; x < ActualAdditions.Length; ++x)
+            for (var x = 0; x < ActualAdditions.Length; ++x)
             {
                 Results.AddRange(ActualAdditions[x]);
             }
@@ -84,7 +84,7 @@ namespace BigBook
             var TempGenericComparer = new GenericEqualityComparer<T>();
             predicate = predicate ?? TempGenericComparer.Equals;
             var Results = new List<T>();
-            foreach (T Item in enumerable)
+            foreach (var Item in enumerable)
             {
                 if (!Results.Any(x => predicate(Item, x)))
                 {
@@ -126,7 +126,7 @@ namespace BigBook
                 end = Temp;
             }
             var TempList = list.ToArray();
-            for (int x = start; x < end; ++x)
+            for (var x = start; x < end; ++x)
             {
                 yield return TempList[x];
             }
@@ -171,7 +171,7 @@ namespace BigBook
             }
 
             var TempList = list.ElementsBetween(start, end + 1).ToArray();
-            for (int x = 0; x < TempList.Length; ++x)
+            for (var x = 0; x < TempList.Length; ++x)
             {
                 action(TempList[x], x);
             }
@@ -198,7 +198,7 @@ namespace BigBook
 
             var TempList = list.ElementsBetween(start, end + 1).ToArray();
             var ReturnList = new R[TempList.Length];
-            for (int x = 0; x < TempList.Length; ++x)
+            for (var x = 0; x < TempList.Length; ++x)
             {
                 ReturnList[x] = function(TempList[x], x);
             }
@@ -224,7 +224,7 @@ namespace BigBook
                 return list;
             }
 
-            foreach (T Item in list)
+            foreach (var Item in list)
             {
                 action(Item);
             }
@@ -248,7 +248,7 @@ namespace BigBook
             }
 
             var ReturnList = new List<R>(list.Count());
-            foreach (T Item in list)
+            foreach (var Item in list)
             {
                 ReturnList.Add(function(Item));
             }
@@ -276,7 +276,7 @@ namespace BigBook
                 return list;
             }
 
-            foreach (T Item in list)
+            foreach (var Item in list)
             {
                 try
                 {
@@ -304,7 +304,7 @@ namespace BigBook
             }
 
             var ReturnValue = new List<R>();
-            foreach (T Item in list)
+            foreach (var Item in list)
             {
                 try
                 {
@@ -491,7 +491,7 @@ namespace BigBook
                 end = Temp;
             }
             var TempArray = list.ToArray();
-            R[] Results = new R[(end + 1) - start];
+            var Results = new R[(end + 1) - start];
             Parallel.For(start, end + 1, new Action<int>(x => Results[x - start] = function(TempArray[x], x)));
             return Results;
         }
@@ -600,8 +600,8 @@ namespace BigBook
             }
 
             equalityComparer = equalityComparer ?? new GenericEqualityComparer<T>();
-            int Count = 0;
-            foreach (T TempItem in list)
+            var Count = 0;
+            foreach (var TempItem in list)
             {
                 if (equalityComparer.Equals(item, TempItem))
                 {
@@ -866,10 +866,10 @@ namespace BigBook
                 yield break;
             }
 
-            foreach (T item in collection)
+            foreach (var item in collection)
             {
                 yield return item;
-                foreach (T inner in Transverse(property(item), property))
+                foreach (var inner in Transverse(property(item), property))
                 {
                     yield return inner;
                 }
@@ -891,7 +891,7 @@ namespace BigBook
             }
 
             yield return item;
-            foreach (T inner in Transverse(property(item), property))
+            foreach (var inner in Transverse(property(item), property))
             {
                 yield return inner;
             }

@@ -68,10 +68,7 @@ namespace BigBook.Formatters
         /// <param name="arg">Argument object to use</param>
         /// <param name="formatProvider">Format provider to use</param>
         /// <returns>The formatted string</returns>
-        public string Format(string format, object arg, IFormatProvider formatProvider)
-        {
-            return Format(arg.ToString(), format);
-        }
+        public string Format(string format, object arg, IFormatProvider formatProvider) => Format(arg.ToString(), format);
 
         /// <summary>
         /// Formats the string based on the pattern
@@ -87,7 +84,7 @@ namespace BigBook.Formatters
             }
 
             var ReturnValue = new StringBuilder();
-            for (int x = 0; x < formatPattern.Length; ++x)
+            for (var x = 0; x < formatPattern.Length; ++x)
             {
                 if (formatPattern[x] == EscapeChar)
                 {
@@ -96,7 +93,7 @@ namespace BigBook.Formatters
                 }
                 else
                 {
-                    char NextValue = char.MinValue;
+                    var NextValue = char.MinValue;
                     input = GetMatchingInput(input, formatPattern[x], out NextValue);
                     if (NextValue != char.MinValue)
                     {
@@ -112,10 +109,7 @@ namespace BigBook.Formatters
         /// </summary>
         /// <param name="formatType">Format type</param>
         /// <returns>The appropriate formatter based on the type</returns>
-        public object GetFormat(Type formatType)
-        {
-            return formatType == typeof(ICustomFormatter) ? this : null;
-        }
+        public object GetFormat(Type formatType) => formatType == typeof(ICustomFormatter) ? this : null;
 
         /// <summary>
         /// Gets matching input
@@ -126,16 +120,16 @@ namespace BigBook.Formatters
         /// <returns>The remainder of the input string left</returns>
         protected string GetMatchingInput(string input, char formatChar, out char matchChar)
         {
-            bool Digit = formatChar == DigitChar;
-            bool Alpha = formatChar == AlphaChar;
+            var Digit = formatChar == DigitChar;
+            var Alpha = formatChar == AlphaChar;
             if (!Digit && !Alpha)
             {
                 matchChar = formatChar;
                 return input;
             }
-            int Index = 0;
+            var Index = 0;
             matchChar = char.MinValue;
-            for (int x = 0; x < input.Length; ++x)
+            for (var x = 0; x < input.Length; ++x)
             {
                 if ((Digit && char.IsDigit(input[x])) || (Alpha && char.IsLetter(input[x])))
                 {
@@ -159,8 +153,8 @@ namespace BigBook.Formatters
                 return false;
             }
 
-            bool EscapeCharFound = false;
-            for (int x = 0; x < formatPattern.Length; ++x)
+            var EscapeCharFound = false;
+            for (var x = 0; x < formatPattern.Length; ++x)
             {
                 if (EscapeCharFound && formatPattern[x] != DigitChar
                         && formatPattern[x] != AlphaChar

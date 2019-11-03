@@ -23,7 +23,7 @@ namespace BigBook.Tests.DataMapper.Default
         [Fact]
         public void CreationTest()
         {
-            Mapping<MappingA, MappingB> TempObject = new Mapping<MappingA, MappingB>(x => x.Item1, x => x.Item1);
+            var TempObject = new Mapping<MappingA, MappingB>(x => x.Item1, x => x.Item1);
             Assert.NotNull(TempObject);
         }
 

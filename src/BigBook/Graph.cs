@@ -89,10 +89,7 @@ namespace BigBook
         /// <param name="source">The source.</param>
         /// <param name="sink">The sink.</param>
         /// <returns>The new edge</returns>
-        public Edge<T> AddEdge(Vertex<T> source, Vertex<T> sink)
-        {
-            return source.AddOutgoingEdge(sink);
-        }
+        public Edge<T> AddEdge(Vertex<T> source, Vertex<T> sink) => source.AddOutgoingEdge(sink);
 
         /// <summary>
         /// Adds the vertex.
@@ -138,10 +135,7 @@ namespace BigBook
         /// Returns an enumerator that iterates through the collection.
         /// </summary>
         /// <returns>An enumerator that can be used to iterate through the collection.</returns>
-        public IEnumerator<Vertex<T>> GetEnumerator()
-        {
-            return Vertices.GetEnumerator();
-        }
+        public IEnumerator<Vertex<T>> GetEnumerator() => Vertices.GetEnumerator();
 
         /// <summary>
         /// Returns an enumerator that iterates through a collection.
@@ -150,10 +144,7 @@ namespace BigBook
         /// An <see cref="T:System.Collections.IEnumerator"/> object that can be used to iterate
         /// through the collection.
         /// </returns>
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return Vertices.GetEnumerator();
-        }
+        IEnumerator IEnumerable.GetEnumerator() => Vertices.GetEnumerator();
 
         /// <summary>
         /// Removes the vertex.
@@ -229,11 +220,11 @@ namespace BigBook
         /// <returns>This</returns>
         public Vertex<T> Remove()
         {
-            for (int x = 0; x < IncomingEdges.Count; ++x)
+            for (var x = 0; x < IncomingEdges.Count; ++x)
             {
                 IncomingEdges[x].Remove();
             }
-            for (int x = 0; x < OutgoingEdges.Count; ++x)
+            for (var x = 0; x < OutgoingEdges.Count; ++x)
             {
                 OutgoingEdges[x].Remove();
             }

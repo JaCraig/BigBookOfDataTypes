@@ -184,10 +184,7 @@ namespace BigBook
         /// </summary>
         /// <param name="input">Input array</param>
         /// <returns>True if it's unicode, false otherwise</returns>
-        public static bool IsUnicode(this byte[] input)
-        {
-            return input?.ToString(Encoding.Unicode).Is(StringCompare.Unicode) != false;
-        }
+        public static bool IsUnicode(this byte[] input) => input?.ToString(Encoding.Unicode).Is(StringCompare.Unicode) != false;
 
         /// <summary>
         /// Converts a byte array into a base 64 string

@@ -14,7 +14,7 @@ namespace BigBook.Tests
         {
             var Results = new double[100];
             var TestObject = new TaskQueue<int>(4, x => { Results[x] = 2 * F(1); return true; });
-            for (int x = 0; x < 100; ++x)
+            for (var x = 0; x < 100; ++x)
             {
                 Assert.True(TestObject.Enqueue(x));
             }
@@ -31,7 +31,7 @@ namespace BigBook.Tests
         {
             var Builder = new StringBuilder();
             int[] Temp = { 0, 0, 1, 2, 3 };
-            object LockObject = new object();
+            var LockObject = new object();
             var TestObject = new TaskQueue<int>(4, x =>
             {
                 lock (LockObject)
@@ -39,7 +39,7 @@ namespace BigBook.Tests
                     Builder.Append(x); return true;
                 }
             });
-            for (int x = 0; x < Temp.Length; ++x)
+            for (var x = 0; x < Temp.Length; ++x)
             {
                 Assert.True(TestObject.Enqueue(Temp[x]));
             }

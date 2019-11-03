@@ -48,7 +48,7 @@ namespace BigBook
             {
                 for (int x = 0, exceptionDataCount = exception.Data.Count; x < exceptionDataCount; x++)
                 {
-                    object Object = exception.Data[x];
+                    var Object = exception.Data[x];
                     Builder.AppendLineFormat("Data: {0}:{1}", Object, exception.Data[Object]);
                 }
             }
