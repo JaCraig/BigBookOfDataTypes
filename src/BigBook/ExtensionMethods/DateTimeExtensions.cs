@@ -108,9 +108,9 @@ namespace BigBook
         /// <param name="date">Birth date</param>
         /// <param name="calculateFrom">Date to calculate from</param>
         /// <returns>The total age in years</returns>
-        public static int Age(this DateTime date, DateTime calculateFrom = default(DateTime))
+        public static int Age(this DateTime date, DateTime calculateFrom = default)
         {
-            if (calculateFrom == default(DateTime))
+            if (calculateFrom == default)
             {
                 calculateFrom = DateTime.Now;
             }
@@ -125,9 +125,9 @@ namespace BigBook
         /// <param name="timeFrame">Time frame to use</param>
         /// <param name="culture">Culture to use for calculating (defaults to the current culture)</param>
         /// <returns>The beginning of a specific time frame</returns>
-        public static DateTime BeginningOf(this DateTime date, TimeFrame timeFrame, CultureInfo culture = null)
+        public static DateTime BeginningOf(this DateTime date, TimeFrame timeFrame, CultureInfo? culture = null)
         {
-            culture = culture ?? CultureInfo.CurrentCulture;
+            culture ??= CultureInfo.CurrentCulture;
             if (timeFrame == TimeFrame.Day)
             {
                 return date.Date;
@@ -159,23 +159,23 @@ namespace BigBook
         /// <param name="startOfQuarter1">Start of the first quarter</param>
         /// <param name="culture">Culture to use for calculating (defaults to the current culture)</param>
         /// <returns>The beginning of a specific time frame</returns>
-        public static DateTime BeginningOf(this DateTime date, TimeFrame timeFrame, DateTime startOfQuarter1, CultureInfo culture = null)
+        public static DateTime BeginningOf(this DateTime date, TimeFrame timeFrame, DateTime startOfQuarter1, CultureInfo? culture = null)
         {
             if (timeFrame != TimeFrame.Quarter)
             {
                 return date.BeginningOf(timeFrame, culture);
             }
 
-            culture = culture ?? CultureInfo.CurrentCulture;
-            if (date.Between(startOfQuarter1, startOfQuarter1.AddMonths(3).AddDays(-1).EndOf(TimeFrame.Day, CultureInfo.CurrentCulture)))
+            culture ??= CultureInfo.CurrentCulture;
+            if (date.Between(startOfQuarter1, startOfQuarter1.AddMonths(3).AddDays(-1).EndOf(TimeFrame.Day, culture)))
             {
                 return startOfQuarter1.Date;
             }
-            else if (date.Between(startOfQuarter1.AddMonths(3), startOfQuarter1.AddMonths(6).AddDays(-1).EndOf(TimeFrame.Day, CultureInfo.CurrentCulture)))
+            else if (date.Between(startOfQuarter1.AddMonths(3), startOfQuarter1.AddMonths(6).AddDays(-1).EndOf(TimeFrame.Day, culture)))
             {
                 return startOfQuarter1.AddMonths(3).Date;
             }
-            else if (date.Between(startOfQuarter1.AddMonths(6), startOfQuarter1.AddMonths(9).AddDays(-1).EndOf(TimeFrame.Day, CultureInfo.CurrentCulture)))
+            else if (date.Between(startOfQuarter1.AddMonths(6), startOfQuarter1.AddMonths(9).AddDays(-1).EndOf(TimeFrame.Day, culture)))
             {
                 return startOfQuarter1.AddMonths(6).Date;
             }
@@ -190,9 +190,9 @@ namespace BigBook
         /// <param name="timeFrame">Time frame to calculate the number of days from</param>
         /// <param name="culture">Culture to use for calculating (defaults to the current culture)</param>
         /// <returns>The number of days in the time frame</returns>
-        public static int DaysIn(this DateTime date, TimeFrame timeFrame, CultureInfo culture = null)
+        public static int DaysIn(this DateTime date, TimeFrame timeFrame, CultureInfo? culture = null)
         {
-            culture = culture ?? CultureInfo.CurrentCulture;
+            culture ??= CultureInfo.CurrentCulture;
             if (timeFrame == TimeFrame.Day)
             {
                 return 1;
@@ -224,14 +224,14 @@ namespace BigBook
         /// <param name="startOfQuarter1">Start of the first quarter</param>
         /// <param name="culture">Culture to use for calculating (defaults to the current culture)</param>
         /// <returns>The number of days in the time frame</returns>
-        public static int DaysIn(this DateTime date, TimeFrame timeFrame, DateTime startOfQuarter1, CultureInfo culture = null)
+        public static int DaysIn(this DateTime date, TimeFrame timeFrame, DateTime startOfQuarter1, CultureInfo? culture = null)
         {
             if (timeFrame != TimeFrame.Quarter)
             {
                 date.DaysIn(timeFrame, culture);
             }
 
-            culture = culture ?? CultureInfo.CurrentCulture;
+            culture ??= CultureInfo.CurrentCulture;
             return date.EndOf(TimeFrame.Quarter, culture).DayOfYear - startOfQuarter1.DayOfYear;
         }
 
@@ -242,9 +242,9 @@ namespace BigBook
         /// <param name="timeFrame">Time frame to calculate the number of days left</param>
         /// <param name="culture">Culture to use for calculating (defaults to the current culture)</param>
         /// <returns>The number of days left in the time frame</returns>
-        public static int DaysLeftIn(this DateTime date, TimeFrame timeFrame, CultureInfo culture = null)
+        public static int DaysLeftIn(this DateTime date, TimeFrame timeFrame, CultureInfo? culture = null)
         {
-            culture = culture ?? CultureInfo.CurrentCulture;
+            culture ??= CultureInfo.CurrentCulture;
             if (timeFrame == TimeFrame.Day)
             {
                 return 1;
@@ -276,14 +276,14 @@ namespace BigBook
         /// <param name="startOfQuarter1">Start of the first quarter</param>
         /// <param name="culture">Culture to use for calculating (defaults to the current culture)</param>
         /// <returns>The number of days left in the time frame</returns>
-        public static int DaysLeftIn(this DateTime date, TimeFrame timeFrame, DateTime startOfQuarter1, CultureInfo culture = null)
+        public static int DaysLeftIn(this DateTime date, TimeFrame timeFrame, DateTime startOfQuarter1, CultureInfo? culture = null)
         {
             if (timeFrame != TimeFrame.Quarter)
             {
                 return date.DaysLeftIn(timeFrame, culture);
             }
 
-            culture = culture ?? CultureInfo.CurrentCulture;
+            culture ??= CultureInfo.CurrentCulture;
             return date.DaysIn(TimeFrame.Quarter, startOfQuarter1, culture) - (date.DayOfYear - startOfQuarter1.DayOfYear);
         }
 
@@ -297,9 +297,9 @@ namespace BigBook
         /// The end of a specific time frame (TimeFrame.Day is the only one that sets the time to
         /// 12: 59:59 PM, all else are the beginning of the day)
         /// </returns>
-        public static DateTime EndOf(this DateTime date, TimeFrame timeFrame, CultureInfo culture = null)
+        public static DateTime EndOf(this DateTime date, TimeFrame timeFrame, CultureInfo? culture = null)
         {
-            culture = culture ?? CultureInfo.CurrentCulture;
+            culture ??= CultureInfo.CurrentCulture;
             if (timeFrame == TimeFrame.Day)
             {
                 return new DateTime(date.Year, date.Month, date.Day, 23, 59, 59);
@@ -334,14 +334,14 @@ namespace BigBook
         /// The end of a specific time frame (TimeFrame.Day is the only one that sets the time to
         /// 12: 59:59 PM, all else are the beginning of the day)
         /// </returns>
-        public static DateTime EndOf(this DateTime date, TimeFrame timeFrame, DateTime startOfQuarter1, CultureInfo culture = null)
+        public static DateTime EndOf(this DateTime date, TimeFrame timeFrame, DateTime startOfQuarter1, CultureInfo? culture = null)
         {
             if (timeFrame != TimeFrame.Quarter)
             {
                 return date.EndOf(timeFrame, culture);
             }
 
-            culture = culture ?? CultureInfo.CurrentCulture;
+            culture ??= CultureInfo.CurrentCulture;
             if (date.Between(startOfQuarter1, startOfQuarter1.AddMonths(3).AddDays(-1).EndOf(TimeFrame.Day, culture)))
             {
                 return startOfQuarter1.AddMonths(3).AddDays(-1).Date;
@@ -429,7 +429,7 @@ namespace BigBook
         /// <returns>The converted DateTime</returns>
         public static DateTime To(this DateTime date, TimeZoneInfo timeZone)
         {
-            timeZone = timeZone ?? TimeZoneInfo.Utc;
+            timeZone ??= TimeZoneInfo.Utc;
             return TimeZoneInfo.ConvertTime(date, timeZone);
         }
 
@@ -439,9 +439,9 @@ namespace BigBook
         /// <param name="date">Date to convert</param>
         /// <param name="epoch">Epoch to use (defaults to unix epoch of 1/1/1970)</param>
         /// <returns>The date in Unix format</returns>
-        public static int To(this DateTime date, DateTime epoch = default(DateTime))
+        public static int To(this DateTime date, DateTime epoch = default)
         {
-            if (epoch == default(DateTime))
+            if (epoch == default)
             {
                 epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
             }
@@ -455,9 +455,9 @@ namespace BigBook
         /// <param name="date">Date to convert</param>
         /// <param name="epoch">Epoch to use (defaults to unix epoch of 1/1/1970)</param>
         /// <returns>The Unix Date in DateTime format</returns>
-        public static DateTime To(this int date, DateTime epoch = default(DateTime))
+        public static DateTime To(this int date, DateTime epoch = default)
         {
-            if (epoch == default(DateTime))
+            if (epoch == default)
             {
                 epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
             }
@@ -471,9 +471,9 @@ namespace BigBook
         /// <param name="date">Date to convert</param>
         /// <param name="epoch">Epoch to use (defaults to unix epoch of 1/1/1970)</param>
         /// <returns>The Unix Date in DateTime format</returns>
-        public static DateTime To(this long date, DateTime epoch = default(DateTime))
+        public static DateTime To(this long date, DateTime epoch = default)
         {
-            if (epoch == default(DateTime))
+            if (epoch == default)
             {
                 epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
             }

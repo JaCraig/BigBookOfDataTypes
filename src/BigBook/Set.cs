@@ -47,7 +47,7 @@ namespace BigBook
         /// <param name="set1">Set 1</param>
         /// <param name="set2">Set 2</param>
         /// <returns>The intersection of the two sets</returns>
-        public static Set<T> GetIntersection(Set<T> set1, Set<T> set2)
+        public static Set<T>? GetIntersection(Set<T> set1, Set<T> set2)
         {
             if (set1 == null || set2 == null || !set1.Intersect(set2))
             {
@@ -82,8 +82,8 @@ namespace BigBook
         /// <returns>The resulting set</returns>
         public static Set<T> operator -(Set<T> set1, Set<T> set2)
         {
-            set1 = set1 ?? new Set<T>();
-            set2 = set2 ?? new Set<T>();
+            set1 ??= new Set<T>();
+            set2 ??= new Set<T>();
             var ReturnValue = new Set<T>();
             for (var x = 0; x < set1.Count; ++x)
             {
@@ -115,8 +115,8 @@ namespace BigBook
         /// <returns>The joined sets</returns>
         public static Set<T> operator +(Set<T> set1, Set<T> set2)
         {
-            set1 = set1 ?? new Set<T>();
-            set2 = set2 ?? new Set<T>();
+            set1 ??= new Set<T>();
+            set2 ??= new Set<T>();
             var ReturnValue = new Set<T>();
             for (var x = 0; x < set1.Count; ++x)
             {
@@ -137,14 +137,14 @@ namespace BigBook
         /// <param name="set1">Set 1</param>
         /// <param name="set2">Set 2</param>
         /// <returns>True if they are, false otherwise</returns>
-        public static bool operator ==(Set<T> set1, Set<T> set2)
+        public static bool operator ==(Set<T>? set1, Set<T>? set2)
         {
-            if (((object)set1) == null && ((object)set2) == null)
+            if (((object?)set1) == null && ((object?)set2) == null)
             {
                 return true;
             }
 
-            if (((object)set1) == null || ((object)set2) == null)
+            if (((object?)set1) == null || ((object?)set2) == null)
             {
                 return false;
             }

@@ -183,8 +183,8 @@ namespace BigBook
                 return builder;
             }
 
-            objects = objects ?? Array.Empty<object>();
-            provider = provider ?? CultureInfo.InvariantCulture;
+            objects ??= Array.Empty<object>();
+            provider ??= CultureInfo.InvariantCulture;
             return builder.AppendFormat(provider, format, objects).AppendLine();
         }
 
@@ -242,8 +242,8 @@ namespace BigBook
                 return "";
             }
 
-            originalEncodingUsing = originalEncodingUsing ?? Encoding.UTF8;
-            encodingUsing = encodingUsing ?? Encoding.UTF8;
+            originalEncodingUsing ??= Encoding.UTF8;
+            encodingUsing ??= Encoding.UTF8;
             return Encoding.Convert(originalEncodingUsing, encodingUsing, input.ToByteArray(originalEncodingUsing))
                            .ToString(encodingUsing);
         }
@@ -262,7 +262,7 @@ namespace BigBook
             }
 
             var TempArray = Convert.FromBase64String(input);
-            encodingUsing = encodingUsing ?? Encoding.UTF8;
+            encodingUsing ??= Encoding.UTF8;
             return encodingUsing.GetString(TempArray, 0, TempArray.Length);
         }
 
@@ -725,7 +725,7 @@ namespace BigBook
                 return "";
             }
 
-            originalEncodingUsing = originalEncodingUsing ?? Encoding.UTF8;
+            originalEncodingUsing ??= Encoding.UTF8;
             var TempArray = originalEncodingUsing.GetBytes(input);
             return Convert.ToBase64String(TempArray);
         }
@@ -738,7 +738,7 @@ namespace BigBook
         /// <returns>the byte array representing the string</returns>
         public static byte[] ToByteArray(this string input, Encoding encodingUsing = null)
         {
-            encodingUsing = encodingUsing ?? Encoding.UTF8;
+            encodingUsing ??= Encoding.UTF8;
             return string.IsNullOrEmpty(input) ? Array.Empty<byte>() : encodingUsing.GetBytes(input);
         }
 
@@ -756,7 +756,7 @@ namespace BigBook
                 return "";
             }
 
-            provider = provider ?? CultureInfo.InvariantCulture;
+            provider ??= CultureInfo.InvariantCulture;
             if (caseOfString == StringCase.FirstCharacterUpperCase)
             {
                 var InputChars = input.ToCharArray();
@@ -819,7 +819,7 @@ namespace BigBook
         /// <returns>The formatted string</returns>
         public static string ToString(this string input, string format, IStringFormatter provider = null)
         {
-            provider = provider ?? new GenericStringFormatter();
+            provider ??= new GenericStringFormatter();
             return provider.Format(input, format);
         }
 
@@ -918,7 +918,6 @@ namespace BigBook
             if ((filter & StringFilter.ExtraSpaces) != 0)
             {
                 FilterValue += Separator + "[ ]{2,}";
-                Separator = "|";
             }
             return FilterValue;
         }
@@ -1005,7 +1004,7 @@ namespace BigBook
                 return "";
             }
 
-            var CodeLines = input.Split(new string[] { System.Environment.NewLine, "\n" }, StringSplitOptions.RemoveEmptyEntries);
+            var CodeLines = input.Split(new string[] { Environment.NewLine, "\n" }, StringSplitOptions.RemoveEmptyEntries);
             var Builder = new StringBuilder();
             for (int x = 0, CodeLinesLength = CodeLines.Length; x < CodeLinesLength; x++)
             {

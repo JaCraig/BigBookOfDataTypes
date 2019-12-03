@@ -34,9 +34,9 @@ namespace BigBook
         /// <param name="columnValues">Column values</param>
         public Row(Hashtable columnNameHash, string[] columnNames, params object[] columnValues)
         {
-            columnValues = columnValues ?? Array.Empty<object>();
-            columnNames = columnNames ?? Array.Empty<string>();
-            columnNameHash = columnNameHash ?? new Hashtable();
+            columnValues ??= Array.Empty<object>();
+            columnNames ??= Array.Empty<string>();
+            columnNameHash ??= new Hashtable();
             ColumnNameHash = columnNameHash;
             ColumnNames = columnNames;
             ColumnValues = (object[])columnValues.Clone();
@@ -62,11 +62,11 @@ namespace BigBook
         /// </summary>
         /// <param name="columnName">Column name to search for</param>
         /// <returns>The value specified</returns>
-        public object this[string columnName]
+        public object? this[string columnName]
         {
             get
             {
-                columnName = columnName ?? "";
+                columnName ??= "";
                 var Column = (int)ColumnNameHash[columnName];
                 if (Column <= -1)
                 {
@@ -82,7 +82,7 @@ namespace BigBook
         /// </summary>
         /// <param name="column">Column number</param>
         /// <returns>The value specified</returns>
-        public object this[int column]
+        public object? this[int column]
         {
             get
             {
@@ -112,7 +112,7 @@ namespace BigBook
         /// <param name="columnNames">Column names</param>
         public Table(params string[] columnNames)
         {
-            columnNames = columnNames ?? Array.Empty<string>();
+            columnNames ??= Array.Empty<string>();
             ColumnNames = (string[])columnNames.Clone();
             Rows = new List<Row>();
             ColumnNameHash = new Hashtable();
@@ -191,7 +191,7 @@ namespace BigBook
         /// </summary>
         /// <param name="rowNumber">Row number</param>
         /// <returns>The row specified</returns>
-        public Row this[int rowNumber]
+        public Row? this[int rowNumber]
         {
             get
             {

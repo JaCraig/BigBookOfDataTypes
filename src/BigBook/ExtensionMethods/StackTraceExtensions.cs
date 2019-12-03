@@ -42,7 +42,7 @@ namespace BigBook
                 return Array.Empty<MethodBase>();
             }
 
-            excludedAssemblies = excludedAssemblies ?? Array.Empty<Assembly>();
+            excludedAssemblies ??= Array.Empty<Assembly>();
             return stack.GetFrames().GetMethods(excludedAssemblies);
         }
 

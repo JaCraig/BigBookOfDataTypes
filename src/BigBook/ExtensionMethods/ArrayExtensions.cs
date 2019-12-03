@@ -31,7 +31,7 @@ namespace BigBook
         /// </summary>
         /// <param name="array">Array to clear</param>
         /// <returns>The final array</returns>
-        public static Array Clear(this Array array)
+        public static Array? Clear(this Array array)
         {
             if (array == null)
             {
@@ -48,7 +48,16 @@ namespace BigBook
         /// <typeparam name="ArrayType">Array type</typeparam>
         /// <param name="array">Array to clear</param>
         /// <returns>The final array</returns>
-        public static ArrayType[] Clear<ArrayType>(this ArrayType[] array) => (ArrayType[])((Array)array).Clear();
+        public static ArrayType[]? Clear<ArrayType>(this ArrayType[] array)
+        {
+            if (array == null)
+            {
+                return null;
+            }
+
+            Array.Clear(array, 0, array.Length);
+            return array;
+        }
 
         /// <summary>
         /// Combines two arrays and returns a new array containing both values
@@ -59,8 +68,8 @@ namespace BigBook
         /// <returns>A new array containing both arrays' values</returns>
         public static ArrayType[] Concat<ArrayType>(this ArrayType[] array1, params ArrayType[][] additions)
         {
-            array1 = array1 ?? Array.Empty<ArrayType>();
-            additions = additions ?? Array.Empty<ArrayType[]>();
+            array1 ??= Array.Empty<ArrayType>();
+            additions ??= Array.Empty<ArrayType[]>();
             var finalAdditions = additions.Where(x => x != null);
             var Result = new ArrayType[array1.Length + finalAdditions.Sum(x => x.Length)];
             var Offset = array1.Length;

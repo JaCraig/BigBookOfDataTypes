@@ -69,14 +69,14 @@ namespace BigBook
         /// </returns>
         public static TValue GetValue<TKey, TValue>(this IDictionary<TKey, TValue> dictionary,
             TKey key,
-            TValue defaultValue = default(TValue))
+            TValue defaultValue = default)
         {
             if (dictionary == null)
             {
                 return defaultValue;
             }
 
-            var ReturnValue = defaultValue;
+            TValue ReturnValue;
             return dictionary.TryGetValue(key, out ReturnValue) ? ReturnValue : defaultValue;
         }
 
@@ -126,7 +126,7 @@ namespace BigBook
                 return new Dictionary<T1, T2>();
             }
 
-            comparer = comparer ?? new GenericComparer<T1>();
+            comparer ??= new GenericComparer<T1>();
             return dictionary.Sort(x => x.Key, comparer);
         }
 
@@ -155,7 +155,7 @@ namespace BigBook
                 return dictionary;
             }
 
-            comparer = comparer ?? new GenericComparer<T3>();
+            comparer ??= new GenericComparer<T3>();
             return dictionary.OrderBy(orderBy, comparer).ToDictionary(x => x.Key, x => x.Value);
         }
     }

@@ -16,6 +16,7 @@ limitations under the License.
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace BigBook
@@ -244,6 +245,7 @@ namespace BigBook
         /// Peek at the next thing in the queue
         /// </summary>
         /// <returns>The next item in queue or default(T) if it is empty</returns>
+        [return: MaybeNull]
         public T Peek()
         {
             if (Items.ContainsKey(HighestKey))
@@ -251,16 +253,17 @@ namespace BigBook
                 return Items[HighestKey].FirstOrDefault();
             }
 
-            return default(T);
+            return default!;
         }
 
         /// <summary>
         /// Removes an item from the queue and returns it
         /// </summary>
         /// <returns>The next item in the queue</returns>
+        [return: MaybeNull]
         public T Pop()
         {
-            var ReturnValue = default(T);
+            var ReturnValue = default(T)!;
             if (Items.ContainsKey(HighestKey) && Items[HighestKey].Count > 0)
             {
                 ReturnValue = Items[HighestKey].FirstOrDefault();
@@ -340,7 +343,6 @@ namespace BigBook
         /// <returns>True if it was able to get the value, false otherwise</returns>
         public bool TryGetValue(int key, out ICollection<T> value)
         {
-            value = new List<T>();
             return Items.TryGetValue(key, out value);
         }
     }

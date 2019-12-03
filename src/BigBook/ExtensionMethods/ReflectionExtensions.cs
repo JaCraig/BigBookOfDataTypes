@@ -19,6 +19,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -58,10 +59,11 @@ namespace BigBook
         /// When true, it looks up the heirarchy chain for the inherited custom attributes
         /// </param>
         /// <returns>Attribute specified if it exists</returns>
+        [return: MaybeNull]
         public static T Attribute<T>(this MemberInfo provider, bool inherit = true) where T : Attribute
         {
             var TempAttributes = provider.Attributes<T>(inherit);
-            return TempAttributes.Length > 0 ? TempAttributes[0] : default(T);
+            return TempAttributes.Length > 0 ? TempAttributes[0] : default!;
         }
 
         /// <summary>
@@ -300,7 +302,7 @@ namespace BigBook
         /// <param name="type">Type to create an instance of</param>
         /// <param name="args">Arguments sent into the constructor</param>
         /// <returns>The newly created instance of the type</returns>
-        public static ClassType Create<ClassType>(this Type type, params object[] args) => type == null ? default(ClassType) : (ClassType)type?.Create(args);
+        public static ClassType Create<ClassType>(this Type type, params object[] args) => type == null ? default : (ClassType)type?.Create(args);
 
         /// <summary>
         /// Creates an instance of the type
@@ -446,7 +448,7 @@ namespace BigBook
         /// <param name="name">The name.</param>
         /// <param name="recursively">if set to <c>true</c> [recursively].</param>
         /// <returns>The property</returns>
-        public static PropertyInfo GetProperty(this Type type, string name, bool recursively)
+        public static PropertyInfo? GetProperty(this Type? type, string name, bool recursively)
         {
             if (type == null || string.IsNullOrEmpty(name))
             {
@@ -476,7 +478,7 @@ namespace BigBook
         /// <param name="type">The type.</param>
         /// <param name="name">The name.</param>
         /// <returns></returns>
-        public static PropertyInfo GetProperty<TObject>(this Type type, string name)
+        public static PropertyInfo? GetProperty<TObject>(this Type type, string name)
         {
             var Result = Array.Find(TypeCacheFor<TObject>.Properties, x => x.Name == name);
             if (Result != null || !type.IsInterface)
@@ -561,9 +563,9 @@ namespace BigBook
         /// <returns>A copy of the object</returns>
         public static T MakeShallowCopy<T>(this T inputObject, bool simpleTypesOnly = false)
         {
-            if (Equals(inputObject, default(T)))
+            if (Equals(inputObject, default(T)!))
             {
-                return default(T);
+                return default!;
             }
 
             var ObjectType = inputObject.GetType();
@@ -632,8 +634,8 @@ namespace BigBook
         }
 
         /// <summary>
-        /// Returns an instance of all classes that it finds within a group of assemblies that are of
-        /// the specified base type/interface.
+        /// Returns an instance of all classes that it finds within a group of assemblies that are
+        /// of the specified base type/interface.
         /// </summary>
         /// <typeparam name="ClassType">Base type/interface searching for</typeparam>
         /// <param name="assemblies">Assemblies to search within</param>
@@ -669,7 +671,7 @@ namespace BigBook
         /// <param name="inputObject">The object to get the property of</param>
         /// <param name="property">The property to get</param>
         /// <returns>Returns the property's value</returns>
-        public static object Property(this object inputObject, string property)
+        public static object? Property(this object inputObject, string property)
         {
             if (inputObject == null || string.IsNullOrEmpty(property))
             {
@@ -679,7 +681,7 @@ namespace BigBook
             var Properties = property.Split(new string[] { "." }, StringSplitOptions.None);
             var TempObject = inputObject;
             var TempObjectType = TempObject.GetType();
-            PropertyInfo DestinationProperty = null;
+            PropertyInfo DestinationProperty;
             for (var x = 0; x < Properties.Length - 1; ++x)
             {
                 DestinationProperty = TempObjectType.GetProperty(Properties[x], true);
@@ -690,7 +692,7 @@ namespace BigBook
                     return null;
                 }
             }
-            DestinationProperty = TempObjectType.GetProperty(Properties[Properties.Length - 1], true);
+            DestinationProperty = TempObjectType.GetProperty(Properties[^1], true);
             return DestinationProperty == null ? null : TempObject.Property(DestinationProperty);
         }
 
@@ -701,7 +703,7 @@ namespace BigBook
         /// <param name="property">The property to set</param>
         /// <param name="value">Value to set the property to</param>
         /// <param name="format">Allows for formatting if the destination is a string</param>
-        public static object Property(this object inputObject, PropertyInfo property, object value, string format = "")
+        public static object? Property(this object inputObject, PropertyInfo property, object value, string format = "")
         {
             if (inputObject == null)
             {
@@ -729,7 +731,7 @@ namespace BigBook
         /// <param name="property">The property to set</param>
         /// <param name="value">Value to set the property to</param>
         /// <param name="format">Allows for formatting if the destination is a string</param>
-        public static object Property(this object inputObject, string property, object value, string format = "")
+        public static object? Property(this object inputObject, string property, object value, string format = "")
         {
             if (inputObject == null)
             {
@@ -744,7 +746,7 @@ namespace BigBook
             var Properties = property.Split(new string[] { "." }, StringSplitOptions.None);
             var TempObject = inputObject;
             var TempObjectType = TempObject.GetType();
-            PropertyInfo DestinationProperty = null;
+            PropertyInfo DestinationProperty;
             for (var x = 0; x < Properties.Length - 1; ++x)
             {
                 DestinationProperty = TempObjectType.GetProperty(Properties[x], true);
@@ -755,7 +757,7 @@ namespace BigBook
                     return inputObject;
                 }
             }
-            DestinationProperty = TempObjectType.GetProperty(Properties[Properties.Length - 1], true);
+            DestinationProperty = TempObjectType.GetProperty(Properties[^1], true);
             if (DestinationProperty == null)
             {
                 throw new NullReferenceException("PropertyInfo can't be null");
@@ -851,7 +853,7 @@ namespace BigBook
         /// <typeparam name="DataType">Data type expecting</typeparam>
         /// <param name="property">Property</param>
         /// <returns>A lambda expression that calls a specific property's setter function</returns>
-        public static Expression<Action<ClassType, DataType>> PropertySetter<ClassType, DataType>(this LambdaExpression property)
+        public static Expression<Action<ClassType, DataType>>? PropertySetter<ClassType, DataType>(this LambdaExpression property)
         {
             if (property == null)
             {
@@ -884,7 +886,7 @@ namespace BigBook
 
                     PropertyGet = Expression.Property(PropertyGet, PropertyInfo);
                 }
-                PropertyInfo = PropertyInfo.PropertyType.GetProperty(SplitName[SplitName.Length - 1], true);
+                PropertyInfo = PropertyInfo.PropertyType.GetProperty(SplitName[^1], true);
             }
             var SetMethod = PropertyInfo.GetSetMethod();
             if (SetMethod != null)
@@ -916,7 +918,7 @@ namespace BigBook
         /// <typeparam name="ClassType">Class type</typeparam>
         /// <param name="property">Property</param>
         /// <returns>A lambda expression that calls a specific property's setter function</returns>
-        public static Expression<Action<ClassType, object>> PropertySetter<ClassType>(this LambdaExpression property)
+        public static Expression<Action<ClassType, object>>? PropertySetter<ClassType>(this LambdaExpression property)
         {
             if (property == null)
             {
@@ -935,7 +937,7 @@ namespace BigBook
         /// which then has a Prop2 on it, which in turn has a Prop3 on it.)
         /// </param>
         /// <returns>The type of the property specified or null if it can not be reached.</returns>
-        public static Type PropertyType(this object inputObject, string propertyPath) => inputObject == null || string.IsNullOrEmpty(propertyPath) ? null : inputObject.GetType().PropertyType(propertyPath);
+        public static Type? PropertyType(this object inputObject, string propertyPath) => inputObject == null || string.IsNullOrEmpty(propertyPath) ? null : inputObject.GetType().PropertyType(propertyPath);
 
         /// <summary>
         /// Gets a property's type
@@ -954,10 +956,9 @@ namespace BigBook
             }
 
             var SourceProperties = propertyPath.Split(new string[] { "." }, StringSplitOptions.None);
-            PropertyInfo PropertyInfo = null;
             for (var x = 0; x < SourceProperties.Length; ++x)
             {
-                PropertyInfo = objectType.GetProperty(SourceProperties[x], true);
+                var PropertyInfo = objectType.GetProperty(SourceProperties[x], true);
                 objectType = PropertyInfo.PropertyType;
             }
             return objectType;
@@ -1181,7 +1182,7 @@ namespace BigBook
         /// </summary>
         /// <param name="type">The original type.</param>
         /// <returns>Either null or the type of the IEnumerable</returns>
-        private static Type FindIEnumerableElementType(Type type)
+        private static Type? FindIEnumerableElementType(Type type)
         {
             if (type == null || type == typeof(string))
             {

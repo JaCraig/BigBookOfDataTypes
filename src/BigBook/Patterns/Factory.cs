@@ -44,7 +44,7 @@ namespace BigBook.Patterns
         /// </summary>
         /// <param name="key">Registered item</param>
         /// <returns>The type returned by the initializer</returns>
-        public T Create(Key key) => Constructors.GetValue(key, () => default(T))();
+        public T Create(Key key) => Constructors.GetValue(key, () => default!)();
 
         /// <summary>
         /// Determines if a key has been registered

@@ -47,9 +47,9 @@ namespace BigBook.IO
         /// <exception cref="System.ArgumentException">Stream is not readable</exception>
         public EndianBinaryReader(EndianBitConverterBase bitConverter, Stream stream, Encoding encoding)
         {
-            bitConverter = bitConverter ?? new BigEndianBitConverter();
-            stream = stream ?? new MemoryStream();
-            encoding = encoding ?? Encoding.UTF8;
+            bitConverter ??= new BigEndianBitConverter();
+            stream ??= new MemoryStream();
+            encoding ??= Encoding.UTF8;
             if (!stream.CanRead)
             {
                 throw new ArgumentException("Stream is not readable", nameof(stream));
@@ -145,7 +145,7 @@ namespace BigBook.IO
             }
 
             count = count > data.Length ? data.Length : count;
-            data = data ?? Array.Empty<char>();
+            data ??= Array.Empty<char>();
             if (index > data.Length - count)
             {
                 index = data.Length - count;
@@ -211,7 +211,7 @@ namespace BigBook.IO
             }
 
             count = count > buffer.Length ? buffer.Length : count;
-            buffer = buffer ?? Array.Empty<byte>();
+            buffer ??= Array.Empty<byte>();
             if (index > buffer.Length - count)
             {
                 index = buffer.Length - count;

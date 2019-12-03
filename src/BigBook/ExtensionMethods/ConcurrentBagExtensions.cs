@@ -39,7 +39,7 @@ namespace BigBook
         /// <returns>The collection with the added items</returns>
         public static ConcurrentBag<T> Add<T>(this ConcurrentBag<T> collection, IEnumerable<T> items)
         {
-            collection = collection ?? new ConcurrentBag<T>();
+            collection ??= new ConcurrentBag<T>();
             if (items == null)
             {
                 return collection;
@@ -127,7 +127,7 @@ namespace BigBook
         /// <returns>True if it is added, false otherwise</returns>
         public static bool AddIfUnique<T>(this ConcurrentBag<T> collection, IEqualityComparer<T> comparer, params T[] items)
         {
-            comparer = comparer ?? new GenericEqualityComparer<T>();
+            comparer ??= new GenericEqualityComparer<T>();
             return collection.AddIf(x => !collection.Contains(x, comparer), items);
         }
 
@@ -173,7 +173,7 @@ namespace BigBook
         /// <returns>True if it is added, false otherwise</returns>
         public static bool AddIfUnique<T>(this ConcurrentBag<T> collection, IEqualityComparer<T> comparer, IEnumerable<T> items)
         {
-            comparer = comparer ?? new GenericEqualityComparer<T>();
+            comparer ??= new GenericEqualityComparer<T>();
             return collection.AddIf(x => !collection.Contains(x, comparer), items);
         }
 
@@ -215,14 +215,14 @@ namespace BigBook
         /// <param name="item">The item.</param>
         /// <param name="comparer">The comparer.</param>
         /// <returns>True if the item is present, false otherwise</returns>
-        public static bool Contains<T>(this ConcurrentBag<T> collection, T item, IEqualityComparer<T> comparer = null)
+        public static bool Contains<T>(this ConcurrentBag<T> collection, T item, IEqualityComparer<T>? comparer = null)
         {
             if (collection == null)
             {
                 return false;
             }
 
-            comparer = comparer ?? new GenericEqualityComparer<T>();
+            comparer ??= new GenericEqualityComparer<T>();
             foreach (var TempValue in collection)
             {
                 if (comparer.Equals(TempValue, item))
@@ -264,7 +264,7 @@ namespace BigBook
         /// Equality comparer, if null then a generic equality comparer is used.
         /// </param>
         /// <returns>The collection with the items removed</returns>
-        public static ConcurrentBag<T> Remove<T>(this ConcurrentBag<T> collection, IEnumerable<T> items, IEqualityComparer<T> comparer = null)
+        public static ConcurrentBag<T> Remove<T>(this ConcurrentBag<T> collection, IEnumerable<T> items, IEqualityComparer<T>? comparer = null)
         {
             if (collection == null)
             {
@@ -276,7 +276,7 @@ namespace BigBook
                 return collection;
             }
 
-            comparer = comparer ?? new GenericEqualityComparer<T>();
+            comparer ??= new GenericEqualityComparer<T>();
             return collection.Remove<T>(x => items.Contains(x, comparer));
         }
     }

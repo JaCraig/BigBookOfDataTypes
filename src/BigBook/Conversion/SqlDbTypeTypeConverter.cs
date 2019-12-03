@@ -205,13 +205,12 @@ namespace BigBook.Conversion
                 return SqlDbType.Int;
             }
 
-            var Item = DbType.Int32;
             if (TempValue.IsEnum)
             {
                 TempValue = Enum.GetUnderlyingType(TempValue);
             }
 
-            Item = Conversions.GetValue(TempValue, DbType.Int32);
+            var Item = Conversions.GetValue(TempValue, DbType.Int32);
             if (Item == DbType.Time)
                 return SqlDbType.Time;
             var Parameter = new SqlParameter

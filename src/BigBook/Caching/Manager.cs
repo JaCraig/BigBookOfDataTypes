@@ -33,7 +33,7 @@ namespace BigBook.Caching
         /// <param name="caches">The caches.</param>
         public Manager(IEnumerable<ICache> caches)
         {
-            caches = caches ?? new List<ICache>();
+            caches ??= new List<ICache>();
             Caches = caches.Where(x => x.GetType().Assembly != typeof(Manager).Assembly).ToDictionary(x => x.Name);
             if (!Caches.ContainsKey("Default"))
             {

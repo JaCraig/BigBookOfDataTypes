@@ -47,9 +47,9 @@ namespace BigBook.IO
         /// <exception cref="System.ArgumentException">Stream is not writable</exception>
         public EndianBinaryWriter(EndianBitConverterBase bitConverter, Stream stream, Encoding encoding)
         {
-            bitConverter = bitConverter ?? new BigEndianBitConverter();
-            stream = stream ?? new MemoryStream();
-            encoding = encoding ?? Encoding.UTF8;
+            bitConverter ??= new BigEndianBitConverter();
+            stream ??= new MemoryStream();
+            encoding ??= Encoding.UTF8;
             if (!stream.CanWrite)
             {
                 throw new ArgumentException("Stream is not writable", nameof(stream));
@@ -269,7 +269,7 @@ namespace BigBook.IO
         /// <param name="value">The values to write</param>
         public void Write(byte[] value)
         {
-            value = value ?? Array.Empty<byte>();
+            value ??= Array.Empty<byte>();
             WriteInternal(value, value.Length);
         }
 
@@ -286,7 +286,7 @@ namespace BigBook.IO
                 throw new NullReferenceException("Base stream is null");
             }
 
-            value = value ?? Array.Empty<byte>();
+            value ??= Array.Empty<byte>();
             BaseStream.Write(value, offset, count);
         }
 
@@ -306,7 +306,7 @@ namespace BigBook.IO
         /// <param name="value">An array containing the characters to write</param>
         public void Write(char[] value)
         {
-            value = value ?? Array.Empty<char>();
+            value ??= Array.Empty<char>();
             if (BaseStream == null)
             {
                 throw new NullReferenceException("Base stream is null");
@@ -323,7 +323,7 @@ namespace BigBook.IO
         /// <exception cref="ArgumentNullException">value is null</exception>
         public void Write(string value)
         {
-            value = value ?? "";
+            value ??= "";
             if (BaseStream == null)
             {
                 throw new NullReferenceException("Base stream is null");

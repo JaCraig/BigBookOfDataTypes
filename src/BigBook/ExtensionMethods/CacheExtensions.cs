@@ -48,7 +48,7 @@ namespace BigBook.ExtensionMethods
         /// <param name="defaultValue">Default value if the key is not found</param>
         /// <param name="cacheName">Cache to get the item from</param>
         /// <returns>The object specified or the default value if it is not found</returns>
-        public static T GetFromCache<T>(this string key, T defaultValue = default(T), string cacheName = "Default")
+        public static T GetFromCache<T>(this string key, T defaultValue = default, string cacheName = "Default")
         {
             if (Canister.Builder.Bootstrapper == null)
             {

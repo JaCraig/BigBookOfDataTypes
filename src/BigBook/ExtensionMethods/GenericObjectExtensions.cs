@@ -19,10 +19,12 @@ using BigBook.Conversion;
 using BigBook.Conversion.BaseClasses;
 using BigBook.Conversion.Interfaces;
 using BigBook.DataMapper.Interfaces;
+using Canister;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
@@ -41,15 +43,15 @@ namespace BigBook
         };
 
         /// <summary>
-        /// Checks to see if the object meets all the criteria. If it does, it returns the object. If
-        /// it does not, it returns the default object
+        /// Checks to see if the object meets all the criteria. If it does, it returns the object.
+        /// If it does not, it returns the default object
         /// </summary>
         /// <typeparam name="T">Object type</typeparam>
         /// <param name="inputObject">Object to check</param>
         /// <param name="predicate">Predicate to check the object against</param>
         /// <param name="defaultValue">The default value to return</param>
         /// <returns>The default object if it fails the criteria, the object otherwise</returns>
-        public static T Check<T>(this T inputObject, Predicate<T> predicate, T defaultValue = default(T))
+        public static T Check<T>(this T inputObject, Predicate<T> predicate, T defaultValue = default)
         {
             if (predicate == null)
             {
@@ -60,8 +62,8 @@ namespace BigBook
         }
 
         /// <summary>
-        /// Checks to see if the object meets all the criteria. If it does, it returns the object. If
-        /// it does not, it returns the default object
+        /// Checks to see if the object meets all the criteria. If it does, it returns the object.
+        /// If it does not, it returns the default object
         /// </summary>
         /// <typeparam name="T">Object type</typeparam>
         /// <param name="inputObject">Object to check</param>
@@ -86,7 +88,7 @@ namespace BigBook
         /// <param name="inputObject">Object to check</param>
         /// <param name="defaultValue">The default value to return</param>
         /// <returns>The default object if it is null, the object otherwise</returns>
-        public static T Check<T>(this T inputObject, T defaultValue = default(T)) => inputObject.Check(x => !Equals(x, default(T)), defaultValue);
+        public static T Check<T>(this T inputObject, T defaultValue = default) => inputObject.Check(x => !Equals(x, default(T)!), defaultValue);
 
         /// <summary>
         /// Checks to see if the object is null. If it is, it returns the default object, otherwise
@@ -103,7 +105,7 @@ namespace BigBook
                 return inputObject;
             }
 
-            return inputObject.Check(x => !Equals(x, default(T)), defaultValue);
+            return inputObject.Check(x => !Equals(x, default(T)!), defaultValue);
         }
 
         /// <summary>
@@ -118,14 +120,15 @@ namespace BigBook
         /// finish before checking)
         /// </param>
         /// <returns>The returned value from the function</returns>
+        [return: MaybeNull]
         public static T Execute<T>(this Func<T> function, int attempts = 3, int retryDelay = 0, int timeOut = int.MaxValue)
         {
             if (function == null)
             {
-                return default(T);
+                return default!;
             }
 
-            Exception Holder = null;
+            Exception? Holder = null;
             long Start = Environment.TickCount;
             while (attempts > 0)
             {
@@ -147,7 +150,7 @@ namespace BigBook
                 throw Holder;
             }
 
-            return default(T);
+            return default!;
         }
 
         /// <summary>
@@ -168,7 +171,7 @@ namespace BigBook
                 return false;
             }
 
-            Exception Holder = null;
+            Exception? Holder = null;
             long Start = Environment.TickCount;
             while (attempts > 0)
             {
@@ -235,9 +238,9 @@ namespace BigBook
         /// <param name="comparisonObject">Comparison object</param>
         /// <param name="comparer">Comparer</param>
         /// <returns>True if the object passes the predicate, false otherwise</returns>
-        public static bool Is<T>(this T inputObject, T comparisonObject, IEqualityComparer<T> comparer = null)
+        public static bool Is<T>(this T inputObject, T comparisonObject, IEqualityComparer<T>? comparer = null)
         {
-            comparer = comparer ?? new GenericEqualityComparer<T>();
+            comparer ??= new GenericEqualityComparer<T>();
             return comparer.Equals(inputObject, comparisonObject);
         }
 
@@ -247,14 +250,14 @@ namespace BigBook
         /// <param name="leftType">Left type</param>
         /// <param name="rightType">Right type</param>
         /// <returns>The type mapping</returns>
-        public static ITypeMapping MapTo(this Type leftType, Type rightType)
+        public static ITypeMapping? MapTo(this Type leftType, Type rightType)
         {
             if (leftType == null || rightType == null)
             {
                 return null;
             }
 
-            var TempManager = Canister.Builder.Bootstrapper.Resolve<DataMapper.Manager>();
+            var TempManager = Builder.Bootstrapper?.Resolve<DataMapper.Manager>();
             if (TempManager == null)
             {
                 return null;
@@ -270,9 +273,9 @@ namespace BigBook
         /// <typeparam name="Right">Right type</typeparam>
         /// <param name="item">Object to set up mapping for</param>
         /// <returns>The type mapping</returns>
-        public static ITypeMapping<Left, Right> MapTo<Left, Right>(this Left item)
+        public static ITypeMapping<Left, Right>? MapTo<Left, Right>(this Left item)
         {
-            var TempManager = Canister.Builder.Bootstrapper.Resolve<DataMapper.Manager>();
+            var TempManager = Builder.Bootstrapper?.Resolve<DataMapper.Manager>();
             if (TempManager == null)
             {
                 return null;
@@ -288,9 +291,9 @@ namespace BigBook
         /// <typeparam name="Right">Right type</typeparam>
         /// <param name="objectType">Object type to set up mapping for</param>
         /// <returns>The type mapping</returns>
-        public static ITypeMapping<Left, Right> MapTo<Left, Right>(this Type objectType)
+        public static ITypeMapping<Left, Right>? MapTo<Left, Right>(this Type objectType)
         {
-            var TempManager = Canister.Builder.Bootstrapper.Resolve<DataMapper.Manager>();
+            var TempManager = Builder.Bootstrapper?.Resolve<DataMapper.Manager>();
             if (TempManager == null)
             {
                 return null;
@@ -346,8 +349,8 @@ namespace BigBook
         }
 
         /// <summary>
-        /// Determines if the object is equal to default value and throws an ArgumentNullException if
-        /// it is
+        /// Determines if the object is equal to default value and throws an ArgumentNullException
+        /// if it is
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="item">The object to check</param>
@@ -356,7 +359,7 @@ namespace BigBook
         /// Equality comparer used to determine if the object is equal to default
         /// </param>
         /// <returns>Returns Item</returns>
-        public static T ThrowIfDefault<T>(this T item, string name, IEqualityComparer<T> equalityComparer = null) => item.ThrowIfDefault(new ArgumentNullException(name), equalityComparer);
+        public static T ThrowIfDefault<T>(this T item, string name, IEqualityComparer<T>? equalityComparer = null) => item.ThrowIfDefault(new ArgumentNullException(name), equalityComparer);
 
         /// <summary>
         /// Determines if the object is equal to default value and throws the exception that is
@@ -369,7 +372,10 @@ namespace BigBook
         /// Equality comparer used to determine if the object is equal to default
         /// </param>
         /// <returns>Returns Item</returns>
-        public static T ThrowIfDefault<T>(this T item, Exception exception, IEqualityComparer<T> equalityComparer = null) => item.ThrowIf(x => equalityComparer.Check(() => new GenericEqualityComparer<T>()).Equals(x, default(T)), exception);
+        public static T ThrowIfDefault<T>(this T item, Exception exception, IEqualityComparer<T>? equalityComparer = null)
+        {
+            return item.ThrowIf(x => (equalityComparer ?? new GenericEqualityComparer<T>()).Equals(x, default!), exception);
+        }
 
         /// <summary>
         /// Throws the specified exception if the predicate is false for the item
@@ -382,8 +388,8 @@ namespace BigBook
         public static T ThrowIfNot<T>(this T item, Predicate<T> predicate, Exception exception) => item.ThrowIf(x => !predicate(x), exception);
 
         /// <summary>
-        /// Determines if the object is not equal to default value and throws an ArgumentException if
-        /// it is
+        /// Determines if the object is not equal to default value and throws an ArgumentException
+        /// if it is
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="item">The object to check</param>
@@ -392,7 +398,7 @@ namespace BigBook
         /// Equality comparer used to determine if the object is equal to default
         /// </param>
         /// <returns>Returns Item</returns>
-        public static T ThrowIfNotDefault<T>(this T item, string name, IEqualityComparer<T> equalityComparer = null) => item.ThrowIfNotDefault(new ArgumentException(name), equalityComparer);
+        public static T ThrowIfNotDefault<T>(this T item, string name, IEqualityComparer<T>? equalityComparer = null) => item.ThrowIfNotDefault(new ArgumentException(name), equalityComparer);
 
         /// <summary>
         /// Determines if the object is not equal to default value and throws the exception that is
@@ -405,7 +411,10 @@ namespace BigBook
         /// Equality comparer used to determine if the object is equal to default
         /// </param>
         /// <returns>Returns Item</returns>
-        public static T ThrowIfNotDefault<T>(this T item, Exception exception, IEqualityComparer<T> equalityComparer = null) => item.ThrowIf(x => !equalityComparer.Check(() => new GenericEqualityComparer<T>()).Equals(x, default(T)), exception);
+        public static T ThrowIfNotDefault<T>(this T item, Exception exception, IEqualityComparer<T>? equalityComparer = null)
+        {
+            return item.ThrowIf(x => !(equalityComparer ?? new GenericEqualityComparer<T>()).Equals(x, default!), exception);
+        }
 
         /// <summary>
         /// Determines if the object is not null and throws an ArgumentException if it is
@@ -535,10 +544,10 @@ namespace BigBook
         /// Default value to return if there is an issue or it can't be converted
         /// </param>
         /// <returns>
-        /// The object converted to the other type or the default value if there is an error or can't
-        /// be converted
+        /// The object converted to the other type or the default value if there is an error or
+        /// can't be converted
         /// </returns>
-        public static R To<T, R>(this T item, R defaultValue = default(R)) => (R)item.To(typeof(R), defaultValue);
+        public static R To<T, R>(this T item, R defaultValue = default) => (R)item.To(typeof(R), defaultValue);
 
         /// <summary>
         /// Attempts to convert the object to another type and returns the value
@@ -550,10 +559,10 @@ namespace BigBook
         /// Default value to return if there is an issue or it can't be converted
         /// </param>
         /// <returns>
-        /// The object converted to the other type or the default value if there is an error or can't
-        /// be converted
+        /// The object converted to the other type or the default value if there is an error or
+        /// can't be converted
         /// </returns>
-        public static object To<T>(this T item, Type resultType, object defaultValue = null)
+        public static object? To<T>(this T item, Type resultType, object? defaultValue = null)
         {
             try
             {

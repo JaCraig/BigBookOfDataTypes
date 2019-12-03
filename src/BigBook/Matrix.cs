@@ -30,7 +30,7 @@ namespace BigBook
         /// <param name="width">Width of the matrix</param>
         /// <param name="height">Height of the matrix</param>
         /// <param name="values">Values to use in the matrix</param>
-        public Matrix(int width, int height, double[,] values = null)
+        public Matrix(int width, int height, double[,]? values = null)
         {
             Width = width > -1 ? width : 0;
             Height = height > -1 ? height : 0;
@@ -115,8 +115,8 @@ namespace BigBook
         /// <returns>The result</returns>
         public static Matrix operator -(Matrix m1, Matrix m2)
         {
-            m1 = m1 ?? new Matrix(0, 0);
-            m2 = m2 ?? new Matrix(0, 0);
+            m1 ??= new Matrix(0, 0);
+            m2 ??= new Matrix(0, 0);
             if (m1.Width != m2.Width || m1.Height != m2.Height)
             {
                 throw new ArgumentException("Both matrices must be the same dimensions.");
@@ -141,7 +141,7 @@ namespace BigBook
         /// <returns>The result</returns>
         public static Matrix operator -(Matrix m1)
         {
-            m1 = m1 ?? new Matrix(0, 0);
+            m1 ??= new Matrix(0, 0);
             var TempMatrix = new Matrix(m1.Width, m1.Height);
             for (var x = 0; x < m1.Width; ++x)
             {
@@ -160,7 +160,7 @@ namespace BigBook
         /// <param name="m1">Matrix 1</param>
         /// <param name="m2">Matrix 2</param>
         /// <returns>True if they are not equal, false otherwise</returns>
-        public static bool operator !=(Matrix m1, Matrix m2)
+        public static bool operator !=(Matrix? m1, Matrix? m2)
         {
             return !(m1 == m2);
         }
@@ -173,8 +173,8 @@ namespace BigBook
         /// <returns>The result</returns>
         public static Matrix operator *(Matrix m1, Matrix m2)
         {
-            m1 = m1 ?? new Matrix(0, 0);
-            m2 = m2 ?? new Matrix(0, 0);
+            m1 ??= new Matrix(0, 0);
+            m2 ??= new Matrix(0, 0);
             if (m1.Width != m2.Width || m1.Height != m2.Height)
             {
                 throw new ArgumentException("Both matrices must be the same dimensions.");
@@ -206,7 +206,7 @@ namespace BigBook
         /// <returns>The result</returns>
         public static Matrix operator *(Matrix m1, double d)
         {
-            m1 = m1 ?? new Matrix(0, 0);
+            m1 ??= new Matrix(0, 0);
             var TempMatrix = new Matrix(m1.Width, m1.Height);
             for (var x = 0; x < m1.Width; ++x)
             {
@@ -227,7 +227,7 @@ namespace BigBook
         /// <returns>The result</returns>
         public static Matrix operator *(double d, Matrix m1)
         {
-            m1 = m1 ?? new Matrix(0, 0);
+            m1 ??= new Matrix(0, 0);
             var TempMatrix = new Matrix(m1.Width, m1.Height);
             for (var x = 0; x < m1.Width; ++x)
             {
@@ -248,7 +248,7 @@ namespace BigBook
         /// <returns>The result</returns>
         public static Matrix operator /(Matrix m1, double d)
         {
-            m1 = m1 ?? new Matrix(0, 0);
+            m1 ??= new Matrix(0, 0);
             return m1 * (1 / d);
         }
 
@@ -260,7 +260,7 @@ namespace BigBook
         /// <returns>The result</returns>
         public static Matrix operator /(double d, Matrix m1)
         {
-            m1 = m1 ?? new Matrix(0, 0);
+            m1 ??= new Matrix(0, 0);
             return m1 * (1 / d);
         }
 
@@ -272,8 +272,8 @@ namespace BigBook
         /// <returns>The result</returns>
         public static Matrix operator +(Matrix m1, Matrix m2)
         {
-            m1 = m1 ?? new Matrix(0, 0);
-            m2 = m2 ?? new Matrix(0, 0);
+            m1 ??= new Matrix(0, 0);
+            m2 ??= new Matrix(0, 0);
             if (m1.Width != m2.Width || m1.Height != m2.Height)
             {
                 throw new ArgumentException("Both matrices must be the same dimensions.");
@@ -297,7 +297,7 @@ namespace BigBook
         /// <param name="m1">Matrix 1</param>
         /// <param name="m2">Matrix 2</param>
         /// <returns>True if they are equal, false otherwise</returns>
-        public static bool operator ==(Matrix m1, Matrix m2)
+        public static bool operator ==(Matrix? m1, Matrix? m2)
         {
             if (m1 is null && m2 is null)
             {

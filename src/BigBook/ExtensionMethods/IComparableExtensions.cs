@@ -36,10 +36,10 @@ namespace BigBook
         /// <param name="max">Maximum value</param>
         /// <param name="comparer">Comparer used to compare the values (defaults to GenericComparer)"</param>
         /// <returns>True if it is between the values, false otherwise</returns>
-        public static bool Between<T>(this T value, T min, T max, IComparer<T> comparer = null)
+        public static bool Between<T>(this T value, T min, T max, IComparer<T>? comparer = null)
             where T : IComparable
         {
-            comparer = comparer ?? new GenericComparer<T>();
+            comparer ??= new GenericComparer<T>();
             return comparer.Compare(max, value) >= 0 && comparer.Compare(value, min) >= 0;
         }
 
@@ -52,10 +52,10 @@ namespace BigBook
         /// <param name="min">Min value it can be (inclusive)</param>
         /// <param name="comparer">Comparer to use (defaults to GenericComparer)</param>
         /// <returns>The value set between Min and Max</returns>
-        public static T Clamp<T>(this T value, T max, T min, IComparer<T> comparer = null)
+        public static T Clamp<T>(this T value, T max, T min, IComparer<T>? comparer = null)
             where T : IComparable
         {
-            comparer = comparer ?? new GenericComparer<T>();
+            comparer ??= new GenericComparer<T>();
             if (comparer.Compare(max, value) < 0)
             {
                 return max;
@@ -77,10 +77,10 @@ namespace BigBook
         /// <param name="inputB">Input B</param>
         /// <param name="comparer">Comparer to use (defaults to GenericComparer)</param>
         /// <returns>The maximum value</returns>
-        public static T Max<T>(this T inputA, T inputB, IComparer<T> comparer = null)
+        public static T Max<T>(this T inputA, T inputB, IComparer<T>? comparer = null)
             where T : IComparable
         {
-            comparer = comparer ?? new GenericComparer<T>();
+            comparer ??= new GenericComparer<T>();
             return comparer.Compare(inputA, inputB) < 0 ? inputB : inputA;
         }
 
@@ -92,10 +92,10 @@ namespace BigBook
         /// <param name="inputB">Input B</param>
         /// <param name="comparer">Comparer to use (defaults to GenericComparer)</param>
         /// <returns>The minimum value</returns>
-        public static T Min<T>(this T inputA, T inputB, IComparer<T> comparer = null)
+        public static T Min<T>(this T inputA, T inputB, IComparer<T>? comparer = null)
             where T : IComparable
         {
-            comparer = comparer ?? new GenericComparer<T>();
+            comparer ??= new GenericComparer<T>();
             return comparer.Compare(inputA, inputB) > 0 ? inputB : inputA;
         }
     }

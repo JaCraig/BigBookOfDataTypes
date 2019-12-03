@@ -93,7 +93,7 @@ namespace BigBook.Formatters
                 }
                 else
                 {
-                    var NextValue = char.MinValue;
+                    char NextValue;
                     input = GetMatchingInput(input, formatPattern[x], out NextValue);
                     if (NextValue != char.MinValue)
                     {

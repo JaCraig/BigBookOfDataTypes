@@ -31,7 +31,7 @@ namespace BigBook
         /// Constructor
         /// </summary>
         /// <param name="root">Root of the binary tree</param>
-        public BinaryTree(TreeNode<T> root = null)
+        public BinaryTree(TreeNode<T>? root = null)
         {
             if (Root == null)
             {
@@ -66,7 +66,7 @@ namespace BigBook
             {
                 if (IsEmpty || Root == null)
                 {
-                    return default(T);
+                    return default!;
                 }
 
                 var TempNode = Root;
@@ -88,7 +88,7 @@ namespace BigBook
             {
                 if (IsEmpty || Root == null)
                 {
-                    return default(T);
+                    return default!;
                 }
 
                 var TempNode = Root;
@@ -104,7 +104,7 @@ namespace BigBook
         /// <summary>
         /// The root value
         /// </summary>
-        public TreeNode<T> Root { get; set; }
+        public TreeNode<T>? Root { get; set; }
 
         /// <summary>
         /// The number of nodes in the tree
@@ -281,7 +281,7 @@ namespace BigBook
         /// </summary>
         /// <param name="item">The item to find</param>
         /// <returns>The node if it is found</returns>
-        protected TreeNode<T> Find(T item)
+        protected TreeNode<T>? Find(T item)
         {
             foreach (var Item in Traversal(Root))
             {
@@ -300,19 +300,18 @@ namespace BigBook
         /// <param name="item">item to insert</param>
         protected void Insert(T item)
         {
-            if (Root == null)
-            {
+            TreeNode<T>? TempNode = Root;
+            if (TempNode == null)
                 return;
-            }
-
-            var TempNode = Root;
             while (true)
             {
-                var ComparedValue = TempNode.Value.CompareTo(item);
+                var ComparedValue = TempNode?.Value.CompareTo(item);
                 if (ComparedValue > 0)
                 {
-                    if (TempNode.Left == null)
+                    if (TempNode?.Left == null)
                     {
+                        if (TempNode == null)
+                            return;
                         TempNode.Left = new TreeNode<T>(item, TempNode);
                         ++NumberOfNodes;
                         return;
@@ -321,8 +320,10 @@ namespace BigBook
                 }
                 else if (ComparedValue < 0)
                 {
-                    if (TempNode.Right == null)
+                    if (TempNode?.Right == null)
                     {
+                        if (TempNode == null)
+                            return;
                         TempNode.Right = new TreeNode<T>(item, TempNode);
                         ++NumberOfNodes;
                         return;
@@ -331,7 +332,7 @@ namespace BigBook
                 }
                 else
                 {
-                    TempNode = TempNode.Right;
+                    TempNode = TempNode?.Right;
                 }
             }
         }
@@ -341,7 +342,7 @@ namespace BigBook
         /// </summary>
         /// <param name="node">The node to start the search from</param>
         /// <returns>The individual items from the tree</returns>
-        protected IEnumerable<TreeNode<T>> Traversal(TreeNode<T> node)
+        protected IEnumerable<TreeNode<T>> Traversal(TreeNode<T>? node)
         {
             if (node != null)
             {
@@ -377,7 +378,7 @@ namespace BigBook
         /// <param name="parent">Parent node</param>
         /// <param name="left">Left node</param>
         /// <param name="right">Right node</param>
-        public TreeNode(T value = default(T), TreeNode<T> parent = null, TreeNode<T> left = null, TreeNode<T> right = null)
+        public TreeNode(T value = default, TreeNode<T>? parent = null, TreeNode<T>? left = null, TreeNode<T>? right = null)
         {
             Value = value;
             Right = right;
@@ -398,17 +399,17 @@ namespace BigBook
         /// <summary>
         /// Left node
         /// </summary>
-        public TreeNode<T> Left { get; set; }
+        public TreeNode<T>? Left { get; set; }
 
         /// <summary>
         /// Parent node
         /// </summary>
-        public TreeNode<T> Parent { get; set; }
+        public TreeNode<T>? Parent { get; set; }
 
         /// <summary>
         /// Right node
         /// </summary>
-        public TreeNode<T> Right { get; set; }
+        public TreeNode<T>? Right { get; set; }
 
         /// <summary>
         /// Value of the node
@@ -424,6 +425,6 @@ namespace BigBook
         /// Returns the node as a string
         /// </summary>
         /// <returns>String representation of the node</returns>
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value?.ToString() ?? "";
     }
 }

@@ -27,7 +27,7 @@ namespace BigBook
     /// ongoing basis, think producer/consumer situations)
     /// </summary>
     /// <typeparam name="T">Object type to process</typeparam>
-    public class TaskQueue<T> : BlockingCollection<T>, IDisposable
+    public class TaskQueue<T> : BlockingCollection<T>
     {
         /// <summary>
         /// Constructor
@@ -40,7 +40,7 @@ namespace BigBook
         /// <param name="handleError">
         /// Handles an exception if it occurs (defaults to eating the error)
         /// </param>
-        public TaskQueue(int capacity, Func<T, bool> processItem, int timeOut = 100, Action<Exception, T> handleError = null)
+        public TaskQueue(int capacity, Func<T, bool> processItem, int timeOut = 100, Action<Exception, T>? handleError = null)
             : base(new ConcurrentQueue<T>())
         {
             Capacity = capacity;
@@ -51,7 +51,7 @@ namespace BigBook
             }
 
             ProcessItem = processItem;
-            HandleError = handleError.Check((_, __) => { });
+            HandleError = handleError ?? new Action<Exception, T>((_, __) => { });
             CancellationToken = new CancellationTokenSource();
             Tasks = new Task[capacity];
         }
@@ -65,7 +65,7 @@ namespace BigBook
         /// <summary>
         /// Determines if it has been cancelled
         /// </summary>
-        public bool IsCanceled => CancellationToken.IsCancellationRequested;
+        public bool IsCanceled => CancellationToken?.IsCancellationRequested ?? true;
 
         /// <summary>
         /// Determines if it has completed all tasks
@@ -81,7 +81,7 @@ namespace BigBook
         /// <summary>
         /// Token used to signal cancellation
         /// </summary>
-        private CancellationTokenSource CancellationToken { get; set; }
+        private CancellationTokenSource? CancellationToken { get; set; }
 
         /// <summary>
         /// Called when an exception occurs when processing the queue
@@ -96,7 +96,7 @@ namespace BigBook
         /// <summary>
         /// Group of tasks that the queue uses
         /// </summary>
-        private Task[] Tasks { get; set; }
+        private Task[]? Tasks { get; set; }
 
         /// <summary>
         /// Cancels the queue from processing
@@ -112,7 +112,7 @@ namespace BigBook
                 return true;
             }
 
-            CancellationToken.Cancel(false);
+            CancellationToken?.Cancel(false);
             if (wait)
             {
                 Task.WaitAll(Tasks);
@@ -171,7 +171,7 @@ namespace BigBook
 
             while (true)
             {
-                var Item = default(T);
+                var Item = default(T)!;
                 try
                 {
                     if (!TryTake(out Item, TimeOut, CancellationToken.Token))
@@ -201,9 +201,11 @@ namespace BigBook
         /// <param name="capacity">The capacity.</param>
         private void StartTasks(int capacity)
         {
+            if (Tasks == null)
+                return;
             for (var x = 0; x < capacity; ++x)
             {
-                if (Tasks[x]?.IsCompleted != false || Tasks[x].IsCanceled)
+                if (Tasks[x]?.IsCompleted != false || Tasks[x]?.IsCanceled != false)
                 {
                     Tasks[x] = Task.Factory.StartNew(Process);
                 }

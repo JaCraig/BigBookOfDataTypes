@@ -27,7 +27,7 @@ namespace BigBook.Queryable
     /// Reusable query class
     /// </summary>
     /// <typeparam name="T">Element type</typeparam>
-    public class Query<T> : IQueryable<T>, IQueryable, IEnumerable<T>, IEnumerable, IOrderedQueryable<T>, IOrderedQueryable
+    public class Query<T> :  IEnumerable, IOrderedQueryable<T>, IOrderedQueryable
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Query{T}"/> class.

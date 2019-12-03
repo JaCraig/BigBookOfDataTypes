@@ -81,8 +81,8 @@ namespace BigBook
         /// <returns>Angle between the vectors</returns>
         public static double Angle(Vector3 v1, Vector3 v2)
         {
-            v1 = v1 ?? new Vector3(0, 0, 0);
-            v2 = v2 ?? new Vector3(0, 0, 0);
+            v1 ??= new Vector3(0, 0, 0);
+            v2 ??= new Vector3(0, 0, 0);
             v1.Normalize();
             v2.Normalize();
             return Math.Acos(DotProduct(v1, v2));
@@ -96,8 +96,8 @@ namespace BigBook
         /// <returns>Distance between the vectors</returns>
         public static double Distance(Vector3 v1, Vector3 v2)
         {
-            v1 = v1 ?? new Vector3(0, 0, 0);
-            v2 = v2 ?? new Vector3(0, 0, 0);
+            v1 ??= new Vector3(0, 0, 0);
+            v2 ??= new Vector3(0, 0, 0);
             return (((v1.X - v2.X) * (v1.X - v2.X)) + ((v1.Y - v2.Y) * (v1.Y - v2.Y)) + ((v1.Z - v2.Z) * (v1.Z - v2.Z))).Sqrt();
         }
 
@@ -109,8 +109,8 @@ namespace BigBook
         /// <returns>a dot product</returns>
         public static double DotProduct(Vector3 v1, Vector3 v2)
         {
-            v1 = v1 ?? new Vector3(0, 0, 0);
-            v2 = v2 ?? new Vector3(0, 0, 0);
+            v1 ??= new Vector3(0, 0, 0);
+            v2 ??= new Vector3(0, 0, 0);
             return (v1.X * v2.X) + (v1.Y * v2.Y) + (v1.Z * v2.Z);
         }
 
@@ -123,8 +123,8 @@ namespace BigBook
         /// <returns>The interpolated vector</returns>
         public static Vector3 Interpolate(Vector3 v1, Vector3 v2, double control)
         {
-            v1 = v1 ?? new Vector3(0, 0, 0);
-            v2 = v2 ?? new Vector3(0, 0, 0);
+            v1 ??= new Vector3(0, 0, 0);
+            v2 ??= new Vector3(0, 0, 0);
             var TempVector = new Vector3(0.0, 0.0, 0.0)
             {
                 X = (v1.X * (1 - control)) + (v2.X * control),
@@ -142,8 +142,8 @@ namespace BigBook
         /// <returns>The resulting vector</returns>
         public static Vector3 operator -(Vector3 v1, Vector3 v2)
         {
-            v1 = v1 ?? new Vector3(0, 0, 0);
-            v2 = v2 ?? new Vector3(0, 0, 0);
+            v1 ??= new Vector3(0, 0, 0);
+            v2 ??= new Vector3(0, 0, 0);
             return new Vector3(v1.X - v2.X, v1.Y - v2.Y, v1.Z - v2.Z);
         }
 
@@ -154,7 +154,7 @@ namespace BigBook
         /// <returns>The resulting vector</returns>
         public static Vector3 operator -(Vector3 v1)
         {
-            v1 = v1 ?? new Vector3(0, 0, 0);
+            v1 ??= new Vector3(0, 0, 0);
             return new Vector3(-v1.X, -v1.Y, -v1.Z);
         }
 
@@ -177,7 +177,7 @@ namespace BigBook
         /// <returns>The resulting vector</returns>
         public static Vector3 operator *(Vector3 v1, double d)
         {
-            v1 = v1 ?? new Vector3(0, 0, 0);
+            v1 ??= new Vector3(0, 0, 0);
             return new Vector3(v1.X * d, v1.Y * d, v1.Z * d);
         }
 
@@ -189,7 +189,7 @@ namespace BigBook
         /// <returns>The resulting vector</returns>
         public static Vector3 operator *(double d, Vector3 v1)
         {
-            v1 = v1 ?? new Vector3(0, 0, 0);
+            v1 ??= new Vector3(0, 0, 0);
             return new Vector3(v1.X * d, v1.Y * d, v1.Z * d);
         }
 
@@ -201,8 +201,8 @@ namespace BigBook
         /// <returns>The resulting vector</returns>
         public static Vector3 operator *(Vector3 v1, Vector3 v2)
         {
-            v1 = v1 ?? new Vector3(0, 0, 0);
-            v2 = v2 ?? new Vector3(0, 0, 0);
+            v1 ??= new Vector3(0, 0, 0);
+            v2 ??= new Vector3(0, 0, 0);
             var TempVector = new Vector3(0.0, 0.0, 0.0)
             {
                 X = (v1.Y * v2.Z) - (v1.Z * v2.Y),
@@ -220,7 +220,7 @@ namespace BigBook
         /// <returns>The resulting vector</returns>
         public static Vector3 operator /(Vector3 v1, double d)
         {
-            v1 = v1 ?? new Vector3(0, 0, 0);
+            v1 ??= new Vector3(0, 0, 0);
             return new Vector3(v1.X / d, v1.Y / d, v1.Z / d);
         }
 
@@ -232,8 +232,8 @@ namespace BigBook
         /// <returns>The resulting vector</returns>
         public static Vector3 operator +(Vector3 v1, Vector3 v2)
         {
-            v1 = v1 ?? new Vector3(0, 0, 0);
-            v2 = v2 ?? new Vector3(0, 0, 0);
+            v1 ??= new Vector3(0, 0, 0);
+            v2 ??= new Vector3(0, 0, 0);
             return new Vector3(v1.X + v2.X, v1.Y + v2.Y, v1.Z + v2.Z);
         }
 
@@ -245,8 +245,8 @@ namespace BigBook
         /// <returns>The resulting vector</returns>
         public static bool operator <(Vector3 v1, Vector3 v2)
         {
-            v1 = v1 ?? new Vector3(0, 0, 0);
-            v2 = v2 ?? new Vector3(0, 0, 0);
+            v1 ??= new Vector3(0, 0, 0);
+            v2 ??= new Vector3(0, 0, 0);
             return v1.Magnitude < v2.Magnitude;
         }
 
@@ -258,8 +258,8 @@ namespace BigBook
         /// <returns>The resulting vector</returns>
         public static bool operator <=(Vector3 v1, Vector3 v2)
         {
-            v1 = v1 ?? new Vector3(0, 0, 0);
-            v2 = v2 ?? new Vector3(0, 0, 0);
+            v1 ??= new Vector3(0, 0, 0);
+            v2 ??= new Vector3(0, 0, 0);
             return v1.Magnitude <= v2.Magnitude;
         }
 
@@ -292,8 +292,8 @@ namespace BigBook
         /// <returns>The resulting vector</returns>
         public static bool operator >(Vector3 v1, Vector3 v2)
         {
-            v1 = v1 ?? new Vector3(0, 0, 0);
-            v2 = v2 ?? new Vector3(0, 0, 0);
+            v1 ??= new Vector3(0, 0, 0);
+            v2 ??= new Vector3(0, 0, 0);
             return v1.Magnitude > v2.Magnitude;
         }
 
@@ -305,8 +305,8 @@ namespace BigBook
         /// <returns>The resulting vector</returns>
         public static bool operator >=(Vector3 v1, Vector3 v2)
         {
-            v1 = v1 ?? new Vector3(0, 0, 0);
-            v2 = v2 ?? new Vector3(0, 0, 0);
+            v1 ??= new Vector3(0, 0, 0);
+            v2 ??= new Vector3(0, 0, 0);
             return v1.Magnitude >= v2.Magnitude;
         }
 

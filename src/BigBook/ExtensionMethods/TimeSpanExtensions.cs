@@ -34,7 +34,7 @@ namespace BigBook
         /// <returns>The average value</returns>
         public static TimeSpan Average(this IEnumerable<TimeSpan> list)
         {
-            list = list ?? new List<TimeSpan>();
+            list ??= new List<TimeSpan>();
             return list.Any() ? new TimeSpan((long)list.Average(x => x.Ticks)) : new TimeSpan(0);
         }
 
@@ -67,7 +67,8 @@ namespace BigBook
             if (input.DaysRemainder() > 0) { Result += Splitter + input.DaysRemainder() + " day" + (input.DaysRemainder() > 1 ? "s" : ""); Splitter = ", "; }
             if (input.Hours > 0) { Result += Splitter + input.Hours + " hour" + (input.Hours > 1 ? "s" : ""); Splitter = ", "; }
             if (input.Minutes > 0) { Result += Splitter + input.Minutes + " minute" + (input.Minutes > 1 ? "s" : ""); Splitter = ", "; }
-            if (input.Seconds > 0) { Result += Splitter + input.Seconds + " second" + (input.Seconds > 1 ? "s" : ""); Splitter = ", "; }
+            if (input.Seconds > 0) { Result += Splitter + input.Seconds + " second" + (input.Seconds > 1 ? "s" : "");
+            }
             return Result;
         }
 

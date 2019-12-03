@@ -244,7 +244,7 @@ namespace BigBook
                 count = input.Length - index;
             }
 
-            encodingUsing = encodingUsing ?? Encoding.UTF8;
+            encodingUsing ??= Encoding.UTF8;
             return encodingUsing.GetString(input, index, count);
         }
     }

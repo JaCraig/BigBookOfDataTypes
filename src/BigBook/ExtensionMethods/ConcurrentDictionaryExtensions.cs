@@ -36,7 +36,7 @@ namespace BigBook
         /// <returns>This</returns>
         public static ConcurrentDictionary<TKey, TValue> CopyTo<TKey, TValue>(this ConcurrentDictionary<TKey, TValue> dictionary, ConcurrentDictionary<TKey, TValue> target)
         {
-            dictionary = dictionary ?? new ConcurrentDictionary<TKey, TValue>();
+            dictionary ??= new ConcurrentDictionary<TKey, TValue>();
             if (target == null)
             {
                 return dictionary;
@@ -57,14 +57,14 @@ namespace BigBook
         /// <returns>
         /// The value associated with the key or the default value if the key is not found
         /// </returns>
-        public static TValue GetValue<TKey, TValue>(this ConcurrentDictionary<TKey, TValue> dictionary, TKey key, TValue defaultValue = default(TValue))
+        public static TValue GetValue<TKey, TValue>(this ConcurrentDictionary<TKey, TValue> dictionary, TKey key, TValue defaultValue = default)
         {
             if (dictionary == null)
             {
                 return defaultValue;
             }
 
-            var ReturnValue = defaultValue;
+            TValue ReturnValue;
             return dictionary.TryGetValue(key, out ReturnValue) ? ReturnValue : defaultValue;
         }
 

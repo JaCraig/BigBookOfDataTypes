@@ -40,14 +40,14 @@ namespace BigBook
         /// <returns>A new IEnumerable containing all values</returns>
         /// <example>
         /// <code>
-        /// int[] TestObject1 = new int[] { 1, 2, 3 }; int[] TestObject2 = new int[] { 4, 5, 6
-        /// }; int[] TestObject3 = new int[] { 7, 8, 9 }; TestObject1 =
-        /// TestObject1.Concat(TestObject2, TestObject3).ToArray();
+        ///int[] TestObject1 = new int[] { 1, 2, 3 }; int[] TestObject2 = new int[] { 4, 5, 6
+        ///}; int[] TestObject3 = new int[] { 7, 8, 9 }; TestObject1 =
+        ///TestObject1.Concat(TestObject2, TestObject3).ToArray();
         /// </code>
         /// </example>
         public static IEnumerable<T> Concat<T>(this IEnumerable<T> enumerable1, params IEnumerable<T>[] additions)
         {
-            enumerable1 = enumerable1 ?? Array.Empty<T>();
+            enumerable1 ??= Array.Empty<T>();
             if (additions == null)
             {
                 return enumerable1;
@@ -82,7 +82,7 @@ namespace BigBook
             }
 
             var TempGenericComparer = new GenericEqualityComparer<T>();
-            predicate = predicate ?? TempGenericComparer.Equals;
+            predicate ??= TempGenericComparer.Equals;
             var Results = new List<T>();
             foreach (var Item in enumerable)
             {
@@ -532,7 +532,7 @@ namespace BigBook
             Func<T1, Key> outerKeySelector,
             Func<T2, Key> innerKeySelector,
             Func<T1, T2, R> resultSelector,
-            IEqualityComparer<Key> comparer = null)
+            IEqualityComparer<Key>? comparer = null)
         {
             if (inner == null
                 || outerKeySelector == null
@@ -542,7 +542,7 @@ namespace BigBook
                 return Array.Empty<R>();
             }
 
-            comparer = comparer ?? new GenericEqualityComparer<Key>();
+            comparer ??= new GenericEqualityComparer<Key>();
             return outer.ForEach(x => new { left = x, right = inner.FirstOrDefault(y => comparer.Equals(innerKeySelector(y), outerKeySelector(x))) })
                         .ForEach(x => resultSelector(x.left, x.right));
         }
@@ -566,7 +566,7 @@ namespace BigBook
             Func<T1, Key> outerKeySelector,
             Func<T2, Key> innerKeySelector,
             Func<T1, T2, R> resultSelector,
-            IEqualityComparer<Key> comparer = null)
+            IEqualityComparer<Key>? comparer = null)
         {
             if (inner == null
                 || outer == null
@@ -592,14 +592,14 @@ namespace BigBook
         /// Equality comparer used to determine if the object is present
         /// </param>
         /// <returns>The position of the object if it is present, otherwise -1</returns>
-        public static int PositionOf<T>(this IEnumerable<T> list, T item, IEqualityComparer<T> equalityComparer = null)
+        public static int PositionOf<T>(this IEnumerable<T> list, T item, IEqualityComparer<T>? equalityComparer = null)
         {
             if (list?.Any() != true)
             {
                 return -1;
             }
 
-            equalityComparer = equalityComparer ?? new GenericEqualityComparer<T>();
+            equalityComparer ??= new GenericEqualityComparer<T>();
             var Count = 0;
             foreach (var TempItem in list)
             {
@@ -632,7 +632,7 @@ namespace BigBook
             Func<T1, Key> outerKeySelector,
             Func<T2, Key> innerKeySelector,
             Func<T1, T2, R> resultSelector,
-            IEqualityComparer<Key> comparer = null)
+            IEqualityComparer<Key>? comparer = null)
         {
             if (outer == null
                 || outerKeySelector == null
@@ -642,7 +642,7 @@ namespace BigBook
                 return Array.Empty<R>();
             }
 
-            comparer = comparer ?? new GenericEqualityComparer<Key>();
+            comparer ??= new GenericEqualityComparer<Key>();
             return inner.ForEach(x => new { left = outer.FirstOrDefault(y => comparer.Equals(innerKeySelector(x), outerKeySelector(y))), right = x })
                         .ForEach(x => resultSelector(x.left, x.right));
         }
@@ -810,7 +810,7 @@ namespace BigBook
                 return new ObservableList<Target>();
             }
 
-            convertingFunction = convertingFunction ?? new Func<Source, Target>(x => x.To<Source, Target>());
+            convertingFunction ??= new Func<Source, Target>(x => x.To<Source, Target>());
             return new ObservableList<Target>(list.ForEach(convertingFunction));
         }
 
@@ -840,15 +840,15 @@ namespace BigBook
         /// </param>
         /// <param name="seperator">Seperator to use between items (defaults to ,)</param>
         /// <returns>The string version of the list</returns>
-        public static string ToString<T>(this IEnumerable<T> list, Func<T, string> itemOutput = null, string seperator = ",")
+        public static string ToString<T>(this IEnumerable<T> list, Func<T, string>? itemOutput = null, string seperator = ",")
         {
             if (list?.Any() != true)
             {
                 return "";
             }
 
-            seperator = seperator ?? "";
-            itemOutput = itemOutput ?? (x => x.ToString());
+            seperator ??= "";
+            itemOutput ??= (x => x?.ToString() ?? "");
             return string.Join(seperator, list.Select(itemOutput));
         }
 
@@ -885,7 +885,7 @@ namespace BigBook
         /// <returns>The transversed hierarchy.</returns>
         public static IEnumerable<T> Transverse<T>(this T item, Func<T, IEnumerable<T>> property)
         {
-            if (Equals(item, default(T)))
+            if (Equals(item, default(T)!))
             {
                 yield break;
             }

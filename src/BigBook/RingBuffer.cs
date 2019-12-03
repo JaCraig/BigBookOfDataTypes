@@ -18,6 +18,7 @@ using BigBook.Comparison;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 
 namespace BigBook
@@ -58,7 +59,7 @@ namespace BigBook
             Buffer = new T[maxCapacity];
         }
 
-        private object Root;
+        private object? Root;
 
         /// <summary>
         /// Is overflow allowed?
@@ -199,7 +200,7 @@ namespace BigBook
         /// <param name="count">Number of items to add</param>
         public void Add(T[] buffer, int offset, int count)
         {
-            buffer = buffer ?? Array.Empty<T>();
+            buffer ??= Array.Empty<T>();
             if (offset < 0)
             {
                 offset = 0;
@@ -234,7 +235,7 @@ namespace BigBook
             Count = 0;
             for (var x = 0; x < MaxCapacity; ++x)
             {
-                Buffer[x] = default(T);
+                Buffer[x] = default!;
             }
         }
 
@@ -335,15 +336,16 @@ namespace BigBook
         /// Reads the next item from the buffer
         /// </summary>
         /// <returns>The next item from the buffer</returns>
+        [return: MaybeNull]
         public T Remove()
         {
             if (Count == 0)
             {
-                return default(T);
+                return default!;
             }
 
             var ReturnValue = Buffer[ReadPosition];
-            Buffer[ReadPosition] = default(T);
+            Buffer[ReadPosition] = default!;
             ++ReadPosition;
             ReadPosition %= MaxCapacity;
             --Count;
@@ -384,7 +386,7 @@ namespace BigBook
             {
                 if (Comparer.Equals(Buffer[y], item))
                 {
-                    Buffer[y] = default(T);
+                    Buffer[y] = default!;
                     return true;
                 }
                 ++y;
@@ -405,7 +407,7 @@ namespace BigBook
         /// <returns>The number of items that were read</returns>
         public int Remove(T[] array, int offset, int count)
         {
-            array = array ?? Array.Empty<T>();
+            array ??= Array.Empty<T>();
             if (offset < 0)
             {
                 offset = 0;

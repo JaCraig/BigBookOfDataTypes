@@ -17,6 +17,7 @@ limitations under the License.
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace BigBook
@@ -224,20 +225,21 @@ namespace BigBook
         /// </param>
         /// <param name="orderBy">Function used to order the values</param>
         /// <returns>The median value</returns>
-        public static T Median<T>(this IEnumerable<T> values, Func<T, T, T> average = null, Func<T, T> orderBy = null)
+        [return: MaybeNull]
+        public static T Median<T>(this IEnumerable<T> values, Func<T, T, T>? average = null, Func<T, T>? orderBy = null)
         {
             if (values == null)
             {
-                return default(T);
+                return default!;
             }
 
             if (!values.Any())
             {
-                return default(T);
+                return default!;
             }
 
-            average = average ?? ((x, _) => x);
-            orderBy = orderBy ?? (x => x);
+            average ??= ((x, _) => x);
+            orderBy ??= (x => x);
             values = values.OrderBy(orderBy);
             if (values.Count() % 2 == 0)
             {
@@ -258,12 +260,12 @@ namespace BigBook
         {
             if (values == null)
             {
-                return default(T);
+                return default!;
             }
 
             if (!values.Any())
             {
-                return default(T);
+                return default!;
             }
 
             var Items = new Bag<T>();
@@ -273,7 +275,7 @@ namespace BigBook
             }
 
             var MaxValue = 0;
-            var MaxIndex = default(T);
+            var MaxIndex = default(T)!;
             foreach (var Key in Items)
             {
                 if (Items[Key] > MaxValue)
@@ -400,7 +402,7 @@ namespace BigBook
         /// <param name="values">List of values</param>
         /// <param name="selector">The selector.</param>
         /// <returns>The standard deviation</returns>
-        public static double StandardDeviation<T>(this IEnumerable<T> values, Func<T, double> selector = null) => values.Variance(selector).Sqrt();
+        public static double StandardDeviation<T>(this IEnumerable<T> values, Func<T, double>? selector = null) => values.Variance(selector).Sqrt();
 
         /// <summary>
         /// Gets the standard deviation
@@ -480,7 +482,7 @@ namespace BigBook
         /// <param name="values">List of values</param>
         /// <param name="selector">The selector.</param>
         /// <returns>The variance</returns>
-        public static double Variance<T>(this IEnumerable<T> values, Func<T, double> selector)
+        public static double Variance<T>(this IEnumerable<T> values, Func<T, double>? selector)
         {
             if (selector == null)
             {
