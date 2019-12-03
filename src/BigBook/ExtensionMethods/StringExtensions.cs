@@ -176,7 +176,7 @@ namespace BigBook
         /// <param name="format">Format string</param>
         /// <param name="objects">Objects to format</param>
         /// <returns>The StringBuilder passed in</returns>
-        public static StringBuilder AppendLineFormat(this StringBuilder builder, IFormatProvider provider, string format, params object[] objects)
+        public static StringBuilder? AppendLineFormat(this StringBuilder builder, IFormatProvider provider, string format, params object[] objects)
         {
             if (builder == null || string.IsNullOrEmpty(format))
             {
@@ -195,7 +195,7 @@ namespace BigBook
         /// <param name="format">Format string</param>
         /// <param name="objects">Objects to format</param>
         /// <returns>The StringBuilder passed in</returns>
-        public static StringBuilder AppendLineFormat(this StringBuilder builder, string format, params object[] objects) => builder.AppendLineFormat(CultureInfo.InvariantCulture, format, objects);
+        public static StringBuilder? AppendLineFormat(this StringBuilder builder, string format, params object[] objects) => builder.AppendLineFormat(CultureInfo.InvariantCulture, format, objects);
 
         /// <summary>
         /// Centers the input string (if it's longer than the length) and pads it using the padding string
@@ -235,7 +235,7 @@ namespace BigBook
         /// The type of encoding the string is converted into (defaults to UTF8)
         /// </param>
         /// <returns>string of the byte array</returns>
-        public static string Encode(this string input, Encoding originalEncodingUsing = null, Encoding encodingUsing = null)
+        public static string Encode(this string input, Encoding? originalEncodingUsing = null, Encoding? encodingUsing = null)
         {
             if (string.IsNullOrEmpty(input))
             {
@@ -680,8 +680,8 @@ namespace BigBook
         }
 
         /// <summary>
-        /// Strips out any of the characters specified starting on the right side of the input string
-        /// (stops when a character not in the list is found)
+        /// Strips out any of the characters specified starting on the right side of the input
+        /// string (stops when a character not in the list is found)
         /// </summary>
         /// <param name="input">Input string</param>
         /// <param name="characters">Characters to strip (defaults to a space)</param>
@@ -718,7 +718,7 @@ namespace BigBook
         /// The type of encoding the string is using (defaults to UTF8)
         /// </param>
         /// <returns>Bas64 string</returns>
-        public static string ToBase64String(this string input, Encoding originalEncodingUsing = null)
+        public static string ToBase64String(this string input, Encoding? originalEncodingUsing = null)
         {
             if (string.IsNullOrEmpty(input))
             {
@@ -736,7 +736,7 @@ namespace BigBook
         /// <param name="input">input string</param>
         /// <param name="encodingUsing">The type of encoding the string is using (defaults to UTF8)</param>
         /// <returns>the byte array representing the string</returns>
-        public static byte[] ToByteArray(this string input, Encoding encodingUsing = null)
+        public static byte[] ToByteArray(this string input, Encoding? encodingUsing = null)
         {
             encodingUsing ??= Encoding.UTF8;
             return string.IsNullOrEmpty(input) ? Array.Empty<byte>() : encodingUsing.GetBytes(input);
@@ -749,7 +749,7 @@ namespace BigBook
         /// <param name="caseOfString">Capitalization type to use</param>
         /// <param name="provider">CultureInfo to use. Defaults to InvariantCulture.</param>
         /// <returns>Capitalizes the string based on the case specified</returns>
-        public static string ToString(this string input, StringCase caseOfString, CultureInfo provider = null)
+        public static string ToString(this string input, StringCase caseOfString, CultureInfo? provider = null)
         {
             if (string.IsNullOrEmpty(input))
             {
@@ -817,7 +817,7 @@ namespace BigBook
         /// <param name="format">Format of the output string</param>
         /// <param name="provider">String formatter provider (defaults to GenericStringFormatter)</param>
         /// <returns>The formatted string</returns>
-        public static string ToString(this string input, string format, IStringFormatter provider = null)
+        public static string ToString(this string input, string format, IStringFormatter? provider = null)
         {
             provider ??= new GenericStringFormatter();
             return provider.Format(input, format);

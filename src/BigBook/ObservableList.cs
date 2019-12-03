@@ -69,12 +69,12 @@ namespace BigBook
         /// <summary>
         /// The collection changed
         /// </summary>
-        private NotifyCollectionChangedEventHandler collectionChanged_;
+        private NotifyCollectionChangedEventHandler? collectionChanged_;
 
         /// <summary>
         /// The property changed
         /// </summary>
-        private PropertyChangedEventHandler propertyChanged_;
+        private PropertyChangedEventHandler? propertyChanged_;
 
         /// <summary>
         /// Gets the number of elements contained in the <see cref="T:System.Collections.Generic.ICollection`1"/>.
@@ -100,7 +100,7 @@ namespace BigBook
         /// <summary>
         /// Gets an object that can be used to synchronize access to the <see cref="T:System.Collections.ICollection"/>.
         /// </summary>
-        public object SyncRoot { get; }
+        public object? SyncRoot { get; }
 
         /// <summary>
         /// Gets or sets the base list.
@@ -114,7 +114,7 @@ namespace BigBook
         /// <value>The <see cref="System.Object"/>.</value>
         /// <param name="index">The index.</param>
         /// <returns></returns>
-        object IList.this[int index] { get => this[index]; set => this[index] = (T)value; }
+        object IList.this[int index] { get => this[index]!; set => this[index] = (T)value; }
 
         /// <summary>
         /// Gets or sets the element at the specified index.
@@ -194,8 +194,8 @@ namespace BigBook
         /// </summary>
         /// <param name="value">The object to add to the <see cref="T:System.Collections.IList"/>.</param>
         /// <returns>
-        /// The position into which the new element was inserted, or -1 to indicate that the item was
-        /// not inserted into the collection.
+        /// The position into which the new element was inserted, or -1 to indicate that the item
+        /// was not inserted into the collection.
         /// </returns>
         public int Add(object value)
         {

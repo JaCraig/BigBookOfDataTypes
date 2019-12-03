@@ -39,23 +39,22 @@ namespace BigBook.Comparison
                 || (TypeInfo.IsGenericType
                 && TypeInfo.GetGenericTypeDefinition().IsAssignableFrom(typeof(Nullable<>))))
             {
-                if (object.Equals(x, default(T)))
+                if (object.Equals(x, default(T)!))
                 {
-                    return object.Equals(y, default(T));
+                    return object.Equals(y, default(T)!);
                 }
 
-                if (object.Equals(y, default(T)))
+                if (object.Equals(y, default(T)!))
                 {
                     return false;
                 }
             }
-            if (x.GetType() != y.GetType())
+            if (x?.GetType() != y?.GetType())
             {
                 return false;
             }
 
-            var IEnumerabley = y as IEnumerable;
-            if (x is IEnumerable IEnumerablex && IEnumerabley != null)
+            if (x is IEnumerable IEnumerablex && y is IEnumerable IEnumerabley)
             {
                 var Comparer = new GenericEqualityComparer<object>();
                 var XEnumerator = IEnumerablex.GetEnumerator();
@@ -90,7 +89,7 @@ namespace BigBook.Comparison
                 return TempComparable2.CompareTo(y) == 0;
             }
 
-            return x.Equals(y);
+            return x?.Equals(y) ?? false;
         }
 
         /// <summary>
@@ -98,6 +97,6 @@ namespace BigBook.Comparison
         /// </summary>
         /// <param name="obj">Object to get the hash code of</param>
         /// <returns>The object's hash code</returns>
-        public int GetHashCode(T obj) => obj.GetHashCode();
+        public int GetHashCode(T obj) => obj?.GetHashCode() ?? -1;
     }
 }

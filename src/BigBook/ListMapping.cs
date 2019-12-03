@@ -224,8 +224,8 @@ namespace BigBook
         /// <returns>True if the key is found, false otherwise</returns>
         public bool Remove(T1 key)
         {
-            var Value = new ConcurrentBag<T2>();
-            return Items.TryRemove(key, out Value);
+            _ = new ConcurrentBag<T2>();
+            return Items.TryRemove(key, out _);
         }
 
         /// <summary>
@@ -286,7 +286,7 @@ namespace BigBook
             var Builder = new StringBuilder();
             foreach (var Key in Keys)
             {
-                Builder.AppendLineFormat("{0}:{{{1}}}", Key.ToString(), Items[Key].ToString(x => x.ToString()));
+                Builder.AppendLineFormat("{0}:{{{1}}}", Key?.ToString() ?? "", Items[Key].ToString(x => x?.ToString() ?? ""));
             }
             return Builder.ToString();
         }

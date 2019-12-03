@@ -64,8 +64,7 @@ namespace BigBook
                 return defaultValue;
             }
 
-            TValue ReturnValue;
-            return dictionary.TryGetValue(key, out ReturnValue) ? ReturnValue : defaultValue;
+            return dictionary.TryGetValue(key, out var ReturnValue) ? ReturnValue : defaultValue;
         }
 
         /// <summary>

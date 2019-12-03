@@ -81,7 +81,7 @@ namespace BigBook.Conversion.BaseClasses
         /// <param name="culture">Culture info</param>
         /// <param name="value">Value</param>
         /// <returns>The DbType version</returns>
-        public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
+        public override object? ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
         {
             if (value == null)
             {
@@ -105,7 +105,7 @@ namespace BigBook.Conversion.BaseClasses
         /// <param name="value"></param>
         /// <param name="destinationType"></param>
         /// <returns></returns>
-        public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
+        public override object? ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
         {
             if (value == null)
             {

@@ -128,7 +128,7 @@ namespace BigBook
         /// <returns>The fraction as a decimal</returns>
         public static implicit operator decimal(Fraction fraction)
         {
-            if (fraction == null)
+            if (fraction == null!)
             {
                 throw new ArgumentNullException(nameof(fraction));
             }
@@ -143,7 +143,7 @@ namespace BigBook
         /// <returns>The fraction as a double</returns>
         public static implicit operator double(Fraction fraction)
         {
-            if (fraction == null)
+            if (fraction == null!)
             {
                 throw new ArgumentNullException(nameof(fraction));
             }
@@ -158,7 +158,7 @@ namespace BigBook
         /// <returns>The fraction as a float</returns>
         public static implicit operator float(Fraction fraction)
         {
-            if (fraction == null)
+            if (fraction == null!)
             {
                 throw new ArgumentNullException(nameof(fraction));
             }
@@ -223,7 +223,7 @@ namespace BigBook
         /// <returns>The fraction as a string</returns>
         public static implicit operator string(Fraction fraction)
         {
-            if (fraction == null)
+            if (fraction == null!)
             {
                 return "";
             }
@@ -239,12 +239,12 @@ namespace BigBook
         /// <returns>The subtracted fraction</returns>
         public static Fraction operator -(Fraction first, Fraction second)
         {
-            if (first == null)
+            if (first == null!)
             {
                 throw new ArgumentNullException(nameof(first));
             }
 
-            if (second == null)
+            if (second == null!)
             {
                 throw new ArgumentNullException(nameof(second));
             }
@@ -263,7 +263,7 @@ namespace BigBook
         /// <returns>The negated fraction</returns>
         public static Fraction operator -(Fraction first)
         {
-            if (first == null)
+            if (first == null!)
             {
                 throw new ArgumentNullException(nameof(first));
             }
@@ -312,12 +312,12 @@ namespace BigBook
         /// <returns>The resulting fraction</returns>
         public static Fraction operator *(Fraction first, Fraction second)
         {
-            if (first == null)
+            if (first == null!)
             {
                 throw new ArgumentNullException(nameof(first));
             }
 
-            if (second == null)
+            if (second == null!)
             {
                 throw new ArgumentNullException(nameof(second));
             }
@@ -335,12 +335,12 @@ namespace BigBook
         /// <returns>The divided fraction</returns>
         public static Fraction operator /(Fraction first, Fraction second)
         {
-            if (first == null)
+            if (first == null!)
             {
                 throw new ArgumentNullException(nameof(first));
             }
 
-            if (second == null)
+            if (second == null!)
             {
                 throw new ArgumentNullException(nameof(second));
             }
@@ -356,12 +356,12 @@ namespace BigBook
         /// <returns>The added fraction</returns>
         public static Fraction operator +(Fraction first, Fraction second)
         {
-            if (first == null)
+            if (first == null!)
             {
                 throw new ArgumentNullException(nameof(first));
             }
 
-            if (second == null)
+            if (second == null!)
             {
                 throw new ArgumentNullException(nameof(second));
             }

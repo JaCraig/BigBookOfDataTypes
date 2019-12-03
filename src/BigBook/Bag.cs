@@ -115,6 +115,6 @@ namespace BigBook
         /// </summary>
         /// <param name="item">Item to remove</param>
         /// <returns>True if it is removed, false otherwise</returns>
-        public virtual bool Remove(T item) => Items.TryRemove(item, out var Value);
+        public virtual bool Remove(T item) => Items.TryRemove(item, out _);
     }
 }

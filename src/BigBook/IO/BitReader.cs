@@ -60,7 +60,7 @@ namespace BigBook.IO
         /// Gets or sets the internal stream.
         /// </summary>
         /// <value>The internal stream.</value>
-        private Stream InternalStream { get; set; }
+        private Stream? InternalStream { get; set; }
 
         /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting
@@ -68,11 +68,7 @@ namespace BigBook.IO
         /// </summary>
         public void Dispose()
         {
-            if (InternalStream != null)
-            {
-                InternalStream.Dispose();
-                InternalStream = null;
-            }
+            Dispose(true);
         }
 
         /// <summary>
@@ -82,6 +78,8 @@ namespace BigBook.IO
         /// <returns>The next bit value in the stream</returns>
         public bool? ReadBit(bool bigEndian = false)
         {
+            if (InternalStream == null)
+                return null;
             if (CurrentBit == 8)
             {
                 var TempByte = InternalStream.ReadByte();
@@ -113,6 +111,9 @@ namespace BigBook.IO
         /// <param name="bitCount">The bit count.</param>
         public void Skip(int bitCount)
         {
+            if (InternalStream == null)
+                return;
+
             if (CurrentBit == 8)
             {
                 var TempByte = InternalStream.ReadByte();
@@ -138,6 +139,22 @@ namespace BigBook.IO
                     CurrentBit = 0;
                     CurrentByte = (byte)TempByte;
                 }
+            }
+        }
+
+        /// <summary>
+        /// Releases unmanaged and - optionally - managed resources.
+        /// </summary>
+        /// <param name="managed">
+        /// <c>true</c> to release both managed and unmanaged resources; <c>false</c> to release
+        /// only unmanaged resources.
+        /// </param>
+        protected virtual void Dispose(bool managed)
+        {
+            if (InternalStream != null)
+            {
+                InternalStream.Dispose();
+                InternalStream = null;
             }
         }
     }

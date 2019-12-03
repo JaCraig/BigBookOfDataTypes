@@ -302,7 +302,7 @@ namespace BigBook
         /// <param name="type">Type to create an instance of</param>
         /// <param name="args">Arguments sent into the constructor</param>
         /// <returns>The newly created instance of the type</returns>
-        public static ClassType Create<ClassType>(this Type type, params object[] args) => type == null ? default : (ClassType)type?.Create(args);
+        public static ClassType Create<ClassType>(this Type type, params object[] args) => type == null ? default : (ClassType)type?.Create(args)!;
 
         /// <summary>
         /// Creates an instance of the type
@@ -310,7 +310,7 @@ namespace BigBook
         /// <param name="type">Type to create an instance of</param>
         /// <param name="args">Arguments sent into the constructor</param>
         /// <returns>The newly created instance of the type</returns>
-        public static object Create(this Type type, params object[] args) => type == null ? null : Activator.CreateInstance(type, args);
+        public static object? Create(this Type type, params object[] args) => type == null ? null : Activator.CreateInstance(type, args);
 
         /// <summary>
         /// Creates an instance of the types and casts it to the specified type
@@ -338,7 +338,7 @@ namespace BigBook
         /// <param name="types">Types to create an instance of</param>
         /// <param name="args">Arguments sent into the constructor</param>
         /// <returns>The newly created instance of the types</returns>
-        public static IEnumerable<object> Create(this IEnumerable<Type> types, params object[] args)
+        public static IEnumerable<object?> Create(this IEnumerable<Type> types, params object[] args)
         {
             if (types?.Any() != true)
             {
@@ -480,7 +480,7 @@ namespace BigBook
         /// <returns></returns>
         public static PropertyInfo? GetProperty<TObject>(this Type type, string name)
         {
-            var Result = Array.Find(TypeCacheFor<TObject>.Properties, x => x.Name == name);
+            PropertyInfo? Result = Array.Find(TypeCacheFor<TObject>.Properties, x => x.Name == name);
             if (Result != null || !type.IsInterface)
                 return Result;
             var Interfaces = TypeCacheFor<TObject>.Interfaces;
@@ -568,7 +568,9 @@ namespace BigBook
                 return default!;
             }
 
-            var ObjectType = inputObject.GetType();
+            var ObjectType = inputObject?.GetType();
+            if (ObjectType == null)
+                return default!;
             var ClassInstance = ObjectType.Create<T>();
             var TempProperties = ObjectType.GetProperties();
             for (int x = 0, maxLength = TempProperties.Length; x < maxLength; x++)
@@ -615,7 +617,7 @@ namespace BigBook
         /// </param>
         /// <returns>The list of types that are marked with an attribute</returns>
         public static IEnumerable<Type> MarkedWith<T>(this IEnumerable<Type> types, bool inherit = true)
-            where T : Attribute => types?.Where(x => x.IsDefined(typeof(T), inherit) && !x.IsAbstract);
+            where T : Attribute => types?.Where(x => x.IsDefined(typeof(T), inherit) && !x.IsAbstract) ?? Array.Empty<Type>();
 
         /// <summary>
         /// Returns an instance of all classes that it finds within an assembly that are of the
@@ -868,11 +870,11 @@ namespace BigBook
             }
 
             var PropertyInfo = typeof(ClassType).GetProperty<ClassType>(SplitName[0]);
-            var ObjectInstance = Expression.Parameter(PropertyInfo.DeclaringType, "x");
+            var ObjectInstance = Expression.Parameter(PropertyInfo?.DeclaringType, "x");
             var PropertySet = Expression.Parameter(typeof(DataType), "y");
-            var DefaultConstant = Expression.Constant(((object)null).To(PropertyInfo.PropertyType, null), PropertyInfo.PropertyType);
-            MethodCallExpression SetterCall = null;
-            MemberExpression PropertyGet = null;
+            var DefaultConstant = Expression.Constant(((object?)null).To(PropertyInfo?.PropertyType, null), PropertyInfo.PropertyType);
+            MethodCallExpression? SetterCall = null;
+            MemberExpression? PropertyGet = null;
             if (SplitName.Length > 1)
             {
                 PropertyGet = Expression.Property(ObjectInstance, PropertyInfo);
@@ -888,16 +890,16 @@ namespace BigBook
                 }
                 PropertyInfo = PropertyInfo.PropertyType.GetProperty(SplitName[^1], true);
             }
-            var SetMethod = PropertyInfo.GetSetMethod();
+            var SetMethod = PropertyInfo?.GetSetMethod();
             if (SetMethod != null)
             {
-                if (PropertyInfo.PropertyType != typeof(DataType))
+                if (PropertyInfo?.PropertyType != typeof(DataType))
                 {
                     var ConversionMethod = Array.Find(typeof(GenericObjectExtensions).GetMethods(), x => x.ContainsGenericParameters
                         && x.GetGenericArguments().Length == 2
                         && x.Name == "To"
                         && x.GetParameters().Length == 2);
-                    ConversionMethod = ConversionMethod.MakeGenericMethod(typeof(DataType), PropertyInfo.PropertyType);
+                    ConversionMethod = ConversionMethod.MakeGenericMethod(typeof(DataType), PropertyInfo?.PropertyType);
                     var Convert = Expression.Call(ConversionMethod, PropertySet, DefaultConstant);
                     SetterCall = PropertyGet == null ? Expression.Call(ObjectInstance, SetMethod, Convert) : Expression.Call(PropertyGet, SetMethod, Convert);
                     return Expression.Lambda<Action<ClassType, DataType>>(SetterCall, ObjectInstance, PropertySet);
@@ -948,20 +950,20 @@ namespace BigBook
         /// which then has a Prop2 on it, which in turn has a Prop3 on it.)
         /// </param>
         /// <returns>The type of the property specified or null if it can not be reached.</returns>
-        public static Type PropertyType(this Type objectType, string propertyPath)
+        public static Type? PropertyType(this Type objectType, string propertyPath)
         {
             if (objectType == null || string.IsNullOrEmpty(propertyPath))
             {
                 return null;
             }
+            Type? TempObject = objectType;
 
             var SourceProperties = propertyPath.Split(new string[] { "." }, StringSplitOptions.None);
             for (var x = 0; x < SourceProperties.Length; ++x)
             {
-                var PropertyInfo = objectType.GetProperty(SourceProperties[x], true);
-                objectType = PropertyInfo.PropertyType;
+                TempObject = TempObject.GetProperty(SourceProperties[x], true)?.PropertyType;
             }
-            return objectType;
+            return TempObject;
         }
 
         /// <summary>
