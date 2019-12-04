@@ -204,12 +204,11 @@ namespace BigBook
             }
 
             var ItemType = item.GetType();
-            var DictItem = item as IDictionary<string, object>;
             if (item is string || ItemType.IsValueType)
             {
                 SetValue("Value", item);
             }
-            else if (DictItem != null)
+            else if (item is IDictionary<string, object> DictItem)
             {
                 InternalValues = new ConcurrentDictionary<string, object>(DictItem, StringComparer.OrdinalIgnoreCase);
             }
@@ -407,12 +406,11 @@ namespace BigBook
                 return;
             }
 
-            var DictItem = item as IDictionary<string, object>;
             if (item is string || item.GetType().IsValueType)
             {
                 SetValue("Value", item);
             }
-            else if (DictItem != null)
+            else if (item is IDictionary<string, object> DictItem)
             {
                 foreach (var Key in DictItem.Keys)
                 {
@@ -541,7 +539,7 @@ namespace BigBook
         public bool Remove(string key)
         {
             RaisePropertyChanged(key, null);
-            return InternalValues.TryRemove(key, out var TempObject);
+            return InternalValues.TryRemove(key, out _);
         }
 
         /// <summary>
@@ -552,7 +550,7 @@ namespace BigBook
         public bool Remove(KeyValuePair<string, object> item)
         {
             RaisePropertyChanged(item.Key, null);
-            return InternalValues.TryRemove(item.Key, out var TempObject);
+            return InternalValues.TryRemove(item.Key, out _);
         }
 
         /// <summary>

@@ -872,7 +872,7 @@ namespace BigBook
             var PropertyInfo = typeof(ClassType).GetProperty<ClassType>(SplitName[0]);
             var ObjectInstance = Expression.Parameter(PropertyInfo?.DeclaringType, "x");
             var PropertySet = Expression.Parameter(typeof(DataType), "y");
-            var DefaultConstant = Expression.Constant(((object)null!).To(PropertyInfo?.PropertyType ?? typeof(object), null), PropertyInfo?.PropertyType);
+            var DefaultConstant = Expression.Constant(((object?)null).To(PropertyInfo?.PropertyType, null), PropertyInfo.PropertyType);
             MethodCallExpression? SetterCall = null;
             MemberExpression? PropertyGet = null;
             if (SplitName.Length > 1)
@@ -956,14 +956,14 @@ namespace BigBook
             {
                 return null;
             }
+            Type? TempObject = objectType;
 
             var SourceProperties = propertyPath.Split(new string[] { "." }, StringSplitOptions.None);
             for (var x = 0; x < SourceProperties.Length; ++x)
             {
-                var PropertyInfo = objectType.GetProperty(SourceProperties[x], true);
-                objectType = PropertyInfo?.PropertyType;
+                TempObject = TempObject.GetProperty(SourceProperties[x], true)?.PropertyType;
             }
-            return objectType;
+            return TempObject;
         }
 
         /// <summary>

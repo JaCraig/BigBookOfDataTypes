@@ -38,12 +38,12 @@ namespace BigBook.Comparison
                 || (TypeInfo.IsGenericType
                 && TypeInfo.GetGenericTypeDefinition().IsAssignableFrom(typeof(Nullable<>))))
             {
-                if (Equals(x, default(T)))
+                if (Equals(x, default(T)!))
                 {
-                    return Equals(y, default(T)) ? 0 : -1;
+                    return Equals(y, default(T)!) ? 0 : -1;
                 }
 
-                if (Equals(y, default(T)))
+                if (Equals(y, default(T)!))
                 {
                     return -1;
                 }

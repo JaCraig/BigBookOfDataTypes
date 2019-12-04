@@ -90,7 +90,7 @@ namespace BigBook.IO
         /// <summary>
         /// Gets the underlying stream of the EndianBinaryReader.
         /// </summary>
-        public Stream BaseStream { get; private set; }
+        public Stream? BaseStream { get; private set; }
 
         /// <summary>
         /// Gets the bit converter used to read values from the stream.
@@ -112,11 +112,7 @@ namespace BigBook.IO
         /// </summary>
         public void Dispose()
         {
-            if (BaseStream != null)
-            {
-                BaseStream.Dispose();
-                BaseStream = null;
-            }
+            Dispose(true);
         }
 
         /// <summary>
@@ -400,8 +396,8 @@ namespace BigBook.IO
         }
 
         /// <summary>
-        /// Reads a 32-bit signed integer from the stream, using the bit converter for this reader. 4
-        /// bytes are read.
+        /// Reads a 32-bit signed integer from the stream, using the bit converter for this reader.
+        /// 4 bytes are read.
         /// </summary>
         /// <returns>The 32-bit integer read</returns>
         public int ReadInt()
@@ -411,8 +407,8 @@ namespace BigBook.IO
         }
 
         /// <summary>
-        /// Reads a 64-bit signed integer from the stream, using the bit converter for this reader. 8
-        /// bytes are read.
+        /// Reads a 64-bit signed integer from the stream, using the bit converter for this reader.
+        /// 8 bytes are read.
         /// </summary>
         /// <returns>The 64-bit integer read</returns>
         public long ReadLong()
@@ -422,8 +418,8 @@ namespace BigBook.IO
         }
 
         /// <summary>
-        /// Reads a 16-bit signed integer from the stream, using the bit converter for this reader. 2
-        /// bytes are read.
+        /// Reads a 16-bit signed integer from the stream, using the bit converter for this reader.
+        /// 2 bytes are read.
         /// </summary>
         /// <returns>The 16-bit integer read</returns>
         public short ReadShort()
@@ -444,8 +440,8 @@ namespace BigBook.IO
 
         /// <summary>
         /// Reads a length-prefixed string from the stream, using the encoding for this reader. A
-        /// 7-bit encoded integer is first read, which specifies the number of bytes to read from the
-        /// stream. These bytes are then converted into a string with the encoding for this reader.
+        /// 7-bit encoded integer is first read, which specifies the number of bytes to read from
+        /// the stream. These bytes are then converted into a string with the encoding for this reader.
         /// </summary>
         /// <returns>The string read from the stream.</returns>
         public string ReadString()
@@ -458,8 +454,8 @@ namespace BigBook.IO
         }
 
         /// <summary>
-        /// Reads a 32-bit unsigned integer from the stream, using the bit converter for this reader.
-        /// 4 bytes are read.
+        /// Reads a 32-bit unsigned integer from the stream, using the bit converter for this
+        /// reader. 4 bytes are read.
         /// </summary>
         /// <returns>The 32-bit unsigned integer read</returns>
         public uint ReadUnsignedInt()
@@ -469,8 +465,8 @@ namespace BigBook.IO
         }
 
         /// <summary>
-        /// Reads a 64-bit unsigned integer from the stream, using the bit converter for this reader.
-        /// 8 bytes are read.
+        /// Reads a 64-bit unsigned integer from the stream, using the bit converter for this
+        /// reader. 8 bytes are read.
         /// </summary>
         /// <returns>The 64-bit unsigned integer read</returns>
         public ulong ReadUnsignedLong()
@@ -480,8 +476,8 @@ namespace BigBook.IO
         }
 
         /// <summary>
-        /// Reads a 16-bit unsigned integer from the stream, using the bit converter for this reader.
-        /// 2 bytes are read.
+        /// Reads a 16-bit unsigned integer from the stream, using the bit converter for this
+        /// reader. 2 bytes are read.
         /// </summary>
         /// <returns>The 16-bit unsigned integer read</returns>
         public ushort ReadUnsignedShort()
@@ -503,6 +499,24 @@ namespace BigBook.IO
             }
 
             BaseStream.Seek(offset, origin);
+        }
+
+        /// <summary>
+        /// Releases unmanaged and - optionally - managed resources.
+        /// </summary>
+        /// <param name="managed">
+        /// <c>true</c> to release both managed and unmanaged resources; <c>false</c> to release
+        /// only unmanaged resources.
+        /// </param>
+        protected virtual void Dispose(bool managed)
+        {
+            if (!managed)
+                return;
+            if (BaseStream != null)
+            {
+                BaseStream.Dispose();
+                BaseStream = null;
+            }
         }
 
         /// <summary>

@@ -93,8 +93,7 @@ namespace BigBook.Formatters
                 }
                 else
                 {
-                    char NextValue;
-                    input = GetMatchingInput(input, formatPattern[x], out NextValue);
+                    input = GetMatchingInput(input, formatPattern[x], out var NextValue);
                     if (NextValue != char.MinValue)
                     {
                         ReturnValue.Append(NextValue);
@@ -109,7 +108,7 @@ namespace BigBook.Formatters
         /// </summary>
         /// <param name="formatType">Format type</param>
         /// <returns>The appropriate formatter based on the type</returns>
-        public object GetFormat(Type formatType) => formatType == typeof(ICustomFormatter) ? this : null;
+        public object? GetFormat(Type formatType) => formatType == typeof(ICustomFormatter) ? this : null;
 
         /// <summary>
         /// Gets matching input

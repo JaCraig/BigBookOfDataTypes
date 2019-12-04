@@ -74,7 +74,7 @@ namespace BigBook.IO
         /// Gets the underlying stream of the EndianBinaryWriter.
         /// </summary>
         /// <value>The base stream.</value>
-        public Stream BaseStream { get; private set; }
+        public Stream? BaseStream { get; private set; }
 
         /// <summary>
         /// Gets the bit converter used to write values to the stream
@@ -98,12 +98,7 @@ namespace BigBook.IO
         /// </summary>
         public void Dispose()
         {
-            if (BaseStream != null)
-            {
-                Flush();
-                BaseStream.Dispose();
-                BaseStream = null;
-            }
+            Dispose(true);
         }
 
         /// <summary>
@@ -211,8 +206,8 @@ namespace BigBook.IO
         }
 
         /// <summary>
-        /// Writes a single-precision floating-point value to the stream, using the bit converter for
-        /// this writer. 4 bytes are written.
+        /// Writes a single-precision floating-point value to the stream, using the bit converter
+        /// for this writer. 4 bytes are written.
         /// </summary>
         /// <param name="value">The value to write</param>
         public void Write(float value)
@@ -222,8 +217,8 @@ namespace BigBook.IO
         }
 
         /// <summary>
-        /// Writes a double-precision floating-point value to the stream, using the bit converter for
-        /// this writer. 8 bytes are written.
+        /// Writes a double-precision floating-point value to the stream, using the bit converter
+        /// for this writer. 8 bytes are written.
         /// </summary>
         /// <param name="value">The value to write</param>
         public void Write(double value)
@@ -335,9 +330,9 @@ namespace BigBook.IO
         }
 
         /// <summary>
-        /// Writes a 7-bit encoded integer from the stream. This is stored with the least significant
-        /// information first, with 7 bits of information per byte of value, and the top bit as a
-        /// continuation flag.
+        /// Writes a 7-bit encoded integer from the stream. This is stored with the least
+        /// significant information first, with 7 bits of information per byte of value, and the top
+        /// bit as a continuation flag.
         /// </summary>
         /// <param name="value">The 7-bit encoded integer to write to the stream</param>
         public void Write7BitEncodedInt(int value)
@@ -358,6 +353,25 @@ namespace BigBook.IO
 
             buffer[index++] = (byte)value;
             BaseStream.Write(buffer, 0, index);
+        }
+
+        /// <summary>
+        /// Releases unmanaged and - optionally - managed resources.
+        /// </summary>
+        /// <param name="managed">
+        /// <c>true</c> to release both managed and unmanaged resources; <c>false</c> to release
+        /// only unmanaged resources.
+        /// </param>
+        protected virtual void Dispose(bool managed)
+        {
+            if (!managed)
+                return;
+            if (BaseStream != null)
+            {
+                Flush();
+                BaseStream.Dispose();
+                BaseStream = null;
+            }
         }
 
         /// <summary>

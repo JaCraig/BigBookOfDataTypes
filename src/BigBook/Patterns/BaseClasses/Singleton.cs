@@ -33,7 +33,7 @@ namespace BigBook.Patterns.BaseClasses
         }
 
         private static readonly object Temp = 1;
-        private static T _Instance;
+        private static T? _Instance;
 
         /// <summary>
         /// Gets the instance of the singleton

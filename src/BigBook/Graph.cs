@@ -41,13 +41,13 @@ namespace BigBook
         /// Gets the sink vertex.
         /// </summary>
         /// <value>The sink vertex.</value>
-        public Vertex<T> Sink { get; private set; }
+        public Vertex<T>? Sink { get; private set; }
 
         /// <summary>
         /// Gets the source vertex
         /// </summary>
         /// <value>The source vertex</value>
-        public Vertex<T> Source { get; private set; }
+        public Vertex<T>? Source { get; private set; }
 
         /// <summary>
         /// Removes this edge from the sink and source vertices.
@@ -55,8 +55,8 @@ namespace BigBook
         /// <returns>This</returns>
         public Edge<T> Remove()
         {
-            Sink.RemoveEdge(this);
-            Source.RemoveEdge(this);
+            Sink?.RemoveEdge(this);
+            Source?.RemoveEdge(this);
             Sink = null;
             Source = null;
             return this;
@@ -119,11 +119,11 @@ namespace BigBook
             for (int x = 0, VerticesCount = Vertices.Count; x < VerticesCount; x++)
             {
                 var TempVertex = Vertices[x];
-                var TempSource = Result.Vertices.First(z => z.Data.Equals(TempVertex.Data));
+                var TempSource = Result.Vertices.First(z => z.Data?.Equals(TempVertex.Data) ?? false);
                 for (int y = 0, TempVertexOutgoingEdgesCount = TempVertex.OutgoingEdges.Count; y < TempVertexOutgoingEdgesCount; y++)
                 {
                     var TempEdge = TempVertex.OutgoingEdges[y];
-                    var TempSink = Result.Vertices.First(z => z.Data.Equals(TempEdge.Sink.Data));
+                    var TempSink = Result.Vertices.First(z => z.Data?.Equals(TempEdge.Sink!.Data) ?? false);
                     Result.AddEdge(TempSource, TempSink);
                 }
             }
