@@ -547,7 +547,7 @@ namespace BigBook
         /// The object converted to the other type or the default value if there is an error or
         /// can't be converted
         /// </returns>
-        public static R To<T, R>(this T item, R defaultValue = default) => (R)item.To(typeof(R), defaultValue);
+        public static R To<T, R>(this T item, R defaultValue = default) => (R)item.To(typeof(R), defaultValue)!;
 
         /// <summary>
         /// Attempts to convert the object to another type and returns the value
