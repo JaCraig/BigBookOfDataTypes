@@ -24,7 +24,7 @@ namespace BigBook.EventArgs
         /// <summary>
         /// Content of the event
         /// </summary>
-        public object Content { get; set; }
+        public object? Content { get; set; }
 
         /// <summary>
         /// Should the event be stopped?

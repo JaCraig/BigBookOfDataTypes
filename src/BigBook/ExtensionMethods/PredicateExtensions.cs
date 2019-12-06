@@ -33,7 +33,7 @@ namespace BigBook
         /// <param name="predicate">Predicate to add to</param>
         /// <param name="values">Values to add</param>
         /// <returns>The resulting predicate set</returns>
-        public static Predicate<T> AddToSet<T>(this Predicate<T> predicate, params T[] values)
+        public static Predicate<T>? AddToSet<T>(this Predicate<T> predicate, params T[] values)
         {
             if (predicate == null)
             {
@@ -56,7 +56,7 @@ namespace BigBook
         /// <param name="predicate1">Predicate 1</param>
         /// <param name="predicate2">Predicate 2</param>
         /// <returns>The cartesian product</returns>
-        public static Func<T1, T2, bool> CartesianProduct<T1, T2>(this Predicate<T1> predicate1, Predicate<T2> predicate2)
+        public static Func<T1, T2, bool>? CartesianProduct<T1, T2>(this Predicate<T1> predicate1, Predicate<T2> predicate2)
         {
             if (predicate1 == null || predicate2 == null)
             {
@@ -73,7 +73,7 @@ namespace BigBook
         /// <param name="predicate1">Predicate 1</param>
         /// <param name="predicate2">Predicate 2</param>
         /// <returns>The difference of the two predicates</returns>
-        public static Predicate<T> Difference<T>(this Predicate<T> predicate1, Predicate<T> predicate2)
+        public static Predicate<T>? Difference<T>(this Predicate<T> predicate1, Predicate<T> predicate2)
         {
             if (predicate1 == null)
             {
@@ -95,7 +95,7 @@ namespace BigBook
         /// <param name="predicate1">Predicate 1</param>
         /// <param name="predicate2">Predicate 2</param>
         /// <returns>The intersected predicate</returns>
-        public static Predicate<T> Intersect<T>(this Predicate<T> predicate1, Predicate<T> predicate2)
+        public static Predicate<T>? Intersect<T>(this Predicate<T> predicate1, Predicate<T> predicate2)
         {
             if (predicate1 == null || predicate2 == null)
             {
@@ -112,7 +112,7 @@ namespace BigBook
         /// <param name="predicate1">Predicate 1</param>
         /// <param name="predicate2">Predicate 2</param>
         /// <returns>The relative complement</returns>
-        public static Predicate<T> RelativeComplement<T>(this Predicate<T> predicate1, Predicate<T> predicate2)
+        public static Predicate<T>? RelativeComplement<T>(this Predicate<T> predicate1, Predicate<T> predicate2)
         {
             if (predicate1 == null || predicate2 == null)
             {
@@ -129,7 +129,7 @@ namespace BigBook
         /// <param name="predicate">Predicate</param>
         /// <param name="values">Values to remove</param>
         /// <returns>The resulting set</returns>
-        public static Predicate<T> RemoveFromSet<T>(this Predicate<T> predicate, params T[] values)
+        public static Predicate<T>? RemoveFromSet<T>(this Predicate<T> predicate, params T[] values)
         {
             if (predicate == null)
             {

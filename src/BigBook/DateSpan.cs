@@ -98,14 +98,9 @@ namespace BigBook
         /// </summary>
         /// <param name="value">Value to convert</param>
         /// <returns>The value as a string</returns>
-        public static implicit operator string(DateSpan value)
+        public static implicit operator string(DateSpan? value)
         {
-            if (value == null)
-            {
-                return "";
-            }
-
-            return value.ToString();
+            return value?.ToString() ?? "";
         }
 
         /// <summary>
@@ -114,7 +109,7 @@ namespace BigBook
         /// <param name="span1">Span 1</param>
         /// <param name="span2">Span 2</param>
         /// <returns>True if they are not equal, false otherwise</returns>
-        public static bool operator !=(DateSpan span1, DateSpan span2)
+        public static bool operator !=(DateSpan? span1, DateSpan? span2)
         {
             return !(span1 == span2);
         }
@@ -125,19 +120,13 @@ namespace BigBook
         /// <param name="span1">Span 1</param>
         /// <param name="span2">Span 2</param>
         /// <returns>The combined date span</returns>
-        public static DateSpan operator +(DateSpan span1, DateSpan span2)
+        public static DateSpan? operator +(DateSpan? span1, DateSpan? span2)
         {
-            if (span1 == null && span2 == null)
-            {
-                return null;
-            }
-
             if (span1 == null)
             {
-                return new DateSpan(span2.Start, span2.End);
+                return span2 == null ? null : new DateSpan(span2.Start, span2.End);
             }
-
-            if (span2 == null)
+            else if (span2 == null)
             {
                 return new DateSpan(span1.Start, span1.End);
             }
@@ -153,7 +142,7 @@ namespace BigBook
         /// <param name="span1">Span 1</param>
         /// <param name="span2">Span 2</param>
         /// <returns>True if they are, false otherwise</returns>
-        public static bool operator ==(DateSpan span1, DateSpan span2)
+        public static bool operator ==(DateSpan? span1, DateSpan? span2)
         {
             if (span1 is null && span2 is null)
             {
@@ -176,7 +165,8 @@ namespace BigBook
         public override bool Equals(object obj)
         {
             var Tempobj = obj as DateSpan;
-            return Tempobj != null && Tempobj == this;
+            return Tempobj != null
+                && Tempobj == this;
         }
 
         /// <summary>
@@ -190,7 +180,7 @@ namespace BigBook
         /// </summary>
         /// <param name="span">Span to use</param>
         /// <returns>The intersection of the two time spans</returns>
-        public DateSpan Intersection(DateSpan span)
+        public DateSpan? Intersection(DateSpan? span)
         {
             if (span == null)
             {
@@ -212,7 +202,7 @@ namespace BigBook
         /// </summary>
         /// <param name="span">The span to compare to</param>
         /// <returns>True if they overlap, false otherwise</returns>
-        public bool Overlap(DateSpan span)
+        public bool Overlap(DateSpan? span)
         {
             if (span == null)
             {

@@ -79,7 +79,7 @@ namespace BigBook.Conversion
         /// <summary>
         /// Conversions
         /// </summary>
-        protected static ConcurrentDictionary<Type, DbType> Conversions { get; private set; }
+        protected static ConcurrentDictionary<Type, DbType>? Conversions { get; private set; }
 
         /// <summary>
         /// Internal converter
@@ -132,75 +132,55 @@ namespace BigBook.Conversion
             {
                 SqlDbType = Item
             };
-            switch (Parameter.DbType)
+            return Parameter.DbType switch
             {
-                case DbType.Byte:
-                    return typeof(byte);
+                DbType.Byte => typeof(byte),
 
-                case DbType.SByte:
-                    return typeof(sbyte);
+                DbType.SByte => typeof(sbyte),
 
-                case DbType.Int16:
-                    return typeof(short);
+                DbType.Int16 => typeof(short),
 
-                case DbType.UInt16:
-                    return typeof(ushort);
+                DbType.UInt16 => typeof(ushort),
 
-                case DbType.Int32:
-                    return typeof(int);
+                DbType.Int32 => typeof(int),
 
-                case DbType.UInt32:
-                    return typeof(uint);
+                DbType.UInt32 => typeof(uint),
 
-                case DbType.Int64:
-                    return typeof(long);
+                DbType.Int64 => typeof(long),
 
-                case DbType.UInt64:
-                    return typeof(ulong);
+                DbType.UInt64 => typeof(ulong),
 
-                case DbType.Single:
-                    return typeof(float);
+                DbType.Single => typeof(float),
 
-                case DbType.Double:
-                    return typeof(double);
+                DbType.Double => typeof(double),
 
-                case DbType.Decimal:
-                    return typeof(decimal);
+                DbType.Decimal => typeof(decimal),
 
-                case DbType.Boolean:
-                    return typeof(bool);
+                DbType.Boolean => typeof(bool),
 
-                case DbType.String:
-                    return typeof(string);
+                DbType.String => typeof(string),
 
-                case DbType.StringFixedLength:
-                    return typeof(char);
+                DbType.StringFixedLength => typeof(char),
 
-                case DbType.Guid:
-                    return typeof(Guid);
+                DbType.Guid => typeof(Guid),
 
-                case DbType.DateTime2:
-                    return typeof(DateTime);
+                DbType.DateTime2 => typeof(DateTime),
 
-                case DbType.DateTime:
-                    return typeof(DateTime);
+                DbType.DateTime => typeof(DateTime),
 
-                case DbType.DateTimeOffset:
-                    return typeof(DateTimeOffset);
+                DbType.DateTimeOffset => typeof(DateTimeOffset),
 
-                case DbType.Binary:
-                    return typeof(byte[]);
+                DbType.Binary => typeof(byte[]),
 
-                case DbType.Time:
-                    return typeof(TimeSpan);
-            }
+                DbType.Time => typeof(TimeSpan),
 
-            return typeof(int);
+                _ => typeof(int),
+            };
         }
 
         private static object TypeToSqlDbType(object arg)
         {
-            if (!(arg is Type TempValue))
+            if (!(arg is Type TempValue) || Conversions == null)
             {
                 return SqlDbType.Int;
             }

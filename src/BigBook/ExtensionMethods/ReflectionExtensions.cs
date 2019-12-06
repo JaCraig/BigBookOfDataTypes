@@ -872,7 +872,7 @@ namespace BigBook
             var PropertyInfo = typeof(ClassType).GetProperty<ClassType>(SplitName[0]);
             var ObjectInstance = Expression.Parameter(PropertyInfo?.DeclaringType, "x");
             var PropertySet = Expression.Parameter(typeof(DataType), "y");
-            var DefaultConstant = Expression.Constant(((object?)null).To(PropertyInfo?.PropertyType, null), PropertyInfo.PropertyType);
+            var DefaultConstant = Expression.Constant(((object?)null).To(PropertyInfo?.PropertyType!, null), PropertyInfo?.PropertyType);
             MethodCallExpression? SetterCall = null;
             MemberExpression? PropertyGet = null;
             if (SplitName.Length > 1)

@@ -117,7 +117,7 @@ namespace BigBook
         /// <param name="dictionary">Dictionary to sort</param>
         /// <param name="comparer">Comparer used to sort (defaults to GenericComparer)</param>
         /// <returns>The sorted dictionary</returns>
-        public static IDictionary<T1, T2> Sort<T1, T2>(this IDictionary<T1, T2> dictionary, IComparer<T1> comparer = null)
+        public static IDictionary<T1, T2> Sort<T1, T2>(this IDictionary<T1, T2> dictionary, IComparer<T1>? comparer = null)
             where T1 : IComparable
         {
             if (dictionary == null)
@@ -141,7 +141,7 @@ namespace BigBook
         /// <returns>The sorted dictionary</returns>
         public static IDictionary<T1, T2> Sort<T1, T2, T3>(this IDictionary<T1, T2> dictionary,
             Func<KeyValuePair<T1, T2>, T3> orderBy,
-            IComparer<T3> comparer = null)
+            IComparer<T3>? comparer = null)
             where T3 : IComparable
         {
             if (dictionary == null)

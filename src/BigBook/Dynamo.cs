@@ -37,7 +37,7 @@ namespace BigBook
         /// </summary>
         /// <param name="originalValue">Original value</param>
         /// <param name="newValue">New value</param>
-        public Change(object originalValue, object newValue)
+        public Change(object? originalValue, object? newValue)
         {
             OriginalValue = originalValue;
             NewValue = newValue;
@@ -46,12 +46,12 @@ namespace BigBook
         /// <summary>
         /// New value
         /// </summary>
-        public object NewValue { get; }
+        public object? NewValue { get; }
 
         /// <summary>
         /// Original value
         /// </summary>
-        public object OriginalValue { get; }
+        public object? OriginalValue { get; }
     }
 
     /// <summary>
@@ -65,7 +65,7 @@ namespace BigBook
         /// Constructor
         /// </summary>
         protected Dynamo()
-            : this(new Dictionary<string, object>())
+            : this(new Dictionary<string, object?>())
         {
         }
 
@@ -84,7 +84,7 @@ namespace BigBook
         /// </summary>
         /// <param name="dictionary">Dictionary to copy</param>
         /// <param name="useChangeLog"></param>
-        protected Dynamo(IDictionary<string, object> dictionary, bool useChangeLog = false)
+        protected Dynamo(IDictionary<string, object?> dictionary, bool useChangeLog = false)
             : base(dictionary, useChangeLog)
         {
         }
@@ -111,11 +111,11 @@ namespace BigBook
         /// <summary>
         /// Gets the Values
         /// </summary>
-        public override ICollection<object> Values
+        public override ICollection<object?> Values
         {
             get
             {
-                var Temp = new List<object>();
+                var Temp = new List<object?>();
                 foreach (var Key in Keys)
                 {
                     Temp.Add(GetValue(Key, typeof(object)));
@@ -130,7 +130,7 @@ namespace BigBook
         /// <param name="name">Name of the item</param>
         /// <param name="returnType">Return value type</param>
         /// <returns>The returned value</returns>
-        protected override object GetValue(string name, Type returnType)
+        protected override object? GetValue(string name, Type returnType)
         {
             if (ContainsKey(name))
             {
@@ -148,7 +148,7 @@ namespace BigBook
                 }
                 else
                 {
-                    ChildValues.AddOrUpdate(name, _ => () => null, (__, _) => null);
+                    ChildValues.AddOrUpdate(name, _ => () => null!, (__, _) => null!);
                 }
             }
             return ChildValues[name]().To(returnType, null);
@@ -159,7 +159,7 @@ namespace BigBook
         /// </summary>
         /// <param name="key">Name of the item</param>
         /// <param name="value">Value associated with the key</param>
-        protected override void SetValue(string key, object value)
+        protected override void SetValue(string key, object? value)
         {
             var ObjectType = GetType();
             var Property = ObjectType.GetProperty(key);
@@ -178,13 +178,13 @@ namespace BigBook
     /// <summary>
     /// Dynamic object implementation
     /// </summary>
-    public class Dynamo : DynamicObject, IDictionary<string, object>, INotifyPropertyChanged
+    public class Dynamo : DynamicObject, IDictionary<string, object?>, INotifyPropertyChanged
     {
         /// <summary>
         /// Constructor
         /// </summary>
         public Dynamo()
-            : this((object)null)
+            : this((object?)null)
         {
         }
 
@@ -193,9 +193,9 @@ namespace BigBook
         /// </summary>
         /// <param name="item">Item to copy values from</param>
         /// <param name="useChangeLog">if set to <c>true</c> [use change log].</param>
-        public Dynamo(object item, bool useChangeLog = false)
+        public Dynamo(object? item, bool useChangeLog = false)
         {
-            InternalValues = new ConcurrentDictionary<string, object>(StringComparer.OrdinalIgnoreCase);
+            InternalValues = new ConcurrentDictionary<string, object?>(StringComparer.OrdinalIgnoreCase);
             ChildValues = new ConcurrentDictionary<string, Func<object>>(StringComparer.OrdinalIgnoreCase);
             ChangeLog = useChangeLog ? new ConcurrentDictionary<string, Change>(StringComparer.OrdinalIgnoreCase) : null;
             if (item == null)
@@ -208,9 +208,9 @@ namespace BigBook
             {
                 SetValue("Value", item);
             }
-            else if (item is IDictionary<string, object> DictItem)
+            else if (item is IDictionary<string, object?> DictItem)
             {
-                InternalValues = new ConcurrentDictionary<string, object>(DictItem, StringComparer.OrdinalIgnoreCase);
+                InternalValues = new ConcurrentDictionary<string, object?>(DictItem, StringComparer.OrdinalIgnoreCase);
             }
             else if (item is IEnumerable)
             {
@@ -218,7 +218,7 @@ namespace BigBook
             }
             else
             {
-                DataMapper.Map(ItemType, GetType())
+                DataMapper?.Map(ItemType, GetType())
                           .AutoMap()
                           .Copy(item, this);
             }
@@ -229,9 +229,9 @@ namespace BigBook
         /// </summary>
         /// <param name="dictionary">Dictionary to copy</param>
         /// <param name="useChangeLog">if set to <c>true</c> [use change log].</param>
-        public Dynamo(IDictionary<string, object> dictionary, bool useChangeLog = false)
+        public Dynamo(IDictionary<string, object?> dictionary, bool useChangeLog = false)
         {
-            InternalValues = new ConcurrentDictionary<string, object>(dictionary, StringComparer.OrdinalIgnoreCase);
+            InternalValues = new ConcurrentDictionary<string, object?>(dictionary, StringComparer.OrdinalIgnoreCase);
             ChildValues = new ConcurrentDictionary<string, Func<object>>(StringComparer.OrdinalIgnoreCase);
             ChangeLog = useChangeLog ? new ConcurrentDictionary<string, Change>(StringComparer.OrdinalIgnoreCase) : null;
         }
@@ -239,22 +239,22 @@ namespace BigBook
         /// <summary>
         /// The get value end_
         /// </summary>
-        private Action<Dynamo, string, EventArgs.OnEndEventArgs> getValueEnd_;
+        private Action<Dynamo, string, EventArgs.OnEndEventArgs>? getValueEnd_;
 
         /// <summary>
         /// The get value start_
         /// </summary>
-        private Action<Dynamo, EventArgs.OnStartEventArgs> getValueStart_;
+        private Action<Dynamo, EventArgs.OnStartEventArgs>? getValueStart_;
 
         /// <summary>
         /// The property changed_
         /// </summary>
-        private PropertyChangedEventHandler propertyChanged_;
+        private PropertyChangedEventHandler? propertyChanged_;
 
         /// <summary>
         /// Change log
         /// </summary>
-        public ConcurrentDictionary<string, Change> ChangeLog { get; }
+        public ConcurrentDictionary<string, Change>? ChangeLog { get; }
 
         /// <summary>
         /// Number of items
@@ -274,7 +274,7 @@ namespace BigBook
         /// <summary>
         /// Values
         /// </summary>
-        public virtual ICollection<object> Values => InternalValues.Values;
+        public virtual ICollection<object?> Values => InternalValues.Values;
 
         /// <summary>
         /// Child class key/value dictionary
@@ -284,28 +284,28 @@ namespace BigBook
         /// <summary>
         /// Internal key/value dictionary
         /// </summary>
-        internal ConcurrentDictionary<string, object> InternalValues { get; set; }
+        internal ConcurrentDictionary<string, object?> InternalValues { get; set; }
 
         /// <summary>
         /// Gets or sets the aop manager.
         /// </summary>
         /// <value>The aop manager.</value>
-        private static Aspectus.Aspectus AOPManager => Canister.Builder.Bootstrapper.Resolve<Aspectus.Aspectus>();
+        private static Aspectus.Aspectus? AOPManager => Canister.Builder.Bootstrapper?.Resolve<Aspectus.Aspectus>();
 
         /// <summary>
         /// Gets or sets the data mapper.
         /// </summary>
         /// <value>The data mapper.</value>
-        private static Manager DataMapper => Canister.Builder.Bootstrapper.Resolve<Manager>();
+        private static Manager? DataMapper => Canister.Builder.Bootstrapper?.Resolve<Manager>();
 
         /// <summary>
         /// Gets the value associated with the key specified
         /// </summary>
         /// <param name="key">Key to get</param>
         /// <returns>The object associated with the key</returns>
-        public object this[string key]
+        public object? this[string key]
         {
-            get => GetValue(key, typeof(object));
+            get => GetValue(key, typeof(object))!;
             set => SetValue(key, value);
         }
 
@@ -364,13 +364,13 @@ namespace BigBook
         /// </summary>
         /// <param name="key">key</param>
         /// <param name="value">value</param>
-        public void Add(string key, object value) => SetValue(key, value);
+        public void Add(string key, object? value) => SetValue(key, value);
 
         /// <summary>
         /// Adds a key/value pair
         /// </summary>
         /// <param name="item">Item to add</param>
-        public void Add(KeyValuePair<string, object> item) => SetValue(item.Key, item.Value);
+        public void Add(KeyValuePair<string, object?> item) => SetValue(item.Key, item.Value);
 
         /// <summary>
         /// Clears the key/value pairs
@@ -386,7 +386,7 @@ namespace BigBook
         /// </summary>
         /// <param name="item">Item to check</param>
         /// <returns>True if it is found, false otherwise</returns>
-        public bool Contains(KeyValuePair<string, object> item) => InternalValues.Contains(item);
+        public bool Contains(KeyValuePair<string, object?> item) => InternalValues.Contains(item);
 
         /// <summary>
         /// Determines if the object contains a key
@@ -423,7 +423,7 @@ namespace BigBook
             }
             else
             {
-                DataMapper.Map(item.GetType(), GetType())
+                DataMapper?.Map(item.GetType(), GetType())
                           .AutoMap()
                           .Copy(item, this);
             }
@@ -434,7 +434,7 @@ namespace BigBook
         /// </summary>
         /// <param name="array">Array to copy to</param>
         /// <param name="arrayIndex">Array index</param>
-        public void CopyTo(KeyValuePair<string, object>[] array, int arrayIndex) => InternalValues.ToArray().CopyTo(array, arrayIndex);
+        public void CopyTo(KeyValuePair<string, object?>[] array, int arrayIndex) => InternalValues.ToArray().CopyTo(array, arrayIndex);
 
         /// <summary>
         /// Copies data from here to another object
@@ -447,7 +447,7 @@ namespace BigBook
                 return;
             }
 
-            DataMapper.Map(GetType(), result.GetType())
+            DataMapper?.Map(GetType(), result.GetType())
                       .AutoMap()
                       .Copy(this, result);
         }
@@ -477,11 +477,11 @@ namespace BigBook
         /// Gets the enumerator for the object
         /// </summary>
         /// <returns>The enumerator</returns>
-        public IEnumerator<KeyValuePair<string, object>> GetEnumerator()
+        public IEnumerator<KeyValuePair<string, object?>> GetEnumerator()
         {
             foreach (var Key in Keys)
             {
-                yield return new KeyValuePair<string, object>(Key, this[Key]);
+                yield return new KeyValuePair<string, object?>(Key, this[Key]);
             }
         }
 
@@ -516,7 +516,7 @@ namespace BigBook
         /// Not used
         /// </summary>
         /// <returns>Null</returns>
-        public System.Xml.Schema.XmlSchema GetSchema() => null;
+        public System.Xml.Schema.XmlSchema GetSchema() => null!;
 
         /// <summary>
         /// Reads the data from an XML doc
@@ -547,7 +547,7 @@ namespace BigBook
         /// </summary>
         /// <param name="item">Item to remove</param>
         /// <returns>True if it is removed, false otherwise</returns>
-        public bool Remove(KeyValuePair<string, object> item)
+        public bool Remove(KeyValuePair<string, object?> item)
         {
             RaisePropertyChanged(item.Key, null);
             return InternalValues.TryRemove(item.Key, out _);
@@ -588,8 +588,8 @@ namespace BigBook
         /// <returns>The object converted to the type specified</returns>
         public object To(Type ObjectType)
         {
-            var Result = AOPManager.Create(ObjectType);
-            DataMapper.Map(GetType(), ObjectType)
+            var Result = AOPManager?.Create(ObjectType) ?? Activator.CreateInstance(ObjectType);
+            DataMapper?.Map(GetType(), ObjectType)
                       .AutoMap()
                       .Copy(this, Result);
             return Result;
@@ -636,7 +636,7 @@ namespace BigBook
         /// <param name="binder">GetMemberBinder object</param>
         /// <param name="result">Result</param>
         /// <returns>True if it gets the member, false otherwise</returns>
-        public override bool TryGetMember(GetMemberBinder binder, out object result)
+        public override bool TryGetMember(GetMemberBinder binder, out object? result)
         {
             result = GetValue(binder.Name, binder.ReturnType);
             return true;
@@ -648,7 +648,7 @@ namespace BigBook
         /// <param name="key">Key to get</param>
         /// <param name="value">Value object</param>
         /// <returns>True if it the key is found, false otherwise</returns>
-        public bool TryGetValue(string key, out object value) => InternalValues.TryGetValue(key, out value);
+        public bool TryGetValue(string key, out object? value) => InternalValues.TryGetValue(key, out value);
 
         /// <summary>
         /// Attempts to invoke a function
@@ -688,7 +688,7 @@ namespace BigBook
         {
             foreach (var Key in Keys)
             {
-                writer.WriteElementString(Key, (string)GetValue(Key, typeof(string)));
+                writer.WriteElementString(Key, (string?)GetValue(Key, typeof(string)));
             }
         }
 
@@ -698,7 +698,7 @@ namespace BigBook
         /// <param name="name">Name of the item</param>
         /// <param name="returnType">Return value type</param>
         /// <returns>The returned value</returns>
-        protected virtual object GetValue(string name, Type returnType)
+        protected virtual object? GetValue(string name, Type returnType)
         {
             var Value = RaiseGetValueStart(name);
             if (Value != null)
@@ -721,7 +721,7 @@ namespace BigBook
                 }
                 else
                 {
-                    ChildValues.AddOrUpdate(name, _ => () => null, (__, _) => null);
+                    ChildValues.AddOrUpdate(name, _ => () => null!, (__, _) => null!);
                 }
             }
             var ReturnValue = ChildValueMethod().To(returnType, null);
@@ -738,7 +738,7 @@ namespace BigBook
         /// Returns null if the function should continue, any other value should be immediately
         /// returned to the user
         /// </returns>
-        protected object RaiseGetValueEnd(string propertyName, object value)
+        protected object? RaiseGetValueEnd(string propertyName, object? value)
         {
             var End = new EventArgs.OnEndEventArgs { Content = value };
             getValueEnd_?.Invoke(this, propertyName, End);
@@ -753,7 +753,7 @@ namespace BigBook
         /// Returns null if the function should continue, any other value should be immediately
         /// returned to the user
         /// </returns>
-        protected object RaiseGetValueStart(string propertyName)
+        protected object? RaiseGetValueStart(string propertyName)
         {
             var Start = new EventArgs.OnStartEventArgs { Content = propertyName };
             getValueStart_?.Invoke(this, Start);
@@ -765,7 +765,7 @@ namespace BigBook
         /// </summary>
         /// <param name="propertyName">Property name</param>
         /// <param name="newValue">New value for the property</param>
-        protected void RaisePropertyChanged(string propertyName, object newValue)
+        protected void RaisePropertyChanged(string propertyName, object? newValue)
         {
             if (ChangeLog != null)
             {
@@ -786,7 +786,7 @@ namespace BigBook
         /// </summary>
         /// <param name="key">Name of the item</param>
         /// <param name="value">Value to set</param>
-        protected virtual void SetValue(string key, object value)
+        protected virtual void SetValue(string key, object? value)
         {
             RaisePropertyChanged(key, value);
             InternalValues.AddOrUpdate(key, value, (__, _) => value);

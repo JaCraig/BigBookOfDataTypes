@@ -115,12 +115,11 @@ namespace BigBook.DataMapper.BaseClasses
                 for (var x = 0; x < Properties.Length; ++x)
                 {
                     var DestinationProperty = Array.Find(TypeCacheFor<Right>.Properties, y => y.Name == Properties[x].Name);
-                    if (!(DestinationProperty?.GetSetMethod()?.IsStatic ?? true))
-                    {
-                        var LeftGet = Properties[x].PropertyGetter<Left>();
-                        var RightGet = DestinationProperty.PropertyGetter<Right>();
-                        AddMapping(LeftGet, RightGet);
-                    }
+                    if (DestinationProperty == null || (DestinationProperty.GetSetMethod()?.IsStatic ?? true))
+                        continue;
+                    var LeftGet = Properties[x].PropertyGetter<Left>();
+                    var RightGet = DestinationProperty.PropertyGetter<Right>();
+                    AddMapping(LeftGet, RightGet);
                 }
             }
             return this;
@@ -148,16 +147,16 @@ namespace BigBook.DataMapper.BaseClasses
         public abstract void Copy(Right source, Left destination);
 
         /// <summary>
-        /// Copies from the source to the destination (used in instances when both Left and Right are
-        /// the same type and thus Copy is ambiguous)
+        /// Copies from the source to the destination (used in instances when both Left and Right
+        /// are the same type and thus Copy is ambiguous)
         /// </summary>
         /// <param name="source">Source</param>
         /// <param name="destination">Destination</param>
         public abstract void CopyLeftToRight(Left source, Right destination);
 
         /// <summary>
-        /// Copies from the source to the destination (used in instances when both Left and Right are
-        /// the same type and thus Copy is ambiguous)
+        /// Copies from the source to the destination (used in instances when both Left and Right
+        /// are the same type and thus Copy is ambiguous)
         /// </summary>
         /// <param name="source">Source</param>
         /// <param name="destination">Destination</param>
@@ -171,18 +170,18 @@ namespace BigBook.DataMapper.BaseClasses
 
         private void AddIDictionaryMappings()
         {
-            AddMapping(x => x,
+            AddMapping(x => x!,
             new Action<Left, object>((x, y) =>
             {
-                var LeftSide = (IDictionary<string, object>)x;
+                var LeftSide = (IDictionary<string, object>)x!;
                 var RightSide = (IDictionary<string, object>)y;
                 RightSide.CopyTo(LeftSide);
             }),
-            x => x,
+            x => x!,
             new Action<Right, object>((x, y) =>
             {
                 var LeftSide = (IDictionary<string, object>)y;
-                var RightSide = (IDictionary<string, object>)x;
+                var RightSide = (IDictionary<string, object>)x!;
                 LeftSide.CopyTo(RightSide);
             }));
         }
@@ -204,7 +203,7 @@ namespace BigBook.DataMapper.BaseClasses
                     var RightSet = RightGet.PropertySetter<Right>()?.Compile();
                     AddMapping(new Func<Left, object>(y =>
                     {
-                        var Temp = (IDictionary<string, object>)y;
+                        var Temp = (IDictionary<string, object>)y!;
                         if (Temp.ContainsKey(Property.Name))
                         {
                             return Temp[Property.Name];
@@ -216,11 +215,11 @@ namespace BigBook.DataMapper.BaseClasses
                             return Temp[Key];
                         }
 
-                        return null;
+                        return null!;
                     }),
                     new Action<Left, object>((y, z) =>
                     {
-                        var LeftSide = (IDictionary<string, object>)y;
+                        var LeftSide = (IDictionary<string, object>)y!;
                         if (LeftSide.ContainsKey(Property.Name))
                         {
                             LeftSide[Property.Name] = z;
@@ -230,7 +229,7 @@ namespace BigBook.DataMapper.BaseClasses
                             LeftSide.Add(Property.Name, z);
                         }
                     }),
-                    RightGet?.Compile(),
+                    RightGet?.Compile()!,
                     new Action<Right, object>((y, z) =>
                     {
                         if (z != null && RightSet != null)
@@ -260,7 +259,7 @@ namespace BigBook.DataMapper.BaseClasses
                 else
                 {
                     var LeftSet = LeftGet.PropertySetter<Left>()?.Compile();
-                    AddMapping(LeftGet?.Compile(),
+                    AddMapping(LeftGet?.Compile()!,
                     new Action<Left, object>((y, z) =>
                     {
                         if (z != null && LeftSet != null)
@@ -270,7 +269,7 @@ namespace BigBook.DataMapper.BaseClasses
                     }),
                     new Func<Right, object>(y =>
                     {
-                        var Temp = (IDictionary<string, object>)y;
+                        var Temp = (IDictionary<string, object>)y!;
                         if (Temp.ContainsKey(Property.Name))
                         {
                             return Temp[Property.Name];
@@ -282,11 +281,11 @@ namespace BigBook.DataMapper.BaseClasses
                             return Temp[Key];
                         }
 
-                        return null;
+                        return null!;
                     }),
                     new Action<Right, object>((y, z) =>
                     {
-                        var LeftSide = (IDictionary<string, object>)y;
+                        var LeftSide = (IDictionary<string, object>)y!;
                         if (LeftSide.ContainsKey(Property.Name))
                         {
                             LeftSide[Property.Name] = z;

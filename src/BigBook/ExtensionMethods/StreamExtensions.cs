@@ -61,17 +61,15 @@ namespace BigBook
             }
 
             var Buffer = new byte[4096];
-            using (var Temp = new MemoryStream())
+            using var Temp = new MemoryStream();
+            while (true)
             {
-                while (true)
+                var Count = input.Read(Buffer, 0, Buffer.Length);
+                if (Count <= 0)
                 {
-                    var Count = input.Read(Buffer, 0, Buffer.Length);
-                    if (Count <= 0)
-                    {
-                        return Temp.ToArray();
-                    }
-                    Temp.Write(Buffer, 0, Count);
+                    return Temp.ToArray();
                 }
+                Temp.Write(Buffer, 0, Count);
             }
         }
     }

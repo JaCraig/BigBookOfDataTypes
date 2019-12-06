@@ -33,11 +33,11 @@ namespace BigBook.DataMapper.Default
         /// </summary>
         /// <param name="leftExpression">Left expression</param>
         /// <param name="rightExpression">Right expression</param>
-        public Mapping(Expression<Func<Left, object>> leftExpression, Expression<Func<Right, object>> rightExpression)
+        public Mapping(Expression<Func<Left, object>>? leftExpression, Expression<Func<Right, object>>? rightExpression)
             : this(leftExpression?.Compile(),
-                    leftExpression?.PropertySetter<Left>().Compile(),
+                    leftExpression?.PropertySetter<Left>()?.Compile(),
                     rightExpression?.Compile(),
-                    rightExpression?.PropertySetter<Right>().Compile())
+                    rightExpression?.PropertySetter<Right>()?.Compile())
         {
         }
 
@@ -47,11 +47,11 @@ namespace BigBook.DataMapper.Default
         /// <param name="leftGet">Left get function</param>
         /// <param name="leftSet">Left set action</param>
         /// <param name="rightExpression">Right expression</param>
-        public Mapping(Func<Left, object> leftGet, Action<Left, object> leftSet, Expression<Func<Right, object>> rightExpression)
+        public Mapping(Func<Left, object>? leftGet, Action<Left, object>? leftSet, Expression<Func<Right, object>>? rightExpression)
             : this(leftGet,
                     leftSet,
                     rightExpression?.Compile(),
-                    rightExpression?.PropertySetter<Right>().Compile())
+                    rightExpression?.PropertySetter<Right>()?.Compile())
         {
         }
 
@@ -61,9 +61,9 @@ namespace BigBook.DataMapper.Default
         /// <param name="leftExpression">Left expression</param>
         /// <param name="rightGet">Right get function</param>
         /// <param name="rightSet">Right set function</param>
-        public Mapping(Expression<Func<Left, object>> leftExpression, Func<Right, object> rightGet, Action<Right, object> rightSet)
+        public Mapping(Expression<Func<Left, object>>? leftExpression, Func<Right, object>? rightGet, Action<Right, object>? rightSet)
             : this(leftExpression?.Compile(),
-                    leftExpression?.PropertySetter<Left>().Compile(),
+                    leftExpression?.PropertySetter<Left>()?.Compile(),
                     rightGet,
                     rightSet)
         {
@@ -76,33 +76,33 @@ namespace BigBook.DataMapper.Default
         /// <param name="leftSet">Left set function</param>
         /// <param name="rightGet">Right get function</param>
         /// <param name="rightSet">Right set function</param>
-        public Mapping(Func<Left, object> leftGet, Action<Left, object> leftSet, Func<Right, object> rightGet, Action<Right, object> rightSet)
+        public Mapping(Func<Left, object>? leftGet, Action<Left, object>? leftSet, Func<Right, object>? rightGet, Action<Right, object>? rightSet)
         {
             LeftGet = leftGet;
-            LeftSet = leftSet.Check((_, __) => { });
+            LeftSet = leftSet ?? ((_, __) => { });
             RightGet = rightGet;
-            RightSet = rightSet.Check((_, __) => { });
+            RightSet = rightSet ?? ((_, __) => { });
         }
 
         /// <summary>
         /// Left get function
         /// </summary>
-        protected Func<Left, object> LeftGet { get; set; }
+        protected Func<Left, object>? LeftGet { get; set; }
 
         /// <summary>
         /// Left set function
         /// </summary>
-        protected Action<Left, object> LeftSet { get; set; }
+        protected Action<Left, object>? LeftSet { get; set; }
 
         /// <summary>
         /// Right get function
         /// </summary>
-        protected Func<Right, object> RightGet { get; set; }
+        protected Func<Right, object>? RightGet { get; set; }
 
         /// <summary>
         /// Right set function
         /// </summary>
-        protected Action<Right, object> RightSet { get; set; }
+        protected Action<Right, object>? RightSet { get; set; }
 
         /// <summary>
         /// Copies the source to the destination
@@ -111,7 +111,7 @@ namespace BigBook.DataMapper.Default
         /// <param name="destination">Destination object</param>
         public override void Copy(Left source, Right destination)
         {
-            if (LeftGet == null)
+            if (LeftGet == null || RightSet == null)
             {
                 return;
             }
@@ -126,7 +126,7 @@ namespace BigBook.DataMapper.Default
         /// <param name="destination">Destination object</param>
         public override void Copy(Right source, Left destination)
         {
-            if (RightGet == null)
+            if (RightGet == null || LeftSet == null)
             {
                 return;
             }

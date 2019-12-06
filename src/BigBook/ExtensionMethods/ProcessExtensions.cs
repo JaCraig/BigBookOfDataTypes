@@ -78,7 +78,7 @@ namespace BigBook
         /// <param name="process">Process that should be killed</param>
         /// <param name="timeToKill">Amount of time (in ms) until the process is killed.</param>
         /// <returns>The input process</returns>
-        public static async Task<Process> KillProcessAsync(this Process process, int timeToKill = 0)
+        public static async Task<Process?> KillProcessAsync(this Process process, int timeToKill = 0)
         {
             if (process == null)
             {
