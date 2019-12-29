@@ -172,6 +172,15 @@ namespace BigBook.Tests
         }
 
         [Fact]
+        public void PropertyDoesntExist()
+        {
+            dynamic Temp = new BigBook.Dynamo(new { A = "Testing", B = 1 });
+            Assert.Equal("Testing", Temp.A);
+            Assert.Equal(1, Temp.B);
+            Assert.True(Temp.C == null);
+        }
+
+        [Fact]
         public void SetAndGetMember()
         {
             dynamic Temp = new TestClass();
