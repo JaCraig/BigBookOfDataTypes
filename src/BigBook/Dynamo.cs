@@ -718,6 +718,7 @@ namespace BigBook
                 {
                     ChildValues.AddOrUpdate(name, _ => () => null!, (__, _) => null!);
                 }
+                ChildValues.TryGetValue(name, out ChildValueMethod);
             }
             var ReturnValue = ChildValueMethod().To(returnType, null);
             Value = RaiseGetValueEnd(name, ReturnValue);
