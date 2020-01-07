@@ -43,9 +43,9 @@ namespace BigBook.Patterns.BaseClasses
         /// </summary>
         /// <param name="enumType">Type of the enum.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator string(StringEnumBaseClass<TClass> enumType)
+        public static implicit operator string(StringEnumBaseClass<TClass>? enumType)
         {
-            return enumType.ToString();
+            return enumType?.ToString() ?? "";
         }
 
         /// <summary>
@@ -53,9 +53,9 @@ namespace BigBook.Patterns.BaseClasses
         /// </summary>
         /// <param name="enumType">Type of the enum.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator StringEnumBaseClass<TClass>(string enumType)
+        public static implicit operator StringEnumBaseClass<TClass>(string? enumType)
         {
-            return new TClass { Name = enumType };
+            return new TClass { Name = enumType ?? "" };
         }
 
         /// <summary>
