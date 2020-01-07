@@ -229,9 +229,9 @@ namespace BigBook
         /// </summary>
         /// <param name="dictionary">Dictionary to copy</param>
         /// <param name="useChangeLog">if set to <c>true</c> [use change log].</param>
-        public Dynamo(IDictionary<string, object?> dictionary, bool useChangeLog = false)
+        public Dynamo(IDictionary<string, object?>? dictionary, bool useChangeLog = false)
         {
-            InternalValues = new ConcurrentDictionary<string, object?>(dictionary, StringComparer.OrdinalIgnoreCase);
+            InternalValues = new ConcurrentDictionary<string, object?>(dictionary ?? new Dictionary<string, object?>(), StringComparer.OrdinalIgnoreCase);
             ChildValues = new ConcurrentDictionary<string, Func<object>>(StringComparer.OrdinalIgnoreCase);
             ChangeLog = useChangeLog ? new ConcurrentDictionary<string, Change>(StringComparer.OrdinalIgnoreCase) : null;
         }
@@ -399,7 +399,7 @@ namespace BigBook
         /// Copies the properties from an item
         /// </summary>
         /// <param name="item">Item to copy from</param>
-        public void Copy(object item)
+        public void Copy(object? item)
         {
             if (item == null)
             {
@@ -440,7 +440,7 @@ namespace BigBook
         /// Copies data from here to another object
         /// </summary>
         /// <param name="result">Result</param>
-        public void CopyTo(object result)
+        public void CopyTo(object? result)
         {
             if (result == null)
             {
@@ -457,14 +457,9 @@ namespace BigBook
         /// </summary>
         /// <param name="obj">Object to compare to</param>
         /// <returns>True if they're equal, false otherwise</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
-            if (!(obj is Dynamo TempObj))
-            {
-                return false;
-            }
-
-            return TempObj.GetHashCode() == GetHashCode();
+            return (obj is Dynamo TempObj) && TempObj.GetHashCode() == GetHashCode();
         }
 
         /// <summary>
