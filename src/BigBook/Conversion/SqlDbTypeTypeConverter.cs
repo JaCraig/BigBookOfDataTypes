@@ -72,6 +72,7 @@ namespace BigBook.Conversion
             Conversions.AddOrUpdate(typeof(DateTimeOffset), DbType.DateTimeOffset, (_, y) => y);
             Conversions.AddOrUpdate(typeof(DateTimeOffset?), DbType.DateTimeOffset, (_, y) => y);
             Conversions.AddOrUpdate(typeof(TimeSpan), DbType.Time, (_, y) => y);
+            Conversions.AddOrUpdate(typeof(Uri), DbType.String, (_, y) => y);
             Conversions.AddOrUpdate(typeof(TimeSpan?), DbType.Time, (_, y) => y);
             Conversions.AddOrUpdate(typeof(byte[]), DbType.Binary, (_, y) => y);
         }

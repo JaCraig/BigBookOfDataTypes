@@ -42,23 +42,29 @@ namespace BigBook.Tests
             dynamic Temp = new TestClass();
             Temp.A = "Testing";
             Temp.B = 1;
+            Temp.C = new Uri("http://A");
             TestClass2 Temp2 = Temp;
             Assert.Equal("Testing", Temp2.A);
             Assert.Equal(1, Temp2.B);
+            Assert.Equal(new Uri("http://A"), Temp2.C);
 
             Temp = new BigBook.Dynamo();
             Temp.A = "Testing";
             Temp.B = 1;
+            Temp.C = new Uri("http://A");
             Temp2 = Temp;
             Assert.Equal("Testing", Temp2.A);
             Assert.Equal(1, Temp2.B);
+            Assert.Equal(new Uri("http://A"), Temp2.C);
 
             Temp = new BigBook.Dynamo();
             Temp.A = "Testing";
             Temp.B = 1;
+            Temp.C = new Uri("http://A");
             Temp2 = Temp.To<TestClass2>();
             Assert.Equal("Testing", Temp2.A);
             Assert.Equal(1, Temp2.B);
+            Assert.Equal(new Uri("http://A"), Temp2.C);
         }
 
         [Fact]
@@ -103,16 +109,20 @@ namespace BigBook.Tests
             dynamic Temp = new TestClass();
             Temp.A = "Testing";
             Temp.B = 1;
+            Temp.C = new Uri("http://A");
             BigBook.Dynamo Temp2 = Temp;
             Assert.Equal("Testing", Temp2["A"]);
             Assert.Equal(1, Temp2["B"]);
+            Assert.Equal(new Uri("http://A"), Temp2["C"]);
 
             Temp = new BigBook.Dynamo();
             Temp.A = "Testing2";
             Temp.B = 2;
+            Temp.C = new Uri("http://B");
             Temp2 = Temp;
             Assert.Equal("Testing2", Temp2["A"]);
             Assert.Equal(2, Temp2["B"]);
+            Assert.Equal(new Uri("http://B"), Temp2["C"]);
         }
 
         [Fact]
@@ -121,6 +131,7 @@ namespace BigBook.Tests
             dynamic Temp = new TestClass();
             Temp.A = "Testing";
             Temp.B = 1;
+            Temp.C = new Uri("http://C");
             dynamic Temp2 = new TestClass2
             {
                 A = "A"
@@ -128,6 +139,7 @@ namespace BigBook.Tests
             Temp.CopyTo(Temp2);
             Assert.Equal("Testing", Temp2.A);
             Assert.Equal(1, Temp2.B);
+            Assert.Equal(new Uri("http://C"), Temp2.C);
         }
 
         [Fact]
@@ -236,6 +248,8 @@ namespace BigBook.Tests
             public string A { get; set; }
 
             public int B { get; set; }
+
+            public Uri C { get; set; }
         }
 
         public class TestClass3

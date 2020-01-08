@@ -171,6 +171,13 @@ namespace BigBook.Tests.ExtensionMethods
             Assert.Equal("01234", Builder.ToString());
         }
 
+        [Fact]
+        public void To()
+        {
+            Assert.Equal(new Uri("http://A"), "http://A".To(new Uri("http://B")));
+            Assert.Equal("http://A", new Uri("http://A").To("http://B"));
+        }
+
         private void Test() => throw new Exception();
     }
 }

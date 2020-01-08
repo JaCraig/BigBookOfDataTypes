@@ -61,6 +61,13 @@ namespace BigBook.Tests.Conversion.Converter
             Assert.Equal(dbType, Temp.ConvertFrom(sqlDbType));
         }
 
+        [Fact]
+        public void ConvertFromUri()
+        {
+            var Temp = new BigBook.Conversion.DbTypeTypeConverter();
+            Assert.Equal(DbType.String, Temp.ConvertFrom(typeof(Uri)));
+        }
+
         [Theory]
         [MemberData(nameof(SQLToDbTypeData))]
         public void ConvertTo(SqlDbType sqlDbType, DbType dbType)

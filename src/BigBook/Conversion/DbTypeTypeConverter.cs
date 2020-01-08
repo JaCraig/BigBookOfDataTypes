@@ -213,6 +213,10 @@ namespace BigBook.Conversion
             {
                 return DbType.Time;
             }
+            else if (TempValue == typeof(Uri))
+            {
+                return DbType.String;
+            }
             else if (TempValue == typeof(byte[]))
             {
                 return DbType.Binary;
