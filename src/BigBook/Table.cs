@@ -140,7 +140,7 @@ namespace BigBook
 
             if (reader.FieldCount == 0)
             {
-                throw new ArgumentOutOfRangeException(nameof(reader), "reader.FieldCount needs to have at least 0 fields");
+                throw new ArgumentOutOfRangeException(nameof(reader), Properties.Resources.ReaderFieldCountError);
             }
 
             ColumnNames = new string[reader.FieldCount];

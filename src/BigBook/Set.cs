@@ -42,6 +42,17 @@ namespace BigBook
         }
 
         /// <summary>
+        /// Adds the specified values.
+        /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>The result</returns>
+        public static Set<T> Add(Set<T> left, Set<T> right)
+        {
+            return left + right;
+        }
+
+        /// <summary>
         /// Gets the intersection of set 1 and set 2
         /// </summary>
         /// <param name="set1">Set 1</param>
@@ -153,18 +164,24 @@ namespace BigBook
         }
 
         /// <summary>
+        /// Subtracts the specified values.
+        /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>The result.</returns>
+        public static Set<T> Subtract(Set<T> left, Set<T> right)
+        {
+            return left - right;
+        }
+
+        /// <summary>
         /// Used to tell if this set contains the other
         /// </summary>
         /// <param name="set">Set to check against</param>
         /// <returns>True if it is, false otherwise</returns>
         public bool Contains(Set<T> set)
         {
-            if (set == null)
-            {
-                return false;
-            }
-
-            return set.IsSubset(this);
+            return set?.IsSubset(this) == true;
         }
 
         /// <summary>
@@ -187,7 +204,7 @@ namespace BigBook
         /// <returns>True if they do, false otherwise</returns>
         public bool Intersect(Set<T> set)
         {
-            if (set == null)
+            if (set is null)
             {
                 return false;
             }
@@ -210,7 +227,7 @@ namespace BigBook
         /// <returns>True if it is, false otherwise</returns>
         public bool IsSubset(Set<T> set)
         {
-            if (set == null || Count > set.Count)
+            if (set is null || Count > set.Count)
             {
                 return false;
             }

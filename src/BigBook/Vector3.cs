@@ -74,6 +74,17 @@ namespace BigBook
         public double Z { get; set; }
 
         /// <summary>
+        /// Adds the two values
+        /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>The results</returns>
+        public static Vector3 Add(Vector3 left, Vector3 right)
+        {
+            return left + right;
+        }
+
+        /// <summary>
         /// Determines the angle between the vectors
         /// </summary>
         /// <param name="v1">Vector 1</param>
@@ -102,6 +113,17 @@ namespace BigBook
         }
 
         /// <summary>
+        /// Divides the specified values.
+        /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>The result</returns>
+        public static Vector3 Divide(Vector3 left, double right)
+        {
+            return left / right;
+        }
+
+        /// <summary>
         /// Does a dot product
         /// </summary>
         /// <param name="v1">Vector 1</param>
@@ -125,13 +147,33 @@ namespace BigBook
         {
             v1 ??= new Vector3(0, 0, 0);
             v2 ??= new Vector3(0, 0, 0);
-            var TempVector = new Vector3(0.0, 0.0, 0.0)
+            return new Vector3(0.0, 0.0, 0.0)
             {
                 X = (v1.X * (1 - control)) + (v2.X * control),
                 Y = (v1.Y * (1 - control)) + (v2.Y * control),
                 Z = (v1.Z * (1 - control)) - (v2.Z * control)
             };
-            return TempVector;
+        }
+
+        /// <summary>
+        /// Multiplies the specified values.
+        /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>The result</returns>
+        public static Vector3 Multiply(Vector3 left, Vector3 right)
+        {
+            return left * right;
+        }
+
+        /// <summary>
+        /// Negates the specified item.
+        /// </summary>
+        /// <param name="item">The item.</param>
+        /// <returns>The result.</returns>
+        public static Vector3 Negate(Vector3 item)
+        {
+            return -item;
         }
 
         /// <summary>
@@ -203,13 +245,12 @@ namespace BigBook
         {
             v1 ??= new Vector3(0, 0, 0);
             v2 ??= new Vector3(0, 0, 0);
-            var TempVector = new Vector3(0.0, 0.0, 0.0)
+            return new Vector3(0.0, 0.0, 0.0)
             {
                 X = (v1.Y * v2.Z) - (v1.Z * v2.Y),
                 Y = (v1.Z * v2.X) - (v1.X * v2.Z),
                 Z = (v1.X * v2.Y) - (v1.Y * v2.X)
             };
-            return TempVector;
         }
 
         /// <summary>
@@ -271,17 +312,12 @@ namespace BigBook
         /// <returns>The resulting vector</returns>
         public static bool operator ==(Vector3 v1, Vector3 v2)
         {
-            if (v1 is null && v2 is null)
-            {
-                return true;
-            }
-
-            if (v1 is null || v2 is null)
-            {
-                return false;
-            }
-
-            return Equals(v1.X, v2.X) && Equals(v1.Y, v2.Y) && Equals(v1.Z, v2.Z);
+            return (v1 is null && v2 is null)
+                || (!(v1 is null)
+                    && !(v2 is null)
+                    && Equals(v1.X, v2.X)
+                    && Equals(v1.Y, v2.Y)
+                    && Equals(v1.Z, v2.Z));
         }
 
         /// <summary>
@@ -308,6 +344,33 @@ namespace BigBook
             v1 ??= new Vector3(0, 0, 0);
             v2 ??= new Vector3(0, 0, 0);
             return v1.Magnitude >= v2.Magnitude;
+        }
+
+        /// <summary>
+        /// Subtracts the specified vectors.
+        /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>The resulting vector</returns>
+        public static Vector3 Subtract(Vector3 left, Vector3 right)
+        {
+            return left - right;
+        }
+
+        /// <summary>
+        /// Compares the two vectors.
+        /// </summary>
+        /// <param name="other">The other.</param>
+        /// <returns>The result.</returns>
+        public int CompareTo(Vector3 other)
+        {
+            if (other is null)
+                return 1;
+            else if (other == this)
+                return 0;
+            else if (other > this)
+                return -1;
+            return 1;
         }
 
         /// <summary>
@@ -344,6 +407,6 @@ namespace BigBook
         /// To string function
         /// </summary>
         /// <returns>String representation of the vector</returns>
-        public override string ToString() => string.Format("({0},{1},{2})", X, Y, Z);
+        public override string ToString() => $"({X},{Y},{Z})";
     }
 }

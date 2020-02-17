@@ -44,19 +44,14 @@ namespace BigBook
         /// <param name="allowOverflow">Is overflow allowed (defaults to false)</param>
         public RingBuffer(int maxCapacity, bool allowOverflow = false)
         {
-            if (maxCapacity <= 0)
-            {
-                maxCapacity = 1;
-            }
-
             Count = 0;
             IsReadOnly = false;
             AllowOverflow = allowOverflow;
-            MaxCapacity = maxCapacity;
+            MaxCapacity = maxCapacity <= 0 ? 1 : maxCapacity;
             IsSynchronized = false;
             ReadPosition = 0;
             WritePosition = 0;
-            Buffer = new T[maxCapacity];
+            Buffer = new T[MaxCapacity];
         }
 
         private object? Root;
@@ -145,12 +140,7 @@ namespace BigBook
         /// <returns>The value as a string</returns>
         public static implicit operator string(RingBuffer<T> value)
         {
-            if (value == null)
-            {
-                return "";
-            }
-
-            return value.ToString();
+            return value?.ToString() ?? "";
         }
 
         /// <summary>
@@ -161,7 +151,7 @@ namespace BigBook
         {
             if (Count >= MaxCapacity && !AllowOverflow)
             {
-                throw new InvalidOperationException("Unable to add item to circular buffer because the buffer is full");
+                throw new InvalidOperationException(Properties.Resources.RingBufferFullError);
             }
 
             Buffer[WritePosition] = item;
@@ -247,7 +237,7 @@ namespace BigBook
         public bool Contains(T item)
         {
             var y = ReadPosition;
-            var Comparer = new GenericEqualityComparer<T>();
+            var Comparer = Canister.Builder.Bootstrapper?.Resolve<GenericEqualityComparer<T>>() ?? new GenericEqualityComparer<T>();
             for (var x = 0; x < Count; ++x)
             {
                 if (Comparer.Equals(Buffer[y], item))
@@ -271,6 +261,8 @@ namespace BigBook
         /// <param name="arrayIndex">Array index to start at</param>
         public void CopyTo(T[] array, int arrayIndex)
         {
+            if (array is null)
+                return;
             var y = ReadPosition;
             var y2 = arrayIndex;
             var MaxLength = (array.Length - arrayIndex) < Count ? (array.Length - arrayIndex) : Count;
@@ -293,6 +285,8 @@ namespace BigBook
         /// <param name="index">Array index to start at</param>
         public void CopyTo(Array array, int index)
         {
+            if (array is null)
+                return;
             var y = ReadPosition;
             var y2 = index;
             var MaxLength = (array.Length - index) < Count ? (array.Length - index) : Count;
@@ -359,15 +353,15 @@ namespace BigBook
         /// <returns>The next X items from the buffer</returns>
         public IEnumerable<T> Remove(int amount)
         {
-            if (Count == 0)
+            if (Count == 0 || amount <= 0)
             {
-                return new List<T>();
+                return Array.Empty<T>();
             }
 
-            var ReturnValue = new List<T>();
+            var ReturnValue = new T[amount];
             for (var x = 0; x < amount; ++x)
             {
-                ReturnValue.Add(Remove());
+                ReturnValue[x] = Remove();
             }
 
             return ReturnValue;
@@ -381,7 +375,7 @@ namespace BigBook
         public bool Remove(T item)
         {
             var y = ReadPosition;
-            var Comparer = new GenericEqualityComparer<T>();
+            var Comparer = Canister.Builder.Bootstrapper?.Resolve<GenericEqualityComparer<T>>() ?? new GenericEqualityComparer<T>();
             for (var x = 0; x < Count; ++x)
             {
                 if (Comparer.Equals(Buffer[y], item))

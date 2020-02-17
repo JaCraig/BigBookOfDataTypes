@@ -59,13 +59,7 @@ namespace BigBook
         {
             get
             {
-                var Lists = new List<IEnumerable<T2>>();
-                foreach (var Key in Keys)
-                {
-                    Lists.Add(this[Key]);
-                }
-
-                return Lists;
+                return this.Select(x => x.Value).ToList();
             }
         }
 
@@ -129,17 +123,7 @@ namespace BigBook
         /// <returns>True if it exists, false otherwise</returns>
         public bool Contains(KeyValuePair<T1, IEnumerable<T2>> item)
         {
-            if (!ContainsKey(item.Key))
-            {
-                return false;
-            }
-
-            if (!Contains(item.Key, item.Value))
-            {
-                return false;
-            }
-
-            return true;
+            return ContainsKey(item.Key) && Contains(item.Key, item.Value);
         }
 
         /// <summary>
@@ -150,12 +134,7 @@ namespace BigBook
         /// <returns>True if it exists, false otherwise</returns>
         public bool Contains(T1 key, IEnumerable<T2> values)
         {
-            if (!ContainsKey(key))
-            {
-                return false;
-            }
-
-            return values.All(x => Contains(key, x));
+            return ContainsKey(key) && values.All(x => Contains(key, x));
         }
 
         /// <summary>
@@ -166,17 +145,7 @@ namespace BigBook
         /// <returns>True if it exists, false otherwise</returns>
         public bool Contains(T1 key, T2 value)
         {
-            if (!ContainsKey(key))
-            {
-                return false;
-            }
-
-            if (!Items[key].Contains(value))
-            {
-                return false;
-            }
-
-            return true;
+            return ContainsKey(key) && Items[key].Contains(value);
         }
 
         /// <summary>

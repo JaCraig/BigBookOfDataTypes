@@ -62,49 +62,62 @@ namespace BigBook
         {
             get
             {
-                if (x < 0)
-                {
-                    x = 0;
-                }
-                else if (x >= Width)
-                {
-                    x = Width - 1;
-                }
-
-                if (y < 0)
-                {
-                    y = 0;
-                }
-                else if (y >= Height)
-                {
-                    y = Height - 1;
-                }
+                x = x.Clamp(Width - 1, 0);
+                y = y.Clamp(Height - 1, 0);
 
                 return Values[x, y];
             }
 
             set
             {
-                if (x < 0)
-                {
-                    x = 0;
-                }
-                else if (x >= Width)
-                {
-                    x = Width - 1;
-                }
-
-                if (y < 0)
-                {
-                    y = 0;
-                }
-                else if (y >= Height)
-                {
-                    y = Height - 1;
-                }
+                x = x.Clamp(Width - 1, 0);
+                y = y.Clamp(Height - 1, 0);
 
                 Values[x, y] = value;
             }
+        }
+
+        /// <summary>
+        /// Adds the specified values.
+        /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>The results</returns>
+        public static Matrix Add(Matrix left, Matrix right)
+        {
+            return left + right;
+        }
+
+        /// <summary>
+        /// Divides the specified values.
+        /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>The result</returns>
+        public static Matrix Divide(Matrix left, double right)
+        {
+            return left / right;
+        }
+
+        /// <summary>
+        /// Multiplies the specified values.
+        /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>The results</returns>
+        public static Matrix Multiply(Matrix left, Matrix right)
+        {
+            return left * right;
+        }
+
+        /// <summary>
+        /// Negates the specified item.
+        /// </summary>
+        /// <param name="item">The item.</param>
+        /// <returns>The result</returns>
+        public static Matrix Negate(Matrix item)
+        {
+            return -item;
         }
 
         /// <summary>
@@ -119,7 +132,7 @@ namespace BigBook
             m2 ??= new Matrix(0, 0);
             if (m1.Width != m2.Width || m1.Height != m2.Height)
             {
-                throw new ArgumentException("Both matrices must be the same dimensions.");
+                throw new ArgumentException(Properties.Resources.MatrixNotSameSizeError);
             }
 
             var TempMatrix = new Matrix(m1.Width, m1.Height);
@@ -177,7 +190,7 @@ namespace BigBook
             m2 ??= new Matrix(0, 0);
             if (m1.Width != m2.Width || m1.Height != m2.Height)
             {
-                throw new ArgumentException("Both matrices must be the same dimensions.");
+                throw new ArgumentException(Properties.Resources.MatrixNotSameSizeError);
             }
 
             var TempMatrix = new Matrix(m2.Width, m1.Height);
@@ -276,7 +289,7 @@ namespace BigBook
             m2 ??= new Matrix(0, 0);
             if (m1.Width != m2.Width || m1.Height != m2.Height)
             {
-                throw new ArgumentException("Both matrices must be the same dimensions.");
+                throw new ArgumentException(Properties.Resources.MatrixNotSameSizeError);
             }
 
             var TempMatrix = new Matrix(m1.Width, m1.Height);
@@ -334,6 +347,17 @@ namespace BigBook
         }
 
         /// <summary>
+        /// Subtracts the specified values.
+        /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>The results</returns>
+        public static Matrix Subtract(Matrix left, Matrix right)
+        {
+            return left - right;
+        }
+
+        /// <summary>
         /// Gets the determinant of a square matrix
         /// </summary>
         /// <returns>The determinant of a square matrix</returns>
@@ -341,7 +365,7 @@ namespace BigBook
         {
             if (Width != Height)
             {
-                throw new InvalidOperationException("The determinant can not be calculated for a non square matrix");
+                throw new InvalidOperationException(Properties.Resources.MatrixNotSquareError);
             }
 
             if (Width == 2)

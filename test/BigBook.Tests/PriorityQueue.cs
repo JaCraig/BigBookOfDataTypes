@@ -5,6 +5,20 @@ namespace BigBook.Tests
     public class PriorityQueueTests
     {
         [Fact]
+        public void PopTest()
+        {
+            var TestObject = new PriorityQueue<int>();
+            var Rand = new System.Random();
+            var Value = 0;
+            for (var x = 0; x < 10; ++x)
+            {
+                Value = Rand.Next();
+                TestObject.Add(x, Value);
+                Assert.Equal(Value, TestObject.Pop());
+            }
+        }
+
+        [Fact]
         public void RandomTest()
         {
             var TestObject = new PriorityQueue<int>();

@@ -89,7 +89,7 @@ namespace BigBook
         /// <param name="source">The source.</param>
         /// <param name="sink">The sink.</param>
         /// <returns>The new edge</returns>
-        public Edge<T> AddEdge(Vertex<T> source, Vertex<T> sink) => source.AddOutgoingEdge(sink);
+        public Edge<T>? AddEdge(Vertex<T> source, Vertex<T> sink) => source?.AddOutgoingEdge(sink);
 
         /// <summary>
         /// Adds the vertex.
@@ -153,7 +153,7 @@ namespace BigBook
         /// <returns>This</returns>
         public Graph<T> RemoveVertex(Vertex<T> vertex)
         {
-            vertex.Remove();
+            vertex?.Remove();
             return this;
         }
     }
@@ -210,7 +210,7 @@ namespace BigBook
         {
             var ReturnValue = new Edge<T>(this, sink);
             OutgoingEdges.Add(ReturnValue);
-            sink.IncomingEdges.Add(ReturnValue);
+            sink?.IncomingEdges.Add(ReturnValue);
             return ReturnValue;
         }
 
@@ -241,6 +241,8 @@ namespace BigBook
         /// <returns>This</returns>
         public Vertex<T> RemoveEdge(Edge<T> edge)
         {
+            if (edge == null)
+                return this;
             if (edge.Sink == this)
             {
                 IncomingEdges.Remove(edge);

@@ -41,8 +41,8 @@ namespace BigBook.Caching.Module
                 return;
             }
 
-            bootstrapper.RegisterAll<ICache>();
-            bootstrapper.Register<Manager>(ServiceLifetime.Singleton);
+            bootstrapper.RegisterAll<ICache>()
+                .Register<Manager>(ServiceLifetime.Singleton);
         }
     }
 }

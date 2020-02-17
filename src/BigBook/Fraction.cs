@@ -15,7 +15,6 @@ limitations under the License.
 */
 
 using System;
-using System.Globalization;
 
 namespace BigBook
 {
@@ -86,7 +85,7 @@ namespace BigBook
         {
             if (Math.Abs(denominator - int.MinValue) < EPSILON)
             {
-                throw new ArgumentException(nameof(denominator) + " can't be int.MinValue");
+                throw new ArgumentException(Properties.Resources.DenominatorIntMinError);
             }
 
             while (Math.Abs(numerator - Math.Round(numerator, MidpointRounding.AwayFromZero)) > EPSILON
@@ -122,16 +121,36 @@ namespace BigBook
         private double EPSILON { get; } = 0.001d;
 
         /// <summary>
+        /// Adds the specified values.
+        /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>The result</returns>
+        public static Fraction Add(Fraction left, Fraction right)
+        {
+            return left + right;
+        }
+
+        /// <summary>
+        /// Divides the specified values.
+        /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>The result</returns>
+        public static Fraction Divide(Fraction left, Fraction right)
+        {
+            return left / right;
+        }
+
+        /// <summary>
         /// Converts the fraction to a decimal
         /// </summary>
         /// <param name="fraction">Fraction</param>
         /// <returns>The fraction as a decimal</returns>
-        public static implicit operator decimal(Fraction fraction)
+        public static implicit operator decimal(Fraction? fraction)
         {
-            if (fraction == null!)
-            {
-                throw new ArgumentNullException(nameof(fraction));
-            }
+            if (fraction is null)
+                return 0;
 
             return fraction.Numerator / (decimal)fraction.Denominator;
         }
@@ -141,12 +160,10 @@ namespace BigBook
         /// </summary>
         /// <param name="fraction">Fraction</param>
         /// <returns>The fraction as a double</returns>
-        public static implicit operator double(Fraction fraction)
+        public static implicit operator double(Fraction? fraction)
         {
-            if (fraction == null!)
-            {
-                throw new ArgumentNullException(nameof(fraction));
-            }
+            if (fraction is null)
+                return 0;
 
             return fraction.Numerator / (double)fraction.Denominator;
         }
@@ -158,10 +175,8 @@ namespace BigBook
         /// <returns>The fraction as a float</returns>
         public static implicit operator float(Fraction fraction)
         {
-            if (fraction == null!)
-            {
-                throw new ArgumentNullException(nameof(fraction));
-            }
+            if (fraction is null)
+                return 0;
 
             return fraction.Numerator / (float)fraction.Denominator;
         }
@@ -223,12 +238,31 @@ namespace BigBook
         /// <returns>The fraction as a string</returns>
         public static implicit operator string(Fraction fraction)
         {
-            if (fraction == null!)
-            {
+            if (fraction is null)
                 return "";
-            }
 
             return fraction.ToString();
+        }
+
+        /// <summary>
+        /// Multiplies the specified values.
+        /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>The result</returns>
+        public static Fraction Multiply(Fraction left, Fraction right)
+        {
+            return left * right;
+        }
+
+        /// <summary>
+        /// Negates the specified item.
+        /// </summary>
+        /// <param name="item">The item.</param>
+        /// <returns>The result</returns>
+        public static Fraction Negate(Fraction item)
+        {
+            return -item;
         }
 
         /// <summary>
@@ -239,12 +273,12 @@ namespace BigBook
         /// <returns>The subtracted fraction</returns>
         public static Fraction operator -(Fraction first, Fraction second)
         {
-            if (first == null!)
+            if (first is null)
             {
                 throw new ArgumentNullException(nameof(first));
             }
 
-            if (second == null!)
+            if (second is null)
             {
                 throw new ArgumentNullException(nameof(second));
             }
@@ -263,7 +297,7 @@ namespace BigBook
         /// <returns>The negated fraction</returns>
         public static Fraction operator -(Fraction first)
         {
-            if (first == null!)
+            if (first is null)
             {
                 throw new ArgumentNullException(nameof(first));
             }
@@ -312,12 +346,12 @@ namespace BigBook
         /// <returns>The resulting fraction</returns>
         public static Fraction operator *(Fraction first, Fraction second)
         {
-            if (first == null!)
+            if (first is null)
             {
                 throw new ArgumentNullException(nameof(first));
             }
 
-            if (second == null!)
+            if (second is null)
             {
                 throw new ArgumentNullException(nameof(second));
             }
@@ -335,12 +369,12 @@ namespace BigBook
         /// <returns>The divided fraction</returns>
         public static Fraction operator /(Fraction first, Fraction second)
         {
-            if (first == null!)
+            if (first is null)
             {
                 throw new ArgumentNullException(nameof(first));
             }
 
-            if (second == null!)
+            if (second is null)
             {
                 throw new ArgumentNullException(nameof(second));
             }
@@ -354,14 +388,14 @@ namespace BigBook
         /// <param name="first">First fraction</param>
         /// <param name="second">Second fraction</param>
         /// <returns>The added fraction</returns>
-        public static Fraction operator +(Fraction first, Fraction second)
+        public static Fraction operator +(Fraction? first, Fraction? second)
         {
-            if (first == null!)
+            if (first is null)
             {
                 throw new ArgumentNullException(nameof(first));
             }
 
-            if (second == null!)
+            if (second is null)
             {
                 throw new ArgumentNullException(nameof(second));
             }
@@ -379,9 +413,15 @@ namespace BigBook
         /// <param name="first">First item</param>
         /// <param name="second">Second item</param>
         /// <returns>True if they are, false otherwise</returns>
-        public static bool operator ==(Fraction first, Fraction second)
+        public static bool operator ==(Fraction? first, Fraction? second)
         {
-            return first.Equals(second);
+            if (first is null && second is null)
+                return true;
+            if (first is null || second is null)
+                return false;
+            decimal Value1 = first;
+            decimal Value2 = second;
+            return Value1 == Value2;
         }
 
         /// <summary>
@@ -390,9 +430,12 @@ namespace BigBook
         /// <param name="first">First item</param>
         /// <param name="second">Second item</param>
         /// <returns>True if they are, false otherwise</returns>
-        public static bool operator ==(Fraction first, double second)
+        public static bool operator ==(Fraction? first, double second)
         {
-            return first.Equals(second);
+            if (first is null)
+                return false;
+            double Value1 = first;
+            return Value1 == second;
         }
 
         /// <summary>
@@ -403,7 +446,66 @@ namespace BigBook
         /// <returns>True if they are, false otherwise</returns>
         public static bool operator ==(double first, Fraction second)
         {
-            return second.Equals(first);
+            if (second is null)
+                return false;
+            double Value1 = second;
+            return Value1 == first;
+        }
+
+        /// <summary>
+        /// Subtracts the specified values.
+        /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>The result</returns>
+        public static Fraction Subtract(Fraction left, Fraction right)
+        {
+            return left - right;
+        }
+
+        /// <summary>
+        /// Converts to fraction.
+        /// </summary>
+        /// <returns>The value as a fraction.</returns>
+        public static Fraction ToFraction(double value)
+        {
+            return value;
+        }
+
+        /// <summary>
+        /// Converts to fraction.
+        /// </summary>
+        /// <returns>The value as a fraction.</returns>
+        public static Fraction ToFraction(float value)
+        {
+            return value;
+        }
+
+        /// <summary>
+        /// Converts to fraction.
+        /// </summary>
+        /// <returns>The value as a fraction.</returns>
+        public static Fraction ToFraction(decimal value)
+        {
+            return value;
+        }
+
+        /// <summary>
+        /// Converts to fraction.
+        /// </summary>
+        /// <returns>The value as a fraction.</returns>
+        public static Fraction ToFraction(int value)
+        {
+            return value;
+        }
+
+        /// <summary>
+        /// Converts to fraction.
+        /// </summary>
+        /// <returns>The value as a fraction.</returns>
+        public static Fraction ToFraction(uint value)
+        {
+            return value;
         }
 
         /// <summary>
@@ -411,7 +513,7 @@ namespace BigBook
         /// </summary>
         /// <param name="obj">object to check</param>
         /// <returns>True if they are, false otherwise</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             if (!(obj is Fraction Other))
             {
@@ -460,9 +562,36 @@ namespace BigBook
         }
 
         /// <summary>
+        /// Converts to decimal.
+        /// </summary>
+        /// <returns>The decimal value.</returns>
+        public decimal ToDecimal()
+        {
+            return this;
+        }
+
+        /// <summary>
+        /// Converts to double.
+        /// </summary>
+        /// <returns>The value as a double</returns>
+        public double ToDouble()
+        {
+            return this;
+        }
+
+        /// <summary>
+        /// Converts to single.
+        /// </summary>
+        /// <returns>The value as a single.</returns>
+        public float ToSingle()
+        {
+            return this;
+        }
+
+        /// <summary>
         /// Displays the fraction as a string
         /// </summary>
         /// <returns>The fraction as a string</returns>
-        public override string ToString() => string.Format(CultureInfo.InvariantCulture, "{0}/{1}", Numerator, Denominator);
+        public override string ToString() => $"{Numerator}/{Denominator}";
     }
 }

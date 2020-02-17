@@ -54,19 +54,7 @@ namespace BigBook
         /// <summary>
         /// List that contains the list of values
         /// </summary>
-        public ICollection<ICollection<T>> Values
-        {
-            get
-            {
-                var Lists = new List<ICollection<T>>();
-                foreach (var Key in Keys)
-                {
-                    Lists.Add(this[Key]);
-                }
-
-                return Lists;
-            }
-        }
+        public ICollection<ICollection<T>> Values => Keys.Select(Key => this[Key]).ToList();
 
         /// <summary>
         /// Highest value key
@@ -96,11 +84,7 @@ namespace BigBook
         /// <param name="value">The value to add</param>
         public void Add(int key, T value)
         {
-            if (key > HighestKey)
-            {
-                HighestKey = key;
-            }
-
+            UpdateHighestKey(key);
             Items.SetValue(key, Items.GetValue(key, new List<T>()).Add(new T[] { value }));
         }
 
@@ -110,11 +94,7 @@ namespace BigBook
         /// <param name="item">Key value pair to add</param>
         public void Add(KeyValuePair<int, ICollection<T>> item)
         {
-            if (item.Key > HighestKey)
-            {
-                HighestKey = item.Key;
-            }
-
+            UpdateHighestKey(item.Key);
             Add(item.Key, item.Value);
         }
 
@@ -125,18 +105,18 @@ namespace BigBook
         /// <param name="value">The values to add</param>
         public void Add(int key, ICollection<T> value)
         {
-            if (key > HighestKey)
-            {
-                HighestKey = key;
-            }
-
+            UpdateHighestKey(key);
             Items.SetValue(key, Items.GetValue(key, new List<T>()).Add(value));
         }
 
         /// <summary>
         /// Clears all items from the listing
         /// </summary>
-        public void Clear() => Items.Clear();
+        public void Clear()
+        {
+            HighestKey = int.MinValue;
+            Items.Clear();
+        }
 
         /// <summary>
         /// Does this contain the key value pairs?
@@ -145,17 +125,7 @@ namespace BigBook
         /// <returns>True if it exists, false otherwise</returns>
         public bool Contains(KeyValuePair<int, ICollection<T>> item)
         {
-            if (!ContainsKey(item.Key))
-            {
-                return false;
-            }
-
-            if (!Contains(item.Key, item.Value))
-            {
-                return false;
-            }
-
-            return true;
+            return ContainsKey(item.Key) && Contains(item.Key, item.Value);
         }
 
         /// <summary>
@@ -166,7 +136,7 @@ namespace BigBook
         /// <returns>True if it exists, false otherwise</returns>
         public bool Contains(int key, ICollection<T> values)
         {
-            if (!ContainsKey(key))
+            if (!ContainsKey(key) || values is null)
             {
                 return false;
             }
@@ -190,17 +160,7 @@ namespace BigBook
         /// <returns>True if it exists, false otherwise</returns>
         public bool Contains(int key, T value)
         {
-            if (!ContainsKey(key))
-            {
-                return false;
-            }
-
-            if (!this[key].Contains(value))
-            {
-                return false;
-            }
-
-            return true;
+            return ContainsKey(key) && this[key].Contains(value);
         }
 
         /// <summary>
@@ -248,12 +208,7 @@ namespace BigBook
         [return: MaybeNull]
         public T Peek()
         {
-            if (Items.ContainsKey(HighestKey))
-            {
-                return Items[HighestKey].FirstOrDefault();
-            }
-
-            return default!;
+            return Items.ContainsKey(HighestKey) ? Items[HighestKey].FirstOrDefault() : (default);
         }
 
         /// <summary>
@@ -263,20 +218,18 @@ namespace BigBook
         [return: MaybeNull]
         public T Pop()
         {
-            var ReturnValue = default(T)!;
-            if (Items.ContainsKey(HighestKey) && Items[HighestKey].Count > 0)
+            if (!Items.ContainsKey(HighestKey) || Items[HighestKey].Count == 0)
+                return default!;
+            var ReturnValue = Items[HighestKey].FirstOrDefault();
+            Remove(HighestKey, ReturnValue);
+            if (!ContainsKey(HighestKey))
             {
-                ReturnValue = Items[HighestKey].FirstOrDefault();
-                Remove(HighestKey, ReturnValue);
-                if (!ContainsKey(HighestKey))
+                HighestKey = int.MinValue;
+                foreach (var Key in Items.Keys)
                 {
-                    HighestKey = int.MinValue;
-                    foreach (var Key in Items.Keys)
+                    if (Key > HighestKey)
                     {
-                        if (Key > HighestKey)
-                        {
-                            HighestKey = Key;
-                        }
+                        HighestKey = Key;
                     }
                 }
             }
@@ -341,9 +294,18 @@ namespace BigBook
         /// <param name="key">Key value</param>
         /// <param name="value">The values getting</param>
         /// <returns>True if it was able to get the value, false otherwise</returns>
-        public bool TryGetValue(int key, out ICollection<T> value)
+        public bool TryGetValue(int key, out ICollection<T> value) => Items.TryGetValue(key, out value);
+
+        /// <summary>
+        /// Updates the highest key.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        private void UpdateHighestKey(int key)
         {
-            return Items.TryGetValue(key, out value);
+            if (key > HighestKey)
+            {
+                HighestKey = key;
+            }
         }
     }
 }

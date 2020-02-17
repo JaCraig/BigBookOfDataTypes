@@ -41,9 +41,9 @@ namespace BigBook.DataMapper.Module
                 return;
             }
 
-            bootstrapper.RegisterAll<IDataMapper>();
-            bootstrapper.RegisterAll<IMapperModule>();
-            bootstrapper.Register<Manager>(ServiceLifetime.Singleton);
+            bootstrapper.RegisterAll<IDataMapper>()
+                .RegisterAll<IMapperModule>()
+                .Register<Manager>(ServiceLifetime.Singleton);
         }
     }
 }

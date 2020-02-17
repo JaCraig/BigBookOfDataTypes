@@ -1,11 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2026
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7CBC4576-531F-4D1E-A5A4-9DA17AED676F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4423A719-917F-4908-9586-67B0C8CF2EFE}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{8D8A6F73-03CC-4CDC-876A-240A613228E1}"
 EndProject
@@ -15,7 +18,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BigBook.Tests", "test\BigBo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BigBook.Benchmarks", "BigBook.Benchmarks\BigBook.Benchmarks.csproj", "{E6803AA6-ACB3-48F6-9798-7686499772BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSize", "TestSize\TestSize.csproj", "{195CD080-F7E7-4E98-8D06-2C1FB2E019CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestSize", "TestSize\TestSize.csproj", "{195CD080-F7E7-4E98-8D06-2C1FB2E019CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

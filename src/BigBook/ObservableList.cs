@@ -53,7 +53,8 @@ namespace BigBook
         /// <param name="collection">The collection.</param>
         public ObservableList(IEnumerable<T> collection)
         {
-            BaseList = new List<T>(collection);
+            BaseList = new List<T>();
+            BaseList.AddRange(collection);
         }
 
         /// <summary>
@@ -109,9 +110,9 @@ namespace BigBook
         private List<T> BaseList { get; }
 
         /// <summary>
-        /// Gets or sets the <see cref="System.Object"/> at the specified index.
+        /// Gets or sets the <see cref="object"/> at the specified index.
         /// </summary>
-        /// <value>The <see cref="System.Object"/>.</value>
+        /// <value>The <see cref="object"/>.</value>
         /// <param name="index">The index.</param>
         /// <returns></returns>
         object IList.this[int index] { get => this[index]!; set => this[index] = (T)value; }
@@ -290,7 +291,7 @@ namespace BigBook
         /// An <see cref="T:System.Collections.IEnumerator"/> object that can be used to iterate
         /// through the collection.
         /// </returns>
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() => BaseList.GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator() => BaseList.GetEnumerator();
 
         /// <summary>
         /// Determines the index of a specific item in the <see cref="T:System.Collections.Generic.IList`1"/>.

@@ -24,17 +24,17 @@ namespace BigBook
     /// <summary>
     /// Dictionary that matches multiple keys to each value
     /// </summary>
-    /// <typeparam name="Key">Key type</typeparam>
-    /// <typeparam name="Value">Value type</typeparam>
-    public class TagDictionary<Key, Value> : IDictionary<Key, IEnumerable<Value>>
+    /// <typeparam name="TKey">Key type</typeparam>
+    /// <typeparam name="TValue">Value type</typeparam>
+    public class TagDictionary<TKey, TValue> : IDictionary<TKey, IEnumerable<TValue>>
     {
         /// <summary>
         /// Constructor
         /// </summary>
         public TagDictionary()
         {
-            Items = new ConcurrentBag<TaggedItem<Key, Value>>();
-            KeyList = new List<Key>();
+            Items = new ConcurrentBag<TaggedItem>();
+            KeyList = new List<TKey>();
         }
 
         /// <summary>
@@ -50,29 +50,29 @@ namespace BigBook
         /// <summary>
         /// Gets the keys found in the dictionary
         /// </summary>
-        public ICollection<Key> Keys => KeyList;
+        public ICollection<TKey> Keys => KeyList;
 
         /// <summary>
         /// Gets the values found in the dictionary
         /// </summary>
-        public ICollection<IEnumerable<Value>> Values => new IEnumerable<Value>[] { Items.ToArray(x => x.Value) };
+        public ICollection<IEnumerable<TValue>> Values => new IEnumerable<TValue>[] { Items.ToArray(x => x.Value) };
 
         /// <summary>
         /// Items in the dictionary
         /// </summary>
-        private ConcurrentBag<TaggedItem<Key, Value>> Items { get; set; }
+        private ConcurrentBag<TaggedItem> Items { get; set; }
 
         /// <summary>
         /// List of keys that have been entered
         /// </summary>
-        private List<Key> KeyList { get; }
+        private List<TKey> KeyList { get; }
 
         /// <summary>
         /// Gets the values based on a key
         /// </summary>
         /// <param name="key">Key to get the values of</param>
         /// <returns>The values associated with the key</returns>
-        public IEnumerable<Value> this[Key key]
+        public IEnumerable<TValue> this[TKey key]
         {
             get => Items.Where(x => x.Keys.Contains(key)).ToArray(x => x.Value);
             set => Add(key, value);
@@ -83,9 +83,9 @@ namespace BigBook
         /// </summary>
         /// <param name="key">Key</param>
         /// <param name="value">Values to add</param>
-        public void Add(Key key, IEnumerable<Value> value)
+        public void Add(TKey key, IEnumerable<TValue> value)
         {
-            value.ToArray(x => new TaggedItem<Key, Value>(key, x)).ForEach(x => Items.Add(x));
+            value.ToArray(x => new TaggedItem(key, x)).ForEach(x => Items.Add(x));
             KeyList.AddIfUnique(key);
         }
 
@@ -94,10 +94,10 @@ namespace BigBook
         /// </summary>
         /// <param name="value">Value to add</param>
         /// <param name="keys">Keys to associate the value with</param>
-        public void Add(Value value, params Key[] keys)
+        public void Add(TValue value, params TKey[] keys)
         {
-            keys ??= Array.Empty<Key>();
-            Items.Add(new TaggedItem<Key, Value>(keys, value));
+            keys ??= Array.Empty<TKey>();
+            Items.Add(new TaggedItem(keys, value));
             keys.ForEach(x => KeyList.AddIfUnique(x));
         }
 
@@ -105,37 +105,39 @@ namespace BigBook
         /// Adds an item to the dictionary
         /// </summary>
         /// <param name="item">item to add</param>
-        public void Add(KeyValuePair<Key, IEnumerable<Value>> item) => Add(item.Key, item.Value);
+        public void Add(KeyValuePair<TKey, IEnumerable<TValue>> item) => Add(item.Key, item.Value);
 
         /// <summary>
         /// Clears the dictionary
         /// </summary>
-        public void Clear() => Items = new ConcurrentBag<TaggedItem<Key, Value>>();
+        public void Clear() => Items.Clear();
 
         /// <summary>
         /// Determines if the dictionary contains the key/value pair
         /// </summary>
         /// <param name="item">item to check</param>
         /// <returns>True if it is, false otherwise</returns>
-        public bool Contains(KeyValuePair<Key, IEnumerable<Value>> item) => ContainsKey(item.Key);
+        public bool Contains(KeyValuePair<TKey, IEnumerable<TValue>> item) => ContainsKey(item.Key);
 
         /// <summary>
         /// Determines if a key is in the dictionary
         /// </summary>
         /// <param name="key">Key to check</param>
         /// <returns>True if it exists, false otherwise</returns>
-        public bool ContainsKey(Key key) => KeyList.Contains(key);
+        public bool ContainsKey(TKey key) => KeyList.Contains(key);
 
         /// <summary>
         /// Copies itself to an array
         /// </summary>
         /// <param name="array">Array</param>
         /// <param name="arrayIndex">Array index</param>
-        public void CopyTo(KeyValuePair<Key, IEnumerable<Value>>[] array, int arrayIndex)
+        public void CopyTo(KeyValuePair<TKey, IEnumerable<TValue>>[] array, int arrayIndex)
         {
+            if (array == null)
+                return;
             for (var x = 0; x < Keys.Count; ++x)
             {
-                array[arrayIndex + x] = new KeyValuePair<Key, IEnumerable<Value>>(Keys.ElementAt(x), this[Keys.ElementAt(x)]);
+                array[arrayIndex + x] = new KeyValuePair<TKey, IEnumerable<TValue>>(Keys.ElementAt(x), this[Keys.ElementAt(x)]);
             }
         }
 
@@ -143,11 +145,11 @@ namespace BigBook
         /// Gets the enumerator
         /// </summary>
         /// <returns>The enumerator</returns>
-        public IEnumerator<KeyValuePair<Key, IEnumerable<Value>>> GetEnumerator()
+        public IEnumerator<KeyValuePair<TKey, IEnumerable<TValue>>> GetEnumerator()
         {
             foreach (var TempKey in Keys)
             {
-                yield return new KeyValuePair<Key, IEnumerable<Value>>(TempKey, this[TempKey]);
+                yield return new KeyValuePair<TKey, IEnumerable<TValue>>(TempKey, this[TempKey]);
             }
         }
 
@@ -168,10 +170,10 @@ namespace BigBook
         /// </summary>
         /// <param name="key">Key</param>
         /// <returns>Returns true if the key was found, false otherwise</returns>
-        public bool Remove(Key key)
+        public bool Remove(TKey key)
         {
             var ReturnValue = ContainsKey(key);
-            Items = new ConcurrentBag<TaggedItem<Key, Value>>(Items.ToArray(x => x).Where(x => !x.Keys.Contains(key)));
+            Items = new ConcurrentBag<TaggedItem>(Items.ToArray(x => x).Where(x => !x.Keys.Contains(key)));
             KeyList.Remove(key);
             return ReturnValue;
         }
@@ -181,7 +183,7 @@ namespace BigBook
         /// </summary>
         /// <param name="item">item to remove</param>
         /// <returns>True if it is removed, false otherwise</returns>
-        public bool Remove(KeyValuePair<Key, IEnumerable<Value>> item) => Remove(item.Key);
+        public bool Remove(KeyValuePair<TKey, IEnumerable<TValue>> item) => Remove(item.Key);
 
         /// <summary>
         /// Attempts to get the values associated with a key
@@ -189,9 +191,9 @@ namespace BigBook
         /// <param name="key">Key</param>
         /// <param name="value">Values associated with a key</param>
         /// <returns>True if something is returned, false otherwise</returns>
-        public bool TryGetValue(Key key, out IEnumerable<Value> value)
+        public bool TryGetValue(TKey key, out IEnumerable<TValue> value)
         {
-            value = new List<Value>();
+            value = Array.Empty<TValue>();
             try
             {
                 value = this[key];
@@ -203,18 +205,16 @@ namespace BigBook
         /// <summary>
         /// Holds information about each value
         /// </summary>
-        /// <typeparam name="TKey">Key type</typeparam>
-        /// <typeparam name="TValue">Value type</typeparam>
-        private class TaggedItem<TKey, TValue>
+        private class TaggedItem
         {
             /// <summary>
             /// Constructor
             /// </summary>
             /// <param name="keys">Keys</param>
             /// <param name="value">Value</param>
-            public TaggedItem(IEnumerable<TKey> keys, TValue value)
+            public TaggedItem(TKey[] keys, TValue value)
             {
-                Keys = new ConcurrentBag<TKey>(keys);
+                Keys = keys;
                 Value = value;
             }
 
@@ -224,15 +224,14 @@ namespace BigBook
             /// <param name="key">Key</param>
             /// <param name="value">Value</param>
             public TaggedItem(TKey key, TValue value)
+                : this(new TKey[] { key }, value)
             {
-                Keys = new ConcurrentBag<TKey>(new TKey[] { key });
-                Value = value;
             }
 
             /// <summary>
             /// The list of keys associated with the value
             /// </summary>
-            public ConcurrentBag<TKey> Keys { get; set; }
+            public TKey[] Keys { get; set; }
 
             /// <summary>
             /// Value

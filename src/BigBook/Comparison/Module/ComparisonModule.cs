@@ -23,8 +23,8 @@ namespace BigBook.Comparison.Module
             if (bootstrapper == null)
                 return;
 
-            bootstrapper.Register(typeof(GenericComparer<>), ServiceLifetime.Singleton);
-            bootstrapper.Register(typeof(GenericEqualityComparer<>), ServiceLifetime.Singleton);
+            bootstrapper.Register(typeof(GenericComparer<>), ServiceLifetime.Singleton)
+                .Register(typeof(GenericEqualityComparer<>), ServiceLifetime.Singleton);
         }
     }
 }

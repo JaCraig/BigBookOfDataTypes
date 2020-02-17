@@ -55,7 +55,7 @@ namespace BigBook
         public static T Clamp<T>(this T value, T max, T min, IComparer<T>? comparer = null)
             where T : IComparable
         {
-            comparer ??= new GenericComparer<T>();
+            comparer ??= Canister.Builder.Bootstrapper?.Resolve<GenericComparer<T>>() ?? new GenericComparer<T>();
             if (comparer.Compare(max, value) < 0)
             {
                 return max;

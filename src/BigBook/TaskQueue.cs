@@ -43,17 +43,12 @@ namespace BigBook
         public TaskQueue(int capacity, Func<T, bool> processItem, int timeOut = 100, Action<Exception, T>? handleError = null)
             : base(new ConcurrentQueue<T>())
         {
-            Capacity = capacity;
+            Capacity = capacity < 1 ? 1 : capacity;
             TimeOut = timeOut;
-            if (capacity < 1)
-            {
-                capacity = 1;
-            }
-
             ProcessItem = processItem;
-            HandleError = handleError ?? new Action<Exception, T>((_, __) => { });
+            HandleError = handleError ?? DefaultErrorHandler;
             CancellationToken = new CancellationTokenSource();
-            Tasks = new Task[capacity];
+            Tasks = new Task[Capacity];
         }
 
         /// <summary>
@@ -151,12 +146,18 @@ namespace BigBook
                 Cancel(true);
                 Tasks = null;
             }
-            if (CancellationToken != null)
-            {
-                CancellationToken.Dispose();
-                CancellationToken = null;
-            }
+            CancellationToken?.Dispose();
+            CancellationToken = null;
             base.Dispose(disposing);
+        }
+
+        /// <summary>
+        /// Defaults the error handler.
+        /// </summary>
+        /// <param name="_">The .</param>
+        /// <param name="__">The .</param>
+        private static void DefaultErrorHandler(Exception _, T __)
+        {
         }
 
         /// <summary>
@@ -207,7 +208,7 @@ namespace BigBook
             {
                 if (Tasks[x]?.IsCompleted != false || Tasks[x]?.IsCanceled != false)
                 {
-                    Tasks[x] = Task.Factory.StartNew(Process);
+                    Tasks[x] = Task.Factory.StartNew(Process, new CancellationToken(), TaskCreationOptions.None, TaskScheduler.Default);
                 }
             }
         }
