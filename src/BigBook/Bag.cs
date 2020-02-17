@@ -43,7 +43,7 @@ namespace BigBook
         /// <summary>
         /// Is this read only?
         /// </summary>
-        public virtual bool IsReadOnly => false;
+        public virtual bool IsReadOnly { get; }
 
         /// <summary>
         /// Actual internal container

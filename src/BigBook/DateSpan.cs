@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using System;
+using System.Globalization;
 
 namespace BigBook
 {
@@ -38,7 +39,7 @@ namespace BigBook
             }
             Start = start;
             End = end;
-            var Diff = (End - Start);
+            var Diff = End - Start;
             Days = Diff.DaysRemainder();
             Hours = Diff.Hours;
             MilliSeconds = Diff.Milliseconds;
@@ -94,6 +95,17 @@ namespace BigBook
         public int Years { get; }
 
         /// <summary>
+        /// Adds the specified values.
+        /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>The result.</returns>
+        public static DateSpan? Add(DateSpan? left, DateSpan? right)
+        {
+            return left + right;
+        }
+
+        /// <summary>
         /// Converts the object to a string
         /// </summary>
         /// <param name="value">Value to convert</param>
@@ -122,11 +134,11 @@ namespace BigBook
         /// <returns>The combined date span</returns>
         public static DateSpan? operator +(DateSpan? span1, DateSpan? span2)
         {
-            if (span1 == null)
+            if (span1 is null)
             {
-                return span2 == null ? null : new DateSpan(span2.Start, span2.End);
+                return span2 is null ? null : new DateSpan(span2.Start, span2.End);
             }
-            else if (span2 == null)
+            else if (span2 is null)
             {
                 return new DateSpan(span1.Start, span1.End);
             }
@@ -144,17 +156,11 @@ namespace BigBook
         /// <returns>True if they are, false otherwise</returns>
         public static bool operator ==(DateSpan? span1, DateSpan? span2)
         {
-            if (span1 is null && span2 is null)
-            {
-                return true;
-            }
-
-            if (span1 is null || span2 is null)
-            {
-                return false;
-            }
-
-            return span1.Start == span2.Start && span1.End == span2.End;
+            return (span1 is null && span2 is null)
+                || (!(span1 is null)
+                    && !(span2 is null)
+                    && span1.Start == span2.Start
+                    && span1.End == span2.End);
         }
 
         /// <summary>
@@ -164,8 +170,7 @@ namespace BigBook
         /// <returns>True if they are, false otherwise</returns>
         public override bool Equals(object obj)
         {
-            var Tempobj = obj as DateSpan;
-            return Tempobj != null
+            return obj is DateSpan Tempobj
                 && Tempobj == this;
         }
 
@@ -182,12 +187,7 @@ namespace BigBook
         /// <returns>The intersection of the two time spans</returns>
         public DateSpan? Intersection(DateSpan? span)
         {
-            if (span == null)
-            {
-                return null;
-            }
-
-            if (!Overlap(span))
+            if (span is null || !Overlap(span))
             {
                 return null;
             }
@@ -204,18 +204,16 @@ namespace BigBook
         /// <returns>True if they overlap, false otherwise</returns>
         public bool Overlap(DateSpan? span)
         {
-            if (span == null)
-            {
-                return false;
-            }
-
-            return (Start >= span.Start && Start < span.End) || (End <= span.End && End > span.Start) || (Start <= span.Start && End >= span.End);
+            return !(span is null)
+                && ((Start >= span.Start && Start < span.End)
+                    || (End <= span.End && End > span.Start)
+                    || (Start <= span.Start && End >= span.End));
         }
 
         /// <summary>
         /// Converts the DateSpan to a string
         /// </summary>
         /// <returns>The DateSpan as a string</returns>
-        public override string ToString() => "Start: " + Start.ToString() + " End: " + End.ToString();
+        public override string ToString() => $"Start: {Start.ToString(CultureInfo.InvariantCulture)} End: {End.ToString(CultureInfo.InvariantCulture)}";
     }
 }

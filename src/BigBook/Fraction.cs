@@ -238,10 +238,7 @@ namespace BigBook
         /// <returns>The fraction as a string</returns>
         public static implicit operator string(Fraction fraction)
         {
-            if (fraction is null)
-                return "";
-
-            return fraction.ToString();
+            return fraction?.ToString() ?? "";
         }
 
         /// <summary>

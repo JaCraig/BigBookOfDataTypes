@@ -33,7 +33,7 @@ namespace BigBook
         /// <param name="root">Root of the binary tree</param>
         public BinaryTree(TreeNode<T>? root = null)
         {
-            if (Root == null)
+            if (root == null)
             {
                 NumberOfNodes = 0;
                 return;
@@ -50,7 +50,7 @@ namespace BigBook
         /// <summary>
         /// Is the tree empty
         /// </summary>
-        public bool IsEmpty => Root == null;
+        public bool IsEmpty => Root is null;
 
         /// <summary>
         /// Is this read only?
@@ -64,13 +64,13 @@ namespace BigBook
         {
             get
             {
-                if (IsEmpty || Root == null)
+                if (IsEmpty || Root is null)
                 {
                     return default!;
                 }
 
                 var TempNode = Root;
-                while (TempNode.Right != null)
+                while (!(TempNode.Right is null))
                 {
                     TempNode = TempNode.Right;
                 }
@@ -86,13 +86,13 @@ namespace BigBook
         {
             get
             {
-                if (IsEmpty || Root == null)
+                if (IsEmpty || Root is null)
                 {
                     return default!;
                 }
 
                 var TempNode = Root;
-                while (TempNode.Left != null)
+                while (!(TempNode.Left is null))
                 {
                     TempNode = TempNode.Left;
                 }
@@ -116,14 +116,9 @@ namespace BigBook
         /// </summary>
         /// <param name="value">Value to convert</param>
         /// <returns>The value as a string</returns>
-        public static implicit operator string(BinaryTree<T> value)
+        public static implicit operator string(BinaryTree<T>? value)
         {
-            if (value == null)
-            {
-                return "";
-            }
-
-            return value.ToString();
+            return value?.ToString() ?? "";
         }
 
         /// <summary>
@@ -132,7 +127,7 @@ namespace BigBook
         /// <param name="item">Item to add</param>
         public void Add(T item)
         {
-            if (Root == null)
+            if (Root is null)
             {
                 Root = new TreeNode<T>(item);
                 ++NumberOfNodes;
@@ -165,7 +160,7 @@ namespace BigBook
             }
 
             var TempNode = Root;
-            while (TempNode != null)
+            while (!(TempNode is null))
             {
                 var ComparedValue = TempNode.Value.CompareTo(item);
                 if (ComparedValue == 0)
@@ -227,7 +222,7 @@ namespace BigBook
         public bool Remove(T item)
         {
             var Item = Find(item);
-            if (Item == null)
+            if (Item is null)
             {
                 return false;
             }
@@ -244,7 +239,7 @@ namespace BigBook
                 Values.Add(TempNode.Value);
             }
 
-            if (Item.Parent != null)
+            if (!(Item.Parent is null))
             {
                 if (Item.Parent.Left == Item)
                 {
@@ -301,16 +296,16 @@ namespace BigBook
         protected void Insert(T item)
         {
             TreeNode<T>? TempNode = Root;
-            if (TempNode == null)
+            if (TempNode is null)
                 return;
             while (true)
             {
                 var ComparedValue = TempNode?.Value.CompareTo(item);
                 if (ComparedValue > 0)
                 {
-                    if (TempNode?.Left == null)
+                    if (TempNode?.Left is null)
                     {
-                        if (TempNode == null)
+                        if (TempNode is null)
                             return;
                         TempNode.Left = new TreeNode<T>(item, TempNode);
                         ++NumberOfNodes;
@@ -320,9 +315,9 @@ namespace BigBook
                 }
                 else if (ComparedValue < 0)
                 {
-                    if (TempNode?.Right == null)
+                    if (TempNode?.Right is null)
                     {
-                        if (TempNode == null)
+                        if (TempNode is null)
                             return;
                         TempNode.Right = new TreeNode<T>(item, TempNode);
                         ++NumberOfNodes;
@@ -344,9 +339,9 @@ namespace BigBook
         /// <returns>The individual items from the tree</returns>
         protected IEnumerable<TreeNode<T>> Traversal(TreeNode<T>? node)
         {
-            if (node != null)
+            if (!(node is null))
             {
-                if (node.Left != null)
+                if (!(node.Left is null))
                 {
                     foreach (var LeftNode in Traversal(node.Left))
                     {
@@ -354,7 +349,7 @@ namespace BigBook
                     }
                 }
                 yield return node;
-                if (node.Right != null)
+                if (!(node.Right is null))
                 {
                     foreach (var RightNode in Traversal(node.Right))
                     {
@@ -389,12 +384,12 @@ namespace BigBook
         /// <summary>
         /// Is this a leaf
         /// </summary>
-        public bool IsLeaf => Left == null && Right == null;
+        public bool IsLeaf => Left is null && Right is null;
 
         /// <summary>
         /// Is this the root
         /// </summary>
-        public bool IsRoot => Parent == null;
+        public bool IsRoot => Parent is null;
 
         /// <summary>
         /// Left node
