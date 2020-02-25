@@ -320,7 +320,7 @@ namespace BigBook
                 || ((comparison & DateCompare.InPast) != 0 && DateTime.Now > date)
                 || ((comparison & DateCompare.Today) != 0 && DateTime.Today == date.Date)
                 || ((comparison & DateCompare.WeekDay) != 0 && (int)date.DayOfWeek != 6 && date.DayOfWeek != 0)
-                || ((comparison & DateCompare.WeekEnd) != 0 && (int)date.DayOfWeek == 6 || date.DayOfWeek == 0);
+                || ((comparison & DateCompare.WeekEnd) != 0 && ((int)date.DayOfWeek == 6 || date.DayOfWeek == 0));
         }
 
         /// <summary>
