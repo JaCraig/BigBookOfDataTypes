@@ -35,7 +35,7 @@ namespace BigBook
         /// <returns>The exception as a string</returns>
         public static string ToString(this Exception exception, string prefix, string suffix = "")
         {
-            if (exception == null)
+            if (exception is null)
             {
                 return "";
             }
@@ -44,7 +44,7 @@ namespace BigBook
             Builder.AppendLine(prefix);
             Builder.AppendLineFormat("Exception: {0}", exception.Message)
                    .AppendLineFormat("Exception Type: {0}", exception.GetType().FullName);
-            if (exception.Data != null)
+            if (!(exception.Data is null))
             {
                 for (int x = 0, exceptionDataCount = exception.Data.Count; x < exceptionDataCount; x++)
                 {
@@ -54,7 +54,7 @@ namespace BigBook
             }
             Builder.AppendLineFormat("StackTrace: {0}", exception.StackTrace)
                    .AppendLineFormat("Source: {0}", exception.Source);
-            if (exception.InnerException != null)
+            if (!(exception.InnerException is null))
             {
                 Builder.Append(exception.InnerException.ToString(prefix, suffix));
             }

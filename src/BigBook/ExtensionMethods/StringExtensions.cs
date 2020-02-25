@@ -392,7 +392,7 @@ namespace BigBook
         /// <returns>The Levenshtein distance (-1 if null values found)</returns>
         public static int LevenshteinDistance(this string value1, string value2)
         {
-            if (value1 == null || value2 == null)
+            if (value1 is null || value2 is null)
             {
                 return -1;
             }
@@ -838,7 +838,7 @@ namespace BigBook
         /// <returns>The formatted string</returns>
         public static string ToString(this string input, object inputObject, string startSeperator = "{", string endSeperator = "}")
         {
-            if (inputObject == null)
+            if (inputObject is null)
             {
                 return input;
             }
@@ -849,7 +849,7 @@ namespace BigBook
                 .ForEach(x =>
                 {
                     var Value = x.GetValue(inputObject, null);
-                    input = input.Replace(startSeperator + x.Name + endSeperator, Value == null ? "" : Value.ToString());
+                    input = input.Replace(startSeperator + x.Name + endSeperator, Value is null ? "" : Value.ToString());
                 });
             return input;
         }
@@ -958,7 +958,7 @@ namespace BigBook
         /// <returns>The resulting value.</returns>
         private static string Evaluate(Match matcher)
         {
-            if (matcher == null)
+            if (matcher is null)
             {
                 return "";
             }

@@ -22,15 +22,15 @@ namespace BigBook.Comparison
     /// <summary>
     /// Simple equality comparer
     /// </summary>
-    /// <typeparam name="T">Data type</typeparam>
-    public class SimpleEqualityComparer<T> : IEqualityComparer<T>
+    /// <typeparam name="TData">Data type</typeparam>
+    public class SimpleEqualityComparer<TData> : IEqualityComparer<TData>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SimpleEqualityComparer{T}"/> class.
         /// </summary>
         /// <param name="comparisonFunction">The comparison function.</param>
         /// <param name="hashFunction">The hash function.</param>
-        public SimpleEqualityComparer(Func<T, T, bool> comparisonFunction, Func<T, int> hashFunction)
+        public SimpleEqualityComparer(Func<TData, TData, bool> comparisonFunction, Func<TData, int> hashFunction)
         {
             ComparisonFunction = comparisonFunction;
             HashFunction = hashFunction;
@@ -40,13 +40,13 @@ namespace BigBook.Comparison
         /// Gets or sets the comparison function.
         /// </summary>
         /// <value>The comparison function.</value>
-        protected Func<T, T, bool> ComparisonFunction { get; set; }
+        protected Func<TData, TData, bool> ComparisonFunction { get; set; }
 
         /// <summary>
         /// Gets or sets the hash function.
         /// </summary>
         /// <value>The hash function.</value>
-        protected Func<T, int> HashFunction { get; set; }
+        protected Func<TData, int> HashFunction { get; set; }
 
         /// <summary>
         /// Determines if the two items are equal
@@ -54,13 +54,13 @@ namespace BigBook.Comparison
         /// <param name="x">Object 1</param>
         /// <param name="y">Object 2</param>
         /// <returns>True if they are, false otherwise</returns>
-        public bool Equals(T x, T y) => ComparisonFunction(x, y);
+        public bool Equals(TData x, TData y) => ComparisonFunction(x, y);
 
         /// <summary>
         /// Get hash code
         /// </summary>
         /// <param name="obj">Object to get the hash code of</param>
         /// <returns>The object's hash code</returns>
-        public int GetHashCode(T obj) => HashFunction(obj);
+        public int GetHashCode(TData obj) => HashFunction(obj);
     }
 }

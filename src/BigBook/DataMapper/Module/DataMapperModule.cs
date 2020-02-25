@@ -36,7 +36,7 @@ namespace BigBook.DataMapper.Module
         /// <param name="bootstrapper">Bootstrapper to register with</param>
         public void Load(IBootstrapper bootstrapper)
         {
-            if (bootstrapper == null)
+            if (bootstrapper is null)
             {
                 return;
             }

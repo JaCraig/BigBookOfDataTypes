@@ -48,12 +48,12 @@ namespace BigBook
         public static IEnumerable<T> Concat<T>(this IEnumerable<T> enumerable1, params IEnumerable<T>[] additions)
         {
             enumerable1 ??= Array.Empty<T>();
-            if (additions == null)
+            if (additions is null)
             {
                 return enumerable1;
             }
 
-            var ActualAdditions = additions.Where(x => x != null).ToArray();
+            var ActualAdditions = additions.Where(x => !(x is null)).ToArray();
             var Results = new List<T>();
             Results.AddRange(enumerable1);
             for (var x = 0; x < ActualAdditions.Length; ++x)
@@ -146,7 +146,7 @@ namespace BigBook
                 return Array.Empty<T>();
             }
 
-            if (predicate == null)
+            if (predicate is null)
             {
                 return value;
             }
@@ -191,7 +191,7 @@ namespace BigBook
         /// <returns>The resulting list</returns>
         public static IEnumerable<R> For<T, R>(this IEnumerable<T> list, int start, int end, Func<T, int, R> function)
         {
-            if (list == null || function == null || !list.Any())
+            if (list is null || function is null || !list.Any())
             {
                 return Array.Empty<R>();
             }
@@ -219,7 +219,7 @@ namespace BigBook
                 return Array.Empty<T>();
             }
 
-            if (action == null)
+            if (action is null)
             {
                 return list;
             }
@@ -242,7 +242,7 @@ namespace BigBook
         /// <returns>The resulting list</returns>
         public static IEnumerable<R> ForEach<T, R>(this IEnumerable<T> list, Func<T, R> function)
         {
-            if (list == null || function == null || !list.Any())
+            if (list is null || function is null || !list.Any())
             {
                 return Array.Empty<R>();
             }
@@ -271,7 +271,7 @@ namespace BigBook
                 return Array.Empty<T>();
             }
 
-            if (action == null || catchAction == null)
+            if (action is null || catchAction is null)
             {
                 return list;
             }
@@ -298,7 +298,7 @@ namespace BigBook
         /// <returns>The resulting list</returns>
         public static IEnumerable<R> ForEach<T, R>(this IEnumerable<T> list, Func<T, R> function, Action<T, Exception> catchAction)
         {
-            if (list == null || function == null || catchAction == null || !list.Any())
+            if (list is null || function is null || catchAction is null || !list.Any())
             {
                 return Array.Empty<R>();
             }
@@ -329,7 +329,7 @@ namespace BigBook
                 return Array.Empty<T>();
             }
 
-            if (action == null)
+            if (action is null)
             {
                 return list;
             }
@@ -348,7 +348,7 @@ namespace BigBook
         /// <returns>The results in an IEnumerable list</returns>
         public static IEnumerable<R> ForEachParallel<T, R>(this IEnumerable<T> list, Func<T, R> function)
         {
-            if (list == null || function == null || !list.Any())
+            if (list is null || function is null || !list.Any())
             {
                 return Array.Empty<R>();
             }
@@ -371,7 +371,7 @@ namespace BigBook
                 return Array.Empty<T>();
             }
 
-            if (action == null || catchAction == null)
+            if (action is null || catchAction is null)
             {
                 return list;
             }
@@ -398,7 +398,7 @@ namespace BigBook
         /// <returns>The resulting list</returns>
         public static IEnumerable<R> ForEachParallel<T, R>(this IEnumerable<T> list, Func<T, R> function, Action<T, Exception> catchAction)
         {
-            if (list == null || function == null || catchAction == null || !list.Any())
+            if (list is null || function is null || catchAction is null || !list.Any())
             {
                 return Array.Empty<R>();
             }
@@ -431,7 +431,7 @@ namespace BigBook
                 return Array.Empty<T>();
             }
 
-            if (action == null)
+            if (action is null)
             {
                 return list;
             }
@@ -469,7 +469,7 @@ namespace BigBook
         /// <returns>The resulting list</returns>
         public static IEnumerable<R> ForParallel<T, R>(this IEnumerable<T> list, int start, int end, Func<T, int, R> function)
         {
-            if (list == null || function == null || !list.Any())
+            if (list is null || function is null || !list.Any())
             {
                 return Array.Empty<R>();
             }
@@ -534,10 +534,10 @@ namespace BigBook
             Func<T1, T2, R> resultSelector,
             IEqualityComparer<Key>? comparer = null)
         {
-            if (inner == null
-                || outerKeySelector == null
-                || innerKeySelector == null
-                || resultSelector == null)
+            if (inner is null
+                || outerKeySelector is null
+                || innerKeySelector is null
+                || resultSelector is null)
             {
                 return Array.Empty<R>();
             }
@@ -568,11 +568,11 @@ namespace BigBook
             Func<T1, T2, R> resultSelector,
             IEqualityComparer<Key>? comparer = null)
         {
-            if (inner == null
-                || outer == null
-                || outerKeySelector == null
-                || innerKeySelector == null
-                || resultSelector == null)
+            if (inner is null
+                || outer is null
+                || outerKeySelector is null
+                || innerKeySelector is null
+                || resultSelector is null)
             {
                 return Array.Empty<R>();
             }
@@ -634,10 +634,10 @@ namespace BigBook
             Func<T1, T2, R> resultSelector,
             IEqualityComparer<Key>? comparer = null)
         {
-            if (outer == null
-                || outerKeySelector == null
-                || innerKeySelector == null
-                || resultSelector == null)
+            if (outer is null
+                || outerKeySelector is null
+                || innerKeySelector is null
+                || resultSelector is null)
             {
                 return Array.Empty<R>();
             }
@@ -662,7 +662,7 @@ namespace BigBook
                 return Array.Empty<T>();
             }
 
-            if (predicate == null || exception == null)
+            if (predicate is null || exception is null)
             {
                 return list;
             }
@@ -690,7 +690,7 @@ namespace BigBook
                 return Array.Empty<T>();
             }
 
-            if (predicate == null || exception == null)
+            if (predicate is null || exception is null)
             {
                 return list;
             }
@@ -718,7 +718,7 @@ namespace BigBook
                 return Array.Empty<T>();
             }
 
-            if (predicate == null || exception == null)
+            if (predicate is null || exception is null)
             {
                 return list;
             }
@@ -746,7 +746,7 @@ namespace BigBook
                 return Array.Empty<T>();
             }
 
-            if (predicate == null || exception == null)
+            if (predicate is null || exception is null)
             {
                 return list;
             }
@@ -769,7 +769,7 @@ namespace BigBook
         /// <returns>The array containing the items from the list</returns>
         public static Target[] ToArray<Source, Target>(this IEnumerable<Source> list, Func<Source, Target> convertingFunction)
         {
-            if (list == null || convertingFunction == null || !list.Any())
+            if (list is null || convertingFunction is null || !list.Any())
             {
                 return Array.Empty<Target>();
             }
@@ -787,7 +787,7 @@ namespace BigBook
         /// <returns>The list containing the items from the IEnumerable</returns>
         public static List<Target> ToList<Source, Target>(this IEnumerable<Source> list, Func<Source, Target> convertingFunction)
         {
-            if (list == null || convertingFunction == null || !list.Any())
+            if (list is null || convertingFunction is null || !list.Any())
             {
                 return new List<Target>();
             }
@@ -805,7 +805,7 @@ namespace BigBook
         /// <returns>The observable list version of the original list</returns>
         public static ObservableList<Target> ToObservableList<Source, Target>(this IEnumerable<Source> list, Func<Source, Target> convertingFunction)
         {
-            if (list == null)
+            if (list is null)
             {
                 return new ObservableList<Target>();
             }
@@ -822,7 +822,7 @@ namespace BigBook
         /// <returns>The observable list version of the original list</returns>
         public static ObservableList<Source> ToObservableList<Source>(this IEnumerable<Source> list)
         {
-            if (list == null)
+            if (list is null)
             {
                 return new ObservableList<Source>();
             }

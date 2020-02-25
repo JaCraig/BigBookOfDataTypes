@@ -39,12 +39,12 @@ namespace BigBook
         public static IDictionary<TKey, TValue> CopyTo<TKey, TValue>(this IDictionary<TKey, TValue> dictionary,
             IDictionary<TKey, TValue> target)
         {
-            if (dictionary == null)
+            if (dictionary is null)
             {
                 return new Dictionary<TKey, TValue>();
             }
 
-            if (target == null)
+            if (target is null)
             {
                 return dictionary;
             }
@@ -71,7 +71,7 @@ namespace BigBook
             TKey key,
             TValue defaultValue = default)
         {
-            if (dictionary == null)
+            if (dictionary is null)
             {
                 return defaultValue;
             }
@@ -92,7 +92,7 @@ namespace BigBook
             TKey key,
             TValue value)
         {
-            if (dictionary == null)
+            if (dictionary is null)
             {
                 return new Dictionary<TKey, TValue>();
             }
@@ -120,12 +120,12 @@ namespace BigBook
         public static IDictionary<T1, T2> Sort<T1, T2>(this IDictionary<T1, T2> dictionary, IComparer<T1>? comparer = null)
             where T1 : IComparable
         {
-            if (dictionary == null)
+            if (dictionary is null)
             {
                 return new Dictionary<T1, T2>();
             }
 
-            comparer ??= new GenericComparer<T1>();
+            comparer ??= Canister.Builder.Bootstrapper?.Resolve<GenericComparer<T1>>() ?? new GenericComparer<T1>();
             return dictionary.Sort(x => x.Key, comparer);
         }
 
@@ -144,17 +144,17 @@ namespace BigBook
             IComparer<T3>? comparer = null)
             where T3 : IComparable
         {
-            if (dictionary == null)
+            if (dictionary is null)
             {
                 return new Dictionary<T1, T2>();
             }
 
-            if (orderBy == null)
+            if (orderBy is null)
             {
                 return dictionary;
             }
 
-            comparer ??= new GenericComparer<T3>();
+            comparer ??= Canister.Builder.Bootstrapper?.Resolve<GenericComparer<T3>>() ?? new GenericComparer<T3>();
             return dictionary.OrderBy(orderBy, comparer).ToDictionary(x => x.Key, x => x.Value);
         }
     }

@@ -1,4 +1,5 @@
 ﻿using BigBook;
+using BigBook.Tests.BaseClasses;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using Xunit;
 
 namespace BigBook.Tests.ExtensionMethods
 {
-    public class IEnumerableExtensionsTests
+    public class IEnumerableExtensionsTests : TestingDirectoryFixture
     {
         [Fact]
         public void Distinct()

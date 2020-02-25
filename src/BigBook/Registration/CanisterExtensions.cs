@@ -29,8 +29,10 @@ namespace BigBook.Registration
         /// </summary>
         /// <param name="bootstrapper">The bootstrapper.</param>
         /// <returns>The bootstrapper</returns>
-        public static IBootstrapper RegisterBigBookOfDataTypes(this IBootstrapper bootstrapper)
+        public static IBootstrapper? RegisterBigBookOfDataTypes(this IBootstrapper? bootstrapper)
         {
+            if (bootstrapper is null)
+                return bootstrapper;
             return bootstrapper.AddAssembly(typeof(CanisterExtensions).Assembly)
                                .RegisterAspectus();
         }

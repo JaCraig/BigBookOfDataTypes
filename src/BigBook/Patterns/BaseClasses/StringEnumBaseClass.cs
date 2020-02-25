@@ -59,6 +59,13 @@ namespace BigBook.Patterns.BaseClasses
         }
 
         /// <summary>
+        /// Converts to the enum from a string.
+        /// </summary>
+        /// <param name="enumType">Type of the enum.</param>
+        /// <returns>The enum value</returns>
+        public static StringEnumBaseClass<TClass> ToStringEnumBaseClass(string enumType) => enumType;
+
+        /// <summary>
         /// Returns a <see cref="System.String"/> that represents this instance.
         /// </summary>
         /// <returns>A <see cref="System.String"/> that represents this instance.</returns>

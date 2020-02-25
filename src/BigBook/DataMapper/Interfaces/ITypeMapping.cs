@@ -46,16 +46,16 @@ namespace BigBook.DataMapper.Interfaces
     /// <summary>
     /// Type mapping interface
     /// </summary>
-    /// <typeparam name="Left">Left type</typeparam>
-    /// <typeparam name="Right">Right type</typeparam>
-    public interface ITypeMapping<Left, Right> : ITypeMapping
+    /// <typeparam name="TLeft">Left type</typeparam>
+    /// <typeparam name="TRight">Right type</typeparam>
+    public interface ITypeMapping<TLeft, TRight> : ITypeMapping
     {
         /// <summary>
         /// Adds a mapping
         /// </summary>
         /// <param name="leftExpression">Left expression</param>
         /// <param name="rightExpression">Right expression</param>
-        ITypeMapping<Left, Right> AddMapping(Expression<Func<Left, object>> leftExpression, Expression<Func<Right, object>> rightExpression);
+        ITypeMapping<TLeft, TRight> AddMapping(Expression<Func<TLeft, object>> leftExpression, Expression<Func<TRight, object>> rightExpression);
 
         /// <summary>
         /// Adds a mapping
@@ -63,7 +63,7 @@ namespace BigBook.DataMapper.Interfaces
         /// <param name="leftGet">Left get function</param>
         /// <param name="leftSet">Left set action</param>
         /// <param name="rightExpression">Right expression</param>
-        ITypeMapping<Left, Right> AddMapping(Func<Left, object> leftGet, Action<Left, object> leftSet, Expression<Func<Right, object>> rightExpression);
+        ITypeMapping<TLeft, TRight> AddMapping(Func<TLeft, object> leftGet, Action<TLeft, object> leftSet, Expression<Func<TRight, object>> rightExpression);
 
         /// <summary>
         /// Adds a mapping
@@ -71,7 +71,7 @@ namespace BigBook.DataMapper.Interfaces
         /// <param name="leftExpression">Left expression</param>
         /// <param name="rightGet">Right get function</param>
         /// <param name="rightSet">Right set function</param>
-        ITypeMapping<Left, Right> AddMapping(Expression<Func<Left, object>> leftExpression, Func<Right, object> rightGet, Action<Right, object> rightSet);
+        ITypeMapping<TLeft, TRight> AddMapping(Expression<Func<TLeft, object>> leftExpression, Func<TRight, object> rightGet, Action<TRight, object> rightSet);
 
         /// <summary>
         /// Adds a mapping
@@ -80,36 +80,36 @@ namespace BigBook.DataMapper.Interfaces
         /// <param name="leftSet">Left set function</param>
         /// <param name="rightGet">Right get function</param>
         /// <param name="rightSet">Right set function</param>
-        ITypeMapping<Left, Right> AddMapping(Func<Left, object> leftGet, Action<Left, object> leftSet, Func<Right, object> rightGet, Action<Right, object> rightSet);
+        ITypeMapping<TLeft, TRight> AddMapping(Func<TLeft, object> leftGet, Action<TLeft, object> leftSet, Func<TRight, object> rightGet, Action<TRight, object> rightSet);
 
         /// <summary>
         /// Copies from the source to the destination
         /// </summary>
         /// <param name="source">Source object</param>
         /// <param name="destination">Destination object</param>
-        void Copy(Left source, Right destination);
+        void Copy(TLeft source, TRight destination);
 
         /// <summary>
         /// Copies from the source to the destination
         /// </summary>
         /// <param name="source">Source object</param>
         /// <param name="destination">Destination object</param>
-        void Copy(Right source, Left destination);
+        void Copy(TRight source, TLeft destination);
 
         /// <summary>
-        /// Copies from the source to the destination (used in instances when both Left and Right are
-        /// the same type and thus Copy is ambiguous)
+        /// Copies from the source to the destination (used in instances when both Left and Right
+        /// are the same type and thus Copy is ambiguous)
         /// </summary>
         /// <param name="source">Source</param>
         /// <param name="destination">Destination</param>
-        void CopyLeftToRight(Left source, Right destination);
+        void CopyLeftToRight(TLeft source, TRight destination);
 
         /// <summary>
-        /// Copies from the source to the destination (used in instances when both Left and Right are
-        /// the same type and thus Copy is ambiguous)
+        /// Copies from the source to the destination (used in instances when both Left and Right
+        /// are the same type and thus Copy is ambiguous)
         /// </summary>
         /// <param name="source">Source</param>
         /// <param name="destination">Destination</param>
-        void CopyRightToLeft(Right source, Left destination);
+        void CopyRightToLeft(TRight source, TLeft destination);
     }
 }

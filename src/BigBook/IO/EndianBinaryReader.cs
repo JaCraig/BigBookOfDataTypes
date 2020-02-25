@@ -17,6 +17,7 @@ limitations under the License.
 using BigBook.IO.Converters;
 using BigBook.IO.Converters.BaseClasses;
 using System;
+using System.Globalization;
 using System.IO;
 using System.Text;
 
@@ -52,7 +53,7 @@ namespace BigBook.IO
             encoding ??= Encoding.UTF8;
             if (!stream.CanRead)
             {
-                throw new ArgumentException("Stream is not readable", nameof(stream));
+                throw new ArgumentException(Properties.Resources.StreamNotReadableError, nameof(stream));
             }
 
             BaseStream = stream;
@@ -113,6 +114,7 @@ namespace BigBook.IO
         public void Dispose()
         {
             Dispose(true);
+            GC.SuppressFinalize(this);
         }
 
         /// <summary>
@@ -135,10 +137,12 @@ namespace BigBook.IO
         /// <exception cref="System.NullReferenceException">Base stream is currently null.</exception>
         public int Read(char[] data, int index, int count)
         {
-            if (BaseStream == null)
+            if (BaseStream is null)
             {
-                throw new NullReferenceException("Base stream is currently null.");
+                throw new NullReferenceException(Properties.Resources.BaseStreamCurrentlyNullError);
             }
+            if (data is null)
+                return 0;
 
             count = count > data.Length ? data.Length : count;
             data ??= Array.Empty<char>();
@@ -201,10 +205,12 @@ namespace BigBook.IO
         /// <exception cref="System.NullReferenceException">Base stream is currently null.</exception>
         public int Read(byte[] buffer, int index, int count)
         {
-            if (BaseStream == null)
+            if (BaseStream is null)
             {
-                throw new NullReferenceException("Base stream is currently null.");
+                throw new NullReferenceException(Properties.Resources.BaseStreamCurrentlyNullError);
             }
+            if (buffer is null)
+                return 0;
 
             count = count > buffer.Length ? buffer.Length : count;
             buffer ??= Array.Empty<byte>();
@@ -242,9 +248,9 @@ namespace BigBook.IO
         /// <exception cref="System.IO.IOException">Invalid 7-bit encoded integer in stream.</exception>
         public int Read7BitEncodedInt()
         {
-            if (BaseStream == null)
+            if (BaseStream is null)
             {
-                throw new NullReferenceException("Base stream is currently null.");
+                throw new NullReferenceException(Properties.Resources.BaseStreamCurrentlyNullError);
             }
 
             var ret = 0;
@@ -262,7 +268,7 @@ namespace BigBook.IO
                     return ret;
                 }
             }
-            throw new IOException("Invalid 7-bit encoded integer in stream.");
+            throw new IOException(Properties.Resources.Invalid7bitIntInStreamError);
         }
 
         /// <summary>
@@ -274,9 +280,9 @@ namespace BigBook.IO
         /// <exception cref="System.IO.IOException">Invalid 7-bit encoded integer in stream.</exception>
         public int ReadBigEndian7BitEncodedInt()
         {
-            if (BaseStream == null)
+            if (BaseStream is null)
             {
-                throw new NullReferenceException("Base stream is currently null.");
+                throw new NullReferenceException(Properties.Resources.BaseStreamCurrentlyNullError);
             }
 
             var ret = 0;
@@ -294,7 +300,7 @@ namespace BigBook.IO
                     return ret;
                 }
             }
-            throw new IOException("Invalid 7-bit encoded integer in stream.");
+            throw new IOException(Properties.Resources.Invalid7bitIntInStreamError);
         }
 
         /// <summary>
@@ -304,7 +310,7 @@ namespace BigBook.IO
         public bool ReadBoolean()
         {
             ReadInternal(buffer, 1);
-            return BitConverter.ToBoolean(buffer, 0);
+            return EndianBitConverterBase.ToBoolean(buffer, 0);
         }
 
         /// <summary>
@@ -325,9 +331,9 @@ namespace BigBook.IO
         /// <returns>The bytes read</returns>
         public byte[] ReadBytes(int count)
         {
-            if (BaseStream == null)
+            if (BaseStream is null)
             {
-                throw new NullReferenceException("Base stream is currently null.");
+                throw new NullReferenceException(Properties.Resources.BaseStreamCurrentlyNullError);
             }
 
             count = count < 0 ? 0 : count;
@@ -493,9 +499,9 @@ namespace BigBook.IO
         /// <param name="origin">Origin of seek operation.</param>
         public void Seek(int offset, SeekOrigin origin)
         {
-            if (BaseStream == null)
+            if (BaseStream is null)
             {
-                throw new NullReferenceException("Base stream is currently null.");
+                throw new NullReferenceException(Properties.Resources.BaseStreamCurrentlyNullError);
             }
 
             BaseStream.Seek(offset, origin);
@@ -510,13 +516,10 @@ namespace BigBook.IO
         /// </param>
         protected virtual void Dispose(bool managed)
         {
-            if (!managed)
+            if (!managed || BaseStream is null)
                 return;
-            if (BaseStream != null)
-            {
-                BaseStream.Dispose();
-                BaseStream = null;
-            }
+            BaseStream.Dispose();
+            BaseStream = null;
         }
 
         /// <summary>
@@ -527,9 +530,9 @@ namespace BigBook.IO
         /// <param name="size">Number of bytes to read</param>
         private void ReadInternal(byte[] data, int size)
         {
-            if (BaseStream == null)
+            if (BaseStream is null)
             {
-                throw new NullReferenceException("Base stream is currently null.");
+                throw new NullReferenceException(Properties.Resources.BaseStreamCurrentlyNullError);
             }
 
             var index = 0;
@@ -540,7 +543,7 @@ namespace BigBook.IO
                 {
                     throw new EndOfStreamException
                         (
-                        string.Format(
+                        string.Format(CultureInfo.InvariantCulture,
                             "End of stream reached with {0} byte{1} left to read.",
                             size - index,
                             size - index == 1 ? "s" : string.Empty));
@@ -560,9 +563,9 @@ namespace BigBook.IO
         /// <returns>Number of bytes actually read</returns>
         private int TryReadInternal(byte[] data, int size)
         {
-            if (BaseStream == null)
+            if (BaseStream is null)
             {
-                throw new NullReferenceException("Base stream is currently null.");
+                throw new NullReferenceException(Properties.Resources.BaseStreamCurrentlyNullError);
             }
 
             var index = 0;

@@ -1,8 +1,9 @@
-﻿using Xunit;
+﻿using BigBook.Tests.BaseClasses;
+using Xunit;
 
 namespace BigBook.Tests
 {
-    public class MatrixTests
+    public class MatrixTests : TestingDirectoryFixture
     {
         [Fact]
         public void BasicTest()

@@ -39,6 +39,8 @@ namespace BigBook.IO.Converters
         /// <param name="index">The index.</param>
         protected override void CopyBytesImpl(long value, int bytes, byte[] buffer, int index)
         {
+            if (buffer is null)
+                return;
             var endOffset = index + bytes - 1;
             for (var i = 0; i < bytes; i++)
             {
@@ -56,6 +58,8 @@ namespace BigBook.IO.Converters
         /// <returns>The resulting long.</returns>
         protected override long FromBytes(byte[] value, int startIndex, int bytesToConvert)
         {
+            if (value is null)
+                return 0;
             long ret = 0;
             for (var i = 0; i < bytesToConvert; i++)
             {

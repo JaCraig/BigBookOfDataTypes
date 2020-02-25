@@ -87,6 +87,11 @@ namespace BigBook.Conversion
         /// </summary>
         protected override TypeConverter InternalConverter => new EnumConverter(typeof(SqlDbType));
 
+        /// <summary>
+        /// Databases the type of the type to SQL database.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returns></returns>
         private static object DbTypeToSqlDbType(object value)
         {
             if (!(value is DbType TempValue))
@@ -103,6 +108,11 @@ namespace BigBook.Conversion
             return Parameter.SqlDbType;
         }
 
+        /// <summary>
+        /// SQLs the type of the database type to database.
+        /// </summary>
+        /// <param name="sqlDbType">Type of the SQL database.</param>
+        /// <returns></returns>
         private static object SqlDbTypeToDbType(object sqlDbType)
         {
             if (!(sqlDbType is SqlDbType Temp))
@@ -120,6 +130,11 @@ namespace BigBook.Conversion
             return Parameter.DbType;
         }
 
+        /// <summary>
+        /// SQLs the type of the database type to.
+        /// </summary>
+        /// <param name="arg">The argument.</param>
+        /// <returns></returns>
         private static object SqlDbTypeToType(object arg)
         {
             if (!(arg is SqlDbType Item))
@@ -181,7 +196,7 @@ namespace BigBook.Conversion
 
         private static object TypeToSqlDbType(object arg)
         {
-            if (!(arg is Type TempValue) || Conversions == null)
+            if (!(arg is Type TempValue) || Conversions is null)
             {
                 return SqlDbType.Int;
             }

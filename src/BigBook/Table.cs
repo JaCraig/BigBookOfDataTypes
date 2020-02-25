@@ -133,7 +133,7 @@ namespace BigBook
         /// <param name="reader">Data reader to get the data from</param>
         public Table(DbDataReader reader)
         {
-            if (reader == null)
+            if (reader is null)
             {
                 throw new ArgumentNullException(nameof(reader));
             }
@@ -195,7 +195,7 @@ namespace BigBook
         {
             get
             {
-                if (Rows == null)
+                if (Rows is null)
                 {
                     return null;
                 }
@@ -211,12 +211,12 @@ namespace BigBook
         /// <returns>This</returns>
         public Table AddRow(params object[] objects)
         {
-            if (objects == null)
+            if (objects is null)
             {
                 return this;
             }
 
-            if (Rows == null)
+            if (Rows is null)
             {
                 return this;
             }

@@ -198,7 +198,7 @@ namespace BigBook
         /// <returns>The equivalent byte array in a base 64 string</returns>
         public static string ToString(this byte[] input, int index = 0, int count = -1)
         {
-            if (input == null)
+            if (input is null)
             {
                 return "";
             }
@@ -234,7 +234,7 @@ namespace BigBook
         /// <returns>string of the byte array</returns>
         public static string ToString(this byte[] input, Encoding? encodingUsing, int index = 0, int count = -1)
         {
-            if (input == null)
+            if (input is null)
             {
                 return "";
             }

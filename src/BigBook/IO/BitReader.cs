@@ -69,6 +69,7 @@ namespace BigBook.IO
         public void Dispose()
         {
             Dispose(true);
+            GC.SuppressFinalize(this);
         }
 
         /// <summary>
@@ -78,7 +79,7 @@ namespace BigBook.IO
         /// <returns>The next bit value in the stream</returns>
         public bool? ReadBit(bool bigEndian = false)
         {
-            if (InternalStream == null)
+            if (InternalStream is null)
                 return null;
             if (CurrentBit == 8)
             {
@@ -111,7 +112,7 @@ namespace BigBook.IO
         /// <param name="bitCount">The bit count.</param>
         public void Skip(int bitCount)
         {
-            if (InternalStream == null)
+            if (InternalStream is null)
                 return;
 
             if (CurrentBit == 8)
@@ -151,11 +152,10 @@ namespace BigBook.IO
         /// </param>
         protected virtual void Dispose(bool managed)
         {
-            if (InternalStream != null)
-            {
-                InternalStream.Dispose();
-                InternalStream = null;
-            }
+            if (InternalStream is null)
+                return;
+            InternalStream.Dispose();
+            InternalStream = null;
         }
     }
 }

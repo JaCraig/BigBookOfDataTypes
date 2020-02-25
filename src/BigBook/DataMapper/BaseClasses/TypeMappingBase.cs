@@ -27,23 +27,23 @@ namespace BigBook.DataMapper.BaseClasses
     /// <summary>
     /// Type mapping base class
     /// </summary>
-    /// <typeparam name="Left">The type of the eft.</typeparam>
-    /// <typeparam name="Right">The type of the ight.</typeparam>
+    /// <typeparam name="TLeft">The type of the eft.</typeparam>
+    /// <typeparam name="TRight">The type of the ight.</typeparam>
     /// <seealso cref="BigBook.DataMapper.Interfaces.ITypeMapping{Left, Right}"/>
-    public abstract class TypeMappingBase<Left, Right> : ITypeMapping<Left, Right>
+    public abstract class TypeMappingBase<TLeft, TRight> : ITypeMapping<TLeft, TRight>
     {
         /// <summary>
         /// Constructor
         /// </summary>
         protected TypeMappingBase()
         {
-            Mappings = new ConcurrentBag<IMapping<Left, Right>>();
+            Mappings = new ConcurrentBag<IMapping<TLeft, TRight>>();
         }
 
         /// <summary>
         /// List of mappings
         /// </summary>
-        protected ConcurrentBag<IMapping<Left, Right>> Mappings { get; }
+        protected ConcurrentBag<IMapping<TLeft, TRight>> Mappings { get; }
 
         /// <summary>
         /// Adds a mapping
@@ -51,7 +51,7 @@ namespace BigBook.DataMapper.BaseClasses
         /// <param name="leftExpression">Left expression</param>
         /// <param name="rightExpression">Right expression</param>
         /// <returns>This</returns>
-        public abstract ITypeMapping<Left, Right> AddMapping(Expression<Func<Left, object>> leftExpression, Expression<Func<Right, object>> rightExpression);
+        public abstract ITypeMapping<TLeft, TRight> AddMapping(Expression<Func<TLeft, object>> leftExpression, Expression<Func<TRight, object>> rightExpression);
 
         /// <summary>
         /// Adds a mapping
@@ -60,7 +60,7 @@ namespace BigBook.DataMapper.BaseClasses
         /// <param name="leftSet">Left set action</param>
         /// <param name="rightExpression">Right expression</param>
         /// <returns>This</returns>
-        public abstract ITypeMapping<Left, Right> AddMapping(Func<Left, object> leftGet, Action<Left, object> leftSet, Expression<Func<Right, object>> rightExpression);
+        public abstract ITypeMapping<TLeft, TRight> AddMapping(Func<TLeft, object> leftGet, Action<TLeft, object> leftSet, Expression<Func<TRight, object>> rightExpression);
 
         /// <summary>
         /// Adds a mapping
@@ -69,7 +69,7 @@ namespace BigBook.DataMapper.BaseClasses
         /// <param name="rightGet">Right get function</param>
         /// <param name="rightSet">Right set function</param>
         /// <returns>This</returns>
-        public abstract ITypeMapping<Left, Right> AddMapping(Expression<Func<Left, object>> leftExpression, Func<Right, object> rightGet, Action<Right, object> rightSet);
+        public abstract ITypeMapping<TLeft, TRight> AddMapping(Expression<Func<TLeft, object>> leftExpression, Func<TRight, object> rightGet, Action<TRight, object> rightSet);
 
         /// <summary>
         /// Adds a mapping
@@ -79,7 +79,7 @@ namespace BigBook.DataMapper.BaseClasses
         /// <param name="rightGet">Right get function</param>
         /// <param name="rightSet">Right set function</param>
         /// <returns>This</returns>
-        public abstract ITypeMapping<Left, Right> AddMapping(Func<Left, object> leftGet, Action<Left, object> leftSet, Func<Right, object> rightGet, Action<Right, object> rightSet);
+        public abstract ITypeMapping<TLeft, TRight> AddMapping(Func<TLeft, object> leftGet, Action<TLeft, object> leftSet, Func<TRight, object> rightGet, Action<TRight, object> rightSet);
 
         /// <summary>
         /// Automatically maps properties that are named the same thing
@@ -91,8 +91,8 @@ namespace BigBook.DataMapper.BaseClasses
             {
                 return this;
             }
-            var RightDictionary = typeof(Right).Is<IDictionary<string, object>>();
-            var LeftDictionary = typeof(Left).Is<IDictionary<string, object>>();
+            var RightDictionary = typeof(TRight).Is<IDictionary<string, object>>();
+            var LeftDictionary = typeof(TLeft).Is<IDictionary<string, object>>();
 
             if (RightDictionary)
             {
@@ -111,14 +111,14 @@ namespace BigBook.DataMapper.BaseClasses
             }
             else
             {
-                var Properties = TypeCacheFor<Left>.Properties;
+                var Properties = TypeCacheFor<TLeft>.Properties;
                 for (var x = 0; x < Properties.Length; ++x)
                 {
-                    var DestinationProperty = Array.Find(TypeCacheFor<Right>.Properties, y => y.Name == Properties[x].Name);
-                    if (DestinationProperty == null || (DestinationProperty.GetSetMethod()?.IsStatic ?? true))
+                    var DestinationProperty = Array.Find(TypeCacheFor<TRight>.Properties, y => y.Name == Properties[x].Name);
+                    if (DestinationProperty is null || (DestinationProperty.GetSetMethod()?.IsStatic ?? true))
                         continue;
-                    var LeftGet = Properties[x].PropertyGetter<Left>();
-                    var RightGet = DestinationProperty.PropertyGetter<Right>();
+                    var LeftGet = Properties[x].PropertyGetter<TLeft>();
+                    var RightGet = DestinationProperty.PropertyGetter<TRight>();
                     AddMapping(LeftGet, RightGet);
                 }
             }
@@ -130,21 +130,21 @@ namespace BigBook.DataMapper.BaseClasses
         /// </summary>
         /// <param name="source">Source object</param>
         /// <param name="destination">Destination object</param>
-        public void Copy(object source, object destination) => Copy((Left)source, (Right)destination);
+        public void Copy(object source, object destination) => Copy((TLeft)source, (TRight)destination);
 
         /// <summary>
         /// Copies from the source to the destination
         /// </summary>
         /// <param name="source">Source object</param>
         /// <param name="destination">Destination object</param>
-        public abstract void Copy(Left source, Right destination);
+        public abstract void Copy(TLeft source, TRight destination);
 
         /// <summary>
         /// Copies from the source to the destination
         /// </summary>
         /// <param name="source">Source object</param>
         /// <param name="destination">Destination object</param>
-        public abstract void Copy(Right source, Left destination);
+        public abstract void Copy(TRight source, TLeft destination);
 
         /// <summary>
         /// Copies from the source to the destination (used in instances when both Left and Right
@@ -152,7 +152,7 @@ namespace BigBook.DataMapper.BaseClasses
         /// </summary>
         /// <param name="source">Source</param>
         /// <param name="destination">Destination</param>
-        public abstract void CopyLeftToRight(Left source, Right destination);
+        public abstract void CopyLeftToRight(TLeft source, TRight destination);
 
         /// <summary>
         /// Copies from the source to the destination (used in instances when both Left and Right
@@ -160,7 +160,7 @@ namespace BigBook.DataMapper.BaseClasses
         /// </summary>
         /// <param name="source">Source</param>
         /// <param name="destination">Destination</param>
-        public abstract void CopyRightToLeft(Right source, Left destination);
+        public abstract void CopyRightToLeft(TRight source, TLeft destination);
 
         /// <summary>
         /// Creates the reversed.
@@ -171,14 +171,14 @@ namespace BigBook.DataMapper.BaseClasses
         private void AddIDictionaryMappings()
         {
             AddMapping(x => x!,
-            new Action<Left, object>((x, y) =>
+            new Action<TLeft, object>((x, y) =>
             {
                 var LeftSide = (IDictionary<string, object>)x!;
                 var RightSide = (IDictionary<string, object>)y;
                 RightSide.CopyTo(LeftSide);
             }),
             x => x!,
-            new Action<Right, object>((x, y) =>
+            new Action<TRight, object>((x, y) =>
             {
                 var LeftSide = (IDictionary<string, object>)y;
                 var RightSide = (IDictionary<string, object>)x!;
@@ -188,20 +188,20 @@ namespace BigBook.DataMapper.BaseClasses
 
         private void AddLeftIDictionaryMapping()
         {
-            for (var x = 0; x < TypeCacheFor<Right>.Properties.Length; ++x)
+            for (var x = 0; x < TypeCacheFor<TRight>.Properties.Length; ++x)
             {
-                var Property = TypeCacheFor<Right>.Properties[x];
-                var RightGet = Property.PropertyGetter<Right>();
-                var LeftProperty = Array.Find(TypeCacheFor<Left>.Properties, y => y.Name == Property.Name);
-                if (LeftProperty != null)
+                var Property = TypeCacheFor<TRight>.Properties[x];
+                var RightGet = Property.PropertyGetter<TRight>();
+                var LeftProperty = Array.Find(TypeCacheFor<TLeft>.Properties, y => y.Name == Property.Name);
+                if (!(LeftProperty is null))
                 {
-                    var LeftGet = LeftProperty.PropertyGetter<Left>();
+                    var LeftGet = LeftProperty.PropertyGetter<TLeft>();
                     AddMapping(LeftGet, RightGet);
                 }
                 else
                 {
-                    var RightSet = RightGet.PropertySetter<Right>()?.Compile();
-                    AddMapping(new Func<Left, object>(y =>
+                    var RightSet = RightGet.PropertySetter<TRight>()?.Compile();
+                    AddMapping(new Func<TLeft, object>(y =>
                     {
                         var Temp = (IDictionary<string, object>)y!;
                         if (Temp.ContainsKey(Property.Name))
@@ -209,15 +209,10 @@ namespace BigBook.DataMapper.BaseClasses
                             return Temp[Property.Name];
                         }
 
-                        var Key = Temp.Keys.FirstOrDefault(z => string.Equals(z.Replace("_", ""), Property.Name, StringComparison.OrdinalIgnoreCase));
-                        if (!string.IsNullOrEmpty(Key))
-                        {
-                            return Temp[Key];
-                        }
-
-                        return null!;
+                        var Key = Temp.Keys.FirstOrDefault(z => string.Equals(z.Replace("_", "", StringComparison.Ordinal), Property.Name, StringComparison.OrdinalIgnoreCase));
+                        return !string.IsNullOrEmpty(Key) ? Temp[Key] : null!;
                     }),
-                    new Action<Left, object>((y, z) =>
+                    new Action<TLeft, object>((y, z) =>
                     {
                         var LeftSide = (IDictionary<string, object>)y!;
                         if (LeftSide.ContainsKey(Property.Name))
@@ -230,12 +225,11 @@ namespace BigBook.DataMapper.BaseClasses
                         }
                     }),
                     RightGet?.Compile()!,
-                    new Action<Right, object>((y, z) =>
+                    new Action<TRight, object>((y, z) =>
                     {
-                        if (z != null && RightSet != null)
-                        {
-                            RightSet(y, z);
-                        }
+                        if (z is null || RightSet is null)
+                            return;
+                        RightSet(y, z);
                     }));
                 }
             }
@@ -246,28 +240,27 @@ namespace BigBook.DataMapper.BaseClasses
         /// </summary>
         private void AddRightIDictionaryMapping()
         {
-            for (var x = 0; x < TypeCacheFor<Left>.Properties.Length; ++x)
+            for (var x = 0; x < TypeCacheFor<TLeft>.Properties.Length; ++x)
             {
-                var Property = TypeCacheFor<Left>.Properties[x];
-                var LeftGet = Property.PropertyGetter<Left>();
-                var RightProperty = Array.Find(TypeCacheFor<Right>.Properties, y => y.Name == Property.Name);
-                if (RightProperty != null)
+                var Property = TypeCacheFor<TLeft>.Properties[x];
+                var LeftGet = Property.PropertyGetter<TLeft>();
+                var RightProperty = Array.Find(TypeCacheFor<TRight>.Properties, y => y.Name == Property.Name);
+                if (!(RightProperty is null))
                 {
-                    var RightGet = RightProperty.PropertyGetter<Right>();
+                    var RightGet = RightProperty.PropertyGetter<TRight>();
                     AddMapping(LeftGet, RightGet);
                 }
                 else
                 {
-                    var LeftSet = LeftGet.PropertySetter<Left>()?.Compile();
+                    var LeftSet = LeftGet.PropertySetter<TLeft>()?.Compile();
                     AddMapping(LeftGet?.Compile()!,
-                    new Action<Left, object>((y, z) =>
+                    new Action<TLeft, object>((y, z) =>
                     {
-                        if (z != null && LeftSet != null)
-                        {
-                            LeftSet(y, z);
-                        }
+                        if (z is null || LeftSet is null)
+                            return;
+                        LeftSet(y, z);
                     }),
-                    new Func<Right, object>(y =>
+                    new Func<TRight, object>(y =>
                     {
                         var Temp = (IDictionary<string, object>)y!;
                         if (Temp.ContainsKey(Property.Name))
@@ -275,15 +268,10 @@ namespace BigBook.DataMapper.BaseClasses
                             return Temp[Property.Name];
                         }
 
-                        var Key = Temp.Keys.FirstOrDefault(z => string.Equals(z.Replace("_", ""), Property.Name, StringComparison.OrdinalIgnoreCase));
-                        if (!string.IsNullOrEmpty(Key))
-                        {
-                            return Temp[Key];
-                        }
-
-                        return null!;
+                        var Key = Temp.Keys.FirstOrDefault(z => string.Equals(z.Replace("_", "", StringComparison.Ordinal), Property.Name, StringComparison.OrdinalIgnoreCase));
+                        return !string.IsNullOrEmpty(Key) ? Temp[Key] : null!;
                     }),
-                    new Action<Right, object>((y, z) =>
+                    new Action<TRight, object>((y, z) =>
                     {
                         var LeftSide = (IDictionary<string, object>)y!;
                         if (LeftSide.ContainsKey(Property.Name))

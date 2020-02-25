@@ -22,7 +22,7 @@ namespace BigBook.Patterns.BaseClasses
     /// Base class used for singletons
     /// </summary>
     /// <typeparam name="T">The class type</typeparam>
-    public class Singleton<T>
+    public abstract class Singleton<T>
         where T : class
     {
         /// <summary>
@@ -42,11 +42,11 @@ namespace BigBook.Patterns.BaseClasses
         {
             get
             {
-                if (_Instance == null)
+                if (_Instance is null)
                 {
                     lock (Temp)
                     {
-                        if (_Instance == null)
+                        if (_Instance is null)
                         {
                             var Constructor = Array.Find(typeof(T).GetConstructors(), x => !x.IsPublic
                                                                                      && !x.IsStatic

@@ -141,7 +141,7 @@ namespace BigBook
             {
                 var ObjectType = GetType();
                 var Property = ObjectType.GetProperty(name);
-                if (Property != null)
+                if (!(Property is null))
                 {
                     var Temp = Property.PropertyGetter<T>().Compile();
                     ChildValues.AddOrUpdate(name, _ => () => Temp((T)this), (__, _) => () => Temp((T)this));
@@ -168,7 +168,7 @@ namespace BigBook
                 RaisePropertyChanged(key, value);
                 Property.SetValue(this, value);
             }
-            else if (Property == null)
+            else if (Property is null)
             {
                 base.SetValue(key, value);
             }
@@ -198,7 +198,7 @@ namespace BigBook
             InternalValues = new ConcurrentDictionary<string, object?>(StringComparer.OrdinalIgnoreCase);
             ChildValues = new ConcurrentDictionary<string, Func<object>>(StringComparer.OrdinalIgnoreCase);
             ChangeLog = useChangeLog ? new ConcurrentDictionary<string, Change>(StringComparer.OrdinalIgnoreCase) : null;
-            if (item == null)
+            if (item is null)
             {
                 return;
             }
@@ -401,7 +401,7 @@ namespace BigBook
         /// <param name="item">Item to copy from</param>
         public void Copy(object? item)
         {
-            if (item == null)
+            if (item is null)
             {
                 return;
             }
@@ -442,7 +442,7 @@ namespace BigBook
         /// <param name="result">Result</param>
         public void CopyTo(object? result)
         {
-            if (result == null)
+            if (result is null)
             {
                 return;
             }
@@ -457,10 +457,7 @@ namespace BigBook
         /// </summary>
         /// <param name="obj">Object to compare to</param>
         /// <returns>True if they're equal, false otherwise</returns>
-        public override bool Equals(object? obj)
-        {
-            return (obj is Dynamo TempObj) && TempObj.GetHashCode() == GetHashCode();
-        }
+        public override bool Equals(object? obj) => (obj is Dynamo TempObj) && TempObj.GetHashCode() == GetHashCode();
 
         /// <summary>
         /// Gets the dynamic member names
@@ -555,7 +552,7 @@ namespace BigBook
         /// <returns>A new Dynamo object containing only the keys specified</returns>
         public dynamic SubSet(params string[] keys)
         {
-            if (keys == null)
+            if (keys is null)
             {
                 return new Dynamo();
             }
@@ -601,7 +598,7 @@ namespace BigBook
             foreach (var Key in Keys.OrderBy(x => x))
             {
                 var Item = GetValue(Key, typeof(object));
-                if (Item != null)
+                if (!(Item is null))
                 {
                     Builder.AppendLineFormat("\t{0} {1} = {2}", Item.GetType().GetName(), Key, Item.ToString());
                 }
@@ -696,7 +693,7 @@ namespace BigBook
         protected virtual object? GetValue(string name, Type returnType)
         {
             var Value = RaiseGetValueStart(name);
-            if (Value != null)
+            if (!(Value is null))
             {
                 return Value;
             }
@@ -709,7 +706,7 @@ namespace BigBook
             {
                 var ObjectType = GetType();
                 var Property = ObjectType.GetProperty(name);
-                if (Property != null)
+                if (!(Property is null))
                 {
                     var Temp = Property.PropertyGetter<Dynamo>().Compile();
                     ChildValues.AddOrUpdate(name, _ => () => Temp(this), (__, _) => () => Temp(this));
@@ -763,7 +760,7 @@ namespace BigBook
         /// <param name="newValue">New value for the property</param>
         protected void RaisePropertyChanged(string propertyName, object? newValue)
         {
-            if (ChangeLog != null)
+            if (!(ChangeLog is null))
             {
                 if (ChangeLog.ContainsKey(propertyName))
                 {

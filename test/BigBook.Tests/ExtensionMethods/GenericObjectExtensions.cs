@@ -1,4 +1,5 @@
 ﻿using BigBook;
+using BigBook.Tests.BaseClasses;
 using System;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using Xunit;
 
 namespace BigBook.Tests.ExtensionMethods
 {
-    public class GenericObjectExtensionsTests
+    public class GenericObjectExtensionsTests : TestingDirectoryFixture
     {
         [Fact]
         public void Execute1()

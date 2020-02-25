@@ -78,6 +78,24 @@ namespace BigBook.IO.Converters.BaseClasses
         public static double LongToDouble(long value) => BitConverter.Int64BitsToDouble(value);
 
         /// <summary>
+        /// To the boolean.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <param name="startIndex">The start index.</param>
+        /// <returns>The resulting boolean.</returns>
+        /// <exception cref="System.ArgumentOutOfRangeException"></exception>
+        public static bool ToBoolean(byte[] value, int startIndex)
+        {
+            value ??= Array.Empty<byte>();
+            if (value.Length - 1 < startIndex || startIndex < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(startIndex));
+            }
+
+            return BitConverter.ToBoolean(value, startIndex);
+        }
+
+        /// <summary>
         /// Returns a <see cref="System.String"/> that represents this instance.
         /// </summary>
         /// <param name="value">The value.</param>
@@ -275,24 +293,6 @@ namespace BigBook.IO.Converters.BaseClasses
         /// <param name="value">The value.</param>
         /// <returns>The resulting byte array.</returns>
         public byte[] GetBytes(ulong value) => GetBytes(unchecked((long)value), 8);
-
-        /// <summary>
-        /// To the boolean.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        /// <param name="startIndex">The start index.</param>
-        /// <returns>The resulting boolean.</returns>
-        /// <exception cref="System.ArgumentOutOfRangeException"></exception>
-        public bool ToBoolean(byte[] value, int startIndex)
-        {
-            value ??= Array.Empty<byte>();
-            if (value.Length - 1 < startIndex || startIndex < 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(startIndex));
-            }
-
-            return BitConverter.ToBoolean(value, startIndex);
-        }
 
         /// <summary>
         /// To the character.

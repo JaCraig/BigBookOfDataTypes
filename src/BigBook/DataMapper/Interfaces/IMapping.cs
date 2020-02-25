@@ -31,22 +31,22 @@ namespace BigBook.DataMapper.Interfaces
     /// <summary>
     /// Mapping interface
     /// </summary>
-    /// <typeparam name="Left">Left type</typeparam>
-    /// <typeparam name="Right">Right type</typeparam>
-    public interface IMapping<Left, Right> : IMapping
+    /// <typeparam name="TLeft">Left type</typeparam>
+    /// <typeparam name="TRight">Right type</typeparam>
+    public interface IMapping<TLeft, TRight> : IMapping
     {
         /// <summary>
         /// Copies the source to the destination
         /// </summary>
         /// <param name="source">Source object</param>
         /// <param name="destination">Destination object</param>
-        void Copy(Left source, Right destination);
+        void Copy(TLeft source, TRight destination);
 
         /// <summary>
         /// Copies the source to the destination
         /// </summary>
         /// <param name="source">Source object</param>
         /// <param name="destination">Destination object</param>
-        void Copy(Right source, Left destination);
+        void Copy(TRight source, TLeft destination);
     }
 }

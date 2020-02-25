@@ -53,10 +53,8 @@ namespace BigBook
         /// <returns>The default object if it fails the criteria, the object otherwise</returns>
         public static T Check<T>(this T inputObject, Predicate<T> predicate, T defaultValue = default)
         {
-            if (predicate == null)
-            {
+            if (predicate is null)
                 return inputObject;
-            }
 
             return predicate(inputObject) ? inputObject : defaultValue;
         }
@@ -72,10 +70,8 @@ namespace BigBook
         /// <returns>The default object if it fails the criteria, the object otherwise</returns>
         public static T Check<T>(this T inputObject, Predicate<T> predicate, Func<T> defaultValue)
         {
-            if (predicate == null || defaultValue == null)
-            {
+            if (predicate is null || defaultValue is null)
                 return inputObject;
-            }
 
             return predicate(inputObject) ? inputObject : defaultValue();
         }
@@ -100,10 +96,8 @@ namespace BigBook
         /// <returns>The default object if it is null, the object otherwise</returns>
         public static T Check<T>(this T inputObject, Func<T> defaultValue)
         {
-            if (defaultValue == null)
-            {
+            if (defaultValue is null)
                 return inputObject;
-            }
 
             return inputObject.Check(x => !Equals(x, default(T)!), defaultValue);
         }
@@ -123,10 +117,8 @@ namespace BigBook
         [return: MaybeNull]
         public static T Execute<T>(this Func<T> function, int attempts = 3, int retryDelay = 0, int timeOut = int.MaxValue)
         {
-            if (function == null)
-            {
+            if (function is null)
                 return default!;
-            }
 
             Exception? Holder = null;
             long Start = Environment.TickCount;
@@ -145,7 +137,7 @@ namespace BigBook
                 Thread.Sleep(retryDelay);
                 --attempts;
             }
-            if (Holder != null)
+            if (!(Holder is null))
             {
                 throw Holder;
             }
@@ -166,10 +158,8 @@ namespace BigBook
         /// <returns>True if it is executed successfully, false otherwise</returns>
         public static bool Execute(this Action action, int attempts = 3, int retryDelay = 0, int timeOut = int.MaxValue)
         {
-            if (action == null)
-            {
+            if (action is null)
                 return false;
-            }
 
             Exception? Holder = null;
             long Start = Environment.TickCount;
@@ -189,7 +179,7 @@ namespace BigBook
                 Thread.Sleep(retryDelay);
                 --attempts;
             }
-            if (Holder != null)
+            if (!(Holder is null))
             {
                 throw Holder;
             }
@@ -205,10 +195,8 @@ namespace BigBook
         /// <returns>The formatted string</returns>
         public static string FormatToString(this object input, string format)
         {
-            if (input == null)
-            {
+            if (input is null)
                 return "";
-            }
 
             return !string.IsNullOrEmpty(format) ? input.Call<string>("ToString", format) : input.ToString();
         }
@@ -220,15 +208,7 @@ namespace BigBook
         /// <param name="inputObject">Object to test</param>
         /// <param name="predicate">Predicate to test</param>
         /// <returns>True if the object passes the predicate, false otherwise</returns>
-        public static bool Is<T>(this T inputObject, Predicate<T> predicate)
-        {
-            if (predicate == null)
-            {
-                return false;
-            }
-
-            return predicate(inputObject);
-        }
+        public static bool Is<T>(this T inputObject, Predicate<T> predicate) => !(predicate is null) && predicate(inputObject);
 
         /// <summary>
         /// Determines if the object is equal to a specific value
@@ -240,7 +220,7 @@ namespace BigBook
         /// <returns>True if the object passes the predicate, false otherwise</returns>
         public static bool Is<T>(this T inputObject, T comparisonObject, IEqualityComparer<T>? comparer = null)
         {
-            comparer ??= new GenericEqualityComparer<T>();
+            comparer ??= Canister.Builder.Bootstrapper?.Resolve<GenericEqualityComparer<T>>() ?? new GenericEqualityComparer<T>();
             return comparer.Equals(inputObject, comparisonObject);
         }
 
@@ -252,55 +232,29 @@ namespace BigBook
         /// <returns>The type mapping</returns>
         public static ITypeMapping? MapTo(this Type leftType, Type rightType)
         {
-            if (leftType == null || rightType == null)
-            {
+            if (leftType is null || rightType is null)
                 return null;
-            }
 
-            var TempManager = Builder.Bootstrapper?.Resolve<DataMapper.Manager>();
-            if (TempManager == null)
-            {
-                return null;
-            }
-
-            return TempManager.Map(leftType, rightType);
+            return Builder.Bootstrapper?.Resolve<DataMapper.Manager>()?.Map(leftType, rightType);
         }
 
         /// <summary>
         /// Sets up a mapping between two types
         /// </summary>
-        /// <typeparam name="Left">Left type</typeparam>
-        /// <typeparam name="Right">Right type</typeparam>
+        /// <typeparam name="TLeft">Left type</typeparam>
+        /// <typeparam name="TRight">Right type</typeparam>
         /// <param name="item">Object to set up mapping for</param>
         /// <returns>The type mapping</returns>
-        public static ITypeMapping<Left, Right>? MapTo<Left, Right>(this Left item)
-        {
-            var TempManager = Builder.Bootstrapper?.Resolve<DataMapper.Manager>();
-            if (TempManager == null)
-            {
-                return null;
-            }
-
-            return TempManager.Map<Left, Right>();
-        }
+        public static ITypeMapping<TLeft, TRight>? MapTo<TLeft, TRight>(this TLeft item) => Builder.Bootstrapper?.Resolve<DataMapper.Manager>()?.Map<TLeft, TRight>();
 
         /// <summary>
         /// Sets up a mapping between two types
         /// </summary>
-        /// <typeparam name="Left">Left type</typeparam>
-        /// <typeparam name="Right">Right type</typeparam>
+        /// <typeparam name="TLeft">Left type</typeparam>
+        /// <typeparam name="TRight">Right type</typeparam>
         /// <param name="objectType">Object type to set up mapping for</param>
         /// <returns>The type mapping</returns>
-        public static ITypeMapping<Left, Right>? MapTo<Left, Right>(this Type objectType)
-        {
-            var TempManager = Builder.Bootstrapper?.Resolve<DataMapper.Manager>();
-            if (TempManager == null)
-            {
-                return null;
-            }
-
-            return TempManager.Map<Left, Right>();
-        }
+        public static ITypeMapping<TLeft, TRight>? MapTo<TLeft, TRight>(this Type objectType) => Builder.Bootstrapper?.Resolve<DataMapper.Manager>()?.Map<TLeft, TRight>();
 
         /// <summary>
         /// Throws the specified exception if the predicate is true for the item
@@ -312,15 +266,11 @@ namespace BigBook
         /// <returns>the original Item</returns>
         public static T ThrowIf<T>(this T item, Predicate<T> predicate, Func<Exception> exception)
         {
-            if (predicate == null)
-            {
+            if (predicate is null)
                 return item;
-            }
 
             if (predicate(item))
-            {
                 throw exception();
-            }
 
             return item;
         }
@@ -335,15 +285,11 @@ namespace BigBook
         /// <returns>the original Item</returns>
         public static T ThrowIf<T>(this T item, Predicate<T> predicate, Exception exception)
         {
-            if (predicate == null)
-            {
+            if (predicate is null)
                 return item;
-            }
 
             if (predicate(item))
-            {
                 throw exception;
-            }
 
             return item;
         }
@@ -372,10 +318,7 @@ namespace BigBook
         /// Equality comparer used to determine if the object is equal to default
         /// </param>
         /// <returns>Returns Item</returns>
-        public static T ThrowIfDefault<T>(this T item, Exception exception, IEqualityComparer<T>? equalityComparer = null)
-        {
-            return item.ThrowIf(x => (equalityComparer ?? new GenericEqualityComparer<T>()).Equals(x, default!), exception);
-        }
+        public static T ThrowIfDefault<T>(this T item, Exception exception, IEqualityComparer<T>? equalityComparer = null) => item.ThrowIf(x => (equalityComparer ?? Canister.Builder.Bootstrapper?.Resolve<GenericEqualityComparer<T>>() ?? new GenericEqualityComparer<T>()).Equals(x, default!), exception);
 
         /// <summary>
         /// Throws the specified exception if the predicate is false for the item
@@ -411,10 +354,7 @@ namespace BigBook
         /// Equality comparer used to determine if the object is equal to default
         /// </param>
         /// <returns>Returns Item</returns>
-        public static T ThrowIfNotDefault<T>(this T item, Exception exception, IEqualityComparer<T>? equalityComparer = null)
-        {
-            return item.ThrowIf(x => !(equalityComparer ?? new GenericEqualityComparer<T>()).Equals(x, default!), exception);
-        }
+        public static T ThrowIfNotDefault<T>(this T item, Exception exception, IEqualityComparer<T>? equalityComparer = null) => item.ThrowIf(x => !(equalityComparer ?? Canister.Builder.Bootstrapper?.Resolve<GenericEqualityComparer<T>>() ?? new GenericEqualityComparer<T>()).Equals(x, default!), exception);
 
         /// <summary>
         /// Determines if the object is not null and throws an ArgumentException if it is
@@ -434,7 +374,7 @@ namespace BigBook
         /// <param name="exception">Exception to throw</param>
         /// <returns>Returns Item</returns>
         public static T ThrowIfNotNull<T>(this T item, Exception exception)
-            where T : class => item.ThrowIf(x => x != null && x != DBNull.Value, exception);
+            where T : class => item.ThrowIf(x => !(x is null) && x != DBNull.Value, exception);
 
         /// <summary>
         /// Determines if the IEnumerable is not null or empty and throws an ArgumentException if it is
@@ -473,7 +413,7 @@ namespace BigBook
         /// <param name="exception">Exception to throw</param>
         /// <returns>Returns Item</returns>
         public static T ThrowIfNull<T>(this T item, Exception exception)
-            where T : class => item.ThrowIf(x => x == null || x == DBNull.Value, exception);
+            where T : class => item.ThrowIf(x => x is null || x == DBNull.Value, exception);
 
         /// <summary>
         /// Determines if the IEnumerable is null or empty and throws an ArgumentNullException if it is
@@ -502,10 +442,8 @@ namespace BigBook
         /// <returns>The results from the function</returns>
         public static IEnumerable<T> Times<T>(this int count, Func<int, T> function)
         {
-            if (function == null)
-            {
+            if (function is null)
                 yield break;
-            }
 
             for (var x = 0; x < count; ++x)
             {
@@ -521,10 +459,8 @@ namespace BigBook
         /// <returns>count</returns>
         public static int Times(this int count, Action<int> action)
         {
-            if (action == null)
-            {
+            if (action is null)
                 return count;
-            }
 
             for (var x = 0; x < count; ++x)
             {
@@ -537,8 +473,8 @@ namespace BigBook
         /// <summary>
         /// Attempts to convert the object to another type and returns the value
         /// </summary>
-        /// <typeparam name="T">Type to convert from</typeparam>
-        /// <typeparam name="R">Return type</typeparam>
+        /// <typeparam name="TObject">Type to convert from</typeparam>
+        /// <typeparam name="TReturn">Return type</typeparam>
         /// <param name="item">Object to convert</param>
         /// <param name="defaultValue">
         /// Default value to return if there is an issue or it can't be converted
@@ -547,12 +483,12 @@ namespace BigBook
         /// The object converted to the other type or the default value if there is an error or
         /// can't be converted
         /// </returns>
-        public static R To<T, R>(this T item, R defaultValue = default) => (R)item.To(typeof(R), defaultValue)!;
+        public static TReturn To<TObject, TReturn>(this TObject item, TReturn defaultValue = default) => (TReturn)item.To(typeof(TReturn), defaultValue)!;
 
         /// <summary>
         /// Attempts to convert the object to another type and returns the value
         /// </summary>
-        /// <typeparam name="T">Type to convert from</typeparam>
+        /// <typeparam name="TObject">Type to convert from</typeparam>
         /// <param name="item">Object to convert</param>
         /// <param name="resultType">Result type</param>
         /// <param name="defaultValue">
@@ -562,20 +498,22 @@ namespace BigBook
         /// The object converted to the other type or the default value if there is an error or
         /// can't be converted
         /// </returns>
-        public static object? To<T>(this T item, Type resultType, object? defaultValue = null)
+        public static object? To<TObject>(this TObject item, Type resultType, object? defaultValue = null)
         {
+            if (resultType is null)
+                return item;
             try
             {
-                if (item == null)
+                if (item is null)
                 {
-                    return (defaultValue == null && resultType.IsValueType) ?
+                    return (defaultValue is null && resultType.IsValueType) ?
                         Activator.CreateInstance(resultType) :
                         defaultValue;
                 }
                 var ObjectType = item.GetType();
                 if (ObjectType == typeof(DBNull))
                 {
-                    return (defaultValue == null && resultType.IsValueType) ?
+                    return (defaultValue is null && resultType.IsValueType) ?
                         Activator.CreateInstance(resultType) :
                         defaultValue;
                 }
@@ -602,15 +540,15 @@ namespace BigBook
                 }
 
                 var TempConverter = Array.Find(Converters, x => x.CanConvertTo(resultType)
-                                                                && x is TypeConverterBase<T>);
-                if (TempConverter != null)
+                                                                && x is TypeConverterBase<TObject>);
+                if (!(TempConverter is null))
                 {
                     return TempConverter.ConvertTo(item, resultType);
                 }
 
                 TempConverter = Array.Find(Converters, x => x.CanConvertFrom(ObjectType)
                                                             && ((IConverter)x).AssociatedType == resultType);
-                if (TempConverter != null)
+                if (!(TempConverter is null))
                 {
                     return TempConverter.ConvertFrom(item);
                 }
@@ -633,7 +571,7 @@ namespace BigBook
                     foreach (var Item in (IEnumerable)item)
                     {
                         var TempMapping = Item.GetType().MapTo(IEnumerableResultType);
-                        if (TempMapping == null)
+                        if (TempMapping is null)
                         {
                             return TempList;
                         }
@@ -649,7 +587,7 @@ namespace BigBook
                 {
                     var ReturnValue = Activator.CreateInstance(resultType);
                     var TempMapping = ObjectType.MapTo(resultType);
-                    if (TempMapping == null)
+                    if (TempMapping is null)
                     {
                         return ReturnValue;
                     }
@@ -663,7 +601,7 @@ namespace BigBook
             catch
             {
             }
-            return (defaultValue == null && resultType.IsValueType) ?
+            return (defaultValue is null && resultType.IsValueType) ?
                 Activator.CreateInstance(resultType) :
                 defaultValue;
         }

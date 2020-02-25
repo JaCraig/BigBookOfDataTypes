@@ -33,7 +33,7 @@ namespace BigBook
         /// <param name="root">Root of the binary tree</param>
         public BinaryTree(TreeNode<T>? root = null)
         {
-            if (root == null)
+            if (root is null)
             {
                 NumberOfNodes = 0;
                 return;
@@ -295,7 +295,7 @@ namespace BigBook
         /// <param name="item">item to insert</param>
         protected void Insert(T item)
         {
-            TreeNode<T>? TempNode = Root;
+            var TempNode = Root;
             if (TempNode is null)
                 return;
             while (true)

@@ -228,7 +228,7 @@ namespace BigBook
         [return: MaybeNull]
         public static T Median<T>(this IEnumerable<T> values, Func<T, T, T>? average = null, Func<T, T>? orderBy = null)
         {
-            if (values == null)
+            if (values is null)
             {
                 return default!;
             }
@@ -258,7 +258,7 @@ namespace BigBook
         /// <returns>The mode value</returns>
         public static T Mode<T>(this IEnumerable<T> values)
         {
-            if (values == null)
+            if (values is null)
             {
                 return default!;
             }
@@ -484,7 +484,7 @@ namespace BigBook
         /// <returns>The variance</returns>
         public static double Variance<T>(this IEnumerable<T> values, Func<T, double>? selector)
         {
-            if (selector == null)
+            if (selector is null)
             {
                 throw new ArgumentNullException(nameof(selector));
             }

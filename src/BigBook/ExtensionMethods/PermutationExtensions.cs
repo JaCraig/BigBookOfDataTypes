@@ -34,7 +34,7 @@ namespace BigBook
         /// <returns>The list of permutations</returns>
         public static ListMapping<int, T> Permute<T>(this IEnumerable<T> input)
         {
-            if (input == null)
+            if (input is null)
             {
                 return new ListMapping<int, T>();
             }

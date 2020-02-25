@@ -20,7 +20,6 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace BigBook
 {
@@ -40,12 +39,12 @@ namespace BigBook
         public static ConcurrentBag<T> Add<T>(this ConcurrentBag<T> collection, IEnumerable<T> items)
         {
             collection ??= new ConcurrentBag<T>();
-            if (items == null)
-            {
+            if (items is null)
                 return collection;
+            foreach (var Item in items)
+            {
+                collection.Add(Item);
             }
-
-            Parallel.ForEach(items, collection.Add);
             return collection;
         }
 
@@ -67,10 +66,8 @@ namespace BigBook
         /// <returns>The original item</returns>
         public static T AddAndReturn<T>(this ConcurrentBag<T> collection, T item)
         {
-            if (collection == null)
-            {
+            if (collection is null)
                 throw new ArgumentNullException(nameof(collection));
-            }
 
             collection.Add(item);
             return item;
@@ -86,25 +83,11 @@ namespace BigBook
         /// <returns>True if any are added, false otherwise</returns>
         public static bool AddIf<T>(this ConcurrentBag<T> collection, Predicate<T> predicate, params T[] items)
         {
-            if (collection == null || predicate == null)
-            {
-                return false;
-            }
-
-            if (items == null || items.Length == 0)
-            {
-                return true;
-            }
-
-            return items.ForEachParallel(Item =>
-            {
-                if (predicate(Item))
-                {
-                    collection.Add(Item);
-                    return true;
-                }
-                return false;
-            }).Any(x => x);
+            return !(collection is null)
+                && !(predicate is null)
+                && (items is null
+                    || items.Length == 0
+                    || items.ForEachParallel(Item => { if (predicate(Item)) { collection.Add(Item); return true; } return false; }).Any(x => x));
         }
 
         /// <summary>
@@ -127,7 +110,7 @@ namespace BigBook
         /// <returns>True if it is added, false otherwise</returns>
         public static bool AddIfUnique<T>(this ConcurrentBag<T> collection, IEqualityComparer<T> comparer, params T[] items)
         {
-            comparer ??= new GenericEqualityComparer<T>();
+            comparer ??= Canister.Builder.Bootstrapper?.Resolve<GenericEqualityComparer<T>>() ?? new GenericEqualityComparer<T>();
             return collection.AddIf(x => !collection.Contains(x, comparer), items);
         }
 
@@ -138,7 +121,7 @@ namespace BigBook
         /// <param name="collection">Collection to add to</param>
         /// <param name="items">Items to add to the collection</param>
         /// <returns>True if it is added, false otherwise</returns>
-        public static bool AddIfUnique<T>(this ConcurrentBag<T> collection, params T[] items) => collection.AddIfUnique(new GenericEqualityComparer<T>(), items);
+        public static bool AddIfUnique<T>(this ConcurrentBag<T> collection, params T[] items) => collection.AddIfUnique(Canister.Builder.Bootstrapper?.Resolve<GenericEqualityComparer<T>>() ?? new GenericEqualityComparer<T>(), items);
 
         /// <summary>
         /// Adds an item to the collection if it isn't already in the collection
@@ -153,12 +136,7 @@ namespace BigBook
         /// <returns>True if it is added, false otherwise</returns>
         public static bool AddIfUnique<T>(this ConcurrentBag<T> collection, Func<T, T, bool> predicate, params T[] items)
         {
-            if (predicate == null)
-            {
-                return false;
-            }
-
-            return collection.AddIf(x => !collection.Any(y => predicate(x, y)), items);
+            return !(predicate is null) && collection.AddIf(x => !collection.Any(y => predicate(x, y)), items);
         }
 
         /// <summary>
@@ -173,7 +151,7 @@ namespace BigBook
         /// <returns>True if it is added, false otherwise</returns>
         public static bool AddIfUnique<T>(this ConcurrentBag<T> collection, IEqualityComparer<T> comparer, IEnumerable<T> items)
         {
-            comparer ??= new GenericEqualityComparer<T>();
+            comparer ??= Canister.Builder.Bootstrapper?.Resolve<GenericEqualityComparer<T>>() ?? new GenericEqualityComparer<T>();
             return collection.AddIf(x => !collection.Contains(x, comparer), items);
         }
 
@@ -184,7 +162,7 @@ namespace BigBook
         /// <param name="collection">Collection to add to</param>
         /// <param name="items">Items to add to the collection</param>
         /// <returns>True if it is added, false otherwise</returns>
-        public static bool AddIfUnique<T>(this ConcurrentBag<T> collection, IEnumerable<T> items) => collection.AddIfUnique(new GenericEqualityComparer<T>(), items);
+        public static bool AddIfUnique<T>(this ConcurrentBag<T> collection, IEnumerable<T> items) => collection.AddIfUnique(Canister.Builder.Bootstrapper?.Resolve<GenericEqualityComparer<T>>() ?? new GenericEqualityComparer<T>(), items);
 
         /// <summary>
         /// Adds an item to the collection if it isn't already in the collection
@@ -199,12 +177,7 @@ namespace BigBook
         /// <returns>True if it is added, false otherwise</returns>
         public static bool AddIfUnique<T>(this ConcurrentBag<T> collection, Func<T, T, bool> predicate, IEnumerable<T> items)
         {
-            if (predicate == null)
-            {
-                return false;
-            }
-
-            return collection.AddIf(x => !collection.Any(y => predicate(x, y)), items);
+            return !(predicate is null) && collection.AddIf(x => !collection.Any(y => predicate(x, y)), items);
         }
 
         /// <summary>
@@ -217,18 +190,14 @@ namespace BigBook
         /// <returns>True if the item is present, false otherwise</returns>
         public static bool Contains<T>(this ConcurrentBag<T> collection, T item, IEqualityComparer<T>? comparer = null)
         {
-            if (collection == null)
-            {
+            if (collection is null)
                 return false;
-            }
 
-            comparer ??= new GenericEqualityComparer<T>();
+            comparer ??= Canister.Builder.Bootstrapper?.Resolve<GenericEqualityComparer<T>>() ?? new GenericEqualityComparer<T>();
             foreach (var TempValue in collection)
             {
                 if (comparer.Equals(TempValue, item))
-                {
                     return true;
-                }
             }
             return false;
         }
@@ -241,12 +210,12 @@ namespace BigBook
         /// <param name="predicate">Predicate used to determine what items to remove</param>
         public static ConcurrentBag<T> Remove<T>(this ConcurrentBag<T> collection, Func<T, bool> predicate)
         {
-            if (collection == null)
+            if (collection is null)
             {
                 return new ConcurrentBag<T>();
             }
 
-            if (predicate == null)
+            if (predicate is null)
             {
                 return collection;
             }
@@ -266,17 +235,17 @@ namespace BigBook
         /// <returns>The collection with the items removed</returns>
         public static ConcurrentBag<T> Remove<T>(this ConcurrentBag<T> collection, IEnumerable<T> items, IEqualityComparer<T>? comparer = null)
         {
-            if (collection == null)
+            if (collection is null)
             {
                 return new ConcurrentBag<T>();
             }
 
-            if (items == null)
+            if (items is null)
             {
                 return collection;
             }
 
-            comparer ??= new GenericEqualityComparer<T>();
+            comparer ??= Canister.Builder.Bootstrapper?.Resolve<GenericEqualityComparer<T>>() ?? new GenericEqualityComparer<T>();
             return collection.Remove<T>(x => items.Contains(x, comparer));
         }
     }

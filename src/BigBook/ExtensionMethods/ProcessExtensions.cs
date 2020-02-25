@@ -39,7 +39,7 @@ namespace BigBook
         /// <returns>An HTML formatted string</returns>
         public static string GetInformation(this Process process, bool htmlFormat = true)
         {
-            if (process == null)
+            if (process is null)
             {
                 return "";
             }
@@ -62,7 +62,7 @@ namespace BigBook
         /// <returns>An HTML formatted string</returns>
         public static string GetInformation(this IEnumerable<Process> processes, bool htmlFormat = true)
         {
-            if (processes == null)
+            if (processes is null)
             {
                 return "";
             }
@@ -80,7 +80,7 @@ namespace BigBook
         /// <returns>The input process</returns>
         public static async Task<Process?> KillProcessAsync(this Process process, int timeToKill = 0)
         {
-            if (process == null)
+            if (process is null)
             {
                 return null;
             }
@@ -113,7 +113,7 @@ namespace BigBook
         /// <param name="timeToKill">Amount of time until the process is killed</param>
         private static void KillProcessAsyncHelper(Process process, int timeToKill)
         {
-            if (process == null)
+            if (process is null)
             {
                 return;
             }

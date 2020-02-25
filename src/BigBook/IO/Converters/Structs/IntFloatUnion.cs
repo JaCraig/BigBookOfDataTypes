@@ -65,7 +65,7 @@ namespace BigBook.IO.Converters.Structs
         /// <c>true</c> if the specified <see cref="System.Object"/> is equal to this instance;
         /// otherwise, <c>false</c>.
         /// </returns>
-        public override bool Equals(object obj) => obj is IntFloatUnion && Equals((IntFloatUnion)obj);
+        public override bool Equals(object obj) => obj is IntFloatUnion intFloatUnion && Equals(intFloatUnion);
 
         /// <summary>
         /// Indicates whether the current object is equal to another object of the same type.
@@ -81,8 +81,8 @@ namespace BigBook.IO.Converters.Structs
         /// Returns a hash code for this instance.
         /// </summary>
         /// <returns>
-        /// A hash code for this instance, suitable for use in hashing algorithms and data structures
-        /// like a hash table.
+        /// A hash code for this instance, suitable for use in hashing algorithms and data
+        /// structures like a hash table.
         /// </returns>
         public override int GetHashCode() => -1352667302 + IntegerValue.GetHashCode();
 

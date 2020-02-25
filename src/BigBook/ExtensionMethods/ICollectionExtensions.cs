@@ -45,15 +45,11 @@ namespace BigBook
         /// <returns>The collection with the added items</returns>
         public static ICollection<T> Add<T>(this ICollection<T> collection, params T[] items)
         {
-            if (collection == null)
-            {
+            if (collection is null)
                 return new List<T>();
-            }
 
-            if (items == null)
-            {
+            if (items is null)
                 return collection;
-            }
 
             items.ForEach(x => collection.Add(x));
             return collection;
@@ -68,10 +64,8 @@ namespace BigBook
         /// <returns>The original item</returns>
         public static T AddAndReturn<T>(this ICollection<T> collection, T item)
         {
-            if (collection == null)
-            {
+            if (collection is null)
                 return item;
-            }
 
             collection.Add(item);
             return item;
@@ -87,15 +81,11 @@ namespace BigBook
         /// <returns>True if any are added, false otherwise</returns>
         public static bool AddIf<T>(this ICollection<T> collection, Predicate<T> predicate, params T[] items)
         {
-            if (collection == null || predicate == null)
-            {
+            if (collection is null || predicate is null)
                 return false;
-            }
 
-            if (items == null || items.Length == 0)
-            {
+            if (items is null || items.Length == 0)
                 return true;
-            }
 
             var ReturnValue = false;
             for (int x = 0, itemsLength = items.Length; x < itemsLength; x++)
@@ -121,17 +111,10 @@ namespace BigBook
         /// <returns>True if it is added, false otherwise</returns>
         public static bool AddIf<T>(this ICollection<T> collection, Predicate<T> predicate, IEnumerable<T> items)
         {
-            if (collection == null || predicate == null)
-            {
-                return false;
-            }
-
-            if (items?.Any() != true)
-            {
-                return true;
-            }
-
-            return collection.AddIf(predicate, items.ToArray());
+            return !(collection is null)
+                && !(predicate is null)
+                && (items?.Any() != true
+                    || collection.AddIf(predicate, items.ToArray()));
         }
 
         /// <summary>
@@ -143,17 +126,9 @@ namespace BigBook
         /// <returns>True if it is added, false otherwise</returns>
         public static bool AddIfUnique<T>(this ICollection<T> collection, params T[] items)
         {
-            if (collection == null)
-            {
-                return false;
-            }
-
-            if (items == null)
-            {
-                return true;
-            }
-
-            return collection.AddIf(x => !collection.Contains(x), items);
+            return !(collection is null)
+                && (items is null
+                    || collection.AddIf(x => !collection.Contains(x), items));
         }
 
         /// <summary>
@@ -169,17 +144,10 @@ namespace BigBook
         /// <returns>True if it is added, false otherwise</returns>
         public static bool AddIfUnique<T>(this ICollection<T> collection, Func<T, T, bool> predicate, params T[] items)
         {
-            if (collection == null || predicate == null)
-            {
-                return false;
-            }
-
-            if (items == null)
-            {
-                return true;
-            }
-
-            return collection.AddIf(x => !collection.Any(y => predicate(x, y)), items);
+            return !(collection is null)
+                && !(predicate is null)
+                && (items is null
+                    || collection.AddIf(x => !collection.Any(y => predicate(x, y)), items));
         }
 
         /// <summary>
@@ -191,17 +159,9 @@ namespace BigBook
         /// <returns>True if it is added, false otherwise</returns>
         public static bool AddIfUnique<T>(this ICollection<T> collection, IEnumerable<T> items)
         {
-            if (collection == null)
-            {
-                return false;
-            }
-
-            if (items == null)
-            {
-                return true;
-            }
-
-            return collection.AddIf(x => !collection.Contains(x), items);
+            return !(collection is null)
+                && (items is null
+                    || collection.AddIf(x => !collection.Contains(x), items));
         }
 
         /// <summary>
@@ -217,17 +177,10 @@ namespace BigBook
         /// <returns>True if it is added, false otherwise</returns>
         public static bool AddIfUnique<T>(this ICollection<T> collection, Func<T, T, bool> predicate, IEnumerable<T> items)
         {
-            if (collection == null || predicate == null)
-            {
-                return false;
-            }
-
-            if (items == null)
-            {
-                return true;
-            }
-
-            return collection.AddIf(x => !collection.Any(y => predicate(x, y)), items);
+            return !(collection is null)
+                && !(predicate is null)
+                && (items is null
+                    || collection.AddIf(x => !collection.Any(y => predicate(x, y)), items));
         }
 
         /// <summary>
@@ -241,10 +194,8 @@ namespace BigBook
         /// <returns>The original list</returns>
         public static IList<T> For<T>(this IList<T> list, int start, int end, Action<T, int> action)
         {
-            if (list == null)
-            {
+            if (list is null)
                 return new List<T>();
-            }
 
             var TempList = list.ElementsBetween(start, end + 1).ToArray();
             for (var x = 0; x < TempList.Length; ++x)
@@ -258,22 +209,20 @@ namespace BigBook
         /// Does a function for each item in the IEnumerable between the start and end indexes and
         /// returns an IEnumerable of the results
         /// </summary>
-        /// <typeparam name="T">Object type</typeparam>
-        /// <typeparam name="R">Return type</typeparam>
+        /// <typeparam name="TObject">Object type</typeparam>
+        /// <typeparam name="TReturn">Return type</typeparam>
         /// <param name="list">IEnumerable to iterate over</param>
         /// <param name="start">0 based item to start with (inclusive)</param>
         /// <param name="end">0 based item to end with (exclusive)</param>
         /// <param name="function">Function to do</param>
         /// <returns>The resulting list</returns>
-        public static IList<R> For<T, R>(this IList<T> list, int start, int end, Func<T, int, R> function)
+        public static IList<TReturn> For<TObject, TReturn>(this IList<TObject> list, int start, int end, Func<TObject, int, TReturn> function)
         {
-            if (list == null || function == null)
-            {
-                return new List<R>();
-            }
+            if (list is null || function is null)
+                return new List<TReturn>();
 
             var TempList = list.ElementsBetween(start, end + 1).ToArray();
-            var ReturnList = new List<R>();
+            var ReturnList = new List<TReturn>();
             for (var x = 0; x < TempList.Length; ++x)
             {
                 ReturnList.Add(function(TempList[x], x));
@@ -289,12 +238,7 @@ namespace BigBook
         /// <param name="predicate">Predicate used to determine what items to remove</param>
         public static ICollection<T> Remove<T>(this ICollection<T> collection, Func<T, bool> predicate)
         {
-            if (collection == null)
-            {
-                return new List<T>();
-            }
-
-            return collection.Where(x => !predicate(x)).ToList();
+            return collection?.Where(x => !predicate(x)).ToList() ?? new List<T>();
         }
 
         /// <summary>
@@ -306,15 +250,11 @@ namespace BigBook
         /// <returns>The collection with the items removed</returns>
         public static ICollection<T> Remove<T>(this ICollection<T> collection, IEnumerable<T> items)
         {
-            if (collection == null)
-            {
+            if (collection is null)
                 return new List<T>();
-            }
 
-            if (items == null)
-            {
+            if (items is null)
                 return collection;
-            }
 
             return collection.Where(x => !items.Contains(x)).ToList();
         }

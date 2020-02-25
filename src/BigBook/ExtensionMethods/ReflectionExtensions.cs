@@ -91,7 +91,7 @@ namespace BigBook
         /// </exception>
         public static ReturnType Call<ReturnType>(this object inputObject, string methodName, params object[] inputVariables)
         {
-            if (inputObject == null)
+            if (inputObject is null)
             {
                 throw new ArgumentNullException(nameof(inputObject));
             }
@@ -101,7 +101,7 @@ namespace BigBook
                 throw new ArgumentNullException(nameof(methodName));
             }
 
-            if (inputVariables == null)
+            if (inputVariables is null)
             {
                 inputVariables = Array.Empty<object>();
             }
@@ -114,7 +114,7 @@ namespace BigBook
             }
 
             var Method = ObjectType.GetMethod(methodName, MethodInputTypes);
-            if (Method == null)
+            if (Method is null)
             {
                 throw new InvalidOperationException("Could not find method " + methodName + " with the appropriate input variables.");
             }
@@ -137,7 +137,7 @@ namespace BigBook
         /// </exception>
         public static ReturnType Call<GenericType1, ReturnType>(this object inputObject, string methodName, params object[] inputVariables)
         {
-            if (inputObject == null)
+            if (inputObject is null)
             {
                 throw new ArgumentNullException(nameof(inputObject));
             }
@@ -147,7 +147,7 @@ namespace BigBook
                 throw new ArgumentNullException(nameof(methodName));
             }
 
-            if (inputVariables == null)
+            if (inputVariables is null)
             {
                 inputVariables = Array.Empty<object>();
             }
@@ -160,7 +160,7 @@ namespace BigBook
             }
 
             var Method = ObjectType.GetMethod(methodName, MethodInputTypes);
-            if (Method == null)
+            if (Method is null)
             {
                 throw new InvalidOperationException("Could not find method " + methodName + " with the appropriate input variables.");
             }
@@ -185,7 +185,7 @@ namespace BigBook
         /// </exception>
         public static ReturnType Call<GenericType1, GenericType2, ReturnType>(this object inputObject, string methodName, params object[] inputVariables)
         {
-            if (inputObject == null)
+            if (inputObject is null)
             {
                 throw new ArgumentNullException(nameof(inputObject));
             }
@@ -195,7 +195,7 @@ namespace BigBook
                 throw new ArgumentNullException(nameof(methodName));
             }
 
-            if (inputVariables == null)
+            if (inputVariables is null)
             {
                 inputVariables = Array.Empty<object>();
             }
@@ -208,7 +208,7 @@ namespace BigBook
             }
 
             var Method = ObjectType.GetMethod(methodName, MethodInputTypes);
-            if (Method == null)
+            if (Method is null)
             {
                 throw new InvalidOperationException("Could not find method " + methodName + " with the appropriate input variables.");
             }
@@ -234,7 +234,7 @@ namespace BigBook
         /// </exception>
         public static ReturnType Call<GenericType1, GenericType2, GenericType3, ReturnType>(this object inputObject, string methodName, params object[] inputVariables)
         {
-            if (inputObject == null)
+            if (inputObject is null)
             {
                 throw new ArgumentNullException(nameof(inputObject));
             }
@@ -244,7 +244,7 @@ namespace BigBook
                 throw new ArgumentNullException(nameof(methodName));
             }
 
-            if (inputVariables == null)
+            if (inputVariables is null)
             {
                 inputVariables = Array.Empty<object>();
             }
@@ -257,7 +257,7 @@ namespace BigBook
             }
 
             var Method = ObjectType.GetMethod(methodName, MethodInputTypes);
-            if (Method == null)
+            if (Method is null)
             {
                 throw new InvalidOperationException("Could not find method " + methodName + " with the appropriate input variables.");
             }
@@ -277,17 +277,17 @@ namespace BigBook
         /// <exception cref="ArgumentNullException">inputObject or method</exception>
         public static ReturnType Call<ReturnType>(this object inputObject, MethodInfo method, params object[] inputVariables)
         {
-            if (inputObject == null)
+            if (inputObject is null)
             {
                 throw new ArgumentNullException(nameof(inputObject));
             }
 
-            if (method == null)
+            if (method is null)
             {
                 throw new ArgumentNullException(nameof(method));
             }
 
-            if (inputVariables == null)
+            if (inputVariables is null)
             {
                 inputVariables = Array.Empty<object>();
             }
@@ -302,7 +302,7 @@ namespace BigBook
         /// <param name="type">Type to create an instance of</param>
         /// <param name="args">Arguments sent into the constructor</param>
         /// <returns>The newly created instance of the type</returns>
-        public static ClassType Create<ClassType>(this Type type, params object[] args) => type == null ? default : (ClassType)type?.Create(args)!;
+        public static ClassType Create<ClassType>(this Type type, params object[] args) => type is null ? default : (ClassType)type?.Create(args)!;
 
         /// <summary>
         /// Creates an instance of the type
@@ -310,7 +310,7 @@ namespace BigBook
         /// <param name="type">Type to create an instance of</param>
         /// <param name="args">Arguments sent into the constructor</param>
         /// <returns>The newly created instance of the type</returns>
-        public static object? Create(this Type type, params object[] args) => type == null ? null : Activator.CreateInstance(type, args);
+        public static object? Create(this Type type, params object[] args) => type is null ? null : Activator.CreateInstance(type, args);
 
         /// <summary>
         /// Creates an instance of the types and casts it to the specified type
@@ -360,7 +360,7 @@ namespace BigBook
         {
             var IEnum = FindIEnumerableElementType(type);
 
-            return IEnum == null ? type : IEnum.GetGenericArguments()[0];
+            return IEnum is null ? type : IEnum.GetGenericArguments()[0];
         }
 
         /// <summary>
@@ -403,7 +403,7 @@ namespace BigBook
         /// <returns>string name of the type</returns>
         public static string GetName(this Type objectType)
         {
-            if (objectType == null)
+            if (objectType is null)
             {
                 return "";
             }
@@ -415,7 +415,7 @@ namespace BigBook
             }
             else
             {
-                Output.Append(objectType.DeclaringType == null ? objectType.Namespace : objectType.DeclaringType.GetName())
+                Output.Append(objectType.DeclaringType is null ? objectType.Namespace : objectType.DeclaringType.GetName())
                     .Append(".");
                 if (objectType.Name.Contains("`"))
                 {
@@ -450,7 +450,7 @@ namespace BigBook
         /// <returns>The property</returns>
         public static PropertyInfo? GetProperty(this Type? type, string name, bool recursively)
         {
-            if (type == null || string.IsNullOrEmpty(name))
+            if (type is null || string.IsNullOrEmpty(name))
             {
                 return null;
             }
@@ -458,13 +458,13 @@ namespace BigBook
             if (recursively)
             {
                 var Result = type.GetProperty(name, BindingFlags.FlattenHierarchy | BindingFlags.Instance | BindingFlags.Public);
-                if (Result != null || !type.IsInterface)
+                if (!(Result is null) || !type.IsInterface)
                     return Result;
                 var Interfaces = type.GetInterfaces();
                 for (var x = 0; x < Interfaces.Length; ++x)
                 {
                     Result = Interfaces[x].GetProperty(name);
-                    if (Result != null)
+                    if (!(Result is null))
                         return Result;
                 }
             }
@@ -480,14 +480,14 @@ namespace BigBook
         /// <returns></returns>
         public static PropertyInfo? GetProperty<TObject>(this Type type, string name)
         {
-            PropertyInfo? Result = Array.Find(TypeCacheFor<TObject>.Properties, x => x.Name == name);
-            if (Result != null || !type.IsInterface)
+            var Result = Array.Find(TypeCacheFor<TObject>.Properties, x => x.Name == name);
+            if (!(Result is null) || !type.IsInterface)
                 return Result;
             var Interfaces = TypeCacheFor<TObject>.Interfaces;
             for (var x = 0; x < Interfaces.Length; ++x)
             {
                 Result = Interfaces[x].GetProperty(name, false);
-                if (Result != null)
+                if (!(Result is null))
                     return Result;
             }
             return null;
@@ -569,7 +569,7 @@ namespace BigBook
             }
 
             var ObjectType = inputObject?.GetType();
-            if (ObjectType == null)
+            if (ObjectType is null)
                 return default!;
             var ClassInstance = ObjectType.Create<T>();
             var TempProperties = ObjectType.GetProperties();
@@ -665,7 +665,7 @@ namespace BigBook
         /// <param name="inputObject">The object to get the property of</param>
         /// <param name="property">The property to get</param>
         /// <returns>Returns the property's value</returns>
-        public static object? Property(this object inputObject, PropertyInfo property) => inputObject == null || property == null ? null : property.GetValue(inputObject, null);
+        public static object? Property(this object inputObject, PropertyInfo property) => inputObject is null || property is null ? null : property.GetValue(inputObject, null);
 
         /// <summary>
         /// Gets the value of property
@@ -675,27 +675,27 @@ namespace BigBook
         /// <returns>Returns the property's value</returns>
         public static object? Property(this object inputObject, string property)
         {
-            if (inputObject == null || string.IsNullOrEmpty(property))
+            if (inputObject is null || string.IsNullOrEmpty(property))
             {
                 return null;
             }
 
             var Properties = property.Split(new string[] { "." }, StringSplitOptions.None);
-            object? TempObject = inputObject;
-            Type? TempObjectType = TempObject.GetType();
+            var TempObject = inputObject;
+            var TempObjectType = TempObject.GetType();
             PropertyInfo? DestinationProperty;
             for (var x = 0; x < Properties.Length - 1; ++x)
             {
                 DestinationProperty = TempObjectType.GetProperty(Properties[x], true);
                 TempObjectType = DestinationProperty?.PropertyType;
                 TempObject = DestinationProperty?.GetValue(TempObject, null);
-                if (TempObject == null)
+                if (TempObject is null)
                 {
                     return null;
                 }
             }
             DestinationProperty = TempObjectType.GetProperty(Properties[^1], true);
-            return DestinationProperty == null ? null : TempObject.Property(DestinationProperty);
+            return DestinationProperty is null ? null : TempObject.Property(DestinationProperty);
         }
 
         /// <summary>
@@ -707,12 +707,12 @@ namespace BigBook
         /// <param name="format">Allows for formatting if the destination is a string</param>
         public static object? Property(this object inputObject, PropertyInfo property, object value, string format = "")
         {
-            if (inputObject == null)
+            if (inputObject is null)
             {
                 return null;
             }
 
-            if (property == null || value == null)
+            if (property is null || value is null)
             {
                 return inputObject;
             }
@@ -735,32 +735,32 @@ namespace BigBook
         /// <param name="format">Allows for formatting if the destination is a string</param>
         public static object? Property(this object inputObject, string property, object value, string format = "")
         {
-            if (inputObject == null)
+            if (inputObject is null)
             {
                 return null;
             }
 
-            if (string.IsNullOrEmpty(property) || value == null)
+            if (string.IsNullOrEmpty(property) || value is null)
             {
                 return inputObject;
             }
 
             var Properties = property.Split(new string[] { "." }, StringSplitOptions.None);
-            object? TempObject = inputObject;
-            Type? TempObjectType = TempObject.GetType();
+            var TempObject = inputObject;
+            var TempObjectType = TempObject.GetType();
             PropertyInfo? DestinationProperty;
             for (var x = 0; x < Properties.Length - 1; ++x)
             {
                 DestinationProperty = TempObjectType.GetProperty(Properties[x], true);
                 TempObjectType = DestinationProperty?.PropertyType;
                 TempObject = DestinationProperty?.GetValue(TempObject, null);
-                if (TempObject == null)
+                if (TempObject is null)
                 {
                     return inputObject;
                 }
             }
             DestinationProperty = TempObjectType.GetProperty(Properties[^1], true);
-            if (DestinationProperty == null)
+            if (DestinationProperty is null)
             {
                 throw new NullReferenceException("PropertyInfo can't be null");
             }
@@ -778,7 +778,7 @@ namespace BigBook
         /// <returns>A lambda expression that calls a specific property's getter function</returns>
         public static Expression<Func<ClassType, DataType>> PropertyGetter<ClassType, DataType>(this PropertyInfo property)
         {
-            if (property == null)
+            if (property is null)
             {
                 throw new ArgumentNullException(nameof(property));
             }
@@ -818,7 +818,7 @@ namespace BigBook
         /// <returns>The name of the property</returns>
         public static string PropertyName(this LambdaExpression expression)
         {
-            if (expression == null)
+            if (expression is null)
             {
                 return "";
             }
@@ -857,7 +857,7 @@ namespace BigBook
         /// <returns>A lambda expression that calls a specific property's setter function</returns>
         public static Expression<Action<ClassType, DataType>>? PropertySetter<ClassType, DataType>(this LambdaExpression property)
         {
-            if (property == null)
+            if (property is null)
             {
                 throw new ArgumentNullException(nameof(property));
             }
@@ -881,7 +881,7 @@ namespace BigBook
                 for (var x = 1; x < SplitName.Length - 1; ++x)
                 {
                     PropertyInfo = PropertyInfo?.PropertyType.GetProperty(SplitName[x], true);
-                    if (PropertyInfo == null)
+                    if (PropertyInfo is null)
                     {
                         throw new NullReferenceException("PropertyInfo can't be null");
                     }
@@ -891,7 +891,7 @@ namespace BigBook
                 PropertyInfo = PropertyInfo?.PropertyType.GetProperty(SplitName[^1], true);
             }
             var SetMethod = PropertyInfo?.GetSetMethod();
-            if (SetMethod != null)
+            if (!(SetMethod is null))
             {
                 if (PropertyInfo?.PropertyType != typeof(DataType))
                 {
@@ -901,10 +901,10 @@ namespace BigBook
                         && x.GetParameters().Length == 2);
                     ConversionMethod = ConversionMethod.MakeGenericMethod(typeof(DataType), PropertyInfo?.PropertyType);
                     var Convert = Expression.Call(ConversionMethod, PropertySet, DefaultConstant);
-                    SetterCall = PropertyGet == null ? Expression.Call(ObjectInstance, SetMethod, Convert) : Expression.Call(PropertyGet, SetMethod, Convert);
+                    SetterCall = PropertyGet is null ? Expression.Call(ObjectInstance, SetMethod, Convert) : Expression.Call(PropertyGet, SetMethod, Convert);
                     return Expression.Lambda<Action<ClassType, DataType>>(SetterCall, ObjectInstance, PropertySet);
                 }
-                SetterCall = PropertyGet == null ? Expression.Call(ObjectInstance, SetMethod, PropertySet) : Expression.Call(PropertyGet, SetMethod, PropertySet);
+                SetterCall = PropertyGet is null ? Expression.Call(ObjectInstance, SetMethod, PropertySet) : Expression.Call(PropertyGet, SetMethod, PropertySet);
             }
             else
             {
@@ -922,7 +922,7 @@ namespace BigBook
         /// <returns>A lambda expression that calls a specific property's setter function</returns>
         public static Expression<Action<ClassType, object>>? PropertySetter<ClassType>(this LambdaExpression property)
         {
-            if (property == null)
+            if (property is null)
             {
                 throw new ArgumentNullException(nameof(property));
             }
@@ -939,7 +939,7 @@ namespace BigBook
         /// which then has a Prop2 on it, which in turn has a Prop3 on it.)
         /// </param>
         /// <returns>The type of the property specified or null if it can not be reached.</returns>
-        public static Type? PropertyType(this object inputObject, string propertyPath) => inputObject == null || string.IsNullOrEmpty(propertyPath) ? null : inputObject.GetType().PropertyType(propertyPath);
+        public static Type? PropertyType(this object inputObject, string propertyPath) => inputObject is null || string.IsNullOrEmpty(propertyPath) ? null : inputObject.GetType().PropertyType(propertyPath);
 
         /// <summary>
         /// Gets a property's type
@@ -952,11 +952,11 @@ namespace BigBook
         /// <returns>The type of the property specified or null if it can not be reached.</returns>
         public static Type? PropertyType(this Type? objectType, string propertyPath)
         {
-            if (objectType == null || string.IsNullOrEmpty(propertyPath))
+            if (objectType is null || string.IsNullOrEmpty(propertyPath))
             {
                 return null;
             }
-            Type? TempObject = objectType;
+            var TempObject = objectType;
 
             var SourceProperties = propertyPath.Split(new string[] { "." }, StringSplitOptions.None);
             for (var x = 0; x < SourceProperties.Length; ++x)
@@ -974,7 +974,7 @@ namespace BigBook
         /// <returns>The version information as a string</returns>
         public static string ToString(this Assembly assembly, VersionInfo infoType)
         {
-            if (assembly == null)
+            if (assembly is null)
             {
                 return "";
             }
@@ -1035,7 +1035,7 @@ namespace BigBook
         /// <returns>An HTML formatted table containing the information about the object</returns>
         public static string ToString(this object inputObject, bool htmlOutput)
         {
-            if (inputObject == null)
+            if (inputObject is null)
             {
                 return "";
             }
@@ -1054,7 +1054,7 @@ namespace BigBook
                     try
                     {
                         var Value = TempProperty.GetValue(inputObject, null);
-                        TempValue.Append(Value == null ? "null" : Value.ToString());
+                        TempValue.Append(Value is null ? "null" : Value.ToString());
                     }
                     catch { }
                 }
@@ -1073,7 +1073,7 @@ namespace BigBook
         /// <returns>An HTML formatted table containing the information about the object type</returns>
         public static string ToString(this Type objectType, bool htmlOutput)
         {
-            if (objectType == null)
+            if (objectType is null)
             {
                 return "";
             }
@@ -1089,7 +1089,7 @@ namespace BigBook
                 {
                     try
                     {
-                        TempValue.Append(TempProperty.GetValue(null, null) == null ? "null" : TempProperty.GetValue(null, null).ToString());
+                        TempValue.Append(TempProperty.GetValue(null, null) is null ? "null" : TempProperty.GetValue(null, null).ToString());
                     }
                     catch { }
                 }
@@ -1116,7 +1116,7 @@ namespace BigBook
         /// <returns>List of types that use the interface</returns>
         public static IEnumerable<Type> Types(this Assembly assembly, Type baseType)
         {
-            if (assembly == null || baseType == null)
+            if (assembly is null || baseType is null)
             {
                 return Array.Empty<Type>();
             }
@@ -1144,7 +1144,7 @@ namespace BigBook
         /// <returns>List of types that use the interface</returns>
         public static IEnumerable<Type> Types(this IEnumerable<Assembly> assemblies, Type baseType)
         {
-            if (assemblies?.Any() != true || baseType == null)
+            if (assemblies?.Any() != true || baseType is null)
             {
                 yield break;
             }
@@ -1186,7 +1186,7 @@ namespace BigBook
         /// <returns>Either null or the type of the IEnumerable</returns>
         private static Type? FindIEnumerableElementType(Type type)
         {
-            if (type == null || type == typeof(string))
+            if (type is null || type == typeof(string))
             {
                 return null;
             }
@@ -1221,14 +1221,14 @@ namespace BigBook
                     var InterfaceUsed = Interfaces[x];
                     var IEnum = FindIEnumerableElementType(InterfaceUsed);
 
-                    if (IEnum != null)
+                    if (!(IEnum is null))
                     {
                         return IEnum;
                     }
                 }
             }
 
-            return TypeInfo.BaseType != null && TypeInfo.BaseType != typeof(object) ?
+            return !(TypeInfo.BaseType is null) && TypeInfo.BaseType != typeof(object) ?
                 FindIEnumerableElementType(TypeInfo.BaseType) :
                 null;
         }

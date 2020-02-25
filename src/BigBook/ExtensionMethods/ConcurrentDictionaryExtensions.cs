@@ -16,7 +16,6 @@ limitations under the License.
 
 using System.Collections.Concurrent;
 using System.ComponentModel;
-using System.Threading.Tasks;
 
 namespace BigBook
 {
@@ -37,12 +36,12 @@ namespace BigBook
         public static ConcurrentDictionary<TKey, TValue> CopyTo<TKey, TValue>(this ConcurrentDictionary<TKey, TValue> dictionary, ConcurrentDictionary<TKey, TValue> target)
         {
             dictionary ??= new ConcurrentDictionary<TKey, TValue>();
-            if (target == null)
-            {
+            if (target is null)
                 return dictionary;
+            foreach (var x in dictionary)
+            {
+                target.SetValue(x.Key, x.Value);
             }
-
-            Parallel.ForEach(dictionary, x => target.SetValue(x.Key, x.Value));
             return dictionary;
         }
 
@@ -59,7 +58,7 @@ namespace BigBook
         /// </returns>
         public static TValue GetValue<TKey, TValue>(this ConcurrentDictionary<TKey, TValue> dictionary, TKey key, TValue defaultValue = default)
         {
-            if (dictionary == null)
+            if (dictionary is null)
             {
                 return defaultValue;
             }
@@ -78,7 +77,7 @@ namespace BigBook
         /// <returns>The dictionary</returns>
         public static ConcurrentDictionary<TKey, TValue> SetValue<TKey, TValue>(this ConcurrentDictionary<TKey, TValue> dictionary, TKey key, TValue value)
         {
-            if (dictionary == null)
+            if (dictionary is null)
             {
                 return new ConcurrentDictionary<TKey, TValue>();
             }

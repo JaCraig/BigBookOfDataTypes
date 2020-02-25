@@ -35,7 +35,7 @@ namespace BigBook
         /// <returns>A string containing the content of the stream</returns>
         public static string ReadAll(this Stream input, Encoding? encodingUsing = null)
         {
-            if (input == null)
+            if (input is null)
             {
                 return "";
             }
@@ -50,7 +50,7 @@ namespace BigBook
         /// <returns>A byte array</returns>
         public static byte[] ReadAllBinary(this Stream input)
         {
-            if (input == null)
+            if (input is null)
             {
                 return Array.Empty<byte>();
             }

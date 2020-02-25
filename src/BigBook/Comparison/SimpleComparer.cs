@@ -22,14 +22,14 @@ namespace BigBook.Comparison
     /// <summary>
     /// Simple IComparable class
     /// </summary>
-    /// <typeparam name="T">Data type</typeparam>
-    public class SimpleComparer<T> : IComparer<T> where T : IComparable
+    /// <typeparam name="TData">Data type</typeparam>
+    public class SimpleComparer<TData> : IComparer<TData> where TData : IComparable
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SimpleComparer{T}"/> class.
         /// </summary>
         /// <param name="comparisonFunction">The comparison function.</param>
-        public SimpleComparer(Func<T, T, int> comparisonFunction)
+        public SimpleComparer(Func<TData, TData, int> comparisonFunction)
         {
             ComparisonFunction = comparisonFunction;
         }
@@ -38,7 +38,7 @@ namespace BigBook.Comparison
         /// Gets or sets the comparison function.
         /// </summary>
         /// <value>The comparison function.</value>
-        protected Func<T, T, int> ComparisonFunction { get; set; }
+        protected Func<TData, TData, int> ComparisonFunction { get; set; }
 
         /// <summary>
         /// Compares the two objects
@@ -46,6 +46,6 @@ namespace BigBook.Comparison
         /// <param name="x">Object 1</param>
         /// <param name="y">Object 2</param>
         /// <returns>0 if they're equal, any other value they are not</returns>
-        public int Compare(T x, T y) => ComparisonFunction(x, y);
+        public int Compare(TData x, TData y) => ComparisonFunction(x, y);
     }
 }

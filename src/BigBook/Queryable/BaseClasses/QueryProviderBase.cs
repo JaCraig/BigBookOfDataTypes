@@ -35,8 +35,8 @@ namespace BigBook.Queryable.BaseClasses
         }
 
         /// <summary>
-        /// Constructs an <see cref="T:System.Linq.IQueryable`1"/> object that can evaluate the query
-        /// represented by a specified expression tree.
+        /// Constructs an <see cref="T:System.Linq.IQueryable`1"/> object that can evaluate the
+        /// query represented by a specified expression tree.
         /// </summary>
         /// <typeparam name="TElement">
         /// The type of the elements of the <see cref="T:System.Linq.IQueryable`1"/> that is returned.
@@ -57,8 +57,10 @@ namespace BigBook.Queryable.BaseClasses
         /// An <see cref="T:System.Linq.IQueryable"/> that can evaluate the query represented by the
         /// specified expression tree.
         /// </returns>
-        public IQueryable CreateQuery(Expression expression)
+        public IQueryable? CreateQuery(Expression expression)
         {
+            if (expression is null)
+                return null;
             var ElementType = expression.Type.GetIEnumerableElementType();
 
             try

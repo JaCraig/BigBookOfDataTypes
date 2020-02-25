@@ -33,10 +33,10 @@ namespace BigBook.DataMapper.Default
         /// <summary>
         /// Used internally to create type mappings
         /// </summary>
-        /// <typeparam name="Left">Left type</typeparam>
-        /// <typeparam name="Right">Right type</typeparam>
+        /// <typeparam name="TLeft">Left type</typeparam>
+        /// <typeparam name="TRight">Right type</typeparam>
         /// <returns>A mapping object for the two types specified</returns>
-        protected override ITypeMapping<Left, Right> CreateTypeMapping<Left, Right>() => new TypeMapping<Left, Right>();
+        protected override ITypeMapping<TLeft, TRight> CreateTypeMapping<TLeft, TRight>() => new TypeMapping<TLeft, TRight>();
 
         /// <summary>
         /// Used internally to create type mappings

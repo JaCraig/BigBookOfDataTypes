@@ -21,10 +21,10 @@ namespace BigBook.DataMapper.BaseClasses
     /// <summary>
     /// Mapping base class
     /// </summary>
-    /// <typeparam name="Left">The type of the eft.</typeparam>
-    /// <typeparam name="Right">The type of the ight.</typeparam>
+    /// <typeparam name="TLeft">The type of the eft.</typeparam>
+    /// <typeparam name="TRight">The type of the ight.</typeparam>
     /// <seealso cref="Interfaces.IMapping{Left, Right}"/>
-    public abstract class MappingBase<Left, Right> : IMapping<Left, Right>
+    public abstract class MappingBase<TLeft, TRight> : IMapping<TLeft, TRight>
     {
         /// <summary>
         /// Constructor
@@ -38,14 +38,14 @@ namespace BigBook.DataMapper.BaseClasses
         /// </summary>
         /// <param name="source">Source object</param>
         /// <param name="destination">Destination object</param>
-        public abstract void Copy(Left source, Right destination);
+        public abstract void Copy(TLeft source, TRight destination);
 
         /// <summary>
         /// Copies the source to the destination
         /// </summary>
         /// <param name="source">Source object</param>
         /// <param name="destination">Destination object</param>
-        public abstract void Copy(Right source, Left destination);
+        public abstract void Copy(TRight source, TLeft destination);
 
         /// <summary>
         /// Creates the reversed.

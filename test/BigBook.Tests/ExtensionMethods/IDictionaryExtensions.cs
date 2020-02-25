@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using BigBook.Tests.BaseClasses;
+using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
 namespace BigBook.Tests.ExtensionMethods
 {
-    public class IDictionaryExtensionsTests
+    public class IDictionaryExtensionsTests : TestingDirectoryFixture
     {
         [Fact]
         public void CopyToTest()

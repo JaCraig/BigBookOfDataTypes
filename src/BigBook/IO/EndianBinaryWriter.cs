@@ -52,7 +52,7 @@ namespace BigBook.IO
             encoding ??= Encoding.UTF8;
             if (!stream.CanWrite)
             {
-                throw new ArgumentException("Stream is not writable", nameof(stream));
+                throw new ArgumentException(Properties.Resources.StreamNotWritableError, nameof(stream));
             }
 
             BaseStream = stream;
@@ -99,6 +99,7 @@ namespace BigBook.IO
         public void Dispose()
         {
             Dispose(true);
+            GC.SuppressFinalize(this);
         }
 
         /// <summary>
@@ -106,9 +107,9 @@ namespace BigBook.IO
         /// </summary>
         public void Flush()
         {
-            if (BaseStream == null)
+            if (BaseStream is null)
             {
-                throw new NullReferenceException("Base stream is null");
+                throw new NullReferenceException(Properties.Resources.BaseStreamCurrentlyNullError);
             }
 
             BaseStream.Flush();
@@ -121,9 +122,9 @@ namespace BigBook.IO
         /// <param name="origin">Origin of seek operation.</param>
         public void Seek(int offset, SeekOrigin origin)
         {
-            if (BaseStream == null)
+            if (BaseStream is null)
             {
-                throw new NullReferenceException("Base stream is null");
+                throw new NullReferenceException(Properties.Resources.BaseStreamCurrentlyNullError);
             }
 
             BaseStream.Seek(offset, origin);
@@ -276,9 +277,9 @@ namespace BigBook.IO
         /// <param name="count">The number of bytes to write</param>
         public void Write(byte[] value, int offset, int count)
         {
-            if (BaseStream == null)
+            if (BaseStream is null)
             {
-                throw new NullReferenceException("Base stream is null");
+                throw new NullReferenceException(Properties.Resources.BaseStreamCurrentlyNullError);
             }
 
             value ??= Array.Empty<byte>();
@@ -302,9 +303,9 @@ namespace BigBook.IO
         public void Write(char[] value)
         {
             value ??= Array.Empty<char>();
-            if (BaseStream == null)
+            if (BaseStream is null)
             {
-                throw new NullReferenceException("Base stream is null");
+                throw new NullReferenceException(Properties.Resources.BaseStreamCurrentlyNullError);
             }
 
             var data = Encoding.GetBytes(value, 0, value.Length);
@@ -319,9 +320,9 @@ namespace BigBook.IO
         public void Write(string value)
         {
             value ??= "";
-            if (BaseStream == null)
+            if (BaseStream is null)
             {
-                throw new NullReferenceException("Base stream is null");
+                throw new NullReferenceException(Properties.Resources.BaseStreamCurrentlyNullError);
             }
 
             var data = Encoding.GetBytes(value);
@@ -337,9 +338,9 @@ namespace BigBook.IO
         /// <param name="value">The 7-bit encoded integer to write to the stream</param>
         public void Write7BitEncodedInt(int value)
         {
-            if (BaseStream == null)
+            if (BaseStream is null)
             {
-                throw new NullReferenceException("Base stream is null");
+                throw new NullReferenceException(Properties.Resources.BaseStreamCurrentlyNullError);
             }
 
             value = value < 0 ? 0 : value;
@@ -364,14 +365,11 @@ namespace BigBook.IO
         /// </param>
         protected virtual void Dispose(bool managed)
         {
-            if (!managed)
+            if (!managed || BaseStream is null)
                 return;
-            if (BaseStream != null)
-            {
-                Flush();
-                BaseStream.Dispose();
-                BaseStream = null;
-            }
+            Flush();
+            BaseStream.Dispose();
+            BaseStream = null;
         }
 
         /// <summary>
@@ -382,9 +380,9 @@ namespace BigBook.IO
         /// <param name="length">The number of bytes to write</param>
         private void WriteInternal(byte[] bytes, int length)
         {
-            if (BaseStream == null)
+            if (BaseStream is null)
             {
-                throw new NullReferenceException("Base stream is null");
+                throw new NullReferenceException(Properties.Resources.BaseStreamCurrentlyNullError);
             }
 
             BaseStream.Write(bytes, 0, length);

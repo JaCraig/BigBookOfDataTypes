@@ -55,13 +55,7 @@ namespace BigBook
         /// <summary>
         /// List that contains the list of values
         /// </summary>
-        public ICollection<IEnumerable<T2>> Values
-        {
-            get
-            {
-                return this.Select(x => x.Value).ToList();
-            }
-        }
+        public ICollection<IEnumerable<T2>> Values => this.Select(x => x.Value).ToList();
 
         /// <summary>
         /// Container holding the data
@@ -121,10 +115,7 @@ namespace BigBook
         /// </summary>
         /// <param name="item">Key value pair to check</param>
         /// <returns>True if it exists, false otherwise</returns>
-        public bool Contains(KeyValuePair<T1, IEnumerable<T2>> item)
-        {
-            return ContainsKey(item.Key) && Contains(item.Key, item.Value);
-        }
+        public bool Contains(KeyValuePair<T1, IEnumerable<T2>> item) => ContainsKey(item.Key) && Contains(item.Key, item.Value);
 
         /// <summary>
         /// Does the list mapping contain the key value pairs?
@@ -132,10 +123,7 @@ namespace BigBook
         /// <param name="key">Key value</param>
         /// <param name="values">Value</param>
         /// <returns>True if it exists, false otherwise</returns>
-        public bool Contains(T1 key, IEnumerable<T2> values)
-        {
-            return ContainsKey(key) && values.All(x => Contains(key, x));
-        }
+        public bool Contains(T1 key, IEnumerable<T2> values) => ContainsKey(key) && values.All(x => Contains(key, x));
 
         /// <summary>
         /// Does the list mapping contain the key value pair?
@@ -143,10 +131,7 @@ namespace BigBook
         /// <param name="key">Key</param>
         /// <param name="value">Value</param>
         /// <returns>True if it exists, false otherwise</returns>
-        public bool Contains(T1 key, T2 value)
-        {
-            return ContainsKey(key) && Items[key].Contains(value);
-        }
+        public bool Contains(T1 key, T2 value) => ContainsKey(key) && Items[key].Contains(value);
 
         /// <summary>
         /// Determines if a key exists

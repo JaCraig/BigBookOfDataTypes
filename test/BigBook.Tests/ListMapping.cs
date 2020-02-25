@@ -1,9 +1,10 @@
-﻿using System.Linq;
+﻿using BigBook.Tests.BaseClasses;
+using System.Linq;
 using Xunit;
 
 namespace BigBook.Tests
 {
-    public class ListMappingTests
+    public class ListMappingTests : TestingDirectoryFixture
     {
         [Fact]
         public void ContainsTest()

@@ -47,10 +47,7 @@ namespace BigBook
         /// <param name="left">The left.</param>
         /// <param name="right">The right.</param>
         /// <returns>The result</returns>
-        public static Set<T> Add(Set<T> left, Set<T> right)
-        {
-            return left + right;
-        }
+        public static Set<T> Add(Set<T> left, Set<T> right) => left + right;
 
         /// <summary>
         /// Gets the intersection of set 1 and set 2
@@ -60,7 +57,7 @@ namespace BigBook
         /// <returns>The intersection of the two sets</returns>
         public static Set<T>? GetIntersection(Set<T> set1, Set<T> set2)
         {
-            if (set1 == null || set2 == null || !set1.Intersect(set2))
+            if (set1 is null || set2 is null || !set1.Intersect(set2))
             {
                 return null;
             }
@@ -150,12 +147,12 @@ namespace BigBook
         /// <returns>True if they are, false otherwise</returns>
         public static bool operator ==(Set<T>? set1, Set<T>? set2)
         {
-            if (((object?)set1) == null && ((object?)set2) == null)
+            if (set1 is null && set2 is null)
             {
                 return true;
             }
 
-            if (((object?)set1) == null || ((object?)set2) == null)
+            if (set1 is null || set2 is null)
             {
                 return false;
             }
@@ -169,20 +166,14 @@ namespace BigBook
         /// <param name="left">The left.</param>
         /// <param name="right">The right.</param>
         /// <returns>The result.</returns>
-        public static Set<T> Subtract(Set<T> left, Set<T> right)
-        {
-            return left - right;
-        }
+        public static Set<T> Subtract(Set<T> left, Set<T> right) => left - right;
 
         /// <summary>
         /// Used to tell if this set contains the other
         /// </summary>
         /// <param name="set">Set to check against</param>
         /// <returns>True if it is, false otherwise</returns>
-        public bool Contains(Set<T> set)
-        {
-            return set?.IsSubset(this) == true;
-        }
+        public bool Contains(Set<T> set) => set?.IsSubset(this) == true;
 
         /// <summary>
         /// Determines if the two sets are equivalent

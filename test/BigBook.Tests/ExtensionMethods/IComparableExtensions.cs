@@ -1,8 +1,9 @@
-﻿using Xunit;
+﻿using BigBook.Tests.BaseClasses;
+using Xunit;
 
 namespace BigBook.Tests.ExtensionMethods
 {
-    public class IComparableExtensionsTests
+    public class IComparableExtensionsTests : TestingDirectoryFixture
     {
         [Fact]
         public void BetweenTest()

@@ -37,7 +37,7 @@ namespace BigBook
         /// <returns>A list of methods involved in the stack trace</returns>
         public static IEnumerable<MethodBase> GetMethods(this StackTrace stack, params Assembly[] excludedAssemblies)
         {
-            if (stack == null)
+            if (stack is null)
             {
                 return Array.Empty<MethodBase>();
             }
@@ -55,14 +55,14 @@ namespace BigBook
         public static IEnumerable<MethodBase> GetMethods(this IEnumerable<StackFrame> frames, params Assembly[] excludedAssemblies)
         {
             var Methods = new List<MethodBase>();
-            if (frames == null)
+            if (frames is null)
             {
                 return Methods;
             }
 
             foreach (var Frame in frames)
             {
-                Methods.AddIf(x => x.DeclaringType != null
+                Methods.AddIf(x => !(x.DeclaringType is null)
                     && !excludedAssemblies.Contains(x.DeclaringType.Assembly)
                     && !x.DeclaringType.Assembly.FullName.StartsWith("System", StringComparison.Ordinal)
                     && !x.DeclaringType.Assembly.FullName.StartsWith("mscorlib", StringComparison.Ordinal)

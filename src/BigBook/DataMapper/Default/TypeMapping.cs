@@ -24,10 +24,10 @@ namespace BigBook.DataMapper.Default
     /// <summary>
     /// Type mapping default class
     /// </summary>
-    /// <typeparam name="Left">The type of the eft.</typeparam>
-    /// <typeparam name="Right">The type of the ight.</typeparam>
+    /// <typeparam name="TLeft">The type of the eft.</typeparam>
+    /// <typeparam name="TRight">The type of the ight.</typeparam>
     /// <seealso cref="BigBook.DataMapper.BaseClasses.TypeMappingBase{Left, Right}"/>
-    public class TypeMapping<Left, Right> : TypeMappingBase<Left, Right>
+    public class TypeMapping<TLeft, TRight> : TypeMappingBase<TLeft, TRight>
     {
         /// <summary>
         /// Adds a mapping
@@ -35,9 +35,9 @@ namespace BigBook.DataMapper.Default
         /// <param name="leftExpression">Left expression</param>
         /// <param name="rightExpression">Right expression</param>
         /// <returns>This</returns>
-        public override ITypeMapping<Left, Right> AddMapping(Expression<Func<Left, object>> leftExpression, Expression<Func<Right, object>> rightExpression)
+        public override ITypeMapping<TLeft, TRight> AddMapping(Expression<Func<TLeft, object>> leftExpression, Expression<Func<TRight, object>> rightExpression)
         {
-            Mappings.Add(new Mapping<Left, Right>(leftExpression, rightExpression));
+            Mappings.Add(new Mapping<TLeft, TRight>(leftExpression, rightExpression));
             return this;
         }
 
@@ -48,9 +48,9 @@ namespace BigBook.DataMapper.Default
         /// <param name="leftSet">Left set action</param>
         /// <param name="rightExpression">Right expression</param>
         /// <returns>This</returns>
-        public override ITypeMapping<Left, Right> AddMapping(Func<Left, object> leftGet, Action<Left, object> leftSet, Expression<Func<Right, object>> rightExpression)
+        public override ITypeMapping<TLeft, TRight> AddMapping(Func<TLeft, object> leftGet, Action<TLeft, object> leftSet, Expression<Func<TRight, object>> rightExpression)
         {
-            Mappings.Add(new Mapping<Left, Right>(leftGet, leftSet, rightExpression));
+            Mappings.Add(new Mapping<TLeft, TRight>(leftGet, leftSet, rightExpression));
             return this;
         }
 
@@ -61,9 +61,9 @@ namespace BigBook.DataMapper.Default
         /// <param name="rightGet">Right get function</param>
         /// <param name="rightSet">Right set function</param>
         /// <returns>This</returns>
-        public override ITypeMapping<Left, Right> AddMapping(Expression<Func<Left, object>> leftExpression, Func<Right, object> rightGet, Action<Right, object> rightSet)
+        public override ITypeMapping<TLeft, TRight> AddMapping(Expression<Func<TLeft, object>> leftExpression, Func<TRight, object> rightGet, Action<TRight, object> rightSet)
         {
-            Mappings.Add(new Mapping<Left, Right>(leftExpression, rightGet, rightSet));
+            Mappings.Add(new Mapping<TLeft, TRight>(leftExpression, rightGet, rightSet));
             return this;
         }
 
@@ -75,9 +75,9 @@ namespace BigBook.DataMapper.Default
         /// <param name="rightGet">Right get function</param>
         /// <param name="rightSet">Right set function</param>
         /// <returns>This</returns>
-        public override ITypeMapping<Left, Right> AddMapping(Func<Left, object> leftGet, Action<Left, object> leftSet, Func<Right, object> rightGet, Action<Right, object> rightSet)
+        public override ITypeMapping<TLeft, TRight> AddMapping(Func<TLeft, object> leftGet, Action<TLeft, object> leftSet, Func<TRight, object> rightGet, Action<TRight, object> rightSet)
         {
-            Mappings.Add(new Mapping<Left, Right>(leftGet, leftSet, rightGet, rightSet));
+            Mappings.Add(new Mapping<TLeft, TRight>(leftGet, leftSet, rightGet, rightSet));
             return this;
         }
 
@@ -86,7 +86,7 @@ namespace BigBook.DataMapper.Default
         /// </summary>
         /// <param name="source">Source object</param>
         /// <param name="destination">Destination object</param>
-        public override void Copy(Left source, Right destination)
+        public override void Copy(TLeft source, TRight destination)
         {
             foreach (var TempMapping in Mappings)
             {
@@ -99,7 +99,7 @@ namespace BigBook.DataMapper.Default
         /// </summary>
         /// <param name="source">Source object</param>
         /// <param name="destination">Destination object</param>
-        public override void Copy(Right source, Left destination)
+        public override void Copy(TRight source, TLeft destination)
         {
             foreach (var TempMapping in Mappings)
             {
@@ -108,20 +108,20 @@ namespace BigBook.DataMapper.Default
         }
 
         /// <summary>
-        /// Copies from the source to the destination (used in instances when both Left and Right are
-        /// the same type and thus Copy is ambiguous)
+        /// Copies from the source to the destination (used in instances when both Left and Right
+        /// are the same type and thus Copy is ambiguous)
         /// </summary>
         /// <param name="source">Source</param>
         /// <param name="destination">Destination</param>
-        public override void CopyLeftToRight(Left source, Right destination) => Copy(source, destination);
+        public override void CopyLeftToRight(TLeft source, TRight destination) => Copy(source, destination);
 
         /// <summary>
-        /// Copies from the source to the destination (used in instances when both Left and Right are
-        /// the same type and thus Copy is ambiguous)
+        /// Copies from the source to the destination (used in instances when both Left and Right
+        /// are the same type and thus Copy is ambiguous)
         /// </summary>
         /// <param name="source">Source</param>
         /// <param name="destination">Destination</param>
-        public override void CopyRightToLeft(Right source, Left destination) => Copy(source, destination);
+        public override void CopyRightToLeft(TRight source, TLeft destination) => Copy(source, destination);
 
         /// <summary>
         /// Creates the reversed.
@@ -129,10 +129,10 @@ namespace BigBook.DataMapper.Default
         /// <returns>The type mapping</returns>
         public override ITypeMapping CreateReversed()
         {
-            var Result = new TypeMapping<Right, Left>();
+            var Result = new TypeMapping<TRight, TLeft>();
             foreach (var Mapping in Mappings)
             {
-                Result.Mappings.Add((IMapping<Right, Left>)Mapping.CreateReversed());
+                Result.Mappings.Add((IMapping<TRight, TLeft>)Mapping.CreateReversed());
             }
             return Result;
         }

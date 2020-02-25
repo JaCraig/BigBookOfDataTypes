@@ -39,7 +39,7 @@ namespace BigBook
         public static bool Between<T>(this T value, T min, T max, IComparer<T>? comparer = null)
             where T : IComparable
         {
-            comparer ??= new GenericComparer<T>();
+            comparer ??= Canister.Builder.Bootstrapper?.Resolve<GenericComparer<T>>() ?? new GenericComparer<T>();
             return comparer.Compare(max, value) >= 0 && comparer.Compare(value, min) >= 0;
         }
 
@@ -80,7 +80,7 @@ namespace BigBook
         public static T Max<T>(this T inputA, T inputB, IComparer<T>? comparer = null)
             where T : IComparable
         {
-            comparer ??= new GenericComparer<T>();
+            comparer ??= Canister.Builder.Bootstrapper?.Resolve<GenericComparer<T>>() ?? new GenericComparer<T>();
             return comparer.Compare(inputA, inputB) < 0 ? inputB : inputA;
         }
 
@@ -95,7 +95,7 @@ namespace BigBook
         public static T Min<T>(this T inputA, T inputB, IComparer<T>? comparer = null)
             where T : IComparable
         {
-            comparer ??= new GenericComparer<T>();
+            comparer ??= Canister.Builder.Bootstrapper?.Resolve<GenericComparer<T>>() ?? new GenericComparer<T>();
             return comparer.Compare(inputA, inputB) > 0 ? inputB : inputA;
         }
     }

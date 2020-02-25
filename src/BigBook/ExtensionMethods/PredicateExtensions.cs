@@ -35,12 +35,12 @@ namespace BigBook
         /// <returns>The resulting predicate set</returns>
         public static Predicate<T>? AddToSet<T>(this Predicate<T> predicate, params T[] values)
         {
-            if (predicate == null)
+            if (predicate is null)
             {
                 return null;
             }
 
-            if (values == null || values.Length == 0)
+            if (values is null || values.Length == 0)
             {
                 return predicate;
             }
@@ -58,7 +58,7 @@ namespace BigBook
         /// <returns>The cartesian product</returns>
         public static Func<T1, T2, bool>? CartesianProduct<T1, T2>(this Predicate<T1> predicate1, Predicate<T2> predicate2)
         {
-            if (predicate1 == null || predicate2 == null)
+            if (predicate1 is null || predicate2 is null)
             {
                 return null;
             }
@@ -75,12 +75,12 @@ namespace BigBook
         /// <returns>The difference of the two predicates</returns>
         public static Predicate<T>? Difference<T>(this Predicate<T> predicate1, Predicate<T> predicate2)
         {
-            if (predicate1 == null)
+            if (predicate1 is null)
             {
                 return null;
             }
 
-            if (predicate2 == null)
+            if (predicate2 is null)
             {
                 return predicate1;
             }
@@ -97,7 +97,7 @@ namespace BigBook
         /// <returns>The intersected predicate</returns>
         public static Predicate<T>? Intersect<T>(this Predicate<T> predicate1, Predicate<T> predicate2)
         {
-            if (predicate1 == null || predicate2 == null)
+            if (predicate1 is null || predicate2 is null)
             {
                 return null;
             }
@@ -114,7 +114,7 @@ namespace BigBook
         /// <returns>The relative complement</returns>
         public static Predicate<T>? RelativeComplement<T>(this Predicate<T> predicate1, Predicate<T> predicate2)
         {
-            if (predicate1 == null || predicate2 == null)
+            if (predicate1 is null || predicate2 is null)
             {
                 return null;
             }
@@ -131,12 +131,12 @@ namespace BigBook
         /// <returns>The resulting set</returns>
         public static Predicate<T>? RemoveFromSet<T>(this Predicate<T> predicate, params T[] values)
         {
-            if (predicate == null)
+            if (predicate is null)
             {
                 return null;
             }
 
-            if (values == null)
+            if (values is null)
             {
                 return predicate;
             }
@@ -153,12 +153,12 @@ namespace BigBook
         /// <returns>The unioned predicate</returns>
         public static Predicate<T> Union<T>(this Predicate<T> predicate1, Predicate<T> predicate2)
         {
-            if (predicate1 == null)
+            if (predicate1 is null)
             {
                 return predicate2;
             }
 
-            if (predicate2 == null)
+            if (predicate2 is null)
             {
                 return predicate1;
             }

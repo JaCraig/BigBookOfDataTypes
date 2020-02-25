@@ -100,10 +100,7 @@ namespace BigBook
         /// <param name="left">The left.</param>
         /// <param name="right">The right.</param>
         /// <returns>The result.</returns>
-        public static DateSpan? Add(DateSpan? left, DateSpan? right)
-        {
-            return left + right;
-        }
+        public static DateSpan? Add(DateSpan? left, DateSpan? right) => left + right;
 
         /// <summary>
         /// Converts the object to a string

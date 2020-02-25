@@ -83,10 +83,7 @@ namespace BigBook
         /// <param name="left">The left.</param>
         /// <param name="right">The right.</param>
         /// <returns>The results</returns>
-        public static Matrix Add(Matrix left, Matrix right)
-        {
-            return left + right;
-        }
+        public static Matrix Add(Matrix left, Matrix right) => left + right;
 
         /// <summary>
         /// Divides the specified values.
@@ -94,10 +91,7 @@ namespace BigBook
         /// <param name="left">The left.</param>
         /// <param name="right">The right.</param>
         /// <returns>The result</returns>
-        public static Matrix Divide(Matrix left, double right)
-        {
-            return left / right;
-        }
+        public static Matrix Divide(Matrix left, double right) => left / right;
 
         /// <summary>
         /// Multiplies the specified values.
@@ -105,20 +99,14 @@ namespace BigBook
         /// <param name="left">The left.</param>
         /// <param name="right">The right.</param>
         /// <returns>The results</returns>
-        public static Matrix Multiply(Matrix left, Matrix right)
-        {
-            return left * right;
-        }
+        public static Matrix Multiply(Matrix left, Matrix right) => left * right;
 
         /// <summary>
         /// Negates the specified item.
         /// </summary>
         /// <param name="item">The item.</param>
         /// <returns>The result</returns>
-        public static Matrix Negate(Matrix item)
-        {
-            return -item;
-        }
+        public static Matrix Negate(Matrix item) => -item;
 
         /// <summary>
         /// Subtracts two matrices
@@ -352,10 +340,7 @@ namespace BigBook
         /// <param name="left">The left.</param>
         /// <param name="right">The right.</param>
         /// <returns>The results</returns>
-        public static Matrix Subtract(Matrix left, Matrix right)
-        {
-            return left - right;
-        }
+        public static Matrix Subtract(Matrix left, Matrix right) => left - right;
 
         /// <summary>
         /// Gets the determinant of a square matrix
@@ -407,11 +392,7 @@ namespace BigBook
         /// </summary>
         /// <param name="obj">Object to check</param>
         /// <returns>True if they are, false otherwise</returns>
-        public override bool Equals(object obj)
-        {
-            var Tempobj = obj as Matrix;
-            return Tempobj != null && this == Tempobj;
-        }
+        public override bool Equals(object obj) => obj is Matrix Tempobj && this == Tempobj;
 
         /// <summary>
         /// Gets the hash code for the object

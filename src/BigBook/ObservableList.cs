@@ -140,7 +140,7 @@ namespace BigBook
         {
             add
             {
-                if (collectionChanged_ != null)
+                if (!(collectionChanged_ is null))
                 {
                     collectionChanged_ -= value;
                 }
@@ -162,7 +162,7 @@ namespace BigBook
         {
             add
             {
-                if (propertyChanged_ != null)
+                if (!(propertyChanged_ is null))
                 {
                     propertyChanged_ -= value;
                 }

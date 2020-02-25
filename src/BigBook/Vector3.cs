@@ -79,10 +79,7 @@ namespace BigBook
         /// <param name="left">The left.</param>
         /// <param name="right">The right.</param>
         /// <returns>The results</returns>
-        public static Vector3 Add(Vector3 left, Vector3 right)
-        {
-            return left + right;
-        }
+        public static Vector3 Add(Vector3 left, Vector3 right) => left + right;
 
         /// <summary>
         /// Determines the angle between the vectors
@@ -118,10 +115,7 @@ namespace BigBook
         /// <param name="left">The left.</param>
         /// <param name="right">The right.</param>
         /// <returns>The result</returns>
-        public static Vector3 Divide(Vector3 left, double right)
-        {
-            return left / right;
-        }
+        public static Vector3 Divide(Vector3 left, double right) => left / right;
 
         /// <summary>
         /// Does a dot product
@@ -161,20 +155,14 @@ namespace BigBook
         /// <param name="left">The left.</param>
         /// <param name="right">The right.</param>
         /// <returns>The result</returns>
-        public static Vector3 Multiply(Vector3 left, Vector3 right)
-        {
-            return left * right;
-        }
+        public static Vector3 Multiply(Vector3 left, Vector3 right) => left * right;
 
         /// <summary>
         /// Negates the specified item.
         /// </summary>
         /// <param name="item">The item.</param>
         /// <returns>The result.</returns>
-        public static Vector3 Negate(Vector3 item)
-        {
-            return -item;
-        }
+        public static Vector3 Negate(Vector3 item) => -item;
 
         /// <summary>
         /// Subtraction
@@ -352,10 +340,7 @@ namespace BigBook
         /// <param name="left">The left.</param>
         /// <param name="right">The right.</param>
         /// <returns>The resulting vector</returns>
-        public static Vector3 Subtract(Vector3 left, Vector3 right)
-        {
-            return left - right;
-        }
+        public static Vector3 Subtract(Vector3 left, Vector3 right) => left - right;
 
         /// <summary>
         /// Compares the two vectors.

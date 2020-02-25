@@ -123,10 +123,7 @@ namespace BigBook
         /// </summary>
         /// <param name="item">Key value pair to check</param>
         /// <returns>True if it exists, false otherwise</returns>
-        public bool Contains(KeyValuePair<int, ICollection<T>> item)
-        {
-            return ContainsKey(item.Key) && Contains(item.Key, item.Value);
-        }
+        public bool Contains(KeyValuePair<int, ICollection<T>> item) => ContainsKey(item.Key) && Contains(item.Key, item.Value);
 
         /// <summary>
         /// Does the list mapping contain the key value pairs?
@@ -158,10 +155,7 @@ namespace BigBook
         /// <param name="key">Key</param>
         /// <param name="value">Value</param>
         /// <returns>True if it exists, false otherwise</returns>
-        public bool Contains(int key, T value)
-        {
-            return ContainsKey(key) && this[key].Contains(value);
-        }
+        public bool Contains(int key, T value) => ContainsKey(key) && this[key].Contains(value);
 
         /// <summary>
         /// Determines if a key exists
@@ -206,10 +200,7 @@ namespace BigBook
         /// </summary>
         /// <returns>The next item in queue or default(T) if it is empty</returns>
         [return: MaybeNull]
-        public T Peek()
-        {
-            return Items.ContainsKey(HighestKey) ? Items[HighestKey].FirstOrDefault() : (default);
-        }
+        public T Peek() => Items.ContainsKey(HighestKey) ? Items[HighestKey].FirstOrDefault() : (default);
 
         /// <summary>
         /// Removes an item from the queue and returns it

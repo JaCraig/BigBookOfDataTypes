@@ -25,8 +25,8 @@ namespace BigBook.Conversion.BaseClasses
     /// <summary>
     /// Type converter base class
     /// </summary>
-    /// <typeparam name="T">Converter type</typeparam>
-    public abstract class TypeConverterBase<T> : TypeConverter, IConverter
+    /// <typeparam name="TConverter">Converter type</typeparam>
+    public abstract class TypeConverterBase<TConverter> : TypeConverter, IConverter
     {
         /// <summary>
         /// Constructor
@@ -35,7 +35,7 @@ namespace BigBook.Conversion.BaseClasses
         {
             ConvertToTypes = new Dictionary<Type, Func<object, object>>();
             ConvertFromTypes = new Dictionary<Type, Func<object, object>>();
-            AssociatedType = typeof(T);
+            AssociatedType = typeof(TConverter);
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace BigBook.Conversion.BaseClasses
         /// <returns>The DbType version</returns>
         public override object? ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
         {
-            if (value == null)
+            if (value is null)
             {
                 return null;
             }
@@ -107,7 +107,7 @@ namespace BigBook.Conversion.BaseClasses
         /// <returns></returns>
         public override object? ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
         {
-            if (value == null)
+            if (value is null)
             {
                 return null;
             }

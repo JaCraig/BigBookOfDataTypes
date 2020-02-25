@@ -27,7 +27,7 @@ namespace BigBook.Queryable
     /// Reusable query class
     /// </summary>
     /// <typeparam name="T">Element type</typeparam>
-    public class Query<T> :  IEnumerable, IOrderedQueryable<T>, IOrderedQueryable
+    public class Query<T> : IEnumerable, IOrderedQueryable<T>, IOrderedQueryable
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Query{T}"/> class.
@@ -49,7 +49,7 @@ namespace BigBook.Queryable
         /// <exception cref="System.ArgumentOutOfRangeException">expression</exception>
         public Query(QueryProviderBase provider, Expression expression)
         {
-            if (expression == null)
+            if (expression is null)
             {
                 throw new ArgumentNullException(nameof(expression));
             }

@@ -88,7 +88,7 @@ namespace BigBook
         {
             get
             {
-                if (Root == null)
+                if (Root is null)
                 {
                     Interlocked.CompareExchange(ref Root, new object(), null);
                 }
@@ -174,7 +174,7 @@ namespace BigBook
         /// <param name="items">Items to add</param>
         public void Add(IEnumerable<T> items)
         {
-            if (items == null)
+            if (items is null)
             {
                 return;
             }

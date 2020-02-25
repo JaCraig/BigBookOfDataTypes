@@ -117,8 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BaseStreamCurrentlyNullError" xml:space="preserve">
+    <value>Base stream is currently null.</value>
+  </data>
   <data name="DenominatorIntMinError" xml:space="preserve">
     <value>denominator can't be int.MinValue</value>
+  </data>
+  <data name="FormatPatternIsNotValidError" xml:space="preserve">
+    <value>FormatPattern is not valid</value>
+  </data>
+  <data name="Invalid7bitIntInStreamError" xml:space="preserve">
+    <value>Invalid 7-bit encoded integer in stream.</value>
   </data>
   <data name="MatrixNotSameSizeError" xml:space="preserve">
     <value>Both matrices must be the same dimensions.</value>
@@ -131,5 +140,11 @@
   </data>
   <data name="RingBufferFullError" xml:space="preserve">
     <value>Unable to add item to circular buffer because the buffer is full</value>
+  </data>
+  <data name="StreamNotReadableError" xml:space="preserve">
+    <value>Stream is not readable</value>
+  </data>
+  <data name="StreamNotWritableError" xml:space="preserve">
+    <value>Stream is not writable</value>
   </data>
 </root>

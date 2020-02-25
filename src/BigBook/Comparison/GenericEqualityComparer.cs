@@ -23,8 +23,8 @@ namespace BigBook.Comparison
     /// <summary>
     /// Generic equality comparer
     /// </summary>
-    /// <typeparam name="T">Data type</typeparam>
-    public class GenericEqualityComparer<T> : IEqualityComparer<T>
+    /// <typeparam name="TData">Data type</typeparam>
+    public class GenericEqualityComparer<TData> : IEqualityComparer<TData>
     {
         /// <summary>
         /// Determines if the two items are equal
@@ -32,19 +32,19 @@ namespace BigBook.Comparison
         /// <param name="x">Object 1</param>
         /// <param name="y">Object 2</param>
         /// <returns>True if they are, false otherwise</returns>
-        public bool Equals(T x, T y)
+        public bool Equals(TData x, TData y)
         {
-            var TypeInfo = typeof(T);
+            var TypeInfo = typeof(TData);
             if (!TypeInfo.IsValueType
                 || (TypeInfo.IsGenericType
                 && TypeInfo.GetGenericTypeDefinition().IsAssignableFrom(typeof(Nullable<>))))
             {
-                if (object.Equals(x, default(T)!))
+                if (object.Equals(x, default(TData)!))
                 {
-                    return object.Equals(y, default(T)!);
+                    return object.Equals(y, default(TData)!);
                 }
 
-                if (object.Equals(y, default(T)!))
+                if (object.Equals(y, default(TData)!))
                 {
                     return false;
                 }
@@ -74,12 +74,12 @@ namespace BigBook.Comparison
                     }
                 }
             }
-            if (x is IEqualityComparer<T> TempEquality)
+            if (x is IEqualityComparer<TData> TempEquality)
             {
                 return TempEquality.Equals(y);
             }
 
-            if (x is IComparable<T> TempComparable)
+            if (x is IComparable<TData> TempComparable)
             {
                 return TempComparable.CompareTo(y) == 0;
             }
@@ -97,6 +97,6 @@ namespace BigBook.Comparison
         /// </summary>
         /// <param name="obj">Object to get the hash code of</param>
         /// <returns>The object's hash code</returns>
-        public int GetHashCode(T obj) => obj?.GetHashCode() ?? -1;
+        public int GetHashCode(TData obj) => obj?.GetHashCode() ?? -1;
     }
 }

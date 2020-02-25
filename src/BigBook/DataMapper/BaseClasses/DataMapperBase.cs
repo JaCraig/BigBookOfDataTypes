@@ -46,10 +46,10 @@ namespace BigBook.DataMapper.BaseClasses
         /// <summary>
         /// Adds or returns a mapping between two types
         /// </summary>
-        /// <typeparam name="Left">Left type</typeparam>
-        /// <typeparam name="Right">Right type</typeparam>
+        /// <typeparam name="TLeft">Left type</typeparam>
+        /// <typeparam name="TRight">Right type</typeparam>
         /// <returns>A mapping object for the two types specified</returns>
-        public ITypeMapping<Left, Right> Map<Left, Right>() => (ITypeMapping<Left, Right>)Map(typeof(Left), typeof(Right));
+        public ITypeMapping<TLeft, TRight> Map<TLeft, TRight>() => (ITypeMapping<TLeft, TRight>)Map(typeof(TLeft), typeof(TRight));
 
         /// <summary>
         /// Adds or returns a mapping between two types
@@ -85,10 +85,10 @@ namespace BigBook.DataMapper.BaseClasses
         /// <summary>
         /// Used internally to create type mappings
         /// </summary>
-        /// <typeparam name="Left">Left type</typeparam>
-        /// <typeparam name="Right">Right type</typeparam>
+        /// <typeparam name="TLeft">Left type</typeparam>
+        /// <typeparam name="TRight">Right type</typeparam>
         /// <returns>A mapping object for the two types specified</returns>
-        protected abstract ITypeMapping<Left, Right> CreateTypeMapping<Left, Right>();
+        protected abstract ITypeMapping<TLeft, TRight> CreateTypeMapping<TLeft, TRight>();
 
         /// <summary>
         /// Used internally to create type mappings

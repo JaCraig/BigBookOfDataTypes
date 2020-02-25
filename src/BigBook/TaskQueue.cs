@@ -141,7 +141,7 @@ namespace BigBook
         /// </param>
         protected override void Dispose(bool disposing)
         {
-            if (Tasks != null)
+            if (!(Tasks is null))
             {
                 Cancel(true);
                 Tasks = null;
@@ -165,7 +165,7 @@ namespace BigBook
         /// </summary>
         private void Process()
         {
-            if (CancellationToken == null || ProcessItem == null)
+            if (CancellationToken is null || ProcessItem is null)
             {
                 return;
             }
@@ -202,7 +202,7 @@ namespace BigBook
         /// <param name="capacity">The capacity.</param>
         private void StartTasks(int capacity)
         {
-            if (Tasks == null)
+            if (Tasks is null)
                 return;
             for (var x = 0; x < capacity; ++x)
             {

@@ -1,9 +1,10 @@
-﻿using System;
+﻿using BigBook.Tests.BaseClasses;
+using System;
 using Xunit;
 
 namespace BigBook.Tests.ExtensionMethods
 {
-    public class DateTimeExtensionTests
+    public class DateTimeExtensionTests : TestingDirectoryFixture
     {
         [Fact]
         public void AddWeeks() => Assert.Equal(new DateTime(2009, 1, 15, 2, 3, 4), new DateTime(2009, 1, 1, 2, 3, 4).AddWeeks(2));

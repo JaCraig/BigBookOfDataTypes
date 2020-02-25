@@ -131,15 +131,14 @@ namespace BigBook.Caching.Default
         /// <param name="Managed">Managed objects or just unmanaged</param>
         protected override void Dispose(bool Managed)
         {
-            if (InternalCache != null)
+            if (InternalCache is null)
+                return;
+            foreach (var Item in InternalCache.Values.OfType<IDisposable>())
             {
-                foreach (var Item in InternalCache.Values.OfType<IDisposable>())
-                {
-                    Item.Dispose();
-                }
-                InternalCache.Clear();
-                InternalCache = null;
+                Item.Dispose();
             }
+            InternalCache.Clear();
+            InternalCache = null;
         }
     }
 }

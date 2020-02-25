@@ -61,11 +61,38 @@ namespace BigBook.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Base stream is currently null..
+        /// </summary>
+        internal static string BaseStreamCurrentlyNullError {
+            get {
+                return ResourceManager.GetString("BaseStreamCurrentlyNullError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to denominator can&apos;t be int.MinValue.
         /// </summary>
         internal static string DenominatorIntMinError {
             get {
                 return ResourceManager.GetString("DenominatorIntMinError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FormatPattern is not valid.
+        /// </summary>
+        internal static string FormatPatternIsNotValidError {
+            get {
+                return ResourceManager.GetString("FormatPatternIsNotValidError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid 7-bit encoded integer in stream..
+        /// </summary>
+        internal static string Invalid7bitIntInStreamError {
+            get {
+                return ResourceManager.GetString("Invalid7bitIntInStreamError", resourceCulture);
             }
         }
         
@@ -102,6 +129,24 @@ namespace BigBook.Properties {
         internal static string RingBufferFullError {
             get {
                 return ResourceManager.GetString("RingBufferFullError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stream is not readable.
+        /// </summary>
+        internal static string StreamNotReadableError {
+            get {
+                return ResourceManager.GetString("StreamNotReadableError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stream is not writable.
+        /// </summary>
+        internal static string StreamNotWritableError {
+            get {
+                return ResourceManager.GetString("StreamNotWritableError", resourceCulture);
             }
         }
     }

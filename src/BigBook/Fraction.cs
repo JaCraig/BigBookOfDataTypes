@@ -126,10 +126,7 @@ namespace BigBook
         /// <param name="left">The left.</param>
         /// <param name="right">The right.</param>
         /// <returns>The result</returns>
-        public static Fraction Add(Fraction left, Fraction right)
-        {
-            return left + right;
-        }
+        public static Fraction Add(Fraction left, Fraction right) => left + right;
 
         /// <summary>
         /// Divides the specified values.
@@ -137,10 +134,7 @@ namespace BigBook
         /// <param name="left">The left.</param>
         /// <param name="right">The right.</param>
         /// <returns>The result</returns>
-        public static Fraction Divide(Fraction left, Fraction right)
-        {
-            return left / right;
-        }
+        public static Fraction Divide(Fraction left, Fraction right) => left / right;
 
         /// <summary>
         /// Converts the fraction to a decimal
@@ -247,20 +241,14 @@ namespace BigBook
         /// <param name="left">The left.</param>
         /// <param name="right">The right.</param>
         /// <returns>The result</returns>
-        public static Fraction Multiply(Fraction left, Fraction right)
-        {
-            return left * right;
-        }
+        public static Fraction Multiply(Fraction left, Fraction right) => left * right;
 
         /// <summary>
         /// Negates the specified item.
         /// </summary>
         /// <param name="item">The item.</param>
         /// <returns>The result</returns>
-        public static Fraction Negate(Fraction item)
-        {
-            return -item;
-        }
+        public static Fraction Negate(Fraction item) => -item;
 
         /// <summary>
         /// Subtraction
@@ -455,55 +443,37 @@ namespace BigBook
         /// <param name="left">The left.</param>
         /// <param name="right">The right.</param>
         /// <returns>The result</returns>
-        public static Fraction Subtract(Fraction left, Fraction right)
-        {
-            return left - right;
-        }
+        public static Fraction Subtract(Fraction left, Fraction right) => left - right;
 
         /// <summary>
         /// Converts to fraction.
         /// </summary>
         /// <returns>The value as a fraction.</returns>
-        public static Fraction ToFraction(double value)
-        {
-            return value;
-        }
+        public static Fraction ToFraction(double value) => value;
 
         /// <summary>
         /// Converts to fraction.
         /// </summary>
         /// <returns>The value as a fraction.</returns>
-        public static Fraction ToFraction(float value)
-        {
-            return value;
-        }
+        public static Fraction ToFraction(float value) => value;
 
         /// <summary>
         /// Converts to fraction.
         /// </summary>
         /// <returns>The value as a fraction.</returns>
-        public static Fraction ToFraction(decimal value)
-        {
-            return value;
-        }
+        public static Fraction ToFraction(decimal value) => value;
 
         /// <summary>
         /// Converts to fraction.
         /// </summary>
         /// <returns>The value as a fraction.</returns>
-        public static Fraction ToFraction(int value)
-        {
-            return value;
-        }
+        public static Fraction ToFraction(int value) => value;
 
         /// <summary>
         /// Converts to fraction.
         /// </summary>
         /// <returns>The value as a fraction.</returns>
-        public static Fraction ToFraction(uint value)
-        {
-            return value;
-        }
+        public static Fraction ToFraction(uint value) => value;
 
         /// <summary>
         /// Determines if the fractions are equal
@@ -562,28 +532,19 @@ namespace BigBook
         /// Converts to decimal.
         /// </summary>
         /// <returns>The decimal value.</returns>
-        public decimal ToDecimal()
-        {
-            return this;
-        }
+        public decimal ToDecimal() => this;
 
         /// <summary>
         /// Converts to double.
         /// </summary>
         /// <returns>The value as a double</returns>
-        public double ToDouble()
-        {
-            return this;
-        }
+        public double ToDouble() => this;
 
         /// <summary>
         /// Converts to single.
         /// </summary>
         /// <returns>The value as a single.</returns>
-        public float ToSingle()
-        {
-            return this;
-        }
+        public float ToSingle() => this;
 
         /// <summary>
         /// Displays the fraction as a string

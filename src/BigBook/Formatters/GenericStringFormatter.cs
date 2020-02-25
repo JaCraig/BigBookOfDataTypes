@@ -68,7 +68,7 @@ namespace BigBook.Formatters
         /// <param name="arg">Argument object to use</param>
         /// <param name="formatProvider">Format provider to use</param>
         /// <returns>The formatted string</returns>
-        public string Format(string format, object arg, IFormatProvider formatProvider) => Format(arg.ToString(), format);
+        public string Format(string format, object arg, IFormatProvider formatProvider) => Format(arg?.ToString() ?? "", format);
 
         /// <summary>
         /// Formats the string based on the pattern
@@ -76,11 +76,11 @@ namespace BigBook.Formatters
         /// <param name="input">Input string</param>
         /// <param name="formatPattern">Format pattern</param>
         /// <returns>The formatted string</returns>
-        public string Format(string input, string formatPattern)
+        public string Format(string? input, string formatPattern)
         {
             if (!IsValid(formatPattern))
             {
-                throw new ArgumentException("FormatPattern is not valid");
+                throw new ArgumentException(Properties.Resources.FormatPatternIsNotValidError);
             }
 
             var ReturnValue = new StringBuilder();
@@ -117,7 +117,7 @@ namespace BigBook.Formatters
         /// <param name="formatChar">Current format character</param>
         /// <param name="matchChar">The matching character found</param>
         /// <returns>The remainder of the input string left</returns>
-        protected string GetMatchingInput(string input, char formatChar, out char matchChar)
+        protected string? GetMatchingInput(string? input, char formatChar, out char matchChar)
         {
             var Digit = formatChar == DigitChar;
             var Alpha = formatChar == AlphaChar;
@@ -128,7 +128,7 @@ namespace BigBook.Formatters
             }
             var Index = 0;
             matchChar = char.MinValue;
-            for (var x = 0; x < input.Length; ++x)
+            for (var x = 0; x < input?.Length; ++x)
             {
                 if ((Digit && char.IsDigit(input[x])) || (Alpha && char.IsLetter(input[x])))
                 {
@@ -137,7 +137,7 @@ namespace BigBook.Formatters
                     break;
                 }
             }
-            return input.Substring(Index);
+            return input?.Substring(Index);
         }
 
         /// <summary>

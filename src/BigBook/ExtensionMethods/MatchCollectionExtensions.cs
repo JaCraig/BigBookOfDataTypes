@@ -35,7 +35,7 @@ namespace BigBook
         /// <returns>The matches that satisfy the predicate</returns>
         public static IEnumerable<Match> Where(this MatchCollection collection, Predicate<Match> predicate)
         {
-            if (predicate == null || collection == null)
+            if (predicate is null || collection is null)
             {
                 yield break;
             }

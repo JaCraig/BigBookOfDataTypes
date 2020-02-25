@@ -241,7 +241,7 @@ namespace BigBook
         /// <returns>This</returns>
         public Vertex<T> RemoveEdge(Edge<T> edge)
         {
-            if (edge == null)
+            if (edge is null)
                 return this;
             if (edge.Sink == this)
             {
