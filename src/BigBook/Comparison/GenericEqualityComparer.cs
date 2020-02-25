@@ -56,7 +56,7 @@ namespace BigBook.Comparison
 
             if (x is IEnumerable IEnumerablex && y is IEnumerable IEnumerabley)
             {
-                var Comparer = new GenericEqualityComparer<object>();
+                var Comparer = Canister.Builder.Bootstrapper?.Resolve<GenericEqualityComparer<object>>() ?? new GenericEqualityComparer<object>();
                 var XEnumerator = IEnumerablex.GetEnumerator();
                 var YEnumerator = IEnumerabley.GetEnumerator();
                 while (true)

@@ -81,7 +81,7 @@ namespace BigBook
                 yield break;
             }
 
-            var TempGenericComparer = new GenericEqualityComparer<T>();
+            var TempGenericComparer = Canister.Builder.Bootstrapper?.Resolve<GenericEqualityComparer<T>>() ?? new GenericEqualityComparer<T>();
             predicate ??= TempGenericComparer.Equals;
             var Results = new List<T>();
             foreach (var Item in enumerable)
@@ -542,7 +542,7 @@ namespace BigBook
                 return Array.Empty<R>();
             }
 
-            comparer ??= new GenericEqualityComparer<Key>();
+            comparer ??= Canister.Builder.Bootstrapper?.Resolve<GenericEqualityComparer<Key>>() ?? new GenericEqualityComparer<Key>();
             return outer.ForEach(x => new { left = x, right = inner.FirstOrDefault(y => comparer.Equals(innerKeySelector(y), outerKeySelector(x))) })
                         .ForEach(x => resultSelector(x.left, x.right));
         }
@@ -599,7 +599,7 @@ namespace BigBook
                 return -1;
             }
 
-            equalityComparer ??= new GenericEqualityComparer<T>();
+            equalityComparer ??= Canister.Builder.Bootstrapper?.Resolve<GenericEqualityComparer<T>>() ?? new GenericEqualityComparer<T>();
             var Count = 0;
             foreach (var TempItem in list)
             {
@@ -642,7 +642,7 @@ namespace BigBook
                 return Array.Empty<R>();
             }
 
-            comparer ??= new GenericEqualityComparer<Key>();
+            comparer ??= Canister.Builder.Bootstrapper?.Resolve<GenericEqualityComparer<Key>>() ?? new GenericEqualityComparer<Key>();
             return inner.ForEach(x => new { left = outer.FirstOrDefault(y => comparer.Equals(innerKeySelector(x), outerKeySelector(y))), right = x })
                         .ForEach(x => resultSelector(x.left, x.right));
         }
