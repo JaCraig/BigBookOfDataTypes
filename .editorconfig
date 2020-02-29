@@ -231,3 +231,9 @@ dotnet_diagnostic.CA1720.severity = none
 
 # CA1714: Flags enums should have plural names
 dotnet_diagnostic.CA1714.severity = none
+
+# CA1030: Use events where appropriate
+dotnet_diagnostic.CA1030.severity = none
+
+# CA2214: Do not call overridable methods in constructors
+dotnet_diagnostic.CA2214.severity = none

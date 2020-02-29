@@ -11,25 +11,25 @@ namespace BigBook.Benchmarks.Tests
         [Benchmark]
         public void IsAssignableTest()
         {
-            var Result = Data.GetType().IsAssignableFrom(typeof(ITestClass[]));
+            _ = Data.GetType().IsAssignableFrom(typeof(ITestClass[]));
         }
 
         [Benchmark]
         public void IsMethodTest()
         {
-            var Result = Data.Is<ITestClass[]>();
+            _ = Data.Is<ITestClass[]>();
         }
 
         [Benchmark(Baseline = true)]
         public void IsTest()
         {
-            var Result = Data is ITestClass[];
+            _ = Data is ITestClass[];
         }
 
         [Benchmark]
         public void IsTypeTest()
         {
-            var Result = Data.GetType().Is<ITestClass[]>();
+            _ = Data.GetType().Is<ITestClass[]>();
         }
 
         [GlobalSetup]

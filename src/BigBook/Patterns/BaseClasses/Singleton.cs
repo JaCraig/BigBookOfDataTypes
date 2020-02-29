@@ -32,7 +32,14 @@ namespace BigBook.Patterns.BaseClasses
         {
         }
 
+        /// <summary>
+        /// The temporary lock object
+        /// </summary>
         private static readonly object Temp = 1;
+
+        /// <summary>
+        /// The instance
+        /// </summary>
         private static T? _Instance;
 
         /// <summary>

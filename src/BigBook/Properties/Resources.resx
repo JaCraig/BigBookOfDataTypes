@@ -147,4 +147,10 @@
   <data name="StreamNotWritableError" xml:space="preserve">
     <value>Stream is not writable</value>
   </data>
+  <data name="ValueCanNotBeMin" xml:space="preserve">
+    <value>value can not be MinValue</value>
+  </data>
+  <data name="ValueCantBeValue" xml:space="preserve">
+    <value>value can not be 2147483648</value>
+  </data>
 </root>

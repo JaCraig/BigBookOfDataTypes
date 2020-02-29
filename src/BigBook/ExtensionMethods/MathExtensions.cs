@@ -58,7 +58,7 @@ namespace BigBook
         {
             if (value == int.MinValue)
             {
-                throw new ArgumentOutOfRangeException(nameof(value), "value can not be int.MinValue");
+                throw new ArgumentOutOfRangeException(nameof(value), Properties.Resources.ValueCanNotBeMin);
             }
 
             return Math.Abs(value);
@@ -71,9 +71,9 @@ namespace BigBook
         /// <returns>The absolute value</returns>
         public static long Absolute(this long value)
         {
-            if (value == -9223372036854775808)
+            if (value == long.MinValue)
             {
-                throw new ArgumentOutOfRangeException(nameof(value), "value can not be -9223372036854775808");
+                throw new ArgumentOutOfRangeException(nameof(value), Properties.Resources.ValueCanNotBeMin);
             }
 
             return Math.Abs(value);
@@ -86,9 +86,9 @@ namespace BigBook
         /// <returns>The absolute value</returns>
         public static short Absolute(this short value)
         {
-            if (value == -32768)
+            if (value == short.MinValue)
             {
-                throw new ArgumentOutOfRangeException(nameof(value), "value can not be -32768");
+                throw new ArgumentOutOfRangeException(nameof(value), Properties.Resources.ValueCanNotBeMin);
             }
 
             return Math.Abs(value);
@@ -127,12 +127,12 @@ namespace BigBook
         {
             if (value1 == int.MinValue)
             {
-                throw new ArgumentOutOfRangeException(nameof(value1), "value1 can not be int.MinValue");
+                throw new ArgumentOutOfRangeException(nameof(value1), Properties.Resources.ValueCanNotBeMin);
             }
 
             if (value2 == int.MinValue)
             {
-                throw new ArgumentOutOfRangeException(nameof(value2), "value2 can not be int.MinValue");
+                throw new ArgumentOutOfRangeException(nameof(value2), Properties.Resources.ValueCanNotBeMin);
             }
 
             value1 = value1.Absolute();
@@ -161,12 +161,12 @@ namespace BigBook
         {
             if (value1 == int.MinValue)
             {
-                throw new ArgumentOutOfRangeException(nameof(value1), "value1 can not be int.MinValue");
+                throw new ArgumentOutOfRangeException(nameof(value1), Properties.Resources.ValueCanNotBeMin);
             }
 
             if (value2 == 2147483648)
             {
-                throw new ArgumentOutOfRangeException(nameof(value2), "value2 can not be 2147483648");
+                throw new ArgumentOutOfRangeException(nameof(value2), Properties.Resources.ValueCantBeValue);
             }
 
             return value1.GreatestCommonDenominator((int)value2);
@@ -182,12 +182,12 @@ namespace BigBook
         {
             if (value1 == 2147483648)
             {
-                throw new ArgumentOutOfRangeException(nameof(value1), "value1 can not be 2147483648");
+                throw new ArgumentOutOfRangeException(nameof(value1), Properties.Resources.ValueCantBeValue);
             }
 
             if (value2 == 2147483648)
             {
-                throw new ArgumentOutOfRangeException(nameof(value2), "value2 can not be 2147483648");
+                throw new ArgumentOutOfRangeException(nameof(value2), Properties.Resources.ValueCantBeValue);
             }
 
             return ((int)value1).GreatestCommonDenominator((int)value2);
@@ -228,12 +228,7 @@ namespace BigBook
         [return: MaybeNull]
         public static T Median<T>(this IEnumerable<T> values, Func<T, T, T>? average = null, Func<T, T>? orderBy = null)
         {
-            if (values is null)
-            {
-                return default!;
-            }
-
-            if (!values.Any())
+            if (values?.Any() != true)
             {
                 return default!;
             }
@@ -258,12 +253,7 @@ namespace BigBook
         /// <returns>The mode value</returns>
         public static T Mode<T>(this IEnumerable<T> values)
         {
-            if (values is null)
-            {
-                return default!;
-            }
-
-            if (!values.Any())
+            if (values?.Any() != true)
             {
                 return default!;
             }

@@ -508,7 +508,7 @@ namespace BigBook
         /// Not used
         /// </summary>
         /// <returns>Null</returns>
-        public System.Xml.Schema.XmlSchema GetSchema() => null!;
+        public System.Xml.Schema.XmlSchema? GetSchema() => null;
 
         /// <summary>
         /// Reads the data from an XML doc
@@ -516,6 +516,8 @@ namespace BigBook
         /// <param name="reader">XML reader</param>
         public virtual void ReadXml(System.Xml.XmlReader reader)
         {
+            if (reader is null)
+                return;
             SetValue(reader.Name, reader.Value);
             while (reader.Read())
             {
@@ -616,8 +618,13 @@ namespace BigBook
         /// <param name="binder">Convert binder</param>
         /// <param name="result">Result</param>
         /// <returns>True if it is converted, false otherwise</returns>
-        public override bool TryConvert(ConvertBinder binder, out object result)
+        public override bool TryConvert(ConvertBinder binder, out object? result)
         {
+            if (binder is null)
+            {
+                result = null;
+                return false;
+            }
             result = To(binder.Type);
             return true;
         }
@@ -630,6 +637,11 @@ namespace BigBook
         /// <returns>True if it gets the member, false otherwise</returns>
         public override bool TryGetMember(GetMemberBinder binder, out object? result)
         {
+            if (binder is null)
+            {
+                result = null;
+                return false;
+            }
             result = GetValue(binder.Name, binder.ReturnType);
             return true;
         }
@@ -668,6 +680,8 @@ namespace BigBook
         /// <returns>True if it is set, false otherwise</returns>
         public override bool TrySetMember(SetMemberBinder binder, object value)
         {
+            if (binder is null)
+                return false;
             SetValue(binder.Name, value);
             return true;
         }
@@ -678,6 +692,8 @@ namespace BigBook
         /// <param name="writer">XML writer</param>
         public virtual void WriteXml(System.Xml.XmlWriter writer)
         {
+            if (writer is null)
+                return;
             foreach (var Key in Keys)
             {
                 writer.WriteElementString(Key, (string?)GetValue(Key, typeof(string)));

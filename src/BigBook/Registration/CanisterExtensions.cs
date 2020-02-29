@@ -31,9 +31,7 @@ namespace BigBook.Registration
         /// <returns>The bootstrapper</returns>
         public static IBootstrapper? RegisterBigBookOfDataTypes(this IBootstrapper? bootstrapper)
         {
-            if (bootstrapper is null)
-                return bootstrapper;
-            return bootstrapper.AddAssembly(typeof(CanisterExtensions).Assembly)
+            return bootstrapper?.AddAssembly(typeof(CanisterExtensions).Assembly)
                                .RegisterAspectus();
         }
     }

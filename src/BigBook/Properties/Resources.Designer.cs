@@ -149,5 +149,23 @@ namespace BigBook.Properties {
                 return ResourceManager.GetString("StreamNotWritableError", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to value can not be MinValue.
+        /// </summary>
+        internal static string ValueCanNotBeMin {
+            get {
+                return ResourceManager.GetString("ValueCanNotBeMin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to value can not be 2147483648.
+        /// </summary>
+        internal static string ValueCantBeValue {
+            get {
+                return ResourceManager.GetString("ValueCantBeValue", resourceCulture);
+            }
+        }
     }
 }

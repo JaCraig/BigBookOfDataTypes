@@ -182,22 +182,22 @@ namespace BigBook
         /// Does a function for each item in the IEnumerable between the start and end indexes and
         /// returns an IEnumerable of the results
         /// </summary>
-        /// <typeparam name="T">Object type</typeparam>
-        /// <typeparam name="R">Return type</typeparam>
+        /// <typeparam name="TObject">Object type</typeparam>
+        /// <typeparam name="TResult">Return type</typeparam>
         /// <param name="list">IEnumerable to iterate over</param>
         /// <param name="start">Item to start with</param>
         /// <param name="end">Item to end with</param>
         /// <param name="function">Function to do</param>
         /// <returns>The resulting list</returns>
-        public static IEnumerable<R> For<T, R>(this IEnumerable<T> list, int start, int end, Func<T, int, R> function)
+        public static IEnumerable<TResult> For<TObject, TResult>(this IEnumerable<TObject> list, int start, int end, Func<TObject, int, TResult> function)
         {
             if (list is null || function is null || !list.Any())
             {
-                return Array.Empty<R>();
+                return Array.Empty<TResult>();
             }
 
             var TempList = list.ElementsBetween(start, end + 1).ToArray();
-            var ReturnList = new R[TempList.Length];
+            var ReturnList = new TResult[TempList.Length];
             for (var x = 0; x < TempList.Length; ++x)
             {
                 ReturnList[x] = function(TempList[x], x);
@@ -235,19 +235,19 @@ namespace BigBook
         /// <summary>
         /// Does a function for each item in the IEnumerable, returning a list of the results
         /// </summary>
-        /// <typeparam name="T">Object type</typeparam>
-        /// <typeparam name="R">Return type</typeparam>
+        /// <typeparam name="TObject">Object type</typeparam>
+        /// <typeparam name="TResult">Return type</typeparam>
         /// <param name="list">IEnumerable to iterate over</param>
         /// <param name="function">Function to do</param>
         /// <returns>The resulting list</returns>
-        public static IEnumerable<R> ForEach<T, R>(this IEnumerable<T> list, Func<T, R> function)
+        public static IEnumerable<TResult> ForEach<TObject, TResult>(this IEnumerable<TObject> list, Func<TObject, TResult> function)
         {
             if (list is null || function is null || !list.Any())
             {
-                return Array.Empty<R>();
+                return Array.Empty<TResult>();
             }
 
-            var ReturnList = new List<R>(list.Count());
+            var ReturnList = new List<TResult>(list.Count());
             foreach (var Item in list)
             {
                 ReturnList.Add(function(Item));
@@ -290,20 +290,20 @@ namespace BigBook
         /// <summary>
         /// Does a function for each item in the IEnumerable, returning a list of the results
         /// </summary>
-        /// <typeparam name="T">Object type</typeparam>
-        /// <typeparam name="R">Return type</typeparam>
+        /// <typeparam name="TObject">Object type</typeparam>
+        /// <typeparam name="TResult">Return type</typeparam>
         /// <param name="list">IEnumerable to iterate over</param>
         /// <param name="function">Function to do</param>
         /// <param name="catchAction">Action that occurs if an exception occurs</param>
         /// <returns>The resulting list</returns>
-        public static IEnumerable<R> ForEach<T, R>(this IEnumerable<T> list, Func<T, R> function, Action<T, Exception> catchAction)
+        public static IEnumerable<TResult> ForEach<TObject, TResult>(this IEnumerable<TObject> list, Func<TObject, TResult> function, Action<TObject, Exception> catchAction)
         {
             if (list is null || function is null || catchAction is null || !list.Any())
             {
-                return Array.Empty<R>();
+                return Array.Empty<TResult>();
             }
 
-            var ReturnValue = new List<R>();
+            var ReturnValue = new List<TResult>();
             foreach (var Item in list)
             {
                 try
@@ -341,16 +341,16 @@ namespace BigBook
         /// <summary>
         /// Does an action for each item in the IEnumerable in parallel
         /// </summary>
-        /// <typeparam name="T">Object type</typeparam>
-        /// <typeparam name="R">Results type</typeparam>
+        /// <typeparam name="TObject">Object type</typeparam>
+        /// <typeparam name="TResult">Results type</typeparam>
         /// <param name="list">IEnumerable to iterate over</param>
         /// <param name="function">Function to do</param>
         /// <returns>The results in an IEnumerable list</returns>
-        public static IEnumerable<R> ForEachParallel<T, R>(this IEnumerable<T> list, Func<T, R> function)
+        public static IEnumerable<TResult> ForEachParallel<TObject, TResult>(this IEnumerable<TObject> list, Func<TObject, TResult> function)
         {
             if (list is null || function is null || !list.Any())
             {
-                return Array.Empty<R>();
+                return Array.Empty<TResult>();
             }
 
             return list.ForParallel(0, list.Count() - 1, (x, _) => function(x));
@@ -359,16 +359,16 @@ namespace BigBook
         /// <summary>
         /// Does an action for each item in the IEnumerable
         /// </summary>
-        /// <typeparam name="T">Object type</typeparam>
+        /// <typeparam name="TObject">Object type</typeparam>
         /// <param name="list">IEnumerable to iterate over</param>
         /// <param name="action">Action to do</param>
         /// <param name="catchAction">Action that occurs if an exception occurs</param>
         /// <returns>The original list</returns>
-        public static IEnumerable<T> ForEachParallel<T>(this IEnumerable<T> list, Action<T> action, Action<T, Exception> catchAction)
+        public static IEnumerable<TObject> ForEachParallel<TObject>(this IEnumerable<TObject> list, Action<TObject> action, Action<TObject, Exception> catchAction)
         {
             if (list?.Any() != true)
             {
-                return Array.Empty<T>();
+                return Array.Empty<TObject>();
             }
 
             if (action is null || catchAction is null)
@@ -376,7 +376,7 @@ namespace BigBook
                 return list;
             }
 
-            Parallel.ForEach<T>(list, (T Item) =>
+            Parallel.ForEach<TObject>(list, (TObject Item) =>
             {
                 try
                 {
@@ -390,21 +390,21 @@ namespace BigBook
         /// <summary>
         /// Does a function for each item in the IEnumerable, returning a list of the results
         /// </summary>
-        /// <typeparam name="T">Object type</typeparam>
-        /// <typeparam name="R">Return type</typeparam>
+        /// <typeparam name="TObject">Object type</typeparam>
+        /// <typeparam name="TResult">Return type</typeparam>
         /// <param name="list">IEnumerable to iterate over</param>
         /// <param name="function">Function to do</param>
         /// <param name="catchAction">Action that occurs if an exception occurs</param>
         /// <returns>The resulting list</returns>
-        public static IEnumerable<R> ForEachParallel<T, R>(this IEnumerable<T> list, Func<T, R> function, Action<T, Exception> catchAction)
+        public static IEnumerable<TResult> ForEachParallel<TObject, TResult>(this IEnumerable<TObject> list, Func<TObject, TResult> function, Action<TObject, Exception> catchAction)
         {
             if (list is null || function is null || catchAction is null || !list.Any())
             {
-                return Array.Empty<R>();
+                return Array.Empty<TResult>();
             }
 
-            var ReturnValues = new ConcurrentBag<R>();
-            Parallel.ForEach<T>(list, (T Item) =>
+            var ReturnValues = new ConcurrentBag<TResult>();
+            Parallel.ForEach<TObject>(list, (TObject Item) =>
             {
                 try
                 {
@@ -460,18 +460,18 @@ namespace BigBook
         /// <summary>
         /// Does an action for each item in the IEnumerable between the start and end indexes in parallel
         /// </summary>
-        /// <typeparam name="T">Object type</typeparam>
-        /// <typeparam name="R">Results type</typeparam>
+        /// <typeparam name="TObject">Object type</typeparam>
+        /// <typeparam name="TResult">Results type</typeparam>
         /// <param name="list">IEnumerable to iterate over</param>
         /// <param name="start">Item to start with</param>
         /// <param name="end">Item to end with</param>
         /// <param name="function">Function to do</param>
         /// <returns>The resulting list</returns>
-        public static IEnumerable<R> ForParallel<T, R>(this IEnumerable<T> list, int start, int end, Func<T, int, R> function)
+        public static IEnumerable<TResult> ForParallel<TObject, TResult>(this IEnumerable<TObject> list, int start, int end, Func<TObject, int, TResult> function)
         {
             if (list is null || function is null || !list.Any())
             {
-                return Array.Empty<R>();
+                return Array.Empty<TResult>();
             }
 
             if (end >= list.Count())
@@ -491,7 +491,7 @@ namespace BigBook
                 end = Temp;
             }
             var TempArray = list.ToArray();
-            var Results = new R[(end + 1) - start];
+            var Results = new TResult[end + 1 - start];
             Parallel.For(start, end + 1, new Action<int>(x => Results[x - start] = function(TempArray[x], x)));
             return Results;
         }
@@ -516,10 +516,10 @@ namespace BigBook
         /// <summary>
         /// Does a left join on the two lists
         /// </summary>
-        /// <typeparam name="T1">The type of outer list.</typeparam>
-        /// <typeparam name="T2">The type of inner list.</typeparam>
-        /// <typeparam name="Key">The type of the key.</typeparam>
-        /// <typeparam name="R">The return type</typeparam>
+        /// <typeparam name="TObject1">The type of outer list.</typeparam>
+        /// <typeparam name="TObject2">The type of inner list.</typeparam>
+        /// <typeparam name="TKey">The type of the key.</typeparam>
+        /// <typeparam name="TResult">The return type</typeparam>
         /// <param name="outer">The outer list.</param>
         /// <param name="inner">The inner list.</param>
         /// <param name="outerKeySelector">The outer key selector.</param>
@@ -527,22 +527,22 @@ namespace BigBook
         /// <param name="resultSelector">The result selector.</param>
         /// <param name="comparer">The comparer (if null, a generic comparer is used).</param>
         /// <returns>Returns a left join of the two lists</returns>
-        public static IEnumerable<R> LeftJoin<T1, T2, Key, R>(this IEnumerable<T1> outer,
-            IEnumerable<T2> inner,
-            Func<T1, Key> outerKeySelector,
-            Func<T2, Key> innerKeySelector,
-            Func<T1, T2, R> resultSelector,
-            IEqualityComparer<Key>? comparer = null)
+        public static IEnumerable<TResult> LeftJoin<TObject1, TObject2, TKey, TResult>(this IEnumerable<TObject1> outer,
+            IEnumerable<TObject2> inner,
+            Func<TObject1, TKey> outerKeySelector,
+            Func<TObject2, TKey> innerKeySelector,
+            Func<TObject1, TObject2, TResult> resultSelector,
+            IEqualityComparer<TKey>? comparer = null)
         {
             if (inner is null
                 || outerKeySelector is null
                 || innerKeySelector is null
                 || resultSelector is null)
             {
-                return Array.Empty<R>();
+                return Array.Empty<TResult>();
             }
 
-            comparer ??= Canister.Builder.Bootstrapper?.Resolve<GenericEqualityComparer<Key>>() ?? new GenericEqualityComparer<Key>();
+            comparer ??= Canister.Builder.Bootstrapper?.Resolve<GenericEqualityComparer<TKey>>() ?? new GenericEqualityComparer<TKey>();
             return outer.ForEach(x => new { left = x, right = inner.FirstOrDefault(y => comparer.Equals(innerKeySelector(y), outerKeySelector(x))) })
                         .ForEach(x => resultSelector(x.left, x.right));
         }
@@ -552,8 +552,8 @@ namespace BigBook
         /// </summary>
         /// <typeparam name="T1">The type of outer list.</typeparam>
         /// <typeparam name="T2">The type of inner list.</typeparam>
-        /// <typeparam name="Key">The type of the key.</typeparam>
-        /// <typeparam name="R">The return type</typeparam>
+        /// <typeparam name="TKey">The type of the key.</typeparam>
+        /// <typeparam name="TResult">The return type</typeparam>
         /// <param name="outer">The outer list.</param>
         /// <param name="inner">The inner list.</param>
         /// <param name="outerKeySelector">The outer key selector.</param>
@@ -561,12 +561,12 @@ namespace BigBook
         /// <param name="resultSelector">The result selector.</param>
         /// <param name="comparer">The comparer (if null, a generic comparer is used).</param>
         /// <returns>Returns an outer join of the two lists</returns>
-        public static IEnumerable<R> OuterJoin<T1, T2, Key, R>(this IEnumerable<T1> outer,
+        public static IEnumerable<TResult> OuterJoin<T1, T2, TKey, TResult>(this IEnumerable<T1> outer,
             IEnumerable<T2> inner,
-            Func<T1, Key> outerKeySelector,
-            Func<T2, Key> innerKeySelector,
-            Func<T1, T2, R> resultSelector,
-            IEqualityComparer<Key>? comparer = null)
+            Func<T1, TKey> outerKeySelector,
+            Func<T2, TKey> innerKeySelector,
+            Func<T1, T2, TResult> resultSelector,
+            IEqualityComparer<TKey>? comparer = null)
         {
             if (inner is null
                 || outer is null
@@ -574,7 +574,7 @@ namespace BigBook
                 || innerKeySelector is null
                 || resultSelector is null)
             {
-                return Array.Empty<R>();
+                return Array.Empty<TResult>();
             }
 
             var Left = outer.LeftJoin(inner, outerKeySelector, innerKeySelector, resultSelector, comparer);
@@ -618,8 +618,8 @@ namespace BigBook
         /// </summary>
         /// <typeparam name="T1">The type of outer list.</typeparam>
         /// <typeparam name="T2">The type of inner list.</typeparam>
-        /// <typeparam name="Key">The type of the key.</typeparam>
-        /// <typeparam name="R">The return type</typeparam>
+        /// <typeparam name="TKey">The type of the key.</typeparam>
+        /// <typeparam name="TResult">The return type</typeparam>
         /// <param name="outer">The outer list.</param>
         /// <param name="inner">The inner list.</param>
         /// <param name="outerKeySelector">The outer key selector.</param>
@@ -627,22 +627,22 @@ namespace BigBook
         /// <param name="resultSelector">The result selector.</param>
         /// <param name="comparer">The comparer (if null, a generic comparer is used).</param>
         /// <returns>Returns a right join of the two lists</returns>
-        public static IEnumerable<R> RightJoin<T1, T2, Key, R>(this IEnumerable<T1> outer,
+        public static IEnumerable<TResult> RightJoin<T1, T2, TKey, TResult>(this IEnumerable<T1> outer,
             IEnumerable<T2> inner,
-            Func<T1, Key> outerKeySelector,
-            Func<T2, Key> innerKeySelector,
-            Func<T1, T2, R> resultSelector,
-            IEqualityComparer<Key>? comparer = null)
+            Func<T1, TKey> outerKeySelector,
+            Func<T2, TKey> innerKeySelector,
+            Func<T1, T2, TResult> resultSelector,
+            IEqualityComparer<TKey>? comparer = null)
         {
             if (outer is null
                 || outerKeySelector is null
                 || innerKeySelector is null
                 || resultSelector is null)
             {
-                return Array.Empty<R>();
+                return Array.Empty<TResult>();
             }
 
-            comparer ??= Canister.Builder.Bootstrapper?.Resolve<GenericEqualityComparer<Key>>() ?? new GenericEqualityComparer<Key>();
+            comparer ??= Canister.Builder.Bootstrapper?.Resolve<GenericEqualityComparer<TKey>>() ?? new GenericEqualityComparer<TKey>();
             return inner.ForEach(x => new { left = outer.FirstOrDefault(y => comparer.Equals(innerKeySelector(x), outerKeySelector(y))), right = x })
                         .ForEach(x => resultSelector(x.left, x.right));
         }
@@ -762,16 +762,16 @@ namespace BigBook
         /// <summary>
         /// Converts a list to an array
         /// </summary>
-        /// <typeparam name="Source">Source type</typeparam>
-        /// <typeparam name="Target">Target type</typeparam>
+        /// <typeparam name="TSource">Source type</typeparam>
+        /// <typeparam name="TTarget">Target type</typeparam>
         /// <param name="list">List to convert</param>
         /// <param name="convertingFunction">Function used to convert each item</param>
         /// <returns>The array containing the items from the list</returns>
-        public static Target[] ToArray<Source, Target>(this IEnumerable<Source> list, Func<Source, Target> convertingFunction)
+        public static TTarget[] ToArray<TSource, TTarget>(this IEnumerable<TSource> list, Func<TSource, TTarget> convertingFunction)
         {
             if (list is null || convertingFunction is null || !list.Any())
             {
-                return Array.Empty<Target>();
+                return Array.Empty<TTarget>();
             }
 
             return list.ForEach(convertingFunction).ToArray();
@@ -780,16 +780,16 @@ namespace BigBook
         /// <summary>
         /// Converts an IEnumerable to a list
         /// </summary>
-        /// <typeparam name="Source">Source type</typeparam>
-        /// <typeparam name="Target">Target type</typeparam>
+        /// <typeparam name="TSource">Source type</typeparam>
+        /// <typeparam name="TTarget">Target type</typeparam>
         /// <param name="list">IEnumerable to convert</param>
         /// <param name="convertingFunction">Function used to convert each item</param>
         /// <returns>The list containing the items from the IEnumerable</returns>
-        public static List<Target> ToList<Source, Target>(this IEnumerable<Source> list, Func<Source, Target> convertingFunction)
+        public static List<TTarget> ToList<TSource, TTarget>(this IEnumerable<TSource> list, Func<TSource, TTarget> convertingFunction)
         {
             if (list is null || convertingFunction is null || !list.Any())
             {
-                return new List<Target>();
+                return new List<TTarget>();
             }
 
             return list.ForEach(convertingFunction).ToList();
@@ -798,36 +798,36 @@ namespace BigBook
         /// <summary>
         /// Converts the IEnumerable to an observable list
         /// </summary>
-        /// <typeparam name="Source">The type of the source.</typeparam>
-        /// <typeparam name="Target">The type of the target.</typeparam>
+        /// <typeparam name="TSource">The type of the source.</typeparam>
+        /// <typeparam name="TTarget">The type of the target.</typeparam>
         /// <param name="list">The list to convert</param>
         /// <param name="convertingFunction">The converting function.</param>
         /// <returns>The observable list version of the original list</returns>
-        public static ObservableList<Target> ToObservableList<Source, Target>(this IEnumerable<Source> list, Func<Source, Target> convertingFunction)
+        public static ObservableList<TTarget> ToObservableList<TSource, TTarget>(this IEnumerable<TSource> list, Func<TSource, TTarget> convertingFunction)
         {
             if (list is null)
             {
-                return new ObservableList<Target>();
+                return new ObservableList<TTarget>();
             }
 
-            convertingFunction ??= new Func<Source, Target>(x => x.To<Source, Target>());
-            return new ObservableList<Target>(list.ForEach(convertingFunction));
+            convertingFunction ??= new Func<TSource, TTarget>(x => x.To<TSource, TTarget>());
+            return new ObservableList<TTarget>(list.ForEach(convertingFunction));
         }
 
         /// <summary>
         /// Converts the IEnumerable to an observable list
         /// </summary>
-        /// <typeparam name="Source">The type of the source.</typeparam>
+        /// <typeparam name="TSource">The type of the source.</typeparam>
         /// <param name="list">The list to convert</param>
         /// <returns>The observable list version of the original list</returns>
-        public static ObservableList<Source> ToObservableList<Source>(this IEnumerable<Source> list)
+        public static ObservableList<TSource> ToObservableList<TSource>(this IEnumerable<TSource> list)
         {
-            if (list is null)
+            return list switch
             {
-                return new ObservableList<Source>();
-            }
-
-            return new ObservableList<Source>(list);
+                null => new ObservableList<TSource>(),
+                ObservableList<TSource> ObservableList => ObservableList,
+                _ => new ObservableList<TSource>(list),
+            };
         }
 
         /// <summary>
@@ -885,7 +885,7 @@ namespace BigBook
         /// <returns>The transversed hierarchy.</returns>
         public static IEnumerable<T> Transverse<T>(this T item, Func<T, IEnumerable<T>> property)
         {
-            if (Equals(item, default(T)!))
+            if (Equals(item, default(T)!) || property is null)
             {
                 yield break;
             }
