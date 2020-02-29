@@ -138,6 +138,12 @@ namespace BigBook
         private static readonly Regex STRIP_HTML_REGEX = new Regex("<[^>]*>", RegexOptions.Compiled);
 
         /// <summary>
+        /// Gets the is unicode.
+        /// </summary>
+        /// <value>The is unicode.</value>
+        private static Regex IsUnicode { get; } = new Regex(@"[^\u0000-\u007F]", RegexOptions.Compiled);
+
+        /// <summary>
         /// Adds spaces to a string before capital letters. Acronyms are respected and left alone.
         /// </summary>
         /// <param name="input">The input.</param>
@@ -207,11 +213,8 @@ namespace BigBook
         /// <returns>The centered string</returns>
         public static string Center(this string input, int length, string padding = " ")
         {
-            if (string.IsNullOrEmpty(input))
-            {
-                input = "";
-            }
-
+            input ??= "";
+            padding ??= "";
             var Output = "";
             for (var x = 0; x < (length - input.Length) / 2; ++x)
             {
@@ -282,10 +285,12 @@ namespace BigBook
         /// <returns>True if it is of the type specified, false otherwise</returns>
         public static bool Is(this string value, StringCompare comparisonType)
         {
+            if (string.IsNullOrEmpty(value))
+                return false;
             if (comparisonType == StringCompare.CreditCard)
             {
                 long CheckSum = 0;
-                value = value.Replace("-", "").Reverse();
+                value = value.Replace("-", "", StringComparison.Ordinal).Reverse();
                 for (var x = 0; x < value.Length; ++x)
                 {
                     if (!value[x].Is(CharIs.Digit))
@@ -304,7 +309,7 @@ namespace BigBook
             }
             if (comparisonType == StringCompare.Unicode)
             {
-                return string.IsNullOrEmpty(value) || Regex.Replace(value, @"[^\u0000-\u007F]", "") != value;
+                return string.IsNullOrEmpty(value) || IsUnicode.Replace(value, "") != value;
             }
             return value.Is("", StringCompare.Anagram);
         }
@@ -323,7 +328,7 @@ namespace BigBook
                 return value1.Is(comparisonType);
             }
 
-            return new string(value1.ToCharArray().OrderBy(x => x).ToArray()) == new string(value2.ToCharArray().OrderBy(x => x).ToArray());
+            return new string(value1?.ToCharArray().OrderBy(x => x).ToArray()) == new string(value2?.ToCharArray().OrderBy(x => x).ToArray());
         }
 
         /// <summary>
@@ -432,6 +437,8 @@ namespace BigBook
         /// <returns>The masked string</returns>
         public static string MaskLeft(this string input, int endPosition = 4, char mask = '#')
         {
+            if (string.IsNullOrEmpty(input))
+                return "";
             var Appending = "";
             for (var x = 0; x < endPosition; ++x)
             {
@@ -543,6 +550,8 @@ namespace BigBook
         /// <returns>The resulting string with diacritics removed.</returns>
         public static string RemoveDiacritics(this string input)
         {
+            if (string.IsNullOrEmpty(input))
+                return "";
             return new string(input
                 .Normalize(NormalizationForm.FormD)
                 .Where(x => CharUnicodeInfo.GetUnicodeCategory(x) != UnicodeCategory.NonSpacingMark)
@@ -591,12 +600,7 @@ namespace BigBook
         /// <returns>The resulting string</returns>
         public static string Right(this string input, int length)
         {
-            if (string.IsNullOrEmpty(input))
-            {
-                return "";
-            }
-
-            if (length <= 0)
+            if (string.IsNullOrEmpty(input) || length <= 0)
             {
                 return "";
             }
@@ -618,8 +622,8 @@ namespace BigBook
             }
 
             html = STRIP_HTML_REGEX.Replace(html, string.Empty);
-            return html.Replace("&nbsp;", " ")
-                       .Replace("&#160;", string.Empty);
+            return html.Replace("&nbsp;", " ", StringComparison.OrdinalIgnoreCase)
+                       .Replace("&#160;", string.Empty, StringComparison.Ordinal);
         }
 
         /// <summary>
@@ -652,10 +656,11 @@ namespace BigBook
                 .Replace('\u2015', '-').Replace('\u2017', '_').Replace('\u2018', '\'')
                 .Replace('\u2019', '\'').Replace('\u201a', ',').Replace('\u201b', '\'')
                 .Replace('\u201c', '\"').Replace('\u201d', '\"').Replace('\u201e', '\"')
-                .Replace("\u2026", "...").Replace('\u2032', '\'').Replace('\u2033', '\"')
-                .Replace("`", "\'")
-                .Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;")
-                .Replace("\"", "&quot;").Replace("\'", "&apos;");
+                .Replace("\u2026", "...", StringComparison.Ordinal).Replace('\u2032', '\'').Replace('\u2033', '\"')
+                .Replace("`", "\'", StringComparison.Ordinal)
+                .Replace("&", "&amp;", StringComparison.Ordinal).Replace("<", "&lt;", StringComparison.Ordinal)
+                .Replace(">", "&gt;", StringComparison.Ordinal)
+                .Replace("\"", "&quot;", StringComparison.Ordinal).Replace("\'", "&apos;", StringComparison.Ordinal);
         }
 
         /// <summary>
@@ -667,17 +672,12 @@ namespace BigBook
         /// <returns>The Input string with specified characters stripped out</returns>
         public static string StripLeft(this string input, string characters = " ")
         {
-            if (string.IsNullOrEmpty(input))
+            if (string.IsNullOrEmpty(input) || string.IsNullOrEmpty(characters))
             {
                 return input;
             }
 
-            if (string.IsNullOrEmpty(characters))
-            {
-                return input;
-            }
-
-            return input.ToCharArray().SkipWhile(x => characters.ToCharArray().Contains(x)).ToString(x => x.ToString(), "");
+            return input.ToCharArray().SkipWhile(x => characters.ToCharArray().Contains(x)).ToString(x => x.ToString(CultureInfo.InvariantCulture), "");
         }
 
         /// <summary>
@@ -689,12 +689,7 @@ namespace BigBook
         /// <returns>The Input string with specified characters stripped out</returns>
         public static string StripRight(this string input, string characters = " ")
         {
-            if (string.IsNullOrEmpty(input))
-            {
-                return input;
-            }
-
-            if (string.IsNullOrEmpty(characters))
+            if (string.IsNullOrEmpty(input) || string.IsNullOrEmpty(characters))
             {
                 return input;
             }
@@ -795,7 +790,10 @@ namespace BigBook
                     if (!string.IsNullOrEmpty(InputStrings[x])
                         && InputStrings[x].Length > 3)
                     {
-                        var TempRegex = new Regex(InputStrings[x].Replace(")", @"\)").Replace("(", @"\(").Replace("*", @"\*"));
+                        var TempRegex = new Regex(InputStrings[x]
+                            .Replace(")", @"\)", StringComparison.Ordinal)
+                            .Replace("(", @"\(", StringComparison.Ordinal)
+                            .Replace("*", @"\*", StringComparison.Ordinal));
                         InputStrings[x] = InputStrings[x].ToString(StringCase.FirstCharacterUpperCase);
                         input = TempRegex.Replace(input, InputStrings[x]);
                     }
@@ -804,8 +802,8 @@ namespace BigBook
             }
             if (caseOfString == StringCase.CamelCase)
             {
-                input = input.Replace(" ", "");
-                return char.ToLower(input[0]) + input.Remove(0, 1);
+                input = input.Replace(" ", "", StringComparison.Ordinal);
+                return char.ToLower(input[0], CultureInfo.InvariantCulture) + input.Remove(0, 1);
             }
             return input;
         }
@@ -849,7 +847,7 @@ namespace BigBook
                 .ForEach(x =>
                 {
                     var Value = x.GetValue(inputObject, null);
-                    input = input.Replace(startSeperator + x.Name + endSeperator, Value is null ? "" : Value.ToString());
+                    input = input.Replace(startSeperator + x.Name + endSeperator, Value is null ? "" : Value.ToString(), StringComparison.Ordinal);
                 });
             return input;
         }
@@ -869,7 +867,7 @@ namespace BigBook
 
             foreach (var Pair in pairs)
             {
-                input = input.Replace(Pair.Key, Pair.Value);
+                input = input.Replace(Pair.Key, Pair.Value, StringComparison.Ordinal);
             }
             return input;
         }

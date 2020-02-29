@@ -135,6 +135,18 @@
   <data name="MatrixNotSquareError" xml:space="preserve">
     <value>The determinant can not be calculated for a non square matrix</value>
   </data>
+  <data name="NotAMemberExpression" xml:space="preserve">
+    <value>Expression.Body is not a MemberExpression</value>
+  </data>
+  <data name="PropertyInfoCantBeNull" xml:space="preserve">
+    <value>PropertyInfo can't be null</value>
+  </data>
+  <data name="PropertyNotOfDeclaringType" xml:space="preserve">
+    <value>Property is not from the declaring class type specified</value>
+  </data>
+  <data name="PropertyOfWrongType" xml:space="preserve">
+    <value>Property is not of the type specified</value>
+  </data>
   <data name="ReaderFieldCountError" xml:space="preserve">
     <value>reader.FieldCount needs to have at least 0 fields</value>
   </data>

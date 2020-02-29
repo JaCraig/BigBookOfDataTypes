@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using BigBook.Properties;
 using BigBook.Reflection;
 using System;
 using System.Collections.Generic;
@@ -80,7 +81,7 @@ namespace BigBook
         /// <summary>
         /// Calls a method on an object
         /// </summary>
-        /// <typeparam name="ReturnType">Return type expected</typeparam>
+        /// <typeparam name="TReturnType">Return type expected</typeparam>
         /// <param name="inputObject">Object to call the method on</param>
         /// <param name="methodName">Method name</param>
         /// <param name="inputVariables">(Optional)input variables for the method</param>
@@ -89,7 +90,7 @@ namespace BigBook
         /// <exception cref="InvalidOperationException">
         /// Could not find method " + methodName + " with the appropriate input variables.
         /// </exception>
-        public static ReturnType Call<ReturnType>(this object inputObject, string methodName, params object[] inputVariables)
+        public static TReturnType Call<TReturnType>(this object inputObject, string methodName, params object[] inputVariables)
         {
             if (inputObject is null)
             {
@@ -119,14 +120,14 @@ namespace BigBook
                 throw new InvalidOperationException("Could not find method " + methodName + " with the appropriate input variables.");
             }
 
-            return (ReturnType)Method.Invoke(inputObject, inputVariables);
+            return (TReturnType)Method.Invoke(inputObject, inputVariables);
         }
 
         /// <summary>
         /// Calls a method on an object
         /// </summary>
-        /// <typeparam name="GenericType1">Generic method type 1</typeparam>
-        /// <typeparam name="ReturnType">Return type expected</typeparam>
+        /// <typeparam name="TGenericType1">Generic method type 1</typeparam>
+        /// <typeparam name="TReturnType">Return type expected</typeparam>
         /// <param name="inputObject">Object to call the method on</param>
         /// <param name="methodName">Method name</param>
         /// <param name="inputVariables">(Optional)input variables for the method</param>
@@ -135,7 +136,7 @@ namespace BigBook
         /// <exception cref="InvalidOperationException">
         /// Could not find method " + methodName + " with the appropriate input variables.
         /// </exception>
-        public static ReturnType Call<GenericType1, ReturnType>(this object inputObject, string methodName, params object[] inputVariables)
+        public static TReturnType Call<TGenericType1, TReturnType>(this object inputObject, string methodName, params object[] inputVariables)
         {
             if (inputObject is null)
             {
@@ -165,16 +166,16 @@ namespace BigBook
                 throw new InvalidOperationException("Could not find method " + methodName + " with the appropriate input variables.");
             }
 
-            Method = Method.MakeGenericMethod(typeof(GenericType1));
-            return inputObject.Call<ReturnType>(Method, inputVariables);
+            Method = Method.MakeGenericMethod(typeof(TGenericType1));
+            return inputObject.Call<TReturnType>(Method, inputVariables);
         }
 
         /// <summary>
         /// Calls a method on an object
         /// </summary>
-        /// <typeparam name="GenericType1">Generic method type 1</typeparam>
-        /// <typeparam name="GenericType2">Generic method type 2</typeparam>
-        /// <typeparam name="ReturnType">Return type expected</typeparam>
+        /// <typeparam name="TGenericType1">Generic method type 1</typeparam>
+        /// <typeparam name="TGenericType2">Generic method type 2</typeparam>
+        /// <typeparam name="TReturnType">Return type expected</typeparam>
         /// <param name="inputObject">Object to call the method on</param>
         /// <param name="methodName">Method name</param>
         /// <param name="inputVariables">(Optional)input variables for the method</param>
@@ -183,7 +184,7 @@ namespace BigBook
         /// <exception cref="InvalidOperationException">
         /// Could not find method " + methodName + " with the appropriate input variables.
         /// </exception>
-        public static ReturnType Call<GenericType1, GenericType2, ReturnType>(this object inputObject, string methodName, params object[] inputVariables)
+        public static TReturnType Call<TGenericType1, TGenericType2, TReturnType>(this object inputObject, string methodName, params object[] inputVariables)
         {
             if (inputObject is null)
             {
@@ -213,17 +214,17 @@ namespace BigBook
                 throw new InvalidOperationException("Could not find method " + methodName + " with the appropriate input variables.");
             }
 
-            Method = Method.MakeGenericMethod(typeof(GenericType1), typeof(GenericType2));
-            return inputObject.Call<ReturnType>(Method, inputVariables);
+            Method = Method.MakeGenericMethod(typeof(TGenericType1), typeof(TGenericType2));
+            return inputObject.Call<TReturnType>(Method, inputVariables);
         }
 
         /// <summary>
         /// Calls a method on an object
         /// </summary>
-        /// <typeparam name="GenericType1">Generic method type 1</typeparam>
-        /// <typeparam name="GenericType2">Generic method type 2</typeparam>
-        /// <typeparam name="GenericType3">Generic method type 3</typeparam>
-        /// <typeparam name="ReturnType">Return type expected</typeparam>
+        /// <typeparam name="TGenericType1">Generic method type 1</typeparam>
+        /// <typeparam name="TGenericType2">Generic method type 2</typeparam>
+        /// <typeparam name="TGenericType3">Generic method type 3</typeparam>
+        /// <typeparam name="TReturnType">Return type expected</typeparam>
         /// <param name="inputObject">Object to call the method on</param>
         /// <param name="methodName">Method name</param>
         /// <param name="inputVariables">(Optional)input variables for the method</param>
@@ -232,7 +233,7 @@ namespace BigBook
         /// <exception cref="InvalidOperationException">
         /// Could not find method " + methodName + " with the appropriate input variables.
         /// </exception>
-        public static ReturnType Call<GenericType1, GenericType2, GenericType3, ReturnType>(this object inputObject, string methodName, params object[] inputVariables)
+        public static TReturnType Call<TGenericType1, TGenericType2, TGenericType3, TReturnType>(this object inputObject, string methodName, params object[] inputVariables)
         {
             if (inputObject is null)
             {
@@ -262,20 +263,20 @@ namespace BigBook
                 throw new InvalidOperationException("Could not find method " + methodName + " with the appropriate input variables.");
             }
 
-            Method = Method.MakeGenericMethod(typeof(GenericType1), typeof(GenericType2), typeof(GenericType3));
-            return inputObject.Call<ReturnType>(Method, inputVariables);
+            Method = Method.MakeGenericMethod(typeof(TGenericType1), typeof(TGenericType2), typeof(TGenericType3));
+            return inputObject.Call<TReturnType>(Method, inputVariables);
         }
 
         /// <summary>
         /// Calls a method on an object
         /// </summary>
-        /// <typeparam name="ReturnType">Return type expected</typeparam>
+        /// <typeparam name="TReturnType">Return type expected</typeparam>
         /// <param name="inputObject">Object to call the method on</param>
         /// <param name="method">Method</param>
         /// <param name="inputVariables">(Optional)input variables for the method</param>
         /// <returns>The returned value of the method</returns>
         /// <exception cref="ArgumentNullException">inputObject or method</exception>
-        public static ReturnType Call<ReturnType>(this object inputObject, MethodInfo method, params object[] inputVariables)
+        public static TReturnType Call<TReturnType>(this object inputObject, MethodInfo method, params object[] inputVariables)
         {
             if (inputObject is null)
             {
@@ -292,17 +293,17 @@ namespace BigBook
                 inputVariables = Array.Empty<object>();
             }
 
-            return (ReturnType)method.Invoke(inputObject, inputVariables);
+            return (TReturnType)method.Invoke(inputObject, inputVariables);
         }
 
         /// <summary>
         /// Creates an instance of the type and casts it to the specified type
         /// </summary>
-        /// <typeparam name="ClassType">Class type to return</typeparam>
+        /// <typeparam name="TClassType">Class type to return</typeparam>
         /// <param name="type">Type to create an instance of</param>
         /// <param name="args">Arguments sent into the constructor</param>
         /// <returns>The newly created instance of the type</returns>
-        public static ClassType Create<ClassType>(this Type type, params object[] args) => type is null ? default : (ClassType)type?.Create(args)!;
+        public static TClassType Create<TClassType>(this Type type, params object[] args) => type is null ? default : (TClassType)type?.Create(args)!;
 
         /// <summary>
         /// Creates an instance of the type
@@ -315,11 +316,11 @@ namespace BigBook
         /// <summary>
         /// Creates an instance of the types and casts it to the specified type
         /// </summary>
-        /// <typeparam name="ClassType">Class type to return</typeparam>
+        /// <typeparam name="TClassType">Class type to return</typeparam>
         /// <param name="types">Types to create an instance of</param>
         /// <param name="args">Arguments sent into the constructor</param>
         /// <returns>The newly created instance of the types</returns>
-        public static IEnumerable<ClassType> Create<ClassType>(this IEnumerable<Type> types, params object[] args)
+        public static IEnumerable<TClassType> Create<TClassType>(this IEnumerable<Type> types, params object[] args)
         {
             if (types?.Any() != true)
             {
@@ -328,7 +329,7 @@ namespace BigBook
 
             foreach (var Type in types)
             {
-                yield return Type.Create<ClassType>(args);
+                yield return Type.Create<TClassType>(args);
             }
         }
 
@@ -370,8 +371,10 @@ namespace BigBook
         /// <param name="methodName">Name of the method.</param>
         /// <param name="MethodInputTypes">The method input types.</param>
         /// <returns>The method found or null if it is not available</returns>
-        public static MethodInfo GetMethod(this Type ObjectType, string methodName, Type[] MethodInputTypes)
+        public static MethodInfo? GetMethod(this Type ObjectType, string methodName, Type[] MethodInputTypes)
         {
+            if (ObjectType is null)
+                return null;
             return Array.Find(ObjectType.GetMethods(), x =>
                             {
                                 if (x.Name != methodName)
@@ -417,7 +420,7 @@ namespace BigBook
             {
                 Output.Append(objectType.DeclaringType is null ? objectType.Namespace : objectType.DeclaringType.GetName())
                     .Append(".");
-                if (objectType.Name.Contains("`"))
+                if (objectType.Name.Contains("`", StringComparison.Ordinal))
                 {
                     var GenericTypes = objectType.GetGenericArguments();
                     Output
@@ -438,7 +441,7 @@ namespace BigBook
                     Output.Append(objectType.Name);
                 }
             }
-            return Output.ToString().Replace("&", "");
+            return Output.ToString().Replace("&", "", StringComparison.Ordinal);
         }
 
         /// <summary>
@@ -480,7 +483,9 @@ namespace BigBook
         /// <returns></returns>
         public static PropertyInfo? GetProperty<TObject>(this Type type, string name)
         {
-            var Result = Array.Find(TypeCacheFor<TObject>.Properties, x => x.Name == name);
+            if (type is null)
+                return null;
+            PropertyInfo? Result = Array.Find(TypeCacheFor<TObject>.Properties, x => x.Name == name);
             if (!(Result is null) || !type.IsInterface)
                 return Result;
             var Interfaces = TypeCacheFor<TObject>.Interfaces;
@@ -525,17 +530,17 @@ namespace BigBook
         /// Determines if an object is of a specific type
         /// </summary>
         /// <param name="inputObject">Object</param>
-        /// <typeparam name="BaseObjectType">Base object type</typeparam>
+        /// <typeparam name="TBaseObjectType">Base object type</typeparam>
         /// <returns>True if it is, false otherwise</returns>
-        public static bool Is<BaseObjectType>(this object inputObject) => inputObject is BaseObjectType;
+        public static bool Is<TBaseObjectType>(this object inputObject) => inputObject is TBaseObjectType;
 
         /// <summary>
         /// Determines if an object is of a specific type
         /// </summary>
         /// <param name="objectType">Object type</param>
-        /// <typeparam name="BaseObjectType">Base object type</typeparam>
+        /// <typeparam name="TBaseObjectType">Base object type</typeparam>
         /// <returns>True if it is, false otherwise</returns>
-        public static bool Is<BaseObjectType>(this Type objectType) => objectType?.Is(typeof(BaseObjectType)) == true;
+        public static bool Is<TBaseObjectType>(this Type objectType) => objectType?.Is(typeof(TBaseObjectType)) == true;
 
         /// <summary>
         /// Determines whether this instance is debug.
@@ -623,27 +628,27 @@ namespace BigBook
         /// Returns an instance of all classes that it finds within an assembly that are of the
         /// specified base type/interface.
         /// </summary>
-        /// <typeparam name="ClassType">Base type/interface searching for</typeparam>
+        /// <typeparam name="TClassType">Base type/interface searching for</typeparam>
         /// <param name="assembly">Assembly to search within</param>
         /// <param name="args">Args used to create the object</param>
         /// <returns>A list of objects that are of the type specified</returns>
-        public static IEnumerable<ClassType> Objects<ClassType>(this Assembly assembly, params object[] args)
+        public static IEnumerable<TClassType> Objects<TClassType>(this Assembly assembly, params object[] args)
         {
             return assembly?
-                .Types<ClassType>()
+                .Types<TClassType>()
                 .Where(x => !x.ContainsGenericParameters)
-                .Create<ClassType>(args) ?? new List<ClassType>();
+                .Create<TClassType>(args) ?? new List<TClassType>();
         }
 
         /// <summary>
         /// Returns an instance of all classes that it finds within a group of assemblies that are
         /// of the specified base type/interface.
         /// </summary>
-        /// <typeparam name="ClassType">Base type/interface searching for</typeparam>
+        /// <typeparam name="TClassType">Base type/interface searching for</typeparam>
         /// <param name="assemblies">Assemblies to search within</param>
         /// <param name="args">Args used to create the object</param>
         /// <returns>A list of objects that are of the type specified</returns>
-        public static IEnumerable<ClassType> Objects<ClassType>(this IEnumerable<Assembly> assemblies, params object[] args)
+        public static IEnumerable<TClassType> Objects<TClassType>(this IEnumerable<Assembly> assemblies, params object[] args)
         {
             if (assemblies?.Any() != true)
             {
@@ -652,7 +657,7 @@ namespace BigBook
 
             foreach (var Assembly in assemblies)
             {
-                foreach (var Object in Assembly.Objects<ClassType>(args))
+                foreach (var Object in Assembly.Objects<TClassType>(args))
                 {
                     yield return Object;
                 }
@@ -681,8 +686,8 @@ namespace BigBook
             }
 
             var Properties = property.Split(new string[] { "." }, StringSplitOptions.None);
-            var TempObject = inputObject;
-            var TempObjectType = TempObject.GetType();
+            object? TempObject = inputObject;
+            Type? TempObjectType = TempObject.GetType();
             PropertyInfo? DestinationProperty;
             for (var x = 0; x < Properties.Length - 1; ++x)
             {
@@ -746,8 +751,8 @@ namespace BigBook
             }
 
             var Properties = property.Split(new string[] { "." }, StringSplitOptions.None);
-            var TempObject = inputObject;
-            var TempObjectType = TempObject.GetType();
+            object? TempObject = inputObject;
+            Type? TempObjectType = TempObject.GetType();
             PropertyInfo? DestinationProperty;
             for (var x = 0; x < Properties.Length - 1; ++x)
             {
@@ -762,7 +767,7 @@ namespace BigBook
             DestinationProperty = TempObjectType.GetProperty(Properties[^1], true);
             if (DestinationProperty is null)
             {
-                throw new NullReferenceException("PropertyInfo can't be null");
+                throw new NullReferenceException(Resources.PropertyInfoCantBeNull);
             }
 
             TempObject.Property(DestinationProperty, value, format);
@@ -772,44 +777,44 @@ namespace BigBook
         /// <summary>
         /// Gets a lambda expression that calls a specific property's getter function
         /// </summary>
-        /// <typeparam name="ClassType">Class type</typeparam>
-        /// <typeparam name="DataType">Data type expecting</typeparam>
+        /// <typeparam name="TClassType">Class type</typeparam>
+        /// <typeparam name="TDataType">Data type expecting</typeparam>
         /// <param name="property">Property</param>
         /// <returns>A lambda expression that calls a specific property's getter function</returns>
-        public static Expression<Func<ClassType, DataType>> PropertyGetter<ClassType, DataType>(this PropertyInfo property)
+        public static Expression<Func<TClassType, TDataType>> PropertyGetter<TClassType, TDataType>(this PropertyInfo property)
         {
             if (property is null)
             {
                 throw new ArgumentNullException(nameof(property));
             }
 
-            if (!property.PropertyType.Is(typeof(DataType)))
+            if (!property.PropertyType.Is(typeof(TDataType)))
             {
-                throw new ArgumentException("Property is not of the type specified");
+                throw new ArgumentException(Resources.PropertyOfWrongType);
             }
 
-            if (!property.DeclaringType.Is(typeof(ClassType)) && !typeof(ClassType).Is(property.DeclaringType))
+            if (!property.DeclaringType.Is(typeof(TClassType)) && !typeof(TClassType).Is(property.DeclaringType))
             {
-                throw new ArgumentException("Property is not from the declaring class type specified");
+                throw new ArgumentException(Resources.PropertyNotOfDeclaringType);
             }
 
             var ObjectInstance = Expression.Parameter(property.DeclaringType, "x");
             var PropertyGet = Expression.Property(ObjectInstance, property);
-            if (property.PropertyType != typeof(DataType))
+            if (property.PropertyType != typeof(TDataType))
             {
-                var Convert = Expression.Convert(PropertyGet, typeof(DataType));
-                return Expression.Lambda<Func<ClassType, DataType>>(Convert, ObjectInstance);
+                var Convert = Expression.Convert(PropertyGet, typeof(TDataType));
+                return Expression.Lambda<Func<TClassType, TDataType>>(Convert, ObjectInstance);
             }
-            return Expression.Lambda<Func<ClassType, DataType>>(PropertyGet, ObjectInstance);
+            return Expression.Lambda<Func<TClassType, TDataType>>(PropertyGet, ObjectInstance);
         }
 
         /// <summary>
         /// Gets a lambda expression that calls a specific property's getter function
         /// </summary>
-        /// <typeparam name="ClassType">Class type</typeparam>
+        /// <typeparam name="TClassType">Class type</typeparam>
         /// <param name="property">Property</param>
         /// <returns>A lambda expression that calls a specific property's getter function</returns>
-        public static Expression<Func<ClassType, object>> PropertyGetter<ClassType>(this PropertyInfo property) => property.PropertyGetter<ClassType, object>();
+        public static Expression<Func<TClassType, object>> PropertyGetter<TClassType>(this PropertyInfo property) => property.PropertyGetter<TClassType, object>();
 
         /// <summary>
         /// Gets a property name
@@ -830,7 +835,7 @@ namespace BigBook
             }
             if (!(expression.Body is MemberExpression))
             {
-                throw new ArgumentException("Expression.Body is not a MemberExpression");
+                throw new ArgumentException(Resources.NotAMemberExpression);
             }
 
             return ((MemberExpression)expression.Body).Expression.PropertyName() + ((MemberExpression)expression.Body).Member.Name;
@@ -851,11 +856,11 @@ namespace BigBook
         /// <summary>
         /// Gets a lambda expression that calls a specific property's setter function
         /// </summary>
-        /// <typeparam name="ClassType">Class type</typeparam>
-        /// <typeparam name="DataType">Data type expecting</typeparam>
+        /// <typeparam name="TClassType">Class type</typeparam>
+        /// <typeparam name="TDataType">Data type expecting</typeparam>
         /// <param name="property">Property</param>
         /// <returns>A lambda expression that calls a specific property's setter function</returns>
-        public static Expression<Action<ClassType, DataType>>? PropertySetter<ClassType, DataType>(this LambdaExpression property)
+        public static Expression<Action<TClassType, TDataType>>? PropertySetter<TClassType, TDataType>(this LambdaExpression property)
         {
             if (property is null)
             {
@@ -869,9 +874,9 @@ namespace BigBook
                 return null;
             }
 
-            var PropertyInfo = typeof(ClassType).GetProperty<ClassType>(SplitName[0]);
+            var PropertyInfo = typeof(TClassType).GetProperty<TClassType>(SplitName[0]);
             var ObjectInstance = Expression.Parameter(PropertyInfo?.DeclaringType, "x");
-            var PropertySet = Expression.Parameter(typeof(DataType), "y");
+            var PropertySet = Expression.Parameter(typeof(TDataType), "y");
             var DefaultConstant = Expression.Constant(((object?)null).To(PropertyInfo?.PropertyType!, null), PropertyInfo?.PropertyType);
             MethodCallExpression? SetterCall = null;
             MemberExpression? PropertyGet = null;
@@ -883,7 +888,7 @@ namespace BigBook
                     PropertyInfo = PropertyInfo?.PropertyType.GetProperty(SplitName[x], true);
                     if (PropertyInfo is null)
                     {
-                        throw new NullReferenceException("PropertyInfo can't be null");
+                        throw new NullReferenceException(Resources.PropertyInfoCantBeNull);
                     }
 
                     PropertyGet = Expression.Property(PropertyGet, PropertyInfo);
@@ -893,41 +898,41 @@ namespace BigBook
             var SetMethod = PropertyInfo?.GetSetMethod();
             if (!(SetMethod is null))
             {
-                if (PropertyInfo?.PropertyType != typeof(DataType))
+                if (PropertyInfo?.PropertyType != typeof(TDataType))
                 {
                     var ConversionMethod = Array.Find(typeof(GenericObjectExtensions).GetMethods(), x => x.ContainsGenericParameters
                         && x.GetGenericArguments().Length == 2
                         && x.Name == "To"
                         && x.GetParameters().Length == 2);
-                    ConversionMethod = ConversionMethod.MakeGenericMethod(typeof(DataType), PropertyInfo?.PropertyType);
+                    ConversionMethod = ConversionMethod.MakeGenericMethod(typeof(TDataType), PropertyInfo?.PropertyType);
                     var Convert = Expression.Call(ConversionMethod, PropertySet, DefaultConstant);
                     SetterCall = PropertyGet is null ? Expression.Call(ObjectInstance, SetMethod, Convert) : Expression.Call(PropertyGet, SetMethod, Convert);
-                    return Expression.Lambda<Action<ClassType, DataType>>(SetterCall, ObjectInstance, PropertySet);
+                    return Expression.Lambda<Action<TClassType, TDataType>>(SetterCall, ObjectInstance, PropertySet);
                 }
                 SetterCall = PropertyGet is null ? Expression.Call(ObjectInstance, SetMethod, PropertySet) : Expression.Call(PropertyGet, SetMethod, PropertySet);
             }
             else
             {
-                return Expression.Lambda<Action<ClassType, DataType>>(Expression.Empty(), ObjectInstance, PropertySet);
+                return Expression.Lambda<Action<TClassType, TDataType>>(Expression.Empty(), ObjectInstance, PropertySet);
             }
 
-            return Expression.Lambda<Action<ClassType, DataType>>(SetterCall, ObjectInstance, PropertySet);
+            return Expression.Lambda<Action<TClassType, TDataType>>(SetterCall, ObjectInstance, PropertySet);
         }
 
         /// <summary>
         /// Gets a lambda expression that calls a specific property's setter function
         /// </summary>
-        /// <typeparam name="ClassType">Class type</typeparam>
+        /// <typeparam name="TClassType">Class type</typeparam>
         /// <param name="property">Property</param>
         /// <returns>A lambda expression that calls a specific property's setter function</returns>
-        public static Expression<Action<ClassType, object>>? PropertySetter<ClassType>(this LambdaExpression property)
+        public static Expression<Action<TClassType, object>>? PropertySetter<TClassType>(this LambdaExpression property)
         {
             if (property is null)
             {
                 throw new ArgumentNullException(nameof(property));
             }
 
-            return property.PropertySetter<ClassType, object>();
+            return property.PropertySetter<TClassType, object>();
         }
 
         /// <summary>
@@ -956,7 +961,7 @@ namespace BigBook
             {
                 return null;
             }
-            var TempObject = objectType;
+            Type? TempObject = objectType;
 
             var SourceProperties = propertyPath.Split(new string[] { "." }, StringSplitOptions.None);
             for (var x = 0; x < SourceProperties.Length; ++x)
@@ -1104,9 +1109,9 @@ namespace BigBook
         /// Gets a list of types based on an interface
         /// </summary>
         /// <param name="assembly">Assembly to check</param>
-        /// <typeparam name="BaseType">Class type to search for</typeparam>
+        /// <typeparam name="TBaseType">Class type to search for</typeparam>
         /// <returns>List of types that use the interface</returns>
-        public static IEnumerable<Type> Types<BaseType>(this Assembly assembly) => assembly?.Types(typeof(BaseType)) ?? new List<Type>();
+        public static IEnumerable<Type> Types<TBaseType>(this Assembly assembly) => assembly?.Types(typeof(TBaseType)) ?? new List<Type>();
 
         /// <summary>
         /// Gets a list of types based on an interface
@@ -1132,9 +1137,9 @@ namespace BigBook
         /// Gets a list of types based on an interface
         /// </summary>
         /// <param name="assemblies">Assemblies to check</param>
-        /// <typeparam name="BaseType">Class type to search for</typeparam>
+        /// <typeparam name="TBaseType">Class type to search for</typeparam>
         /// <returns>List of types that use the interface</returns>
-        public static IEnumerable<Type> Types<BaseType>(this IEnumerable<Assembly> assemblies) => assemblies?.Any() != true ? new List<Type>() : assemblies.Types(typeof(BaseType));
+        public static IEnumerable<Type> Types<TBaseType>(this IEnumerable<Assembly> assemblies) => assemblies?.Any() != true ? Array.Empty<Type>() : assemblies.Types(typeof(TBaseType));
 
         /// <summary>
         /// Gets a list of types based on an interface

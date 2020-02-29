@@ -115,6 +115,42 @@ namespace BigBook.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Expression.Body is not a MemberExpression.
+        /// </summary>
+        internal static string NotAMemberExpression {
+            get {
+                return ResourceManager.GetString("NotAMemberExpression", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PropertyInfo can&apos;t be null.
+        /// </summary>
+        internal static string PropertyInfoCantBeNull {
+            get {
+                return ResourceManager.GetString("PropertyInfoCantBeNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Property is not from the declaring class type specified.
+        /// </summary>
+        internal static string PropertyNotOfDeclaringType {
+            get {
+                return ResourceManager.GetString("PropertyNotOfDeclaringType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Property is not of the type specified.
+        /// </summary>
+        internal static string PropertyOfWrongType {
+            get {
+                return ResourceManager.GetString("PropertyOfWrongType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to reader.FieldCount needs to have at least 0 fields.
         /// </summary>
         internal static string ReaderFieldCountError {
