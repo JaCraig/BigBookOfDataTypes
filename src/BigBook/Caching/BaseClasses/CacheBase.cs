@@ -16,7 +16,9 @@ limitations under the License.
 
 using BigBook.Caching.Interfaces;
 using BigBook.Patterns.BaseClasses;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BigBook.Caching.BaseClasses
 {
@@ -141,18 +143,16 @@ namespace BigBook.Caching.BaseClasses
         /// <returns>The objects associated with the tag</returns>
         public IEnumerable<object> GetByTag(string tag)
         {
-            var ReturnValue = new List<object>();
             if (!TagMappings.ContainsKey(tag))
             {
-                return ReturnValue;
+                return Array.Empty<object>();
             }
 
-            foreach (var Key in TagMappings[tag])
+            var ReturnValue = new List<object>();
+
+            foreach (var Key in TagMappings[tag].Where(ContainsKey))
             {
-                if (ContainsKey(Key))
-                {
-                    ReturnValue.Add(this[Key]);
-                }
+                ReturnValue.Add(this[Key]);
             }
             return ReturnValue;
         }

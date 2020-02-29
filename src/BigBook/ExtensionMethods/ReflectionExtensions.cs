@@ -637,7 +637,7 @@ namespace BigBook
             return assembly?
                 .Types<TClassType>()
                 .Where(x => !x.ContainsGenericParameters)
-                .Create<TClassType>(args) ?? new List<TClassType>();
+                .Create<TClassType>(args) ?? Array.Empty<TClassType>();
         }
 
         /// <summary>
@@ -1111,7 +1111,7 @@ namespace BigBook
         /// <param name="assembly">Assembly to check</param>
         /// <typeparam name="TBaseType">Class type to search for</typeparam>
         /// <returns>List of types that use the interface</returns>
-        public static IEnumerable<Type> Types<TBaseType>(this Assembly assembly) => assembly?.Types(typeof(TBaseType)) ?? new List<Type>();
+        public static IEnumerable<Type> Types<TBaseType>(this Assembly assembly) => assembly?.Types(typeof(TBaseType)) ?? Array.Empty<Type>();
 
         /// <summary>
         /// Gets a list of types based on an interface

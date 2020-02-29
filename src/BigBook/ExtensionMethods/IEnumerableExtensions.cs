@@ -212,7 +212,7 @@ namespace BigBook
         /// <param name="list">IEnumerable to iterate over</param>
         /// <param name="action">Action to do</param>
         /// <returns>The original list</returns>
-        public static IEnumerable<T> ForEach<T>(this IEnumerable<T> list, Action<T> action)
+        public static IEnumerable<T> ForEach<T>(this IEnumerable<T>? list, Action<T>? action)
         {
             if (list?.Any() != true)
             {

@@ -34,7 +34,7 @@ namespace BigBook
         /// <returns>The average value</returns>
         public static TimeSpan Average(this IEnumerable<TimeSpan> list)
         {
-            list ??= new List<TimeSpan>();
+            list ??= Array.Empty<TimeSpan>();
             return list.Any() ? new TimeSpan((long)list.Average(x => x.Ticks)) : new TimeSpan(0);
         }
 

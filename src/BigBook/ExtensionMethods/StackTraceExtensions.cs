@@ -54,11 +54,11 @@ namespace BigBook
         /// <returns>The list of methods involved</returns>
         public static IEnumerable<MethodBase> GetMethods(this IEnumerable<StackFrame> frames, params Assembly[] excludedAssemblies)
         {
-            var Methods = new List<MethodBase>();
             if (frames is null)
             {
-                return Methods;
+                return Array.Empty<MethodBase>();
             }
+            var Methods = new List<MethodBase>();
 
             foreach (var Frame in frames)
             {

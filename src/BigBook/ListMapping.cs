@@ -253,13 +253,12 @@ namespace BigBook
         /// <returns>True if it was able to get the value, false otherwise</returns>
         public bool TryGetValue(T1 key, out IEnumerable<T2> value)
         {
-            value = new List<T2>();
-            var TempValue = new ConcurrentBag<T2>();
-            if (Items.TryGetValue(key, out TempValue))
+            if (Items.TryGetValue(key, out var TempValue))
             {
-                value = TempValue.ToList(x => x);
+                value = TempValue.ToArray(x => x);
                 return true;
             }
+            value = Array.Empty<T2>();
             return false;
         }
     }

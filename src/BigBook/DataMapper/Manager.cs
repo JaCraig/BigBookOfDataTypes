@@ -33,8 +33,7 @@ namespace BigBook.DataMapper
         /// <param name="mapperModules">The mapper modules.</param>
         public Manager(IEnumerable<IDataMapper> dataMappers, IEnumerable<IMapperModule> mapperModules)
         {
-            dataMappers ??= new List<IDataMapper>();
-            mapperModules ??= new List<IMapperModule>();
+            dataMappers ??= Array.Empty<IDataMapper>();
             DataMapper = dataMappers.FirstOrDefault(x => x.GetType().Assembly != typeof(Manager).Assembly) ?? new Default.DataMapper();
 
             mapperModules.ForEach(x => x.Map(this));
