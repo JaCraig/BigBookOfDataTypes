@@ -102,19 +102,10 @@ namespace BigBook
                 throw new ArgumentNullException(nameof(methodName));
             }
 
-            if (inputVariables is null)
-            {
-                inputVariables = Array.Empty<object>();
-            }
+            inputVariables ??= Array.Empty<object>();
 
             var ObjectType = inputObject.GetType();
-            var MethodInputTypes = new Type[inputVariables.Length];
-            for (var x = 0; x < inputVariables.Length; ++x)
-            {
-                MethodInputTypes[x] = inputVariables[x].GetType();
-            }
-
-            var Method = ObjectType.GetMethod(methodName, MethodInputTypes);
+            var Method = FindMethod(methodName, inputVariables, ObjectType);
             if (Method is null)
             {
                 throw new InvalidOperationException("Could not find method " + methodName + " with the appropriate input variables.");
@@ -148,19 +139,10 @@ namespace BigBook
                 throw new ArgumentNullException(nameof(methodName));
             }
 
-            if (inputVariables is null)
-            {
-                inputVariables = Array.Empty<object>();
-            }
+            inputVariables ??= Array.Empty<object>();
 
             var ObjectType = inputObject.GetType();
-            var MethodInputTypes = new Type[inputVariables.Length];
-            for (var x = 0; x < inputVariables.Length; ++x)
-            {
-                MethodInputTypes[x] = inputVariables[x].GetType();
-            }
-
-            var Method = ObjectType.GetMethod(methodName, MethodInputTypes);
+            var Method = FindMethod(methodName, inputVariables, ObjectType);
             if (Method is null)
             {
                 throw new InvalidOperationException("Could not find method " + methodName + " with the appropriate input variables.");
@@ -196,19 +178,10 @@ namespace BigBook
                 throw new ArgumentNullException(nameof(methodName));
             }
 
-            if (inputVariables is null)
-            {
-                inputVariables = Array.Empty<object>();
-            }
+            inputVariables ??= Array.Empty<object>();
 
             var ObjectType = inputObject.GetType();
-            var MethodInputTypes = new Type[inputVariables.Length];
-            for (var x = 0; x < inputVariables.Length; ++x)
-            {
-                MethodInputTypes[x] = inputVariables[x].GetType();
-            }
-
-            var Method = ObjectType.GetMethod(methodName, MethodInputTypes);
+            var Method = FindMethod(methodName, inputVariables, ObjectType);
             if (Method is null)
             {
                 throw new InvalidOperationException("Could not find method " + methodName + " with the appropriate input variables.");
@@ -245,19 +218,10 @@ namespace BigBook
                 throw new ArgumentNullException(nameof(methodName));
             }
 
-            if (inputVariables is null)
-            {
-                inputVariables = Array.Empty<object>();
-            }
+            inputVariables ??= Array.Empty<object>();
 
             var ObjectType = inputObject.GetType();
-            var MethodInputTypes = new Type[inputVariables.Length];
-            for (var x = 0; x < inputVariables.Length; ++x)
-            {
-                MethodInputTypes[x] = inputVariables[x].GetType();
-            }
-
-            var Method = ObjectType.GetMethod(methodName, MethodInputTypes);
+            var Method = FindMethod(methodName, inputVariables, ObjectType);
             if (Method is null)
             {
                 throw new InvalidOperationException("Could not find method " + methodName + " with the appropriate input variables.");
@@ -288,10 +252,7 @@ namespace BigBook
                 throw new ArgumentNullException(nameof(method));
             }
 
-            if (inputVariables is null)
-            {
-                inputVariables = Array.Empty<object>();
-            }
+            inputVariables ??= Array.Empty<object>();
 
             return (TReturnType)method.Invoke(inputObject, inputVariables);
         }
@@ -303,7 +264,7 @@ namespace BigBook
         /// <param name="type">Type to create an instance of</param>
         /// <param name="args">Arguments sent into the constructor</param>
         /// <returns>The newly created instance of the type</returns>
-        public static TClassType Create<TClassType>(this Type type, params object[] args) => type is null ? default : (TClassType)type?.Create(args)!;
+        public static TClassType Create<TClassType>(this Type type, params object[] args) => type is null ? default : (TClassType)Activator.CreateInstance(type, args);
 
         /// <summary>
         /// Creates an instance of the type
@@ -424,7 +385,7 @@ namespace BigBook
                 {
                     var GenericTypes = objectType.GetGenericArguments();
                     Output
-                        .Append(objectType.Name, 0, objectType.Name.IndexOf("`", StringComparison.OrdinalIgnoreCase))
+                        .Append(objectType.Name, 0, objectType.Name.IndexOf("`", StringComparison.Ordinal))
                         .Append("<");
                     var Seperator = "";
                     for (int x = 0, GenericTypesLength = GenericTypes.Length; x < GenericTypesLength; x++)
@@ -1236,6 +1197,24 @@ namespace BigBook
             return !(TypeInfo.BaseType is null) && TypeInfo.BaseType != typeof(object) ?
                 FindIEnumerableElementType(TypeInfo.BaseType) :
                 null;
+        }
+
+        /// <summary>
+        /// Finds the method.
+        /// </summary>
+        /// <param name="methodName">Name of the method.</param>
+        /// <param name="inputVariables">The input variables.</param>
+        /// <param name="ObjectType">Type of the object.</param>
+        /// <returns>The method specified.</returns>
+        private static MethodInfo FindMethod(string methodName, object[] inputVariables, Type ObjectType)
+        {
+            var MethodInputTypes = new Type[inputVariables.Length];
+            for (var x = 0; x < inputVariables.Length; ++x)
+            {
+                MethodInputTypes[x] = inputVariables[x].GetType();
+            }
+
+            return ObjectType.GetMethod(methodName, MethodInputTypes);
         }
 
         /// <summary>

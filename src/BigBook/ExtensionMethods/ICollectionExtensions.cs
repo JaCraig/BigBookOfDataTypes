@@ -51,7 +51,11 @@ namespace BigBook
             if (items is null)
                 return collection;
 
-            items.ForEach(x => collection.Add(x));
+            for (int x = 0; x < items.Length; ++x)
+            {
+                collection.Add(items[x]);
+            }
+
             return collection;
         }
 
@@ -197,11 +201,28 @@ namespace BigBook
             if (list is null)
                 return new List<T>();
 
-            var TempList = list.ElementsBetween(start, end + 1).ToArray();
-            for (var x = 0; x < TempList.Length; ++x)
+            if (end >= list.Count)
             {
-                action(TempList[x], x);
+                end = list.Count - 1;
             }
+
+            if (start < 0)
+            {
+                start = 0;
+            }
+
+            if (start > end)
+            {
+                var Temp = start;
+                start = end;
+                end = Temp;
+            }
+
+            for (int x = start, Count = 0; x <= end; ++x, ++Count)
+            {
+                action(list[x], Count);
+            }
+
             return list;
         }
 

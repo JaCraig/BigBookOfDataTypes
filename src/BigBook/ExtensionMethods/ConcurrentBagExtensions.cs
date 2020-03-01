@@ -87,7 +87,17 @@ namespace BigBook
                 && !(predicate is null)
                 && (items is null
                     || items.Length == 0
-                    || items.ForEachParallel(Item => { if (predicate(Item)) { collection.Add(Item); return true; } return false; }).Any(x => x));
+                    || items
+                        .ForEachParallel(Item =>
+                        {
+                            if (predicate(Item))
+                            {
+                                collection.Add(Item);
+                                return true;
+                            }
+                            return false;
+                        })
+                        .Any(x => x));
         }
 
         /// <summary>

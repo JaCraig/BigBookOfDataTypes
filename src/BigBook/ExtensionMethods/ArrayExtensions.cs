@@ -68,12 +68,14 @@ namespace BigBook
         {
             array1 ??= Array.Empty<TArrayType>();
             additions ??= Array.Empty<TArrayType[]>();
-            var finalAdditions = additions.Where(x => !(x is null));
-            var Result = new TArrayType[array1.Length + finalAdditions.Sum(x => x.Length)];
+            var Result = new TArrayType[array1.Length + additions.Sum(x => x?.Length ?? 0)];
             var Offset = array1.Length;
             Array.Copy(array1, 0, Result, 0, array1.Length);
-            foreach (var item in finalAdditions)
+            for (int x = 0; x < additions.Length; ++x)
             {
+                var item = additions[x];
+                if (item is null)
+                    continue;
                 Array.Copy(item, 0, Result, Offset, item.Length);
                 Offset += item.Length;
             }

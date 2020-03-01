@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using System;
+using System.Buffers;
 using System.ComponentModel;
 using System.IO;
 using System.Text;
@@ -60,13 +61,15 @@ namespace BigBook
                 return TempInput.ToArray();
             }
 
-            var Buffer = new byte[4096];
+            var Pool = ArrayPool<byte>.Shared;
+            var Buffer = Pool.Rent(4096);
             using var Temp = new MemoryStream();
             while (true)
             {
                 var Count = input.Read(Buffer, 0, Buffer.Length);
                 if (Count <= 0)
                 {
+                    Pool.Return(Buffer);
                     return Temp.ToArray();
                 }
                 Temp.Write(Buffer, 0, Count);
