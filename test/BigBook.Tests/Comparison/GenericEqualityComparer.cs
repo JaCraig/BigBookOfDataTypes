@@ -1,9 +1,10 @@
 ﻿using BigBook.Comparison;
+using BigBook.Tests.BaseClasses;
 using Xunit;
 
 namespace BigBook.Tests.Comparison
 {
-    public class GenericEqualityComparerTests
+    public class GenericEqualityComparerTests : TestingDirectoryFixture
     {
         [Fact]
         public void Compare()

@@ -53,15 +53,10 @@ namespace BigBook
                 return enumerable1;
             }
 
-            var ActualAdditions = additions.Where(x => !(x is null)).ToArray();
-            var Results = new List<T>();
-            Results.AddRange(enumerable1);
-            for (var x = 0; x < ActualAdditions.Length; ++x)
-            {
-                Results.AddRange(ActualAdditions[x]);
-            }
-
-            return Results;
+            var TempAdditions = new IEnumerable<T>[additions.Length + 1];
+            TempAdditions[0] = enumerable1;
+            Array.Copy(additions, 0, TempAdditions, 1, additions.Length);
+            return TempAdditions.SelectMany(x => x).ToArray();
         }
 
         /// <summary>
@@ -81,8 +76,7 @@ namespace BigBook
                 yield break;
             }
 
-            var TempGenericComparer = Canister.Builder.Bootstrapper?.Resolve<GenericEqualityComparer<T>>() ?? new GenericEqualityComparer<T>();
-            predicate ??= TempGenericComparer.Equals;
+            predicate ??= (Canister.Builder.Bootstrapper?.Resolve<GenericEqualityComparer<T>>() ?? new GenericEqualityComparer<T>()).Equals;
             var Results = new List<T>();
             foreach (var Item in enumerable)
             {
@@ -169,11 +163,15 @@ namespace BigBook
             {
                 return Array.Empty<T>();
             }
+            if (action is null)
+                return list;
 
-            var TempList = list.ElementsBetween(start, end + 1).ToArray();
-            for (var x = 0; x < TempList.Length; ++x)
+            int Count = 0;
+
+            foreach (var Item in list.ElementsBetween(start, end + 1))
             {
-                action(TempList[x], x);
+                action(Item, Count);
+                ++Count;
             }
             return list;
         }
@@ -196,11 +194,13 @@ namespace BigBook
                 return Array.Empty<TResult>();
             }
 
-            var TempList = list.ElementsBetween(start, end + 1).ToArray();
-            var ReturnList = new TResult[TempList.Length];
-            for (var x = 0; x < TempList.Length; ++x)
+            int Count = 0;
+            var ReturnList = new TResult[end + 1 - start];
+
+            foreach (var Item in list.ElementsBetween(start, end + 1))
             {
-                ReturnList[x] = function(TempList[x], x);
+                ReturnList[Count] = function(Item, Count);
+                ++Count;
             }
             return ReturnList;
         }
@@ -247,13 +247,7 @@ namespace BigBook
                 return Array.Empty<TResult>();
             }
 
-            var ReturnList = new List<TResult>(list.Count());
-            foreach (var Item in list)
-            {
-                ReturnList.Add(function(Item));
-            }
-
-            return ReturnList;
+            return list.Select(x => function(x)).ToArray();
         }
 
         /// <summary>
@@ -303,14 +297,16 @@ namespace BigBook
                 return Array.Empty<TResult>();
             }
 
-            var ReturnValue = new List<TResult>();
+            var ReturnValue = new TResult[list.Count()];
+            int Count = 0;
             foreach (var Item in list)
             {
                 try
                 {
-                    ReturnValue.Add(function(Item));
+                    ReturnValue[Count] = function(Item);
                 }
                 catch (Exception e) { catchAction(Item, e); }
+                ++Count;
             }
             return ReturnValue;
         }
@@ -510,7 +506,9 @@ namespace BigBook
                 return Array.Empty<T>();
             }
 
-            return list.ElementsBetween(list.Count() - count, list.Count());
+            int Count = list.Count();
+
+            return list.ElementsBetween(Count - count, Count);
         }
 
         /// <summary>

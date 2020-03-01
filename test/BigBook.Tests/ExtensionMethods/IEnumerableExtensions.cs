@@ -12,6 +12,14 @@ namespace BigBook.Tests.ExtensionMethods
     public class IEnumerableExtensionsTests : TestingDirectoryFixture
     {
         [Fact]
+        public void Concat()
+        {
+            var Temp = new int[] { 0, 1, 2, 3, 5 }.ToList();
+            var Results = new int[] { 0, 1, 2, 3, 5, 6, 7, 8 }.ToList();
+            Assert.Equal(Results, Temp.Concat(new int[] { 6, 7, 8 }));
+        }
+
+        [Fact]
         public void Distinct()
         {
             var Temp = new int[] { 0, 0, 1, 2, 1, 3, 5, 2 }.ToList();
@@ -80,6 +88,23 @@ namespace BigBook.Tests.ExtensionMethods
         {
             var Temp = new int[] { 0, 0, 1, 2, 3 }.ToList();
             Temp.ForEach<int, float>(x => x > 0 ? x : 1.0f);
+        }
+
+        [Fact]
+        public void ForIEnumerableFuncTest()
+        {
+            IEnumerable<int> Temp = new int[] { 0, 0, 1, 2, 3 };
+            var Result = Temp.For(1, 3, (x, _) => (long)x);
+            Assert.Equal("012", Result.ToString(x => x.ToString(), ""));
+        }
+
+        [Fact]
+        public void ForIEnumerableTest()
+        {
+            var Builder = new StringBuilder();
+            IEnumerable<int> Temp = new int[] { 0, 0, 1, 2, 3 };
+            Temp.For(1, 3, (x, _) => { Builder.Append(x); });
+            Assert.Equal("012", Builder.ToString());
         }
 
         [Fact]
