@@ -36,12 +36,7 @@ namespace BigBook
         /// <returns>A string containing the content of the stream</returns>
         public static string ReadAll(this Stream input, Encoding? encodingUsing = null)
         {
-            if (input is null)
-            {
-                return "";
-            }
-
-            return input.ReadAllBinary().ToString(encodingUsing);
+            return input?.ReadAllBinary().ToString(encodingUsing) ?? "";
         }
 
         /// <summary>
