@@ -120,6 +120,9 @@
   <data name="BaseStreamCurrentlyNullError" xml:space="preserve">
     <value>Base stream is currently null.</value>
   </data>
+  <data name="BloomFilterCapacity" xml:space="preserve">
+    <value>The size and error rate values would result in an array of &gt; int.MaxValue length.</value>
+  </data>
   <data name="DenominatorIntMinError" xml:space="preserve">
     <value>denominator can't be int.MinValue</value>
   </data>

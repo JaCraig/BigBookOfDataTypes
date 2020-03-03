@@ -70,6 +70,15 @@ namespace BigBook.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The size and error rate values would result in an array of &gt; int.MaxValue length..
+        /// </summary>
+        internal static string BloomFilterCapacity {
+            get {
+                return ResourceManager.GetString("BloomFilterCapacity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to denominator can&apos;t be int.MinValue.
         /// </summary>
         internal static string DenominatorIntMinError {
