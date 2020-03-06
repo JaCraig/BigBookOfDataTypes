@@ -67,7 +67,7 @@ namespace BigBook
         /// <returns>
         /// The value associated with the key or the default value if the key is not found
         /// </returns>
-        public static TValue GetValue<TKey, TValue>(this IDictionary<TKey, TValue> dictionary,
+        public static TValue GetValue<TKey, TValue>(this IDictionary<TKey, TValue>? dictionary,
             TKey key,
             TValue defaultValue = default)
         {
