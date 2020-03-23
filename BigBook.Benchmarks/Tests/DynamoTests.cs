@@ -1,4 +1,5 @@
 ﻿using BenchmarkDotNet.Attributes;
+using BigBook.Benchmarks.Tests.AltImplementations;
 using BigBook.Registration;
 using System.Collections.Concurrent;
 using System.Dynamic;
@@ -8,10 +9,10 @@ namespace BigBook.Benchmarks.Tests
     [RPlotExporter, RankColumn, MemoryDiagnoser]
     public class DynamoTests
     {
+        public object[] Data { get; set; }
+
         [Params(1000, 10000)]
         public int Count;
-
-        public object[] Data { get; set; }
 
         [Benchmark]
         public object[] AnnonymousTest()
@@ -43,6 +44,54 @@ namespace BigBook.Benchmarks.Tests
             {
                 var Temp = new ConcurrentDictionary<string, object>();
                 Temp.AddOrUpdate("A", "Test data goes here", (_, __) => "Test data goes here");
+                Data[x] = Temp;
+            }
+            return Data;
+        }
+
+        [Benchmark]
+        public object[] DynamoAltAnonymousConversionTest()
+        {
+            Data = new DynamoAlt[Count];
+            for (var x = 0; x < Count; ++x)
+            {
+                Data[x] = new DynamoAlt(new { A = "Test data goes here" });
+            }
+            return Data;
+        }
+
+        [Benchmark]
+        public object[] DynamoAltConversionTest()
+        {
+            Data = new DynamoAlt[Count];
+            for (var x = 0; x < Count; ++x)
+            {
+                Data[x] = new DynamoAlt(new TestClass { A = "Test data goes here" });
+            }
+            return Data;
+        }
+
+        [Benchmark]
+        public object[] DynamoAltExpandoConversionTest()
+        {
+            Data = new DynamoAlt[Count];
+            for (var x = 0; x < Count; ++x)
+            {
+                dynamic Temp = new ExpandoObject();
+                Temp.A = "Test data goes here";
+                Data[x] = new DynamoAlt(Temp);
+            }
+            return Data;
+        }
+
+        [Benchmark]
+        public object[] DynamoAltTest()
+        {
+            Data = new DynamoAlt[Count];
+            for (var x = 0; x < Count; ++x)
+            {
+                dynamic Temp = new DynamoAlt();
+                Temp.A = "Test data goes here";
                 Data[x] = Temp;
             }
             return Data;
