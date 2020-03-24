@@ -15,12 +15,14 @@ limitations under the License.
 */
 
 using BigBook.DataMapper;
+using BigBook.DynamoUtils;
 using BigBook.Reflection;
 using System;
 using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Dynamic;
 using System.Linq;
 using System.Text;
@@ -28,44 +30,16 @@ using System.Text;
 namespace BigBook
 {
     /// <summary>
-    /// Change class
-    /// </summary>
-    public class Change
-    {
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        /// <param name="originalValue">Original value</param>
-        /// <param name="newValue">New value</param>
-        public Change(object? originalValue, object? newValue)
-        {
-            OriginalValue = originalValue;
-            NewValue = newValue;
-        }
-
-        /// <summary>
-        /// New value
-        /// </summary>
-        public object? NewValue { get; }
-
-        /// <summary>
-        /// Original value
-        /// </summary>
-        public object? OriginalValue { get; }
-    }
-
-    /// <summary>
     /// Dynamic object implementation (used when inheriting)
     /// </summary>
-    /// <typeparam name="T">Child object type</typeparam>
-    public abstract class Dynamo<T> : Dynamo
-        where T : Dynamo<T>
+    /// <typeparam name="TClass">Child object type</typeparam>
+    public abstract class Dynamo<TClass> : Dynamo
+        where TClass : Dynamo<TClass>
     {
         /// <summary>
         /// Constructor
         /// </summary>
         protected Dynamo()
-            : this(new Dictionary<string, object?>())
         {
         }
 
@@ -74,7 +48,7 @@ namespace BigBook
         /// </summary>
         /// <param name="item">Item to copy values from</param>
         /// <param name="useChangeLog">if set to <c>true</c> [use change log].</param>
-        protected Dynamo(object item, bool useChangeLog = false)
+        protected Dynamo(object? item, bool useChangeLog = false)
             : base(item, useChangeLog)
         {
         }
@@ -82,10 +56,9 @@ namespace BigBook
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="dictionary">Dictionary to copy</param>
-        /// <param name="useChangeLog"></param>
-        protected Dynamo(IDictionary<string, object?> dictionary, bool useChangeLog = false)
-            : base(dictionary, useChangeLog)
+        /// <param name="useChangeLog">if set to <c>true</c> [use change log].</param>
+        protected Dynamo(bool useChangeLog)
+            : base(useChangeLog)
         {
         }
 
@@ -100,7 +73,7 @@ namespace BigBook
                 {
                     base.Keys
                 };
-                foreach (var Property in TypeCacheFor<T>.Properties.Where(x => x.DeclaringType != typeof(Dynamo<T>) && x.DeclaringType != typeof(Dynamo)))
+                foreach (var Property in TypeCacheFor<TClass>.Properties.Where(x => x.DeclaringType != typeof(Dynamo<TClass>) && x.DeclaringType != typeof(Dynamo)))
                 {
                     Temp.Add(Property.Name);
                 }
@@ -115,62 +88,13 @@ namespace BigBook
         {
             get
             {
-                var Temp = new List<object?>();
-                foreach (var Key in Keys)
+                var TempKeys = Keys;
+                var Temp = new List<object?>(TempKeys.Count);
+                foreach (var Key in TempKeys)
                 {
                     Temp.Add(GetValue(Key, typeof(object)));
                 }
                 return Temp;
-            }
-        }
-
-        /// <summary>
-        /// Gets a value
-        /// </summary>
-        /// <param name="name">Name of the item</param>
-        /// <param name="returnType">Return value type</param>
-        /// <returns>The returned value</returns>
-        protected override object? GetValue(string name, Type returnType)
-        {
-            if (ContainsKey(name))
-            {
-                return InternalValues[name].To(returnType, null);
-            }
-
-            if (!ChildValues.ContainsKey(name))
-            {
-                var ObjectType = GetType();
-                var Property = ObjectType.GetProperty(name);
-                if (!(Property is null))
-                {
-                    var Temp = Property.PropertyGetter<T>().Compile();
-                    ChildValues.AddOrUpdate(name, _ => () => Temp((T)this), (__, _) => () => Temp((T)this));
-                }
-                else
-                {
-                    ChildValues.AddOrUpdate(name, _ => () => null!, (__, _) => null!);
-                }
-            }
-            return ChildValues[name]().To(returnType, null);
-        }
-
-        /// <summary>
-        /// Sets a value
-        /// </summary>
-        /// <param name="key">Name of the item</param>
-        /// <param name="value">Value associated with the key</param>
-        protected override void SetValue(string key, object? value)
-        {
-            var ObjectType = GetType();
-            var Property = ObjectType.GetProperty(key);
-            if (Property?.CanWrite == true)
-            {
-                RaisePropertyChanged(key, value);
-                Property.SetValue(this, value);
-            }
-            else if (Property is null)
-            {
-                base.SetValue(key, value);
             }
         }
     }
@@ -178,63 +102,128 @@ namespace BigBook
     /// <summary>
     /// Dynamic object implementation
     /// </summary>
+    /// <seealso cref="Dynamo"/>
     public class Dynamo : DynamicObject, IDictionary<string, object?>, INotifyPropertyChanged
     {
         /// <summary>
-        /// Constructor
+        /// Creates a new ExpandoObject with no members.
         /// </summary>
         public Dynamo()
-            : this((object?)null)
         {
+            Data = DynamoData.Empty;
+            LockObject = new object();
+            TypeInfo?.SetupType(this);
         }
 
         /// <summary>
-        /// Constructor
+        /// Initializes a new instance of the <see cref="Dynamo"/> class.
         /// </summary>
-        /// <param name="item">Item to copy values from</param>
+        /// <param name="item">The item.</param>
         /// <param name="useChangeLog">if set to <c>true</c> [use change log].</param>
         public Dynamo(object? item, bool useChangeLog = false)
+            : this(useChangeLog)
         {
-            InternalValues = new ConcurrentDictionary<string, object?>(StringComparer.OrdinalIgnoreCase);
-            ChildValues = new ConcurrentDictionary<string, Func<object>>(StringComparer.OrdinalIgnoreCase);
-            ChangeLog = useChangeLog ? new ConcurrentDictionary<string, Change>(StringComparer.OrdinalIgnoreCase) : null;
-            if (item is null)
-            {
-                return;
-            }
-
-            var ItemType = item.GetType();
-            if (item is string || ItemType.IsValueType)
-            {
-                SetValue("Value", item);
-            }
-            else if (item is IDictionary<string, object?> DictItem)
-            {
-                InternalValues = new ConcurrentDictionary<string, object?>(DictItem, StringComparer.OrdinalIgnoreCase);
-            }
-            else if (item is IEnumerable)
-            {
-                SetValue("Items", item);
-            }
-            else
-            {
-                DataMapper?.Map(ItemType, GetType())
-                          .AutoMap()
-                          .Copy(item, this);
-            }
+            Copy(item);
         }
 
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="dictionary">Dictionary to copy</param>
         /// <param name="useChangeLog">if set to <c>true</c> [use change log].</param>
-        public Dynamo(IDictionary<string, object?>? dictionary, bool useChangeLog = false)
+        public Dynamo(bool useChangeLog)
+            : this()
         {
-            InternalValues = new ConcurrentDictionary<string, object?>(dictionary ?? new Dictionary<string, object?>(), StringComparer.OrdinalIgnoreCase);
-            ChildValues = new ConcurrentDictionary<string, Func<object>>(StringComparer.OrdinalIgnoreCase);
-            ChangeLog = useChangeLog ? new ConcurrentDictionary<string, Change>(StringComparer.OrdinalIgnoreCase) : null;
+            ChangeLog = useChangeLog ? new ConcurrentDictionary<string, Change>() : null;
         }
+
+        /// <summary>
+        /// Gets the change log.
+        /// </summary>
+        /// <value>The change log.</value>
+        public ConcurrentDictionary<string, Change>? ChangeLog { get; }
+
+        /// <summary>
+        /// Gets the number of elements contained in the <see cref="T:System.Collections.Generic.ICollection`1"/>.
+        /// </summary>
+        public int Count { get; private set; }
+
+        /// <summary>
+        /// Gets the definition.
+        /// </summary>
+        /// <value>The definition.</value>
+        internal DynamoClass Definition => Data.Definition;
+
+        /// <summary>
+        /// Gets a value indicating whether the <see
+        /// cref="T:System.Collections.Generic.ICollection`1"/> is read-only.
+        /// </summary>
+        public bool IsReadOnly { get; }
+
+        /// <summary>
+        /// Gets an <see cref="T:System.Collections.Generic.ICollection`1"/> containing the keys of
+        /// the <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+        /// </summary>
+        public virtual ICollection<string> Keys
+        {
+            get
+            {
+                var TempData = Data;
+                lock (LockObject)
+                {
+                    return TempData.Definition.Keys.Select(x => x).ToArray();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets an <see cref="T:System.Collections.Generic.ICollection`1"/> containing the values
+        /// in the <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+        /// </summary>
+        public virtual ICollection<object?> Values
+        {
+            get
+            {
+                var TempData = Data;
+                lock (LockObject)
+                {
+                    return TempData.Data.Where(x => x != UninitializedObject).ToArray();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets the data.
+        /// </summary>
+        /// <value>The data.</value>
+        internal DynamoData Data { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the aop manager.
+        /// </summary>
+        /// <value>The aop manager.</value>
+        private static Aspectus.Aspectus? AOPManager => Canister.Builder.Bootstrapper?.Resolve<Aspectus.Aspectus>();
+
+        /// <summary>
+        /// Gets or sets the data mapper.
+        /// </summary>
+        /// <value>The data mapper.</value>
+        private static Manager? DataMapper => Canister.Builder.Bootstrapper?.Resolve<Manager>();
+
+        /// <summary>
+        /// Gets the type information.
+        /// </summary>
+        /// <value>The type information.</value>
+        private static DynamoTypes? TypeInfo => Canister.Builder.Bootstrapper?.Resolve<DynamoTypes>();
+
+        /// <summary>
+        /// The uninitialized object
+        /// </summary>
+        internal static readonly object UninitializedObject = new object();
+
+        /// <summary>
+        /// The lock object
+        /// </summary>
+        internal readonly object LockObject;
 
         /// <summary>
         /// The get value end_
@@ -252,61 +241,21 @@ namespace BigBook
         private PropertyChangedEventHandler? propertyChanged_;
 
         /// <summary>
-        /// Change log
+        /// Gets or sets the <see cref="object"/> with the specified key.
         /// </summary>
-        public ConcurrentDictionary<string, Change>? ChangeLog { get; }
-
-        /// <summary>
-        /// Number of items
-        /// </summary>
-        public int Count => InternalValues.Count;
-
-        /// <summary>
-        /// Is this read only?
-        /// </summary>
-        public bool IsReadOnly { get; }
-
-        /// <summary>
-        /// Keys
-        /// </summary>
-        public virtual ICollection<string> Keys => InternalValues.Keys;
-
-        /// <summary>
-        /// Values
-        /// </summary>
-        public virtual ICollection<object?> Values => InternalValues.Values;
-
-        /// <summary>
-        /// Child class key/value dictionary
-        /// </summary>
-        internal ConcurrentDictionary<string, Func<object>> ChildValues { get; set; }
-
-        /// <summary>
-        /// Internal key/value dictionary
-        /// </summary>
-        internal ConcurrentDictionary<string, object?> InternalValues { get; set; }
-
-        /// <summary>
-        /// Gets or sets the aop manager.
-        /// </summary>
-        /// <value>The aop manager.</value>
-        private static Aspectus.Aspectus? AOPManager => Canister.Builder.Bootstrapper?.Resolve<Aspectus.Aspectus>();
-
-        /// <summary>
-        /// Gets or sets the data mapper.
-        /// </summary>
-        /// <value>The data mapper.</value>
-        private static Manager? DataMapper => Canister.Builder.Bootstrapper?.Resolve<Manager>();
-
-        /// <summary>
-        /// Gets the value associated with the key specified
-        /// </summary>
-        /// <param name="key">Key to get</param>
-        /// <returns>The object associated with the key</returns>
+        /// <value>The <see cref="object"/>.</value>
+        /// <param name="key">The key.</param>
+        /// <returns>The object specified.</returns>
         public object? this[string key]
         {
-            get => GetValue(key, typeof(object))!;
-            set => SetValue(key, value);
+            get
+            {
+                return GetValue(key, typeof(object));
+            }
+            set
+            {
+                TrySetValue(key, value);
+            }
         }
 
         /// <summary>
@@ -344,6 +293,9 @@ namespace BigBook
         }
 
         /// <summary>
+        /// Occurs when a property value changes.
+        /// </summary>
+        /// <summary>
         /// Property changed event
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged
@@ -360,40 +312,74 @@ namespace BigBook
         }
 
         /// <summary>
-        /// Adds a key/value pair to the object
+        /// Adds an element with the provided key and value to the <see cref="T:System.Collections.Generic.IDictionary`2"/>.
         /// </summary>
-        /// <param name="key">key</param>
-        /// <param name="value">value</param>
-        public void Add(string key, object? value) => SetValue(key, value);
-
-        /// <summary>
-        /// Adds a key/value pair
-        /// </summary>
-        /// <param name="item">Item to add</param>
-        public void Add(KeyValuePair<string, object?> item) => SetValue(item.Key, item.Value);
-
-        /// <summary>
-        /// Clears the key/value pairs
-        /// </summary>
-        public void Clear()
+        /// <param name="key">The object to use as the key of the element to add.</param>
+        /// <param name="value">The object to use as the value of the element to add.</param>
+        public void Add(string key, object? value)
         {
-            RaisePropertyChanged("", null);
-            InternalValues.Clear();
+            TrySetValue(key, value);
         }
 
         /// <summary>
-        /// Does the object contain the key/value pair
+        /// Adds an item to the <see cref="T:System.Collections.Generic.ICollection`1"/>.
         /// </summary>
-        /// <param name="item">Item to check</param>
-        /// <returns>True if it is found, false otherwise</returns>
-        public bool Contains(KeyValuePair<string, object?> item) => InternalValues.Contains(item);
+        /// <param name="item">The object to add to the <see cref="T:System.Collections.Generic.ICollection`1"/>.</param>
+        public void Add(KeyValuePair<string, object?> item)
+        {
+            TrySetValue(item.Key, item.Value);
+        }
 
         /// <summary>
-        /// Determines if the object contains a key
+        /// Removes all items from the <see cref="T:System.Collections.Generic.ICollection`1"/>.
         /// </summary>
-        /// <param name="key">Key to check</param>
-        /// <returns>True if it is found, false otherwise</returns>
-        public bool ContainsKey(string key) => InternalValues.ContainsKey(key);
+        public void Clear()
+        {
+            DynamoData TempData;
+            lock (LockObject)
+            {
+                TempData = Data;
+                Data = DynamoData.Empty;
+                Count = 0;
+            }
+            for (var x = 0; x < TempData.Definition.Keys.Length; ++x)
+            {
+                var OldData = TempData[x];
+                if (OldData != UninitializedObject)
+                {
+                    RaisePropertyChanged(TempData.Definition.Keys[x], OldData, null);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Determines whether this instance contains the object.
+        /// </summary>
+        /// <param name="item">The object to locate in the <see cref="T:System.Collections.Generic.ICollection`1"/>.</param>
+        /// <returns>
+        /// <see langword="true"/> if <paramref name="item"/> is found in the <see
+        /// cref="T:System.Collections.Generic.ICollection`1"/>; otherwise, <see langword="false"/>.
+        /// </returns>
+        public bool Contains(KeyValuePair<string, object?> item)
+        {
+            return TryGetValue(item.Key, out var Value) && Equals(Value, item.Value);
+        }
+
+        /// <summary>
+        /// Determines whether the <see cref="T:System.Collections.Generic.IDictionary`2"/> contains
+        /// an element with the specified key.
+        /// </summary>
+        /// <param name="key">The key to locate in the <see cref="T:System.Collections.Generic.IDictionary`2"/>.</param>
+        /// <returns>
+        /// <see langword="true"/> if the <see cref="T:System.Collections.Generic.IDictionary`2"/>
+        /// contains an element with the key; otherwise, <see langword="false"/>.
+        /// </returns>
+        public bool ContainsKey(string key)
+        {
+            var TempData = Data;
+            var Index = TempData.Definition.GetIndex(key);
+            return Index >= 0 && TempData.Data[Index] != UninitializedObject;
+        }
 
         /// <summary>
         /// Copies the properties from an item
@@ -406,35 +392,61 @@ namespace BigBook
                 return;
             }
 
-            if (item is string || item.GetType().IsValueType)
+            var ItemType = item.GetType();
+            if (item is string || ItemType.IsValueType)
             {
-                SetValue("Value", item);
+                TrySetValue("Value", item);
             }
-            else if (item is IDictionary<string, object> DictItem)
+            else if (item is IDictionary<string, object?> DictItem)
             {
-                foreach (var Key in DictItem.Keys)
+                foreach (var Item in DictItem)
                 {
-                    InternalValues.AddOrUpdate(Key, _ => DictItem[Key], (_, __) => DictItem[Key]);
+                    TrySetValue(Item.Key, Item.Value);
                 }
             }
             else if (item is IEnumerable)
             {
-                SetValue("Items", item);
+                TrySetValue("Items", item);
             }
             else
             {
-                DataMapper?.Map(item.GetType(), GetType())
+                DataMapper?.Map(ItemType, GetType())
                           .AutoMap()
                           .Copy(item, this);
             }
         }
 
         /// <summary>
-        /// Copies the key/value pairs to an array
+        /// Copies the elements of the <see cref="T:System.Collections.Generic.ICollection`1"/> to
+        /// an <see cref="T:System.Array"/>, starting at a particular <see cref="T:System.Array"/> index.
         /// </summary>
-        /// <param name="array">Array to copy to</param>
-        /// <param name="arrayIndex">Array index</param>
-        public void CopyTo(KeyValuePair<string, object?>[] array, int arrayIndex) => InternalValues.ToArray().CopyTo(array, arrayIndex);
+        /// <param name="array">
+        /// The one-dimensional <see cref="T:System.Array"/> that is the destination of the elements
+        /// copied from <see cref="T:System.Collections.Generic.ICollection`1"/>. The <see
+        /// cref="T:System.Array"/> must have zero-based indexing.
+        /// </param>
+        /// <param name="arrayIndex">
+        /// The zero-based index in <paramref name="array"/> at which copying begins.
+        /// </param>
+        /// <exception cref="ArgumentOutOfRangeException">arrayIndex</exception>
+        public void CopyTo(KeyValuePair<string, object?>[] array, int arrayIndex)
+        {
+            if (array is null)
+                return;
+
+            if (arrayIndex < 0)
+                arrayIndex = 0;
+            if (arrayIndex > array.Length - Keys.Count)
+                throw new ArgumentOutOfRangeException(nameof(arrayIndex));
+
+            lock (LockObject)
+            {
+                foreach (var item in this)
+                {
+                    array[arrayIndex++] = item;
+                }
+            }
+        }
 
         /// <summary>
         /// Copies data from here to another object
@@ -466,22 +478,33 @@ namespace BigBook
         public override IEnumerable<string> GetDynamicMemberNames() => Keys;
 
         /// <summary>
-        /// Gets the enumerator for the object
+        /// Returns an enumerator that iterates through the collection.
         /// </summary>
-        /// <returns>The enumerator</returns>
+        /// <returns>An enumerator that can be used to iterate through the collection.</returns>
         public IEnumerator<KeyValuePair<string, object?>> GetEnumerator()
         {
-            foreach (var Key in Keys)
+            var TempData = Data;
+            for (var x = 0; x < TempData.Definition.Keys.Length; ++x)
             {
-                yield return new KeyValuePair<string, object?>(Key, this[Key]);
+                var Value = TempData[x];
+                if (Value != UninitializedObject)
+                {
+                    yield return new KeyValuePair<string, object?>(TempData.Definition.Keys[x], Value);
+                }
             }
         }
 
         /// <summary>
-        /// Gets the enumerator for the object
+        /// Returns an enumerator that iterates through a collection.
         /// </summary>
-        /// <returns>The enumerator</returns>
-        IEnumerator IEnumerable.GetEnumerator() => InternalValues.GetEnumerator();
+        /// <returns>
+        /// An <see cref="T:System.Collections.IEnumerator"/> object that can be used to iterate
+        /// through the collection.
+        /// </returns>
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
 
         /// <summary>
         /// Gets the hash code
@@ -489,6 +512,7 @@ namespace BigBook
         /// <returns>The hash code</returns>
         public override int GetHashCode()
         {
+            //MODIFY
             var Value = 1;
             foreach (var Key in Keys)
             {
@@ -518,33 +542,55 @@ namespace BigBook
         {
             if (reader is null)
                 return;
-            SetValue(reader.Name, reader.Value);
+            TrySetValue(reader.Name, reader.Value);
             while (reader.Read())
             {
-                SetValue(reader.Name, reader.Value);
+                TrySetValue(reader.Name, reader.Value);
             }
         }
 
         /// <summary>
-        /// Removes the value associated with the key
+        /// Removes the element with the specified key from the <see cref="T:System.Collections.Generic.IDictionary`2"/>.
         /// </summary>
-        /// <param name="key">Key to remove</param>
-        /// <returns>True if it is removed, false otherwise</returns>
+        /// <param name="key">The key of the element to remove.</param>
+        /// <returns>
+        /// <see langword="true"/> if the element is successfully removed; otherwise, <see
+        /// langword="false"/>. This method also returns <see langword="false"/> if <paramref
+        /// name="key"/> was not found in the original <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+        /// </returns>
         public bool Remove(string key)
         {
-            RaisePropertyChanged(key, null);
-            return InternalValues.TryRemove(key, out _);
+            DynamoData TempData;
+            object? OldValue;
+            lock (LockObject)
+            {
+                TempData = Data;
+                var Index = TempData.Definition.GetIndex(key);
+                if (Index == -1)
+                    return false;
+                OldValue = TempData[Index];
+                if (OldValue == UninitializedObject)
+                    return false;
+                TempData[Index] = UninitializedObject;
+                --Count;
+            }
+            RaisePropertyChanged(key, OldValue, null);
+            return true;
         }
 
         /// <summary>
-        /// Removes a key/value pair
+        /// Removes the first occurrence of a specific object from the <see cref="T:System.Collections.Generic.ICollection`1"/>.
         /// </summary>
-        /// <param name="item">Item to remove</param>
-        /// <returns>True if it is removed, false otherwise</returns>
+        /// <param name="item">The object to remove from the <see cref="T:System.Collections.Generic.ICollection`1"/>.</param>
+        /// <returns>
+        /// <see langword="true"/> if <paramref name="item"/> was successfully removed from the <see
+        /// cref="T:System.Collections.Generic.ICollection`1"/>; otherwise, <see langword="false"/>.
+        /// This method also returns <see langword="false"/> if <paramref name="item"/> is not found
+        /// in the original <see cref="T:System.Collections.Generic.ICollection`1"/>.
+        /// </returns>
         public bool Remove(KeyValuePair<string, object?> item)
         {
-            RaisePropertyChanged(item.Key, null);
-            return InternalValues.TryRemove(item.Key, out _);
+            return Remove(item.Key);
         }
 
         /// <summary>
@@ -560,9 +606,9 @@ namespace BigBook
             }
 
             var ReturnValue = new Dynamo();
-            ReturnValue.Clear();
-            foreach (var Key in keys)
+            for (var i = 0; i < keys.Length; i++)
             {
+                var Key = keys[i];
                 ReturnValue.Add(Key, this[Key]);
             }
             return ReturnValue;
@@ -571,9 +617,9 @@ namespace BigBook
         /// <summary>
         /// Converts the object to the type specified
         /// </summary>
-        /// <typeparam name="T">Object type</typeparam>
+        /// <typeparam name="TObject">Object type</typeparam>
         /// <returns>The object converted to the type specified</returns>
-        public T To<T>() => (T)To(typeof(T));
+        public TObject To<TObject>() => (TObject)To(typeof(TObject));
 
         /// <summary>
         /// Converts the object to the type specified
@@ -586,7 +632,7 @@ namespace BigBook
             DataMapper?.Map(GetType(), ObjectType)
                       .AutoMap()
                       .Copy(this, Result);
-            return Result;
+            return Result!;
         }
 
         /// <summary>
@@ -595,6 +641,7 @@ namespace BigBook
         /// <returns>The string version of the object</returns>
         public override string ToString()
         {
+            //MODIFY
             var Builder = new StringBuilder();
             Builder.AppendLineFormat("{0} this", GetType().Name);
             foreach (var Key in Keys.OrderBy(x => x))
@@ -647,30 +694,24 @@ namespace BigBook
         }
 
         /// <summary>
-        /// Attempts to get a value
+        /// Gets the value associated with the specified key.
         /// </summary>
-        /// <param name="key">Key to get</param>
-        /// <param name="value">Value object</param>
-        /// <returns>True if it the key is found, false otherwise</returns>
-        public bool TryGetValue(string key, out object? value) => InternalValues.TryGetValue(key, out value);
-
-        /// <summary>
-        /// Attempts to invoke a function
-        /// </summary>
-        /// <param name="binder">Invoke binder</param>
-        /// <param name="args">Function args</param>
-        /// <param name="result">Result</param>
-        /// <returns>True if it invokes, false otherwise</returns>
-        public override bool TryInvoke(InvokeBinder binder, object[] args, out object result) => base.TryInvoke(binder, args, out result);
-
-        /// <summary>
-        /// Attempts to invoke a member
-        /// </summary>
-        /// <param name="binder">Invoke binder</param>
-        /// <param name="args">Function args</param>
-        /// <param name="result">Result</param>
-        /// <returns>True if it invokes, false otherwise</returns>
-        public override bool TryInvokeMember(InvokeMemberBinder binder, object[] args, out object result) => base.TryInvokeMember(binder, args, out result);
+        /// <param name="key">The key whose value to get.</param>
+        /// <param name="value">
+        /// When this method returns, the value associated with the specified key, if the key is
+        /// found; otherwise, the default value for the type of the <paramref name="value"/>
+        /// parameter. This parameter is passed uninitialized.
+        /// </param>
+        /// <returns>
+        /// <see langword="true"/> if the object that implements <see
+        /// cref="T:System.Collections.Generic.IDictionary`2"/> contains an element with the
+        /// specified key; otherwise, <see langword="false"/>.
+        /// </returns>
+        public bool TryGetValue(string key, [MaybeNullWhen(false)] out object? value)
+        {
+            value = GetValue(key, typeof(object));
+            return true;
+        }
 
         /// <summary>
         /// Attempts to set the member
@@ -682,8 +723,25 @@ namespace BigBook
         {
             if (binder is null)
                 return false;
-            SetValue(binder.Name, value);
+            TrySetValue(binder.Name, value);
             return true;
+        }
+
+        /// <summary>
+        /// Tries to set the value.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <param name="value">The value.</param>
+        /// <returns>True if it is set, false otherwise.</returns>
+        public bool TrySetValue(string key, object? value)
+        {
+            object? OldValue = null;
+            if (TypeInfo?.TrySetValue(this, key, value, out OldValue) ?? false)
+            {
+                RaisePropertyChanged(key, OldValue, value);
+                return true;
+            }
+            return SetInternalValue(key, value);
         }
 
         /// <summary>
@@ -706,34 +764,20 @@ namespace BigBook
         /// <param name="name">Name of the item</param>
         /// <param name="returnType">Return value type</param>
         /// <returns>The returned value</returns>
-        protected virtual object? GetValue(string name, Type returnType)
+        protected object? GetValue(string name, Type returnType)
         {
             var Value = RaiseGetValueStart(name);
             if (!(Value is null))
-            {
                 return Value;
-            }
 
-            if (InternalValues.TryGetValue(name, out Value))
-            {
+            if (GetInternalValue(name, out Value))
                 return Value.To(returnType, null);
-            }
-            if (!ChildValues.TryGetValue(name, out var ChildValueMethod))
-            {
-                var ObjectType = GetType();
-                var Property = ObjectType.GetProperty(name);
-                if (!(Property is null))
-                {
-                    var Temp = Property.PropertyGetter<Dynamo>().Compile();
-                    ChildValues.AddOrUpdate(name, _ => () => Temp(this), (__, _) => () => Temp(this));
-                }
-                else
-                {
-                    ChildValues.AddOrUpdate(name, _ => () => null!, (__, _) => null!);
-                }
-                ChildValues.TryGetValue(name, out ChildValueMethod);
-            }
-            var ReturnValue = ChildValueMethod().To(returnType, null);
+
+            object? Result = null;
+            if (!(TypeInfo?.TryGetValue(this, name, out Result) ?? false))
+                return ((object?)null)!.To<object>(returnType);
+
+            var ReturnValue = Result.To(returnType, null);
             Value = RaiseGetValueEnd(name, ReturnValue);
             return Value ?? ReturnValue;
         }
@@ -773,32 +817,74 @@ namespace BigBook
         /// Raises the property changed event
         /// </summary>
         /// <param name="propertyName">Property name</param>
+        /// <param name="oldValue">The old value.</param>
         /// <param name="newValue">New value for the property</param>
-        protected void RaisePropertyChanged(string propertyName, object? newValue)
+        protected void RaisePropertyChanged(string propertyName, object? oldValue, object? newValue)
         {
-            if (!(ChangeLog is null))
+            if (ChangeLog != null)
             {
-                if (ChangeLog.ContainsKey(propertyName))
-                {
-                    ChangeLog.SetValue(propertyName, new Change(this[propertyName], newValue));
-                }
-                else
-                {
-                    ChangeLog.SetValue(propertyName, new Change(newValue, newValue));
-                }
+                var TempChange = new Change(oldValue, newValue);
+                ChangeLog.AddOrUpdate(propertyName, TempChange, (_, __) => TempChange);
             }
             propertyChanged_?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         /// <summary>
-        /// Sets a value
+        /// Gets the internal value.
         /// </summary>
-        /// <param name="key">Name of the item</param>
-        /// <param name="value">Value to set</param>
-        protected virtual void SetValue(string key, object? value)
+        /// <param name="key">The key.</param>
+        /// <param name="value">The value.</param>
+        /// <returns>True if it is found, false otherwise.</returns>
+        private bool GetInternalValue(string key, out object? value)
         {
-            RaisePropertyChanged(key, value);
-            InternalValues.AddOrUpdate(key, value, (__, _) => value);
+            var TempData = Data;
+            var Index = TempData.Definition.GetIndex(key);
+            if (Index == -1)
+            {
+                value = null;
+                return false;
+            }
+            var ReturnValue = TempData[Index];
+            if (ReturnValue == UninitializedObject)
+            {
+                value = null;
+                return false;
+            }
+            value = ReturnValue;
+            return true;
+        }
+
+        /// <summary>
+        /// Sets the internal value.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <param name="value">The value.</param>
+        /// <returns></returns>
+        private bool SetInternalValue(string key, object? value)
+        {
+            DynamoData TempData;
+            object? OldValue;
+
+            lock (LockObject)
+            {
+                TempData = Data;
+                var Index = TempData.Definition.GetIndex(key);
+                if (Index == -1)
+                {
+                    Data = Data.UpdateClass(TempData.Definition.AddKey(key));
+                    TempData = Data;
+                    Index = TempData.Definition.GetIndex(key);
+                }
+                OldValue = TempData[Index];
+                if (OldValue == UninitializedObject)
+                {
+                    ++Count;
+                }
+                TempData[Index] = value;
+            }
+            if (value != OldValue)
+                RaisePropertyChanged(key, OldValue, value);
+            return true;
         }
     }
 }

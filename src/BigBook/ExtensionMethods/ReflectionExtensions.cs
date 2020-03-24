@@ -884,9 +884,70 @@ namespace BigBook
         /// Gets a lambda expression that calls a specific property's setter function
         /// </summary>
         /// <typeparam name="TClassType">Class type</typeparam>
+        /// <typeparam name="TDataType">Data type expecting</typeparam>
+        /// <param name="property">Property</param>
+        /// <returns>A lambda expression that calls a specific property's setter function</returns>
+        public static Expression<Action<TClassType, TDataType>>? PropertySetter<TClassType, TDataType>(this PropertyInfo property)
+        {
+            if (property is null)
+            {
+                throw new ArgumentNullException(nameof(property));
+            }
+
+            var TempPropertyName = property.Name;
+
+            var ObjectInstance = Expression.Parameter(property?.DeclaringType, "x");
+            var PropertySet = Expression.Parameter(typeof(TDataType), "y");
+            var DefaultConstant = Expression.Constant(((object?)null).To(property?.PropertyType!, null), property?.PropertyType);
+            MethodCallExpression? SetterCall = null;
+            MemberExpression? PropertyGet = null;
+            var SetMethod = property?.GetSetMethod();
+            if (!(SetMethod is null))
+            {
+                if (property?.PropertyType != typeof(TDataType))
+                {
+                    var ConversionMethod = Array.Find(typeof(GenericObjectExtensions).GetMethods(), x => x.ContainsGenericParameters
+                        && x.GetGenericArguments().Length == 2
+                        && x.Name == "To"
+                        && x.GetParameters().Length == 2);
+                    ConversionMethod = ConversionMethod.MakeGenericMethod(typeof(TDataType), property?.PropertyType);
+                    var Convert = Expression.Call(ConversionMethod, PropertySet, DefaultConstant);
+                    SetterCall = PropertyGet is null ? Expression.Call(ObjectInstance, SetMethod, Convert) : Expression.Call(PropertyGet, SetMethod, Convert);
+                    return Expression.Lambda<Action<TClassType, TDataType>>(SetterCall, ObjectInstance, PropertySet);
+                }
+                SetterCall = PropertyGet is null ? Expression.Call(ObjectInstance, SetMethod, PropertySet) : Expression.Call(PropertyGet, SetMethod, PropertySet);
+            }
+            else
+            {
+                return Expression.Lambda<Action<TClassType, TDataType>>(Expression.Empty(), ObjectInstance, PropertySet);
+            }
+
+            return Expression.Lambda<Action<TClassType, TDataType>>(SetterCall, ObjectInstance, PropertySet);
+        }
+
+        /// <summary>
+        /// Gets a lambda expression that calls a specific property's setter function
+        /// </summary>
+        /// <typeparam name="TClassType">Class type</typeparam>
         /// <param name="property">Property</param>
         /// <returns>A lambda expression that calls a specific property's setter function</returns>
         public static Expression<Action<TClassType, object>>? PropertySetter<TClassType>(this LambdaExpression property)
+        {
+            if (property is null)
+            {
+                throw new ArgumentNullException(nameof(property));
+            }
+
+            return property.PropertySetter<TClassType, object>();
+        }
+
+        /// <summary>
+        /// Gets a lambda expression that calls a specific property's setter function
+        /// </summary>
+        /// <typeparam name="TClassType">Class type</typeparam>
+        /// <param name="property">Property</param>
+        /// <returns>A lambda expression that calls a specific property's setter function</returns>
+        public static Expression<Action<TClassType, object>>? PropertySetter<TClassType>(this PropertyInfo property)
         {
             if (property is null)
             {
