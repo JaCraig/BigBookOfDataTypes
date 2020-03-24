@@ -17,6 +17,7 @@ limitations under the License.
 using BigBook.DataMapper;
 using BigBook.DynamoUtils;
 using BigBook.Reflection;
+using Microsoft.Extensions.ObjectPool;
 using System;
 using System.Collections;
 using System.Collections.Concurrent;
@@ -113,6 +114,7 @@ namespace BigBook
             Data = DynamoData.Empty;
             LockObject = new object();
             TypeInfo?.SetupType(this);
+            HashCode = EmptyHashCode;
         }
 
         /// <summary>
@@ -203,6 +205,8 @@ namespace BigBook
         /// <value>The aop manager.</value>
         private static Aspectus.Aspectus? AOPManager => Canister.Builder.Bootstrapper?.Resolve<Aspectus.Aspectus>();
 
+        private static ObjectPool<StringBuilder>? BuilderPool => Canister.Builder.Bootstrapper?.Resolve<ObjectPool<StringBuilder>>();
+
         /// <summary>
         /// Gets or sets the data mapper.
         /// </summary>
@@ -216,6 +220,12 @@ namespace BigBook
         private static DynamoTypes? TypeInfo => Canister.Builder.Bootstrapper?.Resolve<DynamoTypes>();
 
         /// <summary>
+        /// Gets or sets the hash code.
+        /// </summary>
+        /// <value>The hash code.</value>
+        private int HashCode { get; set; }
+
+        /// <summary>
         /// The uninitialized object
         /// </summary>
         internal static readonly object UninitializedObject = new object();
@@ -224,6 +234,11 @@ namespace BigBook
         /// The lock object
         /// </summary>
         internal readonly object LockObject;
+
+        /// <summary>
+        /// The empty hash code
+        /// </summary>
+        private const int EmptyHashCode = 6551;
 
         /// <summary>
         /// The get value end_
@@ -510,23 +525,7 @@ namespace BigBook
         /// Gets the hash code
         /// </summary>
         /// <returns>The hash code</returns>
-        public override int GetHashCode()
-        {
-            //MODIFY
-            var Value = 1;
-            foreach (var Key in Keys)
-            {
-                unchecked
-                {
-                    var TempValue = GetValue(Key, typeof(object));
-                    if (TempValue?.GetType().Is<Delegate>() == false)
-                    {
-                        Value = (Value * TempValue.GetHashCode()) % int.MaxValue;
-                    }
-                }
-            }
-            return Value;
-        }
+        public override int GetHashCode() => HashCode;
 
         /// <summary>
         /// Not used
@@ -641,22 +640,25 @@ namespace BigBook
         /// <returns>The string version of the object</returns>
         public override string ToString()
         {
-            //MODIFY
-            var Builder = new StringBuilder();
-            Builder.AppendLineFormat("{0} this", GetType().Name);
+            if (BuilderPool is null)
+                return string.Empty;
+            var Builder = BuilderPool.Get();
+            Builder.Append(GetType().Name).AppendLine(" this");
             foreach (var Key in Keys.OrderBy(x => x))
             {
                 var Item = GetValue(Key, typeof(object));
-                if (!(Item is null))
+                if (Item is null)
                 {
-                    Builder.AppendLineFormat("\t{0} {1} = {2}", Item.GetType().GetName(), Key, Item.ToString());
+                    Builder.Append("\tobject ").Append(Key).AppendLine(" = null");
                 }
                 else
                 {
-                    Builder.AppendLineFormat("\t{0} {1} = {2}", "object", Key, "null");
+                    Builder.Append("\t").Append(Item.GetType().GetName()).Append(" ").Append(Key).Append(" = ").AppendLine(Item.ToString());
                 }
             }
-            return Builder.ToString();
+            var Result = Builder.ToString();
+            BuilderPool.Return(Builder);
+            return Result;
         }
 
         /// <summary>
@@ -736,6 +738,8 @@ namespace BigBook
         public bool TrySetValue(string key, object? value)
         {
             object? OldValue = null;
+            var TempHashCode = HashCode ^ (key?.GetHashCode(StringComparison.OrdinalIgnoreCase) ?? EmptyHashCode);
+            HashCode = TempHashCode ^ (value?.GetHashCode() ?? EmptyHashCode);
             if (TypeInfo?.TrySetValue(this, key, value, out OldValue) ?? false)
             {
                 RaisePropertyChanged(key, OldValue, value);

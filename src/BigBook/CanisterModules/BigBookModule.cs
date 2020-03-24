@@ -20,6 +20,7 @@ using BigBook.DataMapper.Interfaces;
 using BigBook.DynamoUtils;
 using Canister.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.ObjectPool;
 
 namespace BigBook.CanisterModules
 {
@@ -40,6 +41,7 @@ namespace BigBook.CanisterModules
         /// <param name="bootstrapper">Bootstrapper to register with</param>
         public void Load(IBootstrapper bootstrapper)
         {
+            var objectPoolProvider = new DefaultObjectPoolProvider();
             bootstrapper?.RegisterAll<ICache>()
                          .Register<Caching.Manager>(ServiceLifetime.Singleton)
                          .Register(typeof(GenericComparer<>), ServiceLifetime.Singleton)
@@ -47,7 +49,8 @@ namespace BigBook.CanisterModules
                          .RegisterAll<IDataMapper>()
                          .RegisterAll<IMapperModule>()
                          .Register<DataMapper.Manager>(ServiceLifetime.Singleton)
-                         .Register(new DynamoTypes(), ServiceLifetime.Singleton);
+                         .Register(new DynamoTypes(), ServiceLifetime.Singleton)
+                         .Register(objectPoolProvider.CreateStringBuilderPool(), ServiceLifetime.Singleton);
         }
     }
 }
