@@ -109,6 +109,16 @@ namespace BigBook.Tests.ExtensionMethods
         }
 
         [Fact]
+        public void GetPropertySetterPropertyInfoTest()
+        {
+            var TestObject = typeof(TestClass).GetProperty("Value");
+            var TestObject2 = TestObject.PropertySetter<TestClass, int>();
+            var TestObject3 = new TestClass();
+            TestObject2.Compile()(TestObject3, 10);
+            Assert.Equal(10, TestObject3.Value);
+        }
+
+        [Fact]
         public void GetPropertySetterTest()
         {
             Expression<Func<TestClass, int>> TestObject = x => x.Value;

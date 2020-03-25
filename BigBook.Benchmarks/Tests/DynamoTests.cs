@@ -8,10 +8,16 @@ namespace BigBook.Benchmarks.Tests
     [RPlotExporter, RankColumn, MemoryDiagnoser]
     public class DynamoTests
     {
-        [Params(1000, 10000)]
-        public int Count;
-
         public object[] Data { get; set; }
+
+        private object AnonymousType { get; set; }
+
+        private ExpandoObject ExpandoType { get; set; }
+
+        private TestClass TestClassValue { get; set; }
+
+        [Params(1, 10, 100, 1000, 10000)]
+        public int Count;
 
         [Benchmark]
         public object[] AnnonymousTest()
@@ -54,7 +60,7 @@ namespace BigBook.Benchmarks.Tests
             Data = new Dynamo[Count];
             for (var x = 0; x < Count; ++x)
             {
-                Data[x] = new Dynamo(new { A = "Test data goes here" });
+                Data[x] = new Dynamo(AnonymousType);
             }
             return Data;
         }
@@ -65,7 +71,7 @@ namespace BigBook.Benchmarks.Tests
             Data = new Dynamo[Count];
             for (var x = 0; x < Count; ++x)
             {
-                Data[x] = new Dynamo(new TestClass { A = "Test data goes here" });
+                Data[x] = new Dynamo(TestClassValue);
             }
             return Data;
         }
@@ -76,9 +82,7 @@ namespace BigBook.Benchmarks.Tests
             Data = new Dynamo[Count];
             for (var x = 0; x < Count; ++x)
             {
-                dynamic Temp = new ExpandoObject();
-                Temp.A = "Test data goes here";
-                Data[x] = new Dynamo(Temp);
+                Data[x] = new Dynamo(ExpandoType);
             }
             return Data;
         }
@@ -110,7 +114,15 @@ namespace BigBook.Benchmarks.Tests
         }
 
         [GlobalSetup]
-        public void Setup() => Canister.Builder.CreateContainer(null).RegisterBigBookOfDataTypes().Build();
+        public void Setup()
+        {
+            Canister.Builder.CreateContainer(null).RegisterBigBookOfDataTypes().AddAssembly(typeof(DynamoTests).Assembly).Build();
+            AnonymousType = new { A = "Test data goes here" };
+            dynamic Temp = new ExpandoObject();
+            Temp.A = "Test data goes here";
+            ExpandoType = Temp;
+            TestClassValue = new TestClass { A = "Test data goes here" };
+        }
 
         private class TestClass
         {
