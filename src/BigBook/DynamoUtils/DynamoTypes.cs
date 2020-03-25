@@ -15,7 +15,6 @@ limitations under the License.
 */
 
 using BigBook.DynamoUtils.Interfaces;
-using Serilog;
 using System;
 using System.Collections.Generic;
 
@@ -36,15 +35,15 @@ namespace BigBook.DynamoUtils
         }
 
         /// <summary>
-        /// The lock object
-        /// </summary>
-        private readonly object LockObject;
-
-        /// <summary>
         /// Gets or sets the types.
         /// </summary>
         /// <value>The types.</value>
         private Dictionary<Type, IDynamoProperties> Types { get; }
+
+        /// <summary>
+        /// The lock object
+        /// </summary>
+        private readonly object LockObject;
 
         /// <summary>
         /// Setups the type.
@@ -55,14 +54,12 @@ namespace BigBook.DynamoUtils
             var objectType = @object.GetType();
             if (Types.ContainsKey(objectType) || objectType == typeof(Dynamo))
                 return;
-            Log.Logger?.Debug("Entering SetupType lock");
             lock (LockObject)
             {
                 var TempObject = (typeof(DynamoProperties<>).MakeGenericType(objectType).Create() as IDynamoProperties)!;
                 TempObject.SetupValues();
                 Types.Add(objectType, TempObject);
             }
-            Log.Logger?.Debug("Leaving SetupType lock");
         }
 
         /// <summary>
