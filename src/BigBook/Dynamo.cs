@@ -113,8 +113,7 @@ namespace BigBook
         {
             Data = DynamoData.Empty;
             LockObject = new object();
-            var Temp = Canister.Builder.Bootstrapper?.Resolve<DynamoTypes>();
-            Temp?.SetupType(this);
+            TypeInfo.SetupType(this);
             HashCode = EmptyHashCode;
         }
 
@@ -223,12 +222,6 @@ namespace BigBook
         private static Manager? DataMapper => Canister.Builder.Bootstrapper?.Resolve<Manager>();
 
         /// <summary>
-        /// Gets the type information.
-        /// </summary>
-        /// <value>The type information.</value>
-        private static DynamoTypes? TypeInfo => Canister.Builder.Bootstrapper?.Resolve<DynamoTypes>();
-
-        /// <summary>
         /// Gets or sets the hash code.
         /// </summary>
         /// <value>The hash code.</value>
@@ -248,6 +241,12 @@ namespace BigBook
         /// The empty hash code
         /// </summary>
         private const int EmptyHashCode = 6551;
+
+        /// <summary>
+        /// Gets the type information.
+        /// </summary>
+        /// <value>The type information.</value>
+        private static DynamoTypes? TypeInfo = new DynamoTypes();
 
         /// <summary>
         /// The get value end_
