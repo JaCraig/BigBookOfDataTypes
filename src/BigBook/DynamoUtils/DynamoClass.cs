@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using Serilog;
 using System;
 using System.Collections.Generic;
 
@@ -45,6 +46,16 @@ namespace BigBook.DynamoUtils
         }
 
         /// <summary>
+        /// The empty object.
+        /// </summary>
+        public static DynamoClass Empty = new DynamoClass();
+
+        /// <summary>
+        /// The empty hash code
+        /// </summary>
+        private const int EmptyHashCode = 6551;
+
+        /// <summary>
         /// Gets the keys.
         /// </summary>
         /// <value>The keys.</value>
@@ -63,16 +74,6 @@ namespace BigBook.DynamoUtils
         private Dictionary<int, List<WeakReference>>? SubClasses { get; set; }
 
         /// <summary>
-        /// The empty object.
-        /// </summary>
-        public static DynamoClass Empty = new DynamoClass();
-
-        /// <summary>
-        /// The empty hash code
-        /// </summary>
-        private const int EmptyHashCode = 6551;
-
-        /// <summary>
         /// Adds a key and finds or creates a DynamoClass.
         /// </summary>
         /// <param name="key">The key.</param>
@@ -80,6 +81,7 @@ namespace BigBook.DynamoUtils
         public DynamoClass AddKey(string key)
         {
             int TempHashCode = HashCode ^ key.GetHashCode(StringComparison.OrdinalIgnoreCase);
+            Log.Logger?.Debug("Entering AddKey lock");
             lock (this)
             {
                 var weakReferences = GetList(TempHashCode);
@@ -92,7 +94,10 @@ namespace BigBook.DynamoUtils
                         continue;
                     }
                     if (string.Equals(@class.Keys[^1], key, StringComparison.OrdinalIgnoreCase))
+                    {
+                        Log.Logger?.Debug("Leaving AddKey lock");
                         return @class;
+                    }
                 }
 
                 var TempKeys = new string[Keys.Length + 1];
@@ -100,6 +105,7 @@ namespace BigBook.DynamoUtils
                 TempKeys[^1] = key;
                 var NewClass = new DynamoClass(TempKeys, TempHashCode);
                 weakReferences.Add(new WeakReference(NewClass));
+                Log.Logger?.Debug("Leaving AddKey lock");
                 return NewClass;
             }
         }

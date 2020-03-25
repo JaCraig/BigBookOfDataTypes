@@ -18,6 +18,7 @@ using BigBook.DataMapper;
 using BigBook.DynamoUtils;
 using BigBook.Reflection;
 using Microsoft.Extensions.ObjectPool;
+using Serilog;
 using System;
 using System.Collections;
 using System.Collections.Concurrent;
@@ -113,7 +114,8 @@ namespace BigBook
         {
             Data = DynamoData.Empty;
             LockObject = new object();
-            TypeInfo?.SetupType(this);
+            var Temp = Canister.Builder.Bootstrapper?.Resolve<DynamoTypes>();
+            Temp?.SetupType(this);
             HashCode = EmptyHashCode;
         }
 
@@ -137,93 +139,6 @@ namespace BigBook
         {
             ChangeLog = useChangeLog ? new ConcurrentDictionary<string, Change>() : null;
         }
-
-        /// <summary>
-        /// Gets the change log.
-        /// </summary>
-        /// <value>The change log.</value>
-        public ConcurrentDictionary<string, Change>? ChangeLog { get; }
-
-        /// <summary>
-        /// Gets the number of elements contained in the <see cref="T:System.Collections.Generic.ICollection`1"/>.
-        /// </summary>
-        public int Count { get; private set; }
-
-        /// <summary>
-        /// Gets the definition.
-        /// </summary>
-        /// <value>The definition.</value>
-        internal DynamoClass Definition => Data.Definition;
-
-        /// <summary>
-        /// Gets a value indicating whether the <see
-        /// cref="T:System.Collections.Generic.ICollection`1"/> is read-only.
-        /// </summary>
-        public bool IsReadOnly { get; }
-
-        /// <summary>
-        /// Gets an <see cref="T:System.Collections.Generic.ICollection`1"/> containing the keys of
-        /// the <see cref="T:System.Collections.Generic.IDictionary`2"/>.
-        /// </summary>
-        public virtual ICollection<string> Keys
-        {
-            get
-            {
-                var TempData = Data;
-                lock (LockObject)
-                {
-                    return TempData.Definition.Keys.Select(x => x).ToArray();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Gets an <see cref="T:System.Collections.Generic.ICollection`1"/> containing the values
-        /// in the <see cref="T:System.Collections.Generic.IDictionary`2"/>.
-        /// </summary>
-        public virtual ICollection<object?> Values
-        {
-            get
-            {
-                var TempData = Data;
-                lock (LockObject)
-                {
-                    return TempData.Data.Where(x => x != UninitializedObject).ToArray();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Gets the data.
-        /// </summary>
-        /// <value>The data.</value>
-        internal DynamoData Data { get; private set; }
-
-        /// <summary>
-        /// Gets or sets the aop manager.
-        /// </summary>
-        /// <value>The aop manager.</value>
-        private static Aspectus.Aspectus? AOPManager => Canister.Builder.Bootstrapper?.Resolve<Aspectus.Aspectus>();
-
-        private static ObjectPool<StringBuilder>? BuilderPool => Canister.Builder.Bootstrapper?.Resolve<ObjectPool<StringBuilder>>();
-
-        /// <summary>
-        /// Gets or sets the data mapper.
-        /// </summary>
-        /// <value>The data mapper.</value>
-        private static Manager? DataMapper => Canister.Builder.Bootstrapper?.Resolve<Manager>();
-
-        /// <summary>
-        /// Gets the type information.
-        /// </summary>
-        /// <value>The type information.</value>
-        private static DynamoTypes? TypeInfo => Canister.Builder.Bootstrapper?.Resolve<DynamoTypes>();
-
-        /// <summary>
-        /// Gets or sets the hash code.
-        /// </summary>
-        /// <value>The hash code.</value>
-        private int HashCode { get; set; }
 
         /// <summary>
         /// The uninitialized object
@@ -254,6 +169,105 @@ namespace BigBook
         /// The property changed_
         /// </summary>
         private PropertyChangedEventHandler? propertyChanged_;
+
+        /// <summary>
+        /// Gets the change log.
+        /// </summary>
+        /// <value>The change log.</value>
+        public ConcurrentDictionary<string, Change>? ChangeLog { get; }
+
+        /// <summary>
+        /// Gets the number of elements contained in the <see cref="T:System.Collections.Generic.ICollection`1"/>.
+        /// </summary>
+        public int Count { get; private set; }
+
+        /// <summary>
+        /// Gets the definition.
+        /// </summary>
+        /// <value>The definition.</value>
+        internal DynamoClass Definition => Data.Definition;
+
+        /// <summary>
+        /// Gets a value indicating whether the
+        /// <see cref="T:System.Collections.Generic.ICollection`1"/> is read-only.
+        /// </summary>
+        public bool IsReadOnly { get; }
+
+        /// <summary>
+        /// Gets an <see cref="T:System.Collections.Generic.ICollection`1"/> containing the keys of
+        /// the <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+        /// </summary>
+        public virtual ICollection<string> Keys
+        {
+            get
+            {
+                var TempData = Data;
+                Log.Logger?.Debug("Entering Keys lock");
+                string[] Result;
+                lock (LockObject)
+                {
+                    Result = TempData.Definition.Keys.Select(x => x).ToArray();
+                }
+                Log.Logger?.Debug("Leaving Keys lock");
+                return Result;
+            }
+        }
+
+        /// <summary>
+        /// Gets an <see cref="T:System.Collections.Generic.ICollection`1"/> containing the values
+        /// in the <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+        /// </summary>
+        public virtual ICollection<object?> Values
+        {
+            get
+            {
+                var TempData = Data;
+                Log.Logger?.Debug("Entering Values lock");
+                object?[] Result;
+                lock (LockObject)
+                {
+                    Result = TempData.Data.Where(x => x != UninitializedObject).ToArray();
+                }
+                Log.Logger?.Debug("Leaving Values lock");
+                return Result;
+            }
+        }
+
+        /// <summary>
+        /// Gets the data.
+        /// </summary>
+        /// <value>The data.</value>
+        internal DynamoData Data { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the aop manager.
+        /// </summary>
+        /// <value>The aop manager.</value>
+        private static Aspectus.Aspectus? AOPManager => Canister.Builder.Bootstrapper?.Resolve<Aspectus.Aspectus>();
+
+        /// <summary>
+        /// Gets the builder pool.
+        /// </summary>
+        /// <value>The builder pool.</value>
+        private static ObjectPool<StringBuilder>? BuilderPool => Canister.Builder.Bootstrapper?.Resolve<ObjectPool<StringBuilder>>();
+
+        /// <summary>
+        /// Gets or sets the data mapper.
+        /// </summary>
+        /// <value>The data mapper.</value>
+        private static Manager? DataMapper => Canister.Builder.Bootstrapper?.Resolve<Manager>();
+
+        /// <summary>
+        /// Gets the type information.
+        /// </summary>
+        /// <value>The type information.</value>
+        private static DynamoTypes? TypeInfo => Canister.Builder.Bootstrapper?.Resolve<DynamoTypes>();
+
+        /// <summary>
+        /// Gets or sets the hash code.
+        /// </summary>
+        /// <value>The hash code.</value>
+        private int HashCode { get; set; }
 
         /// <summary>
         /// Gets or sets the <see cref="object"/> with the specified key.
@@ -351,12 +365,14 @@ namespace BigBook
         public void Clear()
         {
             DynamoData TempData;
+            Log.Logger?.Debug("Entering clear lock");
             lock (LockObject)
             {
                 TempData = Data;
                 Data = DynamoData.Empty;
                 Count = 0;
             }
+            Log.Logger?.Debug("Leaving clear lock");
             for (var x = 0; x < TempData.Definition.Keys.Length; ++x)
             {
                 var OldData = TempData[x];
@@ -372,8 +388,8 @@ namespace BigBook
         /// </summary>
         /// <param name="item">The object to locate in the <see cref="T:System.Collections.Generic.ICollection`1"/>.</param>
         /// <returns>
-        /// <see langword="true"/> if <paramref name="item"/> is found in the <see
-        /// cref="T:System.Collections.Generic.ICollection`1"/>; otherwise, <see langword="false"/>.
+        /// <see langword="true"/> if <paramref name="item"/> is found in the
+        /// <see cref="T:System.Collections.Generic.ICollection`1"/>; otherwise, <see langword="false"/>.
         /// </returns>
         public bool Contains(KeyValuePair<string, object?> item)
         {
@@ -437,8 +453,8 @@ namespace BigBook
         /// </summary>
         /// <param name="array">
         /// The one-dimensional <see cref="T:System.Array"/> that is the destination of the elements
-        /// copied from <see cref="T:System.Collections.Generic.ICollection`1"/>. The <see
-        /// cref="T:System.Array"/> must have zero-based indexing.
+        /// copied from <see cref="T:System.Collections.Generic.ICollection`1"/>. The
+        /// <see cref="T:System.Array"/> must have zero-based indexing.
         /// </param>
         /// <param name="arrayIndex">
         /// The zero-based index in <paramref name="array"/> at which copying begins.
@@ -454,6 +470,7 @@ namespace BigBook
             if (arrayIndex > array.Length - Keys.Count)
                 throw new ArgumentOutOfRangeException(nameof(arrayIndex));
 
+            Log.Logger?.Debug("Entering CopyTo lock");
             lock (LockObject)
             {
                 foreach (var item in this)
@@ -461,6 +478,7 @@ namespace BigBook
                     array[arrayIndex++] = item;
                 }
             }
+            Log.Logger?.Debug("Leaving CopyTo lock");
         }
 
         /// <summary>
@@ -553,14 +571,15 @@ namespace BigBook
         /// </summary>
         /// <param name="key">The key of the element to remove.</param>
         /// <returns>
-        /// <see langword="true"/> if the element is successfully removed; otherwise, <see
-        /// langword="false"/>. This method also returns <see langword="false"/> if <paramref
-        /// name="key"/> was not found in the original <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+        /// <see langword="true"/> if the element is successfully removed; otherwise,
+        /// <see langword="false"/>. This method also returns <see langword="false"/> if
+        /// <paramref name="key"/> was not found in the original <see cref="T:System.Collections.Generic.IDictionary`2"/>.
         /// </returns>
         public bool Remove(string key)
         {
             DynamoData TempData;
             object? OldValue;
+            Log.Logger?.Debug("Entering remove lock");
             lock (LockObject)
             {
                 TempData = Data;
@@ -573,6 +592,7 @@ namespace BigBook
                 TempData[Index] = UninitializedObject;
                 --Count;
             }
+            Log.Logger?.Debug("Leaving remove lock");
             RaisePropertyChanged(key, OldValue, null);
             return true;
         }
@@ -582,10 +602,10 @@ namespace BigBook
         /// </summary>
         /// <param name="item">The object to remove from the <see cref="T:System.Collections.Generic.ICollection`1"/>.</param>
         /// <returns>
-        /// <see langword="true"/> if <paramref name="item"/> was successfully removed from the <see
-        /// cref="T:System.Collections.Generic.ICollection`1"/>; otherwise, <see langword="false"/>.
-        /// This method also returns <see langword="false"/> if <paramref name="item"/> is not found
-        /// in the original <see cref="T:System.Collections.Generic.ICollection`1"/>.
+        /// <see langword="true"/> if <paramref name="item"/> was successfully removed from the
+        /// <see cref="T:System.Collections.Generic.ICollection`1"/>; otherwise,
+        /// <see langword="false"/>. This method also returns <see langword="false"/> if
+        /// <paramref name="item"/> is not found in the original <see cref="T:System.Collections.Generic.ICollection`1"/>.
         /// </returns>
         public bool Remove(KeyValuePair<string, object?> item)
         {
@@ -705,8 +725,8 @@ namespace BigBook
         /// parameter. This parameter is passed uninitialized.
         /// </param>
         /// <returns>
-        /// <see langword="true"/> if the object that implements <see
-        /// cref="T:System.Collections.Generic.IDictionary`2"/> contains an element with the
+        /// <see langword="true"/> if the object that implements
+        /// <see cref="T:System.Collections.Generic.IDictionary`2"/> contains an element with the
         /// specified key; otherwise, <see langword="false"/>.
         /// </returns>
         public bool TryGetValue(string key, [MaybeNullWhen(false)] out object? value)
@@ -868,7 +888,7 @@ namespace BigBook
         {
             DynamoData TempData;
             object? OldValue;
-
+            Log.Logger?.Debug("Entering SetInternalValue lock");
             lock (LockObject)
             {
                 TempData = Data;
@@ -886,6 +906,7 @@ namespace BigBook
                 }
                 TempData[Index] = value;
             }
+            Log.Logger?.Debug("Leaving SetInternalValue lock");
             if (value != OldValue)
                 RaisePropertyChanged(key, OldValue, value);
             return true;

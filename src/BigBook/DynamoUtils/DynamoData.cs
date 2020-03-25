@@ -46,6 +46,11 @@ namespace BigBook.DynamoUtils
         }
 
         /// <summary>
+        /// The empty object
+        /// </summary>
+        public static DynamoData Empty = new DynamoData();
+
+        /// <summary>
         /// Gets the data.
         /// </summary>
         /// <value>The data.</value>
@@ -64,14 +69,9 @@ namespace BigBook.DynamoUtils
         public int Version { get; private set; }
 
         /// <summary>
-        /// The empty object
+        /// Gets or sets the <see cref="object"/> at the specified index.
         /// </summary>
-        public static DynamoData Empty = new DynamoData();
-
-        /// <summary>
-        /// Gets or sets the <see cref="object?"/> at the specified index.
-        /// </summary>
-        /// <value>The <see cref="object?"/>.</value>
+        /// <value>The <see cref="object"/>.</value>
         /// <param name="index">The index.</param>
         /// <returns>The value specified.</returns>
         public object? this[int index]
@@ -101,10 +101,10 @@ namespace BigBook.DynamoUtils
             }
             else
             {
-                int OldLength = Data.Length;
-                object[] TempArray = new object[GetAlignedSize(newClass.Keys.Length)];
+                var OldLength = Data.Length;
+                var TempArray = new object[GetAlignedSize(newClass.Keys.Length)];
                 Array.Copy(Data, TempArray, Data.Length);
-                DynamoData NewData = new DynamoData(newClass, TempArray, Version);
+                var NewData = new DynamoData(newClass, TempArray, Version);
                 NewData[OldLength] = Dynamo.UninitializedObject;
                 return NewData;
             }
