@@ -19,7 +19,6 @@ using BigBook.Conversion;
 using BigBook.Conversion.BaseClasses;
 using BigBook.Conversion.Interfaces;
 using BigBook.DataMapper.Interfaces;
-using Canister;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -37,6 +36,15 @@ namespace BigBook
     [EditorBrowsable(EditorBrowsableState.Never)]
     public static class GenericObjectExtensions
     {
+        /// <summary>
+        /// Gets or sets the data manager.
+        /// </summary>
+        /// <value>The data manager.</value>
+        internal static DataMapper.Manager? DataManager { get; set; }
+
+        /// <summary>
+        /// The converters
+        /// </summary>
         private static readonly TypeConverter[] Converters = {
             new SqlDbTypeTypeConverter(),
             new DbTypeTypeConverter()
@@ -220,7 +228,7 @@ namespace BigBook
         /// <returns>True if the object passes the predicate, false otherwise</returns>
         public static bool Is<T>(this T inputObject, T comparisonObject, IEqualityComparer<T>? comparer = null)
         {
-            comparer ??= Canister.Builder.Bootstrapper?.Resolve<GenericEqualityComparer<T>>() ?? new GenericEqualityComparer<T>();
+            comparer ??= GenericEqualityComparer<T>.Comparer;
             return comparer.Equals(inputObject, comparisonObject);
         }
 
@@ -235,7 +243,7 @@ namespace BigBook
             if (leftType is null || rightType is null)
                 return null;
 
-            return Builder.Bootstrapper?.Resolve<DataMapper.Manager>()?.Map(leftType, rightType);
+            return DataManager?.Map(leftType, rightType);
         }
 
         /// <summary>
@@ -245,7 +253,7 @@ namespace BigBook
         /// <typeparam name="TRight">Right type</typeparam>
         /// <param name="item">Object to set up mapping for</param>
         /// <returns>The type mapping</returns>
-        public static ITypeMapping<TLeft, TRight>? MapTo<TLeft, TRight>(this TLeft item) => Builder.Bootstrapper?.Resolve<DataMapper.Manager>()?.Map<TLeft, TRight>();
+        public static ITypeMapping<TLeft, TRight>? MapTo<TLeft, TRight>(this TLeft item) => DataManager?.Map<TLeft, TRight>();
 
         /// <summary>
         /// Sets up a mapping between two types
@@ -254,7 +262,7 @@ namespace BigBook
         /// <typeparam name="TRight">Right type</typeparam>
         /// <param name="objectType">Object type to set up mapping for</param>
         /// <returns>The type mapping</returns>
-        public static ITypeMapping<TLeft, TRight>? MapTo<TLeft, TRight>(this Type objectType) => Builder.Bootstrapper?.Resolve<DataMapper.Manager>()?.Map<TLeft, TRight>();
+        public static ITypeMapping<TLeft, TRight>? MapTo<TLeft, TRight>(this Type objectType) => DataManager?.Map<TLeft, TRight>();
 
         /// <summary>
         /// Throws the specified exception if the predicate is true for the item
@@ -318,7 +326,7 @@ namespace BigBook
         /// Equality comparer used to determine if the object is equal to default
         /// </param>
         /// <returns>Returns Item</returns>
-        public static T ThrowIfDefault<T>(this T item, Exception exception, IEqualityComparer<T>? equalityComparer = null) => item.ThrowIf(x => (equalityComparer ?? Canister.Builder.Bootstrapper?.Resolve<GenericEqualityComparer<T>>() ?? new GenericEqualityComparer<T>()).Equals(x, default!), exception);
+        public static T ThrowIfDefault<T>(this T item, Exception exception, IEqualityComparer<T>? equalityComparer = null) => item.ThrowIf(x => (equalityComparer ?? GenericEqualityComparer<T>.Comparer).Equals(x, default!), exception);
 
         /// <summary>
         /// Throws the specified exception if the predicate is false for the item
@@ -354,7 +362,7 @@ namespace BigBook
         /// Equality comparer used to determine if the object is equal to default
         /// </param>
         /// <returns>Returns Item</returns>
-        public static T ThrowIfNotDefault<T>(this T item, Exception exception, IEqualityComparer<T>? equalityComparer = null) => item.ThrowIf(x => !(equalityComparer ?? Canister.Builder.Bootstrapper?.Resolve<GenericEqualityComparer<T>>() ?? new GenericEqualityComparer<T>()).Equals(x, default!), exception);
+        public static T ThrowIfNotDefault<T>(this T item, Exception exception, IEqualityComparer<T>? equalityComparer = null) => item.ThrowIf(x => !(equalityComparer ?? GenericEqualityComparer<T>.Comparer).Equals(x, default!), exception);
 
         /// <summary>
         /// Determines if the object is not null and throws an ArgumentException if it is

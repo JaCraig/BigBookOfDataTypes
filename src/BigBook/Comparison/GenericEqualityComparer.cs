@@ -27,6 +27,12 @@ namespace BigBook.Comparison
     public class GenericEqualityComparer<TData> : IEqualityComparer<TData>
     {
         /// <summary>
+        /// Gets the comparer.
+        /// </summary>
+        /// <value>The comparer.</value>
+        public static GenericEqualityComparer<TData> Comparer { get; } = new GenericEqualityComparer<TData>();
+
+        /// <summary>
         /// Determines if the two items are equal
         /// </summary>
         /// <param name="x">Object 1</param>
@@ -56,7 +62,7 @@ namespace BigBook.Comparison
 
             if (x is IEnumerable IEnumerablex && y is IEnumerable IEnumerabley)
             {
-                var Comparer = Canister.Builder.Bootstrapper?.Resolve<GenericEqualityComparer<object>>() ?? new GenericEqualityComparer<object>();
+                var Comparer = GenericEqualityComparer<object>.Comparer;
                 var XEnumerator = IEnumerablex.GetEnumerator();
                 var YEnumerator = IEnumerabley.GetEnumerator();
                 while (true)

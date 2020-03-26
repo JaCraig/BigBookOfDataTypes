@@ -120,7 +120,7 @@ namespace BigBook
         /// <returns>True if it is added, false otherwise</returns>
         public static bool AddIfUnique<T>(this ConcurrentBag<T> collection, IEqualityComparer<T> comparer, params T[] items)
         {
-            comparer ??= Canister.Builder.Bootstrapper?.Resolve<GenericEqualityComparer<T>>() ?? new GenericEqualityComparer<T>();
+            comparer ??= GenericEqualityComparer<T>.Comparer;
             return collection.AddIf(x => !collection.Contains(x, comparer), items);
         }
 
@@ -131,7 +131,7 @@ namespace BigBook
         /// <param name="collection">Collection to add to</param>
         /// <param name="items">Items to add to the collection</param>
         /// <returns>True if it is added, false otherwise</returns>
-        public static bool AddIfUnique<T>(this ConcurrentBag<T> collection, params T[] items) => collection.AddIfUnique(Canister.Builder.Bootstrapper?.Resolve<GenericEqualityComparer<T>>() ?? new GenericEqualityComparer<T>(), items);
+        public static bool AddIfUnique<T>(this ConcurrentBag<T> collection, params T[] items) => collection.AddIfUnique(GenericEqualityComparer<T>.Comparer, items);
 
         /// <summary>
         /// Adds an item to the collection if it isn't already in the collection
@@ -161,7 +161,7 @@ namespace BigBook
         /// <returns>True if it is added, false otherwise</returns>
         public static bool AddIfUnique<T>(this ConcurrentBag<T> collection, IEqualityComparer<T> comparer, IEnumerable<T> items)
         {
-            comparer ??= Canister.Builder.Bootstrapper?.Resolve<GenericEqualityComparer<T>>() ?? new GenericEqualityComparer<T>();
+            comparer ??= GenericEqualityComparer<T>.Comparer;
             return collection.AddIf(x => !collection.Contains(x, comparer), items);
         }
 
@@ -172,7 +172,7 @@ namespace BigBook
         /// <param name="collection">Collection to add to</param>
         /// <param name="items">Items to add to the collection</param>
         /// <returns>True if it is added, false otherwise</returns>
-        public static bool AddIfUnique<T>(this ConcurrentBag<T> collection, IEnumerable<T> items) => collection.AddIfUnique(Canister.Builder.Bootstrapper?.Resolve<GenericEqualityComparer<T>>() ?? new GenericEqualityComparer<T>(), items);
+        public static bool AddIfUnique<T>(this ConcurrentBag<T> collection, IEnumerable<T> items) => collection.AddIfUnique(GenericEqualityComparer<T>.Comparer, items);
 
         /// <summary>
         /// Adds an item to the collection if it isn't already in the collection
@@ -203,7 +203,7 @@ namespace BigBook
             if (collection is null)
                 return false;
 
-            comparer ??= Canister.Builder.Bootstrapper?.Resolve<GenericEqualityComparer<T>>() ?? new GenericEqualityComparer<T>();
+            comparer ??= GenericEqualityComparer<T>.Comparer;
             foreach (var TempValue in collection)
             {
                 if (comparer.Equals(TempValue, item))
@@ -255,7 +255,7 @@ namespace BigBook
                 return collection;
             }
 
-            comparer ??= Canister.Builder.Bootstrapper?.Resolve<GenericEqualityComparer<T>>() ?? new GenericEqualityComparer<T>();
+            comparer ??= GenericEqualityComparer<T>.Comparer;
             return collection.Remove<T>(x => items.Contains(x, comparer));
         }
     }

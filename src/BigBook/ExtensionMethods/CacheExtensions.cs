@@ -25,6 +25,12 @@ namespace BigBook.ExtensionMethods
     public static class CacheExtensions
     {
         /// <summary>
+        /// Gets or sets the cache manager.
+        /// </summary>
+        /// <value>The cache manager.</value>
+        internal static Caching.Manager? CacheManager { get; set; }
+
+        /// <summary>
         /// Cacnes the object based on the key and cache specified
         /// </summary>
         /// <param name="objectToCache">Object to cache</param>
@@ -32,7 +38,7 @@ namespace BigBook.ExtensionMethods
         /// <param name="cacheName">Name of the cache to use</param>
         public static void Cache(this object objectToCache, string key, string cacheName = "Default")
         {
-            Canister.Builder.Bootstrapper?.Resolve<Caching.Manager>().Cache(cacheName).Add(key, objectToCache);
+            CacheManager?.Cache(cacheName).Add(key, objectToCache);
         }
 
         /// <summary>
@@ -45,7 +51,7 @@ namespace BigBook.ExtensionMethods
         /// <returns>The object specified or the default value if it is not found</returns>
         public static T GetFromCache<T>(this string key, T defaultValue = default, string cacheName = "Default")
         {
-            var Value = Canister.Builder.Bootstrapper?.Resolve<Caching.Manager>().Cache(cacheName)[key];
+            var Value = CacheManager?.Cache(cacheName)[key];
             return Value is null ? defaultValue : Value.To(defaultValue);
         }
     }

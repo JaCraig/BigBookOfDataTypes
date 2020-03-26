@@ -125,7 +125,7 @@ namespace BigBook
                 return new Dictionary<T1, T2>();
             }
 
-            comparer ??= Canister.Builder.Bootstrapper?.Resolve<GenericComparer<T1>>() ?? new GenericComparer<T1>();
+            comparer ??= GenericComparer<T1>.Comparer;
             return dictionary.Sort(x => x.Key, comparer);
         }
 
@@ -154,7 +154,7 @@ namespace BigBook
                 return dictionary;
             }
 
-            comparer ??= Canister.Builder.Bootstrapper?.Resolve<GenericComparer<T3>>() ?? new GenericComparer<T3>();
+            comparer ??= GenericComparer<T3>.Comparer;
             return dictionary.OrderBy(orderBy, comparer).ToDictionary(x => x.Key, x => x.Value);
         }
     }

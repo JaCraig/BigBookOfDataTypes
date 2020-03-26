@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using BigBook.DataMapper;
+using BigBook.DataMapper.Interfaces;
 using BigBook.DynamoUtils;
 using BigBook.Reflection;
 using Microsoft.Extensions.ObjectPool;
@@ -49,8 +50,18 @@ namespace BigBook
         /// </summary>
         /// <param name="item">Item to copy values from</param>
         /// <param name="useChangeLog">if set to <c>true</c> [use change log].</param>
-        protected Dynamo(object? item, bool useChangeLog = false)
-            : base(item, useChangeLog)
+        /// <param name="aopManager">
+        /// The aop manager (if available it will attempt to use this to create an object).
+        /// </param>
+        /// <param name="builderPool">
+        /// The builder pool (if available, it will use a StringBuilder from the pool where applicable).
+        /// </param>
+        /// <param name="dataMapper">
+        /// The data mapper (if available, will use this to map itself to other data types when
+        /// copying data).
+        /// </param>
+        protected Dynamo(object? item, bool useChangeLog = false, Aspectus.Aspectus? aopManager = null, ObjectPool<StringBuilder>? builderPool = null, Manager? dataMapper = null)
+            : base(item, useChangeLog, aopManager, builderPool, dataMapper)
         {
         }
 
@@ -58,8 +69,18 @@ namespace BigBook
         /// Constructor
         /// </summary>
         /// <param name="useChangeLog">if set to <c>true</c> [use change log].</param>
-        protected Dynamo(bool useChangeLog)
-            : base(useChangeLog)
+        /// <param name="aopManager">
+        /// The aop manager (if available it will attempt to use this to create an object).
+        /// </param>
+        /// <param name="builderPool">
+        /// The builder pool (if available, it will use a StringBuilder from the pool where applicable).
+        /// </param>
+        /// <param name="dataMapper">
+        /// The data mapper (if available, will use this to map itself to other data types when
+        /// copying data).
+        /// </param>
+        protected Dynamo(bool useChangeLog, Aspectus.Aspectus? aopManager = null, ObjectPool<StringBuilder>? builderPool = null, Manager? dataMapper = null)
+            : base(useChangeLog, aopManager, builderPool, dataMapper)
         {
         }
 
@@ -113,7 +134,7 @@ namespace BigBook
         {
             Data = DynamoData.Empty;
             LockObject = new object();
-            TypeInfo.SetupType(this);
+            TypeInfo?.SetupType(this);
             HashCode = EmptyHashCode;
         }
 
@@ -122,8 +143,18 @@ namespace BigBook
         /// </summary>
         /// <param name="item">The item.</param>
         /// <param name="useChangeLog">if set to <c>true</c> [use change log].</param>
-        public Dynamo(object? item, bool useChangeLog = false)
-            : this(useChangeLog)
+        /// <param name="aopManager">
+        /// The aop manager (if available it will attempt to use this to create an object).
+        /// </param>
+        /// <param name="builderPool">
+        /// The builder pool (if available, it will use a StringBuilder from the pool where applicable).
+        /// </param>
+        /// <param name="dataMapper">
+        /// The data mapper (if available, will use this to map itself to other data types when
+        /// copying data).
+        /// </param>
+        public Dynamo(object? item, bool useChangeLog = false, Aspectus.Aspectus? aopManager = null, ObjectPool<StringBuilder>? builderPool = null, Manager? dataMapper = null)
+            : this(useChangeLog, aopManager, builderPool, dataMapper)
         {
             Copy(item);
         }
@@ -132,10 +163,23 @@ namespace BigBook
         /// Constructor
         /// </summary>
         /// <param name="useChangeLog">if set to <c>true</c> [use change log].</param>
-        public Dynamo(bool useChangeLog)
+        /// <param name="aopManager">
+        /// The aop manager (if available it will attempt to use this to create an object).
+        /// </param>
+        /// <param name="builderPool">
+        /// The builder pool (if available, it will use a StringBuilder from the pool where applicable).
+        /// </param>
+        /// <param name="dataMapper">
+        /// The data mapper (if available, will use this to map itself to other data types when
+        /// copying data).
+        /// </param>
+        public Dynamo(bool useChangeLog, Aspectus.Aspectus? aopManager = null, ObjectPool<StringBuilder>? builderPool = null, Manager? dataMapper = null)
             : this()
         {
             ChangeLog = useChangeLog ? new ConcurrentDictionary<string, Change>() : null;
+            AOPManager = aopManager;
+            BuilderPool = builderPool;
+            DataMapper = dataMapper ?? new Manager(new IDataMapper[] { new DataMapper.Default.DataMapper() }, Array.Empty<IMapperModule>());
         }
 
         /// <summary>
@@ -207,19 +251,19 @@ namespace BigBook
         /// Gets or sets the aop manager.
         /// </summary>
         /// <value>The aop manager.</value>
-        private static Aspectus.Aspectus? AOPManager => Canister.Builder.Bootstrapper?.Resolve<Aspectus.Aspectus>();
+        private Aspectus.Aspectus? AOPManager { get; }
 
         /// <summary>
         /// Gets the builder pool.
         /// </summary>
         /// <value>The builder pool.</value>
-        private static ObjectPool<StringBuilder>? BuilderPool => Canister.Builder.Bootstrapper?.Resolve<ObjectPool<StringBuilder>>();
+        private ObjectPool<StringBuilder>? BuilderPool { get; }
 
         /// <summary>
         /// Gets or sets the data mapper.
         /// </summary>
         /// <value>The data mapper.</value>
-        private static Manager? DataMapper => Canister.Builder.Bootstrapper?.Resolve<Manager>();
+        private Manager? DataMapper { get; set; }
 
         /// <summary>
         /// Gets or sets the hash code.
@@ -481,7 +525,6 @@ namespace BigBook
             {
                 return;
             }
-
             DataMapper?.Map(GetType(), result.GetType())
                       .AutoMap()
                       .Copy(this, result);
@@ -648,9 +691,7 @@ namespace BigBook
         /// <returns>The string version of the object</returns>
         public override string ToString()
         {
-            if (BuilderPool is null)
-                return string.Empty;
-            var Builder = BuilderPool.Get();
+            var Builder = BuilderPool?.Get() ?? new StringBuilder();
             Builder.Append(GetType().Name).AppendLine(" this");
             foreach (var Key in Keys.OrderBy(x => x))
             {
@@ -665,7 +706,7 @@ namespace BigBook
                 }
             }
             var Result = Builder.ToString();
-            BuilderPool.Return(Builder);
+            BuilderPool?.Return(Builder);
             return Result;
         }
 

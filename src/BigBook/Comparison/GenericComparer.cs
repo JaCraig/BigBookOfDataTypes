@@ -26,6 +26,12 @@ namespace BigBook.Comparison
     public class GenericComparer<TData> : IComparer<TData> where TData : IComparable
     {
         /// <summary>
+        /// Gets the comparer.
+        /// </summary>
+        /// <value>The comparer.</value>
+        public static GenericComparer<TData> Comparer { get; } = new GenericComparer<TData>();
+
+        /// <summary>
         /// Compares the two objects
         /// </summary>
         /// <param name="x">Object 1</param>

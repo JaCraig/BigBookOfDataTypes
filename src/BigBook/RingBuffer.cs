@@ -54,8 +54,6 @@ namespace BigBook
             Buffer = new T[MaxCapacity];
         }
 
-        private object? Root;
-
         /// <summary>
         /// Is overflow allowed?
         /// </summary>
@@ -111,6 +109,8 @@ namespace BigBook
         /// Write position
         /// </summary>
         protected int WritePosition { get; set; }
+
+        private object? Root;
 
         /// <summary>
         /// Allows getting an item at a specific position in the buffer
@@ -237,7 +237,7 @@ namespace BigBook
         public bool Contains(T item)
         {
             var y = ReadPosition;
-            var Comparer = Canister.Builder.Bootstrapper?.Resolve<GenericEqualityComparer<T>>() ?? new GenericEqualityComparer<T>();
+            var Comparer = GenericEqualityComparer<T>.Comparer;
             for (var x = 0; x < Count; ++x)
             {
                 if (Comparer.Equals(Buffer[y], item))
@@ -375,7 +375,7 @@ namespace BigBook
         public bool Remove(T item)
         {
             var y = ReadPosition;
-            var Comparer = Canister.Builder.Bootstrapper?.Resolve<GenericEqualityComparer<T>>() ?? new GenericEqualityComparer<T>();
+            var Comparer = GenericEqualityComparer<T>.Comparer;
             for (var x = 0; x < Count; ++x)
             {
                 if (Comparer.Equals(Buffer[y], item))
