@@ -136,6 +136,7 @@ namespace BigBook
             LockObject = new object();
             TypeInfo?.SetupType(this);
             HashCode = EmptyHashCode;
+            DataMapper = new Manager(new IDataMapper[] { new DataMapper.Default.DataMapper() }, Array.Empty<IMapperModule>());
         }
 
         /// <summary>
