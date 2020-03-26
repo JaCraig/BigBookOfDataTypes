@@ -50,7 +50,8 @@ namespace BigBook.CanisterModules
                          .RegisterAll<IMapperModule>()
                          .Register<DataMapper.Manager>(ServiceLifetime.Singleton)
                          .Register(new DynamoTypes(), ServiceLifetime.Singleton)
-                         .Register(objectPoolProvider.CreateStringBuilderPool(), ServiceLifetime.Singleton);
+                         .Register(objectPoolProvider.CreateStringBuilderPool(), ServiceLifetime.Singleton)
+                         .Register<DynamoFactory>(ServiceLifetime.Singleton);
         }
     }
 }

@@ -651,12 +651,12 @@ namespace BigBook
         /// <returns>A new Dynamo object containing only the keys specified</returns>
         public dynamic SubSet(params string[] keys)
         {
+            var ReturnValue = new Dynamo(ChangeLog != null, AOPManager, BuilderPool, DataMapper);
             if (keys is null)
             {
-                return new Dynamo();
+                return ReturnValue;
             }
 
-            var ReturnValue = new Dynamo();
             for (var i = 0; i < keys.Length; i++)
             {
                 var Key = keys[i];
