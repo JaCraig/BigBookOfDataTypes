@@ -136,7 +136,6 @@ namespace BigBook
             LockObject = new object();
             TypeInfo?.SetupType(this);
             HashCode = EmptyHashCode;
-            DataMapper = new Manager(new IDataMapper[] { new DataMapper.Default.DataMapper() }, Array.Empty<IMapperModule>());
         }
 
         /// <summary>
@@ -184,42 +183,6 @@ namespace BigBook
         }
 
         /// <summary>
-        /// The uninitialized object
-        /// </summary>
-        internal static readonly object UninitializedObject = new object();
-
-        /// <summary>
-        /// The lock object
-        /// </summary>
-        internal readonly object LockObject;
-
-        /// <summary>
-        /// The empty hash code
-        /// </summary>
-        private const int EmptyHashCode = 6551;
-
-        /// <summary>
-        /// Gets the type information.
-        /// </summary>
-        /// <value>The type information.</value>
-        private static DynamoTypes? TypeInfo = new DynamoTypes();
-
-        /// <summary>
-        /// The get value end_
-        /// </summary>
-        private Action<Dynamo, string, EventArgs.OnEndEventArgs>? getValueEnd_;
-
-        /// <summary>
-        /// The get value start_
-        /// </summary>
-        private Action<Dynamo, EventArgs.OnStartEventArgs>? getValueStart_;
-
-        /// <summary>
-        /// The property changed_
-        /// </summary>
-        private PropertyChangedEventHandler? propertyChanged_;
-
-        /// <summary>
         /// Gets the change log.
         /// </summary>
         /// <value>The change log.</value>
@@ -237,8 +200,8 @@ namespace BigBook
         internal DynamoClass Definition => Data.Definition;
 
         /// <summary>
-        /// Gets a value indicating whether the
-        /// <see cref="T:System.Collections.Generic.ICollection`1"/> is read-only.
+        /// Gets a value indicating whether the <see
+        /// cref="T:System.Collections.Generic.ICollection`1"/> is read-only.
         /// </summary>
         public bool IsReadOnly { get; }
 
@@ -307,6 +270,42 @@ namespace BigBook
         /// </summary>
         /// <value>The hash code.</value>
         private int HashCode { get; set; }
+
+        /// <summary>
+        /// The uninitialized object
+        /// </summary>
+        internal static readonly object UninitializedObject = new object();
+
+        /// <summary>
+        /// The lock object
+        /// </summary>
+        internal readonly object LockObject;
+
+        /// <summary>
+        /// The empty hash code
+        /// </summary>
+        private const int EmptyHashCode = 6551;
+
+        /// <summary>
+        /// Gets the type information.
+        /// </summary>
+        /// <value>The type information.</value>
+        private static DynamoTypes? TypeInfo = new DynamoTypes();
+
+        /// <summary>
+        /// The get value end_
+        /// </summary>
+        private Action<Dynamo, string, EventArgs.OnEndEventArgs>? getValueEnd_;
+
+        /// <summary>
+        /// The get value start_
+        /// </summary>
+        private Action<Dynamo, EventArgs.OnStartEventArgs>? getValueStart_;
+
+        /// <summary>
+        /// The property changed_
+        /// </summary>
+        private PropertyChangedEventHandler? propertyChanged_;
 
         /// <summary>
         /// Gets or sets the <see cref="object"/> with the specified key.
@@ -425,8 +424,8 @@ namespace BigBook
         /// </summary>
         /// <param name="item">The object to locate in the <see cref="T:System.Collections.Generic.ICollection`1"/>.</param>
         /// <returns>
-        /// <see langword="true"/> if <paramref name="item"/> is found in the
-        /// <see cref="T:System.Collections.Generic.ICollection`1"/>; otherwise, <see langword="false"/>.
+        /// <see langword="true"/> if <paramref name="item"/> is found in the <see
+        /// cref="T:System.Collections.Generic.ICollection`1"/>; otherwise, <see langword="false"/>.
         /// </returns>
         public bool Contains(KeyValuePair<string, object?> item)
         {
@@ -478,6 +477,7 @@ namespace BigBook
             }
             else
             {
+                DataMapper ??= GetGenericMapper();
                 DataMapper?.Map(ItemType, GetType())
                           .AutoMap()
                           .Copy(item, this);
@@ -490,8 +490,8 @@ namespace BigBook
         /// </summary>
         /// <param name="array">
         /// The one-dimensional <see cref="T:System.Array"/> that is the destination of the elements
-        /// copied from <see cref="T:System.Collections.Generic.ICollection`1"/>. The
-        /// <see cref="T:System.Array"/> must have zero-based indexing.
+        /// copied from <see cref="T:System.Collections.Generic.ICollection`1"/>. The <see
+        /// cref="T:System.Array"/> must have zero-based indexing.
         /// </param>
         /// <param name="arrayIndex">
         /// The zero-based index in <paramref name="array"/> at which copying begins.
@@ -526,6 +526,7 @@ namespace BigBook
             {
                 return;
             }
+            DataMapper ??= GetGenericMapper();
             DataMapper?.Map(GetType(), result.GetType())
                       .AutoMap()
                       .Copy(this, result);
@@ -605,9 +606,9 @@ namespace BigBook
         /// </summary>
         /// <param name="key">The key of the element to remove.</param>
         /// <returns>
-        /// <see langword="true"/> if the element is successfully removed; otherwise,
-        /// <see langword="false"/>. This method also returns <see langword="false"/> if
-        /// <paramref name="key"/> was not found in the original <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+        /// <see langword="true"/> if the element is successfully removed; otherwise, <see
+        /// langword="false"/>. This method also returns <see langword="false"/> if <paramref
+        /// name="key"/> was not found in the original <see cref="T:System.Collections.Generic.IDictionary`2"/>.
         /// </returns>
         public bool Remove(string key)
         {
@@ -634,10 +635,10 @@ namespace BigBook
         /// </summary>
         /// <param name="item">The object to remove from the <see cref="T:System.Collections.Generic.ICollection`1"/>.</param>
         /// <returns>
-        /// <see langword="true"/> if <paramref name="item"/> was successfully removed from the
-        /// <see cref="T:System.Collections.Generic.ICollection`1"/>; otherwise,
-        /// <see langword="false"/>. This method also returns <see langword="false"/> if
-        /// <paramref name="item"/> is not found in the original <see cref="T:System.Collections.Generic.ICollection`1"/>.
+        /// <see langword="true"/> if <paramref name="item"/> was successfully removed from the <see
+        /// cref="T:System.Collections.Generic.ICollection`1"/>; otherwise, <see langword="false"/>.
+        /// This method also returns <see langword="false"/> if <paramref name="item"/> is not found
+        /// in the original <see cref="T:System.Collections.Generic.ICollection`1"/>.
         /// </returns>
         public bool Remove(KeyValuePair<string, object?> item)
         {
@@ -679,9 +680,8 @@ namespace BigBook
         /// <returns>The object converted to the type specified</returns>
         public object To(Type ObjectType)
         {
-            //MEMORY OPTIMIZATION HERE.
-            asdf
             var Result = AOPManager?.Create(ObjectType) ?? Activator.CreateInstance(ObjectType);
+            DataMapper ??= GetGenericMapper();
             DataMapper?.Map(GetType(), ObjectType)
                       .AutoMap()
                       .Copy(this, Result);
@@ -757,8 +757,8 @@ namespace BigBook
         /// parameter. This parameter is passed uninitialized.
         /// </param>
         /// <returns>
-        /// <see langword="true"/> if the object that implements
-        /// <see cref="T:System.Collections.Generic.IDictionary`2"/> contains an element with the
+        /// <see langword="true"/> if the object that implements <see
+        /// cref="T:System.Collections.Generic.IDictionary`2"/> contains an element with the
         /// specified key; otherwise, <see langword="false"/>.
         /// </returns>
         public bool TryGetValue(string key, [MaybeNullWhen(false)] out object? value)
@@ -889,6 +889,15 @@ namespace BigBook
             if (propertyChanged_ is null)
                 return;
             propertyChanged_.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        /// <summary>
+        /// Gets the generic mapper.
+        /// </summary>
+        /// <returns>The default mapper if one isn't supplied.</returns>
+        private Manager? GetGenericMapper()
+        {
+            return new Manager(new IDataMapper[] { new DataMapper.Default.DataMapper() }, Array.Empty<IMapperModule>());
         }
 
         /// <summary>

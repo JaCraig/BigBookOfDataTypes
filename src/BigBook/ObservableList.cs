@@ -58,6 +58,38 @@ namespace BigBook
         }
 
         /// <summary>
+        /// Gets the number of elements contained in the <see cref="T:System.Collections.Generic.ICollection`1"/>.
+        /// </summary>
+        public int Count => BaseList.Count;
+
+        /// <summary>
+        /// Gets a value indicating whether the <see cref="T:System.Collections.IList"/> has a fixed size.
+        /// </summary>
+        public bool IsFixedSize { get; }
+
+        /// <summary>
+        /// Gets a value indicating whether the collection is read-only.
+        /// </summary>
+        public bool IsReadOnly { get; }
+
+        /// <summary>
+        /// Gets a value indicating whether access to the <see
+        /// cref="T:System.Collections.ICollection"/> is synchronized (thread safe).
+        /// </summary>
+        public bool IsSynchronized { get; }
+
+        /// <summary>
+        /// Gets an object that can be used to synchronize access to the <see cref="T:System.Collections.ICollection"/>.
+        /// </summary>
+        public object? SyncRoot { get; }
+
+        /// <summary>
+        /// Gets or sets the base list.
+        /// </summary>
+        /// <value>The base list.</value>
+        private List<T> BaseList { get; }
+
+        /// <summary>
         /// The delegates_
         /// </summary>
         private readonly List<NotifyCollectionChangedEventHandler> CollectionChangedDelegates = new List<NotifyCollectionChangedEventHandler>();
@@ -76,38 +108,6 @@ namespace BigBook
         /// The property changed
         /// </summary>
         private PropertyChangedEventHandler? propertyChanged_;
-
-        /// <summary>
-        /// Gets the number of elements contained in the <see cref="T:System.Collections.Generic.ICollection`1"/>.
-        /// </summary>
-        public int Count => BaseList.Count;
-
-        /// <summary>
-        /// Gets a value indicating whether the <see cref="T:System.Collections.IList"/> has a fixed size.
-        /// </summary>
-        public bool IsFixedSize { get; }
-
-        /// <summary>
-        /// Gets a value indicating whether the collection is read-only.
-        /// </summary>
-        public bool IsReadOnly { get; }
-
-        /// <summary>
-        /// Gets a value indicating whether access to the
-        /// <see cref="T:System.Collections.ICollection"/> is synchronized (thread safe).
-        /// </summary>
-        public bool IsSynchronized { get; }
-
-        /// <summary>
-        /// Gets an object that can be used to synchronize access to the <see cref="T:System.Collections.ICollection"/>.
-        /// </summary>
-        public object? SyncRoot { get; }
-
-        /// <summary>
-        /// Gets or sets the base list.
-        /// </summary>
-        /// <value>The base list.</value>
-        private List<T> BaseList { get; }
 
         /// <summary>
         /// Gets or sets the <see cref="object"/> at the specified index.
@@ -249,8 +249,8 @@ namespace BigBook
         /// </summary>
         /// <param name="value">The object to locate in the <see cref="T:System.Collections.IList"/>.</param>
         /// <returns>
-        /// true if the <see cref="T:System.Object"/> is found in the
-        /// <see cref="T:System.Collections.IList"/>; otherwise, false.
+        /// true if the <see cref="T:System.Object"/> is found in the <see
+        /// cref="T:System.Collections.IList"/>; otherwise, false.
         /// </returns>
         public bool Contains(object value) => Contains((T)value);
 
@@ -262,13 +262,13 @@ namespace BigBook
         public void CopyTo(T[] array, int arrayIndex) => BaseList.CopyTo(array, arrayIndex);
 
         /// <summary>
-        /// Copies the elements of the <see cref="T:System.Collections.ICollection"/> to an
-        /// <see cref="T:System.Array"/>, starting at a particular <see cref="T:System.Array"/> index.
+        /// Copies the elements of the <see cref="T:System.Collections.ICollection"/> to an <see
+        /// cref="T:System.Array"/>, starting at a particular <see cref="T:System.Array"/> index.
         /// </summary>
         /// <param name="array">
         /// The one-dimensional <see cref="T:System.Array"/> that is the destination of the elements
-        /// copied from <see cref="T:System.Collections.ICollection"/>. The
-        /// <see cref="T:System.Array"/> must have zero-based indexing.
+        /// copied from <see cref="T:System.Collections.ICollection"/>. The <see
+        /// cref="T:System.Array"/> must have zero-based indexing.
         /// </param>
         /// <param name="index">
         /// The zero-based index in <paramref name="array"/> at which copying begins.
@@ -347,7 +347,12 @@ namespace BigBook
         /// Notifies the list that an item in the list has been modified.
         /// </summary>
         /// <param name="itemChanged">The item that was changed.</param>
-        public void NotifyObjectChanged(object itemChanged) => collectionChanged_?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Replace, itemChanged, itemChanged));
+        public void NotifyObjectChanged(object itemChanged)
+        {
+            if (collectionChanged_ is null)
+                return;
+            collectionChanged_.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Replace, itemChanged, itemChanged));
+        }
 
         /// <summary>
         /// Removes the first occurrence of a specific object from the <see cref="T:System.Collections.Generic.List`1"/>.
@@ -416,12 +421,22 @@ namespace BigBook
         /// <param name="args">
         /// The <see cref="NotifyCollectionChangedEventArgs"/> instance containing the event data.
         /// </param>
-        protected void NotifyCollectionChanged(NotifyCollectionChangedEventArgs args) => collectionChanged_?.Invoke(this, args);
+        protected void NotifyCollectionChanged(NotifyCollectionChangedEventArgs args)
+        {
+            if (collectionChanged_ is null)
+                return;
+            collectionChanged_.Invoke(this, args);
+        }
 
         /// <summary>
         /// Notifies the property changed.
         /// </summary>
         /// <param name="propertyName">Name of the property.</param>
-        protected void NotifyPropertyChanged([CallerMemberName]string propertyName = "") => propertyChanged_?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        protected void NotifyPropertyChanged([CallerMemberName]string propertyName = "")
+        {
+            if (propertyChanged_ is null)
+                return;
+            propertyChanged_.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }
