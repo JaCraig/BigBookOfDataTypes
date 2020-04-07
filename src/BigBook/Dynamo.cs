@@ -679,6 +679,8 @@ namespace BigBook
         /// <returns>The object converted to the type specified</returns>
         public object To(Type ObjectType)
         {
+            //MEMORY OPTIMIZATION HERE.
+            asdf
             var Result = AOPManager?.Create(ObjectType) ?? Activator.CreateInstance(ObjectType);
             DataMapper?.Map(GetType(), ObjectType)
                       .AutoMap()
