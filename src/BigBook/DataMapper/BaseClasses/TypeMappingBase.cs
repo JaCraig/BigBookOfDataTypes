@@ -17,7 +17,6 @@ limitations under the License.
 using BigBook.DataMapper.Interfaces;
 using BigBook.Reflection;
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -37,13 +36,24 @@ namespace BigBook.DataMapper.BaseClasses
         /// </summary>
         protected TypeMappingBase()
         {
-            Mappings = new ConcurrentBag<IMapping<TLeft, TRight>>();
+            Mappings = Array.Empty<IMapping<TLeft, TRight>>();
+            LockObject = new object();
         }
+
+        /// <summary>
+        /// The lock object
+        /// </summary>
+        private readonly object LockObject;
+
+        /// <summary>
+        /// The current size
+        /// </summary>
+        protected int Count { get; set; }
 
         /// <summary>
         /// List of mappings
         /// </summary>
-        protected ConcurrentBag<IMapping<TLeft, TRight>> Mappings { get; }
+        protected IMapping<TLeft, TRight>[] Mappings { get; private set; }
 
         /// <summary>
         /// Adds a mapping
@@ -87,7 +97,7 @@ namespace BigBook.DataMapper.BaseClasses
         /// <returns>This</returns>
         public virtual ITypeMapping AutoMap()
         {
-            if (Mappings.Count > 0)
+            if (Count > 0)
             {
                 return this;
             }
@@ -168,6 +178,45 @@ namespace BigBook.DataMapper.BaseClasses
         /// <returns>The type mapping</returns>
         public abstract ITypeMapping CreateReversed();
 
+        /// <summary>
+        /// Adds the mapping.
+        /// </summary>
+        /// <param name="mapping">The mapping.</param>
+        protected void AddMapping(IMapping<TLeft, TRight> mapping)
+        {
+            IMapping<TLeft, TRight>[] TempMappings;
+            lock (LockObject)
+            {
+                TempMappings = Mappings;
+                var OldLength = TempMappings.Length;
+                ++Count;
+                if (OldLength >= Count)
+                {
+                    TempMappings[Count - 1] = mapping;
+                    Mappings = TempMappings;
+                    return;
+                }
+                var NewData = new IMapping<TLeft, TRight>[GetAlignedSize(Count)];
+                Array.Copy(TempMappings, NewData, OldLength);
+                NewData[OldLength] = mapping;
+                Mappings = NewData;
+            }
+        }
+
+        /// <summary>
+        /// Aligns the length to the value specified.
+        /// </summary>
+        /// <param name="len">The length.</param>
+        /// <returns>The aligned size.</returns>
+        private static int GetAlignedSize(int len)
+        {
+            const int DataAlignment = 8;
+            return (len + (DataAlignment - 1)) & (~(DataAlignment - 1));
+        }
+
+        /// <summary>
+        /// Adds the i dictionary mappings.
+        /// </summary>
         private void AddIDictionaryMappings()
         {
             AddMapping(x => x!,
@@ -186,6 +235,9 @@ namespace BigBook.DataMapper.BaseClasses
             }));
         }
 
+        /// <summary>
+        /// Adds the left i dictionary mapping.
+        /// </summary>
         private void AddLeftIDictionaryMapping()
         {
             for (var x = 0; x < TypeCacheFor<TRight>.Properties.Length; ++x)
