@@ -94,16 +94,17 @@ namespace BigBook.DynamoUtils
         /// <returns>The new DynamoData object.</returns>
         public DynamoData UpdateClass(DynamoClass newClass)
         {
-            if (Data.Length >= newClass.Keys.Length)
+            var NewLength = newClass.Keys.Length;
+            var OldLength = Data.Length;
+            if (OldLength >= NewLength)
             {
-                this[newClass.Keys.Length - 1] = Dynamo.UninitializedObject;
+                this[NewLength - 1] = Dynamo.UninitializedObject;
                 return new DynamoData(newClass, Data, Version);
             }
             else
             {
-                var OldLength = Data.Length;
-                var TempArray = new object[GetAlignedSize(newClass.Keys.Length)];
-                Array.Copy(Data, TempArray, Data.Length);
+                var TempArray = new object[GetAlignedSize(NewLength)];
+                Array.Copy(Data, TempArray, OldLength);
                 var NewData = new DynamoData(newClass, TempArray, Version);
                 NewData[OldLength] = Dynamo.UninitializedObject;
                 return NewData;

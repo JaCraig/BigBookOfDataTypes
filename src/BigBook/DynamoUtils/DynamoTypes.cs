@@ -15,7 +15,6 @@ limitations under the License.
 */
 
 using BigBook.DynamoUtils.Interfaces;
-using System;
 using System.Collections.Generic;
 
 namespace BigBook.DynamoUtils
@@ -30,20 +29,20 @@ namespace BigBook.DynamoUtils
         /// </summary>
         public DynamoTypes()
         {
-            Types = new Dictionary<Type, IDynamoProperties>();
+            Types = new Dictionary<int, IDynamoProperties>();
             LockObject = new object();
         }
-
-        /// <summary>
-        /// Gets or sets the types.
-        /// </summary>
-        /// <value>The types.</value>
-        private Dictionary<Type, IDynamoProperties> Types { get; }
 
         /// <summary>
         /// The lock object
         /// </summary>
         private readonly object LockObject;
+
+        /// <summary>
+        /// Gets or sets the types.
+        /// </summary>
+        /// <value>The types.</value>
+        private Dictionary<int, IDynamoProperties> Types { get; }
 
         /// <summary>
         /// Setups the type.
@@ -52,13 +51,14 @@ namespace BigBook.DynamoUtils
         public void SetupType(Dynamo @object)
         {
             var objectType = @object.GetType();
-            if (Types.ContainsKey(objectType) || objectType == typeof(Dynamo))
+            var Key = objectType.GetHashCode();
+            if (Types.ContainsKey(Key) || objectType == typeof(Dynamo))
                 return;
             lock (LockObject)
             {
                 var TempObject = (typeof(DynamoProperties<>).MakeGenericType(objectType).Create() as IDynamoProperties)!;
                 TempObject.SetupValues();
-                Types.Add(objectType, TempObject);
+                Types.Add(Key, TempObject);
             }
         }
 
@@ -72,12 +72,13 @@ namespace BigBook.DynamoUtils
         public bool TryGetValue(Dynamo @object, string propertyName, out object? value)
         {
             var objectType = @object.GetType();
-            if (!Types.ContainsKey(objectType))
+            var Key = objectType.GetHashCode();
+            if (!Types.ContainsKey(Key))
             {
                 value = null;
                 return false;
             }
-            var ReturnValue = Types[objectType].TryGetValue(@object, propertyName, out var TempValue);
+            var ReturnValue = Types[Key].TryGetValue(@object, propertyName, out var TempValue);
             value = TempValue;
             return ReturnValue;
         }
@@ -88,16 +89,18 @@ namespace BigBook.DynamoUtils
         /// <param name="object">The object.</param>
         /// <param name="propertyName">Name of the property.</param>
         /// <param name="value">The value.</param>
+        /// <param name="oldValue">The old value.</param>
         /// <returns>True if it is set, false otherwise.</returns>
         public bool TrySetValue(Dynamo @object, string propertyName, object? value, out object? oldValue)
         {
             var objectType = @object.GetType();
-            if (!Types.ContainsKey(objectType))
+            var Key = objectType.GetHashCode();
+            if (!Types.ContainsKey(Key))
             {
                 oldValue = null;
                 return false;
             }
-            var ReturnValue = Types[objectType].TrySetValue(@object, propertyName, value, out var TempValue);
+            var ReturnValue = Types[Key].TrySetValue(@object, propertyName, value, out var TempValue);
             oldValue = TempValue;
             return ReturnValue;
         }

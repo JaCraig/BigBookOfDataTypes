@@ -35,7 +35,7 @@ namespace BigBook.DataMapper
         {
             GenericObjectExtensions.DataManager = this;
             dataMappers ??= Array.Empty<IDataMapper>();
-            DataMapper = dataMappers.FirstOrDefault(x => x.GetType().Assembly != typeof(Manager).Assembly) ?? new Default.DataMapper();
+            DataMapper = dataMappers.FirstOrDefault(x => x.GetType().Assembly != typeof(Manager).Assembly) ?? new Default.DefaultDataMapper();
             mapperModules.ForEach(x => x.Map(this));
         }
 
@@ -50,7 +50,7 @@ namespace BigBook.DataMapper
         /// <typeparam name="TLeft">Left type</typeparam>
         /// <typeparam name="TRight">Right type</typeparam>
         /// <returns>A mapping object for the two types specified</returns>
-        public ITypeMapping<TLeft, TRight> Map<TLeft, TRight>() => DataMapper.Map<TLeft, TRight>();
+        public ITypeMapping<TLeft, TRight>? Map<TLeft, TRight>() => DataMapper.Map<TLeft, TRight>();
 
         /// <summary>
         /// Adds or returns a mapping between two types
@@ -58,7 +58,7 @@ namespace BigBook.DataMapper
         /// <param name="left">Left type</param>
         /// <param name="right">Right type</param>
         /// <returns>A mapping object for the two types specified</returns>
-        public ITypeMapping Map(Type left, Type right) => DataMapper.Map(left, right);
+        public ITypeMapping? Map(Type left, Type right) => DataMapper.Map(left, right);
 
         /// <summary>
         /// Outputs the string information about the manager

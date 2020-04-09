@@ -161,8 +161,8 @@ namespace BigBook
 
                 for (var t = node; t != Root; t = t.Fail)
                 {
-                    for (var i = 0; i < t.Values.Count; i++)
-                        return t.Values[i];
+                    if (t.Values.Count > 0)
+                        return t.Values[0];
                 }
             }
             return default!;
@@ -206,13 +206,13 @@ namespace BigBook
             /// Gets or sets the fail.
             /// </summary>
             /// <value>The fail.</value>
-            public Node<TNode, TNodeValue> Fail { get; set; }
+            public Node<TNode, TNodeValue>? Fail { get; set; }
 
             /// <summary>
             /// Gets the parent.
             /// </summary>
             /// <value>The parent.</value>
-            public Node<TNode, TNodeValue> Parent { get; }
+            public Node<TNode, TNodeValue>? Parent { get; }
 
             /// <summary>
             /// Gets the values.

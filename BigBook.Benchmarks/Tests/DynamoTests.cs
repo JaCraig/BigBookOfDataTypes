@@ -8,16 +8,17 @@ namespace BigBook.Benchmarks.Tests
     [RPlotExporter, RankColumn, MemoryDiagnoser]
     public class DynamoTests
     {
+        [Params(100)]
+        public int Count;
+
         public object[] Data { get; set; }
 
         private object AnonymousType { get; set; }
 
+        private DynamoFactory DynamoFactory { get; set; }
         private ExpandoObject ExpandoType { get; set; }
 
         private TestClass TestClassValue { get; set; }
-
-        [Params(1, 10, 100, 1000, 10000)]
-        public int Count;
 
         [Benchmark]
         public object[] AnnonymousTest()
@@ -60,7 +61,7 @@ namespace BigBook.Benchmarks.Tests
             Data = new Dynamo[Count];
             for (var x = 0; x < Count; ++x)
             {
-                Data[x] = new Dynamo(AnonymousType);
+                Data[x] = DynamoFactory.Create(AnonymousType);
             }
             return Data;
         }
@@ -71,7 +72,7 @@ namespace BigBook.Benchmarks.Tests
             Data = new Dynamo[Count];
             for (var x = 0; x < Count; ++x)
             {
-                Data[x] = new Dynamo(TestClassValue);
+                Data[x] = DynamoFactory.Create(TestClassValue);
             }
             return Data;
         }
@@ -82,7 +83,7 @@ namespace BigBook.Benchmarks.Tests
             Data = new Dynamo[Count];
             for (var x = 0; x < Count; ++x)
             {
-                Data[x] = new Dynamo(ExpandoType);
+                Data[x] = DynamoFactory.Create(ExpandoType);
             }
             return Data;
         }
@@ -93,7 +94,7 @@ namespace BigBook.Benchmarks.Tests
             Data = new Dynamo[Count];
             for (var x = 0; x < Count; ++x)
             {
-                dynamic Temp = new Dynamo();
+                dynamic Temp = DynamoFactory.Create(false);
                 Temp.A = "Test data goes here";
                 Data[x] = Temp;
             }
@@ -122,6 +123,7 @@ namespace BigBook.Benchmarks.Tests
             Temp.A = "Test data goes here";
             ExpandoType = Temp;
             TestClassValue = new TestClass { A = "Test data goes here" };
+            DynamoFactory = Canister.Builder.Bootstrapper.Resolve<DynamoFactory>();
         }
 
         private class TestClass

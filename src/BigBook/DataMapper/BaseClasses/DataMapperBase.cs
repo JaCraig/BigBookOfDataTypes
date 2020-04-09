@@ -16,7 +16,7 @@ limitations under the License.
 
 using BigBook.DataMapper.Interfaces;
 using System;
-using System.Collections.Concurrent;
+using System.Collections.Generic;
 
 namespace BigBook.DataMapper.BaseClasses
 {
@@ -30,8 +30,14 @@ namespace BigBook.DataMapper.BaseClasses
         /// </summary>
         protected DataMapperBase()
         {
-            Mappings = new ConcurrentDictionary<Tuple<Type, Type>, ITypeMapping>();
+            Mappings = new Dictionary<int, ITypeMapping>();
+            LockObject = new object();
         }
+
+        /// <summary>
+        /// The lock object
+        /// </summary>
+        internal readonly object LockObject;
 
         /// <summary>
         /// The name of the data mapper
@@ -41,7 +47,7 @@ namespace BigBook.DataMapper.BaseClasses
         /// <summary>
         /// Mappings
         /// </summary>
-        protected ConcurrentDictionary<Tuple<Type, Type>, ITypeMapping> Mappings { get; }
+        protected Dictionary<int, ITypeMapping> Mappings { get; }
 
         /// <summary>
         /// Adds or returns a mapping between two types
@@ -49,7 +55,7 @@ namespace BigBook.DataMapper.BaseClasses
         /// <typeparam name="TLeft">Left type</typeparam>
         /// <typeparam name="TRight">Right type</typeparam>
         /// <returns>A mapping object for the two types specified</returns>
-        public ITypeMapping<TLeft, TRight> Map<TLeft, TRight>() => (ITypeMapping<TLeft, TRight>)Map(typeof(TLeft), typeof(TRight));
+        public ITypeMapping<TLeft, TRight>? Map<TLeft, TRight>() => Map(typeof(TLeft), typeof(TRight)) as ITypeMapping<TLeft, TRight>;
 
         /// <summary>
         /// Adds or returns a mapping between two types
@@ -57,21 +63,27 @@ namespace BigBook.DataMapper.BaseClasses
         /// <param name="left">Left type</param>
         /// <param name="right">Right type</param>
         /// <returns>A mapping object for the two types specified</returns>
-        public ITypeMapping Map(Type left, Type right)
+        public ITypeMapping? Map(Type left, Type right)
         {
-            var Key = new Tuple<Type, Type>(left, right);
+            if (left is null || right is null)
+                return null;
+            var Key = left.GetHashCode() ^ (right.GetHashCode() << 2);
             if (Mappings.TryGetValue(Key, out var ReturnValue))
                 return ReturnValue;
-            var Key2 = new Tuple<Type, Type>(right, left);
-            if (Mappings.TryGetValue(Key2, out ReturnValue))
+            var Key2 = right.GetHashCode() ^ (left.GetHashCode() << 2);
+            lock (LockObject)
             {
-                ReturnValue = ReturnValue.CreateReversed();
-                Mappings.AddOrUpdate(Key, ReturnValue, (_, y) => y);
-            }
-            else
-            {
-                ReturnValue = CreateTypeMapping(Key.Item1, Key.Item2);
-                Mappings.AddOrUpdate(Key, ReturnValue, (_, y) => y);
+                var TempMappings = Mappings;
+                if (TempMappings.TryGetValue(Key2, out ReturnValue))
+                {
+                    ReturnValue = ReturnValue.CreateReversed();
+                    TempMappings.Add(Key, ReturnValue);
+                }
+                else
+                {
+                    ReturnValue = CreateTypeMapping(left, right);
+                    TempMappings.Add(Key, ReturnValue);
+                }
             }
             return ReturnValue;
         }

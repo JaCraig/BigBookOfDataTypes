@@ -45,6 +45,16 @@ namespace BigBook.DynamoUtils
         }
 
         /// <summary>
+        /// The empty object.
+        /// </summary>
+        public static DynamoClass Empty = new DynamoClass();
+
+        /// <summary>
+        /// The empty hash code
+        /// </summary>
+        private const int EmptyHashCode = 6551;
+
+        /// <summary>
         /// Gets the keys.
         /// </summary>
         /// <value>The keys.</value>
@@ -61,16 +71,6 @@ namespace BigBook.DynamoUtils
         /// </summary>
         /// <value>The sub classes.</value>
         private Dictionary<int, List<WeakReference>>? SubClasses { get; set; }
-
-        /// <summary>
-        /// The empty object.
-        /// </summary>
-        public static DynamoClass Empty = new DynamoClass();
-
-        /// <summary>
-        /// The empty hash code
-        /// </summary>
-        private const int EmptyHashCode = 6551;
 
         /// <summary>
         /// Adds a key and finds or creates a DynamoClass.
@@ -97,8 +97,9 @@ namespace BigBook.DynamoUtils
                     }
                 }
 
-                var TempKeys = new string[Keys.Length + 1];
-                Array.Copy(Keys, TempKeys, Keys.Length);
+                var KeysLength = Keys.Length;
+                var TempKeys = new string[KeysLength + 1];
+                Array.Copy(Keys, TempKeys, KeysLength);
                 TempKeys[^1] = key;
                 var NewClass = new DynamoClass(TempKeys, TempHashCode);
                 weakReferences.Add(new WeakReference(NewClass));

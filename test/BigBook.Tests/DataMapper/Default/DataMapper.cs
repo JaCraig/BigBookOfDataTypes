@@ -7,7 +7,7 @@ namespace BigBook.Tests.DataMapper.Default
         [Fact]
         public void Creation()
         {
-            var Manager = new BigBook.DataMapper.Default.DataMapper();
+            var Manager = new BigBook.DataMapper.Default.DefaultDataMapper();
             Manager.Map<MappingA, MappingB>()
                 .AddMapping(x => x.Item1, x => x.Item1)
                 .AddMapping(x => x.Item2, x => x.Item2);

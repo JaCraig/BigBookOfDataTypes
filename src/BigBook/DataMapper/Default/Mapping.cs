@@ -79,9 +79,9 @@ namespace BigBook.DataMapper.Default
         public Mapping(Func<TLeft, object>? leftGet, Action<TLeft, object>? leftSet, Func<TRight, object>? rightGet, Action<TRight, object>? rightSet)
         {
             LeftGet = leftGet;
-            LeftSet = leftSet ?? ((_, __) => { });
+            LeftSet = leftSet ?? DefaultLeftSet;
             RightGet = rightGet;
-            RightSet = rightSet ?? ((_, __) => { });
+            RightSet = rightSet ?? DefaultRightSet;
         }
 
         /// <summary>
@@ -139,5 +139,19 @@ namespace BigBook.DataMapper.Default
         /// </summary>
         /// <returns>The mapping.</returns>
         public override IMapping CreateReversed() => new Mapping<TRight, TLeft>(RightGet, RightSet, LeftGet, LeftSet);
+
+        /// <summary>
+        /// Default left set.
+        /// </summary>
+        /// <param name="_">The .</param>
+        /// <param name="__">The .</param>
+        private static void DefaultLeftSet(TLeft _, object __) { }
+
+        /// <summary>
+        /// Default right set.
+        /// </summary>
+        /// <param name="_">The .</param>
+        /// <param name="__">The .</param>
+        private static void DefaultRightSet(TRight _, object __) { }
     }
 }

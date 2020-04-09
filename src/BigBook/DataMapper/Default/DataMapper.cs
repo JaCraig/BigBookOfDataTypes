@@ -23,7 +23,7 @@ namespace BigBook.DataMapper.Default
     /// <summary>
     /// Default data mapper
     /// </summary>
-    public class DataMapper : DataMapperBase
+    public class DefaultDataMapper : DataMapperBase
     {
         /// <summary>
         /// The name of the data mapper

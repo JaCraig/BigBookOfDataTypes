@@ -29,7 +29,7 @@ namespace BigBook.DataMapper.Interfaces
         /// <typeparam name="TLeft">Left type</typeparam>
         /// <typeparam name="TRight">Right type</typeparam>
         /// <returns>A mapping object for the two types specified</returns>
-        ITypeMapping<TLeft, TRight> Map<TLeft, TRight>();
+        ITypeMapping<TLeft, TRight>? Map<TLeft, TRight>();
 
         /// <summary>
         /// Adds or returns a mapping between two types
@@ -37,6 +37,6 @@ namespace BigBook.DataMapper.Interfaces
         /// <param name="left">Left type</param>
         /// <param name="right">Right type</param>
         /// <returns>A mapping object for the two types specified</returns>
-        ITypeMapping Map(Type left, Type right);
+        ITypeMapping? Map(Type left, Type right);
     }
 }

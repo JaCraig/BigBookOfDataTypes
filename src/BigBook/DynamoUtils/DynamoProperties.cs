@@ -34,21 +34,21 @@ namespace BigBook.DynamoUtils
         /// </summary>
         public DynamoProperties()
         {
-            GetProperties = new Dictionary<string, Func<TClass, object?>>();
-            SetProperties = new Dictionary<string, Action<TClass, object?>>();
+            GetProperties = new Dictionary<int, Func<TClass, object?>>();
+            SetProperties = new Dictionary<int, Action<TClass, object?>>();
         }
 
         /// <summary>
         /// Gets or sets the get properties.
         /// </summary>
         /// <value>The get properties.</value>
-        public Dictionary<string, Func<TClass, object?>> GetProperties { get; set; }
+        public Dictionary<int, Func<TClass, object?>> GetProperties { get; set; }
 
         /// <summary>
         /// Gets or sets the set properties.
         /// </summary>
         /// <value>The set properties.</value>
-        public Dictionary<string, Action<TClass, object?>> SetProperties { get; set; }
+        public Dictionary<int, Action<TClass, object?>> SetProperties { get; set; }
 
         /// <summary>
         /// Setups the values.
@@ -60,10 +60,11 @@ namespace BigBook.DynamoUtils
                 return;
             foreach (var Property in TypeCacheFor<TClass>.Properties.Where(x => x.GetIndexParameters().Length == 0))
             {
-                if (Property?.CanRead == true)
-                    GetProperties.Add(Property.Name, Property.PropertyGetter<TClass>().Compile());
-                if (Property?.CanWrite == true)
-                    SetProperties.Add(Property.Name, Property.PropertySetter<TClass, object>().Compile());
+                var Key = Property.Name.GetHashCode(StringComparison.OrdinalIgnoreCase);
+                if (Property.CanRead)
+                    GetProperties.Add(Key, Property.PropertyGetter<TClass>().Compile());
+                if (Property.CanWrite)
+                    SetProperties.Add(Key, Property.PropertySetter<TClass, object>()?.Compile()!);
             }
         }
 
@@ -81,13 +82,14 @@ namespace BigBook.DynamoUtils
                 value = null;
                 return false;
             }
-            if (!GetProperties.ContainsKey(propertyName))
+            var Key = propertyName.GetHashCode(StringComparison.OrdinalIgnoreCase);
+            if (!GetProperties.ContainsKey(Key))
             {
                 value = null;
                 return false;
             }
 
-            value = GetProperties[propertyName]((@object as TClass)!);
+            value = GetProperties[Key]((@object as TClass)!);
             return true;
         }
 
@@ -106,14 +108,39 @@ namespace BigBook.DynamoUtils
                 oldValue = null;
                 return false;
             }
-            if (!SetProperties.ContainsKey(propertyName))
+            var Key = propertyName.GetHashCode(StringComparison.OrdinalIgnoreCase);
+            if (!SetProperties.ContainsKey(Key))
             {
                 oldValue = null;
                 return false;
             }
-            TryGetValue(@object, propertyName, out var TempValue);
+            if (!(@object is TClass TempObject))
+            {
+                oldValue = null;
+                return false;
+            }
+            TryGetValue(TempObject, Key, out var TempValue);
             oldValue = TempValue;
-            SetProperties[propertyName]((@object as TClass)!, value);
+            SetProperties[Key](TempObject, value);
+            return true;
+        }
+
+        /// <summary>
+        /// Tries to get the value.
+        /// </summary>
+        /// <param name="object">The @object.</param>
+        /// <param name="key">The key.</param>
+        /// <param name="value">The value.</param>
+        /// <returns>True if it is found, false otherwise.</returns>
+        private bool TryGetValue(TClass @object, int key, out object? value)
+        {
+            if (!GetProperties.ContainsKey(key))
+            {
+                value = null;
+                return false;
+            }
+
+            value = GetProperties[key](@object);
             return true;
         }
     }

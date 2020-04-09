@@ -14,12 +14,16 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using System;
+using System.Collections.Generic;
+
 namespace BigBook
 {
     /// <summary>
     /// Change class
     /// </summary>
-    public struct Change
+    /// <seealso cref="IEquatable{Change}"/>
+    public struct Change : IEquatable<Change>
     {
         /// <summary>
         /// Constructor
@@ -41,5 +45,60 @@ namespace BigBook
         /// Original value
         /// </summary>
         public object? OriginalValue { get; }
+
+        /// <summary>
+        /// Implements the operator !=.
+        /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>The result of the operator.</returns>
+        public static bool operator !=(Change left, Change right)
+        {
+            return !(left == right);
+        }
+
+        /// <summary>
+        /// Implements the operator ==.
+        /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>The result of the operator.</returns>
+        public static bool operator ==(Change left, Change right)
+        {
+            return left.Equals(right);
+        }
+
+        /// <summary>
+        /// Indicates whether this instance and a specified object are equal.
+        /// </summary>
+        /// <param name="obj">The object to compare with the current instance.</param>
+        /// <returns>
+        /// <see langword="true"/> if <paramref name="obj"/> and this instance are the same type and
+        /// represent the same value; otherwise, <see langword="false"/>.
+        /// </returns>
+        public override bool Equals(object? obj) => obj is Change change && Equals(change);
+
+        /// <summary>
+        /// Indicates whether the current object is equal to another object of the same type.
+        /// </summary>
+        /// <param name="other">An object to compare with this object.</param>
+        /// <returns>
+        /// <see langword="true"/> if the current object is equal to the <paramref name="other"/>
+        /// parameter; otherwise, <see langword="false"/>.
+        /// </returns>
+        public bool Equals(Change other)
+        {
+            return EqualityComparer<object?>.Default.Equals(NewValue, other.NewValue)
+                && EqualityComparer<object?>.Default.Equals(OriginalValue, other.OriginalValue);
+        }
+
+        /// <summary>
+        /// Returns a hash code for this instance.
+        /// </summary>
+        /// <returns>
+        /// A hash code for this instance, suitable for use in hashing algorithms and data
+        /// structures like a hash table.
+        /// </returns>
+        public override int GetHashCode() => HashCode.Combine(NewValue, OriginalValue);
     }
 }
