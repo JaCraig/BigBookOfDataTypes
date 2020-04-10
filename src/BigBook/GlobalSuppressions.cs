@@ -4,3 +4,5 @@
 // a specific target and scoped to a namespace, type, member, etc.
 
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "<Pending>", Scope = "member", Target = "~M:BigBook.Dynamo.GetSchema~System.Xml.Schema.XmlSchema")]
+
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA2211:Non-constant fields should not be visible", Justification = "<Pending>", Scope = "member", Target = "~F:BigBook.ExtensionMethods.Utils.DefaultValueLookup.Values")]

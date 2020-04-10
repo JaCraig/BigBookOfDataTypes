@@ -253,7 +253,8 @@ namespace BigBook
                 string[] Result;
                 lock (LockObject)
                 {
-                    Result = TempData.Definition.Keys.Select(x => x).ToArray();
+                    Result = new string[TempData.Definition.Keys.Length];
+                    Array.Copy(TempData.Definition.Keys, 0, Result, 0, Result.Length);
                 }
                 return Result;
             }
@@ -271,7 +272,8 @@ namespace BigBook
                 object?[] Result;
                 lock (LockObject)
                 {
-                    Result = TempData.Data.Where(x => x != UninitializedObject).ToArray();
+                    Result = new object?[TempData.Data.Length];
+                    Array.Copy(TempData.Data, 0, Result, 0, Result.Length);
                 }
                 return Result;
             }
@@ -479,7 +481,7 @@ namespace BigBook
             {
                 DataMapper ??= GetGenericMapper();
                 DataMapper?.Map(ItemType, GetType())
-                          .AutoMap()
+                          ?.AutoMap()
                           .Copy(item, this);
             }
         }
@@ -528,7 +530,7 @@ namespace BigBook
             }
             DataMapper ??= GetGenericMapper();
             DataMapper?.Map(GetType(), result.GetType())
-                      .AutoMap()
+                      ?.AutoMap()
                       .Copy(this, result);
         }
 
@@ -683,7 +685,7 @@ namespace BigBook
             var Result = AOPManager?.Create(ObjectType) ?? Activator.CreateInstance(ObjectType);
             DataMapper ??= GetGenericMapper();
             DataMapper?.Map(GetType(), ObjectType)
-                      .AutoMap()
+                      ?.AutoMap()
                       .Copy(this, Result);
             return Result!;
         }

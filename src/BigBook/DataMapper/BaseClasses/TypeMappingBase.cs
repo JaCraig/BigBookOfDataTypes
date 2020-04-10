@@ -41,6 +41,11 @@ namespace BigBook.DataMapper.BaseClasses
         }
 
         /// <summary>
+        /// The underscore
+        /// </summary>
+        private const string Underscore = "_";
+
+        /// <summary>
         /// The lock object
         /// </summary>
         private readonly object LockObject;
@@ -215,24 +220,38 @@ namespace BigBook.DataMapper.BaseClasses
         }
 
         /// <summary>
+        /// Rights the dictionary copy to left dictionary.
+        /// </summary>
+        /// <param name="right">The right.</param>
+        /// <param name="left">The left.</param>
+        private static void LeftDictionaryCopyToRightDictionary(TRight right, object left)
+        {
+            var LeftSide = (IDictionary<string, object>)left;
+            var RightSide = (IDictionary<string, object>)right!;
+            LeftSide.CopyTo(RightSide);
+        }
+
+        /// <summary>
+        /// Rights the dictionary copy to left dictionary.
+        /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        private static void RightDictionaryCopyToLeftDictionary(TLeft left, object right)
+        {
+            var LeftSide = (IDictionary<string, object>)left!;
+            var RightSide = (IDictionary<string, object>)right;
+            RightSide.CopyTo(LeftSide);
+        }
+
+        /// <summary>
         /// Adds the i dictionary mappings.
         /// </summary>
         private void AddIDictionaryMappings()
         {
             AddMapping(x => x!,
-            new Action<TLeft, object>((x, y) =>
-            {
-                var LeftSide = (IDictionary<string, object>)x!;
-                var RightSide = (IDictionary<string, object>)y;
-                RightSide.CopyTo(LeftSide);
-            }),
+            RightDictionaryCopyToLeftDictionary,
             x => x!,
-            new Action<TRight, object>((x, y) =>
-            {
-                var LeftSide = (IDictionary<string, object>)y;
-                var RightSide = (IDictionary<string, object>)x!;
-                LeftSide.CopyTo(RightSide);
-            }));
+            LeftDictionaryCopyToRightDictionary);
         }
 
         /// <summary>
@@ -261,7 +280,7 @@ namespace BigBook.DataMapper.BaseClasses
                             return Temp[Property.Name];
                         }
 
-                        var Key = Temp.Keys.FirstOrDefault(z => string.Equals(z.Replace("_", "", StringComparison.Ordinal), Property.Name, StringComparison.OrdinalIgnoreCase));
+                        var Key = Temp.Keys.FirstOrDefault(z => string.Equals(z.Replace(TypeMappingBase<TLeft, TRight>.Underscore, string.Empty, StringComparison.Ordinal), Property.Name, StringComparison.OrdinalIgnoreCase));
                         return !string.IsNullOrEmpty(Key) ? Temp[Key] : null!;
                     }),
                     new Action<TLeft, object>((y, z) =>
@@ -320,7 +339,7 @@ namespace BigBook.DataMapper.BaseClasses
                             return Temp[Property.Name];
                         }
 
-                        var Key = Temp.Keys.FirstOrDefault(z => string.Equals(z.Replace("_", "", StringComparison.Ordinal), Property.Name, StringComparison.OrdinalIgnoreCase));
+                        var Key = Temp.Keys.FirstOrDefault(z => string.Equals(z.Replace(TypeMappingBase<TLeft, TRight>.Underscore, string.Empty, StringComparison.Ordinal), Property.Name, StringComparison.OrdinalIgnoreCase));
                         return !string.IsNullOrEmpty(Key) ? Temp[Key] : null!;
                     }),
                     new Action<TRight, object>((y, z) =>

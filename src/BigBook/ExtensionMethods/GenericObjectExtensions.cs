@@ -19,6 +19,7 @@ using BigBook.Conversion;
 using BigBook.Conversion.BaseClasses;
 using BigBook.Conversion.Interfaces;
 using BigBook.DataMapper.Interfaces;
+using BigBook.ExtensionMethods.Utils;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -37,18 +38,18 @@ namespace BigBook
     public static class GenericObjectExtensions
     {
         /// <summary>
-        /// Gets or sets the data manager.
-        /// </summary>
-        /// <value>The data manager.</value>
-        internal static DataMapper.Manager? DataManager { get; set; }
-
-        /// <summary>
         /// The converters
         /// </summary>
         private static readonly TypeConverter[] Converters = {
             new SqlDbTypeTypeConverter(),
             new DbTypeTypeConverter()
         };
+
+        /// <summary>
+        /// Gets or sets the data manager.
+        /// </summary>
+        /// <value>The data manager.</value>
+        internal static DataMapper.Manager? DataManager { get; set; }
 
         /// <summary>
         /// Checks to see if the object meets all the criteria. If it does, it returns the object.
@@ -491,7 +492,12 @@ namespace BigBook
         /// The object converted to the other type or the default value if there is an error or
         /// can't be converted
         /// </returns>
-        public static TReturn To<TObject, TReturn>(this TObject item, TReturn defaultValue = default) => (TReturn)item.To(typeof(TReturn), defaultValue)!;
+        public static TReturn To<TObject, TReturn>(this TObject item, TReturn defaultValue = default)
+        {
+            if (item is TReturn ReturnValue)
+                return ReturnValue;
+            return (TReturn)item.To(typeof(TReturn), defaultValue)!;
+        }
 
         /// <summary>
         /// Attempts to convert the object to another type and returns the value
@@ -594,15 +600,9 @@ namespace BigBook
                 if (ResultTypeInfo.IsClass)
                 {
                     var ReturnValue = Activator.CreateInstance(resultType);
-                    var TempMapping = ObjectType.MapTo(resultType);
-                    if (TempMapping is null)
-                    {
-                        return ReturnValue;
-                    }
-
-                    TempMapping
-                        .AutoMap()
-                        .Copy(item, ReturnValue);
+                    ObjectType.MapTo(resultType)
+                                ?.AutoMap()
+                                .Copy(item, ReturnValue);
                     return ReturnValue;
                 }
             }
@@ -610,7 +610,7 @@ namespace BigBook
             {
             }
             return (defaultValue is null && resultType.IsValueType) ?
-                Activator.CreateInstance(resultType) :
+                DefaultValueLookup.Values[resultType.GetHashCode()] :
                 defaultValue;
         }
     }
