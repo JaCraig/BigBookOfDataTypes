@@ -609,9 +609,17 @@ namespace BigBook
             catch
             {
             }
-            return (defaultValue is null && resultType.IsValueType) ?
-                DefaultValueLookup.Values[resultType.GetHashCode()] :
-                defaultValue;
+            return ReturnDefaultValue(resultType, defaultValue);
+
+            static object? ReturnDefaultValue(Type resultType, object? defaultValue)
+            {
+                if (!(defaultValue is null))
+                    return defaultValue;
+                var ResultHash = resultType.GetHashCode();
+                if (resultType.IsValueType && DefaultValueLookup.Values.ContainsKey(ResultHash))
+                    return DefaultValueLookup.Values[ResultHash];
+                return resultType.IsValueType ? Activator.CreateInstance(resultType) : defaultValue;
+            }
         }
     }
 }
