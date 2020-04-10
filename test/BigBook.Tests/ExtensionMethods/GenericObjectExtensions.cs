@@ -177,8 +177,20 @@ namespace BigBook.Tests.ExtensionMethods
         {
             Assert.Equal(new Uri("http://A"), "http://A".To(new Uri("http://B")));
             Assert.Equal("http://A", new Uri("http://A").To("http://B"));
+            var Value = DBNull.Value;
+            Assert.Equal("A", Value.To(typeof(string), "A"));
+            Assert.Equal(default(DateTime), Value.To(typeof(DateTime), null));
+            Assert.Equal(TestEnum.Value2, 1.To(typeof(TestEnum), null));
+            Assert.Equal(TestEnum.Value3, "Value3".To(typeof(TestEnum), null));
         }
 
         private void Test() => throw new Exception();
+
+        private enum TestEnum
+        {
+            Value1 = 0,
+            Value2,
+            Value3
+        }
     }
 }

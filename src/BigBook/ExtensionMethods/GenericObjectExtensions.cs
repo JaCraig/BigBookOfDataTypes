@@ -518,19 +518,11 @@ namespace BigBook
                 return item;
             try
             {
-                if (item is null)
+                if (item is null || item is DBNull)
                 {
-                    return (defaultValue is null && resultType.IsValueType) ?
-                        Activator.CreateInstance(resultType) :
-                        defaultValue;
+                    return ReturnDefaultValue(resultType, defaultValue);
                 }
                 var ObjectType = item.GetType();
-                if (ObjectType == typeof(DBNull))
-                {
-                    return (defaultValue is null && resultType.IsValueType) ?
-                        Activator.CreateInstance(resultType) :
-                        defaultValue;
-                }
                 if (resultType.IsAssignableFrom(ObjectType))
                 {
                     return item;
@@ -570,9 +562,9 @@ namespace BigBook
                 var ResultTypeInfo = resultType;
                 if (ResultTypeInfo.IsEnum)
                 {
-                    if (ObjectType == typeof(string))
+                    if (item is string ItemStringValue)
                     {
-                        return Enum.Parse(resultType, item as string, true);
+                        return Enum.Parse(resultType, ItemStringValue, true);
                     }
 
                     return Enum.ToObject(resultType, item);
