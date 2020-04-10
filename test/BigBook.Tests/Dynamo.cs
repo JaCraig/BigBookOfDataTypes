@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
+using System.Linq;
 using Xunit;
 
 namespace BigBook.Tests
@@ -181,6 +182,14 @@ namespace BigBook.Tests
             Assert.Equal(2, Temp.Keys.Count);
             Assert.Contains("A", Temp.Keys);
             Assert.Contains("B", Temp.Keys);
+        }
+
+        [Fact]
+        public void MultithreadedTo()
+        {
+            var TestObjects = 1000.Times(x => new Dynamo(new { A = "Testing", B = 1 }, false, AOPManager, BuilderPool, DataMapper)).ToArray<Dynamo>();
+            var Result = TestObjects.ForEachParallel(x => x.To<TestClass>());
+            Assert.True(Result.All(x => x.A == "Testing"));
         }
 
         [Fact]

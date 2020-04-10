@@ -74,6 +74,8 @@ namespace BigBook.DataMapper.BaseClasses
             lock (LockObject)
             {
                 var TempMappings = Mappings;
+                if (TempMappings.TryGetValue(Key, out ReturnValue))
+                    return ReturnValue;
                 if (TempMappings.TryGetValue(Key2, out ReturnValue))
                 {
                     ReturnValue = ReturnValue.CreateReversed();
