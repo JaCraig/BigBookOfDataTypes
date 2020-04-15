@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System;
+using Fast.Activator;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -65,7 +65,7 @@ namespace BigBook.Queryable.BaseClasses
 
             try
             {
-                return (IQueryable)Activator.CreateInstance(typeof(Query<>).MakeGenericType(ElementType), new object[] { this, expression });
+                return (IQueryable)FastActivator.CreateInstance(typeof(Query<>).MakeGenericType(ElementType), new object[] { this, expression });
             }
             catch (TargetInvocationException Err)
             {

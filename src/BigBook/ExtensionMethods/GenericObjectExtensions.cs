@@ -20,6 +20,7 @@ using BigBook.Conversion.BaseClasses;
 using BigBook.Conversion.Interfaces;
 using BigBook.DataMapper.Interfaces;
 using BigBook.ExtensionMethods.Utils;
+using Fast.Activator;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -38,18 +39,18 @@ namespace BigBook
     public static class GenericObjectExtensions
     {
         /// <summary>
+        /// Gets or sets the data manager.
+        /// </summary>
+        /// <value>The data manager.</value>
+        internal static DataMapper.Manager? DataManager { get; set; }
+
+        /// <summary>
         /// The converters
         /// </summary>
         private static readonly TypeConverter[] Converters = {
             new SqlDbTypeTypeConverter(),
             new DbTypeTypeConverter()
         };
-
-        /// <summary>
-        /// Gets or sets the data manager.
-        /// </summary>
-        /// <value>The data manager.</value>
-        internal static DataMapper.Manager? DataManager { get; set; }
 
         /// <summary>
         /// Checks to see if the object meets all the criteria. If it does, it returns the object.
@@ -573,7 +574,7 @@ namespace BigBook
                 var IEnumerableObjectType = ObjectType.GetIEnumerableElementType();
                 if (resultType != IEnumerableResultType && ObjectType != IEnumerableObjectType)
                 {
-                    var TempList = (IList)Activator.CreateInstance(typeof(List<>).MakeGenericType(IEnumerableResultType));
+                    var TempList = (IList)FastActivator.CreateInstance(typeof(List<>).MakeGenericType(IEnumerableResultType));
                     foreach (var Item in (IEnumerable)item)
                     {
                         var TempMapping = Item.GetType().MapTo(IEnumerableResultType);
@@ -583,7 +584,7 @@ namespace BigBook
                         }
 
                         TempMapping.AutoMap();
-                        var ResultItem = Activator.CreateInstance(IEnumerableResultType);
+                        var ResultItem = FastActivator.CreateInstance(IEnumerableResultType);
                         TempMapping.Copy(Item, ResultItem);
                         TempList.Add(ResultItem);
                     }
@@ -591,7 +592,7 @@ namespace BigBook
                 }
                 if (ResultTypeInfo.IsClass)
                 {
-                    var ReturnValue = Activator.CreateInstance(resultType);
+                    var ReturnValue = FastActivator.CreateInstance(resultType);
                     ObjectType.MapTo(resultType)
                                 ?.AutoMap()
                                 .Copy(item, ReturnValue);
@@ -610,7 +611,7 @@ namespace BigBook
                 var ResultHash = resultType.GetHashCode();
                 if (resultType.IsValueType && DefaultValueLookup.Values.ContainsKey(ResultHash))
                     return DefaultValueLookup.Values[ResultHash];
-                return resultType.IsValueType ? Activator.CreateInstance(resultType) : defaultValue;
+                return resultType.IsValueType ? FastActivator.CreateInstance(resultType) : defaultValue;
             }
         }
     }

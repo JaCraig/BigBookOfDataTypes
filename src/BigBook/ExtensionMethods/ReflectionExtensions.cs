@@ -16,6 +16,7 @@ limitations under the License.
 
 using BigBook.Properties;
 using BigBook.Reflection;
+using Fast.Activator;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -264,7 +265,7 @@ namespace BigBook
         /// <param name="type">Type to create an instance of</param>
         /// <param name="args">Arguments sent into the constructor</param>
         /// <returns>The newly created instance of the type</returns>
-        public static TClassType Create<TClassType>(this Type type, params object[] args) => type is null ? default : (TClassType)Activator.CreateInstance(type, args);
+        public static TClassType Create<TClassType>(this Type type, params object[] args) => type is null ? default : (TClassType)FastActivator.CreateInstance(type, args);
 
         /// <summary>
         /// Creates an instance of the type
@@ -272,7 +273,7 @@ namespace BigBook
         /// <param name="type">Type to create an instance of</param>
         /// <param name="args">Arguments sent into the constructor</param>
         /// <returns>The newly created instance of the type</returns>
-        public static object? Create(this Type type, params object[] args) => type is null ? null : Activator.CreateInstance(type, args);
+        public static object? Create(this Type type, params object[] args) => type is null ? null : FastActivator.CreateInstance(type, args);
 
         /// <summary>
         /// Creates an instance of the types and casts it to the specified type
