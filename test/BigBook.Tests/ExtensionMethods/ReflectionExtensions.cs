@@ -149,6 +149,16 @@ namespace BigBook.Tests.ExtensionMethods
         }
 
         [Fact]
+        public void GetPropertySetterTestEnumProperty()
+        {
+            Expression<Func<TestClass4, Status>> TestObject = x => x.TestStatus;
+            var TestObject2 = TestObject.PropertySetter<TestClass4, Status>();
+            var TestObject3 = new TestClass4();
+            TestObject2.Compile()(TestObject3, Status.Started);
+            Assert.Equal(Status.Started, TestObject3.TestStatus);
+        }
+
+        [Fact]
         public void GetPropertyTest()
         {
             Assert.Equal(1, new TestClass().Property("Value"));
@@ -303,6 +313,31 @@ namespace BigBook.Tests.ExtensionMethods
         }
 
         public TestClass Temp { get; set; }
+
+        public Status TestStatus { get; set; }
+    }
+
+    public enum Status
+    {
+        /// <summary>
+        /// The stopped
+        /// </summary>
+        Stopped = 0,
+
+        /// <summary>
+        /// The started
+        /// </summary>
+        Started,
+
+        /// <summary>
+        /// The completed
+        /// </summary>
+        Completed,
+
+        /// <summary>
+        /// The error
+        /// </summary>
+        Error,
     }
 
     public class TestingAttribute : Attribute
