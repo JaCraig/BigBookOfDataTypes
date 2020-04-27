@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -118,7 +119,7 @@ namespace BigBook
         /// </summary>
         /// <param name="text">The text to search in.</param>
         /// <returns>The values that were added for the found words.</returns>
-        public IEnumerable<TReturn> FindAll(IEnumerable<TObject> text)
+        public IEnumerable<TReturn> FindAll(TObject[] text)
         {
             if (text is null)
                 yield break;
@@ -140,13 +141,184 @@ namespace BigBook
         }
 
         /// <summary>
+        /// Finds all added words in the text.
+        /// </summary>
+        /// <param name="text">The text to search in.</param>
+        /// <returns>The values that were added for the found words.</returns>
+        public IEnumerable<TReturn> FindAll(List<TObject> text)
+        {
+            if (text is null)
+                yield break;
+            var node = Root;
+
+            foreach (var c in text)
+            {
+                while (node[c] is null && node != Root)
+                    node = node.Fail;
+
+                node = node[c] ?? Root;
+
+                for (var t = node; t != Root; t = t.Fail)
+                {
+                    for (var i = 0; i < t.Values.Count; i++)
+                        yield return t.Values[i];
+                }
+            }
+        }
+
+        /// <summary>
+        /// Finds all added words in the text.
+        /// </summary>
+        /// <param name="text">The text to search in.</param>
+        /// <returns>The values that were added for the found words.</returns>
+        public IEnumerable<TReturn> FindAll(Span<TObject> text)
+        {
+            if (text.IsEmpty)
+                return Array.Empty<TReturn>();
+            var ReturnValue = new List<TReturn>();
+            var node = Root;
+            for (int x = 0; x < text.Length; ++x)
+            {
+                var c = text[x];
+                while (node[c] is null && node != Root)
+                    node = node.Fail;
+
+                node = node[c] ?? Root;
+
+                for (var t = node; t != Root; t = t.Fail)
+                {
+                    for (var i = 0; i < t.Values.Count; i++)
+                        ReturnValue.Add(t.Values[i]);
+                }
+            }
+            return ReturnValue;
+        }
+
+        /// <summary>
+        /// Finds all added words in the text.
+        /// </summary>
+        /// <param name="text">The text to search in.</param>
+        /// <returns>The values that were added for the found words.</returns>
+        public IEnumerable<TReturn> FindAll(ReadOnlySpan<TObject> text)
+        {
+            if (text.IsEmpty)
+                return Array.Empty<TReturn>();
+            var ReturnValue = new List<TReturn>();
+            var node = Root;
+            for (int x = 0; x < text.Length; ++x)
+            {
+                var c = text[x];
+                while (node[c] is null && node != Root)
+                    node = node.Fail;
+
+                node = node[c] ?? Root;
+
+                for (var t = node; t != Root; t = t.Fail)
+                {
+                    for (var i = 0; i < t.Values.Count; i++)
+                        ReturnValue.Add(t.Values[i]);
+                }
+            }
+            return ReturnValue;
+        }
+
+        /// <summary>
         /// Finds the first added word in the text.
         /// </summary>
         /// <param name="text">The text.</param>
         /// <returns>
         /// The first value that was found. The default value is returned if nothing is found.
         /// </returns>
-        public TReturn FindAny(IEnumerable<TObject> text)
+        public TReturn FindAny(Span<TObject> text)
+        {
+            if (text.IsEmpty)
+                return default!;
+            var node = Root;
+
+            for (int x = 0; x < text.Length; ++x)
+            {
+                var c = text[x];
+                while (node[c] is null && node != Root)
+                    node = node.Fail;
+
+                node = node[c] ?? Root;
+
+                for (var t = node; t != Root; t = t.Fail)
+                {
+                    if (t.Values.Count > 0)
+                        return t.Values[0];
+                }
+            }
+            return default!;
+        }
+
+        /// <summary>
+        /// Finds the first added word in the text.
+        /// </summary>
+        /// <param name="text">The text.</param>
+        /// <returns>
+        /// The first value that was found. The default value is returned if nothing is found.
+        /// </returns>
+        public TReturn FindAny(ReadOnlySpan<TObject> text)
+        {
+            if (text.IsEmpty)
+                return default!;
+            var node = Root;
+
+            for (int x = 0; x < text.Length; ++x)
+            {
+                var c = text[x];
+                while (node[c] is null && node != Root)
+                    node = node.Fail;
+
+                node = node[c] ?? Root;
+
+                for (var t = node; t != Root; t = t.Fail)
+                {
+                    if (t.Values.Count > 0)
+                        return t.Values[0];
+                }
+            }
+            return default!;
+        }
+
+        /// <summary>
+        /// Finds the first added word in the text.
+        /// </summary>
+        /// <param name="text">The text.</param>
+        /// <returns>
+        /// The first value that was found. The default value is returned if nothing is found.
+        /// </returns>
+        public TReturn FindAny(List<TObject> text)
+        {
+            if (text is null)
+                return default!;
+            var node = Root;
+
+            foreach (var c in text)
+            {
+                while (node[c] is null && node != Root)
+                    node = node.Fail;
+
+                node = node[c] ?? Root;
+
+                for (var t = node; t != Root; t = t.Fail)
+                {
+                    if (t.Values.Count > 0)
+                        return t.Values[0];
+                }
+            }
+            return default!;
+        }
+
+        /// <summary>
+        /// Finds the first added word in the text.
+        /// </summary>
+        /// <param name="text">The text.</param>
+        /// <returns>
+        /// The first value that was found. The default value is returned if nothing is found.
+        /// </returns>
+        public TReturn FindAny(TObject[] text)
         {
             if (text is null)
                 return default!;
@@ -265,7 +437,7 @@ namespace BigBook
             /// <returns>A <see cref="System.String"/> that represents this instance.</returns>
             public override string ToString()
             {
-                return Word?.ToString() ?? "";
+                return Word?.ToString() ?? string.Empty;
             }
         }
     }

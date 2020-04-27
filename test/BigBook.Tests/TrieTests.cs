@@ -1,4 +1,5 @@
 ﻿using BigBook.Tests.BaseClasses;
+using System;
 using System.Linq;
 using Xunit;
 
@@ -15,6 +16,20 @@ namespace BigBook.Tests
                 .Build();
 
             var Results = TestObject.FindAll(TestString).ToArray();
+            Assert.Equal(2, Results.Length);
+            Assert.Equal("jumps", Results[0]);
+            Assert.Equal("dog", Results[1]);
+        }
+
+        [Fact]
+        public void FindAllSpan()
+        {
+            var TestString = "The quick brown fox jumps over the lazy dog";
+            var TestObject = new StringTrie();
+            TestObject.Add("jumps", "dog")
+                .Build();
+
+            var Results = TestObject.FindAll(TestString.AsSpan()).ToArray();
             Assert.Equal(2, Results.Length);
             Assert.Equal("jumps", Results[0]);
             Assert.Equal("dog", Results[1]);
