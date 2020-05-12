@@ -256,6 +256,7 @@ namespace BigBook.Caching.BaseClasses
                 foreach (var Key in Keys)
                 {
                     InternalRemove(Key);
+                    TagMappings.Remove(Key);
                 }
                 TagMappings.Remove(TagHashCode);
             }

@@ -129,6 +129,8 @@ namespace BigBook.Tests.Caching.Default
             Assert.Single(Temp.GetByTag("Tag2"));
             Assert.Empty(Temp.GetByTag("Tag1"));
             Assert.Equal(2, Temp.GetByTag("Tag2").First());
+            Assert.Single(Temp.Tags);
+            Assert.Equal(2, Temp.Keys.Count);
             Temp.RemoveByTag("Tag1");
         }
 
