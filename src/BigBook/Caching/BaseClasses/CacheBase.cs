@@ -18,7 +18,6 @@ using BigBook.Caching.Interfaces;
 using BigBook.Patterns.BaseClasses;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace BigBook.Caching.BaseClasses
 {
@@ -34,6 +33,11 @@ namespace BigBook.Caching.BaseClasses
         {
             TagMappings = new ListMapping<string, string>();
         }
+
+        /// <summary>
+        /// The lock object
+        /// </summary>
+        private readonly object LockObject = new object();
 
         /// <summary>
         /// The number of items in the cache
@@ -79,10 +83,19 @@ namespace BigBook.Caching.BaseClasses
         {
             get
             {
-                TryGetValue(key, out var Value);
-                return Value;
+                lock (LockObject)
+                {
+                    InternalTryGetValue(key, out var Value);
+                    return Value;
+                }
             }
-            set => Add(key, value);
+            set
+            {
+                lock (LockObject)
+                {
+                    InternalAdd(key, value);
+                }
+            }
         }
 
         /// <summary>
@@ -90,13 +103,25 @@ namespace BigBook.Caching.BaseClasses
         /// </summary>
         /// <param name="key">Key of the item</param>
         /// <param name="value">Value to add</param>
-        public abstract void Add(string key, object value);
+        public void Add(string key, object value)
+        {
+            lock (LockObject)
+            {
+                InternalAdd(key, value);
+            }
+        }
 
         /// <summary>
         /// Adds an item to the cache
         /// </summary>
         /// <param name="item">item to add</param>
-        public void Add(KeyValuePair<string, object> item) => Add(item.Key, item.Value);
+        public void Add(KeyValuePair<string, object> item)
+        {
+            lock (LockObject)
+            {
+                InternalAdd(item.Key, item.Value);
+            }
+        }
 
         /// <summary>
         /// Adds a value/key combination and assigns tags to it
@@ -106,14 +131,46 @@ namespace BigBook.Caching.BaseClasses
         /// <param name="tags">Tags to associate with the key/value pair</param>
         public void Add(string key, object value, IEnumerable<string> tags)
         {
-            Add(key, value);
-            tags.ForEach(x => TagMappings.Add(x, key));
+            lock (LockObject)
+            {
+                InternalAdd(key, value);
+                foreach (var Tag in tags)
+                {
+                    TagMappings.Add(Tag, key);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Adds a value/key combination and assigns tags to it
+        /// </summary>
+        /// <param name="key">Key to add</param>
+        /// <param name="value">Value to add</param>
+        /// <param name="tags">Tags to associate with the key/value pair</param>
+        public void Add(string key, object value, params string[] tags)
+        {
+            tags ??= Array.Empty<string>();
+            lock (LockObject)
+            {
+                InternalAdd(key, value);
+                for (int x = 0; x < tags.Length; ++x)
+                {
+                    TagMappings.Add(tags[x], key);
+                }
+            }
         }
 
         /// <summary>
         /// Clears the cache
         /// </summary>
-        public abstract void Clear();
+        public void Clear()
+        {
+            lock (LockObject)
+            {
+                TagMappings.Clear();
+                InternalClear();
+            }
+        }
 
         /// <summary>
         /// Determines if the item is in the cache
@@ -143,18 +200,14 @@ namespace BigBook.Caching.BaseClasses
         /// <returns>The objects associated with the tag</returns>
         public IEnumerable<object> GetByTag(string tag)
         {
-            if (!TagMappings.ContainsKey(tag))
-            {
-                return Array.Empty<object>();
-            }
+            if (!TagMappings.TryGetValue(tag, out var Keys))
+                yield break;
 
-            var ReturnValue = new List<object>();
-
-            foreach (var Key in TagMappings[tag].Where(ContainsKey))
+            foreach (var Key in Keys)
             {
-                ReturnValue.Add(this[Key]);
+                if (InternalTryGetValue(Key, out var ReturnValue))
+                    yield return ReturnValue;
             }
-            return ReturnValue;
         }
 
         /// <summary>
@@ -174,14 +227,26 @@ namespace BigBook.Caching.BaseClasses
         /// </summary>
         /// <param name="key">key to remove</param>
         /// <returns>True if it is removed, false otherwise</returns>
-        public abstract bool Remove(string key);
+        public bool Remove(string key)
+        {
+            lock (LockObject)
+            {
+                return InternalRemove(key);
+            }
+        }
 
         /// <summary>
         /// Removes an item from an array
         /// </summary>
         /// <param name="item">Item to remove</param>
         /// <returns>True if it is removed, false otherwise</returns>
-        public abstract bool Remove(KeyValuePair<string, object> item);
+        public bool Remove(KeyValuePair<string, object> item)
+        {
+            lock (LockObject)
+            {
+                return InternalRemove(item.Key);
+            }
+        }
 
         /// <summary>
         /// Removes all items associated with the tag specified
@@ -189,13 +254,16 @@ namespace BigBook.Caching.BaseClasses
         /// <param name="tag">Tag to remove</param>
         public void RemoveByTag(string tag)
         {
-            if (!TagMappings.ContainsKey(tag))
-            {
+            if (!TagMappings.TryGetValue(tag, out var Keys))
                 return;
+            lock (LockObject)
+            {
+                foreach (var Key in Keys)
+                {
+                    InternalRemove(Key);
+                }
+                TagMappings.Remove(tag);
             }
-
-            TagMappings[tag].ForEach(Remove);
-            TagMappings.Remove(tag);
         }
 
         /// <summary>
@@ -204,6 +272,39 @@ namespace BigBook.Caching.BaseClasses
         /// <param name="key">Key to get</param>
         /// <param name="value">Value of the item</param>
         /// <returns>True if it is found, false otherwise</returns>
-        public abstract bool TryGetValue(string key, out object value);
+        public bool TryGetValue(string key, out object value)
+        {
+            lock (LockObject)
+            {
+                return InternalTryGetValue(key, out value);
+            }
+        }
+
+        /// <summary>
+        /// Used internally to add items (a lock is already placed by this point in time).
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <param name="value">The value.</param>
+        protected abstract void InternalAdd(string key, object value);
+
+        /// <summary>
+        /// Clear internal method (lock has already been placed)
+        /// </summary>
+        protected abstract void InternalClear();
+
+        /// <summary>
+        /// The internal method called to remove an item. (a lock has already been placed by this point)
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <returns>True if it is removed, false otherwise.</returns>
+        protected abstract bool InternalRemove(string key);
+
+        /// <summary>
+        /// Attempts to get a value.(Lock is already placed)
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <param name="value">The value.</param>
+        /// <returns>True if it is successful, false otherwise.</returns>
+        protected abstract bool InternalTryGetValue(string key, out object value);
     }
 }

@@ -26,6 +26,7 @@ namespace BigBook.Caching
     /// <summary>
     /// Caching manager class
     /// </summary>
+    /// <seealso cref="BigBook.Patterns.BaseClasses.SafeDisposableBaseClass"/>
     public class Manager : SafeDisposableBaseClass
     {
         /// <summary>
@@ -44,9 +45,14 @@ namespace BigBook.Caching
         }
 
         /// <summary>
+        /// To string
+        /// </summary>
+        private string? _ToString;
+
+        /// <summary>
         /// Caches
         /// </summary>
-        protected IDictionary<string, ICache> Caches { get; }
+        protected Dictionary<string, ICache> Caches { get; }
 
         /// <summary>
         /// Gets the specified cache
@@ -58,19 +64,22 @@ namespace BigBook.Caching
         /// </returns>
         public ICache Cache(string name = "Default")
         {
-            if (!Caches.ContainsKey(name))
-            {
-                Caches.Add(name, new Cache());
-            }
-
-            return Caches[name];
+            if (Caches.TryGetValue(name, out var ReturnValue))
+                return ReturnValue;
+            _ToString = null;
+            ReturnValue = new Cache();
+            Caches.Add(name, ReturnValue);
+            return ReturnValue;
         }
 
         /// <summary>
         /// Outputs the manager as a string
         /// </summary>
         /// <returns>String version of the manager</returns>
-        public override string ToString() => $"Caches: {Caches.ToString(x => x.Key)}\r\n";
+        public override string ToString()
+        {
+            return _ToString ?? (_ToString = $"Caches: {Caches.ToString(x => x.Key)}\r\n");
+        }
 
         /// <summary>
         /// Disposes of the object

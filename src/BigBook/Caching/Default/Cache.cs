@@ -16,7 +16,6 @@ limitations under the License.
 
 using BigBook.Caching.BaseClasses;
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -28,22 +27,14 @@ namespace BigBook.Caching.Default
     public class Cache : CacheBase
     {
         /// <summary>
-        /// Constructor
-        /// </summary>
-        public Cache()
-        {
-            InternalCache = new ConcurrentDictionary<string, object>();
-        }
-
-        /// <summary>
         /// The number of items in the cache
         /// </summary>
-        public override int Count => InternalCache?.Count ?? 0;
+        public override int Count => InternalCache.Count;
 
         /// <summary>
         /// Keys
         /// </summary>
-        public override ICollection<string> Keys => InternalCache?.Keys ?? Array.Empty<string>();
+        public override ICollection<string> Keys => InternalCache.Keys;
 
         /// <summary>
         /// Name
@@ -53,76 +44,50 @@ namespace BigBook.Caching.Default
         /// <summary>
         /// Values
         /// </summary>
-        public override ICollection<object> Values => InternalCache?.Values ?? Array.Empty<object>();
+        public override ICollection<object> Values => InternalCache.Values;
 
         /// <summary>
         /// Internal cache
         /// </summary>
-        protected ConcurrentDictionary<string, object>? InternalCache { get; private set; }
-
-        /// <summary>
-        /// Add item to the cache
-        /// </summary>
-        /// <param name="key">Key of the item</param>
-        /// <param name="value">Value to add</param>
-        public override void Add(string key, object value) => InternalCache?.AddOrUpdate(key, _ => value, (_, __) => value);
-
-        /// <summary>
-        /// Clears the cache
-        /// </summary>
-        public override void Clear() => InternalCache?.Clear();
+        protected Dictionary<string, object> InternalCache { get; } = new Dictionary<string, object>();
 
         /// <summary>
         /// Determines if the item is in the cache
         /// </summary>
         /// <param name="item">item to check for</param>
         /// <returns></returns>
-        public override bool Contains(KeyValuePair<string, object> item) => InternalCache.Contains(item);
+        public override bool Contains(KeyValuePair<string, object> item)
+        {
+            return InternalCache.Contains(item);
+        }
 
         /// <summary>
         /// Checks if the cache contains the key
         /// </summary>
         /// <param name="key">Key to check</param>
         /// <returns>True if it is there, false otherwise</returns>
-        public override bool ContainsKey(string key) => InternalCache?.ContainsKey(key) ?? false;
+        public override bool ContainsKey(string key)
+        {
+            return InternalCache.ContainsKey(key);
+        }
 
         /// <summary>
         /// Copies to an array
         /// </summary>
         /// <param name="array">Array to copy to</param>
         /// <param name="arrayIndex">Index to start at</param>
-        public override void CopyTo(KeyValuePair<string, object>[] array, int arrayIndex) => InternalCache?.ToArray().CopyTo(array, arrayIndex);
+        public override void CopyTo(KeyValuePair<string, object>[] array, int arrayIndex)
+        {
+            InternalCache.ToArray().CopyTo(array, arrayIndex);
+        }
 
         /// <summary>
         /// Gets the enumerator
         /// </summary>
         /// <returns>The enumerator</returns>
-        public override IEnumerator<KeyValuePair<string, object>> GetEnumerator() => (InternalCache ?? new ConcurrentDictionary<string, object>()).GetEnumerator();
-
-        /// <summary>
-        /// Removes an item from the cache
-        /// </summary>
-        /// <param name="key">key to remove</param>
-        /// <returns>True if it is removed, false otherwise</returns>
-        public override bool Remove(string key) => InternalCache?.TryRemove(key, out _) ?? false;
-
-        /// <summary>
-        /// Removes an item from an array
-        /// </summary>
-        /// <param name="item">Item to remove</param>
-        /// <returns>True if it is removed, false otherwise</returns>
-        public override bool Remove(KeyValuePair<string, object> item) => InternalCache?.TryRemove(item.Key, out _) ?? false;
-
-        /// <summary>
-        /// Attempt to get a value
-        /// </summary>
-        /// <param name="key">Key to get</param>
-        /// <param name="value">Value of the item</param>
-        /// <returns>True if it is found, false otherwise</returns>
-        public override bool TryGetValue(string key, out object value)
+        public override IEnumerator<KeyValuePair<string, object>> GetEnumerator()
         {
-            value = 0;
-            return InternalCache?.TryGetValue(key, out value) ?? false;
+            return InternalCache.GetEnumerator();
         }
 
         /// <summary>
@@ -138,7 +103,48 @@ namespace BigBook.Caching.Default
                 Item.Dispose();
             }
             InternalCache.Clear();
-            InternalCache = null;
+        }
+
+        /// <summary>
+        /// Used internally to add items (a lock is already placed by this point in time).
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <param name="value">The value.</param>
+        protected override void InternalAdd(string key, object value)
+        {
+            if (InternalCache.TryGetValue(key, out _))
+                InternalCache[key] = value;
+            else
+                InternalCache.Add(key, value);
+        }
+
+        /// <summary>
+        /// Clears the cache
+        /// </summary>
+        protected override void InternalClear()
+        {
+            InternalCache.Clear();
+        }
+
+        /// <summary>
+        /// The internal method called to remove an item. (a lock has already been placed by this point)
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <returns>True if it is removed, false otherwise.</returns>
+        protected override bool InternalRemove(string key)
+        {
+            return InternalCache.Remove(key);
+        }
+
+        /// <summary>
+        /// Attempt to get a value
+        /// </summary>
+        /// <param name="key">Key to get</param>
+        /// <param name="value">Value of the item</param>
+        /// <returns>True if it is found, false otherwise</returns>
+        protected override bool InternalTryGetValue(string key, out object value)
+        {
+            return InternalCache.TryGetValue(key, out value);
         }
     }
 }

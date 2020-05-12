@@ -43,6 +43,14 @@ namespace BigBook.Caching.Interfaces
         void Add(string key, object value, IEnumerable<string> tags);
 
         /// <summary>
+        /// Adds the specified key.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <param name="value">The value.</param>
+        /// <param name="tags">The tags.</param>
+        void Add(string key, object value, params string[] tags);
+
+        /// <summary>
         /// Gets the objects associated with a specific tag
         /// </summary>
         /// <param name="tag">Tag to use</param>
