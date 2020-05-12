@@ -79,14 +79,14 @@ namespace BigBook.Queryable.BaseClasses
         /// <typeparam name="TElement">The type of the element.</typeparam>
         /// <param name="expression">The expression.</param>
         /// <returns>The value that results from executing the specified query.</returns>
-        public TElement Execute<TElement>(Expression expression) => (TElement)Execute(expression);
+        public TElement Execute<TElement>(Expression expression) => (TElement)Execute(expression)!;
 
         /// <summary>
         /// Executes the query represented by a specified expression tree.
         /// </summary>
         /// <param name="expression">An expression tree that represents a LINQ query.</param>
         /// <returns>The value that results from executing the specified query.</returns>
-        public abstract object Execute(Expression expression);
+        public abstract object? Execute(Expression expression);
 
         /// <summary>
         /// Gets the query text.
