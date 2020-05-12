@@ -30,16 +30,6 @@ namespace BigBook
         where T1 : notnull
     {
         /// <summary>
-        /// The lock object
-        /// </summary>
-        private readonly object LockObject = new object();
-
-        /// <summary>
-        /// To string
-        /// </summary>
-        private string? _ToString;
-
-        /// <summary>
         /// The number of items in the listing
         /// </summary>
         public int Count => Items.Count;
@@ -63,6 +53,16 @@ namespace BigBook
         /// Container holding the data
         /// </summary>
         protected Dictionary<T1, List<T2>> Items { get; } = new Dictionary<T1, List<T2>>();
+
+        /// <summary>
+        /// The lock object
+        /// </summary>
+        private readonly object LockObject = new object();
+
+        /// <summary>
+        /// To string
+        /// </summary>
+        private string? _ToString;
 
         /// <summary>
         /// Gets a list of values associated with a key
@@ -252,7 +252,10 @@ namespace BigBook
             {
                 if (!Items.TryGetValue(key, out var TempItems))
                     return false;
-                return TempItems.Remove(value);
+                var ReturnValue = TempItems.Remove(value);
+                if (TempItems.Count == 0)
+                    Items.Remove(key);
+                return ReturnValue;
             }
         }
 

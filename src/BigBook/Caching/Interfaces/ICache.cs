@@ -30,9 +30,10 @@ namespace BigBook.Caching.Interfaces
         string Name { get; }
 
         /// <summary>
-        /// The tags used thus far
+        /// Gets the tags.
         /// </summary>
-        IEnumerable<string> Tags { get; }
+        /// <value>The tags.</value>
+        IEnumerable<int> Tags { get; }
 
         /// <summary>
         /// Adds a value/key combination and assigns tags to it

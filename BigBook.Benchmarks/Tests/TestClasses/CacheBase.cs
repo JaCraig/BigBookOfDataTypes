@@ -2,6 +2,7 @@
 using BigBook.Patterns.BaseClasses;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BigBook.Benchmarks.Tests.TestClasses
 {
@@ -10,19 +11,6 @@ namespace BigBook.Benchmarks.Tests.TestClasses
     /// </summary>
     public abstract class CacheBase : SafeDisposableBaseClass, ICache
     {
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        protected CacheBase()
-        {
-            TagMappings = new ListMapping<string, string>();
-        }
-
-        /// <summary>
-        /// The lock object
-        /// </summary>
-        private readonly object LockObject = new object();
-
         /// <summary>
         /// The number of items in the cache
         /// </summary>
@@ -44,9 +32,10 @@ namespace BigBook.Benchmarks.Tests.TestClasses
         public abstract string Name { get; }
 
         /// <summary>
-        /// The tags used thus far
+        /// Gets the tags.
         /// </summary>
-        public IEnumerable<string> Tags => TagMappings.Keys;
+        /// <value>The tags.</value>
+        public IEnumerable<int> Tags => TagMappings.First;
 
         /// <summary>
         /// Values
@@ -56,7 +45,12 @@ namespace BigBook.Benchmarks.Tests.TestClasses
         /// <summary>
         /// Tag mappings
         /// </summary>
-        protected ListMapping<string, string> TagMappings { get; }
+        protected ManyToManyIndex<int, string> TagMappings { get; } = new ManyToManyIndex<int, string>();
+
+        /// <summary>
+        /// The lock object
+        /// </summary>
+        private readonly object LockObject = new object();
 
         /// <summary>
         /// Indexer
@@ -115,13 +109,11 @@ namespace BigBook.Benchmarks.Tests.TestClasses
         /// <param name="tags">Tags to associate with the key/value pair</param>
         public void Add(string key, object value, IEnumerable<string> tags)
         {
+            tags ??= Array.Empty<string>();
             lock (LockObject)
             {
                 InternalAdd(key, value);
-                foreach (var Tag in tags)
-                {
-                    TagMappings.Add(Tag, key);
-                }
+                TagMappings.Add(key, tags.Select(tag => tag.GetHashCode(StringComparison.Ordinal)));
             }
         }
 
@@ -137,10 +129,7 @@ namespace BigBook.Benchmarks.Tests.TestClasses
             lock (LockObject)
             {
                 InternalAdd(key, value);
-                for (int x = 0; x < tags.Length; ++x)
-                {
-                    TagMappings.Add(tags[x], key);
-                }
+                TagMappings.Add(key, tags.Select(tag => tag.GetHashCode(StringComparison.Ordinal)));
             }
         }
 
@@ -184,7 +173,7 @@ namespace BigBook.Benchmarks.Tests.TestClasses
         /// <returns>The objects associated with the tag</returns>
         public IEnumerable<object> GetByTag(string tag)
         {
-            if (!TagMappings.TryGetValue(tag, out var Keys))
+            if (tag is null || !TagMappings.TryGetValue(tag.GetHashCode(StringComparison.Ordinal), out var Keys))
                 yield break;
 
             foreach (var Key in Keys)
@@ -215,6 +204,7 @@ namespace BigBook.Benchmarks.Tests.TestClasses
         {
             lock (LockObject)
             {
+                TagMappings.Remove(key);
                 return InternalRemove(key);
             }
         }
@@ -228,7 +218,9 @@ namespace BigBook.Benchmarks.Tests.TestClasses
         {
             lock (LockObject)
             {
-                return InternalRemove(item.Key);
+                var Key = item.Key;
+                TagMappings.Remove(Key);
+                return InternalRemove(Key);
             }
         }
 
@@ -238,7 +230,10 @@ namespace BigBook.Benchmarks.Tests.TestClasses
         /// <param name="tag">Tag to remove</param>
         public void RemoveByTag(string tag)
         {
-            if (!TagMappings.TryGetValue(tag, out var Keys))
+            if (tag is null)
+                return;
+            var TagHashCode = tag.GetHashCode(StringComparison.Ordinal);
+            if (!TagMappings.TryGetValue(TagHashCode, out var Keys))
                 return;
             lock (LockObject)
             {
@@ -246,7 +241,7 @@ namespace BigBook.Benchmarks.Tests.TestClasses
                 {
                     InternalRemove(Key);
                 }
-                TagMappings.Remove(tag);
+                TagMappings.Remove(TagHashCode);
             }
         }
 

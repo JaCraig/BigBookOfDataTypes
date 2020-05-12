@@ -97,8 +97,8 @@ namespace BigBook.Tests.Caching.Default
             Assert.True(Temp.ContainsKey("A"));
             Assert.True(Temp.Contains(new KeyValuePair<string, object>("A", 1)));
             Assert.Equal(2, Temp.Tags.Count());
-            Assert.Contains("Tag1", Temp.Tags);
-            Assert.Contains("Tag2", Temp.Tags);
+            Assert.Contains("Tag1".GetHashCode(System.StringComparison.Ordinal), Temp.Tags);
+            Assert.Contains("Tag2".GetHashCode(System.StringComparison.Ordinal), Temp.Tags);
         }
 
         [Fact]
