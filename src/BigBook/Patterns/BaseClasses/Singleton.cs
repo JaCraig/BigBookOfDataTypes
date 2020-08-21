@@ -33,16 +33,6 @@ namespace BigBook.Patterns.BaseClasses
         }
 
         /// <summary>
-        /// The temporary lock object
-        /// </summary>
-        private static readonly object Temp = 1;
-
-        /// <summary>
-        /// The instance
-        /// </summary>
-        private static T? _Instance;
-
-        /// <summary>
         /// Gets the instance of the singleton
         /// </summary>
         public static T Instance
@@ -70,5 +60,15 @@ namespace BigBook.Patterns.BaseClasses
                 return _Instance;
             }
         }
+
+        /// <summary>
+        /// The temporary lock object
+        /// </summary>
+        private static readonly object Temp = 1;
+
+        /// <summary>
+        /// The instance
+        /// </summary>
+        private static T? _Instance;
     }
 }
