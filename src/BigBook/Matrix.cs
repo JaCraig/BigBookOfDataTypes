@@ -420,19 +420,19 @@ namespace BigBook
         {
             var Builder = new StringBuilder();
             var Seperator = "";
-            Builder.Append("{").Append(Environment.NewLine);
+            Builder.Append('{').Append(Environment.NewLine);
             for (var x = 0; x < Width; ++x)
             {
-                Builder.Append("{");
+                Builder.Append('{');
                 for (var y = 0; y < Height; ++y)
                 {
                     Builder.Append(Seperator).Append(this[x, y]);
                     Seperator = ",";
                 }
-                Builder.Append("}").Append(Environment.NewLine);
+                Builder.Append('}').Append(Environment.NewLine);
                 Seperator = "";
             }
-            Builder.Append("}");
+            Builder.Append('}');
             return Builder.ToString();
         }
 

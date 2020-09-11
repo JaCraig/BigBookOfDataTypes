@@ -708,7 +708,7 @@ namespace BigBook
                 }
                 else
                 {
-                    Builder.Append("\t").Append(Item.GetType().GetName()).Append(" ").Append(Key).Append(" = ").AppendLine(Item.ToString());
+                    Builder.Append('\t').Append(Item.GetType().GetName()).Append(' ').Append(Key).Append(" = ").AppendLine(Item.ToString());
                 }
             }
             var Result = Builder.ToString();
