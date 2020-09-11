@@ -82,7 +82,7 @@ namespace BigBook
             if (m < 1)
                 throw new ArgumentOutOfRangeException(Properties.Resources.BloomFilterCapacity);
 
-            if (hashFunction == null)
+            if (hashFunction is null)
             {
                 if (typeof(TObject) == typeof(string))
                 {
