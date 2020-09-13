@@ -8,7 +8,7 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void RunSync()
         {
-            Assert.Equal(2, MethodAsync(1).RunSync());
+            Assert.Equal(2, AsyncHelper.RunSync(() => MethodAsync(1)));
         }
 
         private Task<int> MethodAsync(int value)

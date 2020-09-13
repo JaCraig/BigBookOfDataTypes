@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Threading.Tasks;
 
 namespace BigBook
@@ -10,14 +11,17 @@ namespace BigBook
     public static class TaskExtensions
     {
         /// <summary>
-        /// Runs the task synchronously.
+        /// Runs the Func synchronously.
         /// </summary>
         /// <typeparam name="TResult">The type of the result.</typeparam>
-        /// <param name="asyncTask">The asynchronous task.</param>
+        /// <param name="func">The function.</param>
         /// <returns>The result.</returns>
-        public static TResult RunSync<TResult>(this Task<TResult> asyncTask)
-        {
-            return Task.Run(async () => await asyncTask.ConfigureAwait(false)).GetAwaiter().GetResult();
-        }
+        public static TResult RunSync<TResult>(this Func<Task<TResult>> func) => AsyncHelper.RunSync(func);
+
+        /// <summary>
+        /// Runs the synchronously.
+        /// </summary>
+        /// <param name="func">The function.</param>
+        public static void RunSync(this Func<Task> func) => AsyncHelper.RunSync(func);
     }
 }
