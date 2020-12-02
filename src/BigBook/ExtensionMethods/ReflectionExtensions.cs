@@ -790,9 +790,9 @@ namespace BigBook
                 return "";
             }
 
-            if (expression.Body is UnaryExpression && expression.Body.NodeType == ExpressionType.Convert)
+            if (expression.Body is UnaryExpression expression1 && expression.Body.NodeType == ExpressionType.Convert)
             {
-                var Temp = (MemberExpression)((UnaryExpression)expression.Body).Operand;
+                var Temp = (MemberExpression)expression1.Operand;
                 return Temp.Expression.PropertyName() + Temp.Member.Name;
             }
             if (!(expression.Body is MemberExpression))
@@ -839,7 +839,7 @@ namespace BigBook
             var PropertyInfo = typeof(TClassType).GetProperty<TClassType>(SplitName[0]);
             var ObjectInstance = Expression.Parameter(PropertyInfo?.DeclaringType, "x");
             var PropertySet = Expression.Parameter(typeof(TDataType), "y");
-            var DefaultConstant = Expression.Constant(((object?)null).To(PropertyInfo?.PropertyType!, null), PropertyInfo?.PropertyType);
+            var DefaultConstant = Expression.Constant(((object?)null).To((PropertyInfo?.PropertyType)!, null), PropertyInfo?.PropertyType);
             MethodCallExpression? SetterCall = null;
             MemberExpression? PropertyGet = null;
             if (SplitName.Length > 1)
@@ -899,7 +899,7 @@ namespace BigBook
 
             var ObjectInstance = Expression.Parameter(property?.DeclaringType, "x");
             var PropertySet = Expression.Parameter(typeof(TDataType), "y");
-            var DefaultConstant = Expression.Constant(((object?)null).To(property?.PropertyType!, null), property?.PropertyType);
+            var DefaultConstant = Expression.Constant(((object?)null).To((property?.PropertyType)!, null), property?.PropertyType);
             MethodCallExpression? SetterCall = null;
             MemberExpression? PropertyGet = null;
             var SetMethod = property?.GetSetMethod();

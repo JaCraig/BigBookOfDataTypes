@@ -4,7 +4,7 @@
     <Description>Tests for BigBook</Description>
     <AssemblyTitle>BigBook.Tests</AssemblyTitle>
     <Authors>James Craig</Authors>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <DebugType>portable</DebugType>
     <AssemblyName>BigBook.Tests</AssemblyName>
     <PackageId>BigBook.Tests</PackageId>
@@ -23,14 +23,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
-    <PackageReference Include="TestFountain" Version="2.0.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.8.0" />
+    <PackageReference Include="TestFountain" Version="2.0.2" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
     <PackageReference Include="xunit" Version="2.4.1" />
-    <PackageReference Include="FileCurator" Version="3.1.16" />
+    <PackageReference Include="FileCurator" Version="3.1.20" />
   </ItemGroup>
 
   <ItemGroup>

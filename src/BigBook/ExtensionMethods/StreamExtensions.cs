@@ -19,6 +19,7 @@ using System.Buffers;
 using System.ComponentModel;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace BigBook
 {
@@ -37,6 +38,19 @@ namespace BigBook
         public static string ReadAll(this Stream input, Encoding? encodingUsing = null)
         {
             return input?.ReadAllBinary().ToString(encodingUsing) ?? "";
+        }
+
+        /// <summary>
+        /// Takes all of the data in the stream and returns it as a string
+        /// </summary>
+        /// <param name="input">Input stream</param>
+        /// <param name="encodingUsing">Encoding that the string should be in (defaults to UTF8)</param>
+        /// <returns>A string containing the content of the stream</returns>
+        public static async Task<string> ReadAllAsync(this Stream input, Encoding? encodingUsing = null)
+        {
+            if (input is null)
+                return "";
+            return (await input.ReadAllBinaryAsync().ConfigureAwait(false)).ToString(encodingUsing) ?? "";
         }
 
         /// <summary>
@@ -62,6 +76,38 @@ namespace BigBook
             while (true)
             {
                 var Count = input.Read(Buffer, 0, Buffer.Length);
+                if (Count <= 0)
+                {
+                    Pool.Return(Buffer);
+                    return Temp.ToArray();
+                }
+                Temp.Write(Buffer, 0, Count);
+            }
+        }
+
+        /// <summary>
+        /// Takes all of the data in the stream and returns it as an array of bytes
+        /// </summary>
+        /// <param name="input">Input stream</param>
+        /// <returns>A byte array</returns>
+        public static async Task<byte[]> ReadAllBinaryAsync(this Stream input)
+        {
+            if (input is null)
+            {
+                return Array.Empty<byte>();
+            }
+
+            if (input is MemoryStream TempInput)
+            {
+                return TempInput.ToArray();
+            }
+
+            var Pool = ArrayPool<byte>.Shared;
+            var Buffer = Pool.Rent(4096);
+            using var Temp = new MemoryStream();
+            while (true)
+            {
+                var Count = await input.ReadAsync(Buffer.AsMemory(0, Buffer.Length)).ConfigureAwait(false);
                 if (Count <= 0)
                 {
                     Pool.Return(Buffer);
