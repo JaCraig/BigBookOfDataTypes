@@ -13,7 +13,7 @@ namespace BigBook.Tests
             Assert.True(TestObject.TryGetValue(1, out var Values));
             Assert.Equal(2, Values.Count());
             Assert.True(TestObject.TryGetValue("A", out var ValuesInt));
-            Assert.Equal(1, ValuesInt.Count());
+            Assert.Single(ValuesInt);
         }
 
         [Fact]
@@ -24,21 +24,21 @@ namespace BigBook.Tests
             Assert.True(TestObject.TryGetValue(1, out var Values));
             Assert.Equal(2, Values.Count());
             Assert.True(TestObject.TryGetValue("A", out var ValuesInt));
-            Assert.Equal(1, ValuesInt.Count());
+            Assert.Single(ValuesInt);
             TestObject.Remove("B");
             Assert.True(TestObject.TryGetValue(1, out Values));
-            Assert.Equal(1, Values.Count());
+            Assert.Single(Values);
             Assert.True(TestObject.TryGetValue("A", out ValuesInt));
-            Assert.Equal(1, ValuesInt.Count());
+            Assert.Single(ValuesInt);
             Assert.False(TestObject.TryGetValue("B", out ValuesInt));
-            Assert.Equal(0, ValuesInt.Count());
+            Assert.Empty(ValuesInt);
             TestObject.Remove("A");
             Assert.False(TestObject.TryGetValue(1, out Values));
-            Assert.Equal(0, Values.Count());
+            Assert.Empty(Values);
             Assert.False(TestObject.TryGetValue("A", out ValuesInt));
-            Assert.Equal(0, ValuesInt.Count());
+            Assert.Empty(ValuesInt);
             Assert.False(TestObject.TryGetValue("B", out ValuesInt));
-            Assert.Equal(0, ValuesInt.Count());
+            Assert.Empty(ValuesInt);
         }
 
         [Fact]
@@ -49,14 +49,14 @@ namespace BigBook.Tests
             Assert.True(TestObject.TryGetValue(1, out var Values));
             Assert.Equal(2, Values.Count());
             Assert.True(TestObject.TryGetValue("A", out var ValuesInt));
-            Assert.Equal(1, ValuesInt.Count());
+            Assert.Single(ValuesInt);
             TestObject.Remove(1);
             Assert.False(TestObject.TryGetValue(1, out Values));
-            Assert.Equal(0, Values.Count());
+            Assert.Empty(Values);
             Assert.False(TestObject.TryGetValue("A", out ValuesInt));
-            Assert.Equal(0, ValuesInt.Count());
+            Assert.Empty(ValuesInt);
             Assert.False(TestObject.TryGetValue("B", out ValuesInt));
-            Assert.Equal(0, ValuesInt.Count());
+            Assert.Empty(ValuesInt);
         }
     }
 }

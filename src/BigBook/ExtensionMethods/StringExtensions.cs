@@ -133,15 +133,15 @@ namespace BigBook
     public static class StringExtensions
     {
         /// <summary>
-        /// The strip HTML regex
-        /// </summary>
-        private static readonly Regex STRIP_HTML_REGEX = new Regex("<[^>]*>", RegexOptions.Compiled);
-
-        /// <summary>
         /// Gets the is unicode.
         /// </summary>
         /// <value>The is unicode.</value>
         private static Regex IsUnicode { get; } = new Regex(@"[^\u0000-\u007F]", RegexOptions.Compiled);
+
+        /// <summary>
+        /// The strip HTML regex
+        /// </summary>
+        private static readonly Regex STRIP_HTML_REGEX = new Regex("<[^>]*>", RegexOptions.Compiled);
 
         /// <summary>
         /// Adds spaces to a string before capital letters. Acronyms are respected and left alone.
@@ -243,7 +243,7 @@ namespace BigBook
         {
             if (string.IsNullOrEmpty(input))
             {
-                return "";
+                return string.Empty;
             }
 
             originalEncodingUsing ??= Encoding.UTF8;
@@ -262,7 +262,7 @@ namespace BigBook
         {
             if (string.IsNullOrEmpty(input))
             {
-                return "";
+                return string.Empty;
             }
 
             var TempArray = Convert.FromBase64String(input);
@@ -341,7 +341,7 @@ namespace BigBook
         {
             if (string.IsNullOrEmpty(input) || string.IsNullOrEmpty(filter))
             {
-                return "";
+                return string.Empty;
             }
 
             var TempRegex = new Regex(filter);
@@ -366,7 +366,7 @@ namespace BigBook
         {
             if (string.IsNullOrEmpty(input))
             {
-                return "";
+                return string.Empty;
             }
 
             var Value = BuildFilter(filter);
@@ -383,7 +383,7 @@ namespace BigBook
         {
             if (length <= 0)
             {
-                return "";
+                return string.Empty;
             }
 
             return string.IsNullOrEmpty(input) ? "" : input.Substring(0, input.Length > length ? length : input.Length);
@@ -438,7 +438,7 @@ namespace BigBook
         public static string MaskLeft(this string input, int endPosition = 4, char mask = '#')
         {
             if (string.IsNullOrEmpty(input))
-                return "";
+                return string.Empty;
             var Appending = "";
             for (var x = 0; x < endPosition; ++x)
             {
@@ -459,7 +459,7 @@ namespace BigBook
         {
             if (string.IsNullOrEmpty(input))
             {
-                return "";
+                return string.Empty;
             }
 
             if (startPosition > input.Length)
@@ -486,7 +486,7 @@ namespace BigBook
         {
             if (string.IsNullOrEmpty(Input))
             {
-                return "";
+                return string.Empty;
             }
 
             if (Type == MinificationType.CSS)
@@ -536,7 +536,7 @@ namespace BigBook
         {
             if (string.IsNullOrEmpty(input))
             {
-                return "";
+                return string.Empty;
             }
 
             var Value = BuildFilter(filter);
@@ -551,7 +551,7 @@ namespace BigBook
         public static string RemoveDiacritics(this string input)
         {
             if (string.IsNullOrEmpty(input))
-                return "";
+                return string.Empty;
             return new string(input
                 .Normalize(NormalizationForm.FormD)
                 .Where(x => CharUnicodeInfo.GetUnicodeCategory(x) != UnicodeCategory.NonSpacingMark)
@@ -570,7 +570,7 @@ namespace BigBook
         {
             if (string.IsNullOrEmpty(input))
             {
-                return "";
+                return string.Empty;
             }
 
             var FilterValue = BuildFilter(filter);
@@ -586,7 +586,7 @@ namespace BigBook
         {
             if (string.IsNullOrEmpty(input))
             {
-                return "";
+                return string.Empty;
             }
 
             return new string(input.ToCharArray().Reverse().ToArray());
@@ -602,7 +602,7 @@ namespace BigBook
         {
             if (string.IsNullOrEmpty(input) || length <= 0)
             {
-                return "";
+                return string.Empty;
             }
 
             length = input.Length > length ? length : input.Length;
@@ -618,7 +618,7 @@ namespace BigBook
         {
             if (string.IsNullOrEmpty(html))
             {
-                return "";
+                return string.Empty;
             }
 
             html = STRIP_HTML_REGEX.Replace(html, string.Empty);
@@ -635,7 +635,7 @@ namespace BigBook
         {
             if (string.IsNullOrEmpty(content))
             {
-                return "";
+                return string.Empty;
             }
 
             var Builder = new StringBuilder();
@@ -718,7 +718,7 @@ namespace BigBook
         {
             if (string.IsNullOrEmpty(input))
             {
-                return "";
+                return string.Empty;
             }
 
             originalEncodingUsing ??= Encoding.UTF8;
@@ -749,7 +749,7 @@ namespace BigBook
         {
             if (string.IsNullOrEmpty(input))
             {
-                return "";
+                return string.Empty;
             }
 
             provider ??= CultureInfo.InvariantCulture;
@@ -884,7 +884,7 @@ namespace BigBook
         {
             if (string.IsNullOrEmpty(input) || string.IsNullOrEmpty(format) || string.IsNullOrEmpty(outputFormat))
             {
-                return "";
+                return string.Empty;
             }
 
             return Regex.Replace(input, format, outputFormat, options);
@@ -930,7 +930,7 @@ namespace BigBook
         {
             if (string.IsNullOrEmpty(input))
             {
-                return "";
+                return string.Empty;
             }
 
             input = Regex.Replace(input, @"(/\*\*/)|(/\*[^!][\s\S]*?\*/)", string.Empty);
@@ -958,13 +958,13 @@ namespace BigBook
         {
             if (matcher is null)
             {
-                return "";
+                return string.Empty;
             }
 
             var MyString = matcher.ToString();
             if (string.IsNullOrEmpty(MyString))
             {
-                return "";
+                return string.Empty;
             }
 
             return Regex.Replace(MyString, @"\r\n\s*", "");
@@ -979,13 +979,13 @@ namespace BigBook
         {
             if (string.IsNullOrEmpty(input))
             {
-                return "";
+                return string.Empty;
             }
 
             input = Regex.Replace(input, "/// <.+>", "");
             if (string.IsNullOrEmpty(input))
             {
-                return "";
+                return string.Empty;
             }
 
             return Regex.Replace(input, @">[\s\S]*?<", new MatchEvaluator(Evaluate));
@@ -1000,7 +1000,7 @@ namespace BigBook
         {
             if (string.IsNullOrEmpty(input))
             {
-                return "";
+                return string.Empty;
             }
 
             var CodeLines = input.Split(new string[] { Environment.NewLine, "\n" }, StringSplitOptions.RemoveEmptyEntries);

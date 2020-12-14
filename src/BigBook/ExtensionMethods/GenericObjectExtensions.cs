@@ -206,7 +206,7 @@ namespace BigBook
         public static string FormatToString(this object input, string format)
         {
             if (input is null)
-                return "";
+                return string.Empty;
 
             return !string.IsNullOrEmpty(format) ? input.Call<string>("ToString", format) : input.ToString();
         }

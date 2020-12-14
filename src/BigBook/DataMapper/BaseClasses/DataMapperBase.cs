@@ -30,14 +30,7 @@ namespace BigBook.DataMapper.BaseClasses
         /// </summary>
         protected DataMapperBase()
         {
-            Mappings = new Dictionary<int, ITypeMapping>();
-            LockObject = new object();
         }
-
-        /// <summary>
-        /// The lock object
-        /// </summary>
-        internal readonly object LockObject;
 
         /// <summary>
         /// The name of the data mapper
@@ -47,7 +40,12 @@ namespace BigBook.DataMapper.BaseClasses
         /// <summary>
         /// Mappings
         /// </summary>
-        protected Dictionary<int, ITypeMapping> Mappings { get; }
+        protected Dictionary<int, ITypeMapping> Mappings { get; } = new Dictionary<int, ITypeMapping>();
+
+        /// <summary>
+        /// The lock object
+        /// </summary>
+        internal readonly object LockObject = new object();
 
         /// <summary>
         /// Adds or returns a mapping between two types

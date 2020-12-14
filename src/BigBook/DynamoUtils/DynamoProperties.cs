@@ -64,7 +64,7 @@ namespace BigBook.DynamoUtils
                 if (Property.CanRead)
                     GetProperties.Add(Key, Property.PropertyGetter<TClass>().Compile());
                 if (Property.CanWrite)
-                    SetProperties.Add(Key, Property.PropertySetter<TClass, object>()?.Compile()!);
+                    SetProperties.Add(Key, (Property.PropertySetter<TClass, object>()?.Compile())!);
             }
         }
 

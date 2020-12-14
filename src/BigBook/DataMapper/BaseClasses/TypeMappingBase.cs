@@ -37,18 +37,7 @@ namespace BigBook.DataMapper.BaseClasses
         protected TypeMappingBase()
         {
             Mappings = Array.Empty<IMapping<TLeft, TRight>>();
-            LockObject = new object();
         }
-
-        /// <summary>
-        /// The underscore
-        /// </summary>
-        private const string Underscore = "_";
-
-        /// <summary>
-        /// The lock object
-        /// </summary>
-        private readonly object LockObject;
 
         /// <summary>
         /// The current size
@@ -59,6 +48,16 @@ namespace BigBook.DataMapper.BaseClasses
         /// List of mappings
         /// </summary>
         protected IMapping<TLeft, TRight>[] Mappings { get; private set; }
+
+        /// <summary>
+        /// The underscore
+        /// </summary>
+        private const string Underscore = "_";
+
+        /// <summary>
+        /// The lock object
+        /// </summary>
+        private readonly object LockObject = new object();
 
         /// <summary>
         /// Adds a mapping
@@ -295,7 +294,7 @@ namespace BigBook.DataMapper.BaseClasses
                             LeftSide.Add(Property.Name, z);
                         }
                     }),
-                    RightGet?.Compile()!,
+                    (RightGet?.Compile())!,
                     new Action<TRight, object>((y, z) =>
                     {
                         if (z is null || RightSet is null)
@@ -324,7 +323,7 @@ namespace BigBook.DataMapper.BaseClasses
                 else
                 {
                     var LeftSet = LeftGet.PropertySetter<TLeft>()?.Compile();
-                    AddMapping(LeftGet?.Compile()!,
+                    AddMapping((LeftGet?.Compile())!,
                     new Action<TLeft, object>((y, z) =>
                     {
                         if (z is null || LeftSet is null)

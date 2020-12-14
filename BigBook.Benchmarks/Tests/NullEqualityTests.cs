@@ -4,7 +4,7 @@ namespace BigBook.Benchmarks.Tests
 {
     public class NullEqualityTests
     {
-        private TestClass Data { get; }
+        private TestClass? Data { get; }
 
         [Benchmark]
         public bool Equals() => Data == null;
@@ -25,12 +25,12 @@ namespace BigBook.Benchmarks.Tests
         {
             public int ID { get; set; }
 
-            public static bool operator !=(TestClass left, TestClass right)
+            public static bool operator !=(TestClass? left, TestClass? right)
             {
                 return !(left == right);
             }
 
-            public static bool operator ==(TestClass left, TestClass right)
+            public static bool operator ==(TestClass? left, TestClass? right)
             {
                 if (left is null && right is null)
                     return true;
@@ -39,7 +39,7 @@ namespace BigBook.Benchmarks.Tests
                 return left.ID.GetHashCode() == right.ID.GetHashCode();
             }
 
-            public override bool Equals(object obj)
+            public override bool Equals(object? obj)
             {
                 var TempObj = obj as TestClass;
                 return this == TempObj;
@@ -50,7 +50,7 @@ namespace BigBook.Benchmarks.Tests
                 return ID.GetHashCode();
             }
 
-            public override string ToString() => base.ToString();
+            public override string? ToString() => base.ToString();
         }
     }
 }

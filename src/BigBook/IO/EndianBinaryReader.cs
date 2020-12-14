@@ -69,6 +69,21 @@ namespace BigBook.IO
         }
 
         /// <summary>
+        /// Gets the underlying stream of the EndianBinaryReader.
+        /// </summary>
+        public Stream? BaseStream { get; private set; }
+
+        /// <summary>
+        /// Gets the bit converter used to read values from the stream.
+        /// </summary>
+        public EndianBitConverterBase BitConverter { get; }
+
+        /// <summary>
+        /// Gets the encoding used to read strings
+        /// </summary>
+        public Encoding Encoding { get; }
+
+        /// <summary>
         /// Buffer used for temporary storage before conversion into primitives
         /// </summary>
         private readonly byte[] buffer = new byte[16];
@@ -87,21 +102,6 @@ namespace BigBook.IO
         /// Minimum number of bytes used to encode a character
         /// </summary>
         private readonly int minBytesPerChar;
-
-        /// <summary>
-        /// Gets the underlying stream of the EndianBinaryReader.
-        /// </summary>
-        public Stream? BaseStream { get; private set; }
-
-        /// <summary>
-        /// Gets the bit converter used to read values from the stream.
-        /// </summary>
-        public EndianBitConverterBase BitConverter { get; }
-
-        /// <summary>
-        /// Gets the encoding used to read strings
-        /// </summary>
-        public Encoding Encoding { get; }
 
         /// <summary>
         /// Closes the reader, including the underlying stream.

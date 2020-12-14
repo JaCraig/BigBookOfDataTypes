@@ -41,7 +41,7 @@ namespace BigBook
         {
             if (process is null)
             {
-                return "";
+                return string.Empty;
             }
 
             var Builder = new StringBuilder();
@@ -64,7 +64,7 @@ namespace BigBook
         {
             if (processes is null)
             {
-                return "";
+                return string.Empty;
             }
 
             var Builder = new StringBuilder();

@@ -7,7 +7,7 @@ namespace BigBook.Benchmarks.Tests
     [RankColumn, MemoryDiagnoser]
     public class ActivatorCreateInstanceTests
     {
-        private Func<object> CachedMethod;
+        private Func<object>? CachedMethod;
 
         [Benchmark(Baseline = true)]
         public void ActivatorCreateInstance()

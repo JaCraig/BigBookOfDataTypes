@@ -370,7 +370,7 @@ namespace BigBook
         {
             if (objectType is null)
             {
-                return "";
+                return string.Empty;
             }
 
             var Output = new StringBuilder();
@@ -787,7 +787,7 @@ namespace BigBook
         {
             if (expression is null)
             {
-                return "";
+                return string.Empty;
             }
 
             if (expression.Body is UnaryExpression expression1 && expression.Body.NodeType == ExpressionType.Convert)
@@ -830,7 +830,7 @@ namespace BigBook
             }
 
             var TempPropertyName = property.PropertyName();
-            var SplitName = TempPropertyName.Split(new string[] { "." }, StringSplitOptions.RemoveEmptyEntries);
+            var SplitName = TempPropertyName.Split('.', StringSplitOptions.RemoveEmptyEntries);
             if (SplitName.Length == 0)
             {
                 return null;
@@ -986,7 +986,7 @@ namespace BigBook
             }
             Type? TempObject = objectType;
 
-            var SourceProperties = propertyPath.Split(new string[] { "." }, StringSplitOptions.None);
+            var SourceProperties = propertyPath.Split('.', StringSplitOptions.None);
             for (var x = 0; x < SourceProperties.Length; ++x)
             {
                 TempObject = TempObject.GetProperty(SourceProperties[x], true)?.PropertyType;
@@ -1004,7 +1004,7 @@ namespace BigBook
         {
             if (assembly is null)
             {
-                return "";
+                return string.Empty;
             }
 
             if ((infoType & VersionInfo.ShortVersion) != 0)
@@ -1028,7 +1028,7 @@ namespace BigBook
         {
             if (assemblies?.Any() != true)
             {
-                return "";
+                return string.Empty;
             }
 
             var Builder = new StringBuilder();
@@ -1046,7 +1046,7 @@ namespace BigBook
         {
             if (assemblies?.Any() != true)
             {
-                return "";
+                return string.Empty;
             }
 
             var Builder = new StringBuilder();
@@ -1065,7 +1065,7 @@ namespace BigBook
         {
             if (inputObject is null)
             {
-                return "";
+                return string.Empty;
             }
 
             var TempValue = new StringBuilder();
@@ -1103,7 +1103,7 @@ namespace BigBook
         {
             if (objectType is null)
             {
-                return "";
+                return string.Empty;
             }
 
             var TempValue = new StringBuilder();

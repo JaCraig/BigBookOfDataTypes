@@ -37,7 +37,7 @@ namespace BigBook
         {
             if (exception is null)
             {
-                return "";
+                return string.Empty;
             }
 
             var Builder = new StringBuilder();

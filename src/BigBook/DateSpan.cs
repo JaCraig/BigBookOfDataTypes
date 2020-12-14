@@ -109,7 +109,7 @@ namespace BigBook
         /// <returns>The value as a string</returns>
         public static implicit operator string(DateSpan? value)
         {
-            return value?.ToString() ?? "";
+            return value?.ToString() ?? string.Empty;
         }
 
         /// <summary>

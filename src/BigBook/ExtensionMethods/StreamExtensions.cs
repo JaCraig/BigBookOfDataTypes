@@ -49,7 +49,7 @@ namespace BigBook
         public static async Task<string> ReadAllAsync(this Stream input, Encoding? encodingUsing = null)
         {
             if (input is null)
-                return "";
+                return string.Empty;
             return (await input.ReadAllBinaryAsync().ConfigureAwait(false)).ToString(encodingUsing) ?? "";
         }
 

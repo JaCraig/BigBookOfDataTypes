@@ -232,7 +232,7 @@ namespace BigBook
         /// <returns>The fraction as a string</returns>
         public static implicit operator string(Fraction fraction)
         {
-            return fraction?.ToString() ?? "";
+            return fraction?.ToString() ?? string.Empty;
         }
 
         /// <summary>

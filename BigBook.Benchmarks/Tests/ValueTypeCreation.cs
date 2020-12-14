@@ -7,12 +7,12 @@ namespace BigBook.Benchmarks.Tests
     [MemoryDiagnoser]
     public class ValueTypeCreation
     {
-        private static Dictionary<int, object> HashLookUp = new Dictionary<int, object>
+        private static readonly Dictionary<int, object> HashLookUp = new Dictionary<int, object>
         {
             [typeof(int).GetHashCode()] = 0
         };
 
-        private static Dictionary<Type, object> TypeLookUp = new Dictionary<Type, object>
+        private static readonly Dictionary<Type, object> TypeLookUp = new Dictionary<Type, object>
         {
             [typeof(int)] = 0
         };

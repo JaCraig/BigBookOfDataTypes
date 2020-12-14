@@ -200,7 +200,7 @@ namespace BigBook
         {
             if (input is null)
             {
-                return "";
+                return string.Empty;
             }
 
             if (index < 0)
@@ -236,7 +236,7 @@ namespace BigBook
         {
             if (input is null)
             {
-                return "";
+                return string.Empty;
             }
 
             if (count == -1)

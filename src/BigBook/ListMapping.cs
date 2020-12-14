@@ -270,7 +270,7 @@ namespace BigBook
             var Builder = new StringBuilder();
             foreach (var Key in Keys)
             {
-                Builder.AppendLineFormat("{0}:{{{1}}}", Key?.ToString() ?? "", Items[Key].ToString(x => x?.ToString() ?? ""));
+                Builder.AppendLineFormat("{0}:{{{1}}}", Key?.ToString() ?? string.Empty, Items[Key].ToString(x => x?.ToString() ?? string.Empty));
             }
             _ToString = Builder.ToString();
             return _ToString;

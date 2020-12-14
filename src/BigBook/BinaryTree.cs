@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using System;
+using System.Buffers;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -118,7 +119,7 @@ namespace BigBook
         /// <returns>The value as a string</returns>
         public static implicit operator string(BinaryTree<T>? value)
         {
-            return value?.ToString() ?? "";
+            return value?.ToString() ?? string.Empty;
         }
 
         /// <summary>
@@ -180,7 +181,8 @@ namespace BigBook
         /// <param name="arrayIndex">Index to start at</param>
         public void CopyTo(T[] array, int arrayIndex)
         {
-            var TempArray = new T[NumberOfNodes];
+            var Pool = ArrayPool<T>.Shared;
+            var TempArray = Pool.Rent(NumberOfNodes) ?? new T[NumberOfNodes];
             var Counter = 0;
             foreach (var Value in this)
             {
@@ -188,6 +190,7 @@ namespace BigBook
                 ++Counter;
             }
             Array.Copy(TempArray, 0, array, arrayIndex, NumberOfNodes);
+            Pool.Return(TempArray);
         }
 
         /// <summary>
@@ -420,6 +423,6 @@ namespace BigBook
         /// Returns the node as a string
         /// </summary>
         /// <returns>String representation of the node</returns>
-        public override string ToString() => Value?.ToString() ?? "";
+        public override string ToString() => Value?.ToString() ?? string.Empty;
     }
 }

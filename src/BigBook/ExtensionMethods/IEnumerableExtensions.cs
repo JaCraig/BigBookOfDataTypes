@@ -16,6 +16,7 @@ limitations under the License.
 
 using BigBook.Comparison;
 using System;
+using System.Buffers;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -53,10 +54,13 @@ namespace BigBook
                 return enumerable1;
             }
 
-            var TempAdditions = new IEnumerable<T>[additions.Length + 1];
+            var Pool = ArrayPool<IEnumerable<T>>.Shared;
+            var TempAdditions = Pool.Rent(additions.Length + 1);
             TempAdditions[0] = enumerable1;
             Array.Copy(additions, 0, TempAdditions, 1, additions.Length);
-            return TempAdditions.SelectMany(x => x).ToArray();
+            var Results = TempAdditions.Where(x => !(x is null)).SelectMany(x => x).ToArray();
+            Pool.Return(TempAdditions);
+            return Results;
         }
 
         /// <summary>
@@ -842,11 +846,11 @@ namespace BigBook
         {
             if (list?.Any() != true)
             {
-                return "";
+                return string.Empty;
             }
 
             seperator ??= "";
-            itemOutput ??= (x => x?.ToString() ?? "");
+            itemOutput ??= (x => x?.ToString() ?? string.Empty);
             return string.Join(seperator, list.Select(itemOutput));
         }
 

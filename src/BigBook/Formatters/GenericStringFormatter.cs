@@ -68,7 +68,7 @@ namespace BigBook.Formatters
         /// <param name="arg">Argument object to use</param>
         /// <param name="formatProvider">Format provider to use</param>
         /// <returns>The formatted string</returns>
-        public string Format(string format, object arg, IFormatProvider formatProvider) => Format(arg?.ToString() ?? "", format);
+        public string Format(string format, object arg, IFormatProvider formatProvider) => Format(arg?.ToString() ?? string.Empty, format);
 
         /// <summary>
         /// Formats the string based on the pattern
