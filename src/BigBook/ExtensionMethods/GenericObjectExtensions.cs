@@ -16,8 +16,6 @@ limitations under the License.
 
 using BigBook.Comparison;
 using BigBook.Conversion;
-using BigBook.Conversion.BaseClasses;
-using BigBook.Conversion.Interfaces;
 using BigBook.DataMapper.Interfaces;
 using BigBook.ExtensionMethods.Utils;
 using Fast.Activator;
@@ -25,6 +23,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
@@ -47,9 +46,10 @@ namespace BigBook
         /// <summary>
         /// The converters
         /// </summary>
-        private static readonly TypeConverter[] Converters = {
-            new SqlDbTypeTypeConverter(),
-            new DbTypeTypeConverter()
+        private static readonly Dictionary<Type, TypeConverter> Converters = new Dictionary<Type, TypeConverter>
+        {
+            [typeof(SqlDbType)] = new SqlDbTypeTypeConverter(),
+            [typeof(DbType)] = new DbTypeTypeConverter()
         };
 
         /// <summary>
@@ -529,39 +529,21 @@ namespace BigBook
                     return item;
                 }
 
-                try
-                {
-                    return Convert.ChangeType(item, resultType, CultureInfo.InvariantCulture);
-                }
-                catch { }
-                var Converter = TypeDescriptor.GetConverter(ObjectType);
+                if (!Converters.TryGetValue(ObjectType, out var Converter))
+                    Converter = TypeDescriptor.GetConverter(ObjectType);
                 if (Converter.CanConvertTo(resultType))
                 {
                     return Converter.ConvertTo(item, resultType);
                 }
 
-                Converter = TypeDescriptor.GetConverter(resultType);
+                if (!Converters.TryGetValue(resultType, out Converter))
+                    Converter = TypeDescriptor.GetConverter(resultType);
                 if (Converter.CanConvertFrom(ObjectType))
                 {
                     return Converter.ConvertFrom(item);
                 }
 
-                var TempConverter = Array.Find(Converters, x => x.CanConvertTo(resultType)
-                                                                && x is TypeConverterBase<TObject>);
-                if (!(TempConverter is null))
-                {
-                    return TempConverter.ConvertTo(item, resultType);
-                }
-
-                TempConverter = Array.Find(Converters, x => x.CanConvertFrom(ObjectType)
-                                                            && ((IConverter)x).AssociatedType == resultType);
-                if (!(TempConverter is null))
-                {
-                    return TempConverter.ConvertFrom(item);
-                }
-
-                var ResultTypeInfo = resultType;
-                if (ResultTypeInfo.IsEnum)
+                if (resultType.IsEnum)
                 {
                     if (item is string ItemStringValue)
                     {
@@ -570,6 +552,7 @@ namespace BigBook
 
                     return Enum.ToObject(resultType, item);
                 }
+
                 var IEnumerableResultType = resultType.GetIEnumerableElementType();
                 var IEnumerableObjectType = ObjectType.GetIEnumerableElementType();
                 if (resultType != IEnumerableResultType && ObjectType != IEnumerableObjectType)
@@ -577,20 +560,11 @@ namespace BigBook
                     var TempList = (IList)FastActivator.CreateInstance(typeof(List<>).MakeGenericType(IEnumerableResultType));
                     foreach (var Item in (IEnumerable)item)
                     {
-                        var TempMapping = Item.GetType().MapTo(IEnumerableResultType);
-                        if (TempMapping is null)
-                        {
-                            return TempList;
-                        }
-
-                        TempMapping.AutoMap();
-                        var ResultItem = FastActivator.CreateInstance(IEnumerableResultType);
-                        TempMapping.Copy(Item, ResultItem);
-                        TempList.Add(ResultItem);
+                        TempList.Add(Item.To(IEnumerableResultType, null));
                     }
                     return TempList;
                 }
-                if (ResultTypeInfo.IsClass)
+                if (resultType.IsClass)
                 {
                     var ReturnValue = FastActivator.CreateInstance(resultType);
                     ObjectType.MapTo(resultType)
@@ -598,6 +572,12 @@ namespace BigBook
                                 .Copy(item, ReturnValue);
                     return ReturnValue;
                 }
+
+                try
+                {
+                    return Convert.ChangeType(item, resultType, CultureInfo.InvariantCulture);
+                }
+                catch { }
             }
             catch
             {
@@ -606,12 +586,12 @@ namespace BigBook
 
             static object? ReturnDefaultValue(Type resultType, object? defaultValue)
             {
-                if (!(defaultValue is null))
+                if (!(defaultValue is null) || !resultType.IsValueType)
                     return defaultValue;
                 var ResultHash = resultType.GetHashCode();
-                if (resultType.IsValueType && DefaultValueLookup.Values.ContainsKey(ResultHash))
-                    return DefaultValueLookup.Values[ResultHash];
-                return resultType.IsValueType ? FastActivator.CreateInstance(resultType) : defaultValue;
+                if (DefaultValueLookup.Values.TryGetValue(ResultHash, out var ReturnValue))
+                    return ReturnValue;
+                return FastActivator.CreateInstance(resultType);
             }
         }
     }
