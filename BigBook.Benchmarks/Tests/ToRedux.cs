@@ -12,6 +12,52 @@ using System.Globalization;
 
 namespace BigBook.Benchmarks.Tests
 {
+    /// <summary>
+    /// Default value lookup
+    /// </summary>
+    //public static class SimpleValueConversion
+    //{
+    //    /// <summary>
+    //    /// The values
+    //    /// </summary>
+    //    public static Dictionary<int, object?> Values = new Dictionary<int, object?>
+    //    {
+    //        [typeof(byte).GetHashCode()] = default(byte),
+    //        [typeof(sbyte).GetHashCode()] = default(sbyte),
+    //        [typeof(short).GetHashCode()] = default(short),
+    //        [typeof(int).GetHashCode()] = default(int),
+    //        [typeof(long).GetHashCode()] = default(long),
+    //        [typeof(ushort).GetHashCode()] = default(ushort),
+    //        [typeof(uint).GetHashCode()] = default(uint),
+    //        [typeof(ulong).GetHashCode()] = default(ulong),
+    //        [typeof(double).GetHashCode()] = default(double),
+    //        [typeof(float).GetHashCode()] = default(float),
+    //        [typeof(decimal).GetHashCode()] = default(decimal),
+    //        [typeof(bool).GetHashCode()] = default(bool),
+    //        [typeof(char).GetHashCode()] = default(char),
+
+    // [typeof(byte?).GetHashCode()] = default(byte?), [typeof(sbyte?).GetHashCode()] =
+    // default(sbyte?), [typeof(short?).GetHashCode()] = default(short?),
+    // [typeof(int?).GetHashCode()] = default(int?), [typeof(long?).GetHashCode()] = default(long?),
+    // [typeof(ushort?).GetHashCode()] = default(ushort?), [typeof(uint?).GetHashCode()] =
+    // default(uint?), [typeof(ulong?).GetHashCode()] = default(ulong?),
+    // [typeof(double?).GetHashCode()] = default(double?), [typeof(float?).GetHashCode()] =
+    // default(float?), [typeof(decimal?).GetHashCode()] = default(decimal?),
+    // [typeof(bool?).GetHashCode()] = default(bool?), [typeof(char?).GetHashCode()] = default(char?),
+
+    //        [typeof(string).GetHashCode()] = default(string),
+    //        [typeof(Guid).GetHashCode()] = default(Guid),
+    //        [typeof(DateTime).GetHashCode()] = default(DateTime),
+    //        [typeof(DateTimeOffset).GetHashCode()] = default(DateTimeOffset),
+    //        [typeof(TimeSpan).GetHashCode()] = default(TimeSpan),
+    //        [typeof(Guid?).GetHashCode()] = default(Guid?),
+    //        [typeof(DateTime?).GetHashCode()] = default(DateTime?),
+    //        [typeof(DateTimeOffset?).GetHashCode()] = default(DateTimeOffset?),
+    //        [typeof(TimeSpan?).GetHashCode()] = default(TimeSpan?),
+    //        [typeof(byte[]).GetHashCode()] = default(byte[]),
+    //    };
+    //}
+
     public static class TestExtensions
     {
         /// <summary>
@@ -70,6 +116,15 @@ namespace BigBook.Benchmarks.Tests
                 if (resultType.IsAssignableFrom(ObjectType))
                 {
                     return item;
+                }
+
+                if (ObjectType.IsPrimitive && resultType.IsPrimitive)
+                {
+                    try
+                    {
+                        return Convert.ChangeType(item, resultType, CultureInfo.InvariantCulture);
+                    }
+                    catch { }
                 }
 
                 if (!Converters.TryGetValue(ObjectType, out var Converter))
@@ -150,13 +205,7 @@ namespace BigBook.Benchmarks.Tests
         {
             for (var x = 0; x < Count; ++x)
             {
-                _ = "http://A".To(new Uri("http://B"));
-                _ = new Uri("http://A").To("http://B");
-                var Value = DBNull.Value;
-                _ = Value.To(typeof(string), "A");
-                _ = Value.To(typeof(DateTime), null);
-                _ = 1.To(typeof(TestEnum), null);
-                _ = "Value3".To(typeof(TestEnum), null);
+                _ = "Test".To(new Uri("http://www.google.com"));
             }
         }
 
@@ -165,13 +214,7 @@ namespace BigBook.Benchmarks.Tests
         {
             for (var x = 0; x < Count; ++x)
             {
-                _ = "http://A".NewTo(new Uri("http://B"));
-                _ = new Uri("http://A").NewTo("http://B");
-                var Value = DBNull.Value;
-                _ = Value.NewTo(typeof(string), "A");
-                _ = Value.NewTo(typeof(DateTime), null);
-                _ = 1.NewTo(typeof(TestEnum), null);
-                _ = "Value3".NewTo(typeof(TestEnum), null);
+                _ = "Test".NewTo(new Uri("http://www.google.com"));
             }
         }
 

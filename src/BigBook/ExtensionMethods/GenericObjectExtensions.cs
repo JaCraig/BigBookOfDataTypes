@@ -529,6 +529,15 @@ namespace BigBook
                     return item;
                 }
 
+                if (ObjectType.IsPrimitive && resultType.IsPrimitive)
+                {
+                    try
+                    {
+                        return Convert.ChangeType(item, resultType, CultureInfo.InvariantCulture);
+                    }
+                    catch { }
+                }
+
                 if (!Converters.TryGetValue(ObjectType, out var Converter))
                     Converter = TypeDescriptor.GetConverter(ObjectType);
                 if (Converter.CanConvertTo(resultType))
