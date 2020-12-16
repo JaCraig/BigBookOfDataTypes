@@ -1,6 +1,7 @@
 ﻿using BigBook;
 using BigBook.Tests.BaseClasses;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Xunit;
@@ -182,6 +183,13 @@ namespace BigBook.Tests.ExtensionMethods
             Assert.Equal(default(DateTime), Value.To(typeof(DateTime), null));
             Assert.Equal(TestEnum.Value2, 1.To(typeof(TestEnum), null));
             Assert.Equal(TestEnum.Value3, "Value3".To(typeof(TestEnum), null));
+        }
+
+        [Fact]
+        public void ToList()
+        {
+            var TestObject = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8 };
+            Assert.Equal(new List<long>() { 1, 2, 3, 4, 5, 6, 7, 8 }, TestObject.To(new List<long>()));
         }
 
         private void Test() => throw new Exception();
