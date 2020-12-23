@@ -16,7 +16,7 @@ limitations under the License.
 
 using BigBook.Conversion.BaseClasses;
 using System;
-using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
@@ -37,55 +37,90 @@ namespace BigBook.Conversion
             ConvertToTypes.Add(typeof(SqlDbType), DbTypeToSqlDbType);
             ConvertFromTypes.Add(typeof(Type).GetType(), TypeToDbType);
             ConvertFromTypes.Add(typeof(SqlDbType), SqlDbTypeToDbType);
-            Conversions = new ConcurrentDictionary<Type, DbType>();
-            Conversions.AddOrUpdate(typeof(byte), DbType.Byte, (_, y) => y);
-            Conversions.AddOrUpdate(typeof(byte?), DbType.Byte, (_, y) => y);
-            Conversions.AddOrUpdate(typeof(sbyte), DbType.Byte, (_, y) => y);
-            Conversions.AddOrUpdate(typeof(sbyte?), DbType.Byte, (_, y) => y);
-            Conversions.AddOrUpdate(typeof(short), DbType.Int16, (_, y) => y);
-            Conversions.AddOrUpdate(typeof(short?), DbType.Int16, (_, y) => y);
-            Conversions.AddOrUpdate(typeof(ushort), DbType.Int16, (_, y) => y);
-            Conversions.AddOrUpdate(typeof(ushort?), DbType.Int16, (_, y) => y);
-            Conversions.AddOrUpdate(typeof(int), DbType.Int32, (_, y) => y);
-            Conversions.AddOrUpdate(typeof(int?), DbType.Int32, (_, y) => y);
-            Conversions.AddOrUpdate(typeof(uint), DbType.Int32, (_, y) => y);
-            Conversions.AddOrUpdate(typeof(uint?), DbType.Int32, (_, y) => y);
-            Conversions.AddOrUpdate(typeof(long), DbType.Int64, (_, y) => y);
-            Conversions.AddOrUpdate(typeof(long?), DbType.Int64, (_, y) => y);
-            Conversions.AddOrUpdate(typeof(ulong), DbType.Int64, (_, y) => y);
-            Conversions.AddOrUpdate(typeof(ulong?), DbType.Int64, (_, y) => y);
-            Conversions.AddOrUpdate(typeof(float), DbType.Single, (_, y) => y);
-            Conversions.AddOrUpdate(typeof(float?), DbType.Single, (_, y) => y);
-            Conversions.AddOrUpdate(typeof(double), DbType.Double, (_, y) => y);
-            Conversions.AddOrUpdate(typeof(double?), DbType.Double, (_, y) => y);
-            Conversions.AddOrUpdate(typeof(decimal), DbType.Decimal, (_, y) => y);
-            Conversions.AddOrUpdate(typeof(decimal?), DbType.Decimal, (_, y) => y);
-            Conversions.AddOrUpdate(typeof(bool), DbType.Boolean, (_, y) => y);
-            Conversions.AddOrUpdate(typeof(bool?), DbType.Boolean, (_, y) => y);
-            Conversions.AddOrUpdate(typeof(string), DbType.String, (_, y) => y);
-            Conversions.AddOrUpdate(typeof(char), DbType.StringFixedLength, (_, y) => y);
-            Conversions.AddOrUpdate(typeof(char?), DbType.StringFixedLength, (_, y) => y);
-            Conversions.AddOrUpdate(typeof(Guid), DbType.Guid, (_, y) => y);
-            Conversions.AddOrUpdate(typeof(Guid?), DbType.Guid, (_, y) => y);
-            Conversions.AddOrUpdate(typeof(DateTime), DbType.DateTime2, (_, y) => y);
-            Conversions.AddOrUpdate(typeof(DateTime?), DbType.DateTime2, (_, y) => y);
-            Conversions.AddOrUpdate(typeof(DateTimeOffset), DbType.DateTimeOffset, (_, y) => y);
-            Conversions.AddOrUpdate(typeof(DateTimeOffset?), DbType.DateTimeOffset, (_, y) => y);
-            Conversions.AddOrUpdate(typeof(TimeSpan), DbType.Time, (_, y) => y);
-            Conversions.AddOrUpdate(typeof(Uri), DbType.String, (_, y) => y);
-            Conversions.AddOrUpdate(typeof(TimeSpan?), DbType.Time, (_, y) => y);
-            Conversions.AddOrUpdate(typeof(byte[]), DbType.Binary, (_, y) => y);
         }
 
         /// <summary>
         /// Conversions
         /// </summary>
-        protected static ConcurrentDictionary<Type, DbType>? Conversions { get; private set; }
+        protected static Dictionary<Type, DbType> Conversions { get; } = new Dictionary<Type, DbType>
+            {
+                { typeof(byte), DbType.Byte },
+                { typeof(byte?), DbType.Byte },
+                { typeof(sbyte), DbType.Byte },
+                { typeof(sbyte?), DbType.Byte },
+                { typeof(short), DbType.Int16 },
+                { typeof(short?), DbType.Int16 },
+                { typeof(ushort), DbType.Int16 },
+                { typeof(ushort?), DbType.Int16 },
+                { typeof(int), DbType.Int32 },
+                { typeof(int?), DbType.Int32 },
+                { typeof(uint), DbType.Int32 },
+                { typeof(uint?), DbType.Int32 },
+                { typeof(long), DbType.Int64 },
+                { typeof(long?), DbType.Int64 },
+                { typeof(ulong), DbType.Int64 },
+                { typeof(ulong?), DbType.Int64 },
+                { typeof(float), DbType.Single },
+                { typeof(float?), DbType.Single },
+                { typeof(double), DbType.Double },
+                { typeof(double?), DbType.Double },
+                { typeof(decimal), DbType.Decimal },
+                { typeof(decimal?), DbType.Decimal },
+                { typeof(bool), DbType.Boolean },
+                { typeof(bool?), DbType.Boolean },
+                { typeof(string), DbType.String },
+                { typeof(char), DbType.StringFixedLength },
+                { typeof(char?), DbType.StringFixedLength },
+                { typeof(Guid), DbType.Guid },
+                { typeof(Guid?), DbType.Guid },
+                { typeof(DateTime), DbType.DateTime2 },
+                { typeof(DateTime?), DbType.DateTime2 },
+                { typeof(DateTimeOffset), DbType.DateTimeOffset },
+                { typeof(DateTimeOffset?), DbType.DateTimeOffset },
+                { typeof(TimeSpan), DbType.Time },
+                { typeof(Uri), DbType.String },
+                { typeof(TimeSpan?), DbType.Time },
+                { typeof(byte[]), DbType.Binary }
+            };
+
+        /// <summary>
+        /// Gets the database type to type conversions.
+        /// </summary>
+        /// <value>The database type to type conversions.</value>
+        protected static Dictionary<DbType, Type> DbTypeToTypeConversions { get; } = new Dictionary<DbType, Type>
+            {
+                { DbType.Byte , typeof(byte)},
+                {DbType.SByte , typeof(sbyte)},
+                {DbType.Int16 , typeof(short)},
+                {DbType.UInt16 , typeof(ushort)},
+                {DbType.Int32 , typeof(int)},
+                {DbType.UInt32 , typeof(uint)},
+                {DbType.Int64 , typeof(long)},
+                {DbType.UInt64 , typeof(ulong)},
+                {DbType.Single , typeof(float)},
+                {DbType.Double , typeof(double)},
+                {DbType.Decimal , typeof(decimal)},
+                {DbType.Boolean , typeof(bool)},
+                {DbType.String , typeof(string)},
+                {DbType.StringFixedLength , typeof(char)},
+                {DbType.Guid , typeof(Guid)},
+                {DbType.DateTime2 , typeof(DateTime)},
+                {DbType.DateTime , typeof(DateTime)},
+                {DbType.DateTimeOffset , typeof(DateTimeOffset)},
+                {DbType.Binary , typeof(byte[])},
+                {DbType.Time , typeof(TimeSpan)},
+            };
 
         /// <summary>
         /// Internal converter
         /// </summary>
         protected override TypeConverter InternalConverter { get; } = new EnumConverter(typeof(DbType));
+
+        /// <summary>
+        /// Gets the type of the int.
+        /// </summary>
+        /// <value>The type of the int.</value>
+        private static Type IntType { get; } = typeof(int);
 
         /// <summary>
         /// Databases the type of the type to SQL database.
@@ -120,50 +155,7 @@ namespace BigBook.Conversion
                 return typeof(int);
             }
 
-            return TempValue switch
-            {
-                DbType.Byte => typeof(byte),
-
-                DbType.SByte => typeof(sbyte),
-
-                DbType.Int16 => typeof(short),
-
-                DbType.UInt16 => typeof(ushort),
-
-                DbType.Int32 => typeof(int),
-
-                DbType.UInt32 => typeof(uint),
-
-                DbType.Int64 => typeof(long),
-
-                DbType.UInt64 => typeof(ulong),
-
-                DbType.Single => typeof(float),
-
-                DbType.Double => typeof(double),
-
-                DbType.Decimal => typeof(decimal),
-
-                DbType.Boolean => typeof(bool),
-
-                DbType.String => typeof(string),
-
-                DbType.StringFixedLength => typeof(char),
-
-                DbType.Guid => typeof(Guid),
-
-                DbType.DateTime2 => typeof(DateTime),
-
-                DbType.DateTime => typeof(DateTime),
-
-                DbType.DateTimeOffset => typeof(DateTimeOffset),
-
-                DbType.Binary => typeof(byte[]),
-
-                DbType.Time => typeof(TimeSpan),
-
-                _ => typeof(int),
-            };
+            return DbTypeToTypeConversions.TryGetValue(TempValue, out var returnValue) ? returnValue : IntType;
         }
 
         /// <summary>
@@ -204,8 +196,7 @@ namespace BigBook.Conversion
             {
                 TempValue = Enum.GetUnderlyingType(TempValue);
             }
-
-            return Conversions?.GetValue(TempValue, DbType.Int32) ?? DbType.Int32;
+            return Conversions.TryGetValue(TempValue, out var returnValue) ? returnValue : (object)DbType.Int32;
         }
     }
 }

@@ -17,7 +17,6 @@ limitations under the License.
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace BigBook
 {
@@ -84,7 +83,7 @@ namespace BigBook
         /// </summary>
         /// <param name="array">Array to copy to</param>
         /// <param name="arrayIndex">Index to start at</param>
-        public virtual void CopyTo(T[] array, int arrayIndex) => Array.Copy(Items.ToList().ToArray(x => x.Key), 0, array, arrayIndex, Count);
+        public virtual void CopyTo(T[] array, int arrayIndex) => Array.Copy(Items.ToArray(x => x.Key), 0, array, arrayIndex, Count);
 
         /// <summary>
         /// Gets the enumerator
