@@ -1,5 +1,5 @@
 ﻿using BenchmarkDotNet.Attributes;
-using BigBook.Registration;
+using Microsoft.Extensions.DependencyInjection;
 using System.Linq;
 
 namespace BigBook.Benchmarks.Tests
@@ -7,11 +7,12 @@ namespace BigBook.Benchmarks.Tests
     [MemoryDiagnoser]
     public class CacheTests
     {
+        private BigBook.Benchmarks.Tests.TestClasses.Cache NewOne { get; } = new TestClasses.Cache();
+
+        private BigBook.Caching.Default.Cache Original { get; } = new Caching.Default.Cache();
+
         //[Params(1, 10, 100, 1000)]
         public int Count;
-
-        private BigBook.Benchmarks.Tests.TestClasses.Cache NewOne { get; } = new TestClasses.Cache();
-        private BigBook.Caching.Default.Cache Original { get; } = new Caching.Default.Cache();
 
         [Benchmark]
         public void NewerListAddAndRead()
@@ -34,7 +35,7 @@ namespace BigBook.Benchmarks.Tests
         [GlobalSetup]
         public void Setup()
         {
-            Canister.Builder.CreateContainer(null).RegisterBigBookOfDataTypes().Build();
+            new ServiceCollection().AddCanisterModules(configure => configure.RegisterBigBookOfDataTypes());
         }
     }
 }

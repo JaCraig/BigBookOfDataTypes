@@ -14,10 +14,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using Aspectus.ExtensionMethods;
 using Canister.Interfaces;
 
-namespace BigBook.Registration
+namespace Microsoft.Extensions.DependencyInjection
 {
     /// <summary>
     /// Canister registration extension
@@ -29,7 +28,7 @@ namespace BigBook.Registration
         /// </summary>
         /// <param name="bootstrapper">The bootstrapper.</param>
         /// <returns>The bootstrapper</returns>
-        public static IBootstrapper? RegisterBigBookOfDataTypes(this IBootstrapper? bootstrapper)
+        public static ICanisterConfiguration? RegisterBigBookOfDataTypes(this ICanisterConfiguration? bootstrapper)
         {
             return bootstrapper?.AddAssembly(typeof(CanisterExtensions).Assembly)
                                .RegisterAspectus();

@@ -1,5 +1,5 @@
 ﻿using BenchmarkDotNet.Attributes;
-using BigBook.Registration;
+using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Concurrent;
 
 namespace BigBook.Benchmarks.Tests
@@ -44,7 +44,7 @@ namespace BigBook.Benchmarks.Tests
         {
             Data = new ConcurrentDictionary<string, object>();
             Data.AddOrUpdate("A", 1, (_, __) => 1);
-            Canister.Builder.CreateContainer(null).RegisterBigBookOfDataTypes().Build();
+            new ServiceCollection().AddCanisterModules(configure => configure.RegisterBigBookOfDataTypes());
         }
 
         [Benchmark]

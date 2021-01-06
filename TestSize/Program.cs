@@ -1,5 +1,5 @@
 ﻿using BigBook;
-using BigBook.Registration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace TestSize
 {
@@ -7,7 +7,7 @@ namespace TestSize
     {
         private static void Main(string[] args)
         {
-            Canister.Builder.CreateContainer(null).RegisterBigBookOfDataTypes().Build();
+            new ServiceCollection().AddCanisterModules(configure => configure.RegisterBigBookOfDataTypes());
             var Factory = Canister.Builder.Bootstrapper.Resolve<DynamoFactory>();
             for (var x = 0; x < 100000; ++x)
             {

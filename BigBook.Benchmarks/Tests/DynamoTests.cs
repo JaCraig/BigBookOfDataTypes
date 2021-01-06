@@ -1,5 +1,5 @@
 ﻿using BenchmarkDotNet.Attributes;
-using BigBook.Registration;
+using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Concurrent;
 using System.Dynamic;
 
@@ -8,17 +8,18 @@ namespace BigBook.Benchmarks.Tests
     [RPlotExporter, RankColumn, MemoryDiagnoser]
     public class DynamoTests
     {
-        [Params(100)]
-        public int Count;
-
         public object[] Data { get; set; }
 
         private object AnonymousType { get; set; }
 
         private DynamoFactory DynamoFactory { get; set; }
+
         private ExpandoObject ExpandoType { get; set; }
 
         private TestClass TestClassValue { get; set; }
+
+        [Params(100)]
+        public int Count;
 
         [Benchmark]
         public object[] AnnonymousTest()
@@ -117,7 +118,7 @@ namespace BigBook.Benchmarks.Tests
         [GlobalSetup]
         public void Setup()
         {
-            Canister.Builder.CreateContainer(null).RegisterBigBookOfDataTypes().AddAssembly(typeof(DynamoTests).Assembly).Build();
+            new ServiceCollection().AddCanisterModules(configure => configure.RegisterBigBookOfDataTypes().AddAssembly(typeof(DynamoTests).Assembly));
             AnonymousType = new { A = "Test data goes here" };
             dynamic Temp = new ExpandoObject();
             Temp.A = "Test data goes here";

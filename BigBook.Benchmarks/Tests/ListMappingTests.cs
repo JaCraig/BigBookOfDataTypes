@@ -1,16 +1,18 @@
 ﻿using BenchmarkDotNet.Attributes;
-using BigBook.Registration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace BigBook.Benchmarks.Tests
 {
     [MemoryDiagnoser]
     public class ListMappingTests
     {
+        private BigBook.Benchmarks.Tests.TestClasses.ListMapping<string, object> NewOne { get; } = new TestClasses.ListMapping<string, object>();
+
+        private BigBook.ListMapping<string, object> Original { get; } = new BigBook.ListMapping<string, object>();
+
         [Params(1, 10, 100, 1000)]
         public int Count;
 
-        private BigBook.Benchmarks.Tests.TestClasses.ListMapping<string, object> NewOne { get; } = new TestClasses.ListMapping<string, object>();
-        private BigBook.ListMapping<string, object> Original { get; } = new BigBook.ListMapping<string, object>();
         //[Benchmark]
         //public void NewerListAdd()
         //{
@@ -52,7 +54,7 @@ namespace BigBook.Benchmarks.Tests
         [GlobalSetup]
         public void Setup()
         {
-            Canister.Builder.CreateContainer(null).RegisterBigBookOfDataTypes().Build();
+            new ServiceCollection().AddCanisterModules(configure => configure.RegisterBigBookOfDataTypes());
         }
     }
 }

@@ -1,8 +1,8 @@
 ﻿using BenchmarkDotNet.Attributes;
 using BigBook.Conversion;
 using BigBook.ExtensionMethods.Utils;
-using BigBook.Registration;
 using Fast.Activator;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -221,7 +221,7 @@ namespace BigBook.Benchmarks.Tests
         [GlobalSetup]
         public void Setup()
         {
-            Canister.Builder.CreateContainer(null).RegisterBigBookOfDataTypes().AddAssembly(typeof(DynamoTests).Assembly).Build();
+            new ServiceCollection().AddCanisterModules(configure => configure.RegisterBigBookOfDataTypes().AddAssembly(typeof(DynamoTests).Assembly));
         }
 
         private enum TestEnum
