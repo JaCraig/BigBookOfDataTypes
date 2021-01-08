@@ -95,10 +95,7 @@ namespace BigBook.Benchmarks.Tests.TestClasses
         /// <param name="item">item to add</param>
         public void Add(KeyValuePair<string, object> item)
         {
-            lock (LockObject)
-            {
-                InternalAdd(item.Key, item.Value);
-            }
+            Add(item.Key, item.Value);
         }
 
         /// <summary>
@@ -125,12 +122,7 @@ namespace BigBook.Benchmarks.Tests.TestClasses
         /// <param name="tags">Tags to associate with the key/value pair</param>
         public void Add(string key, object value, params string[] tags)
         {
-            tags ??= Array.Empty<string>();
-            lock (LockObject)
-            {
-                InternalAdd(key, value);
-                TagMappings.Add(key, tags.Select(tag => tag.GetHashCode(StringComparison.Ordinal)));
-            }
+            Add(key, value, (IEnumerable<string>)tags);
         }
 
         /// <summary>
@@ -216,12 +208,7 @@ namespace BigBook.Benchmarks.Tests.TestClasses
         /// <returns>True if it is removed, false otherwise</returns>
         public bool Remove(KeyValuePair<string, object> item)
         {
-            lock (LockObject)
-            {
-                var Key = item.Key;
-                TagMappings.Remove(Key);
-                return InternalRemove(Key);
-            }
+            return Remove(item.Key);
         }
 
         /// <summary>

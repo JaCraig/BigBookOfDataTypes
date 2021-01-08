@@ -43,11 +43,7 @@ namespace BigBook
         /// <param name="list">The list.</param>
         public void Add(TFirst key, params TSecond[] list)
         {
-            FirstMapping.Add(key, list);
-            for (int x = 0; x < list.Length; ++x)
-            {
-                SecondMapping.Add(list[x], key);
-            }
+            Add(key, (IEnumerable<TSecond>)list);
         }
 
         /// <summary>
@@ -57,11 +53,7 @@ namespace BigBook
         /// <param name="list">The list.</param>
         public void Add(TSecond key, params TFirst[] list)
         {
-            SecondMapping.Add(key, list);
-            for (int x = 0; x < list.Length; ++x)
-            {
-                FirstMapping.Add(list[x], key);
-            }
+            Add(key, (IEnumerable<TFirst>)list);
         }
 
         /// <summary>

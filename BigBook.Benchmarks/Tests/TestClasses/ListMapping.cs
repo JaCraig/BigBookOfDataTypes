@@ -14,13 +14,6 @@ namespace BigBook.Benchmarks.Tests.TestClasses
         where T1 : notnull
     {
         /// <summary>
-        /// The lock object
-        /// </summary>
-        private readonly object LockObject = new object();
-
-        private string? _ToString;
-
-        /// <summary>
         /// The number of items in the listing
         /// </summary>
         public int Count => Items.Count;
@@ -44,6 +37,16 @@ namespace BigBook.Benchmarks.Tests.TestClasses
         /// Container holding the data
         /// </summary>
         protected Dictionary<T1, List<T2>> Items { get; } = new Dictionary<T1, List<T2>>();
+
+        /// <summary>
+        /// The lock object
+        /// </summary>
+        private readonly object LockObject = new object();
+
+        /// <summary>
+        /// To string
+        /// </summary>
+        private string? _ToString;
 
         /// <summary>
         /// Gets a list of values associated with a key
@@ -204,20 +207,7 @@ namespace BigBook.Benchmarks.Tests.TestClasses
         /// <returns>True if it is removed, false otherwise</returns>
         public bool Remove(KeyValuePair<T1, IEnumerable<T2>> item)
         {
-            if (!Contains(item))
-            {
-                return false;
-            }
-
-            foreach (var Value in item.Value)
-            {
-                if (!Remove(item.Key, Value))
-                {
-                    return false;
-                }
-            }
-
-            return true;
+            return Remove(item.Key, item.Value);
         }
 
         /// <summary>
@@ -233,7 +223,33 @@ namespace BigBook.Benchmarks.Tests.TestClasses
             {
                 if (!Items.TryGetValue(key, out var TempItems))
                     return false;
-                return TempItems.Remove(value);
+                var ReturnValue = TempItems.Remove(value);
+                if (TempItems.Count == 0)
+                    Items.Remove(key);
+                return ReturnValue;
+            }
+        }
+
+        /// <summary>
+        /// Removes a key value pair from the list mapping
+        /// </summary>
+        /// <param name="key">Key to remove</param>
+        /// <param name="value">Value to remove</param>
+        /// <returns>True if it is removed, false otherwise</returns>
+        public bool Remove(T1 key, IEnumerable<T2> value)
+        {
+            _ToString = null;
+            lock (LockObject)
+            {
+                if (!Items.TryGetValue(key, out var TempItems))
+                    return false;
+                var NewValue = TempItems.Except(value).ToList();
+                var ReturnValue = TempItems.Count != NewValue.Count;
+                if (NewValue.Count == 0)
+                    Items.Remove(key);
+                else if (ReturnValue)
+                    Items[key] = NewValue;
+                return ReturnValue;
             }
         }
 
@@ -248,7 +264,7 @@ namespace BigBook.Benchmarks.Tests.TestClasses
             var Builder = new StringBuilder();
             foreach (var Key in Keys)
             {
-                Builder.AppendLineFormat("{0}:{{{1}}}", Key?.ToString() ?? "", Items[Key].ToString(x => x?.ToString() ?? ""));
+                Builder.AppendLineFormat("{0}:{{{1}}}", Key?.ToString() ?? string.Empty, Items[Key].ToString(x => x?.ToString() ?? string.Empty));
             }
             _ToString = Builder.ToString();
             return _ToString;
@@ -274,6 +290,11 @@ namespace BigBook.Benchmarks.Tests.TestClasses
             }
         }
 
+        /// <summary>
+        /// Adds the values.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <param name="value">The value.</param>
         private void AddValues(T1 key, T2 value)
         {
             _ToString = null;
@@ -288,6 +309,11 @@ namespace BigBook.Benchmarks.Tests.TestClasses
             }
         }
 
+        /// <summary>
+        /// Adds the values.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <param name="values">The values.</param>
         private void AddValues(T1 key, IEnumerable<T2> values)
         {
             _ToString = null;

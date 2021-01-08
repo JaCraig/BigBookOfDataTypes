@@ -1,5 +1,6 @@
 ﻿using BenchmarkDotNet.Attributes;
 using Microsoft.Extensions.DependencyInjection;
+using System.Linq;
 
 namespace BigBook.Benchmarks.Tests
 {
@@ -24,30 +25,40 @@ namespace BigBook.Benchmarks.Tests
         //      });
         //}
 
-        [Benchmark]
-        public void NewerListAddAndRead()
-        {
-            Count.Times(x => NewOne.Add("A", new { A = 1 }));
-            NewOne.TryGetValue("A", out var Values);
-            NewOne.Clear();
-        }
-
-        //[Benchmark(Baseline = true)]
-        //public void OriginalListAdd()
+        //[Benchmark]
+        //public void NewerListAddAndRead()
         //{
-        //    Parallel.For(0, 10, x =>
-        //    {
-        //        Original.Add("A", new { A = 1 });
-        //        Original.Add("B", new { A = 1 });
-        //        Original.Add("C", new { A = 1 });
-        //    });
+        //    Count.Times(x => NewOne.Add("A", new { A = 1 }));
+        //    NewOne.TryGetValue("A", out var Values);
+        //    NewOne.Clear();
         //}
 
         [Benchmark]
-        public void OriginalListAddAndRead()
+        public void NewerListAddAndRemove()
+        {
+            Count.Times(x => NewOne.Add("A", new { A = 1 }));
+            NewOne.TryGetValue("A", out var Values);
+            NewOne.Remove("A", Values.Take(10).ToList());
+            NewOne.Clear();
+        }
+
+        //[Benchmark]
+        //public void OriginalListAddAndRead()
+        //{
+        //    Count.Times(x => Original.Add("A", new { A = 1 }));
+        //    Original.TryGetValue("A", out var Values);
+        //    Original.Clear();
+        //}
+
+        [Benchmark(Baseline = true)]
+        public void OriginalListAddAndRemove()
         {
             Count.Times(x => Original.Add("A", new { A = 1 }));
             Original.TryGetValue("A", out var Values);
+            foreach (var Item in Values.Take(10).ToList())
+            {
+                Original.Remove("A", Item);
+            }
             Original.Clear();
         }
 

@@ -34,7 +34,7 @@ namespace BigBook.Caching.Default
         /// <summary>
         /// Keys
         /// </summary>
-        public override ICollection<string> Keys => InternalCache.Keys;
+        public override ICollection<string> Keys => keys;
 
         /// <summary>
         /// Name
@@ -49,7 +49,12 @@ namespace BigBook.Caching.Default
         /// <summary>
         /// Internal cache
         /// </summary>
-        protected Dictionary<string, object> InternalCache { get; } = new Dictionary<string, object>();
+        protected Dictionary<int, object> InternalCache { get; } = new Dictionary<int, object>();
+
+        /// <summary>
+        /// The keys
+        /// </summary>
+        private List<string> keys = new List<string>();
 
         /// <summary>
         /// Determines if the item is in the cache
@@ -58,7 +63,9 @@ namespace BigBook.Caching.Default
         /// <returns></returns>
         public override bool Contains(KeyValuePair<string, object> item)
         {
-            return InternalCache.Contains(item);
+            if (!InternalCache.TryGetValue(item.Key.GetHashCode(StringComparison.Ordinal), out var Value))
+                return false;
+            return Value.Equals(item.Value);
         }
 
         /// <summary>
@@ -68,7 +75,7 @@ namespace BigBook.Caching.Default
         /// <returns>True if it is there, false otherwise</returns>
         public override bool ContainsKey(string key)
         {
-            return InternalCache.ContainsKey(key);
+            return InternalCache.ContainsKey(key.GetHashCode(StringComparison.Ordinal));
         }
 
         /// <summary>
@@ -78,7 +85,11 @@ namespace BigBook.Caching.Default
         /// <param name="arrayIndex">Index to start at</param>
         public override void CopyTo(KeyValuePair<string, object>[] array, int arrayIndex)
         {
-            InternalCache.ToArray().CopyTo(array, arrayIndex);
+            var Values = InternalCache.ToArray();
+            for (int x = arrayIndex; x < array.Length; ++x)
+            {
+                array[x] = new KeyValuePair<string, object>(keys[x], Values[x].Value);
+            }
         }
 
         /// <summary>
@@ -87,7 +98,12 @@ namespace BigBook.Caching.Default
         /// <returns>The enumerator</returns>
         public override IEnumerator<KeyValuePair<string, object>> GetEnumerator()
         {
-            return InternalCache.GetEnumerator();
+            int x = 0;
+            foreach (var Item in InternalCache)
+            {
+                yield return new KeyValuePair<string, object>(keys[x], Item.Value);
+                ++x;
+            }
         }
 
         /// <summary>
@@ -102,6 +118,7 @@ namespace BigBook.Caching.Default
             {
                 Item.Dispose();
             }
+            Keys.Clear();
             InternalCache.Clear();
         }
 
@@ -112,10 +129,14 @@ namespace BigBook.Caching.Default
         /// <param name="value">The value.</param>
         protected override void InternalAdd(string key, object value)
         {
-            if (InternalCache.TryGetValue(key, out _))
-                InternalCache[key] = value;
+            var KeyHash = key.GetHashCode(StringComparison.Ordinal);
+            if (InternalCache.TryGetValue(KeyHash, out _))
+                InternalCache[KeyHash] = value;
             else
-                InternalCache.Add(key, value);
+            {
+                Keys.Add(key);
+                InternalCache.Add(KeyHash, value);
+            }
         }
 
         /// <summary>
@@ -124,6 +145,7 @@ namespace BigBook.Caching.Default
         protected override void InternalClear()
         {
             InternalCache.Clear();
+            Keys.Clear();
         }
 
         /// <summary>
@@ -133,7 +155,10 @@ namespace BigBook.Caching.Default
         /// <returns>True if it is removed, false otherwise.</returns>
         protected override bool InternalRemove(string key)
         {
-            return InternalCache.Remove(key);
+            var KeyHash = key.GetHashCode(StringComparison.Ordinal);
+            if (!Keys.Remove(key))
+                return false;
+            return InternalCache.Remove(KeyHash);
         }
 
         /// <summary>
@@ -144,7 +169,8 @@ namespace BigBook.Caching.Default
         /// <returns>True if it is found, false otherwise</returns>
         protected override bool InternalTryGetValue(string key, out object value)
         {
-            return InternalCache.TryGetValue(key, out value);
+            var KeyHash = key.GetHashCode(StringComparison.Ordinal);
+            return InternalCache.TryGetValue(KeyHash, out value);
         }
     }
 }

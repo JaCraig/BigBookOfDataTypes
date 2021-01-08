@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="BenchmarkDotNet" Version="0.12.1" />
+    <PackageReference Include="LazyCache" Version="2.1.2" />
     <PackageReference Include="Microsoft.Extensions.ObjectPool" Version="5.0.1" />
   </ItemGroup>
 
