@@ -8,9 +8,7 @@ Big Book of Data Types is a set of classes and extension methods to help with da
 
 Big Book of Data Types relies on [Canister](https://github.com/JaCraig/Canister) in order to hook itself up. In order for this to work, you must do the following at startup:
 
-    Canister.Builder.CreateContainer(new List<ServiceDescriptor>())
-                    .RegisterBigBookOfDataTypes()
-                    .Build();
+    services.AddCanisterModules(configure => configure.RegisterBigBookOfDataTypes());
 					
 The RegisterBigBookOfDataTypes function is an extension method that registers it with the IoC container. When this is done, the library is ready to use.
 
@@ -61,7 +59,6 @@ Install-Package BigBook
 
 In order to build the library you will require the following:
 
-1. Visual Studio 2015 with Update 3
-2. .Net Core 1.0 SDK
+1. Visual Studio 2019
 
 Other than that, just clone the project and you should be able to load the solution and build without too much effort.
