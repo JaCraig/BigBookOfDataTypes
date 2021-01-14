@@ -26,7 +26,6 @@ namespace BigBook.Tests.Fixtures
                     );
             }
             Canister.Builder.Bootstrapper.Resolve<BigBook.DataMapper.Manager>();
-            Canister.Builder.Bootstrapper.Resolve<BigBook.Caching.Manager>();
 
             new DirectoryInfo(@".\Testing").Create();
             new DirectoryInfo(@".\App_Data").Create();

@@ -14,7 +14,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using BigBook.Caching.Interfaces;
 using BigBook.Comparison;
 using BigBook.DataMapper.Interfaces;
 using BigBook.DynamoUtils;
@@ -42,9 +41,7 @@ namespace BigBook.CanisterModules
         public void Load(IBootstrapper bootstrapper)
         {
             var objectPoolProvider = new DefaultObjectPoolProvider();
-            bootstrapper?.RegisterAll<ICache>()
-                         .Register<Caching.Manager>(ServiceLifetime.Singleton)
-                         .Register(typeof(GenericComparer<>), ServiceLifetime.Singleton)
+            bootstrapper?.Register(typeof(GenericComparer<>), ServiceLifetime.Singleton)
                          .Register(typeof(GenericEqualityComparer<>), ServiceLifetime.Singleton)
                          .RegisterAll<IDataMapper>()
                          .RegisterAll<IMapperModule>()
