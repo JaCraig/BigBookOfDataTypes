@@ -148,7 +148,7 @@ namespace BigBook
         /// </summary>
         /// <param name="input">The input.</param>
         /// <returns>The resulting string.</returns>
-        public static string AddSpaces(this string input)
+        public static string AddSpaces(this string? input)
         {
             if (string.IsNullOrWhiteSpace(input))
             {
@@ -211,7 +211,7 @@ namespace BigBook
         /// <param name="length"></param>
         /// <param name="padding"></param>
         /// <returns>The centered string</returns>
-        public static string Center(this string input, int length, string padding = " ")
+        public static string Center(this string? input, int length, string padding = " ")
         {
             input ??= "";
             padding ??= "";
@@ -239,7 +239,7 @@ namespace BigBook
         /// The type of encoding the string is converted into (defaults to UTF8)
         /// </param>
         /// <returns>string of the byte array</returns>
-        public static string Encode(this string input, Encoding? originalEncodingUsing = null, Encoding? encodingUsing = null)
+        public static string Encode(this string? input, Encoding? originalEncodingUsing = null, Encoding? encodingUsing = null)
         {
             if (string.IsNullOrEmpty(input))
             {
@@ -258,7 +258,7 @@ namespace BigBook
         /// <param name="input">Input string</param>
         /// <param name="encodingUsing">The type of encoding the string is using (defaults to UTF8)</param>
         /// <returns>string in the encoding format</returns>
-        public static string FromBase64(this string input, Encoding encodingUsing)
+        public static string FromBase64(this string? input, Encoding encodingUsing)
         {
             if (string.IsNullOrEmpty(input))
             {
@@ -275,7 +275,7 @@ namespace BigBook
         /// </summary>
         /// <param name="input">Input string</param>
         /// <returns>A byte array equivalent of the base 64 string</returns>
-        public static byte[] FromBase64(this string input) => string.IsNullOrEmpty(input) ? Array.Empty<byte>() : Convert.FromBase64String(input);
+        public static byte[] FromBase64(this string? input) => string.IsNullOrEmpty(input) ? Array.Empty<byte>() : Convert.FromBase64String(input);
 
         /// <summary>
         /// Is this value of the specified type
@@ -283,7 +283,7 @@ namespace BigBook
         /// <param name="value">Value to compare</param>
         /// <param name="comparisonType">Comparison type</param>
         /// <returns>True if it is of the type specified, false otherwise</returns>
-        public static bool Is(this string value, StringCompare comparisonType)
+        public static bool Is(this string? value, StringCompare comparisonType)
         {
             if (string.IsNullOrEmpty(value))
                 return false;
@@ -321,7 +321,7 @@ namespace BigBook
         /// <param name="value2">Value 2 to compare</param>
         /// <param name="comparisonType">Comparison type</param>
         /// <returns>True if it is of the type specified, false otherwise</returns>
-        public static bool Is(this string value1, string value2, StringCompare comparisonType)
+        public static bool Is(this string? value1, string value2, StringCompare comparisonType)
         {
             if (comparisonType != StringCompare.Anagram)
             {
@@ -337,7 +337,7 @@ namespace BigBook
         /// <param name="input">Input text</param>
         /// <param name="filter">Regex expression of text to keep</param>
         /// <returns>The input text minus everything not in the filter text.</returns>
-        public static string Keep(this string input, string filter)
+        public static string Keep(this string? input, string filter)
         {
             if (string.IsNullOrEmpty(input) || string.IsNullOrEmpty(filter))
             {
@@ -362,7 +362,7 @@ namespace BigBook
         /// <param name="input">Input text</param>
         /// <param name="filter">Predefined filter to use (can be combined as they are flags)</param>
         /// <returns>The input text minus everything not in the filter text.</returns>
-        public static string Keep(this string input, StringFilter filter)
+        public static string Keep(this string? input, StringFilter filter)
         {
             if (string.IsNullOrEmpty(input))
             {
@@ -379,7 +379,7 @@ namespace BigBook
         /// <param name="input">Input string</param>
         /// <param name="length">x number of characters to return</param>
         /// <returns>The resulting string</returns>
-        public static string Left(this string input, int length)
+        public static string Left(this string? input, int length)
         {
             if (length <= 0)
             {
@@ -395,7 +395,7 @@ namespace BigBook
         /// <param name="value1">Value 1</param>
         /// <param name="value2">Value 2</param>
         /// <returns>The Levenshtein distance (-1 if null values found)</returns>
-        public static int LevenshteinDistance(this string value1, string value2)
+        public static int LevenshteinDistance(this string? value1, string value2)
         {
             if (value1 is null || value2 is null)
             {
@@ -435,7 +435,7 @@ namespace BigBook
         /// <param name="endPosition">End position (counting from the left)</param>
         /// <param name="mask">Mask character to use</param>
         /// <returns>The masked string</returns>
-        public static string MaskLeft(this string input, int endPosition = 4, char mask = '#')
+        public static string MaskLeft(this string? input, int endPosition = 4, char mask = '#')
         {
             if (string.IsNullOrEmpty(input))
                 return string.Empty;
@@ -455,7 +455,7 @@ namespace BigBook
         /// <param name="startPosition">Start position (counting from the left)</param>
         /// <param name="mask">Mask character to use</param>
         /// <returns>The masked string</returns>
-        public static string MaskRight(this string input, int startPosition = 4, char mask = '#')
+        public static string MaskRight(this string? input, int startPosition = 4, char mask = '#')
         {
             if (string.IsNullOrEmpty(input))
             {
@@ -482,7 +482,7 @@ namespace BigBook
         /// <param name="Input">Input file</param>
         /// <param name="Type">Type of minification to run</param>
         /// <returns>A stripped file</returns>
-        public static string Minify(this string Input, MinificationType Type = MinificationType.HTML)
+        public static string Minify(this string? Input, MinificationType Type = MinificationType.HTML)
         {
             if (string.IsNullOrEmpty(Input))
             {
@@ -508,7 +508,7 @@ namespace BigBook
         /// <param name="input">input text</param>
         /// <param name="match">The string to match (can be regex)</param>
         /// <returns>The number of times the string occurs</returns>
-        public static int NumberTimesOccurs(this string input, string match) => string.IsNullOrEmpty(input) ? 0 : new Regex(match).Matches(input).Count;
+        public static int NumberTimesOccurs(this string? input, string match) => string.IsNullOrEmpty(input) ? 0 : new Regex(match).Matches(input).Count;
 
         /// <summary>
         /// Removes everything that is in the filter text from the input.
@@ -516,7 +516,7 @@ namespace BigBook
         /// <param name="input">Input text</param>
         /// <param name="filter">Regex expression of text to remove</param>
         /// <returns>Everything not in the filter text.</returns>
-        public static string Remove(this string input, string filter)
+        public static string? Remove(this string? input, string filter)
         {
             if (string.IsNullOrEmpty(input) || string.IsNullOrEmpty(filter))
             {
@@ -532,7 +532,7 @@ namespace BigBook
         /// <param name="input">Input text</param>
         /// <param name="filter">Predefined filter to use (can be combined as they are flags)</param>
         /// <returns>Everything not in the filter text.</returns>
-        public static string Remove(this string input, StringFilter filter)
+        public static string? Remove(this string? input, StringFilter filter)
         {
             if (string.IsNullOrEmpty(input))
             {
@@ -548,7 +548,7 @@ namespace BigBook
         /// </summary>
         /// <param name="input">The input.</param>
         /// <returns>The resulting string with diacritics removed.</returns>
-        public static string RemoveDiacritics(this string input)
+        public static string RemoveDiacritics(this string? input)
         {
             if (string.IsNullOrEmpty(input))
                 return string.Empty;
@@ -566,7 +566,7 @@ namespace BigBook
         /// <param name="filter">Predefined filter to use (can be combined as they are flags)</param>
         /// <param name="value">Value to fill in</param>
         /// <returns>The input text with the various items replaced</returns>
-        public static string Replace(this string input, StringFilter filter, string value = "")
+        public static string Replace(this string? input, StringFilter filter, string value = "")
         {
             if (string.IsNullOrEmpty(input))
             {
@@ -582,7 +582,7 @@ namespace BigBook
         /// </summary>
         /// <param name="input">Input string</param>
         /// <returns>The reverse of the input string</returns>
-        public static string Reverse(this string input)
+        public static string Reverse(this string? input)
         {
             if (string.IsNullOrEmpty(input))
             {
@@ -598,7 +598,7 @@ namespace BigBook
         /// <param name="input">Input string</param>
         /// <param name="length">x number of characters to return</param>
         /// <returns>The resulting string</returns>
-        public static string Right(this string input, int length)
+        public static string Right(this string? input, int length)
         {
             if (string.IsNullOrEmpty(input) || length <= 0)
             {
@@ -614,7 +614,7 @@ namespace BigBook
         /// </summary>
         /// <param name="html">HTML laiden string</param>
         /// <returns>HTML-less string</returns>
-        public static string StripHTML(this string html)
+        public static string StripHTML(this string? html)
         {
             if (string.IsNullOrEmpty(html))
             {
@@ -631,7 +631,7 @@ namespace BigBook
         /// </summary>
         /// <param name="content">Content</param>
         /// <returns>The stripped string</returns>
-        public static string StripIllegalXML(this string content)
+        public static string StripIllegalXML(this string? content)
         {
             if (string.IsNullOrEmpty(content))
             {
@@ -670,7 +670,7 @@ namespace BigBook
         /// <param name="input">Input string</param>
         /// <param name="characters">Characters to strip (defaults to a space)</param>
         /// <returns>The Input string with specified characters stripped out</returns>
-        public static string StripLeft(this string input, string characters = " ")
+        public static string? StripLeft(this string? input, string characters = " ")
         {
             if (string.IsNullOrEmpty(input) || string.IsNullOrEmpty(characters))
             {
@@ -687,7 +687,7 @@ namespace BigBook
         /// <param name="input">Input string</param>
         /// <param name="characters">Characters to strip (defaults to a space)</param>
         /// <returns>The Input string with specified characters stripped out</returns>
-        public static string StripRight(this string input, string characters = " ")
+        public static string? StripRight(this string? input, string characters = " ")
         {
             if (string.IsNullOrEmpty(input) || string.IsNullOrEmpty(characters))
             {
@@ -714,7 +714,7 @@ namespace BigBook
         /// The type of encoding the string is using (defaults to UTF8)
         /// </param>
         /// <returns>Bas64 string</returns>
-        public static string ToBase64String(this string input, Encoding? originalEncodingUsing = null)
+        public static string ToBase64String(this string? input, Encoding? originalEncodingUsing = null)
         {
             if (string.IsNullOrEmpty(input))
             {
@@ -732,7 +732,7 @@ namespace BigBook
         /// <param name="input">input string</param>
         /// <param name="encodingUsing">The type of encoding the string is using (defaults to UTF8)</param>
         /// <returns>the byte array representing the string</returns>
-        public static byte[] ToByteArray(this string input, Encoding? encodingUsing = null)
+        public static byte[] ToByteArray(this string? input, Encoding? encodingUsing = null)
         {
             encodingUsing ??= Encoding.UTF8;
             return string.IsNullOrEmpty(input) ? Array.Empty<byte>() : encodingUsing.GetBytes(input);
@@ -745,7 +745,7 @@ namespace BigBook
         /// <param name="caseOfString">Capitalization type to use</param>
         /// <param name="provider">CultureInfo to use. Defaults to InvariantCulture.</param>
         /// <returns>Capitalizes the string based on the case specified</returns>
-        public static string ToString(this string input, StringCase caseOfString, CultureInfo? provider = null)
+        public static string ToString(this string? input, StringCase caseOfString, CultureInfo? provider = null)
         {
             if (string.IsNullOrEmpty(input))
             {
@@ -816,7 +816,7 @@ namespace BigBook
         /// <param name="format">Format of the output string</param>
         /// <param name="provider">String formatter provider (defaults to GenericStringFormatter)</param>
         /// <returns>The formatted string</returns>
-        public static string ToString(this string input, string format, IStringFormatter? provider = null)
+        public static string ToString(this string? input, string format, IStringFormatter? provider = null)
         {
             provider ??= new GenericStringFormatter();
             return provider.Format(input, format);
@@ -834,7 +834,7 @@ namespace BigBook
         /// Seperator character/string to use to describe the end of the property name
         /// </param>
         /// <returns>The formatted string</returns>
-        public static string ToString(this string input, object inputObject, string startSeperator = "{", string endSeperator = "}")
+        public static string? ToString(this string? input, object inputObject, string startSeperator = "{", string endSeperator = "}")
         {
             if (inputObject is null)
             {
@@ -847,7 +847,7 @@ namespace BigBook
                 .ForEach(x =>
                 {
                     var Value = x.GetValue(inputObject, null);
-                    input = input.Replace(startSeperator + x.Name + endSeperator, Value is null ? "" : Value.ToString(), StringComparison.Ordinal);
+                    input = input?.Replace(startSeperator + x.Name + endSeperator, Value is null ? "" : Value.ToString(), StringComparison.Ordinal);
                 });
             return input;
         }
@@ -858,7 +858,7 @@ namespace BigBook
         /// <param name="input">Input string</param>
         /// <param name="pairs">Key/value pairs. Replaces the key with the corresponding value.</param>
         /// <returns>The string after the changes have been made</returns>
-        public static string ToString(this string input, params KeyValuePair<string, string>[] pairs)
+        public static string? ToString(this string? input, params KeyValuePair<string, string>[] pairs)
         {
             if (string.IsNullOrEmpty(input))
             {
@@ -880,7 +880,7 @@ namespace BigBook
         /// <param name="outputFormat">Output format</param>
         /// <param name="options">Regex options</param>
         /// <returns>The input string formatted by using the regex string</returns>
-        public static string ToString(this string input, string format, string outputFormat, RegexOptions options = RegexOptions.None)
+        public static string ToString(this string? input, string format, string outputFormat, RegexOptions options = RegexOptions.None)
         {
             if (string.IsNullOrEmpty(input) || string.IsNullOrEmpty(format) || string.IsNullOrEmpty(outputFormat))
             {

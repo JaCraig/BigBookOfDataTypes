@@ -27,6 +27,6 @@ namespace BigBook.Formatters.Interfaces
         /// <param name="input">Input string</param>
         /// <param name="formatPattern">Format pattern</param>
         /// <returns>The formatted string</returns>
-        string Format(string input, string formatPattern);
+        string Format(string? input, string formatPattern);
     }
 }
