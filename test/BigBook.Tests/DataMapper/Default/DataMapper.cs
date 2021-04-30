@@ -1,9 +1,16 @@
-﻿using Xunit;
+﻿using BigBook.DataMapper.Default;
+using BigBook.Tests.BaseClasses;
+using Xunit;
 
 namespace BigBook.Tests.DataMapper.Default
 {
-    public class DataMapperTests
+    public class DataMapperTests : TestBaseClass<DefaultDataMapper>
     {
+        public DataMapperTests()
+        {
+            TestObject = new DefaultDataMapper();
+        }
+
         [Fact]
         public void Creation()
         {

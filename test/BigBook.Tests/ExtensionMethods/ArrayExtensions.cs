@@ -1,9 +1,12 @@
-﻿using Xunit;
+﻿using BigBook.Tests.BaseClasses;
+using Xunit;
 
 namespace BigBook.Tests.ExtensionMethods
 {
-    public class ArrayExtensionsTests
+    public class ArrayExtensionsTests : TestBaseClass
     {
+        protected override System.Type ObjectType => typeof(ArrayExtensions);
+
         [Fact]
         public void ClearGenericTest()
         {

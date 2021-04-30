@@ -1,10 +1,16 @@
-﻿using System;
+﻿using BigBook.Tests.BaseClasses;
+using System;
 using Xunit;
 
 namespace BigBook.Tests
 {
-    public class DateSpanTests
+    public class DateSpanTests : TestBaseClass<DateSpan>
     {
+        public DateSpanTests()
+        {
+            TestObject = new BigBook.DateSpan(new DateTime(1999, 1, 1), new DateTime(2009, 1, 1));
+        }
+
         [Fact]
         public void CompareTest()
         {

@@ -5,8 +5,10 @@ using Xunit;
 
 namespace BigBook.Tests.ExtensionMethods
 {
-    public class IDictionaryExtensionsTests : TestingDirectoryFixture
+    public class IDictionaryExtensionsTests : TestBaseClass
     {
+        protected override System.Type ObjectType => typeof(IDictionaryExtensions);
+
         [Fact]
         public void CopyToTest()
         {

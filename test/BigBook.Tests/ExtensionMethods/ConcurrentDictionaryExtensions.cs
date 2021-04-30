@@ -1,11 +1,14 @@
-﻿using System.Collections.Concurrent;
+﻿using BigBook.Tests.BaseClasses;
+using System.Collections.Concurrent;
 using System.Linq;
 using Xunit;
 
 namespace BigBook.Tests.ExtensionMethods
 {
-    public class ConcurrentDictionaryExtensionsTests
+    public class ConcurrentDictionaryExtensionsTests : TestBaseClass
     {
+        protected override System.Type ObjectType => typeof(ConcurrentDictionaryExtensions);
+
         [Fact]
         public void CopyToTest()
         {

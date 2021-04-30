@@ -3,8 +3,10 @@ using Xunit;
 
 namespace BigBook.Tests.ExtensionMethods
 {
-    public class IComparableExtensionsTests : TestingDirectoryFixture
+    public class IComparableExtensionsTests : TestBaseClass
     {
+        protected override System.Type ObjectType => typeof(IComparableExtensions);
+
         [Fact]
         public void BetweenTest()
         {

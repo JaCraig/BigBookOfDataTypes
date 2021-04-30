@@ -1,12 +1,19 @@
-﻿using System.Linq;
+﻿using BigBook.Tests.BaseClasses;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using Xunit;
 
 namespace BigBook.Tests
 {
-    public class TaskQueueTests
+    public class TaskQueueTests : TestBaseClass<TaskQueue<int>>
     {
+        public TaskQueueTests()
+        {
+            var Results = new double[100];
+            TestObject = new TaskQueue<int>(4, x => { Results[x] = 2 * F(1); return true; });
+        }
+
         private readonly double EPSILON = 0.0001d;
 
         [Fact]

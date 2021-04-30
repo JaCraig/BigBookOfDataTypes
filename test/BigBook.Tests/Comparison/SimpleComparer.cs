@@ -1,10 +1,16 @@
 ﻿using BigBook.Comparison;
+using BigBook.Tests.BaseClasses;
 using Xunit;
 
 namespace BigBook.Tests.Comparison
 {
-    public class SimpleComparerTests
+    public class SimpleComparerTests : TestBaseClass<SimpleComparer<string>>
     {
+        public SimpleComparerTests()
+        {
+            TestObject = new SimpleComparer<string>((x, y) => string.Compare(x, y, System.StringComparison.Ordinal));
+        }
+
         [Fact]
         public void Compare()
         {

@@ -5,12 +5,14 @@ using Xunit;
 
 namespace BigBook.Tests.ExtensionMethods
 {
-    public class StreamExtensionsTests : TestingDirectoryFixture
+    public class StreamExtensionsTests : TestBaseClass
     {
         public StreamExtensionsTests()
         {
             new DirectoryInfo(@".\Testing").Create();
         }
+
+        protected override System.Type ObjectType => typeof(StreamExtensions);
 
         [Fact]
         public void ReadAll()

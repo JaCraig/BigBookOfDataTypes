@@ -1,11 +1,17 @@
 ﻿using BigBook;
+using BigBook.Tests.BaseClasses;
 using System.Linq;
 using Xunit;
 
 namespace BigBook.Tests
 {
-    public class TagDictionaryTests
+    public class TagDictionaryTests : TestBaseClass<TagDictionary<string, string>>
     {
+        public TagDictionaryTests()
+        {
+            TestObject = new TagDictionary<string, string>();
+        }
+
         [Fact]
         public void BasicTest()
         {

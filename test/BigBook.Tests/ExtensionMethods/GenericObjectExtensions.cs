@@ -8,8 +8,10 @@ using Xunit;
 
 namespace BigBook.Tests.ExtensionMethods
 {
-    public class GenericObjectExtensionsTests : TestingDirectoryFixture
+    public class GenericObjectExtensionsTests : TestBaseClass
     {
+        protected override System.Type ObjectType => typeof(GenericObjectExtensions);
+
         [Fact]
         public void Execute1()
         {

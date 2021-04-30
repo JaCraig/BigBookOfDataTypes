@@ -1,12 +1,15 @@
-﻿using Xunit;
+﻿using BigBook.Tests.BaseClasses;
+using Xunit;
 
 namespace BigBook.Tests.ExtensionMethods
 {
     /// <summary>
     /// Permutation extensions
     /// </summary>
-    public class PermutationExtensionsTests
+    public class PermutationExtensionsTests : TestBaseClass
     {
+        protected override System.Type ObjectType => typeof(PermutationExtensions);
+
         [Fact]
         public void BasicTest()
         {

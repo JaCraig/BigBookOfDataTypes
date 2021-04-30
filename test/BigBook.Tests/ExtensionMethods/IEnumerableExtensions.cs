@@ -9,8 +9,10 @@ using Xunit;
 
 namespace BigBook.Tests.ExtensionMethods
 {
-    public class IEnumerableExtensionsTests : TestingDirectoryFixture
+    public class IEnumerableExtensionsTests : TestBaseClass
     {
+        protected override System.Type ObjectType => typeof(IEnumerableExtensions);
+
         [Fact]
         public void Concat()
         {

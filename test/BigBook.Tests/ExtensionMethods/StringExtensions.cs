@@ -8,8 +8,10 @@ using Xunit;
 
 namespace BigBook.Tests.ExtensionMethods
 {
-    public class StringExtensionsTests : TestingDirectoryFixture
+    public class StringExtensionsTests : TestBaseClass
     {
+        protected override System.Type ObjectType => typeof(StringExtensions);
+
         [Fact]
         public void AddSpaces()
         {

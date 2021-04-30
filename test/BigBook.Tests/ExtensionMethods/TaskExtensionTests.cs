@@ -1,10 +1,13 @@
-﻿using System.Threading.Tasks;
+﻿using BigBook.Tests.BaseClasses;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace BigBook.Tests.ExtensionMethods
 {
-    public class TaskExtensionTests
+    public class TaskExtensionTests : TestBaseClass
     {
+        protected override System.Type ObjectType => typeof(TaskExtensions);
+
         [Fact]
         public void RunSync()
         {

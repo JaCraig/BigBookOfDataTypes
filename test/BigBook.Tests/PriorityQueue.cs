@@ -1,9 +1,15 @@
-﻿using Xunit;
+﻿using BigBook.Tests.BaseClasses;
+using Xunit;
 
 namespace BigBook.Tests
 {
-    public class PriorityQueueTests
+    public class PriorityQueueTests : TestBaseClass<PriorityQueue<int>>
     {
+        public PriorityQueueTests()
+        {
+            TestObject = new PriorityQueue<int>();
+        }
+
         [Fact]
         public void PopTest()
         {

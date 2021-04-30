@@ -1,5 +1,4 @@
-﻿using BigBook.Tests.BaseClasses;
-using FileCurator;
+﻿using FileCurator;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using Xunit;
@@ -17,13 +16,7 @@ namespace BigBook.Tests.Fixtures
         {
             if (Canister.Builder.Bootstrapper == null)
             {
-                new ServiceCollection().AddCanisterModules(configure => configure.AddAssembly(typeof(TestingDirectoryFixture).Assembly,
-                        typeof(FileInfo).Assembly,
-                        typeof(TestFountain.FountainDataAttribute).Assembly,
-                        typeof(Mirage.Random).Assembly,
-                        typeof(SerialBox.SerialBox).Assembly)
-                        .RegisterBigBookOfDataTypes()
-                    );
+                new ServiceCollection().AddCanisterModules();
             }
             Canister.Builder.Bootstrapper.Resolve<BigBook.DataMapper.Manager>();
 

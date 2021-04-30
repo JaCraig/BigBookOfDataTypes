@@ -1,9 +1,15 @@
-﻿using Xunit;
+﻿using BigBook.Tests.BaseClasses;
+using Xunit;
 
 namespace BigBook.Tests
 {
-    public class TableTests
+    public class TableTests : TestBaseClass<Table>
     {
+        public TableTests()
+        {
+            TestObject = new Table("Column1", "Column2", "Column3");
+        }
+
         [Fact]
         public void CreationTest()
         {

@@ -1,10 +1,16 @@
-﻿using System.Collections.Specialized;
+﻿using BigBook.Tests.BaseClasses;
+using System.Collections.Specialized;
 using Xunit;
 
 namespace BigBook.Tests
 {
-    public class ObservableListTests
+    public class ObservableListTests : TestBaseClass<ObservableList<int>>
     {
+        public ObservableListTests()
+        {
+            TestObject = new BigBook.ObservableList<int>();
+        }
+
         [Fact]
         public void Add()
         {

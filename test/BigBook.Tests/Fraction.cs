@@ -1,9 +1,15 @@
-﻿using Xunit;
+﻿using BigBook.Tests.BaseClasses;
+using Xunit;
 
 namespace BigBook.Tests
 {
-    public class FractionTests
+    public class FractionTests : TestBaseClass<Fraction>
     {
+        public FractionTests()
+        {
+            TestObject = new BigBook.Fraction(9, 27);
+        }
+
         [Fact]
         public void BasicTest()
         {

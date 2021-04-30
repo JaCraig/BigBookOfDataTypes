@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BigBook.Tests.BaseClasses;
+using System;
 using Xunit;
 
 namespace BigBook.Tests.ExtensionMethods
@@ -6,8 +7,10 @@ namespace BigBook.Tests.ExtensionMethods
     /// <summary>
     /// Predicate extensions
     /// </summary>
-    public class PredicateExtensionsTests
+    public class PredicateExtensionsTests : TestBaseClass
     {
+        protected override System.Type ObjectType => typeof(PredicateExtensions);
+
         [Fact]
         public void AddToSet()
         {

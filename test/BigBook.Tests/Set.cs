@@ -1,9 +1,15 @@
-﻿using Xunit;
+﻿using BigBook.Tests.BaseClasses;
+using Xunit;
 
 namespace BigBook.Tests
 {
-    public class SetTests
+    public class SetTests : TestBaseClass<Set<int>>
     {
+        public SetTests()
+        {
+            TestObject = new Set<int>();
+        }
+
         [Fact]
         public void BasicTest()
         {

@@ -1,12 +1,18 @@
 ﻿using BigBook;
+using BigBook.Tests.BaseClasses;
 using System;
 using System.Linq;
 using Xunit;
 
 namespace BigBook.Tests
 {
-    public class RingBufferTests
+    public class RingBufferTests : TestBaseClass<RingBuffer<int>>
     {
+        public RingBufferTests()
+        {
+            TestObject = new RingBuffer<int>(10);
+        }
+
         [Fact]
         public void RandomTest()
         {

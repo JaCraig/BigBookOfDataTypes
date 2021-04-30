@@ -1,10 +1,16 @@
 ﻿using BigBook.Comparison;
+using BigBook.Tests.BaseClasses;
 using Xunit;
 
 namespace BigBook.Tests.Comparison
 {
-    public class GenericComparerTests
+    public class GenericComparerTests : TestBaseClass<GenericComparer<string>>
     {
+        public GenericComparerTests()
+        {
+            TestObject = new GenericComparer<string>();
+        }
+
         [Fact]
         public void Compare()
         {

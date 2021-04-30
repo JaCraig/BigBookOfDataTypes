@@ -4,8 +4,17 @@ using Xunit;
 
 namespace BigBook.Tests
 {
-    public class ListMappingTests : TestingDirectoryFixture
+    public class ListMappingTests : TestBaseClass<ListMapping<string, int>>
     {
+        public ListMappingTests()
+        {
+            TestObject = new ListMapping<string, int>
+            {
+                { "A", 0 },
+                { "A", 1 }
+            };
+        }
+
         [Fact]
         public void ContainsTest()
         {

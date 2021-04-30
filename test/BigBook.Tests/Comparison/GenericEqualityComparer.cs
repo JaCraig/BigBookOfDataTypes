@@ -4,8 +4,13 @@ using Xunit;
 
 namespace BigBook.Tests.Comparison
 {
-    public class GenericEqualityComparerTests : TestingDirectoryFixture
+    public class GenericEqualityComparerTests : TestBaseClass<GenericEqualityComparer<string>>
     {
+        public GenericEqualityComparerTests()
+        {
+            TestObject = new GenericEqualityComparer<string>();
+        }
+
         [Fact]
         public void Compare()
         {

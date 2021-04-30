@@ -7,8 +7,10 @@ using Xunit;
 
 namespace BigBook.Tests.ExtensionMethods
 {
-    public class ConcurrentBagExtensionsTests : TestingDirectoryFixture
+    public class ConcurrentBagExtensionsTests : TestBaseClass
     {
+        protected override System.Type ObjectType => typeof(ConcurrentBagExtensions);
+
         [Fact]
         public void AddAndReturnNull()
         {

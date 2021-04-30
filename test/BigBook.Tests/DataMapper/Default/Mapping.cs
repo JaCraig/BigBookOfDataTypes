@@ -1,4 +1,5 @@
 ﻿using BigBook.DataMapper.Default;
+using BigBook.Tests.BaseClasses;
 using Xunit;
 
 namespace BigBook.Tests.DataMapper.Default
@@ -18,8 +19,13 @@ namespace BigBook.Tests.DataMapper.Default
         public string Item2 { get; set; }
     }
 
-    public class MappingTests
+    public class MappingTests : TestBaseClass<Mapping<MappingA, MappingB>>
     {
+        public MappingTests()
+        {
+            TestObject = new Mapping<MappingA, MappingB>(x => x.Item1, x => x.Item1);
+        }
+
         [Fact]
         public void CreationTest()
         {

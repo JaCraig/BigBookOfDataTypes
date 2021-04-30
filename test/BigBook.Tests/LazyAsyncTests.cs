@@ -4,8 +4,13 @@ using Xunit;
 
 namespace BigBook.Tests
 {
-    public class LazyAsyncTests : TestingDirectoryFixture
+    public class LazyAsyncTests : TestBaseClass<LazyAsync<int>>
     {
+        public LazyAsyncTests()
+        {
+            TestObject = new LazyAsync<int>(() => 5);
+        }
+
         [Fact]
         public async Task AwaitTest()
         {

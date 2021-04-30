@@ -1,11 +1,14 @@
 ﻿using BigBook;
+using BigBook.Tests.BaseClasses;
 using System.Linq;
 using Xunit;
 
 namespace BigBook.Tests.ExtensionMethods
 {
-    public class MathExtensionsTests
+    public class MathExtensionsTests : TestBaseClass
     {
+        protected override System.Type ObjectType => typeof(MathExtensions);
+
         [Fact]
         public void FactorialTest()
         {

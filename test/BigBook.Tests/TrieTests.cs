@@ -5,8 +5,13 @@ using Xunit;
 
 namespace BigBook.Tests
 {
-    public class TrieTests : TestingDirectoryFixture
+    public class TrieTests : TestBaseClass<StringTrie>
     {
+        public TrieTests()
+        {
+            TestObject = new StringTrie();
+        }
+
         [Fact]
         public void FindAll()
         {

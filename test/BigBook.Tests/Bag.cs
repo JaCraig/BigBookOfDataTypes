@@ -1,9 +1,15 @@
-﻿using Xunit;
+﻿using BigBook.Tests.BaseClasses;
+using Xunit;
 
 namespace BigBook.Tests
 {
-    public class BagTests
+    public class BagTests : TestBaseClass<Bag<string>>
     {
+        public BagTests()
+        {
+            TestObject = new Bag<string>();
+        }
+
         [Fact]
         public void RandomTest()
         {

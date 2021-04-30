@@ -1,9 +1,15 @@
-﻿using Xunit;
+﻿using BigBook.Tests.BaseClasses;
+using Xunit;
 
 namespace BigBook.Tests
 {
-    public class BTreeTests
+    public class BTreeTests : TestBaseClass<BinaryTree<int>>
     {
+        public BTreeTests()
+        {
+            TestObject = new BinaryTree<int>();
+        }
+
         [Fact]
         public void Creation()
         {

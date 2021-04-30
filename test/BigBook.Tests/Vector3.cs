@@ -1,9 +1,15 @@
-﻿using Xunit;
+﻿using BigBook.Tests.BaseClasses;
+using Xunit;
 
 namespace BigBook.Tests
 {
-    public class Vector3Tests
+    public class Vector3Tests : TestBaseClass<Vector3>
     {
+        public Vector3Tests()
+        {
+            TestObject = new BigBook.Vector3(2.5, 4.1, 1.3);
+        }
+
         [Fact]
         public void BasicTest()
         {

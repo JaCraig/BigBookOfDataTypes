@@ -6,8 +6,13 @@ using Xunit;
 
 namespace BigBook.Tests.DataMapper
 {
-    public class ManagerTests : TestingDirectoryFixture
+    public class ManagerTests : TestBaseClass<BigBook.DataMapper.Manager>
     {
+        public ManagerTests()
+        {
+            TestObject = new BigBook.DataMapper.Manager(new List<IDataMapper>(), new List<IMapperModule>());
+        }
+
         [Fact]
         public void CreationTest()
         {

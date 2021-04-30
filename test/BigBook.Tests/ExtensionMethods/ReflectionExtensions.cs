@@ -20,8 +20,10 @@ namespace BigBook.Tests.ExtensionMethods
     {
     }
 
-    public class ReflectionExtensionsTests : TestingDirectoryFixture
+    public class ReflectionExtensionsTests : TestBaseClass
     {
+        protected override System.Type ObjectType => typeof(ReflectionExtensions);
+
         [Fact]
         public void CallMethodTest()
         {

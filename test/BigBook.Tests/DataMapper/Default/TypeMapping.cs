@@ -1,10 +1,16 @@
 ﻿using BigBook.DataMapper.Default;
+using BigBook.Tests.BaseClasses;
 using Xunit;
 
 namespace BigBook.Tests.DataMapper.Default
 {
-    public class TypeMappingTests
+    public class TypeMappingTests : TestBaseClass<TypeMapping<MappingA, MappingB>>
     {
+        public TypeMappingTests()
+        {
+            TestObject = new TypeMapping<MappingA, MappingB>();
+        }
+
         [Fact]
         public void AutoMapping()
         {

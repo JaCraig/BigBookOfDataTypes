@@ -3,8 +3,13 @@ using Xunit;
 
 namespace BigBook.Tests
 {
-    public class MatrixTests : TestingDirectoryFixture
+    public class MatrixTests : TestBaseClass<Matrix>
     {
+        public MatrixTests()
+        {
+            TestObject = new BigBook.Matrix(3, 3, new double[,] { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } });
+        }
+
         [Fact]
         public void BasicTest()
         {

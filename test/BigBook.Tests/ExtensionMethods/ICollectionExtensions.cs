@@ -1,12 +1,15 @@
 ﻿using BigBook;
+using BigBook.Tests.BaseClasses;
 using System.Linq;
 using System.Text;
 using Xunit;
 
 namespace BigBook.Tests.ExtensionMethods
 {
-    public class ICollectionExtensionsTests
+    public class ICollectionExtensionsTests : TestBaseClass
     {
+        protected override System.Type ObjectType => typeof(ICollectionExtensions);
+
         [Fact]
         public void AddAndReturnTest()
         {

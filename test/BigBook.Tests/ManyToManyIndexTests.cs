@@ -1,10 +1,16 @@
-﻿using System.Linq;
+﻿using BigBook.Tests.BaseClasses;
+using System.Linq;
 using Xunit;
 
 namespace BigBook.Tests
 {
-    public class ManyToManyIndexTests
+    public class ManyToManyIndexTests : TestBaseClass<ManyToManyIndex<int, string>>
     {
+        public ManyToManyIndexTests()
+        {
+            TestObject = new ManyToManyIndex<int, string>();
+        }
+
         [Fact]
         public void Add()
         {

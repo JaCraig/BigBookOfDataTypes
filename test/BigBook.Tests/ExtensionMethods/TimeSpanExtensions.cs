@@ -1,10 +1,13 @@
-﻿using System;
+﻿using BigBook.Tests.BaseClasses;
+using System;
 using Xunit;
 
 namespace BigBook.Tests.ExtensionMethods
 {
-    public class TimeSpanExtensionsTests
+    public class TimeSpanExtensionsTests : TestBaseClass
     {
+        protected override System.Type ObjectType => typeof(TimeSpanExtensions);
+
         [Fact]
         public void Average() => Assert.Equal(new TimeSpan(20), new TimeSpan[] { new TimeSpan(10), new TimeSpan(30) }.Average());
 

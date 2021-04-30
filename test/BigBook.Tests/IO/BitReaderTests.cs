@@ -1,9 +1,15 @@
-﻿using Xunit;
+﻿using BigBook.Tests.BaseClasses;
+using Xunit;
 
 namespace BigBook.IO.Tests
 {
-    public class BitReaderTests
+    public class BitReaderTests : TestBaseClass<BitReader>
     {
+        public BitReaderTests()
+        {
+            TestObject = new BitReader(new byte[] { 1, 2, 3, 4, 5 });
+        }
+
         [Fact]
         public void Creation()
         {

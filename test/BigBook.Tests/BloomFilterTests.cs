@@ -1,15 +1,19 @@
 ﻿using BigBook.Tests.BaseClasses;
+using Mecha.xUnit;
 using System;
 using System.ComponentModel.DataAnnotations;
-using TestFountain;
 using Xunit;
 
 namespace BigBook.Tests
 {
-    public class BloomFilterTests : TestingDirectoryFixture
+    public class BloomFilterTests : TestBaseClass<BloomFilter<string>>
     {
-        [Theory]
-        [FountainData(100)]
+        public BloomFilterTests()
+        {
+            TestObject = new BloomFilter<string>(1000);
+        }
+
+        [Property(GenerationCount = 100)]
         public void Add(int size, [Required] string value)
         {
             if (size == int.MinValue)
@@ -23,8 +27,7 @@ namespace BigBook.Tests
             TestObject.Add(value);
         }
 
-        [Theory]
-        [FountainData(100)]
+        [Property(GenerationCount = 100)]
         public void Contains(int size, [Required] string value)
         {
             if (size == int.MinValue)
@@ -39,8 +42,7 @@ namespace BigBook.Tests
             Assert.True(TestObject.Contains(value));
         }
 
-        [Theory]
-        [FountainData(100)]
+        [Property(GenerationCount = 100)]
         public void Creation(int size)
         {
             if (size == int.MinValue)
