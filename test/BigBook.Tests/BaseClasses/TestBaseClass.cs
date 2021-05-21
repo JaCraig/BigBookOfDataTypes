@@ -1,5 +1,6 @@
 ﻿using Mecha.Core;
 using System;
+using System.IO;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -95,6 +96,8 @@ namespace BigBook.Tests.BaseClasses
                     .IgnoreException<ArgumentException>((_, __) => true)
                     .IgnoreException<FormatException>((_, __) => true)
                     .IgnoreException<ObjectDisposedException>((_, __) => true)
+                    .IgnoreException<EndOfStreamException>((_, __) => true)
+                    .IgnoreException<OutOfMemoryException>((_, __) => true)
             });
         }
     }
