@@ -10,7 +10,8 @@ namespace BigBook.Tests
     {
         public RingBufferTests()
         {
-            TestObject = new RingBuffer<int>(10);
+            TestObject = null;
+            ObjectType = null;
         }
 
         [Fact]

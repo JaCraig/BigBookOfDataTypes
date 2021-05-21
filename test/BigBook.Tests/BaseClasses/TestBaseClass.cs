@@ -16,14 +16,14 @@ namespace BigBook.Tests.BaseClasses
         /// </summary>
         protected TestBaseClass()
         {
-            ObjectType = typeof(TTestObject);
+            ObjectType = null;
         }
 
         /// <summary>
         /// Gets the type of the object.
         /// </summary>
         /// <value>The type of the object.</value>
-        protected override Type ObjectType { get; }
+        protected override Type ObjectType { get; set; }
 
         /// <summary>
         /// Gets or sets the test object.
@@ -38,7 +38,16 @@ namespace BigBook.Tests.BaseClasses
         [Fact]
         public Task BreakObject()
         {
-            return Mech.BreakAsync(TestObject, new Options { MaxDuration = 1000 });
+            return Mech.BreakAsync(TestObject, new Options
+            {
+                MaxDuration = 1000,
+                ExceptionHandlers = new ExceptionHandler()
+                    .IgnoreException<NotImplementedException>()
+                    .IgnoreException<ArgumentOutOfRangeException>((_, __) => true)
+                    .IgnoreException<ArgumentException>()
+                    .IgnoreException<ObjectDisposedException>((_, __) => true),
+                DiscoverInheritedMethods = false
+            });
         }
     }
 
@@ -53,13 +62,14 @@ namespace BigBook.Tests.BaseClasses
         protected TestBaseClass()
         {
             _ = Mech.Default;
+            _ = Canister.Builder.Bootstrapper.Resolve<BigBook.DataMapper.Manager>();
         }
 
         /// <summary>
         /// Gets the type of the object.
         /// </summary>
         /// <value>The type of the object.</value>
-        protected abstract Type ObjectType { get; }
+        protected abstract Type ObjectType { get; set; }
 
         /// <summary>
         /// Attempts to break the object.
@@ -68,7 +78,16 @@ namespace BigBook.Tests.BaseClasses
         [Fact]
         public Task BreakType()
         {
-            return Mech.BreakAsync(ObjectType, new Options { MaxDuration = 1000 });
+            return Mech.BreakAsync(ObjectType, new Options
+            {
+                MaxDuration = 1000,
+                ExceptionHandlers = new ExceptionHandler()
+                    .IgnoreException<NotImplementedException>()
+                    .IgnoreException<ArgumentOutOfRangeException>((_, __) => true)
+                    .IgnoreException<ArgumentException>((_, __) => true)
+                    .IgnoreException<FormatException>((_, __) => true)
+                    .IgnoreException<ObjectDisposedException>((_, __) => true)
+            });
         }
     }
 }

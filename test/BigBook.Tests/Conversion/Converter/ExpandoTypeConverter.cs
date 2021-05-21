@@ -6,8 +6,13 @@ using Xunit;
 
 namespace BigBook.Tests.Conversion.Converter
 {
-    public class ExpandoTypeConverterTests : TestingDirectoryFixture
+    public class ExpandoTypeConverterTests : TestBaseClass<ExpandoObject>
     {
+        public ExpandoTypeConverterTests()
+        {
+            TestObject = new ExpandoObject();
+        }
+
         [Fact]
         public void ConvertFrom()
         {

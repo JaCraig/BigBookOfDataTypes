@@ -58,7 +58,7 @@ namespace BigBook
         /// </returns>
         public static TValue GetValue<TKey, TValue>(this ConcurrentDictionary<TKey, TValue> dictionary, TKey key, TValue defaultValue = default)
         {
-            if (dictionary is null)
+            if (dictionary is null || key is null)
             {
                 return defaultValue;
             }
@@ -77,7 +77,7 @@ namespace BigBook
         /// <returns>The dictionary</returns>
         public static ConcurrentDictionary<TKey, TValue> SetValue<TKey, TValue>(this ConcurrentDictionary<TKey, TValue> dictionary, TKey key, TValue value)
         {
-            if (dictionary is null)
+            if (dictionary is null || key is null)
             {
                 return new ConcurrentDictionary<TKey, TValue>();
             }

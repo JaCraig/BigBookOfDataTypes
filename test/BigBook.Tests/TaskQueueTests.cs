@@ -11,7 +11,8 @@ namespace BigBook.Tests
         public TaskQueueTests()
         {
             var Results = new double[100];
-            TestObject = new TaskQueue<int>(4, x => { Results[x] = 2 * F(1); return true; });
+            TestObject = null;
+            this.ObjectType = null;
         }
 
         private readonly double EPSILON = 0.0001d;

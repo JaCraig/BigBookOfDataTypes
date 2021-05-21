@@ -22,7 +22,7 @@ namespace BigBook.Tests.ExtensionMethods
 
     public class ReflectionExtensionsTests : TestBaseClass
     {
-        protected override System.Type ObjectType => typeof(ReflectionExtensions);
+        protected override System.Type ObjectType { get; set; } = typeof(ReflectionExtensions);
 
         [Fact]
         public void CallMethodTest()

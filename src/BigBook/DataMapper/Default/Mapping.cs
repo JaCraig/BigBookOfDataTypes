@@ -111,7 +111,7 @@ namespace BigBook.DataMapper.Default
         /// <param name="destination">Destination object</param>
         public override void Copy(TLeft source, TRight destination)
         {
-            if (LeftGet is null || RightSet is null)
+            if (LeftGet is null || RightSet is null || destination is null || source is null)
             {
                 return;
             }
@@ -126,7 +126,7 @@ namespace BigBook.DataMapper.Default
         /// <param name="destination">Destination object</param>
         public override void Copy(TRight source, TLeft destination)
         {
-            if (RightGet is null || LeftSet is null)
+            if (RightGet is null || LeftSet is null || destination is null || source is null)
             {
                 return;
             }

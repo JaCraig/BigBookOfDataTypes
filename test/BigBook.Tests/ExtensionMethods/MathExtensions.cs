@@ -7,7 +7,7 @@ namespace BigBook.Tests.ExtensionMethods
 {
     public class MathExtensionsTests : TestBaseClass
     {
-        protected override System.Type ObjectType => typeof(MathExtensions);
+        protected override System.Type ObjectType { get; set; } = typeof(MathExtensions);
 
         [Fact]
         public void FactorialTest()

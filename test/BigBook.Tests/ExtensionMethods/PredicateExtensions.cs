@@ -9,7 +9,7 @@ namespace BigBook.Tests.ExtensionMethods
     /// </summary>
     public class PredicateExtensionsTests : TestBaseClass
     {
-        protected override System.Type ObjectType => typeof(PredicateExtensions);
+        protected override System.Type ObjectType { get; set; } = typeof(PredicateExtensions);
 
         [Fact]
         public void AddToSet()

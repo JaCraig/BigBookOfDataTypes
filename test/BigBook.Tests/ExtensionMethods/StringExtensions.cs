@@ -10,7 +10,7 @@ namespace BigBook.Tests.ExtensionMethods
 {
     public class StringExtensionsTests : TestBaseClass
     {
-        protected override System.Type ObjectType => typeof(StringExtensions);
+        protected override System.Type ObjectType { get; set; } = null;
 
         [Fact]
         public void AddSpaces()

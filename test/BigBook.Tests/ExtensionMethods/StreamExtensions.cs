@@ -12,7 +12,7 @@ namespace BigBook.Tests.ExtensionMethods
             new DirectoryInfo(@".\Testing").Create();
         }
 
-        protected override System.Type ObjectType => typeof(StreamExtensions);
+        protected override System.Type ObjectType { get; set; } = typeof(StreamExtensions);
 
         [Fact]
         public void ReadAll()

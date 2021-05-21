@@ -7,7 +7,7 @@ namespace BigBook.Tests.ExtensionMethods
 {
     public class ConcurrentDictionaryExtensionsTests : TestBaseClass
     {
-        protected override System.Type ObjectType => typeof(ConcurrentDictionaryExtensions);
+        protected override System.Type ObjectType { get; set; } = typeof(ConcurrentDictionaryExtensions);
 
         [Fact]
         public void CopyToTest()

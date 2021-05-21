@@ -1,14 +1,25 @@
 ﻿using BigBook.Tests.BaseClasses;
+using Microsoft.Extensions.ObjectPool;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
+using System.Text;
 using Xunit;
 
 namespace BigBook.Tests
 {
-    public class DynamoTests : TestingDirectoryFixture
+    public class DynamoTests : TestBaseClass<Dynamo>
     {
+        public DynamoTests()
+        {
+            TestObject = new BigBook.Dynamo(new { A = "Testing" }, true, AOPManager, BuilderPool, DataMapper);
+        }
+
+        protected static BigBook.DataMapper.Manager DataMapper => Canister.Builder.Bootstrapper.Resolve<BigBook.DataMapper.Manager>();
+        protected static Aspectus.Aspectus AOPManager => Canister.Builder.Bootstrapper.Resolve<Aspectus.Aspectus>();
+        protected static ObjectPool<StringBuilder> BuilderPool => Canister.Builder.Bootstrapper.Resolve<ObjectPool<StringBuilder>>();
+
         [Fact]
         public void CallMethod()
         {

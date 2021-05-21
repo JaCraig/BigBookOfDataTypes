@@ -509,14 +509,14 @@ namespace BigBook
         /// </summary>
         /// <param name="assembly">The assembly.</param>
         /// <returns><c>true</c> if the specified assembly is debug; otherwise, <c>false</c>.</returns>
-        public static bool IsDebug(this Assembly assembly) => assembly.GetCustomAttributes().OfType<DebuggableAttribute>().SingleOrDefault()?.IsJitTrackingEnabled() ?? false;
+        public static bool IsDebug(this Assembly assembly) => assembly?.GetCustomAttributes().OfType<DebuggableAttribute>().SingleOrDefault()?.IsJitTrackingEnabled() ?? false;
 
         /// <summary>
         /// Determines whether [is JIT optimized].
         /// </summary>
         /// <param name="assembly">The assembly.</param>
         /// <returns><c>true</c> if [is JIT optimized] [the specified assembly]; otherwise, <c>false</c>.</returns>
-        public static bool IsJitOptimized(this Assembly assembly) => assembly.GetCustomAttributes().OfType<DebuggableAttribute>().SingleOrDefault()?.IsJitOptimized() ?? false;
+        public static bool IsJitOptimized(this Assembly assembly) => assembly?.GetCustomAttributes().OfType<DebuggableAttribute>().SingleOrDefault()?.IsJitOptimized() ?? false;
 
         /// <summary>
         /// Makes a shallow copy of the object
@@ -776,7 +776,12 @@ namespace BigBook
         /// <typeparam name="TClassType">Class type</typeparam>
         /// <param name="property">Property</param>
         /// <returns>A lambda expression that calls a specific property's getter function</returns>
-        public static Expression<Func<TClassType, object>> PropertyGetter<TClassType>(this PropertyInfo property) => property.PropertyGetter<TClassType, object>();
+        public static Expression<Func<TClassType, object>> PropertyGetter<TClassType>(this PropertyInfo property)
+        {
+            if (property is null)
+                throw new ArgumentNullException(nameof(property));
+            return property.PropertyGetter<TClassType, object>();
+        }
 
         /// <summary>
         /// Gets a property name

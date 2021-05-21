@@ -15,7 +15,6 @@ limitations under the License.
 */
 
 using System;
-using System.Buffers;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -181,16 +180,20 @@ namespace BigBook
         /// <param name="arrayIndex">Index to start at</param>
         public void CopyTo(T[] array, int arrayIndex)
         {
-            var Pool = ArrayPool<T>.Shared;
-            var TempArray = Pool.Rent(NumberOfNodes) ?? new T[NumberOfNodes];
-            var Counter = 0;
+            if (array is null)
+                return;
+            if (arrayIndex > array.Length)
+                return;
+            if (arrayIndex < 0)
+                arrayIndex = 0;
+            var Index = arrayIndex;
             foreach (var Value in this)
             {
-                TempArray[Counter] = Value;
-                ++Counter;
+                if (Index >= array.Length)
+                    break;
+                array[Index] = Value;
+                ++Index;
             }
-            Array.Copy(TempArray, 0, array, arrayIndex, NumberOfNodes);
-            Pool.Return(TempArray);
         }
 
         /// <summary>

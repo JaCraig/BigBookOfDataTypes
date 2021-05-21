@@ -108,7 +108,7 @@ namespace BigBook
         /// <param name="predicate">Predicate that an item needs to satisfy in order to be added</param>
         /// <param name="items">Items to add to the collection</param>
         /// <returns>True if it is added, false otherwise</returns>
-        public static bool AddIf<T>(this ConcurrentBag<T> collection, Predicate<T> predicate, IEnumerable<T> items) => collection.AddIf(predicate, items.ToArray());
+        public static bool AddIf<T>(this ConcurrentBag<T> collection, Predicate<T> predicate, IEnumerable<T> items) => collection.AddIf(predicate, items?.ToArray() ?? Array.Empty<T>());
 
         /// <summary>
         /// Adds an item to the collection if it isn't already in the collection

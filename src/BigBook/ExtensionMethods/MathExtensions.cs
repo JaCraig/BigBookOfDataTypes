@@ -392,7 +392,7 @@ namespace BigBook
         /// <param name="values">List of values</param>
         /// <param name="selector">The selector.</param>
         /// <returns>The standard deviation</returns>
-        public static double StandardDeviation<T>(this IEnumerable<T> values, Func<T, double>? selector = null) => values.Variance(selector).Sqrt();
+        public static double StandardDeviation<T>(this IEnumerable<T> values, Func<T, double>? selector = null) => values.Variance(selector ?? ConvertDouble).Sqrt();
 
         /// <summary>
         /// Gets the standard deviation
@@ -474,11 +474,7 @@ namespace BigBook
         /// <returns>The variance</returns>
         public static double Variance<T>(this IEnumerable<T> values, Func<T, double>? selector)
         {
-            if (selector is null)
-            {
-                throw new ArgumentNullException(nameof(selector));
-            }
-
+            selector ??= ConvertDouble;
             return values.Variance(x => (decimal)selector(x));
         }
 
@@ -526,6 +522,19 @@ namespace BigBook
             var MeanValue = values.Average(selector);
             var Sum = values.Sum(x => (selector(x) - MeanValue).Pow(2));
             return Sum / values.Count();
+        }
+
+        /// <summary>
+        /// Converts the double.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="arg">The argument.</param>
+        /// <returns></returns>
+        private static double ConvertDouble<T>(T arg)
+        {
+            if (arg is double Item)
+                return Item;
+            return 0;
         }
     }
 }

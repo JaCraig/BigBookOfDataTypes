@@ -76,14 +76,26 @@ namespace BigBook
         /// </summary>
         /// <param name="item">Item to check</param>
         /// <returns>True if it does, false otherwise</returns>
-        public virtual bool Contains(T item) => Items.ContainsKey(item);
+        public virtual bool Contains(T item) => !(item is null) && Items.ContainsKey(item);
 
         /// <summary>
         /// Copies the bag to an array
         /// </summary>
         /// <param name="array">Array to copy to</param>
         /// <param name="arrayIndex">Index to start at</param>
-        public virtual void CopyTo(T[] array, int arrayIndex) => Array.Copy(Items.ToArray(x => x.Key), 0, array, arrayIndex, Count);
+        public virtual void CopyTo(T[] array, int arrayIndex)
+        {
+            if (array is null || Items is null)
+                return;
+            if (arrayIndex > array.Length)
+                return;
+            if (arrayIndex < 0)
+                arrayIndex = 0;
+            var FinalCount = Count;
+            if (FinalCount > array.Length - arrayIndex)
+                FinalCount = array.Length - arrayIndex;
+            Array.Copy(Items.ToArray(x => x.Key), 0, array, arrayIndex, FinalCount);
+        }
 
         /// <summary>
         /// Gets the enumerator
@@ -114,6 +126,11 @@ namespace BigBook
         /// </summary>
         /// <param name="item">Item to remove</param>
         /// <returns>True if it is removed, false otherwise</returns>
-        public virtual bool Remove(T item) => Items.TryRemove(item, out _);
+        public virtual bool Remove(T item)
+        {
+            if (item is null)
+                return false;
+            return Items.TryRemove(item, out _);
+        }
     }
 }

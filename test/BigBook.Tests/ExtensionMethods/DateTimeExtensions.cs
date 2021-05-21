@@ -6,7 +6,7 @@ namespace BigBook.Tests.ExtensionMethods
 {
     public class DateTimeExtensionTests : TestBaseClass
     {
-        protected override System.Type ObjectType => typeof(DateTimeExtensions);
+        protected override System.Type ObjectType { get; set; } = typeof(DateTimeExtensions);
 
         [Fact]
         public void AddWeeks() => Assert.Equal(new DateTime(2009, 1, 15, 2, 3, 4), new DateTime(2009, 1, 1, 2, 3, 4).AddWeeks(2));

@@ -73,6 +73,8 @@ namespace BigBook
         {
             get
             {
+                if (key is null)
+                    return Array.Empty<T2>();
                 lock (LockObject)
                 {
                     Items.TryGetValue(key, out var ReturnValue);
@@ -138,6 +140,8 @@ namespace BigBook
         /// <returns>True if it exists, false otherwise</returns>
         public bool Contains(T1 key, IEnumerable<T2> values)
         {
+            if (key is null)
+                return false;
             lock (LockObject)
             {
                 return Items.TryGetValue(key, out var TempValues) && values.All(x => TempValues.Contains(x));
@@ -152,6 +156,8 @@ namespace BigBook
         /// <returns>True if it exists, false otherwise</returns>
         public bool Contains(T1 key, T2 value)
         {
+            if (key is null)
+                return false;
             lock (LockObject)
             {
                 return Items.TryGetValue(key, out var TempValues) && TempValues.Contains(value);
@@ -165,6 +171,8 @@ namespace BigBook
         /// <returns>True if it exists, false otherwise</returns>
         public bool ContainsKey(T1 key)
         {
+            if (key is null)
+                return false;
             lock (LockObject)
             {
                 return Items.ContainsKey(key);
@@ -176,7 +184,9 @@ namespace BigBook
         /// </summary>
         /// <param name="array">Array to copy to</param>
         /// <param name="arrayIndex">array index</param>
-        public void CopyTo(KeyValuePair<T1, IEnumerable<T2>>[] array, int arrayIndex) => throw new NotImplementedException();
+        public void CopyTo(KeyValuePair<T1, IEnumerable<T2>>[] array, int arrayIndex)
+        {
+        }
 
         /// <summary>
         /// Gets the enumerator
@@ -209,6 +219,8 @@ namespace BigBook
         /// <returns>True if the key is found, false otherwise</returns>
         public bool Remove(T1 key)
         {
+            if (key is null)
+                return false;
             _ToString = null;
             lock (LockObject)
             {
@@ -247,6 +259,8 @@ namespace BigBook
         /// <returns>True if it is removed, false otherwise</returns>
         public bool Remove(T1 key, T2 value)
         {
+            if (key is null)
+                return false;
             _ToString = null;
             lock (LockObject)
             {
@@ -284,6 +298,11 @@ namespace BigBook
         /// <returns>True if it was able to get the value, false otherwise</returns>
         public bool TryGetValue(T1 key, out IEnumerable<T2> value)
         {
+            if (key is null)
+            {
+                value = Array.Empty<T2>();
+                return false;
+            }
             lock (LockObject)
             {
                 if (Items.TryGetValue(key, out var TempValue))
@@ -303,6 +322,8 @@ namespace BigBook
         /// <param name="value">The value.</param>
         private void AddValues(T1 key, T2 value)
         {
+            if (key is null)
+                return;
             _ToString = null;
             lock (LockObject)
             {
@@ -322,6 +343,8 @@ namespace BigBook
         /// <param name="values">The values.</param>
         private void AddValues(T1 key, IEnumerable<T2> values)
         {
+            if (key is null || values is null)
+                return;
             _ToString = null;
             lock (LockObject)
             {

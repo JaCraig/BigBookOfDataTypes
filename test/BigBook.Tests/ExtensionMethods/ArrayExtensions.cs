@@ -5,7 +5,7 @@ namespace BigBook.Tests.ExtensionMethods
 {
     public class ArrayExtensionsTests : TestBaseClass
     {
-        protected override System.Type ObjectType => typeof(ArrayExtensions);
+        protected override System.Type ObjectType { get; set; } = typeof(ArrayExtensions);
 
         [Fact]
         public void ClearGenericTest()

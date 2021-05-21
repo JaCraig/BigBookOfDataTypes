@@ -121,12 +121,16 @@ namespace BigBook
         {
             get
             {
+                if (Count == 0)
+                    return default!;
                 position %= Count;
                 var FinalPosition = (ReadPosition + position) % MaxCapacity;
                 return Buffer[FinalPosition];
             }
             set
             {
+                if (Count == 0)
+                    return;
                 position %= Count;
                 var FinalPosition = (ReadPosition + position) % MaxCapacity;
                 Buffer[FinalPosition] = value;

@@ -683,6 +683,8 @@ namespace BigBook
         /// <returns>The object converted to the type specified</returns>
         public object To(Type ObjectType)
         {
+            if (ObjectType is null)
+                return this;
             var Result = AOPManager?.Create(ObjectType) ?? FastActivator.CreateInstance(ObjectType);
             DataMapper ??= GetGenericMapper();
             DataMapper?.Map(GetType(), ObjectType)

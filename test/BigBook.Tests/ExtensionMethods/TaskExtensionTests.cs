@@ -6,7 +6,7 @@ namespace BigBook.Tests.ExtensionMethods
 {
     public class TaskExtensionTests : TestBaseClass
     {
-        protected override System.Type ObjectType => typeof(TaskExtensions);
+        protected override System.Type ObjectType { get; set; } = typeof(TaskExtensions);
 
         [Fact]
         public void RunSync()

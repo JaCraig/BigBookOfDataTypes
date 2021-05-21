@@ -80,7 +80,7 @@ namespace BigBook.Formatters
         {
             if (!IsValid(formatPattern))
             {
-                throw new ArgumentException(Properties.Resources.FormatPatternIsNotValidError);
+                throw new ArgumentException(Properties.Resources.FormatPatternIsNotValidError, nameof(formatPattern));
             }
 
             var ReturnValue = new StringBuilder();

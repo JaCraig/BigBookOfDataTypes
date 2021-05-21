@@ -14,7 +14,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
@@ -169,7 +168,9 @@ namespace BigBook
         /// </summary>
         /// <param name="array">Array to copy to</param>
         /// <param name="arrayIndex">array index</param>
-        public void CopyTo(KeyValuePair<int, ICollection<T>>[] array, int arrayIndex) => throw new NotImplementedException();
+        public void CopyTo(KeyValuePair<int, ICollection<T>>[] array, int arrayIndex)
+        {
+        }
 
         /// <summary>
         /// Gets the enumerator

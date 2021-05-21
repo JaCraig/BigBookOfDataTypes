@@ -37,13 +37,21 @@ namespace BigBook
         /// <param name="func">The function.</param>
         /// <returns>The result.</returns>
         public static TResult RunSync<TResult>(Func<Task<TResult>> func)
-            => TaskFactory.StartNew(func).Unwrap().GetAwaiter().GetResult();
+        {
+            if (func is null)
+                return default;
+            return TaskFactory.StartNew(func).Unwrap().GetAwaiter().GetResult();
+        }
 
         /// <summary>
         /// Runs the synchronously.
         /// </summary>
         /// <param name="func">The function.</param>
         public static void RunSync(this Func<Task> func)
-            => TaskFactory.StartNew(func).Unwrap().GetAwaiter().GetResult();
+        {
+            if (func is null)
+                return;
+            TaskFactory.StartNew(func).Unwrap().GetAwaiter().GetResult();
+        }
     }
 }

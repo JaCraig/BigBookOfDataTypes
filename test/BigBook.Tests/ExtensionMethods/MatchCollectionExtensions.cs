@@ -7,7 +7,7 @@ namespace BigBook.Tests.ExtensionMethods
 {
     public class MatchCollectionExtensionsTests : TestBaseClass
     {
-        protected override System.Type ObjectType => typeof(MatchCollectionExtensions);
+        protected override System.Type ObjectType { get; set; } = typeof(MatchCollectionExtensions);
 
         [Fact]
         public void Where()

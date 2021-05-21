@@ -5,7 +5,7 @@ namespace BigBook.Tests.ExtensionMethods
 {
     public class IComparableExtensionsTests : TestBaseClass
     {
-        protected override System.Type ObjectType => typeof(IComparableExtensions);
+        protected override System.Type ObjectType { get; set; } = typeof(IComparableExtensions);
 
         [Fact]
         public void BetweenTest()

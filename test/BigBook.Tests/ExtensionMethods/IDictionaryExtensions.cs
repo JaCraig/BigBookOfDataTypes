@@ -7,7 +7,7 @@ namespace BigBook.Tests.ExtensionMethods
 {
     public class IDictionaryExtensionsTests : TestBaseClass
     {
-        protected override System.Type ObjectType => typeof(IDictionaryExtensions);
+        protected override System.Type ObjectType { get; set; } = typeof(IDictionaryExtensions);
 
         [Fact]
         public void CopyToTest()

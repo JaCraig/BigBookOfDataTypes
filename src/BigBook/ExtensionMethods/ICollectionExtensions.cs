@@ -34,7 +34,7 @@ namespace BigBook
         /// <param name="collection">Collection</param>
         /// <param name="items">Items to add</param>
         /// <returns>The collection with the added items</returns>
-        public static ICollection<T> Add<T>(this ICollection<T> collection, IEnumerable<T> items) => collection.Add(items.ToArray());
+        public static ICollection<T> Add<T>(this ICollection<T> collection, IEnumerable<T> items) => collection.Add(items?.ToArray() ?? Array.Empty<T>());
 
         /// <summary>
         /// Adds a list of items to the collection

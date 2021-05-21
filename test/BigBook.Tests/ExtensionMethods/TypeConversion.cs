@@ -40,8 +40,10 @@ namespace BigBook.Tests.ExtensionMethods
         public virtual int B { get; set; }
     }
 
-    public class TypeConversionTests : TestingDirectoryFixture
+    public class TypeConversionTests : TestBaseClass
     {
+        protected override Type ObjectType { get; set; } = null;
+
         [Fact]
         public void DbTypeToSqlDbType()
         {

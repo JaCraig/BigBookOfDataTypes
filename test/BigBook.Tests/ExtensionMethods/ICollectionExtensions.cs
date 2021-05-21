@@ -8,7 +8,7 @@ namespace BigBook.Tests.ExtensionMethods
 {
     public class ICollectionExtensionsTests : TestBaseClass
     {
-        protected override System.Type ObjectType => typeof(ICollectionExtensions);
+        protected override System.Type ObjectType { get; set; } = typeof(ICollectionExtensions);
 
         [Fact]
         public void AddAndReturnTest()

@@ -11,7 +11,7 @@ namespace BigBook.Tests.ExtensionMethods
 {
     public class IEnumerableExtensionsTests : TestBaseClass
     {
-        protected override System.Type ObjectType => typeof(IEnumerableExtensions);
+        protected override System.Type ObjectType { get; set; } = typeof(IEnumerableExtensions);
 
         [Fact]
         public void Concat()

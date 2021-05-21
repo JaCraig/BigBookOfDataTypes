@@ -8,7 +8,7 @@ namespace BigBook.Tests.Comparison
     {
         public SimpleEqualityComparerTests()
         {
-            TestObject = new SimpleEqualityComparer<string>((x, y) => string.Equals(x, y), x => x.GetHashCode());
+            TestObject = new SimpleEqualityComparer<string>((x, y) => string.Equals(x, y), x => x?.GetHashCode() ?? 0);
         }
 
         [Fact]

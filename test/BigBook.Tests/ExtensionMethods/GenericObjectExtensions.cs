@@ -10,7 +10,7 @@ namespace BigBook.Tests.ExtensionMethods
 {
     public class GenericObjectExtensionsTests : TestBaseClass
     {
-        protected override System.Type ObjectType => typeof(GenericObjectExtensions);
+        protected override System.Type ObjectType { get; set; } = null;
 
         [Fact]
         public void Execute1()

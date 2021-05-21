@@ -67,11 +67,19 @@ namespace BigBook
             while (numerator != Math.Round(numerator, MidpointRounding.AwayFromZero)
                 || denominator != Math.Round(denominator, MidpointRounding.AwayFromZero))
             {
+                if (numerator * 10 > int.MaxValue
+                    || denominator * 10 > int.MaxValue
+                    || numerator * 10 < int.MinValue
+                    || denominator * 10 < int.MinValue)
+                {
+                    break;
+                }
+
                 numerator *= 10;
                 denominator *= 10;
             }
-            Numerator = (int)numerator;
-            Denominator = (int)denominator;
+            Numerator = FixValue(numerator);
+            Denominator = FixValue(denominator);
             Reduce();
         }
 
@@ -100,7 +108,6 @@ namespace BigBook
             {
                 return;
             }
-
             Reduce();
         }
 
@@ -126,7 +133,19 @@ namespace BigBook
         /// <param name="left">The left.</param>
         /// <param name="right">The right.</param>
         /// <returns>The result</returns>
-        public static Fraction Add(Fraction left, Fraction right) => left + right;
+        public static Fraction Add(Fraction left, Fraction right)
+        {
+            if (left is null)
+            {
+                throw new ArgumentNullException(nameof(left));
+            }
+
+            if (right is null)
+            {
+                throw new ArgumentNullException(nameof(right));
+            }
+            return left + right;
+        }
 
         /// <summary>
         /// Divides the specified values.
@@ -134,7 +153,19 @@ namespace BigBook
         /// <param name="left">The left.</param>
         /// <param name="right">The right.</param>
         /// <returns>The result</returns>
-        public static Fraction Divide(Fraction left, Fraction right) => left / right;
+        public static Fraction Divide(Fraction left, Fraction right)
+        {
+            if (left is null)
+            {
+                throw new ArgumentNullException(nameof(left));
+            }
+
+            if (right is null)
+            {
+                throw new ArgumentNullException(nameof(right));
+            }
+            return left / right;
+        }
 
         /// <summary>
         /// Converts the fraction to a decimal
@@ -145,7 +176,8 @@ namespace BigBook
         {
             if (fraction is null)
                 return 0;
-
+            if (fraction.Denominator == 0)
+                return fraction.Numerator;
             return fraction.Numerator / (decimal)fraction.Denominator;
         }
 
@@ -158,7 +190,8 @@ namespace BigBook
         {
             if (fraction is null)
                 return 0;
-
+            if (fraction.Denominator == 0)
+                return fraction.Numerator;
             return fraction.Numerator / (double)fraction.Denominator;
         }
 
@@ -171,7 +204,8 @@ namespace BigBook
         {
             if (fraction is null)
                 return 0;
-
+            if (fraction.Denominator == 0)
+                return fraction.Numerator;
             return fraction.Numerator / (float)fraction.Denominator;
         }
 
@@ -241,14 +275,33 @@ namespace BigBook
         /// <param name="left">The left.</param>
         /// <param name="right">The right.</param>
         /// <returns>The result</returns>
-        public static Fraction Multiply(Fraction left, Fraction right) => left * right;
+        public static Fraction Multiply(Fraction left, Fraction right)
+        {
+            if (left is null)
+            {
+                throw new ArgumentNullException(nameof(left));
+            }
+
+            if (right is null)
+            {
+                throw new ArgumentNullException(nameof(right));
+            }
+            return left * right;
+        }
 
         /// <summary>
         /// Negates the specified item.
         /// </summary>
         /// <param name="item">The item.</param>
         /// <returns>The result</returns>
-        public static Fraction Negate(Fraction item) => -item;
+        public static Fraction Negate(Fraction item)
+        {
+            if (item is null)
+            {
+                throw new ArgumentNullException(nameof(item));
+            }
+            return -item;
+        }
 
         /// <summary>
         /// Subtraction
@@ -443,7 +496,19 @@ namespace BigBook
         /// <param name="left">The left.</param>
         /// <param name="right">The right.</param>
         /// <returns>The result</returns>
-        public static Fraction Subtract(Fraction left, Fraction right) => left - right;
+        public static Fraction Subtract(Fraction left, Fraction right)
+        {
+            if (left is null)
+            {
+                throw new ArgumentNullException(nameof(left));
+            }
+
+            if (right is null)
+            {
+                throw new ArgumentNullException(nameof(right));
+            }
+            return left - right;
+        }
 
         /// <summary>
         /// Converts to fraction.
@@ -496,7 +561,10 @@ namespace BigBook
         /// Gets the hash code of the fraction
         /// </summary>
         /// <returns>The hash code of the fraction</returns>
-        public override int GetHashCode() => Numerator.GetHashCode() % Denominator.GetHashCode();
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Numerator, Denominator);
+        }
 
         /// <summary>
         /// Returns the inverse of the fraction
@@ -551,5 +619,19 @@ namespace BigBook
         /// </summary>
         /// <returns>The fraction as a string</returns>
         public override string ToString() => $"{Numerator}/{Denominator}";
+
+        /// <summary>
+        /// Fixes the value.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returns></returns>
+        private static int FixValue(decimal value)
+        {
+            if (value > int.MaxValue)
+                return int.MaxValue;
+            if (value < int.MinValue)
+                return int.MinValue;
+            return (int)value;
+        }
     }
 }

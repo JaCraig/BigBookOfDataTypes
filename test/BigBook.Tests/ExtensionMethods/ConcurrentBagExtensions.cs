@@ -9,7 +9,7 @@ namespace BigBook.Tests.ExtensionMethods
 {
     public class ConcurrentBagExtensionsTests : TestBaseClass
     {
-        protected override System.Type ObjectType => typeof(ConcurrentBagExtensions);
+        protected override System.Type ObjectType { get; set; } = typeof(ConcurrentBagExtensions);
 
         [Fact]
         public void AddAndReturnNull()

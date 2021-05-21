@@ -8,7 +8,7 @@ namespace BigBook.Tests.ExtensionMethods
     /// </summary>
     public class PermutationExtensionsTests : TestBaseClass
     {
-        protected override System.Type ObjectType => typeof(PermutationExtensions);
+        protected override System.Type ObjectType { get; set; } = typeof(PermutationExtensions);
 
         [Fact]
         public void BasicTest()
