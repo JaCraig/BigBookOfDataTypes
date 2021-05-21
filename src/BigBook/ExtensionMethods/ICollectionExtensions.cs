@@ -200,6 +200,7 @@ namespace BigBook
         {
             if (list is null)
                 return new List<T>();
+            action ??= (_, __) => { };
 
             if (end >= list.Count)
             {
@@ -241,6 +242,7 @@ namespace BigBook
         {
             if (list is null || function is null)
                 return new List<TReturn>();
+            function ??= (_, __) => default(TReturn)!;
 
             var TempList = list.ElementsBetween(start, end + 1).ToArray();
             var ReturnList = new List<TReturn>();
@@ -259,6 +261,7 @@ namespace BigBook
         /// <param name="predicate">Predicate used to determine what items to remove</param>
         public static ICollection<T> Remove<T>(this ICollection<T> collection, Func<T, bool> predicate)
         {
+            predicate ??= (_) => false;
             return collection?.Where(x => !predicate(x)).ToList() ?? new List<T>();
         }
 
