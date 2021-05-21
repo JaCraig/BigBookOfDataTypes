@@ -61,8 +61,11 @@ namespace BigBook.Tests.BaseClasses
         /// </summary>
         protected TestBaseClass()
         {
-            _ = Mech.Default;
-            _ = Canister.Builder.Bootstrapper.Resolve<BigBook.DataMapper.Manager>();
+            lock (LockObject)
+            {
+                _ = Mech.Default;
+                _ = Canister.Builder.Bootstrapper.Resolve<BigBook.DataMapper.Manager>();
+            }
         }
 
         /// <summary>
@@ -70,6 +73,11 @@ namespace BigBook.Tests.BaseClasses
         /// </summary>
         /// <value>The type of the object.</value>
         protected abstract Type ObjectType { get; set; }
+
+        /// <summary>
+        /// The lock object
+        /// </summary>
+        private static object LockObject = new object();
 
         /// <summary>
         /// Attempts to break the object.
