@@ -31,7 +31,8 @@ namespace Microsoft.Extensions.DependencyInjection
         public static ICanisterConfiguration? RegisterBigBookOfDataTypes(this ICanisterConfiguration? bootstrapper)
         {
             return bootstrapper?.AddAssembly(typeof(CanisterExtensions).Assembly)
-                               .RegisterAspectus();
+                               .RegisterAspectus()
+                               .RegisterObjectCartographer();
         }
     }
 }

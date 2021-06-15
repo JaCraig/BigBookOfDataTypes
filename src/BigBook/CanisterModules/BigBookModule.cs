@@ -15,7 +15,6 @@ limitations under the License.
 */
 
 using BigBook.Comparison;
-using BigBook.DataMapper.Interfaces;
 using BigBook.DynamoUtils;
 using Canister.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
@@ -43,9 +42,6 @@ namespace BigBook.CanisterModules
             var objectPoolProvider = new DefaultObjectPoolProvider();
             bootstrapper?.Register(typeof(GenericComparer<>), ServiceLifetime.Singleton)
                          .Register(typeof(GenericEqualityComparer<>), ServiceLifetime.Singleton)
-                         .RegisterAll<IDataMapper>()
-                         .RegisterAll<IMapperModule>()
-                         .Register<DataMapper.Manager>(ServiceLifetime.Singleton)
                          .Register(new DynamoTypes(), ServiceLifetime.Singleton)
                          .Register(objectPoolProvider.CreateStringBuilderPool(), ServiceLifetime.Singleton)
                          .Register<DynamoFactory>(ServiceLifetime.Singleton);

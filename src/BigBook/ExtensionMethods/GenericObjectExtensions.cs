@@ -15,17 +15,10 @@ limitations under the License.
 */
 
 using BigBook.Comparison;
-using BigBook.Conversion;
-using BigBook.DataMapper.Interfaces;
-using BigBook.ExtensionMethods.Utils;
-using Fast.Activator;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
 using System.Linq;
 using System.Threading;
 
@@ -37,21 +30,6 @@ namespace BigBook
     [EditorBrowsable(EditorBrowsableState.Never)]
     public static class GenericObjectExtensions
     {
-        /// <summary>
-        /// Gets or sets the data manager.
-        /// </summary>
-        /// <value>The data manager.</value>
-        internal static DataMapper.Manager? DataManager { get; set; }
-
-        /// <summary>
-        /// The converters
-        /// </summary>
-        private static readonly Dictionary<Type, TypeConverter> Converters = new Dictionary<Type, TypeConverter>
-        {
-            [typeof(SqlDbType)] = new SqlDbTypeTypeConverter(),
-            [typeof(DbType)] = new DbTypeTypeConverter()
-        };
-
         /// <summary>
         /// Checks to see if the object meets all the criteria. If it does, it returns the object.
         /// If it does not, it returns the default object
@@ -233,38 +211,6 @@ namespace BigBook
             comparer ??= GenericEqualityComparer<T>.Comparer;
             return comparer.Equals(inputObject, comparisonObject);
         }
-
-        /// <summary>
-        /// Sets up a mapping between two types
-        /// </summary>
-        /// <param name="leftType">Left type</param>
-        /// <param name="rightType">Right type</param>
-        /// <returns>The type mapping</returns>
-        public static ITypeMapping? MapTo(this Type leftType, Type rightType)
-        {
-            if (leftType is null || rightType is null)
-                return null;
-
-            return DataManager?.Map(leftType, rightType);
-        }
-
-        /// <summary>
-        /// Sets up a mapping between two types
-        /// </summary>
-        /// <typeparam name="TLeft">Left type</typeparam>
-        /// <typeparam name="TRight">Right type</typeparam>
-        /// <param name="item">Object to set up mapping for</param>
-        /// <returns>The type mapping</returns>
-        public static ITypeMapping<TLeft, TRight>? MapTo<TLeft, TRight>(this TLeft item) => DataManager?.Map<TLeft, TRight>();
-
-        /// <summary>
-        /// Sets up a mapping between two types
-        /// </summary>
-        /// <typeparam name="TLeft">Left type</typeparam>
-        /// <typeparam name="TRight">Right type</typeparam>
-        /// <param name="objectType">Object type to set up mapping for</param>
-        /// <returns>The type mapping</returns>
-        public static ITypeMapping<TLeft, TRight>? MapTo<TLeft, TRight>(this Type objectType) => DataManager?.Map<TLeft, TRight>();
 
         /// <summary>
         /// Throws the specified exception if the predicate is true for the item
@@ -478,130 +424,6 @@ namespace BigBook
             }
 
             return count;
-        }
-
-        /// <summary>
-        /// Attempts to convert the object to another type and returns the value
-        /// </summary>
-        /// <typeparam name="TObject">Type to convert from</typeparam>
-        /// <typeparam name="TReturn">Return type</typeparam>
-        /// <param name="item">Object to convert</param>
-        /// <param name="defaultValue">
-        /// Default value to return if there is an issue or it can't be converted
-        /// </param>
-        /// <returns>
-        /// The object converted to the other type or the default value if there is an error or
-        /// can't be converted
-        /// </returns>
-        public static TReturn To<TObject, TReturn>(this TObject item, TReturn defaultValue = default)
-        {
-            if (item is TReturn ReturnValue)
-                return ReturnValue;
-            return (TReturn)item.To(typeof(TReturn), defaultValue)!;
-        }
-
-        /// <summary>
-        /// Attempts to convert the object to another type and returns the value
-        /// </summary>
-        /// <typeparam name="TObject">Type to convert from</typeparam>
-        /// <param name="item">Object to convert</param>
-        /// <param name="resultType">Result type</param>
-        /// <param name="defaultValue">
-        /// Default value to return if there is an issue or it can't be converted
-        /// </param>
-        /// <returns>
-        /// The object converted to the other type or the default value if there is an error or
-        /// can't be converted
-        /// </returns>
-        public static object? To<TObject>(this TObject item, Type resultType, object? defaultValue = null)
-        {
-            if (resultType is null)
-                return item;
-            try
-            {
-                if (item is null || item is DBNull)
-                {
-                    return ReturnDefaultValue(resultType, defaultValue);
-                }
-                var ObjectType = item.GetType();
-                if (resultType.IsAssignableFrom(ObjectType))
-                {
-                    return item;
-                }
-
-                if (ObjectType.IsPrimitive && resultType.IsPrimitive)
-                {
-                    try
-                    {
-                        return Convert.ChangeType(item, resultType, CultureInfo.InvariantCulture);
-                    }
-                    catch { }
-                }
-
-                if (!Converters.TryGetValue(ObjectType, out var Converter))
-                    Converter = TypeDescriptor.GetConverter(ObjectType);
-                if (Converter.CanConvertTo(resultType))
-                {
-                    return Converter.ConvertTo(item, resultType);
-                }
-
-                if (!Converters.TryGetValue(resultType, out Converter))
-                    Converter = TypeDescriptor.GetConverter(resultType);
-                if (Converter.CanConvertFrom(ObjectType))
-                {
-                    return Converter.ConvertFrom(item);
-                }
-
-                if (resultType.IsEnum)
-                {
-                    if (item is string ItemStringValue)
-                    {
-                        return Enum.Parse(resultType, ItemStringValue, true);
-                    }
-
-                    return Enum.ToObject(resultType, item);
-                }
-
-                var IEnumerableResultType = resultType.GetIEnumerableElementType();
-                var IEnumerableObjectType = ObjectType.GetIEnumerableElementType();
-                if (resultType != IEnumerableResultType && ObjectType != IEnumerableObjectType)
-                {
-                    var TempList = (IList)FastActivator.CreateInstance(typeof(List<>).MakeGenericType(IEnumerableResultType));
-                    foreach (var Item in (IEnumerable)item)
-                    {
-                        TempList.Add(Item.To(IEnumerableResultType, null));
-                    }
-                    return TempList;
-                }
-                if (resultType.IsClass)
-                {
-                    var ReturnValue = FastActivator.CreateInstance(resultType);
-                    ObjectType.MapTo(resultType)
-                                ?.AutoMap()
-                                .Copy(item, ReturnValue);
-                    return ReturnValue;
-                }
-
-                try
-                {
-                    return Convert.ChangeType(item, resultType, CultureInfo.InvariantCulture);
-                }
-                catch { }
-            }
-            catch
-            {
-            }
-            return ReturnDefaultValue(resultType, defaultValue);
-
-            static object? ReturnDefaultValue(Type resultType, object? defaultValue)
-            {
-                if (!(defaultValue is null) || !resultType.IsValueType)
-                    return defaultValue;
-                var ResultHash = resultType.GetHashCode();
-                if (DefaultValueLookup.Values.TryGetValue(ResultHash, out var ReturnValue))
-                    return ReturnValue;
-                return FastActivator.CreateInstance(resultType);
-            }
         }
     }
 }

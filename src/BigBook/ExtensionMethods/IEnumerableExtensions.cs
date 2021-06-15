@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using BigBook.Comparison;
+using ObjectCartographer;
 using System;
 using System.Buffers;
 using System.Collections.Concurrent;
@@ -812,7 +813,7 @@ namespace BigBook
                 return new ObservableList<TTarget>();
             }
 
-            convertingFunction ??= new Func<TSource, TTarget>(x => x.To<TSource, TTarget>());
+            convertingFunction ??= new Func<TSource, TTarget>(x => x.To<TTarget>());
             return new ObservableList<TTarget>(list.ForEach(convertingFunction));
         }
 

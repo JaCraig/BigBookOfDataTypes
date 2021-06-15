@@ -17,6 +17,7 @@ limitations under the License.
 using BigBook.Properties;
 using BigBook.Reflection;
 using Fast.Activator;
+using ObjectCartographer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -52,6 +53,12 @@ namespace BigBook
     [EditorBrowsable(EditorBrowsableState.Never)]
     public static class ReflectionExtensions
     {
+        /// <summary>
+        /// Gets the object cartographer to.
+        /// </summary>
+        /// <value>The object cartographer to.</value>
+        private static MethodInfo ObjectCartographerTo { get; } = Array.Find(typeof(ObjectExtensions).GetMethods(), x => x.IsGenericMethod && x.Name == nameof(ObjectExtensions.To));
+
         /// <summary>
         /// Gets the attribute from the item
         /// </summary>
@@ -844,7 +851,10 @@ namespace BigBook
             var PropertyInfo = typeof(TClassType).GetProperty<TClassType>(SplitName[0]);
             var ObjectInstance = Expression.Parameter(PropertyInfo?.DeclaringType, "x");
             var PropertySet = Expression.Parameter(typeof(TDataType), "y");
-            var DefaultConstant = Expression.Constant(((object?)null).To((PropertyInfo?.PropertyType)!, null), PropertyInfo?.PropertyType);
+            object Constant = null;
+            if (!PropertyInfo.PropertyType.IsClass)
+                Constant = FastActivator.CreateInstance(PropertyInfo?.PropertyType);
+            var DefaultConstant = Expression.Constant(Constant, PropertyInfo?.PropertyType);
             MethodCallExpression? SetterCall = null;
             MemberExpression? PropertyGet = null;
             if (SplitName.Length > 1)
@@ -867,11 +877,7 @@ namespace BigBook
             {
                 if (PropertyInfo?.PropertyType != typeof(TDataType))
                 {
-                    var ConversionMethod = Array.Find(typeof(GenericObjectExtensions).GetMethods(), x => x.ContainsGenericParameters
-                        && x.GetGenericArguments().Length == 2
-                        && x.Name == "To"
-                        && x.GetParameters().Length == 2);
-                    ConversionMethod = ConversionMethod.MakeGenericMethod(typeof(TDataType), PropertyInfo?.PropertyType);
+                    var ConversionMethod = ObjectCartographerTo.MakeGenericMethod(PropertyInfo?.PropertyType);
                     var Convert = Expression.Call(ConversionMethod, PropertySet, DefaultConstant);
                     SetterCall = PropertyGet is null ? Expression.Call(ObjectInstance, SetMethod, Convert) : Expression.Call(PropertyGet, SetMethod, Convert);
                     return Expression.Lambda<Action<TClassType, TDataType>>(SetterCall, ObjectInstance, PropertySet);
@@ -904,7 +910,10 @@ namespace BigBook
 
             var ObjectInstance = Expression.Parameter(property?.DeclaringType, "x");
             var PropertySet = Expression.Parameter(typeof(TDataType), "y");
-            var DefaultConstant = Expression.Constant(((object?)null).To((property?.PropertyType)!, null), property?.PropertyType);
+            object Constant = null;
+            if (!property.PropertyType.IsClass)
+                Constant = FastActivator.CreateInstance(property?.PropertyType);
+            var DefaultConstant = Expression.Constant(Constant, property?.PropertyType);
             MethodCallExpression? SetterCall = null;
             MemberExpression? PropertyGet = null;
             var SetMethod = property?.GetSetMethod();
@@ -912,11 +921,7 @@ namespace BigBook
             {
                 if (property?.PropertyType != typeof(TDataType))
                 {
-                    var ConversionMethod = Array.Find(typeof(GenericObjectExtensions).GetMethods(), x => x.ContainsGenericParameters
-                        && x.GetGenericArguments().Length == 2
-                        && x.Name == "To"
-                        && x.GetParameters().Length == 2);
-                    ConversionMethod = ConversionMethod.MakeGenericMethod(typeof(TDataType), property?.PropertyType);
+                    var ConversionMethod = ObjectCartographerTo.MakeGenericMethod(property?.PropertyType);
                     var Convert = Expression.Call(ConversionMethod, PropertySet, DefaultConstant);
                     SetterCall = PropertyGet is null ? Expression.Call(ObjectInstance, SetMethod, Convert) : Expression.Call(PropertyGet, SetMethod, Convert);
                     return Expression.Lambda<Action<TClassType, TDataType>>(SetterCall, ObjectInstance, PropertySet);

@@ -1,13 +1,12 @@
 ﻿using BenchmarkDotNet.Attributes;
-using BigBook.Conversion;
 using BigBook.ExtensionMethods.Utils;
 using Fast.Activator;
 using Microsoft.Extensions.DependencyInjection;
+using ObjectCartographer;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Globalization;
 
 namespace BigBook.Benchmarks.Tests
@@ -60,15 +59,6 @@ namespace BigBook.Benchmarks.Tests
 
     public static class TestExtensions
     {
-        /// <summary>
-        /// The converters
-        /// </summary>
-        private static readonly Dictionary<Type, TypeConverter> Converters = new Dictionary<Type, TypeConverter>
-        {
-            [typeof(SqlDbType)] = new SqlDbTypeTypeConverter(),
-            [typeof(DbType)] = new DbTypeTypeConverter()
-        };
-
         /// <summary>
         /// Attempts to convert the object to another type and returns the value
         /// </summary>
@@ -127,15 +117,13 @@ namespace BigBook.Benchmarks.Tests
                     catch { }
                 }
 
-                if (!Converters.TryGetValue(ObjectType, out var Converter))
-                    Converter = TypeDescriptor.GetConverter(ObjectType);
+                var Converter = TypeDescriptor.GetConverter(ObjectType);
                 if (Converter.CanConvertTo(resultType))
                 {
                     return Converter.ConvertTo(item, resultType);
                 }
 
-                if (!Converters.TryGetValue(resultType, out Converter))
-                    Converter = TypeDescriptor.GetConverter(resultType);
+                Converter = TypeDescriptor.GetConverter(resultType);
                 if (Converter.CanConvertFrom(ObjectType))
                 {
                     return Converter.ConvertFrom(item);
@@ -164,11 +152,7 @@ namespace BigBook.Benchmarks.Tests
                 }
                 if (resultType.IsClass)
                 {
-                    var ReturnValue = FastActivator.CreateInstance(resultType);
-                    ObjectType.MapTo(resultType)
-                                ?.AutoMap()
-                                .Copy(item, ReturnValue);
-                    return ReturnValue;
+                    return item.To(resultType);
                 }
 
                 try

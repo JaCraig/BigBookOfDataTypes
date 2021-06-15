@@ -14,7 +14,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using BigBook.DataMapper;
 using Microsoft.Extensions.ObjectPool;
 using System.Text;
 
@@ -30,10 +29,8 @@ namespace BigBook
         /// </summary>
         /// <param name="aopManager">The aop manager.</param>
         /// <param name="builderPool">The builder pool.</param>
-        /// <param name="dataMapper">The data mapper.</param>
-        public DynamoFactory(Aspectus.Aspectus? aopManager, ObjectPool<StringBuilder>? builderPool, Manager? dataMapper)
+        public DynamoFactory(Aspectus.Aspectus? aopManager, ObjectPool<StringBuilder>? builderPool)
         {
-            DataMapper = dataMapper;
             BuilderPool = builderPool;
             AopManager = aopManager;
         }
@@ -51,19 +48,13 @@ namespace BigBook
         private ObjectPool<StringBuilder>? BuilderPool { get; }
 
         /// <summary>
-        /// Gets the data mapper.
-        /// </summary>
-        /// <value>The data mapper.</value>
-        private Manager? DataMapper { get; }
-
-        /// <summary>
         /// Creates a Dynamo object.
         /// </summary>
         /// <param name="useChangeLog">if set to <c>true</c> [use change log].</param>
         /// <returns>The Dynamo object</returns>
         public Dynamo Create(bool useChangeLog)
         {
-            return new Dynamo(useChangeLog, AopManager, BuilderPool, DataMapper);
+            return new Dynamo(useChangeLog, AopManager, BuilderPool);
         }
 
         /// <summary>
@@ -74,7 +65,7 @@ namespace BigBook
         /// <returns>The Dynamo object</returns>
         public Dynamo Create(object? item, bool useChangeLog = false)
         {
-            return new Dynamo(item, useChangeLog, AopManager, BuilderPool, DataMapper);
+            return new Dynamo(item, useChangeLog, AopManager, BuilderPool);
         }
     }
 }

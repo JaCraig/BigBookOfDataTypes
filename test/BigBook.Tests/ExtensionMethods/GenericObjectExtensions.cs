@@ -1,7 +1,6 @@
 ﻿using BigBook;
 using BigBook.Tests.BaseClasses;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Xunit;
@@ -175,25 +174,6 @@ namespace BigBook.Tests.ExtensionMethods
             Assert.Equal("01234", Builder.ToString());
         }
 
-        [Fact]
-        public void To()
-        {
-            Assert.Equal(new Uri("http://A"), "http://A".To(new Uri("http://B")));
-            Assert.Equal("http://A", new Uri("http://A").To("http://B"));
-            var Value = DBNull.Value;
-            Assert.Equal("A", Value.To(typeof(string), "A"));
-            Assert.Equal(default(DateTime), Value.To(typeof(DateTime), null));
-            Assert.Equal(TestEnum.Value2, 1.To(typeof(TestEnum), null));
-            Assert.Equal(TestEnum.Value3, "Value3".To(typeof(TestEnum), null));
-        }
-
-        [Fact]
-        public void ToList()
-        {
-            var TestObject = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8 };
-            Assert.Equal(new List<long>() { 1, 2, 3, 4, 5, 6, 7, 8 }, TestObject.To(new List<long>()));
-        }
-
         private void Test() => throw new Exception();
 
         private enum TestEnum
@@ -202,5 +182,15 @@ namespace BigBook.Tests.ExtensionMethods
             Value2,
             Value3
         }
+    }
+
+    internal class MyTestClass
+    {
+        public MyTestClass()
+        {
+            B = 10;
+        }
+
+        public int B { get; set; }
     }
 }

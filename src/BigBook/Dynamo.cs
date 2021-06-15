@@ -14,12 +14,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using BigBook.DataMapper;
-using BigBook.DataMapper.Interfaces;
 using BigBook.DynamoUtils;
 using BigBook.Reflection;
 using Fast.Activator;
 using Microsoft.Extensions.ObjectPool;
+using ObjectCartographer;
 using System;
 using System.Collections;
 using System.Collections.Concurrent;
@@ -57,12 +56,8 @@ namespace BigBook
         /// <param name="builderPool">
         /// The builder pool (if available, it will use a StringBuilder from the pool where applicable).
         /// </param>
-        /// <param name="dataMapper">
-        /// The data mapper (if available, will use this to map itself to other data types when
-        /// copying data).
-        /// </param>
-        protected Dynamo(object? item, bool useChangeLog = false, Aspectus.Aspectus? aopManager = null, ObjectPool<StringBuilder>? builderPool = null, Manager? dataMapper = null)
-            : base(item, useChangeLog, aopManager, builderPool, dataMapper)
+        protected Dynamo(object? item, bool useChangeLog = false, Aspectus.Aspectus? aopManager = null, ObjectPool<StringBuilder>? builderPool = null)
+            : base(item, useChangeLog, aopManager, builderPool)
         {
         }
 
@@ -76,12 +71,8 @@ namespace BigBook
         /// <param name="builderPool">
         /// The builder pool (if available, it will use a StringBuilder from the pool where applicable).
         /// </param>
-        /// <param name="dataMapper">
-        /// The data mapper (if available, will use this to map itself to other data types when
-        /// copying data).
-        /// </param>
-        protected Dynamo(bool useChangeLog, Aspectus.Aspectus? aopManager = null, ObjectPool<StringBuilder>? builderPool = null, Manager? dataMapper = null)
-            : base(useChangeLog, aopManager, builderPool, dataMapper)
+        protected Dynamo(bool useChangeLog, Aspectus.Aspectus? aopManager = null, ObjectPool<StringBuilder>? builderPool = null)
+            : base(useChangeLog, aopManager, builderPool)
         {
         }
 
@@ -150,12 +141,8 @@ namespace BigBook
         /// <param name="builderPool">
         /// The builder pool (if available, it will use a StringBuilder from the pool where applicable).
         /// </param>
-        /// <param name="dataMapper">
-        /// The data mapper (if available, will use this to map itself to other data types when
-        /// copying data).
-        /// </param>
-        public Dynamo(object? item, bool useChangeLog = false, Aspectus.Aspectus? aopManager = null, ObjectPool<StringBuilder>? builderPool = null, Manager? dataMapper = null)
-            : this(useChangeLog, aopManager, builderPool, dataMapper)
+        public Dynamo(object? item, bool useChangeLog = false, Aspectus.Aspectus? aopManager = null, ObjectPool<StringBuilder>? builderPool = null)
+            : this(useChangeLog, aopManager, builderPool)
         {
             Copy(item);
         }
@@ -170,17 +157,12 @@ namespace BigBook
         /// <param name="builderPool">
         /// The builder pool (if available, it will use a StringBuilder from the pool where applicable).
         /// </param>
-        /// <param name="dataMapper">
-        /// The data mapper (if available, will use this to map itself to other data types when
-        /// copying data).
-        /// </param>
-        public Dynamo(bool useChangeLog, Aspectus.Aspectus? aopManager = null, ObjectPool<StringBuilder>? builderPool = null, Manager? dataMapper = null)
+        public Dynamo(bool useChangeLog, Aspectus.Aspectus? aopManager = null, ObjectPool<StringBuilder>? builderPool = null)
             : this()
         {
             ChangeLog = useChangeLog ? new ConcurrentDictionary<string, Change>() : null;
             AOPManager = aopManager;
             BuilderPool = builderPool;
-            DataMapper = dataMapper ?? new Manager(new IDataMapper[] { new DataMapper.Default.DefaultDataMapper() }, Array.Empty<IMapperModule>());
         }
 
         /// <summary>
@@ -261,12 +243,6 @@ namespace BigBook
         /// </summary>
         /// <value>The builder pool.</value>
         private ObjectPool<StringBuilder>? BuilderPool { get; }
-
-        /// <summary>
-        /// Gets or sets the data mapper.
-        /// </summary>
-        /// <value>The data mapper.</value>
-        private Manager? DataMapper { get; set; }
 
         /// <summary>
         /// Gets or sets the hash code.
@@ -480,10 +456,7 @@ namespace BigBook
             }
             else
             {
-                DataMapper ??= GetGenericMapper();
-                DataMapper?.Map(ItemType, GetType())
-                          ?.AutoMap()
-                          .Copy(item, this);
+                item.To(GetType(), this);
             }
         }
 
@@ -529,10 +502,7 @@ namespace BigBook
             {
                 return;
             }
-            DataMapper ??= GetGenericMapper();
-            DataMapper?.Map(GetType(), result.GetType())
-                      ?.AutoMap()
-                      .Copy(this, result);
+            this.To(result.GetType(), result);
         }
 
         /// <summary>
@@ -655,7 +625,7 @@ namespace BigBook
         /// <returns>A new Dynamo object containing only the keys specified</returns>
         public dynamic SubSet(params string[] keys)
         {
-            var ReturnValue = new Dynamo(ChangeLog != null, AOPManager, BuilderPool, DataMapper);
+            var ReturnValue = new Dynamo(ChangeLog != null, AOPManager, BuilderPool);
             if (keys is null)
             {
                 return ReturnValue;
@@ -686,11 +656,8 @@ namespace BigBook
             if (ObjectType is null)
                 return this;
             var Result = AOPManager?.Create(ObjectType) ?? FastActivator.CreateInstance(ObjectType);
-            DataMapper ??= GetGenericMapper();
-            DataMapper?.Map(GetType(), ObjectType)
-                      ?.AutoMap()
-                      .Copy(this, Result);
-            return Result!;
+            this.To(ObjectType, Result);
+            return Result;
         }
 
         /// <summary>
@@ -837,7 +804,7 @@ namespace BigBook
 
             object? Result = null;
             if (!(TypeInfo?.TryGetValue(this, name, out Result) ?? false))
-                return ((object?)null)!.To<object>(returnType);
+                return ((object?)null)!.To(returnType, null);
 
             var ReturnValue = Result.To(returnType, null);
             Value = RaiseGetValueEnd(name, ReturnValue);
@@ -895,15 +862,6 @@ namespace BigBook
             if (propertyChanged_ is null)
                 return;
             propertyChanged_.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        /// <summary>
-        /// Gets the generic mapper.
-        /// </summary>
-        /// <returns>The default mapper if one isn't supplied.</returns>
-        private static Manager? GetGenericMapper()
-        {
-            return new Manager(new IDataMapper[] { new DataMapper.Default.DefaultDataMapper() }, Array.Empty<IMapperModule>());
         }
 
         /// <summary>

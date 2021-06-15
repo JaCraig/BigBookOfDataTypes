@@ -65,7 +65,6 @@ namespace BigBook.Tests.BaseClasses
             lock (LockObject)
             {
                 _ = Mech.Default;
-                _ = Canister.Builder.Bootstrapper.Resolve<BigBook.DataMapper.Manager>();
             }
         }
 
