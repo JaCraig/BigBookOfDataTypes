@@ -133,10 +133,12 @@ namespace BigBook
         /// <param name="arrayIndex">Array index</param>
         public void CopyTo(KeyValuePair<TKey, IEnumerable<TValue>>[] array, int arrayIndex)
         {
-            if (array is null)
+            if (array is null || arrayIndex < 0)
                 return;
             for (var x = 0; x < Keys.Count; ++x)
             {
+                if (arrayIndex + x >= array.Length)
+                    return;
                 array[arrayIndex + x] = new KeyValuePair<TKey, IEnumerable<TValue>>(Keys.ElementAt(x), this[Keys.ElementAt(x)]);
             }
         }
