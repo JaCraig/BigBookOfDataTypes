@@ -43,8 +43,7 @@ namespace BigBook.CanisterModules
             bootstrapper?.Register(typeof(GenericComparer<>), ServiceLifetime.Singleton)
                          .Register(typeof(GenericEqualityComparer<>), ServiceLifetime.Singleton)
                          .Register(new DynamoTypes(), ServiceLifetime.Singleton)
-                         .Register(objectPoolProvider.CreateStringBuilderPool(), ServiceLifetime.Singleton)
-                         .Register<DynamoFactory>(ServiceLifetime.Singleton);
+                         .Register(objectPoolProvider.CreateStringBuilderPool(), ServiceLifetime.Singleton);
         }
     }
 }

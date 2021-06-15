@@ -1,4 +1,5 @@
 ﻿using BenchmarkDotNet.Attributes;
+using BigBook.Benchmarks.Tests.TestClasses;
 using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Concurrent;
 using System.Dynamic;
@@ -12,13 +13,11 @@ namespace BigBook.Benchmarks.Tests
 
         private object AnonymousType { get; set; }
 
-        private DynamoFactory DynamoFactory { get; set; }
-
         private ExpandoObject ExpandoType { get; set; }
 
         private TestClass TestClassValue { get; set; }
 
-        [Params(100)]
+        [Params(1)]
         public int Count;
 
         [Benchmark]
@@ -62,7 +61,7 @@ namespace BigBook.Benchmarks.Tests
             Data = new Dynamo[Count];
             for (var x = 0; x < Count; ++x)
             {
-                Data[x] = DynamoFactory.Create(AnonymousType);
+                Data[x] = new Dynamo(AnonymousType);
             }
             return Data;
         }
@@ -73,7 +72,7 @@ namespace BigBook.Benchmarks.Tests
             Data = new Dynamo[Count];
             for (var x = 0; x < Count; ++x)
             {
-                Data[x] = DynamoFactory.Create(TestClassValue);
+                Data[x] = new Dynamo(TestClassValue);
             }
             return Data;
         }
@@ -84,7 +83,7 @@ namespace BigBook.Benchmarks.Tests
             Data = new Dynamo[Count];
             for (var x = 0; x < Count; ++x)
             {
-                Data[x] = DynamoFactory.Create(ExpandoType);
+                Data[x] = new Dynamo(ExpandoType);
             }
             return Data;
         }
@@ -95,7 +94,7 @@ namespace BigBook.Benchmarks.Tests
             Data = new Dynamo[Count];
             for (var x = 0; x < Count; ++x)
             {
-                dynamic Temp = DynamoFactory.Create(false);
+                dynamic Temp = new Dynamo(false);
                 Temp.A = "Test data goes here";
                 Data[x] = Temp;
             }
@@ -115,6 +114,52 @@ namespace BigBook.Benchmarks.Tests
             return Data;
         }
 
+        [Benchmark]
+        public object[] NewDynamoAnonymousConversionTest()
+        {
+            Data = new NewDynamo[Count];
+            for (var x = 0; x < Count; ++x)
+            {
+                Data[x] = new NewDynamo(AnonymousType);
+            }
+            return Data;
+        }
+
+        [Benchmark]
+        public object[] NewDynamoConversionTest()
+        {
+            Data = new NewDynamo[Count];
+            for (var x = 0; x < Count; ++x)
+            {
+                Data[x] = new NewDynamo(TestClassValue);
+            }
+            return Data;
+        }
+
+        [Benchmark]
+        public object[] NewDynamoExpandoConversionTest()
+        {
+            Data = new NewDynamo[Count];
+            for (var x = 0; x < Count; ++x)
+            {
+                Data[x] = new NewDynamo(ExpandoType);
+            }
+            return Data;
+        }
+
+        [Benchmark]
+        public object[] NewDynamoTest()
+        {
+            Data = new NewDynamo[Count];
+            for (var x = 0; x < Count; ++x)
+            {
+                dynamic Temp = new NewDynamo(false);
+                Temp.A = "Test data goes here";
+                Data[x] = Temp;
+            }
+            return Data;
+        }
+
         [GlobalSetup]
         public void Setup()
         {
@@ -124,7 +169,6 @@ namespace BigBook.Benchmarks.Tests
             Temp.A = "Test data goes here";
             ExpandoType = Temp;
             TestClassValue = new TestClass { A = "Test data goes here" };
-            DynamoFactory = Canister.Builder.Bootstrapper.Resolve<DynamoFactory>();
         }
 
         private class TestClass

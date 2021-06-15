@@ -13,7 +13,7 @@ namespace BigBook.Tests
     {
         public DynamoTests()
         {
-            TestObject = new BigBook.Dynamo(new { A = "Testing" }, true, AOPManager, BuilderPool);
+            TestObject = new BigBook.Dynamo(new { A = "Testing" }, true);
         }
 
         protected static Aspectus.Aspectus AOPManager => Canister.Builder.Bootstrapper.Resolve<Aspectus.Aspectus>();
@@ -41,7 +41,7 @@ namespace BigBook.Tests
             Temp.B = new Func<string>(() => Temp.A);
             Assert.Equal(1, Temp.ChangeLog.Count);
             Assert.Contains("B", Temp.ChangeLog.Keys);
-            dynamic Temp2 = new BigBook.Dynamo(new { A = "Testing" }, true, AOPManager, BuilderPool);
+            dynamic Temp2 = new BigBook.Dynamo(new { A = "Testing" }, true);
             Temp2.A = "Testing2";
             Assert.Equal("Testing", Temp2.ChangeLog["A"].OriginalValue);
             Assert.Equal("Testing2", Temp2.ChangeLog["A"].NewValue);
@@ -59,7 +59,7 @@ namespace BigBook.Tests
             Assert.Equal(1, Temp2.B);
             Assert.Equal(new Uri("http://A"), Temp2.C);
 
-            Temp = new BigBook.Dynamo(false, AOPManager, BuilderPool);
+            Temp = new BigBook.Dynamo(false);
             Temp.A = "Testing";
             Temp.B = 1;
             Temp.C = new Uri("http://A");
@@ -68,7 +68,7 @@ namespace BigBook.Tests
             Assert.Equal(1, Temp2.B);
             Assert.Equal(new Uri("http://A"), Temp2.C);
 
-            Temp = new BigBook.Dynamo(false, AOPManager, BuilderPool);
+            Temp = new BigBook.Dynamo(false);
             Temp.A = "Testing";
             Temp.B = 1;
             Temp.C = new Uri("http://A");
@@ -81,7 +81,7 @@ namespace BigBook.Tests
         [Fact]
         public void ConvertToClassWithLists()
         {
-            dynamic Temp = new BigBook.Dynamo(false, AOPManager, BuilderPool);
+            dynamic Temp = new BigBook.Dynamo(false);
             dynamic ListItem1 = new ExpandoObject();
             ListItem1.A = "A";
             ListItem1.B = 1;
@@ -126,7 +126,7 @@ namespace BigBook.Tests
             Assert.Equal(1, Temp2["B"]);
             Assert.Equal(new Uri("http://A"), Temp2["C"]);
 
-            Temp = new BigBook.Dynamo(false, AOPManager, BuilderPool);
+            Temp = new BigBook.Dynamo(false);
             Temp.A = "Testing2";
             Temp.B = 2;
             Temp.C = new Uri("http://B");
@@ -168,7 +168,7 @@ namespace BigBook.Tests
         [Fact]
         public void GetHashCodeTest()
         {
-            dynamic Temp = new BigBook.Dynamo(new { A = "Testing", B = 1 }, false, AOPManager, BuilderPool);
+            dynamic Temp = new BigBook.Dynamo(new { A = "Testing", B = 1 }, false);
             Temp.C = null;
             Temp.GetHashCode();
         }
@@ -176,7 +176,7 @@ namespace BigBook.Tests
         [Fact]
         public void Initialization()
         {
-            dynamic Temp = new BigBook.Dynamo(new { A = "Testing", B = 1 }, false, AOPManager, BuilderPool);
+            dynamic Temp = new BigBook.Dynamo(new { A = "Testing", B = 1 }, false);
             Assert.Equal("Testing", Temp.A);
             Assert.Equal(1, Temp.B);
         }
@@ -197,7 +197,7 @@ namespace BigBook.Tests
         [Fact]
         public void MultithreadedTo()
         {
-            var TestObjects = 1000.Times(x => new Dynamo(new { A = "Testing", B = 1 }, false, AOPManager, BuilderPool)).ToArray<Dynamo>();
+            var TestObjects = 1000.Times(x => new Dynamo(new { A = "Testing", B = 1 }, false)).ToArray<Dynamo>();
             var Result = TestObjects.ForEachParallel(x => x.To<TestClass>());
             Assert.True(Result.All(x => x.A == "Testing"));
         }

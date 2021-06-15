@@ -17,7 +17,6 @@ limitations under the License.
 using BigBook.DynamoUtils;
 using BigBook.Reflection;
 using Fast.Activator;
-using Microsoft.Extensions.ObjectPool;
 using ObjectCartographer;
 using System;
 using System.Collections;
@@ -50,14 +49,8 @@ namespace BigBook
         /// </summary>
         /// <param name="item">Item to copy values from</param>
         /// <param name="useChangeLog">if set to <c>true</c> [use change log].</param>
-        /// <param name="aopManager">
-        /// The aop manager (if available it will attempt to use this to create an object).
-        /// </param>
-        /// <param name="builderPool">
-        /// The builder pool (if available, it will use a StringBuilder from the pool where applicable).
-        /// </param>
-        protected Dynamo(object? item, bool useChangeLog = false, Aspectus.Aspectus? aopManager = null, ObjectPool<StringBuilder>? builderPool = null)
-            : base(item, useChangeLog, aopManager, builderPool)
+        protected Dynamo(object? item, bool useChangeLog = false)
+            : base(item, useChangeLog)
         {
         }
 
@@ -65,14 +58,8 @@ namespace BigBook
         /// Constructor
         /// </summary>
         /// <param name="useChangeLog">if set to <c>true</c> [use change log].</param>
-        /// <param name="aopManager">
-        /// The aop manager (if available it will attempt to use this to create an object).
-        /// </param>
-        /// <param name="builderPool">
-        /// The builder pool (if available, it will use a StringBuilder from the pool where applicable).
-        /// </param>
-        protected Dynamo(bool useChangeLog, Aspectus.Aspectus? aopManager = null, ObjectPool<StringBuilder>? builderPool = null)
-            : base(useChangeLog, aopManager, builderPool)
+        protected Dynamo(bool useChangeLog)
+            : base(useChangeLog)
         {
         }
 
@@ -135,14 +122,8 @@ namespace BigBook
         /// </summary>
         /// <param name="item">The item.</param>
         /// <param name="useChangeLog">if set to <c>true</c> [use change log].</param>
-        /// <param name="aopManager">
-        /// The aop manager (if available it will attempt to use this to create an object).
-        /// </param>
-        /// <param name="builderPool">
-        /// The builder pool (if available, it will use a StringBuilder from the pool where applicable).
-        /// </param>
-        public Dynamo(object? item, bool useChangeLog = false, Aspectus.Aspectus? aopManager = null, ObjectPool<StringBuilder>? builderPool = null)
-            : this(useChangeLog, aopManager, builderPool)
+        public Dynamo(object? item, bool useChangeLog = false)
+            : this(useChangeLog)
         {
             Copy(item);
         }
@@ -151,18 +132,10 @@ namespace BigBook
         /// Constructor
         /// </summary>
         /// <param name="useChangeLog">if set to <c>true</c> [use change log].</param>
-        /// <param name="aopManager">
-        /// The aop manager (if available it will attempt to use this to create an object).
-        /// </param>
-        /// <param name="builderPool">
-        /// The builder pool (if available, it will use a StringBuilder from the pool where applicable).
-        /// </param>
-        public Dynamo(bool useChangeLog, Aspectus.Aspectus? aopManager = null, ObjectPool<StringBuilder>? builderPool = null)
+        public Dynamo(bool useChangeLog)
             : this()
         {
             ChangeLog = useChangeLog ? new ConcurrentDictionary<string, Change>() : null;
-            AOPManager = aopManager;
-            BuilderPool = builderPool;
         }
 
         /// <summary>
@@ -236,13 +209,7 @@ namespace BigBook
         /// Gets or sets the aop manager.
         /// </summary>
         /// <value>The aop manager.</value>
-        private Aspectus.Aspectus? AOPManager { get; }
-
-        /// <summary>
-        /// Gets the builder pool.
-        /// </summary>
-        /// <value>The builder pool.</value>
-        private ObjectPool<StringBuilder>? BuilderPool { get; }
+        private static Aspectus.Aspectus? AOPManager => Aspectus.Aspectus.Instance;
 
         /// <summary>
         /// Gets or sets the hash code.
@@ -625,7 +592,7 @@ namespace BigBook
         /// <returns>A new Dynamo object containing only the keys specified</returns>
         public dynamic SubSet(params string[] keys)
         {
-            var ReturnValue = new Dynamo(ChangeLog != null, AOPManager, BuilderPool);
+            var ReturnValue = new Dynamo(ChangeLog != null);
             if (keys is null)
             {
                 return ReturnValue;
@@ -666,7 +633,7 @@ namespace BigBook
         /// <returns>The string version of the object</returns>
         public override string ToString()
         {
-            var Builder = BuilderPool?.Get() ?? new StringBuilder();
+            var Builder = new StringBuilder();
             Builder.Append(GetType().Name).AppendLine(" this");
             foreach (var Key in Keys.OrderBy(x => x))
             {
@@ -680,9 +647,7 @@ namespace BigBook
                     Builder.Append('\t').Append(Item.GetType().GetName()).Append(' ').Append(Key).Append(" = ").AppendLine(Item.ToString());
                 }
             }
-            var Result = Builder.ToString();
-            BuilderPool?.Return(Builder);
-            return Result;
+            return Builder.ToString();
         }
 
         /// <summary>
