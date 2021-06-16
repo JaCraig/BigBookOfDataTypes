@@ -287,8 +287,8 @@ namespace BigBook
                 return;
             if (arrayIndex < 0)
                 arrayIndex = 0;
-            if (arrayIndex >= BaseList.Count)
-                arrayIndex = BaseList.Count - 1;
+            if (arrayIndex >= array.Length)
+                arrayIndex = array.Length - 1;
             BaseList.CopyTo(array, arrayIndex);
         }
 
