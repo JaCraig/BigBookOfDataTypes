@@ -242,12 +242,6 @@ namespace BigBook
         internal DynamoData Data { get; private set; }
 
         /// <summary>
-        /// Gets or sets the aop manager.
-        /// </summary>
-        /// <value>The aop manager.</value>
-        private static Aspectus.Aspectus? AOPManager => Aspectus.Aspectus.Instance;
-
-        /// <summary>
         /// Gets or sets the hash code.
         /// </summary>
         /// <value>The hash code.</value>
@@ -611,18 +605,19 @@ namespace BigBook
         /// </summary>
         /// <typeparam name="TObject">Object type</typeparam>
         /// <returns>The object converted to the type specified</returns>
-        public TObject To<TObject>() => (TObject)To(typeof(TObject));
+        public TObject To<TObject>(TObject defaultObject = default) => (TObject)To(defaultObject, typeof(TObject));
 
         /// <summary>
         /// Converts the object to the type specified
         /// </summary>
         /// <param name="ObjectType">Object type</param>
+        /// <param name="defaultObject">The default object.</param>
         /// <returns>The object converted to the type specified</returns>
-        public object To(Type ObjectType)
+        public object To(object? defaultObject, Type ObjectType)
         {
             if (ObjectType is null)
                 return this;
-            var Result = AOPManager?.Create(ObjectType) ?? FastActivator.CreateInstance(ObjectType);
+            var Result = defaultObject ?? FastActivator.CreateInstance(ObjectType);
             this.To(ObjectType, Result);
             return Result;
         }
@@ -663,7 +658,7 @@ namespace BigBook
                 result = null;
                 return false;
             }
-            result = To(binder.Type);
+            result = To(null, binder.Type);
             return true;
         }
 
