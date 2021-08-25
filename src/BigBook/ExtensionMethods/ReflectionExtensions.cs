@@ -851,11 +851,11 @@ namespace BigBook
             var PropertyInfo = typeof(TClassType).GetProperty<TClassType>(SplitName[0]);
             var ObjectInstance = Expression.Parameter(PropertyInfo?.DeclaringType, "x");
             var PropertySet = Expression.Parameter(typeof(TDataType), "y");
-            object Constant = null;
+            object? Constant = null;
             if (!PropertyInfo.PropertyType.IsClass)
                 Constant = FastActivator.CreateInstance(PropertyInfo?.PropertyType);
             var DefaultConstant = Expression.Constant(Constant, PropertyInfo?.PropertyType);
-            MethodCallExpression? SetterCall = null;
+            MethodCallExpression? SetterCall;
             MemberExpression? PropertyGet = null;
             if (SplitName.Length > 1)
             {
@@ -906,22 +906,20 @@ namespace BigBook
                 throw new ArgumentNullException(nameof(property));
             }
 
-            var TempPropertyName = property.Name;
-
-            var ObjectInstance = Expression.Parameter(property?.DeclaringType, "x");
+            var ObjectInstance = Expression.Parameter(property.DeclaringType, "x");
             var PropertySet = Expression.Parameter(typeof(TDataType), "y");
-            object Constant = null;
+            object? Constant = null;
             if (!property.PropertyType.IsClass)
-                Constant = FastActivator.CreateInstance(property?.PropertyType);
-            var DefaultConstant = Expression.Constant(Constant, property?.PropertyType);
-            MethodCallExpression? SetterCall = null;
+                Constant = FastActivator.CreateInstance(property.PropertyType);
+            var DefaultConstant = Expression.Constant(Constant, property.PropertyType);
+            MethodCallExpression? SetterCall;
             MemberExpression? PropertyGet = null;
-            var SetMethod = property?.GetSetMethod();
+            var SetMethod = property.GetSetMethod();
             if (!(SetMethod is null))
             {
-                if (property?.PropertyType != typeof(TDataType))
+                if (property.PropertyType != typeof(TDataType))
                 {
-                    var ConversionMethod = ObjectCartographerTo.MakeGenericMethod(property?.PropertyType);
+                    var ConversionMethod = ObjectCartographerTo.MakeGenericMethod(property.PropertyType);
                     var Convert = Expression.Call(ConversionMethod, PropertySet, DefaultConstant);
                     SetterCall = PropertyGet is null ? Expression.Call(ObjectInstance, SetMethod, Convert) : Expression.Call(PropertyGet, SetMethod, Convert);
                     return Expression.Lambda<Action<TClassType, TDataType>>(SetterCall, ObjectInstance, PropertySet);

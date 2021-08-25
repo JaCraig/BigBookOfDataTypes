@@ -37,7 +37,7 @@ namespace BigBook.CanisterModules
         /// Loads the module
         /// </summary>
         /// <param name="bootstrapper">Bootstrapper to register with</param>
-        public void Load(IBootstrapper bootstrapper)
+        public void Load(IBootstrapper? bootstrapper)
         {
             var objectPoolProvider = new DefaultObjectPoolProvider();
             bootstrapper?.Register(typeof(GenericComparer<>), ServiceLifetime.Singleton)

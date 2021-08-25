@@ -18,7 +18,7 @@ namespace BigBook.Benchmarks.Tests
         [Benchmark]
         public void CachedDynamicMethod()
         {
-            _ = CachedMethod();
+            _ = CachedMethod?.Invoke();
         }
 
         [Benchmark]
@@ -29,10 +29,10 @@ namespace BigBook.Benchmarks.Tests
             var dynamic = new DynamicMethod(string.Empty,
                           type,
                           Array.Empty<Type>(),
-                          target.DeclaringType);
+                          target?.DeclaringType!);
             var il = dynamic.GetILGenerator();
-            il.DeclareLocal(target.DeclaringType);
-            il.Emit(OpCodes.Newobj, target);
+            il.DeclareLocal(target?.DeclaringType!);
+            il.Emit(OpCodes.Newobj, target!);
             //il.Emit(OpCodes.Stloc_0);
             //il.Emit(OpCodes.Ldloc_0);
             il.Emit(OpCodes.Ret);
@@ -49,10 +49,10 @@ namespace BigBook.Benchmarks.Tests
             var dynamic = new DynamicMethod(string.Empty,
                           type,
                           Array.Empty<Type>(),
-                          target.DeclaringType);
+                          target?.DeclaringType!);
             var il = dynamic.GetILGenerator();
-            il.DeclareLocal(target.DeclaringType);
-            il.Emit(OpCodes.Newobj, target);
+            il.DeclareLocal(target?.DeclaringType!);
+            il.Emit(OpCodes.Newobj, target!);
             //il.Emit(OpCodes.Stloc_0);
             //il.Emit(OpCodes.Ldloc_0);
             il.Emit(OpCodes.Ret);
@@ -62,7 +62,7 @@ namespace BigBook.Benchmarks.Tests
 
         private class TestClass
         {
-            public string A { get; set; }
+            public string? A { get; set; }
 
             public int B { get; set; }
 

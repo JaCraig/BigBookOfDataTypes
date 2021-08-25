@@ -24,7 +24,7 @@ namespace BigBook.Tests.BaseClasses
         /// Gets the type of the object.
         /// </summary>
         /// <value>The type of the object.</value>
-        protected override Type ObjectType { get; set; }
+        protected override Type? ObjectType { get; set; }
 
         /// <summary>
         /// Gets or sets the test object.
@@ -39,6 +39,8 @@ namespace BigBook.Tests.BaseClasses
         [Fact]
         public Task BreakObject()
         {
+            if (TestObject is null)
+                return Task.CompletedTask;
             return Mech.BreakAsync(TestObject, new Options
             {
                 MaxDuration = 1000,
@@ -72,12 +74,12 @@ namespace BigBook.Tests.BaseClasses
         /// Gets the type of the object.
         /// </summary>
         /// <value>The type of the object.</value>
-        protected abstract Type ObjectType { get; set; }
+        protected abstract Type? ObjectType { get; set; }
 
         /// <summary>
         /// The lock object
         /// </summary>
-        private static object LockObject = new object();
+        private static readonly object LockObject = new();
 
         /// <summary>
         /// Attempts to break the object.
@@ -86,6 +88,8 @@ namespace BigBook.Tests.BaseClasses
         [Fact]
         public Task BreakType()
         {
+            if (ObjectType is null)
+                return Task.CompletedTask;
             return Mech.BreakAsync(ObjectType, new Options
             {
                 MaxDuration = 1000,

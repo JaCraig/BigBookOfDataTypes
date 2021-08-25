@@ -119,26 +119,6 @@ namespace BigBook.Benchmarks.Tests.TestClasses
         }
 
         /// <summary>
-        /// The lock object
-        /// </summary>
-        private static readonly object LockObject = new object();
-
-        /// <summary>
-        /// The get value end_
-        /// </summary>
-        private Action<NewDynamo, string, EventArgs.OnEndEventArgs>? getValueEnd_;
-
-        /// <summary>
-        /// The get value start_
-        /// </summary>
-        private Action<NewDynamo, EventArgs.OnStartEventArgs>? getValueStart_;
-
-        /// <summary>
-        /// The property changed_
-        /// </summary>
-        private PropertyChangedEventHandler? propertyChanged_;
-
-        /// <summary>
         /// Gets the change log.
         /// </summary>
         /// <value>The change log.</value>
@@ -150,8 +130,8 @@ namespace BigBook.Benchmarks.Tests.TestClasses
         public int Count => Data.Count;
 
         /// <summary>
-        /// Gets a value indicating whether the
-        /// <see cref="T:System.Collections.Generic.ICollection`1"/> is read-only.
+        /// Gets a value indicating whether the <see
+        /// cref="T:System.Collections.Generic.ICollection`1"/> is read-only.
         /// </summary>
         public bool IsReadOnly { get; }
 
@@ -172,6 +152,26 @@ namespace BigBook.Benchmarks.Tests.TestClasses
         /// </summary>
         /// <value>The data.</value>
         internal IDictionary<string, object?> Data { get; private set; }
+
+        /// <summary>
+        /// The lock object
+        /// </summary>
+        private static readonly object LockObject = new object();
+
+        /// <summary>
+        /// The get value end_
+        /// </summary>
+        private Action<NewDynamo, string, EventArgs.OnEndEventArgs>? getValueEnd_;
+
+        /// <summary>
+        /// The get value start_
+        /// </summary>
+        private Action<NewDynamo, EventArgs.OnStartEventArgs>? getValueStart_;
+
+        /// <summary>
+        /// The property changed_
+        /// </summary>
+        private PropertyChangedEventHandler? propertyChanged_;
 
         /// <summary>
         /// Gets or sets the <see cref="object"/> with the specified key.
@@ -231,7 +231,7 @@ namespace BigBook.Benchmarks.Tests.TestClasses
         /// <summary>
         /// Property changed event
         /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged
+        public event PropertyChangedEventHandler? PropertyChanged
         {
             add
             {
@@ -280,8 +280,8 @@ namespace BigBook.Benchmarks.Tests.TestClasses
         /// </summary>
         /// <param name="item">The object to locate in the <see cref="T:System.Collections.Generic.ICollection`1"/>.</param>
         /// <returns>
-        /// <see langword="true"/> if <paramref name="item"/> is found in the
-        /// <see cref="T:System.Collections.Generic.ICollection`1"/>; otherwise, <see langword="false"/>.
+        /// <see langword="true"/> if <paramref name="item"/> is found in the <see
+        /// cref="T:System.Collections.Generic.ICollection`1"/>; otherwise, <see langword="false"/>.
         /// </returns>
         public bool Contains(KeyValuePair<string, object?> item)
         {
@@ -341,8 +341,8 @@ namespace BigBook.Benchmarks.Tests.TestClasses
         /// </summary>
         /// <param name="array">
         /// The one-dimensional <see cref="T:System.Array"/> that is the destination of the elements
-        /// copied from <see cref="T:System.Collections.Generic.ICollection`1"/>. The
-        /// <see cref="T:System.Array"/> must have zero-based indexing.
+        /// copied from <see cref="T:System.Collections.Generic.ICollection`1"/>. The <see
+        /// cref="T:System.Array"/> must have zero-based indexing.
         /// </param>
         /// <param name="arrayIndex">
         /// The zero-based index in <paramref name="array"/> at which copying begins.
@@ -432,9 +432,9 @@ namespace BigBook.Benchmarks.Tests.TestClasses
         /// </summary>
         /// <param name="key">The key of the element to remove.</param>
         /// <returns>
-        /// <see langword="true"/> if the element is successfully removed; otherwise,
-        /// <see langword="false"/>. This method also returns <see langword="false"/> if
-        /// <paramref name="key"/> was not found in the original <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+        /// <see langword="true"/> if the element is successfully removed; otherwise, <see
+        /// langword="false"/>. This method also returns <see langword="false"/> if <paramref
+        /// name="key"/> was not found in the original <see cref="T:System.Collections.Generic.IDictionary`2"/>.
         /// </returns>
         public bool Remove(string key)
         {
@@ -450,10 +450,10 @@ namespace BigBook.Benchmarks.Tests.TestClasses
         /// </summary>
         /// <param name="item">The object to remove from the <see cref="T:System.Collections.Generic.ICollection`1"/>.</param>
         /// <returns>
-        /// <see langword="true"/> if <paramref name="item"/> was successfully removed from the
-        /// <see cref="T:System.Collections.Generic.ICollection`1"/>; otherwise,
-        /// <see langword="false"/>. This method also returns <see langword="false"/> if
-        /// <paramref name="item"/> is not found in the original <see cref="T:System.Collections.Generic.ICollection`1"/>.
+        /// <see langword="true"/> if <paramref name="item"/> was successfully removed from the <see
+        /// cref="T:System.Collections.Generic.ICollection`1"/>; otherwise, <see langword="false"/>.
+        /// This method also returns <see langword="false"/> if <paramref name="item"/> is not found
+        /// in the original <see cref="T:System.Collections.Generic.ICollection`1"/>.
         /// </returns>
         public bool Remove(KeyValuePair<string, object?> item)
         {
@@ -569,8 +569,8 @@ namespace BigBook.Benchmarks.Tests.TestClasses
         /// parameter. This parameter is passed uninitialized.
         /// </param>
         /// <returns>
-        /// <see langword="true"/> if the object that implements
-        /// <see cref="T:System.Collections.Generic.IDictionary`2"/> contains an element with the
+        /// <see langword="true"/> if the object that implements <see
+        /// cref="T:System.Collections.Generic.IDictionary`2"/> contains an element with the
         /// specified key; otherwise, <see langword="false"/>.
         /// </returns>
         public bool TryGetValue(string key, [MaybeNullWhen(false)] out object? value)
@@ -585,7 +585,7 @@ namespace BigBook.Benchmarks.Tests.TestClasses
         /// <param name="binder">Member binder</param>
         /// <param name="value">Value</param>
         /// <returns>True if it is set, false otherwise</returns>
-        public override bool TrySetMember(SetMemberBinder binder, object value)
+        public override bool TrySetMember(SetMemberBinder binder, object? value)
         {
             if (binder is null)
                 return false;
