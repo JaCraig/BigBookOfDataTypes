@@ -33,6 +33,31 @@ namespace BigBook
     public static class IEnumerableExtensions
     {
         /// <summary>
+        /// Returns the best match based on levenshtein distance.
+        /// </summary>
+        /// <param name="list">The list.</param>
+        /// <param name="key">The key.</param>
+        /// <returns>The string from the list with the lowest levenshtein distance.</returns>
+        public static string BestMatch(this IEnumerable<string> list, string key)
+        {
+            if (list?.Any() != true)
+                return "";
+            key ??= "";
+            var MinValue = int.MaxValue;
+            var Value = "";
+            foreach (var Item in list)
+            {
+                var Distance = Item.LevenshteinDistance(key);
+                if (Distance < MinValue)
+                {
+                    Value = Item;
+                    MinValue = Distance;
+                }
+            }
+            return Value;
+        }
+
+        /// <summary>
         /// Combines multiple IEnumerables together and returns a new IEnumerable containing all of
         /// the values
         /// </summary>

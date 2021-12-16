@@ -127,7 +127,7 @@ namespace BigBook
     }
 
     /// <summary>
-    /// String and StringBuilder extensions
+    /// String extensions
     /// </summary>
     [EditorBrowsable(EditorBrowsableState.Never)]
     public static class StringExtensions
@@ -173,36 +173,6 @@ namespace BigBook
             }
             return newText.ToString();
         }
-
-        /// <summary>
-        /// Does an AppendFormat and then an AppendLine on the StringBuilder
-        /// </summary>
-        /// <param name="builder">Builder object</param>
-        /// <param name="provider">Format provider (CultureInfo) to use</param>
-        /// <param name="format">Format string</param>
-        /// <param name="objects">Objects to format</param>
-        /// <returns>The StringBuilder passed in</returns>
-        public static StringBuilder AppendLineFormat(this StringBuilder builder, IFormatProvider provider, string format, params object[] objects)
-        {
-            builder ??= new StringBuilder();
-            if (string.IsNullOrEmpty(format))
-            {
-                return builder;
-            }
-
-            objects ??= Array.Empty<object>();
-            provider ??= CultureInfo.InvariantCulture;
-            return builder.AppendFormat(provider, format, objects).AppendLine();
-        }
-
-        /// <summary>
-        /// Does an AppendFormat and then an AppendLine on the StringBuilder
-        /// </summary>
-        /// <param name="builder">Builder object</param>
-        /// <param name="format">Format string</param>
-        /// <param name="objects">Objects to format</param>
-        /// <returns>The StringBuilder passed in</returns>
-        public static StringBuilder AppendLineFormat(this StringBuilder builder, string format, params object[] objects) => builder.AppendLineFormat(CultureInfo.InvariantCulture, format, objects);
 
         /// <summary>
         /// Centers the input string (if it's longer than the length) and pads it using the padding string

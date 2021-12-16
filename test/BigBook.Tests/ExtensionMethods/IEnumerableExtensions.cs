@@ -14,6 +14,17 @@ namespace BigBook.Tests.ExtensionMethods
         protected override System.Type ObjectType { get; set; } = typeof(IEnumerableExtensions);
 
         [Fact]
+        public void BestMatch()
+        {
+            var Temp = new string[] { "Test", "Hey", "What is going on?" };
+            Assert.Equal("What is going on?", Temp.BestMatch("What is up my dudes?"));
+            Assert.Equal("Test", Temp.BestMatch("Testing"));
+            Assert.Equal("Hey", Temp.BestMatch("Hay"));
+            Assert.Equal("Hey", Temp.BestMatch(""));
+            Assert.Equal("Hey", Temp.BestMatch(null));
+        }
+
+        [Fact]
         public void Concat()
         {
             var Temp = new int[] { 0, 1, 2, 3, 5 }.ToList();
