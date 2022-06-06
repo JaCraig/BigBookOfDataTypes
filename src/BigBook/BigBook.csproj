@@ -10,7 +10,7 @@
     <Description>Big Book of Data Types is a collection of various data types including Vector3, Set, RingBuffer, PriorityQueue, Fractions, and DateSpan. It also includes a number of extension methods for types found already in .Net.</Description>
     <AssemblyTitle>Big Book of Data Types</AssemblyTitle>
     <Authors>James Craig</Authors>
-    <TargetFramework>netstandard2.1</TargetFramework>
+	  <TargetFrameworks>netstandard2.1;net5.0;net6.0</TargetFrameworks>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <AssemblyName>BigBook</AssemblyName>
     <PackageId>BigBook</PackageId>
@@ -44,8 +44,8 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.ObjectPool" Version="6.0.1" />
-    <PackageReference Include="ObjectCartographer.SQL" Version="2.0.12" />
+    <PackageReference Include="Microsoft.Extensions.ObjectPool" Version="6.0.5" />
+    <PackageReference Include="ObjectCartographer.SQL" Version="2.0.14" />
     <PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
     <PackageReference Include="System.ComponentModel.TypeConverter" Version="4.3.0" />
     <PackageReference Include="System.Data.Common" Version="4.3.0" />
@@ -56,8 +56,8 @@
     <PackageReference Include="System.Runtime" Version="4.3.1" />
     <PackageReference Include="System.Threading.Tasks.Parallel" Version="4.3.0" />
     <PackageReference Include="System.Threading.Thread" Version="4.3.0" />
-    <PackageReference Include="Aspectus" Version="4.0.22" />
-    <PackageReference Include="Canister.IoC" Version="4.0.6" />
+    <PackageReference Include="Aspectus" Version="4.0.24" />
+    <PackageReference Include="Canister.IoC" Version="4.0.11" />
   </ItemGroup>
 
   <ItemGroup>

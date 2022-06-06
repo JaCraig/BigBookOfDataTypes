@@ -486,7 +486,7 @@ namespace BigBook.Benchmarks.Tests.TestClasses
         /// </summary>
         /// <typeparam name="TObject">Object type</typeparam>
         /// <returns>The object converted to the type specified</returns>
-        public TObject To<TObject>(TObject? defaultObject = default) => (TObject)To(defaultObject, typeof(TObject));
+        public TObject To<TObject>(TObject defaultObject = default) => (TObject)To(defaultObject, typeof(TObject));
 
         /// <summary>
         /// Converts the object to the type specified
