@@ -425,5 +425,52 @@ namespace BigBook
 
             return count;
         }
+
+        /// <summary>
+        /// When the predicate is true, run the method.
+        /// </summary>
+        /// <typeparam name="TObject">The type of the object.</typeparam>
+        /// <param name="obj">The object.</param>
+        /// <param name="predicate">if set to <c>true</c> [predicate].</param>
+        /// <param name="method">The method to run if true.</param>
+        /// <returns>The return value for the method.</returns>
+        public static TObject When<TObject>(
+            this TObject obj,
+            bool predicate,
+            Func<TObject, TObject> method) => predicate ? method(obj) : obj;
+
+        /// <summary>
+        /// When the predicate is true, run the method.
+        /// </summary>
+        /// <typeparam name="TObject">The type of the object.</typeparam>
+        /// <typeparam name="TReturn">The type of the return.</typeparam>
+        /// <param name="obj">The object.</param>
+        /// <param name="predicate">if set to <c>true</c> [predicate].</param>
+        /// <param name="method">The method to run if true.</param>
+        /// <param name="defaultValue">The default value if it's .</param>
+        /// <returns>The return value</returns>
+        public static TReturn When<TObject, TReturn>(
+            this TObject obj,
+            bool predicate,
+            Func<TObject, TReturn> method,
+            TReturn defaultValue = default!) => predicate ? method(obj) : defaultValue;
+
+        /// <summary>
+        /// When the predicate is true, run the method.
+        /// </summary>
+        /// <typeparam name="TObject">The type of the object.</typeparam>
+        /// <param name="obj">The object.</param>
+        /// <param name="predicate">if set to <c>true</c> [predicate].</param>
+        /// <param name="method">The method to run if true.</param>
+        /// <returns>The return value for the method.</returns>
+        public static TObject When<TObject>(
+            this TObject obj,
+            bool predicate,
+            Action<TObject> method)
+        {
+            if (predicate)
+                method(obj);
+            return obj;
+        }
     }
 }
