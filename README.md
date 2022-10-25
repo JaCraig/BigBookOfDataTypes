@@ -6,11 +6,11 @@ Big Book of Data Types is a set of classes and extension methods to help with da
 
 ## Setting Up the Library
 
-Big Book of Data Types relies on [Canister](https://github.com/JaCraig/Canister) in order to hook itself up. In order for this to work, you must do the following at startup:
+Depending on the features you use in Big Book of Data Types, you may need to register [Canister](https://github.com/JaCraig/Canister) modules as the Dynamo class requires it in order to hook itself up. In order for this to work, you must do the following at startup:
 
     services.AddCanisterModules();
 					
-The RegisterBigBookOfDataTypes function is an extension method that registers it with the IoC container. When this is done, the library is ready to use.
+The AddCanisterModules function is an extension method on your app's ServiceCollection. When this is done, the Dynamo class is ready to use. If you are not using that class, you should be able to go without registration.
 
 ## Basic usage
 
@@ -35,17 +35,17 @@ Similarly the extension methods for various types can be found by adding:
 
     using BigBook;
 	
-To your list of usings. From there a number of extension methods should be available for arrays, IEnumerable, string, ConcurrentBag, ConcurrentDictionary, DateTime, Exception, ICollection, IComparable, IDictionary, MatchCollection, Process, Stream, TimeSpan, etc. There are a couple hundred extension methods and as such you should just take a look at them to see what they do. The portion of the code that might be of some interest and yet not completely intuitive is the Dynamo class.
+To your list of usings. From there a number of extension methods should be available for arrays, IEnumerable, string, ConcurrentBag, ConcurrentDictionary, DateTime, Exception, ICollection, IComparable, IDictionary, MatchCollection, Process, Stream, TimeSpan, etc. There are a couple hundred extension methods and I suggest you just take a look at them to see what they do. Another portion of the library that might be of some interest and yet not completely intuitive is the Dynamo class.
 
 Dynamo is a true dynamic type for .Net. ExpandoObject is generally great for basic work that requires a dynamic, however it is not easy to convert to other data types. For instance you can't do this:
 
     dynamic MyDynamicValue=new ExpandoObject();
-	SomeClass FinalObject=MyDynamicValue;
+    SomeClass FinalObject=MyDynamicValue;
 	
 Dynamo, on the other hand, has no issues with this:
 
     dynamic MyDynamicValue=new Dynamo();
-	SomeClass FinalObject=MyDynamicValue;
+    SomeClass FinalObject=MyDynamicValue;
 	
 The class handles conversion to and from class types, can convert properties from one type to another, and comes with a set of built in functionality. The class implements INotifyPropertyChanged, has a built in change log, and is thread safe. It can also be added as a base class for other classes to add this functionality automatically.
 
