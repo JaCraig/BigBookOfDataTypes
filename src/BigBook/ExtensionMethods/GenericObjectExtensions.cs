@@ -437,7 +437,7 @@ namespace BigBook
         public static TObject When<TObject>(
             this TObject obj,
             bool predicate,
-            Func<TObject, TObject> method) => predicate ? method(obj) : obj;
+            Func<TObject, TObject> method) => !(method is null) && predicate ? method(obj) : obj;
 
         /// <summary>
         /// When the predicate is true, run the method.
@@ -453,7 +453,7 @@ namespace BigBook
             this TObject obj,
             bool predicate,
             Func<TObject, TReturn> method,
-            TReturn defaultValue = default!) => predicate ? method(obj) : defaultValue;
+            TReturn defaultValue = default!) => !(method is null) && predicate ? method(obj) : defaultValue;
 
         /// <summary>
         /// When the predicate is true, run the method.
@@ -468,7 +468,7 @@ namespace BigBook
             bool predicate,
             Action<TObject> method)
         {
-            if (predicate)
+            if (!(method is null) && predicate)
                 method(obj);
             return obj;
         }
