@@ -197,6 +197,20 @@ namespace BigBook.Tests.ExtensionMethods
         public void RemoveExtraSpaces() => Assert.Equal("This is a test.", "This  is      a test.".Replace(StringFilter.ExtraSpaces, " "));
 
         [Fact]
+        public void ReplaceAll()
+        {
+            char[] replacements = new char[] { '1', '2', '3' };
+            char newChar = 'B';
+            string Value = 255.Times(x => ((char)x).ToString()).ToString(x => x);
+            var Expected = Value;
+            foreach (var Replacement in replacements)
+            {
+                Expected = Expected.Replace(Replacement, newChar);
+            }
+            Assert.Equal(Expected, Value.ReplaceAll(replacements, newChar));
+        }
+
+        [Fact]
         public void Reverse()
         {
             const string Value = " this is a test";

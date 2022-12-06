@@ -548,6 +548,35 @@ namespace BigBook
         }
 
         /// <summary>
+        /// Replaces all characters in the input array with the new character.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <param name="oldChars">The old characters.</param>
+        /// <param name="newChar">The new character.</param>
+        /// <returns>The resulting string.</returns>
+        public static string ReplaceAll(this string? value, char[] oldChars, char newChar)
+        {
+            if (string.IsNullOrEmpty(value))
+                return "";
+            var ValueSpan = value.AsSpan();
+            var Temp = new char[value.Length];
+            value.CopyTo(0, Temp, 0, Temp.Length);
+            Span<char> Result = Temp;
+            var OldCharsSpan = (oldChars ?? Array.Empty<char>()).AsSpan();
+            var CurrentIndex = 0;
+            while (true)
+            {
+                var NextIndex = Result.IndexOfAny(OldCharsSpan);
+                if (NextIndex == -1)
+                    break;
+                if (CurrentIndex != NextIndex)
+                    ValueSpan.Slice(CurrentIndex, NextIndex - CurrentIndex).CopyTo(Result.Slice(CurrentIndex, NextIndex - CurrentIndex));
+                Result[NextIndex] = newChar;
+            }
+            return new string(Result);
+        }
+
+        /// <summary>
         /// Reverses a string
         /// </summary>
         /// <param name="input">Input string</param>
@@ -622,12 +651,12 @@ namespace BigBook
                 }
             }
 
-            return Builder.ToString().Replace('\u2013', '-').Replace('\u2014', '-')
-                .Replace('\u2015', '-').Replace('\u2017', '_').Replace('\u2018', '\'')
-                .Replace('\u2019', '\'').Replace('\u201a', ',').Replace('\u201b', '\'')
-                .Replace('\u201c', '\"').Replace('\u201d', '\"').Replace('\u201e', '\"')
-                .Replace("\u2026", "...", StringComparison.Ordinal).Replace('\u2032', '\'').Replace('\u2033', '\"')
-                .Replace("`", "\'", StringComparison.Ordinal)
+            return Builder.ToString().ReplaceAll(new char[] { '\u2013', '\u2014', '\u2015' }, '-')
+                .Replace('\u2017', '_')
+                .ReplaceAll(new char[] { '\u2018', '\u2019', '\u201b', '\u2032', '`' }, '\'')
+                .Replace('\u201a', ',')
+                .ReplaceAll(new char[] { '\u201c', '\u201d', '\u201e', '\u2033' }, '\"')
+                .Replace("\u2026", "...", StringComparison.Ordinal)
                 .Replace("&", "&amp;", StringComparison.Ordinal).Replace("<", "&lt;", StringComparison.Ordinal)
                 .Replace(">", "&gt;", StringComparison.Ordinal)
                 .Replace("\"", "&quot;", StringComparison.Ordinal).Replace("\'", "&apos;", StringComparison.Ordinal);
