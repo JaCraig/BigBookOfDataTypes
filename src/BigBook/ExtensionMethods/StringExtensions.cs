@@ -526,40 +526,16 @@ namespace BigBook
         /// <param name="input">The input.</param>
         /// <param name="replacements">The replacements.</param>
         /// <returns>The resulting string.</returns>
-        public static string ReplaceAll(this string? input, Dictionary<string, string>? replacements)
+        public static string ReplaceAll(this string? input, IEnumerable<KeyValuePair<string, string>>? replacements)
         {
-            if (string.IsNullOrEmpty(input) || (replacements?.Count ?? 0) == 0)
+            if (string.IsNullOrEmpty(input) || !(replacements?.Any() ?? false))
                 return input ?? "";
 
-            var result = new StringBuilder(input.Length);
-            var position = 0;
-
-            foreach (var replacement in replacements)
+            foreach (var Item in replacements)
             {
-                var key = replacement.Key;
-                var value = replacement.Value;
-                var index = int.MaxValue;
-                while (index > -1)
-                {
-                    index = input.IndexOf(key, position);
-                    if (index < 0)
-                    {
-                        result.Append(input[position..]);
-                        break;
-                    }
-
-                    result.Append(input[position..index]);
-                    result.Append(value);
-                    position = index + key.Length;
-                }
-                input = result.ToString();
-                result.Clear();
-                position = 0;
+                input = input.Replace(Item.Key, Item.Value);
             }
-            if (position < input.Length)
-                result.Append(input[position..]);
-
-            return result.ToString();
+            return input;
         }
 
         /// <summary>
