@@ -199,15 +199,33 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void ReplaceAll()
         {
-            char[] replacements = new char[] { '1', '2', '3' };
-            char newChar = 'B';
-            string Value = 255.Times(x => ((char)x).ToString()).ToString(x => x);
+            var replacements = new char[] { '1', '2', '3' };
+            var newChar = 'B';
+            var Value = 255.Times(x => ((char)x).ToString()).ToString(x => x);
             var Expected = Value;
             foreach (var Replacement in replacements)
             {
                 Expected = Expected.Replace(Replacement, newChar);
             }
             Assert.Equal(Expected, Value.ReplaceAll(replacements, newChar));
+        }
+
+        [Fact]
+        public void ReplaceAllString()
+        {
+            var Replacements = new Dictionary<string, string>
+            {
+                ["1"] = "BAC",
+                ["2"] = "ABC",
+                ["3"] = "CAB"
+            };
+            var Value = "321123132213231312";
+            var Expected = Value;
+            foreach (var Replacement in Replacements)
+            {
+                Expected = Expected.Replace(Replacement.Key, Replacement.Value);
+            }
+            Assert.Equal(Expected, Value.ReplaceAll(Replacements));
         }
 
         [Fact]

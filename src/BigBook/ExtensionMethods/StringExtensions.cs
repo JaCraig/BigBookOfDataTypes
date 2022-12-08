@@ -277,11 +277,9 @@ namespace BigBook
                 }
                 return (CheckSum % 10) == 0;
             }
-            if (comparisonType == StringCompare.Unicode)
-            {
-                return string.IsNullOrEmpty(value) || IsUnicode.Replace(value, "") != value;
-            }
-            return value.Is("", StringCompare.Anagram);
+            return comparisonType == StringCompare.Unicode
+                ? string.IsNullOrEmpty(value) || IsUnicode.Replace(value, "") != value
+                : value.Is("", StringCompare.Anagram);
         }
 
         /// <summary>
@@ -293,12 +291,9 @@ namespace BigBook
         /// <returns>True if it is of the type specified, false otherwise</returns>
         public static bool Is(this string? value1, string value2, StringCompare comparisonType)
         {
-            if (comparisonType != StringCompare.Anagram)
-            {
-                return value1.Is(comparisonType);
-            }
-
-            return new string(value1?.ToCharArray().OrderBy(x => x).ToArray()) == new string(value2?.ToCharArray().OrderBy(x => x).ToArray());
+            return comparisonType != StringCompare.Anagram
+                ? value1.Is(comparisonType)
+                : new string(value1?.ToCharArray().OrderBy(x => x).ToArray()) == new string(value2?.ToCharArray().OrderBy(x => x).ToArray());
         }
 
         /// <summary>
@@ -351,12 +346,9 @@ namespace BigBook
         /// <returns>The resulting string</returns>
         public static string Left(this string? input, int length)
         {
-            if (length <= 0)
-            {
-                return string.Empty;
-            }
-
-            return string.IsNullOrEmpty(input) ? "" : input.Substring(0, input.Length > length ? length : input.Length);
+            return length <= 0
+                ? string.Empty
+                : string.IsNullOrEmpty(input) ? "" : input[..(input.Length > length ? length : input.Length)];
         }
 
         /// <summary>
@@ -454,22 +446,11 @@ namespace BigBook
         /// <returns>A stripped file</returns>
         public static string Minify(this string? Input, MinificationType Type = MinificationType.HTML)
         {
-            if (string.IsNullOrEmpty(Input))
-            {
-                return string.Empty;
-            }
-
-            if (Type == MinificationType.CSS)
-            {
-                return CSSMinify(Input);
-            }
-
-            if (Type == MinificationType.JavaScript)
-            {
-                return JavaScriptMinify(Input);
-            }
-
-            return HTMLMinify(Input);
+            return string.IsNullOrEmpty(Input)
+                ? string.Empty
+                : Type == MinificationType.CSS
+                ? CSSMinify(Input)
+                : Type == MinificationType.JavaScript ? JavaScriptMinify(Input) : HTMLMinify(Input);
         }
 
         /// <summary>
@@ -486,15 +467,7 @@ namespace BigBook
         /// <param name="input">Input text</param>
         /// <param name="filter">Regex expression of text to remove</param>
         /// <returns>Everything not in the filter text.</returns>
-        public static string? Remove(this string? input, string filter)
-        {
-            if (string.IsNullOrEmpty(input) || string.IsNullOrEmpty(filter))
-            {
-                return input;
-            }
-
-            return new Regex(filter).Replace(input, "");
-        }
+        public static string? Remove(this string? input, string filter) => string.IsNullOrEmpty(input) || string.IsNullOrEmpty(filter) ? input : new Regex(filter).Replace(input, "");
 
         /// <summary>
         /// Removes everything that is in the filter text from the input.
@@ -520,9 +493,9 @@ namespace BigBook
         /// <returns>The resulting string with diacritics removed.</returns>
         public static string RemoveDiacritics(this string? input)
         {
-            if (string.IsNullOrEmpty(input))
-                return string.Empty;
-            return new string(input
+            return string.IsNullOrEmpty(input)
+                ? string.Empty
+                : new string(input
                 .Normalize(NormalizationForm.FormD)
                 .Where(x => CharUnicodeInfo.GetUnicodeCategory(x) != UnicodeCategory.NonSpacingMark)
                 .ToArray())
@@ -548,6 +521,48 @@ namespace BigBook
         }
 
         /// <summary>
+        /// Replaces all keys in the replacements dictionary with the corresponding values.
+        /// </summary>
+        /// <param name="input">The input.</param>
+        /// <param name="replacements">The replacements.</param>
+        /// <returns>The resulting string.</returns>
+        public static string ReplaceAll(this string? input, Dictionary<string, string>? replacements)
+        {
+            if (string.IsNullOrEmpty(input) || (replacements?.Count ?? 0) == 0)
+                return input ?? "";
+
+            var result = new StringBuilder(input.Length);
+            var position = 0;
+
+            foreach (var replacement in replacements)
+            {
+                var key = replacement.Key;
+                var value = replacement.Value;
+                var index = int.MaxValue;
+                while (index > -1)
+                {
+                    index = input.IndexOf(key, position);
+                    if (index < 0)
+                    {
+                        result.Append(input[position..]);
+                        break;
+                    }
+
+                    result.Append(input[position..index]);
+                    result.Append(value);
+                    position = index + key.Length;
+                }
+                input = result.ToString();
+                result.Clear();
+                position = 0;
+            }
+            if (position < input.Length)
+                result.Append(input[position..]);
+
+            return result.ToString();
+        }
+
+        /// <summary>
         /// Replaces all characters in the input array with the new character.
         /// </summary>
         /// <param name="value">The value.</param>
@@ -570,7 +585,7 @@ namespace BigBook
                 if (NextIndex == -1)
                     break;
                 if (CurrentIndex != NextIndex)
-                    ValueSpan.Slice(CurrentIndex, NextIndex - CurrentIndex).CopyTo(Result.Slice(CurrentIndex, NextIndex - CurrentIndex));
+                    ValueSpan[CurrentIndex..NextIndex].CopyTo(Result[CurrentIndex..NextIndex]);
                 Result[NextIndex] = newChar;
             }
             return new string(Result);
@@ -581,15 +596,7 @@ namespace BigBook
         /// </summary>
         /// <param name="input">Input string</param>
         /// <returns>The reverse of the input string</returns>
-        public static string Reverse(this string? input)
-        {
-            if (string.IsNullOrEmpty(input))
-            {
-                return string.Empty;
-            }
-
-            return new string(input.ToCharArray().Reverse().ToArray());
-        }
+        public static string Reverse(this string? input) => string.IsNullOrEmpty(input) ? string.Empty : new string(input.ToCharArray().Reverse().ToArray());
 
         /// <summary>
         /// Gets the last x number of characters from the right hand side
@@ -671,12 +678,9 @@ namespace BigBook
         /// <returns>The Input string with specified characters stripped out</returns>
         public static string? StripLeft(this string? input, string characters = " ")
         {
-            if (string.IsNullOrEmpty(input) || string.IsNullOrEmpty(characters))
-            {
-                return input;
-            }
-
-            return input.ToCharArray().SkipWhile(x => characters.ToCharArray().Contains(x)).ToString(x => x.ToString(CultureInfo.InvariantCulture), "");
+            return string.IsNullOrEmpty(input) || string.IsNullOrEmpty(characters)
+                ? input
+                : input.ToCharArray().SkipWhile(x => characters.ToCharArray().Contains(x)).ToString(x => x.ToString(CultureInfo.InvariantCulture), "");
         }
 
         /// <summary>
@@ -881,12 +885,9 @@ namespace BigBook
         /// <returns>The input string formatted by using the regex string</returns>
         public static string ToString(this string? input, string format, string outputFormat, RegexOptions options = RegexOptions.None)
         {
-            if (string.IsNullOrEmpty(input) || string.IsNullOrEmpty(format) || string.IsNullOrEmpty(outputFormat))
-            {
-                return string.Empty;
-            }
-
-            return Regex.Replace(input, format, outputFormat, options);
+            return string.IsNullOrEmpty(input) || string.IsNullOrEmpty(format) || string.IsNullOrEmpty(outputFormat)
+                ? string.Empty
+                : Regex.Replace(input, format, outputFormat, options);
         }
 
         /// <summary>
@@ -961,12 +962,7 @@ namespace BigBook
             }
 
             var MyString = matcher.ToString();
-            if (string.IsNullOrEmpty(MyString))
-            {
-                return string.Empty;
-            }
-
-            return Regex.Replace(MyString, @"\r\n\s*", "");
+            return string.IsNullOrEmpty(MyString) ? string.Empty : Regex.Replace(MyString, @"\r\n\s*", "");
         }
 
         /// <summary>
@@ -982,12 +978,7 @@ namespace BigBook
             }
 
             input = Regex.Replace(input, "/// <.+>", "");
-            if (string.IsNullOrEmpty(input))
-            {
-                return string.Empty;
-            }
-
-            return Regex.Replace(input, @">[\s\S]*?<", new MatchEvaluator(Evaluate));
+            return string.IsNullOrEmpty(input) ? string.Empty : Regex.Replace(input, @">[\s\S]*?<", new MatchEvaluator(Evaluate));
         }
 
         /// <summary>
