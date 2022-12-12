@@ -1,4 +1,5 @@
 ﻿using BigBook.Tests.BaseClasses;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.ObjectPool;
 using System;
 using System.Collections.Generic;
@@ -16,8 +17,8 @@ namespace BigBook.Tests
             TestObject = new BigBook.Dynamo(new { A = "Testing" }, true);
         }
 
-        protected static Aspectus.Aspectus AOPManager => Canister.Builder.Bootstrapper.Resolve<Aspectus.Aspectus>();
-        protected static ObjectPool<StringBuilder> BuilderPool => Canister.Builder.Bootstrapper.Resolve<ObjectPool<StringBuilder>>();
+        protected static Aspectus.Aspectus AOPManager => GetServiceProvider().GetService<Aspectus.Aspectus>();
+        protected static ObjectPool<StringBuilder> BuilderPool => GetServiceProvider().GetService<ObjectPool<StringBuilder>>();
 
         [Fact]
         public void CallMethod()

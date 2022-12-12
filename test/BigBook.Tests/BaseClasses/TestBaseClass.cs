@@ -1,4 +1,5 @@
 ﻿using Mecha.Core;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.IO;
 using System.Threading.Tasks;
@@ -65,10 +66,10 @@ namespace BigBook.Tests.BaseClasses
         /// </summary>
         protected TestBaseClass()
         {
-            lock (LockObject)
-            {
-                _ = Mech.Default;
-            }
+            //lock (LockObject)
+            //{
+            //    _ = Mech.Default;
+            //}
         }
 
         /// <summary>
@@ -81,6 +82,16 @@ namespace BigBook.Tests.BaseClasses
         /// The lock object
         /// </summary>
         private static readonly object LockObject = new object();
+
+        /// <summary>
+        /// The service provider lock
+        /// </summary>
+        private static readonly object ServiceProviderLock = new object();
+
+        /// <summary>
+        /// The service provider
+        /// </summary>
+        private static IServiceProvider ServiceProvider;
 
         /// <summary>
         /// Attempts to break the object.
@@ -104,6 +115,40 @@ namespace BigBook.Tests.BaseClasses
                     .IgnoreException<EndOfStreamException>((_, __) => true)
                     .IgnoreException<OutOfMemoryException>((_, __) => true)
             });
+        }
+
+        /// <summary>
+        /// Gets the service provider.
+        /// </summary>
+        /// <returns></returns>
+        protected static IServiceProvider GetServiceProvider()
+        {
+            if (ServiceProvider is not null)
+                return ServiceProvider;
+            lock (ServiceProviderLock)
+            {
+                if (ServiceProvider is not null)
+                    return ServiceProvider;
+                ServiceProvider = new ServiceCollection().AddCanisterModules()?.BuildServiceProvider();
+            }
+            return ServiceProvider;
+        }
+
+        /// <summary>
+        /// Reads the file.
+        /// </summary>
+        /// <param name="fileName">Name of the file.</param>
+        protected string ReadFile(string fileName)
+        {
+            return File.ReadAllText(fileName);
+        }
+
+        protected void WriteToFile(string fileName, string content)
+        {
+            using var Stream = new FileInfo(fileName).OpenWrite();
+            Stream.Write(content.ToByteArray());
+            Stream.Flush();
+            Stream.Close();
         }
     }
 }

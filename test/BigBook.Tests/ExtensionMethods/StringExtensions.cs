@@ -1,7 +1,5 @@
 ﻿using BigBook.Formatters;
 using BigBook.Tests.BaseClasses;
-
-using FileCurator;
 using System.Collections.Generic;
 using System.Text;
 using Xunit;
@@ -72,8 +70,8 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void CSSMinify()
         {
-            var FileContent = new FileInfo(@"..\..\..\..\..\Data\Web\RandomCSS.css").Read();
-            var MinifiedFileContent = new FileInfo(@"..\..\..\..\..\Data\Web\RandomCSS.css").Read().Minify(MinificationType.CSS);
+            var FileContent = ReadFile(@"..\..\..\..\..\Data\Web\RandomCSS.css");
+            var MinifiedFileContent = ReadFile(@"..\..\..\..\..\Data\Web\RandomCSS.css").Minify(MinificationType.CSS);
             Assert.NotEqual(FileContent.Length, MinifiedFileContent.Length);
             Assert.True(FileContent.Length > MinifiedFileContent.Length);
         }
@@ -106,8 +104,8 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void HTMLMinify()
         {
-            var FileContent = new FileInfo(@"..\..\..\..\..\Data\Web\HanselmanSite.html").Read();
-            var MinifiedFileContent = new FileInfo(@"..\..\..\..\..\Data\Web\HanselmanSite.html").Read().Minify(MinificationType.HTML);
+            var FileContent = ReadFile(@"..\..\..\..\..\Data\Web\HanselmanSite.html");
+            var MinifiedFileContent = ReadFile(@"..\..\..\..\..\Data\Web\HanselmanSite.html").Minify(MinificationType.HTML);
             Assert.NotEqual(FileContent.Length, MinifiedFileContent.Length);
             Assert.True(FileContent.Length > MinifiedFileContent.Length);
         }
@@ -125,8 +123,8 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void JavaScriptMinify()
         {
-            var FileContent = new FileInfo(@"..\..\..\..\..\Data\Web\RandomJS.js").Read();
-            var MinifiedFileContent = new FileInfo(@"..\..\..\..\..\Data\Web\RandomJS.js").Read().Minify(MinificationType.JavaScript);
+            var FileContent = ReadFile(@"..\..\..\..\..\Data\Web\RandomJS.js");
+            var MinifiedFileContent = ReadFile(@"..\..\..\..\..\Data\Web\RandomJS.js").Minify(MinificationType.JavaScript);
             Assert.NotEqual(FileContent.Length, MinifiedFileContent.Length);
             Assert.True(FileContent.Length > MinifiedFileContent.Length);
         }
@@ -254,8 +252,8 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void StripHTML()
         {
-            var FileContent = new FileInfo(@"..\..\..\..\..\Data\Web\HanselmanSite.html").Read();
-            var MinifiedFileContent = new FileInfo(@"..\..\..\..\..\Data\Web\HanselmanSite.html").Read().StripHTML();
+            var FileContent = ReadFile(@"..\..\..\..\..\Data\Web\HanselmanSite.html");
+            var MinifiedFileContent = ReadFile(@"..\..\..\..\..\Data\Web\HanselmanSite.html").StripHTML();
             Assert.NotEqual(FileContent.Length, MinifiedFileContent.Length);
             Assert.True(FileContent.Length > MinifiedFileContent.Length);
         }

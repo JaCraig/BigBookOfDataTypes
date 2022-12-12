@@ -37,13 +37,13 @@ namespace BigBook.CanisterModules
         /// Loads the module
         /// </summary>
         /// <param name="bootstrapper">Bootstrapper to register with</param>
-        public void Load(IBootstrapper? bootstrapper)
+        public void Load(IServiceCollection? bootstrapper)
         {
             var objectPoolProvider = new DefaultObjectPoolProvider();
-            bootstrapper?.Register(typeof(GenericComparer<>), ServiceLifetime.Singleton)
-                         .Register(typeof(GenericEqualityComparer<>), ServiceLifetime.Singleton)
-                         .Register(new DynamoTypes(), ServiceLifetime.Singleton)
-                         .Register(objectPoolProvider.CreateStringBuilderPool(), ServiceLifetime.Singleton);
+            bootstrapper?.AddSingleton(typeof(GenericComparer<>))
+                         .AddSingleton(typeof(GenericEqualityComparer<>))
+                         .AddSingleton(new DynamoTypes())
+                         .AddSingleton(objectPoolProvider.CreateStringBuilderPool());
         }
     }
 }

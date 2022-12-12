@@ -1,5 +1,5 @@
 ﻿using BigBook.Tests.BaseClasses;
-using FileCurator;
+using System.IO;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -17,7 +17,7 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void ReadAll()
         {
-            new FileInfo(@".\Testing\Test.txt").Write("This is a test");
+            WriteToFile(@".\Testing\Test.txt", "This is a test");
             var File = new System.IO.FileInfo(@".\Testing\Test.txt");
             using var Test = File.OpenRead();
             Assert.Equal("This is a test", Test.ReadAll());
@@ -26,7 +26,7 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public async Task ReadAllAsync()
         {
-            new FileInfo(@".\Testing\Test.txt").Write("This is a test");
+            WriteToFile(@".\Testing\Test.txt", "This is a test");
             var File = new System.IO.FileInfo(@".\Testing\Test.txt");
             using var Test = File.OpenRead();
             Assert.Equal("This is a test", await Test.ReadAllAsync().ConfigureAwait(false));
@@ -35,7 +35,7 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void ReadAllBinary()
         {
-            new FileInfo(@".\Testing\Test.txt").Write("This is a test");
+            WriteToFile(@".\Testing\Test.txt", "This is a test");
             var File = new System.IO.FileInfo(@".\Testing\Test.txt");
             using var Test = File.OpenRead();
             var Content = Test.ReadAllBinary();
@@ -63,7 +63,7 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public async Task ReadAllBinaryAsync()
         {
-            new FileInfo(@".\Testing\Test.txt").Write("This is a test");
+            WriteToFile(@".\Testing\Test.txt", "This is a test");
             var File = new System.IO.FileInfo(@".\Testing\Test.txt");
             using var Test = File.OpenRead();
             var Content = await Test.ReadAllBinaryAsync().ConfigureAwait(false);
