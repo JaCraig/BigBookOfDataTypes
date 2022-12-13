@@ -40,19 +40,18 @@ namespace BigBook.Tests.BaseClasses
         [Fact]
         public Task BreakObject()
         {
-            return Task.CompletedTask;
-            if (TestObject is null)
-                return Task.CompletedTask;
-            return Mech.BreakAsync(TestObject, new Options
-            {
-                MaxDuration = 1000,
-                ExceptionHandlers = new ExceptionHandler()
+            return TestObject is null
+                ? Task.CompletedTask
+                : Mech.BreakAsync(TestObject, new Options
+                {
+                    MaxDuration = 200,
+                    ExceptionHandlers = new ExceptionHandler()
                     .IgnoreException<NotImplementedException>()
                     .IgnoreException<ArgumentOutOfRangeException>((_, __) => true)
                     .IgnoreException<ArgumentException>()
                     .IgnoreException<ObjectDisposedException>((_, __) => true),
-                DiscoverInheritedMethods = false
-            });
+                    DiscoverInheritedMethods = false
+                });
         }
     }
 
@@ -66,10 +65,10 @@ namespace BigBook.Tests.BaseClasses
         /// </summary>
         protected TestBaseClass()
         {
-            //lock (LockObject)
-            //{
-            //    _ = Mech.Default;
-            //}
+            lock (LockObject)
+            {
+                _ = Mech.Default;
+            }
         }
 
         /// <summary>
@@ -81,12 +80,12 @@ namespace BigBook.Tests.BaseClasses
         /// <summary>
         /// The lock object
         /// </summary>
-        private static readonly object LockObject = new object();
+        private static readonly object LockObject = new();
 
         /// <summary>
         /// The service provider lock
         /// </summary>
-        private static readonly object ServiceProviderLock = new object();
+        private static readonly object ServiceProviderLock = new();
 
         /// <summary>
         /// The service provider
@@ -100,13 +99,12 @@ namespace BigBook.Tests.BaseClasses
         [Fact]
         public Task BreakType()
         {
-            return Task.CompletedTask;
-            if (ObjectType is null)
-                return Task.CompletedTask;
-            return Mech.BreakAsync(ObjectType, new Options
-            {
-                MaxDuration = 1000,
-                ExceptionHandlers = new ExceptionHandler()
+            return ObjectType is null
+                ? Task.CompletedTask
+                : Mech.BreakAsync(ObjectType, new Options
+                {
+                    MaxDuration = 200,
+                    ExceptionHandlers = new ExceptionHandler()
                     .IgnoreException<NotImplementedException>()
                     .IgnoreException<ArgumentOutOfRangeException>((_, __) => true)
                     .IgnoreException<ArgumentException>((_, __) => true)
@@ -114,7 +112,7 @@ namespace BigBook.Tests.BaseClasses
                     .IgnoreException<ObjectDisposedException>((_, __) => true)
                     .IgnoreException<EndOfStreamException>((_, __) => true)
                     .IgnoreException<OutOfMemoryException>((_, __) => true)
-            });
+                });
         }
 
         /// <summary>
@@ -138,10 +136,7 @@ namespace BigBook.Tests.BaseClasses
         /// Reads the file.
         /// </summary>
         /// <param name="fileName">Name of the file.</param>
-        protected string ReadFile(string fileName)
-        {
-            return File.ReadAllText(fileName);
-        }
+        protected string ReadFile(string fileName) => File.ReadAllText(fileName);
 
         protected void WriteToFile(string fileName, string content)
         {
