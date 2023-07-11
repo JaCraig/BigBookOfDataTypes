@@ -9,6 +9,6 @@ namespace BigBook.Tests.ExtensionMethods
         protected override System.Type ObjectType { get; set; } = typeof(ExceptionExtensions);
 
         [Fact]
-        public void BasicExceptionOutput() => Assert.Equal("Exception occurred\r\nException: Index was outside the bounds of the array.\r\nException Type: System.IndexOutOfRangeException\r\nStackTrace: \r\nSource: \r\n\r\n", new IndexOutOfRangeException().ToString("Exception occurred"));
+        public void BasicExceptionOutput() => Assert.Equal($"Exception occurred{Environment.NewLine}Exception: Index was outside the bounds of the array.{Environment.NewLine}Exception Type: System.IndexOutOfRangeException{Environment.NewLine}StackTrace: {Environment.NewLine}Source: {Environment.NewLine}{Environment.NewLine}", new IndexOutOfRangeException().ToString("Exception occurred"));
     }
 }

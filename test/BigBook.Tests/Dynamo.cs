@@ -222,9 +222,9 @@ namespace BigBook.Tests
             int B = Temp.B;
             Assert.Equal("Testing", Temp.A);
             Assert.Equal<int>(1, B);
-            Assert.Equal("TestClass this\r\n\tSystem.String A = Testing\r\n\tSystem.Int32 B = 1\r\n", Temp.ToString());
+            Assert.Equal($"TestClass this{Environment.NewLine}\tSystem.String A = Testing{Environment.NewLine}\tSystem.Int32 B = 1{Environment.NewLine}", Temp.ToString());
             Temp.C = new Func<int>(() => 1);
-            Assert.Equal("TestClass this\r\n\tSystem.String A = Testing\r\n\tSystem.Int32 B = 1\r\n\tSystem.Func<System.Int32> C = System.Func`1[System.Int32]\r\n", Temp.ToString());
+            Assert.Equal($"TestClass this{Environment.NewLine}\tSystem.String A = Testing{Environment.NewLine}\tSystem.Int32 B = 1{Environment.NewLine}\tSystem.Func<System.Int32> C = System.Func`1[System.Int32]{Environment.NewLine}", Temp.ToString());
             Assert.Equal<int>(1, Temp.C());
         }
 

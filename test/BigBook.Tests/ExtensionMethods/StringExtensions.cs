@@ -70,8 +70,8 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void CSSMinify()
         {
-            var FileContent = ReadFile(@"..\..\..\..\..\Data\Web\RandomCSS.css");
-            var MinifiedFileContent = ReadFile(@"..\..\..\..\..\Data\Web\RandomCSS.css").Minify(MinificationType.CSS);
+            var FileContent = ReadFile("../../../../../Data/Web/RandomCSS.css");
+            var MinifiedFileContent = ReadFile("../../../../../Data/Web/RandomCSS.css").Minify(MinificationType.CSS);
             Assert.NotEqual(FileContent.Length, MinifiedFileContent.Length);
             Assert.True(FileContent.Length > MinifiedFileContent.Length);
         }
@@ -104,8 +104,8 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void HTMLMinify()
         {
-            var FileContent = ReadFile(@"..\..\..\..\..\Data\Web\HanselmanSite.html");
-            var MinifiedFileContent = ReadFile(@"..\..\..\..\..\Data\Web\HanselmanSite.html").Minify(MinificationType.HTML);
+            var FileContent = ReadFile(@"../../../../../Data\Web\HanselmanSite.html");
+            var MinifiedFileContent = ReadFile(@"../../../../../Data\Web\HanselmanSite.html").Minify(MinificationType.HTML);
             Assert.NotEqual(FileContent.Length, MinifiedFileContent.Length);
             Assert.True(FileContent.Length > MinifiedFileContent.Length);
         }
@@ -123,8 +123,8 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void JavaScriptMinify()
         {
-            var FileContent = ReadFile(@"..\..\..\..\..\Data\Web\RandomJS.js");
-            var MinifiedFileContent = ReadFile(@"..\..\..\..\..\Data\Web\RandomJS.js").Minify(MinificationType.JavaScript);
+            var FileContent = ReadFile("../../../../../Data/Web/RandomJS.js");
+            var MinifiedFileContent = ReadFile("../../../../../Data/Web/RandomJS.js").Minify(MinificationType.JavaScript);
             Assert.NotEqual(FileContent.Length, MinifiedFileContent.Length);
             Assert.True(FileContent.Length > MinifiedFileContent.Length);
         }
@@ -252,8 +252,8 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void StripHTML()
         {
-            var FileContent = ReadFile(@"..\..\..\..\..\Data\Web\HanselmanSite.html");
-            var MinifiedFileContent = ReadFile(@"..\..\..\..\..\Data\Web\HanselmanSite.html").StripHTML();
+            var FileContent = ReadFile(@"../../../../../Data\Web\HanselmanSite.html");
+            var MinifiedFileContent = ReadFile(@"../../../../../Data\Web\HanselmanSite.html").StripHTML();
             Assert.NotEqual(FileContent.Length, MinifiedFileContent.Length);
             Assert.True(FileContent.Length > MinifiedFileContent.Length);
         }
@@ -296,12 +296,6 @@ namespace BigBook.Tests.ExtensionMethods
             Assert.Equal(" This is a Test", Value.ToString(StringCase.TitleCase));
         }
 
-        private enum EnumValues
-        {
-            Value1,
-            Value2
-        }
-
         public class StringFormatClass
         {
             public StringFormatClass()
@@ -316,6 +310,12 @@ namespace BigBook.Tests.ExtensionMethods
             public int B { get; set; }
 
             public float C { get; set; }
+        }
+
+        private enum EnumValues
+        {
+            Value1,
+            Value2
         }
     }
 }
