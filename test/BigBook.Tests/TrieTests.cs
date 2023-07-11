@@ -49,7 +49,7 @@ namespace BigBook.Tests
                 .Build();
 
             var Results = TestObject.FindAny(TestString).ToArray();
-            Assert.Equal("brown", Results);
+            Assert.Equal("brown", new string(Results));
         }
 
         [Fact]

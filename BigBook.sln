@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29709.97
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7CBC4576-531F-4D1E-A5A4-9DA17AED676F}"
 EndProject
@@ -19,6 +19,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BigBook.Benchmarks", "BigBook.Benchmarks\BigBook.Benchmarks.csproj", "{E6803AA6-ACB3-48F6-9798-7686499772BD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestSize", "TestSize\TestSize.csproj", "{195CD080-F7E7-4E98-8D06-2C1FB2E019CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigBook.Example", "BigBook.Example\BigBook.Example.csproj", "{DDEB74D1-A4CE-4C36-BCCE-E16F6864322D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +44,10 @@ Global
 		{195CD080-F7E7-4E98-8D06-2C1FB2E019CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{195CD080-F7E7-4E98-8D06-2C1FB2E019CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{195CD080-F7E7-4E98-8D06-2C1FB2E019CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDEB74D1-A4CE-4C36-BCCE-E16F6864322D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDEB74D1-A4CE-4C36-BCCE-E16F6864322D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDEB74D1-A4CE-4C36-BCCE-E16F6864322D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDEB74D1-A4CE-4C36-BCCE-E16F6864322D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

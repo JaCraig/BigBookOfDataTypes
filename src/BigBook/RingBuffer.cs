@@ -55,6 +55,11 @@ namespace BigBook
         }
 
         /// <summary>
+        /// The root
+        /// </summary>
+        private object? Root;
+
+        /// <summary>
         /// Is overflow allowed?
         /// </summary>
         public bool AllowOverflow { get; protected set; }
@@ -109,8 +114,6 @@ namespace BigBook
         /// Write position
         /// </summary>
         protected int WritePosition { get; set; }
-
-        private object? Root;
 
         /// <summary>
         /// Allows getting an item at a specific position in the buffer
