@@ -1,6 +1,6 @@
 # Big Book of Data Types
 
-[![Build status](https://ci.appveyor.com/api/projects/status/435koyg8vsdq3ii6?svg=true)](https://ci.appveyor.com/project/JaCraig/bigbookofdatatypes)
+[![.NET Publish](https://github.com/JaCraig/BigBookOfDataTypes/actions/workflows/dotnet-publish.yml/badge.svg)](https://github.com/JaCraig/BigBookOfDataTypes/actions/workflows/dotnet-publish.yml)
 
 Big Book of Data Types is a set of classes and extension methods to help with data. This includes classes for caching, data comparison, data conversion, data mapping, string formatting, as well as various data types that are missing from .Net.
 
