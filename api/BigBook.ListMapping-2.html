@@ -1,0 +1,1073 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class ListMapping&lt;T1, T2&gt;
+ | Big Book of DataTypes API Reference </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class ListMapping&lt;T1, T2&gt;
+ | Big Book of DataTypes API Reference ">
+      <meta name="generator" content="docfx ">
+  
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/night-owl.min.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" integrity="sha384-EvBWSlnoFgZlXJvpzS+MAUEjvN7+gcCwH+qh7GRFOGgZO0PuwOFro7qPOJnLfe7l" crossorigin="anonymous">
+      <link rel="stylesheet" href="../styles/config.css">
+      <link rel="stylesheet" href="../styles/discord.css">
+      <link rel="stylesheet" href="../styles/singulink.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+  
+  <meta property="docfx:rel" content="../">
+  <meta property="docfx:newtab" content="true">
+    </head>
+    <body>
+        <div class="top-navbar">
+            <a class="burger-icon" onclick="toggleMenu()">
+                <svg name="Hamburger" style="vertical-align: middle;" width="34" height="34" viewbox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M20 6H4V9H20V6ZM4 10.999H20V13.999H4V10.999ZM4 15.999H20V18.999H4V15.999Z"></path></svg>
+            </a>
+
+
+            <a class="brand" href="../index.html">
+              <img src="../images/icon.png" alt="BigBook" class="logomark">
+              <span class="brand-title">BigBook</span>
+            </a>        </div>
+
+        <div class="body-content">
+            <div id="blackout" class="blackout" onclick="toggleMenu()"></div>
+
+            <nav id="sidebar" role="navigation">
+                <div class="sidebar">
+
+                    <div>
+                      <div class="mobile-hide">
+
+                        <a class="brand" href="../index.html">
+                          <img src="../images/icon.png" alt="BigBook" class="logomark">
+                          <span class="brand-title">BigBook</span>
+                        </a>                      </div>
+
+                      <div class="sidesearch">
+                        <form id="search" role="search" class="search">
+                            <i class="bi bi-search search-icon"></i>
+                            <input type="text" id="search-query" placeholder="Search" autocomplete="off">
+                        </form>
+                      </div>
+
+                      <div id="navbar">
+                      </div>
+                    </div>                    <div class="sidebar-item-separator"></div>
+
+                        <div id="sidetoggle">
+                          <div id="sidetoc"></div>
+                        </div>
+                </div>
+                <div class="footer">
+  <strong><a href='https://github.com/JaCraig/BigBookOfDataTypes'>Open in Github</a></strong>
+  
+                </div>            </nav>
+
+            <main class="main-panel">
+
+                <div id="search-results" style="display: none;">
+                  <h1 class="search-list">Search Results for <span></span></h1>
+                  <div class="sr-items">
+                    <p><i class="bi bi-hourglass-split index-loading"></i></p>
+                  </div>
+                  <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+                </div>
+ 
+
+                <div role="main" class="hide-when-search">
+
+                        <div class="subnav navbar navbar-default">
+                          <div class="container hide-when-search" id="breadcrumb">
+                            <ul class="breadcrumb">
+                              <li></li>
+                            </ul>
+                          </div>
+                        </div>
+
+                         <div id="contribution">
+                               <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_ListMapping_2.md&amp;value=---%0Auid%3A%20BigBook.ListMapping%602%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                         </div>
+
+                    <article class="content wrap" id="_content" data-uid="BigBook.ListMapping`2">
+
+
+
+  <h1 id="BigBook_ListMapping_2" data-uid="BigBook.ListMapping`2" class="text-break">Class ListMapping&lt;T1, T2&gt;
+</h1>
+  <div class="markdown level0 summary"><p>Maps a key to a list of data</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><span class="xref">ListMapping&lt;T1, T2&gt;</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;T1, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T2&gt;&gt;</div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;T1, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T2&gt;&gt;&gt;</div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;T1, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T2&gt;&gt;&gt;</div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerable">IEnumerable</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="BigBook.html">BigBook</a></h6>
+  <h6><strong>Assembly</strong>: BigBook.dll</h6>
+  <h5 id="BigBook_ListMapping_2_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class ListMapping&lt;T1, T2&gt; : IDictionary&lt;T1, IEnumerable&lt;T2&gt;&gt;, ICollection&lt;KeyValuePair&lt;T1, IEnumerable&lt;T2&gt;&gt;&gt;, IEnumerable&lt;KeyValuePair&lt;T1, IEnumerable&lt;T2&gt;&gt;&gt;, IEnumerable where T1 : notnull</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T1</span></td>
+        <td><p>Key value</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">T2</span></td>
+        <td><p>Type that the list should contain</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_ListMapping_2_Count.md&amp;value=---%0Auid%3A%20BigBook.ListMapping%602.Count%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/ListMapping.cs/#L35">View Source</a>
+  </span>
+  <a id="BigBook_ListMapping_2_Count_" data-uid="BigBook.ListMapping`2.Count*"></a>
+  <h4 id="BigBook_ListMapping_2_Count" data-uid="BigBook.ListMapping`2.Count">Count</h4>
+  <div class="markdown level1 summary"><p>The number of items in the listing</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Count { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_ListMapping_2_IsReadOnly.md&amp;value=---%0Auid%3A%20BigBook.ListMapping%602.IsReadOnly%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/ListMapping.cs/#L40">View Source</a>
+  </span>
+  <a id="BigBook_ListMapping_2_IsReadOnly_" data-uid="BigBook.ListMapping`2.IsReadOnly*"></a>
+  <h4 id="BigBook_ListMapping_2_IsReadOnly" data-uid="BigBook.ListMapping`2.IsReadOnly">IsReadOnly</h4>
+  <div class="markdown level1 summary"><p>Not read only</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsReadOnly { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_ListMapping_2_Item__0_.md&amp;value=---%0Auid%3A%20BigBook.ListMapping%602.Item(%600)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/ListMapping.cs/#L72">View Source</a>
+  </span>
+  <a id="BigBook_ListMapping_2_Item_" data-uid="BigBook.ListMapping`2.Item*"></a>
+  <h4 id="BigBook_ListMapping_2_Item__0_" data-uid="BigBook.ListMapping`2.Item(`0)">this[T1]</h4>
+  <div class="markdown level1 summary"><p>Gets a list of values associated with a key</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;T2&gt; this[T1 key] { get; set; }</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T1</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Key to look for</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T2&gt;</td>
+        <td><p>The list of values</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_ListMapping_2_Items.md&amp;value=---%0Auid%3A%20BigBook.ListMapping%602.Items%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/ListMapping.cs/#L55">View Source</a>
+  </span>
+  <a id="BigBook_ListMapping_2_Items_" data-uid="BigBook.ListMapping`2.Items*"></a>
+  <h4 id="BigBook_ListMapping_2_Items" data-uid="BigBook.ListMapping`2.Items">Items</h4>
+  <div class="markdown level1 summary"><p>Container holding the data</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Dictionary&lt;T1, List&lt;T2&gt;&gt; Items { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;T1, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T2&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_ListMapping_2_Keys.md&amp;value=---%0Auid%3A%20BigBook.ListMapping%602.Keys%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/ListMapping.cs/#L45">View Source</a>
+  </span>
+  <a id="BigBook_ListMapping_2_Keys_" data-uid="BigBook.ListMapping`2.Keys*"></a>
+  <h4 id="BigBook_ListMapping_2_Keys" data-uid="BigBook.ListMapping`2.Keys">Keys</h4>
+  <div class="markdown level1 summary"><p>The list of keys within the mapping</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICollection&lt;T1&gt; Keys { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;T1&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_ListMapping_2_Values.md&amp;value=---%0Auid%3A%20BigBook.ListMapping%602.Values%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/ListMapping.cs/#L50">View Source</a>
+  </span>
+  <a id="BigBook_ListMapping_2_Values_" data-uid="BigBook.ListMapping`2.Values*"></a>
+  <h4 id="BigBook_ListMapping_2_Values" data-uid="BigBook.ListMapping`2.Values">Values</h4>
+  <div class="markdown level1 summary"><p>List that contains the list of values</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICollection&lt;IEnumerable&lt;T2&gt;&gt; Values { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T2&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_ListMapping_2_Add_System_Collections_Generic_KeyValuePair__0_System_Collections_Generic_IEnumerable__1___.md&amp;value=---%0Auid%3A%20BigBook.ListMapping%602.Add(System.Collections.Generic.KeyValuePair%7B%600%2CSystem.Collections.Generic.IEnumerable%7B%601%7D%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/ListMapping.cs/#L104">View Source</a>
+  </span>
+  <a id="BigBook_ListMapping_2_Add_" data-uid="BigBook.ListMapping`2.Add*"></a>
+  <h4 id="BigBook_ListMapping_2_Add_System_Collections_Generic_KeyValuePair__0_System_Collections_Generic_IEnumerable__1___" data-uid="BigBook.ListMapping`2.Add(System.Collections.Generic.KeyValuePair{`0,System.Collections.Generic.IEnumerable{`1}})">Add(KeyValuePair&lt;T1, IEnumerable&lt;T2&gt;&gt;)</h4>
+  <div class="markdown level1 summary"><p>Adds a key value pair</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Add(KeyValuePair&lt;T1, IEnumerable&lt;T2&gt;&gt; item)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;T1, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T2&gt;&gt;</td>
+        <td><span class="parametername">item</span></td>
+        <td><p>Key value pair to add</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_ListMapping_2_Add__0_System_Collections_Generic_IEnumerable__1__.md&amp;value=---%0Auid%3A%20BigBook.ListMapping%602.Add(%600%2CSystem.Collections.Generic.IEnumerable%7B%601%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/ListMapping.cs/#L111">View Source</a>
+  </span>
+  <a id="BigBook_ListMapping_2_Add_" data-uid="BigBook.ListMapping`2.Add*"></a>
+  <h4 id="BigBook_ListMapping_2_Add__0_System_Collections_Generic_IEnumerable__1__" data-uid="BigBook.ListMapping`2.Add(`0,System.Collections.Generic.IEnumerable{`1})">Add(T1, IEnumerable&lt;T2&gt;)</h4>
+  <div class="markdown level1 summary"><p>Adds a list of items to the mapping</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Add(T1 key, IEnumerable&lt;T2&gt; value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T1</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Key value</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T2&gt;</td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The values to add</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_ListMapping_2_Add__0__1_.md&amp;value=---%0Auid%3A%20BigBook.ListMapping%602.Add(%600%2C%601)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/ListMapping.cs/#L95">View Source</a>
+  </span>
+  <a id="BigBook_ListMapping_2_Add_" data-uid="BigBook.ListMapping`2.Add*"></a>
+  <h4 id="BigBook_ListMapping_2_Add__0__1_" data-uid="BigBook.ListMapping`2.Add(`0,`1)">Add(T1, T2)</h4>
+  <div class="markdown level1 summary"><p>Adds an item to the mapping</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Add(T1 key, T2 value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T1</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Key value</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">T2</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value to add</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_ListMapping_2_Clear.md&amp;value=---%0Auid%3A%20BigBook.ListMapping%602.Clear%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/ListMapping.cs/#L119">View Source</a>
+  </span>
+  <a id="BigBook_ListMapping_2_Clear_" data-uid="BigBook.ListMapping`2.Clear*"></a>
+  <h4 id="BigBook_ListMapping_2_Clear" data-uid="BigBook.ListMapping`2.Clear">Clear()</h4>
+  <div class="markdown level1 summary"><p>Clears all items from the listing</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Clear()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_ListMapping_2_Contains_System_Collections_Generic_KeyValuePair__0_System_Collections_Generic_IEnumerable__1___.md&amp;value=---%0Auid%3A%20BigBook.ListMapping%602.Contains(System.Collections.Generic.KeyValuePair%7B%600%2CSystem.Collections.Generic.IEnumerable%7B%601%7D%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/ListMapping.cs/#L133">View Source</a>
+  </span>
+  <a id="BigBook_ListMapping_2_Contains_" data-uid="BigBook.ListMapping`2.Contains*"></a>
+  <h4 id="BigBook_ListMapping_2_Contains_System_Collections_Generic_KeyValuePair__0_System_Collections_Generic_IEnumerable__1___" data-uid="BigBook.ListMapping`2.Contains(System.Collections.Generic.KeyValuePair{`0,System.Collections.Generic.IEnumerable{`1}})">Contains(KeyValuePair&lt;T1, IEnumerable&lt;T2&gt;&gt;)</h4>
+  <div class="markdown level1 summary"><p>Does this contain the key value pairs?</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Contains(KeyValuePair&lt;T1, IEnumerable&lt;T2&gt;&gt; item)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;T1, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T2&gt;&gt;</td>
+        <td><span class="parametername">item</span></td>
+        <td><p>Key value pair to check</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p>True if it exists, false otherwise</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_ListMapping_2_Contains__0_System_Collections_Generic_IEnumerable__1__.md&amp;value=---%0Auid%3A%20BigBook.ListMapping%602.Contains(%600%2CSystem.Collections.Generic.IEnumerable%7B%601%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/ListMapping.cs/#L141">View Source</a>
+  </span>
+  <a id="BigBook_ListMapping_2_Contains_" data-uid="BigBook.ListMapping`2.Contains*"></a>
+  <h4 id="BigBook_ListMapping_2_Contains__0_System_Collections_Generic_IEnumerable__1__" data-uid="BigBook.ListMapping`2.Contains(`0,System.Collections.Generic.IEnumerable{`1})">Contains(T1, IEnumerable&lt;T2&gt;)</h4>
+  <div class="markdown level1 summary"><p>Does the list mapping contain the key value pairs?</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Contains(T1 key, IEnumerable&lt;T2&gt; values)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T1</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Key value</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T2&gt;</td>
+        <td><span class="parametername">values</span></td>
+        <td><p>Value</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p>True if it exists, false otherwise</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_ListMapping_2_Contains__0__1_.md&amp;value=---%0Auid%3A%20BigBook.ListMapping%602.Contains(%600%2C%601)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/ListMapping.cs/#L157">View Source</a>
+  </span>
+  <a id="BigBook_ListMapping_2_Contains_" data-uid="BigBook.ListMapping`2.Contains*"></a>
+  <h4 id="BigBook_ListMapping_2_Contains__0__1_" data-uid="BigBook.ListMapping`2.Contains(`0,`1)">Contains(T1, T2)</h4>
+  <div class="markdown level1 summary"><p>Does the list mapping contain the key value pair?</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Contains(T1 key, T2 value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T1</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Key</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">T2</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>Value</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p>True if it exists, false otherwise</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_ListMapping_2_ContainsKey__0_.md&amp;value=---%0Auid%3A%20BigBook.ListMapping%602.ContainsKey(%600)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/ListMapping.cs/#L172">View Source</a>
+  </span>
+  <a id="BigBook_ListMapping_2_ContainsKey_" data-uid="BigBook.ListMapping`2.ContainsKey*"></a>
+  <h4 id="BigBook_ListMapping_2_ContainsKey__0_" data-uid="BigBook.ListMapping`2.ContainsKey(`0)">ContainsKey(T1)</h4>
+  <div class="markdown level1 summary"><p>Determines if a key exists</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ContainsKey(T1 key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T1</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Key to check on</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p>True if it exists, false otherwise</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_ListMapping_2_CopyTo_System_Collections_Generic_KeyValuePair__0_System_Collections_Generic_IEnumerable__1_____System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.ListMapping%602.CopyTo(System.Collections.Generic.KeyValuePair%7B%600%2CSystem.Collections.Generic.IEnumerable%7B%601%7D%7D%5B%5D%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/ListMapping.cs/#L187">View Source</a>
+  </span>
+  <a id="BigBook_ListMapping_2_CopyTo_" data-uid="BigBook.ListMapping`2.CopyTo*"></a>
+  <h4 id="BigBook_ListMapping_2_CopyTo_System_Collections_Generic_KeyValuePair__0_System_Collections_Generic_IEnumerable__1_____System_Int32_" data-uid="BigBook.ListMapping`2.CopyTo(System.Collections.Generic.KeyValuePair{`0,System.Collections.Generic.IEnumerable{`1}}[],System.Int32)">CopyTo(KeyValuePair&lt;T1, IEnumerable&lt;T2&gt;&gt;[], int)</h4>
+  <div class="markdown level1 summary"><p>Not implemented</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CopyTo(KeyValuePair&lt;T1, IEnumerable&lt;T2&gt;&gt;[] array, int arrayIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;T1, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T2&gt;&gt;[]</td>
+        <td><span class="parametername">array</span></td>
+        <td><p>Array to copy to</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">arrayIndex</span></td>
+        <td><p>array index</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_ListMapping_2_GetEnumerator.md&amp;value=---%0Auid%3A%20BigBook.ListMapping%602.GetEnumerator%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/ListMapping.cs/#L195">View Source</a>
+  </span>
+  <a id="BigBook_ListMapping_2_GetEnumerator_" data-uid="BigBook.ListMapping`2.GetEnumerator*"></a>
+  <h4 id="BigBook_ListMapping_2_GetEnumerator" data-uid="BigBook.ListMapping`2.GetEnumerator">GetEnumerator()</h4>
+  <div class="markdown level1 summary"><p>Gets the enumerator</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerator&lt;KeyValuePair&lt;T1, IEnumerable&lt;T2&gt;&gt;&gt; GetEnumerator()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1">IEnumerator</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;T1, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T2&gt;&gt;&gt;</td>
+        <td><p>The enumerator for this object</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_ListMapping_2_Remove_System_Collections_Generic_KeyValuePair__0_System_Collections_Generic_IEnumerable__1___.md&amp;value=---%0Auid%3A%20BigBook.ListMapping%602.Remove(System.Collections.Generic.KeyValuePair%7B%600%2CSystem.Collections.Generic.IEnumerable%7B%601%7D%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/ListMapping.cs/#L236">View Source</a>
+  </span>
+  <a id="BigBook_ListMapping_2_Remove_" data-uid="BigBook.ListMapping`2.Remove*"></a>
+  <h4 id="BigBook_ListMapping_2_Remove_System_Collections_Generic_KeyValuePair__0_System_Collections_Generic_IEnumerable__1___" data-uid="BigBook.ListMapping`2.Remove(System.Collections.Generic.KeyValuePair{`0,System.Collections.Generic.IEnumerable{`1}})">Remove(KeyValuePair&lt;T1, IEnumerable&lt;T2&gt;&gt;)</h4>
+  <div class="markdown level1 summary"><p>Removes a key value pair from the list mapping</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Remove(KeyValuePair&lt;T1, IEnumerable&lt;T2&gt;&gt; item)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;T1, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T2&gt;&gt;</td>
+        <td><span class="parametername">item</span></td>
+        <td><p>items to remove</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p>True if it is removed, false otherwise</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_ListMapping_2_Remove__0_.md&amp;value=---%0Auid%3A%20BigBook.ListMapping%602.Remove(%600)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/ListMapping.cs/#L220">View Source</a>
+  </span>
+  <a id="BigBook_ListMapping_2_Remove_" data-uid="BigBook.ListMapping`2.Remove*"></a>
+  <h4 id="BigBook_ListMapping_2_Remove__0_" data-uid="BigBook.ListMapping`2.Remove(`0)">Remove(T1)</h4>
+  <div class="markdown level1 summary"><p>Remove a list of items associated with a key</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Remove(T1 key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T1</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Key to use</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p>True if the key is found, false otherwise</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_ListMapping_2_Remove__0__1_.md&amp;value=---%0Auid%3A%20BigBook.ListMapping%602.Remove(%600%2C%601)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/ListMapping.cs/#L260">View Source</a>
+  </span>
+  <a id="BigBook_ListMapping_2_Remove_" data-uid="BigBook.ListMapping`2.Remove*"></a>
+  <h4 id="BigBook_ListMapping_2_Remove__0__1_" data-uid="BigBook.ListMapping`2.Remove(`0,`1)">Remove(T1, T2)</h4>
+  <div class="markdown level1 summary"><p>Removes a key value pair from the list mapping</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Remove(T1 key, T2 value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T1</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Key to remove</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">T2</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>Value to remove</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p>True if it is removed, false otherwise</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_ListMapping_2_ToString.md&amp;value=---%0Auid%3A%20BigBook.ListMapping%602.ToString%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/ListMapping.cs/#L280">View Source</a>
+  </span>
+  <a id="BigBook_ListMapping_2_ToString_" data-uid="BigBook.ListMapping`2.ToString*"></a>
+  <h4 id="BigBook_ListMapping_2_ToString" data-uid="BigBook.ListMapping`2.ToString">ToString()</h4>
+  <div class="markdown level1 summary"><p>Returns a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> that represents this instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> that represents this instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_ListMapping_2_TryGetValue__0_System_Collections_Generic_IEnumerable__1___.md&amp;value=---%0Auid%3A%20BigBook.ListMapping%602.TryGetValue(%600%2CSystem.Collections.Generic.IEnumerable%7B%601%7D%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/ListMapping.cs/#L299">View Source</a>
+  </span>
+  <a id="BigBook_ListMapping_2_TryGetValue_" data-uid="BigBook.ListMapping`2.TryGetValue*"></a>
+  <h4 id="BigBook_ListMapping_2_TryGetValue__0_System_Collections_Generic_IEnumerable__1___" data-uid="BigBook.ListMapping`2.TryGetValue(`0,System.Collections.Generic.IEnumerable{`1}@)">TryGetValue(T1, out IEnumerable&lt;T2&gt;)</h4>
+  <div class="markdown level1 summary"><p>Tries to get the value associated with the key</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryGetValue(T1 key, out IEnumerable&lt;T2&gt; value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T1</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Key value</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T2&gt;</td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The values getting</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p>True if it was able to get the value, false otherwise</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary&lt;TKey, TValue&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable&lt;T&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerable">IEnumerable</a>
+  </div>
+
+</article>
+                </div>
+
+                <div class="copyright-footer">
+                    <span>&#169; James Craig. All rights reserved.</span>
+                </div>
+            </main>
+        </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+        <script type="text/javascript" src="../styles/jquery.twbsPagination.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/jquery.mark.min.js"></script>
+        <script type="text/javascript" src="../styles/url.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/anchor-js@5.0.0/anchor.min.js"></script>
+        <script type="text/javascript" src="../styles/docfx.js"></script>
+        <script type="text/javascript" src="../styles/main.js"></script>
+        <script type="text/javascript" src="../styles/singulink.js"></script>    </body>
+</html>

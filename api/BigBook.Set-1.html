@@ -1,0 +1,1078 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class Set&lt;T&gt;
+ | Big Book of DataTypes API Reference </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class Set&lt;T&gt;
+ | Big Book of DataTypes API Reference ">
+      <meta name="generator" content="docfx ">
+  
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/night-owl.min.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" integrity="sha384-EvBWSlnoFgZlXJvpzS+MAUEjvN7+gcCwH+qh7GRFOGgZO0PuwOFro7qPOJnLfe7l" crossorigin="anonymous">
+      <link rel="stylesheet" href="../styles/config.css">
+      <link rel="stylesheet" href="../styles/discord.css">
+      <link rel="stylesheet" href="../styles/singulink.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+  
+  <meta property="docfx:rel" content="../">
+  <meta property="docfx:newtab" content="true">
+    </head>
+    <body>
+        <div class="top-navbar">
+            <a class="burger-icon" onclick="toggleMenu()">
+                <svg name="Hamburger" style="vertical-align: middle;" width="34" height="34" viewbox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M20 6H4V9H20V6ZM4 10.999H20V13.999H4V10.999ZM4 15.999H20V18.999H4V15.999Z"></path></svg>
+            </a>
+
+
+            <a class="brand" href="../index.html">
+              <img src="../images/icon.png" alt="BigBook" class="logomark">
+              <span class="brand-title">BigBook</span>
+            </a>        </div>
+
+        <div class="body-content">
+            <div id="blackout" class="blackout" onclick="toggleMenu()"></div>
+
+            <nav id="sidebar" role="navigation">
+                <div class="sidebar">
+
+                    <div>
+                      <div class="mobile-hide">
+
+                        <a class="brand" href="../index.html">
+                          <img src="../images/icon.png" alt="BigBook" class="logomark">
+                          <span class="brand-title">BigBook</span>
+                        </a>                      </div>
+
+                      <div class="sidesearch">
+                        <form id="search" role="search" class="search">
+                            <i class="bi bi-search search-icon"></i>
+                            <input type="text" id="search-query" placeholder="Search" autocomplete="off">
+                        </form>
+                      </div>
+
+                      <div id="navbar">
+                      </div>
+                    </div>                    <div class="sidebar-item-separator"></div>
+
+                        <div id="sidetoggle">
+                          <div id="sidetoc"></div>
+                        </div>
+                </div>
+                <div class="footer">
+  <strong><a href='https://github.com/JaCraig/BigBookOfDataTypes'>Open in Github</a></strong>
+  
+                </div>            </nav>
+
+            <main class="main-panel">
+
+                <div id="search-results" style="display: none;">
+                  <h1 class="search-list">Search Results for <span></span></h1>
+                  <div class="sr-items">
+                    <p><i class="bi bi-hourglass-split index-loading"></i></p>
+                  </div>
+                  <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+                </div>
+ 
+
+                <div role="main" class="hide-when-search">
+
+                        <div class="subnav navbar navbar-default">
+                          <div class="container hide-when-search" id="breadcrumb">
+                            <ul class="breadcrumb">
+                              <li></li>
+                            </ul>
+                          </div>
+                        </div>
+
+                         <div id="contribution">
+                               <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Set_1.md&amp;value=---%0Auid%3A%20BigBook.Set%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                         </div>
+
+                    <article class="content wrap" id="_content" data-uid="BigBook.Set`1">
+
+
+
+  <h1 id="BigBook_Set_1" data-uid="BigBook.Set`1" class="text-break">Class Set&lt;T&gt;
+</h1>
+  <div class="markdown level0 summary"><p>Class to be used for sets of data</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</div>
+    <div class="level2"><span class="xref">Set&lt;T&gt;</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;T&gt;</div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;T&gt;</div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;T&gt;</div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">IReadOnlyCollection</a>&lt;T&gt;</div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ilist">IList</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.icollection">ICollection</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerable">IEnumerable</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.add">List&lt;T&gt;.Add(T)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.addrange">List&lt;T&gt;.AddRange(IEnumerable&lt;T&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.asreadonly">List&lt;T&gt;.AsReadOnly()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.binarysearch#system-collections-generic-list-1-binarysearch(system-int32-system-int32-0-system-collections-generic-icomparer((-0)))">List&lt;T&gt;.BinarySearch(int, int, T, IComparer&lt;T&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.binarysearch#system-collections-generic-list-1-binarysearch(-0)">List&lt;T&gt;.BinarySearch(T)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.binarysearch#system-collections-generic-list-1-binarysearch(-0-system-collections-generic-icomparer((-0)))">List&lt;T&gt;.BinarySearch(T, IComparer&lt;T&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.clear">List&lt;T&gt;.Clear()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.contains">List&lt;T&gt;.Contains(T)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.convertall">List&lt;T&gt;.ConvertAll&lt;TOutput&gt;(Converter&lt;T, TOutput&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.copyto#system-collections-generic-list-1-copyto(system-int32-0()-system-int32-system-int32)">List&lt;T&gt;.CopyTo(int, T[], int, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.copyto#system-collections-generic-list-1-copyto(-0())">List&lt;T&gt;.CopyTo(T[])</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.copyto#system-collections-generic-list-1-copyto(-0()-system-int32)">List&lt;T&gt;.CopyTo(T[], int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.ensurecapacity">List&lt;T&gt;.EnsureCapacity(int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.exists">List&lt;T&gt;.Exists(Predicate&lt;T&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.find">List&lt;T&gt;.Find(Predicate&lt;T&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.findall">List&lt;T&gt;.FindAll(Predicate&lt;T&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.findindex#system-collections-generic-list-1-findindex(system-int32-system-int32-system-predicate((-0)))">List&lt;T&gt;.FindIndex(int, int, Predicate&lt;T&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.findindex#system-collections-generic-list-1-findindex(system-int32-system-predicate((-0)))">List&lt;T&gt;.FindIndex(int, Predicate&lt;T&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.findindex#system-collections-generic-list-1-findindex(system-predicate((-0)))">List&lt;T&gt;.FindIndex(Predicate&lt;T&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.findlast">List&lt;T&gt;.FindLast(Predicate&lt;T&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.findlastindex#system-collections-generic-list-1-findlastindex(system-int32-system-int32-system-predicate((-0)))">List&lt;T&gt;.FindLastIndex(int, int, Predicate&lt;T&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.findlastindex#system-collections-generic-list-1-findlastindex(system-int32-system-predicate((-0)))">List&lt;T&gt;.FindLastIndex(int, Predicate&lt;T&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.findlastindex#system-collections-generic-list-1-findlastindex(system-predicate((-0)))">List&lt;T&gt;.FindLastIndex(Predicate&lt;T&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.foreach">List&lt;T&gt;.ForEach(Action&lt;T&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.getenumerator">List&lt;T&gt;.GetEnumerator()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.getrange">List&lt;T&gt;.GetRange(int, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof#system-collections-generic-list-1-indexof(-0)">List&lt;T&gt;.IndexOf(T)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof#system-collections-generic-list-1-indexof(-0-system-int32)">List&lt;T&gt;.IndexOf(T, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof#system-collections-generic-list-1-indexof(-0-system-int32-system-int32)">List&lt;T&gt;.IndexOf(T, int, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.insert">List&lt;T&gt;.Insert(int, T)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.insertrange">List&lt;T&gt;.InsertRange(int, IEnumerable&lt;T&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof#system-collections-generic-list-1-lastindexof(-0)">List&lt;T&gt;.LastIndexOf(T)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof#system-collections-generic-list-1-lastindexof(-0-system-int32)">List&lt;T&gt;.LastIndexOf(T, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof#system-collections-generic-list-1-lastindexof(-0-system-int32-system-int32)">List&lt;T&gt;.LastIndexOf(T, int, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.remove">List&lt;T&gt;.Remove(T)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.removeall">List&lt;T&gt;.RemoveAll(Predicate&lt;T&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.removeat">List&lt;T&gt;.RemoveAt(int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.removerange">List&lt;T&gt;.RemoveRange(int, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.reverse#system-collections-generic-list-1-reverse">List&lt;T&gt;.Reverse()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.reverse#system-collections-generic-list-1-reverse(system-int32-system-int32)">List&lt;T&gt;.Reverse(int, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.sort#system-collections-generic-list-1-sort">List&lt;T&gt;.Sort()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.sort#system-collections-generic-list-1-sort(system-collections-generic-icomparer((-0)))">List&lt;T&gt;.Sort(IComparer&lt;T&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.sort#system-collections-generic-list-1-sort(system-comparison((-0)))">List&lt;T&gt;.Sort(Comparison&lt;T&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.sort#system-collections-generic-list-1-sort(system-int32-system-int32-system-collections-generic-icomparer((-0)))">List&lt;T&gt;.Sort(int, int, IComparer&lt;T&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.toarray">List&lt;T&gt;.ToArray()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.trimexcess">List&lt;T&gt;.TrimExcess()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.trueforall">List&lt;T&gt;.TrueForAll(Predicate&lt;T&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.capacity">List&lt;T&gt;.Capacity</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.count">List&lt;T&gt;.Count</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">List&lt;T&gt;.this[int]</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="BigBook.html">BigBook</a></h6>
+  <h6><strong>Assembly</strong>: BigBook.dll</h6>
+  <h5 id="BigBook_Set_1_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class Set&lt;T&gt; : List&lt;T&gt;, IList&lt;T&gt;, ICollection&lt;T&gt;, IReadOnlyList&lt;T&gt;, IReadOnlyCollection&lt;T&gt;, IEnumerable&lt;T&gt;, IList, ICollection, IEnumerable</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>Type that the set holds</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="constructors">Constructors
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Set_1__ctor.md&amp;value=---%0Auid%3A%20BigBook.Set%601.%23ctor%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Set.cs/#L31">View Source</a>
+  </span>
+  <a id="BigBook_Set_1__ctor_" data-uid="BigBook.Set`1.#ctor*"></a>
+  <h4 id="BigBook_Set_1__ctor" data-uid="BigBook.Set`1.#ctor">Set()</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="BigBook.Set-1.html">Set&lt;T&gt;</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Set()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Set_1__ctor_System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.Set%601.%23ctor(System.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Set.cs/#L39">View Source</a>
+  </span>
+  <a id="BigBook_Set_1__ctor_" data-uid="BigBook.Set`1.#ctor*"></a>
+  <h4 id="BigBook_Set_1__ctor_System_Int32_" data-uid="BigBook.Set`1.#ctor(System.Int32)">Set(int)</h4>
+  <div class="markdown level1 summary"><p>Constructor</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Set(int initialSize)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">initialSize</span></td>
+        <td><p>Initial size</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Set_1_Add_BigBook_Set__0__BigBook_Set__0__.md&amp;value=---%0Auid%3A%20BigBook.Set%601.Add(BigBook.Set%7B%600%7D%2CBigBook.Set%7B%600%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Set.cs/#L50">View Source</a>
+  </span>
+  <a id="BigBook_Set_1_Add_" data-uid="BigBook.Set`1.Add*"></a>
+  <h4 id="BigBook_Set_1_Add_BigBook_Set__0__BigBook_Set__0__" data-uid="BigBook.Set`1.Add(BigBook.Set{`0},BigBook.Set{`0})">Add(Set&lt;T&gt;, Set&lt;T&gt;)</h4>
+  <div class="markdown level1 summary"><p>Adds the specified values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Set&lt;T&gt; Add(Set&lt;T&gt; left, Set&lt;T&gt; right)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BigBook.Set-1.html">Set</a>&lt;T&gt;</td>
+        <td><span class="parametername">left</span></td>
+        <td><p>The left.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="BigBook.Set-1.html">Set</a>&lt;T&gt;</td>
+        <td><span class="parametername">right</span></td>
+        <td><p>The right.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BigBook.Set-1.html">Set</a>&lt;T&gt;</td>
+        <td><p>The result</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Set_1_Contains_BigBook_Set__0__.md&amp;value=---%0Auid%3A%20BigBook.Set%601.Contains(BigBook.Set%7B%600%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Set.cs/#L176">View Source</a>
+  </span>
+  <a id="BigBook_Set_1_Contains_" data-uid="BigBook.Set`1.Contains*"></a>
+  <h4 id="BigBook_Set_1_Contains_BigBook_Set__0__" data-uid="BigBook.Set`1.Contains(BigBook.Set{`0})">Contains(Set&lt;T&gt;)</h4>
+  <div class="markdown level1 summary"><p>Used to tell if this set contains the other</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Contains(Set&lt;T&gt; set)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BigBook.Set-1.html">Set</a>&lt;T&gt;</td>
+        <td><span class="parametername">set</span></td>
+        <td><p>Set to check against</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p>True if it is, false otherwise</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Set_1_Equals_System_Object_.md&amp;value=---%0Auid%3A%20BigBook.Set%601.Equals(System.Object)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Set.cs/#L183">View Source</a>
+  </span>
+  <a id="BigBook_Set_1_Equals_" data-uid="BigBook.Set`1.Equals*"></a>
+  <h4 id="BigBook_Set_1_Equals_System_Object_" data-uid="BigBook.Set`1.Equals(System.Object)">Equals(object)</h4>
+  <div class="markdown level1 summary"><p>Determines if the two sets are equivalent</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Equals(object obj)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
+        <td><span class="parametername">obj</span></td>
+        <td><p>The object to compare to</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p>True if they are, false otherwise</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Set_1_GetHashCode.md&amp;value=---%0Auid%3A%20BigBook.Set%601.GetHashCode%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Set.cs/#L189">View Source</a>
+  </span>
+  <a id="BigBook_Set_1_GetHashCode_" data-uid="BigBook.Set`1.GetHashCode*"></a>
+  <h4 id="BigBook_Set_1_GetHashCode" data-uid="BigBook.Set`1.GetHashCode">GetHashCode()</h4>
+  <div class="markdown level1 summary"><p>Returns the hash code for the object</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><p>The hash code for the object</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Set_1_GetIntersection_BigBook_Set__0__BigBook_Set__0__.md&amp;value=---%0Auid%3A%20BigBook.Set%601.GetIntersection(BigBook.Set%7B%600%7D%2CBigBook.Set%7B%600%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Set.cs/#L58">View Source</a>
+  </span>
+  <a id="BigBook_Set_1_GetIntersection_" data-uid="BigBook.Set`1.GetIntersection*"></a>
+  <h4 id="BigBook_Set_1_GetIntersection_BigBook_Set__0__BigBook_Set__0__" data-uid="BigBook.Set`1.GetIntersection(BigBook.Set{`0},BigBook.Set{`0})">GetIntersection(Set&lt;T&gt;, Set&lt;T&gt;)</h4>
+  <div class="markdown level1 summary"><p>Gets the intersection of set 1 and set 2</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Set&lt;T&gt;? GetIntersection(Set&lt;T&gt; set1, Set&lt;T&gt; set2)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BigBook.Set-1.html">Set</a>&lt;T&gt;</td>
+        <td><span class="parametername">set1</span></td>
+        <td><p>Set 1</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="BigBook.Set-1.html">Set</a>&lt;T&gt;</td>
+        <td><span class="parametername">set2</span></td>
+        <td><p>Set 2</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BigBook.Set-1.html">Set</a>&lt;T&gt;</td>
+        <td><p>The intersection of the two sets</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Set_1_Intersect_BigBook_Set__0__.md&amp;value=---%0Auid%3A%20BigBook.Set%601.Intersect(BigBook.Set%7B%600%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Set.cs/#L196">View Source</a>
+  </span>
+  <a id="BigBook_Set_1_Intersect_" data-uid="BigBook.Set`1.Intersect*"></a>
+  <h4 id="BigBook_Set_1_Intersect_BigBook_Set__0__" data-uid="BigBook.Set`1.Intersect(BigBook.Set{`0})">Intersect(Set&lt;T&gt;)</h4>
+  <div class="markdown level1 summary"><p>Determines if the sets intersect</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Intersect(Set&lt;T&gt; set)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BigBook.Set-1.html">Set</a>&lt;T&gt;</td>
+        <td><span class="parametername">set</span></td>
+        <td><p>Set to check against</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p>True if they do, false otherwise</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Set_1_IsSubset_BigBook_Set__0__.md&amp;value=---%0Auid%3A%20BigBook.Set%601.IsSubset(BigBook.Set%7B%600%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Set.cs/#L219">View Source</a>
+  </span>
+  <a id="BigBook_Set_1_IsSubset_" data-uid="BigBook.Set`1.IsSubset*"></a>
+  <h4 id="BigBook_Set_1_IsSubset_BigBook_Set__0__" data-uid="BigBook.Set`1.IsSubset(BigBook.Set{`0})">IsSubset(Set&lt;T&gt;)</h4>
+  <div class="markdown level1 summary"><p>Used to tell if this is a subset of the other</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsSubset(Set&lt;T&gt; set)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BigBook.Set-1.html">Set</a>&lt;T&gt;</td>
+        <td><span class="parametername">set</span></td>
+        <td><p>Set to check against</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p>True if it is, false otherwise</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Set_1_Subtract_BigBook_Set__0__BigBook_Set__0__.md&amp;value=---%0Auid%3A%20BigBook.Set%601.Subtract(BigBook.Set%7B%600%7D%2CBigBook.Set%7B%600%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Set.cs/#L169">View Source</a>
+  </span>
+  <a id="BigBook_Set_1_Subtract_" data-uid="BigBook.Set`1.Subtract*"></a>
+  <h4 id="BigBook_Set_1_Subtract_BigBook_Set__0__BigBook_Set__0__" data-uid="BigBook.Set`1.Subtract(BigBook.Set{`0},BigBook.Set{`0})">Subtract(Set&lt;T&gt;, Set&lt;T&gt;)</h4>
+  <div class="markdown level1 summary"><p>Subtracts the specified values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Set&lt;T&gt; Subtract(Set&lt;T&gt; left, Set&lt;T&gt; right)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BigBook.Set-1.html">Set</a>&lt;T&gt;</td>
+        <td><span class="parametername">left</span></td>
+        <td><p>The left.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="BigBook.Set-1.html">Set</a>&lt;T&gt;</td>
+        <td><span class="parametername">right</span></td>
+        <td><p>The right.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BigBook.Set-1.html">Set</a>&lt;T&gt;</td>
+        <td><p>The result.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Set_1_ToString.md&amp;value=---%0Auid%3A%20BigBook.Set%601.ToString%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Set.cs/#L241">View Source</a>
+  </span>
+  <a id="BigBook_Set_1_ToString_" data-uid="BigBook.Set`1.ToString*"></a>
+  <h4 id="BigBook_Set_1_ToString" data-uid="BigBook.Set`1.ToString">ToString()</h4>
+  <div class="markdown level1 summary"><p>Returns the set as a string</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><p>The set as a string</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a></div>
+  <h3 id="operators">Operators
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Set_1_op_Addition_BigBook_Set__0__BigBook_Set__0__.md&amp;value=---%0Auid%3A%20BigBook.Set%601.op_Addition(BigBook.Set%7B%600%7D%2CBigBook.Set%7B%600%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Set.cs/#L124">View Source</a>
+  </span>
+  <a id="BigBook_Set_1_op_Addition_" data-uid="BigBook.Set`1.op_Addition*"></a>
+  <h4 id="BigBook_Set_1_op_Addition_BigBook_Set__0__BigBook_Set__0__" data-uid="BigBook.Set`1.op_Addition(BigBook.Set{`0},BigBook.Set{`0})">operator +(Set&lt;T&gt;, Set&lt;T&gt;)</h4>
+  <div class="markdown level1 summary"><p>Adds two sets together</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Set&lt;T&gt; operator +(Set&lt;T&gt; set1, Set&lt;T&gt; set2)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BigBook.Set-1.html">Set</a>&lt;T&gt;</td>
+        <td><span class="parametername">set1</span></td>
+        <td><p>Set 1</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="BigBook.Set-1.html">Set</a>&lt;T&gt;</td>
+        <td><span class="parametername">set2</span></td>
+        <td><p>Set 2</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BigBook.Set-1.html">Set</a>&lt;T&gt;</td>
+        <td><p>The joined sets</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Set_1_op_Equality_BigBook_Set__0__BigBook_Set__0__.md&amp;value=---%0Auid%3A%20BigBook.Set%601.op_Equality(BigBook.Set%7B%600%7D%2CBigBook.Set%7B%600%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Set.cs/#L148">View Source</a>
+  </span>
+  <a id="BigBook_Set_1_op_Equality_" data-uid="BigBook.Set`1.op_Equality*"></a>
+  <h4 id="BigBook_Set_1_op_Equality_BigBook_Set__0__BigBook_Set__0__" data-uid="BigBook.Set`1.op_Equality(BigBook.Set{`0},BigBook.Set{`0})">operator ==(Set&lt;T&gt;?, Set&lt;T&gt;?)</h4>
+  <div class="markdown level1 summary"><p>Determines if the two sets are equivalent</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator ==(Set&lt;T&gt;? set1, Set&lt;T&gt;? set2)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BigBook.Set-1.html">Set</a>&lt;T&gt;</td>
+        <td><span class="parametername">set1</span></td>
+        <td><p>Set 1</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="BigBook.Set-1.html">Set</a>&lt;T&gt;</td>
+        <td><span class="parametername">set2</span></td>
+        <td><p>Set 2</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p>True if they are, false otherwise</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Set_1_op_Inequality_BigBook_Set__0__BigBook_Set__0__.md&amp;value=---%0Auid%3A%20BigBook.Set%601.op_Inequality(BigBook.Set%7B%600%7D%2CBigBook.Set%7B%600%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Set.cs/#L113">View Source</a>
+  </span>
+  <a id="BigBook_Set_1_op_Inequality_" data-uid="BigBook.Set`1.op_Inequality*"></a>
+  <h4 id="BigBook_Set_1_op_Inequality_BigBook_Set__0__BigBook_Set__0__" data-uid="BigBook.Set`1.op_Inequality(BigBook.Set{`0},BigBook.Set{`0})">operator !=(Set&lt;T&gt;, Set&lt;T&gt;)</h4>
+  <div class="markdown level1 summary"><p>Determines if the two sets are not equivalent</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator !=(Set&lt;T&gt; set1, Set&lt;T&gt; set2)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BigBook.Set-1.html">Set</a>&lt;T&gt;</td>
+        <td><span class="parametername">set1</span></td>
+        <td><p>Set 1</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="BigBook.Set-1.html">Set</a>&lt;T&gt;</td>
+        <td><span class="parametername">set2</span></td>
+        <td><p>Set 2</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p>False if they are, true otherwise</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Set_1_op_Subtraction_BigBook_Set__0__BigBook_Set__0__.md&amp;value=---%0Auid%3A%20BigBook.Set%601.op_Subtraction(BigBook.Set%7B%600%7D%2CBigBook.Set%7B%600%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Set.cs/#L91">View Source</a>
+  </span>
+  <a id="BigBook_Set_1_op_Subtraction_" data-uid="BigBook.Set`1.op_Subtraction*"></a>
+  <h4 id="BigBook_Set_1_op_Subtraction_BigBook_Set__0__BigBook_Set__0__" data-uid="BigBook.Set`1.op_Subtraction(BigBook.Set{`0},BigBook.Set{`0})">operator -(Set&lt;T&gt;, Set&lt;T&gt;)</h4>
+  <div class="markdown level1 summary"><p>Removes items from set 2 from set 1</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Set&lt;T&gt; operator -(Set&lt;T&gt; set1, Set&lt;T&gt; set2)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BigBook.Set-1.html">Set</a>&lt;T&gt;</td>
+        <td><span class="parametername">set1</span></td>
+        <td><p>Set 1</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="BigBook.Set-1.html">Set</a>&lt;T&gt;</td>
+        <td><span class="parametername">set2</span></td>
+        <td><p>Set 2</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BigBook.Set-1.html">Set</a>&lt;T&gt;</td>
+        <td><p>The resulting set</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList&lt;T&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList&lt;T&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">IReadOnlyCollection&lt;T&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable&lt;T&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ilist">IList</a>
+  </div>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.icollection">ICollection</a>
+  </div>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerable">IEnumerable</a>
+  </div>
+
+</article>
+                </div>
+
+                <div class="copyright-footer">
+                    <span>&#169; James Craig. All rights reserved.</span>
+                </div>
+            </main>
+        </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+        <script type="text/javascript" src="../styles/jquery.twbsPagination.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/jquery.mark.min.js"></script>
+        <script type="text/javascript" src="../styles/url.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/anchor-js@5.0.0/anchor.min.js"></script>
+        <script type="text/javascript" src="../styles/docfx.js"></script>
+        <script type="text/javascript" src="../styles/main.js"></script>
+        <script type="text/javascript" src="../styles/singulink.js"></script>    </body>
+</html>

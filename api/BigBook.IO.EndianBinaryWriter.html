@@ -1,0 +1,1268 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class EndianBinaryWriter
+ | Big Book of DataTypes API Reference </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class EndianBinaryWriter
+ | Big Book of DataTypes API Reference ">
+      <meta name="generator" content="docfx ">
+  
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/night-owl.min.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" integrity="sha384-EvBWSlnoFgZlXJvpzS+MAUEjvN7+gcCwH+qh7GRFOGgZO0PuwOFro7qPOJnLfe7l" crossorigin="anonymous">
+      <link rel="stylesheet" href="../styles/config.css">
+      <link rel="stylesheet" href="../styles/discord.css">
+      <link rel="stylesheet" href="../styles/singulink.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+  
+  <meta property="docfx:rel" content="../">
+  <meta property="docfx:newtab" content="true">
+    </head>
+    <body>
+        <div class="top-navbar">
+            <a class="burger-icon" onclick="toggleMenu()">
+                <svg name="Hamburger" style="vertical-align: middle;" width="34" height="34" viewbox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M20 6H4V9H20V6ZM4 10.999H20V13.999H4V10.999ZM4 15.999H20V18.999H4V15.999Z"></path></svg>
+            </a>
+
+
+            <a class="brand" href="../index.html">
+              <img src="../images/icon.png" alt="BigBook" class="logomark">
+              <span class="brand-title">BigBook</span>
+            </a>        </div>
+
+        <div class="body-content">
+            <div id="blackout" class="blackout" onclick="toggleMenu()"></div>
+
+            <nav id="sidebar" role="navigation">
+                <div class="sidebar">
+
+                    <div>
+                      <div class="mobile-hide">
+
+                        <a class="brand" href="../index.html">
+                          <img src="../images/icon.png" alt="BigBook" class="logomark">
+                          <span class="brand-title">BigBook</span>
+                        </a>                      </div>
+
+                      <div class="sidesearch">
+                        <form id="search" role="search" class="search">
+                            <i class="bi bi-search search-icon"></i>
+                            <input type="text" id="search-query" placeholder="Search" autocomplete="off">
+                        </form>
+                      </div>
+
+                      <div id="navbar">
+                      </div>
+                    </div>                    <div class="sidebar-item-separator"></div>
+
+                        <div id="sidetoggle">
+                          <div id="sidetoc"></div>
+                        </div>
+                </div>
+                <div class="footer">
+  <strong><a href='https://github.com/JaCraig/BigBookOfDataTypes'>Open in Github</a></strong>
+  
+                </div>            </nav>
+
+            <main class="main-panel">
+
+                <div id="search-results" style="display: none;">
+                  <h1 class="search-list">Search Results for <span></span></h1>
+                  <div class="sr-items">
+                    <p><i class="bi bi-hourglass-split index-loading"></i></p>
+                  </div>
+                  <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+                </div>
+ 
+
+                <div role="main" class="hide-when-search">
+
+                        <div class="subnav navbar navbar-default">
+                          <div class="container hide-when-search" id="breadcrumb">
+                            <ul class="breadcrumb">
+                              <li></li>
+                            </ul>
+                          </div>
+                        </div>
+
+                         <div id="contribution">
+                               <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryWriter.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryWriter%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                         </div>
+
+                    <article class="content wrap" id="_content" data-uid="BigBook.IO.EndianBinaryWriter">
+
+
+
+  <h1 id="BigBook_IO_EndianBinaryWriter" data-uid="BigBook.IO.EndianBinaryWriter" class="text-break">Class EndianBinaryWriter
+</h1>
+  <div class="markdown level0 summary"><p>Endian based binary writer</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><span class="xref">EndianBinaryWriter</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="BigBook.html">BigBook</a>.<a class="xref" href="BigBook.IO.html">IO</a></h6>
+  <h6><strong>Assembly</strong>: BigBook.dll</h6>
+  <h5 id="BigBook_IO_EndianBinaryWriter_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class EndianBinaryWriter : IDisposable</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryWriter__ctor_BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_System_IO_Stream_.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryWriter.%23ctor(BigBook.IO.Converters.BaseClasses.EndianBitConverterBase%2CSystem.IO.Stream)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryWriter.cs/#L36">View Source</a>
+  </span>
+  <a id="BigBook_IO_EndianBinaryWriter__ctor_" data-uid="BigBook.IO.EndianBinaryWriter.#ctor*"></a>
+  <h4 id="BigBook_IO_EndianBinaryWriter__ctor_BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_System_IO_Stream_" data-uid="BigBook.IO.EndianBinaryWriter.#ctor(BigBook.IO.Converters.BaseClasses.EndianBitConverterBase,System.IO.Stream)">EndianBinaryWriter(EndianBitConverterBase, Stream)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="BigBook.IO.EndianBinaryWriter.html">EndianBinaryWriter</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EndianBinaryWriter(EndianBitConverterBase bitConverter, Stream stream)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.html">EndianBitConverterBase</a></td>
+        <td><span class="parametername">bitConverter</span></td>
+        <td><p>The bit converter.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a></td>
+        <td><span class="parametername">stream</span></td>
+        <td><p>The stream.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_IO_EndianBinaryWriter__ctor_BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_System_IO_Stream__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryWriter__ctor_BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_System_IO_Stream_System_Text_Encoding_.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryWriter.%23ctor(BigBook.IO.Converters.BaseClasses.EndianBitConverterBase%2CSystem.IO.Stream%2CSystem.Text.Encoding)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryWriter.cs/#L48">View Source</a>
+  </span>
+  <a id="BigBook_IO_EndianBinaryWriter__ctor_" data-uid="BigBook.IO.EndianBinaryWriter.#ctor*"></a>
+  <h4 id="BigBook_IO_EndianBinaryWriter__ctor_BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_System_IO_Stream_System_Text_Encoding_" data-uid="BigBook.IO.EndianBinaryWriter.#ctor(BigBook.IO.Converters.BaseClasses.EndianBitConverterBase,System.IO.Stream,System.Text.Encoding)">EndianBinaryWriter(EndianBitConverterBase, Stream, Encoding)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="BigBook.IO.EndianBinaryWriter.html">EndianBinaryWriter</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EndianBinaryWriter(EndianBitConverterBase bitConverter, Stream stream, Encoding encoding)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.html">EndianBitConverterBase</a></td>
+        <td><span class="parametername">bitConverter</span></td>
+        <td><p>The bit converter.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a></td>
+        <td><span class="parametername">stream</span></td>
+        <td><p>The stream.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.encoding">Encoding</a></td>
+        <td><span class="parametername">encoding</span></td>
+        <td><p>The encoding.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></td>
+        <td><p>Stream is not writable</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_IO_EndianBinaryWriter__ctor_BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_System_IO_Stream_System_Text_Encoding__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+  </div>
+  <h3 id="properties">Properties
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryWriter_BaseStream.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryWriter.BaseStream%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryWriter.cs/#L77">View Source</a>
+  </span>
+  <a id="BigBook_IO_EndianBinaryWriter_BaseStream_" data-uid="BigBook.IO.EndianBinaryWriter.BaseStream*"></a>
+  <h4 id="BigBook_IO_EndianBinaryWriter_BaseStream" data-uid="BigBook.IO.EndianBinaryWriter.BaseStream">BaseStream</h4>
+  <div class="markdown level1 summary"><p>Gets the underlying stream of the EndianBinaryWriter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Stream? BaseStream { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a></td>
+        <td><p>The base stream.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_IO_EndianBinaryWriter_BaseStream_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryWriter_BitConverter.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryWriter.BitConverter%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryWriter.cs/#L83">View Source</a>
+  </span>
+  <a id="BigBook_IO_EndianBinaryWriter_BitConverter_" data-uid="BigBook.IO.EndianBinaryWriter.BitConverter*"></a>
+  <h4 id="BigBook_IO_EndianBinaryWriter_BitConverter" data-uid="BigBook.IO.EndianBinaryWriter.BitConverter">BitConverter</h4>
+  <div class="markdown level1 summary"><p>Gets the bit converter used to write values to the stream</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EndianBitConverterBase BitConverter { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.html">EndianBitConverterBase</a></td>
+        <td><p>The bit converter.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_IO_EndianBinaryWriter_BitConverter_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryWriter_Encoding.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryWriter.Encoding%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryWriter.cs/#L89">View Source</a>
+  </span>
+  <a id="BigBook_IO_EndianBinaryWriter_Encoding_" data-uid="BigBook.IO.EndianBinaryWriter.Encoding*"></a>
+  <h4 id="BigBook_IO_EndianBinaryWriter_Encoding" data-uid="BigBook.IO.EndianBinaryWriter.Encoding">Encoding</h4>
+  <div class="markdown level1 summary"><p>Gets the encoding used to write strings</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Encoding Encoding { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.encoding">Encoding</a></td>
+        <td><p>The encoding.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_IO_EndianBinaryWriter_Encoding_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+  </div>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryWriter_Close.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryWriter.Close%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryWriter.cs/#L94">View Source</a>
+  </span>
+  <a id="BigBook_IO_EndianBinaryWriter_Close_" data-uid="BigBook.IO.EndianBinaryWriter.Close*"></a>
+  <h4 id="BigBook_IO_EndianBinaryWriter_Close" data-uid="BigBook.IO.EndianBinaryWriter.Close">Close()</h4>
+  <div class="markdown level1 summary"><p>Closes the writer, including the underlying stream.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Close()</code></pre>
+  </div>
+  <h5 id="BigBook_IO_EndianBinaryWriter_Close_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryWriter_Dispose.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryWriter.Dispose%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryWriter.cs/#L99">View Source</a>
+  </span>
+  <a id="BigBook_IO_EndianBinaryWriter_Dispose_" data-uid="BigBook.IO.EndianBinaryWriter.Dispose*"></a>
+  <h4 id="BigBook_IO_EndianBinaryWriter_Dispose" data-uid="BigBook.IO.EndianBinaryWriter.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"><p>Disposes of the underlying stream.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+  <h5 id="BigBook_IO_EndianBinaryWriter_Dispose_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryWriter_Dispose_System_Boolean_.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryWriter.Dispose(System.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryWriter.cs/#L366">View Source</a>
+  </span>
+  <a id="BigBook_IO_EndianBinaryWriter_Dispose_" data-uid="BigBook.IO.EndianBinaryWriter.Dispose*"></a>
+  <h4 id="BigBook_IO_EndianBinaryWriter_Dispose_System_Boolean_" data-uid="BigBook.IO.EndianBinaryWriter.Dispose(System.Boolean)">Dispose(bool)</h4>
+  <div class="markdown level1 summary"><p>Releases unmanaged and - optionally - managed resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void Dispose(bool managed)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><span class="parametername">managed</span></td>
+        <td><p><code>true</code> to release both managed and unmanaged resources; <code>false</code> to release
+only unmanaged resources.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_IO_EndianBinaryWriter_Dispose_System_Boolean__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryWriter_Flush.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryWriter.Flush%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryWriter.cs/#L108">View Source</a>
+  </span>
+  <a id="BigBook_IO_EndianBinaryWriter_Flush_" data-uid="BigBook.IO.EndianBinaryWriter.Flush*"></a>
+  <h4 id="BigBook_IO_EndianBinaryWriter_Flush" data-uid="BigBook.IO.EndianBinaryWriter.Flush">Flush()</h4>
+  <div class="markdown level1 summary"><p>Flushes the underlying stream.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Flush()</code></pre>
+  </div>
+  <h5 id="BigBook_IO_EndianBinaryWriter_Flush_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryWriter_Seek_System_Int32_System_IO_SeekOrigin_.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryWriter.Seek(System.Int32%2CSystem.IO.SeekOrigin)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryWriter.cs/#L123">View Source</a>
+  </span>
+  <a id="BigBook_IO_EndianBinaryWriter_Seek_" data-uid="BigBook.IO.EndianBinaryWriter.Seek*"></a>
+  <h4 id="BigBook_IO_EndianBinaryWriter_Seek_System_Int32_System_IO_SeekOrigin_" data-uid="BigBook.IO.EndianBinaryWriter.Seek(System.Int32,System.IO.SeekOrigin)">Seek(int, SeekOrigin)</h4>
+  <div class="markdown level1 summary"><p>Seeks within the stream.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Seek(int offset, SeekOrigin origin)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">offset</span></td>
+        <td><p>Offset to seek to.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.seekorigin">SeekOrigin</a></td>
+        <td><span class="parametername">origin</span></td>
+        <td><p>Origin of seek operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_IO_EndianBinaryWriter_Seek_System_Int32_System_IO_SeekOrigin__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryWriter_Write_System_Boolean_.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryWriter.Write(System.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryWriter.cs/#L137">View Source</a>
+  </span>
+  <a id="BigBook_IO_EndianBinaryWriter_Write_" data-uid="BigBook.IO.EndianBinaryWriter.Write*"></a>
+  <h4 id="BigBook_IO_EndianBinaryWriter_Write_System_Boolean_" data-uid="BigBook.IO.EndianBinaryWriter.Write(System.Boolean)">Write(bool)</h4>
+  <div class="markdown level1 summary"><p>Writes a boolean value to the stream. 1 byte is written.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Write(bool value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value to write</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_IO_EndianBinaryWriter_Write_System_Boolean__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryWriter_Write_System_Byte_.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryWriter.Write(System.Byte)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryWriter.cs/#L246">View Source</a>
+  </span>
+  <a id="BigBook_IO_EndianBinaryWriter_Write_" data-uid="BigBook.IO.EndianBinaryWriter.Write*"></a>
+  <h4 id="BigBook_IO_EndianBinaryWriter_Write_System_Byte_" data-uid="BigBook.IO.EndianBinaryWriter.Write(System.Byte)">Write(byte)</h4>
+  <div class="markdown level1 summary"><p>Writes a signed byte to the stream.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Write(byte value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value to write</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_IO_EndianBinaryWriter_Write_System_Byte__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryWriter_Write_System_Byte___.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryWriter.Write(System.Byte%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryWriter.cs/#L266">View Source</a>
+  </span>
+  <a id="BigBook_IO_EndianBinaryWriter_Write_" data-uid="BigBook.IO.EndianBinaryWriter.Write*"></a>
+  <h4 id="BigBook_IO_EndianBinaryWriter_Write_System_Byte___" data-uid="BigBook.IO.EndianBinaryWriter.Write(System.Byte[])">Write(byte[])</h4>
+  <div class="markdown level1 summary"><p>Writes an array of bytes to the stream.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Write(byte[] value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The values to write</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_IO_EndianBinaryWriter_Write_System_Byte____seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryWriter_Write_System_Byte___System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryWriter.Write(System.Byte%5B%5D%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryWriter.cs/#L278">View Source</a>
+  </span>
+  <a id="BigBook_IO_EndianBinaryWriter_Write_" data-uid="BigBook.IO.EndianBinaryWriter.Write*"></a>
+  <h4 id="BigBook_IO_EndianBinaryWriter_Write_System_Byte___System_Int32_System_Int32_" data-uid="BigBook.IO.EndianBinaryWriter.Write(System.Byte[],System.Int32,System.Int32)">Write(byte[], int, int)</h4>
+  <div class="markdown level1 summary"><p>Writes a portion of an array of bytes to the stream.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Write(byte[] value, int offset, int count)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">value</span></td>
+        <td><p>An array containing the bytes to write</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">offset</span></td>
+        <td><p>The index of the first byte to write within the array</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">count</span></td>
+        <td><p>The number of bytes to write</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_IO_EndianBinaryWriter_Write_System_Byte___System_Int32_System_Int32__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryWriter_Write_System_Char_.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryWriter.Write(System.Char)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryWriter.cs/#L293">View Source</a>
+  </span>
+  <a id="BigBook_IO_EndianBinaryWriter_Write_" data-uid="BigBook.IO.EndianBinaryWriter.Write*"></a>
+  <h4 id="BigBook_IO_EndianBinaryWriter_Write_System_Char_" data-uid="BigBook.IO.EndianBinaryWriter.Write(System.Char)">Write(char)</h4>
+  <div class="markdown level1 summary"><p>Writes a single character to the stream, using the encoding for this writer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Write(char value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value to write</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_IO_EndianBinaryWriter_Write_System_Char__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryWriter_Write_System_Char___.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryWriter.Write(System.Char%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryWriter.cs/#L303">View Source</a>
+  </span>
+  <a id="BigBook_IO_EndianBinaryWriter_Write_" data-uid="BigBook.IO.EndianBinaryWriter.Write*"></a>
+  <h4 id="BigBook_IO_EndianBinaryWriter_Write_System_Char___" data-uid="BigBook.IO.EndianBinaryWriter.Write(System.Char[])">Write(char[])</h4>
+  <div class="markdown level1 summary"><p>Writes an array of characters to the stream, using the encoding for this writer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Write(char[] value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a>[]</td>
+        <td><span class="parametername">value</span></td>
+        <td><p>An array containing the characters to write</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_IO_EndianBinaryWriter_Write_System_Char____seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryWriter_Write_System_Decimal_.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryWriter.Write(System.Decimal)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryWriter.cs/#L236">View Source</a>
+  </span>
+  <a id="BigBook_IO_EndianBinaryWriter_Write_" data-uid="BigBook.IO.EndianBinaryWriter.Write*"></a>
+  <h4 id="BigBook_IO_EndianBinaryWriter_Write_System_Decimal_" data-uid="BigBook.IO.EndianBinaryWriter.Write(System.Decimal)">Write(decimal)</h4>
+  <div class="markdown level1 summary"><p>Writes a decimal value to the stream, using the bit converter for this writer. 16 bytes
+are written.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Write(decimal value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.decimal">decimal</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value to write</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_IO_EndianBinaryWriter_Write_System_Decimal__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryWriter_Write_System_Double_.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryWriter.Write(System.Double)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryWriter.cs/#L225">View Source</a>
+  </span>
+  <a id="BigBook_IO_EndianBinaryWriter_Write_" data-uid="BigBook.IO.EndianBinaryWriter.Write*"></a>
+  <h4 id="BigBook_IO_EndianBinaryWriter_Write_System_Double_" data-uid="BigBook.IO.EndianBinaryWriter.Write(System.Double)">Write(double)</h4>
+  <div class="markdown level1 summary"><p>Writes a double-precision floating-point value to the stream, using the bit converter
+for this writer. 8 bytes are written.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Write(double value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value to write</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_IO_EndianBinaryWriter_Write_System_Double__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryWriter_Write_System_Int16_.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryWriter.Write(System.Int16)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryWriter.cs/#L148">View Source</a>
+  </span>
+  <a id="BigBook_IO_EndianBinaryWriter_Write_" data-uid="BigBook.IO.EndianBinaryWriter.Write*"></a>
+  <h4 id="BigBook_IO_EndianBinaryWriter_Write_System_Int16_" data-uid="BigBook.IO.EndianBinaryWriter.Write(System.Int16)">Write(short)</h4>
+  <div class="markdown level1 summary"><p>Writes a 16-bit signed integer to the stream, using the bit converter for this writer. 2
+bytes are written.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Write(short value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int16">short</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value to write</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_IO_EndianBinaryWriter_Write_System_Int16__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryWriter_Write_System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryWriter.Write(System.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryWriter.cs/#L159">View Source</a>
+  </span>
+  <a id="BigBook_IO_EndianBinaryWriter_Write_" data-uid="BigBook.IO.EndianBinaryWriter.Write*"></a>
+  <h4 id="BigBook_IO_EndianBinaryWriter_Write_System_Int32_" data-uid="BigBook.IO.EndianBinaryWriter.Write(System.Int32)">Write(int)</h4>
+  <div class="markdown level1 summary"><p>Writes a 32-bit signed integer to the stream, using the bit converter for this writer. 4
+bytes are written.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Write(int value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value to write</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_IO_EndianBinaryWriter_Write_System_Int32__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryWriter_Write_System_Int64_.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryWriter.Write(System.Int64)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryWriter.cs/#L170">View Source</a>
+  </span>
+  <a id="BigBook_IO_EndianBinaryWriter_Write_" data-uid="BigBook.IO.EndianBinaryWriter.Write*"></a>
+  <h4 id="BigBook_IO_EndianBinaryWriter_Write_System_Int64_" data-uid="BigBook.IO.EndianBinaryWriter.Write(System.Int64)">Write(long)</h4>
+  <div class="markdown level1 summary"><p>Writes a 64-bit signed integer to the stream, using the bit converter for this writer. 8
+bytes are written.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Write(long value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value to write</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_IO_EndianBinaryWriter_Write_System_Int64__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryWriter_Write_System_SByte_.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryWriter.Write(System.SByte)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryWriter.cs/#L256">View Source</a>
+  </span>
+  <a id="BigBook_IO_EndianBinaryWriter_Write_" data-uid="BigBook.IO.EndianBinaryWriter.Write*"></a>
+  <h4 id="BigBook_IO_EndianBinaryWriter_Write_System_SByte_" data-uid="BigBook.IO.EndianBinaryWriter.Write(System.SByte)">Write(sbyte)</h4>
+  <div class="markdown level1 summary"><p>Writes an unsigned byte to the stream.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Write(sbyte value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.sbyte">sbyte</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value to write</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_IO_EndianBinaryWriter_Write_System_SByte__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryWriter_Write_System_Single_.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryWriter.Write(System.Single)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryWriter.cs/#L214">View Source</a>
+  </span>
+  <a id="BigBook_IO_EndianBinaryWriter_Write_" data-uid="BigBook.IO.EndianBinaryWriter.Write*"></a>
+  <h4 id="BigBook_IO_EndianBinaryWriter_Write_System_Single_" data-uid="BigBook.IO.EndianBinaryWriter.Write(System.Single)">Write(float)</h4>
+  <div class="markdown level1 summary"><p>Writes a single-precision floating-point value to the stream, using the bit converter
+for this writer. 4 bytes are written.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Write(float value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value to write</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_IO_EndianBinaryWriter_Write_System_Single__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryWriter_Write_System_String_.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryWriter.Write(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryWriter.cs/#L320">View Source</a>
+  </span>
+  <a id="BigBook_IO_EndianBinaryWriter_Write_" data-uid="BigBook.IO.EndianBinaryWriter.Write*"></a>
+  <h4 id="BigBook_IO_EndianBinaryWriter_Write_System_String_" data-uid="BigBook.IO.EndianBinaryWriter.Write(System.String)">Write(string)</h4>
+  <div class="markdown level1 summary"><p>Writes a string to the stream, using the encoding for this writer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Write(string value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value to write. Must not be null.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></td>
+        <td><p>value is null</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_IO_EndianBinaryWriter_Write_System_String__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryWriter_Write_System_UInt16_.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryWriter.Write(System.UInt16)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryWriter.cs/#L181">View Source</a>
+  </span>
+  <a id="BigBook_IO_EndianBinaryWriter_Write_" data-uid="BigBook.IO.EndianBinaryWriter.Write*"></a>
+  <h4 id="BigBook_IO_EndianBinaryWriter_Write_System_UInt16_" data-uid="BigBook.IO.EndianBinaryWriter.Write(System.UInt16)">Write(ushort)</h4>
+  <div class="markdown level1 summary"><p>Writes a 16-bit unsigned integer to the stream, using the bit converter for this writer.
+2 bytes are written.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Write(ushort value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint16">ushort</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value to write</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_IO_EndianBinaryWriter_Write_System_UInt16__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryWriter_Write_System_UInt32_.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryWriter.Write(System.UInt32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryWriter.cs/#L192">View Source</a>
+  </span>
+  <a id="BigBook_IO_EndianBinaryWriter_Write_" data-uid="BigBook.IO.EndianBinaryWriter.Write*"></a>
+  <h4 id="BigBook_IO_EndianBinaryWriter_Write_System_UInt32_" data-uid="BigBook.IO.EndianBinaryWriter.Write(System.UInt32)">Write(uint)</h4>
+  <div class="markdown level1 summary"><p>Writes a 32-bit unsigned integer to the stream, using the bit converter for this writer.
+4 bytes are written.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Write(uint value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value to write</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_IO_EndianBinaryWriter_Write_System_UInt32__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryWriter_Write_System_UInt64_.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryWriter.Write(System.UInt64)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryWriter.cs/#L203">View Source</a>
+  </span>
+  <a id="BigBook_IO_EndianBinaryWriter_Write_" data-uid="BigBook.IO.EndianBinaryWriter.Write*"></a>
+  <h4 id="BigBook_IO_EndianBinaryWriter_Write_System_UInt64_" data-uid="BigBook.IO.EndianBinaryWriter.Write(System.UInt64)">Write(ulong)</h4>
+  <div class="markdown level1 summary"><p>Writes a 64-bit unsigned integer to the stream, using the bit converter for this writer.
+8 bytes are written.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Write(ulong value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value to write</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_IO_EndianBinaryWriter_Write_System_UInt64__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryWriter_Write7BitEncodedInt_System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryWriter.Write7BitEncodedInt(System.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryWriter.cs/#L339">View Source</a>
+  </span>
+  <a id="BigBook_IO_EndianBinaryWriter_Write7BitEncodedInt_" data-uid="BigBook.IO.EndianBinaryWriter.Write7BitEncodedInt*"></a>
+  <h4 id="BigBook_IO_EndianBinaryWriter_Write7BitEncodedInt_System_Int32_" data-uid="BigBook.IO.EndianBinaryWriter.Write7BitEncodedInt(System.Int32)">Write7BitEncodedInt(int)</h4>
+  <div class="markdown level1 summary"><p>Writes a 7-bit encoded integer from the stream. This is stored with the least
+significant information first, with 7 bits of information per byte of value, and the top
+bit as a continuation flag.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Write7BitEncodedInt(int value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The 7-bit encoded integer to write to the stream</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_IO_EndianBinaryWriter_Write7BitEncodedInt_System_Int32__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+  </div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a>
+  </div>
+  <h3 id="seealso">See Also</h3>
+  <div class="seealso">
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+  </div>
+
+</article>
+                </div>
+
+                <div class="copyright-footer">
+                    <span>&#169; James Craig. All rights reserved.</span>
+                </div>
+            </main>
+        </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+        <script type="text/javascript" src="../styles/jquery.twbsPagination.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/jquery.mark.min.js"></script>
+        <script type="text/javascript" src="../styles/url.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/anchor-js@5.0.0/anchor.min.js"></script>
+        <script type="text/javascript" src="../styles/docfx.js"></script>
+        <script type="text/javascript" src="../styles/main.js"></script>
+        <script type="text/javascript" src="../styles/singulink.js"></script>    </body>
+</html>

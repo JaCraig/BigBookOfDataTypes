@@ -1,0 +1,1001 @@
+{
+  "homepages": [],
+  "source_base_path": "/home/runner/work/BigBookOfDataTypes/BigBookOfDataTypes/docfx_project",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.AsyncHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.AsyncHelper.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.Bag-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.Bag-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.BinaryTree-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.BinaryTree-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.BloomFilter-1.HashFunction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.BloomFilter-1.HashFunction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.BloomFilter-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.BloomFilter-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.CanisterModules.BigBookModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.CanisterModules.BigBookModule.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.CanisterModules.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.CanisterModules.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.Change.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.Change.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.CharIs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.CharIs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.Comparison.GenericComparer-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.Comparison.GenericComparer-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.Comparison.GenericEqualityComparer-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.Comparison.GenericEqualityComparer-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.Comparison.SimpleComparer-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.Comparison.SimpleComparer-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.Comparison.SimpleEqualityComparer-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.Comparison.SimpleEqualityComparer-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.Comparison.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.Comparison.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.DateCompare.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.DateCompare.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.DateSpan.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.DateSpan.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.Dynamo-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.Dynamo-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.Dynamo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.Dynamo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.Edge-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.Edge-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.EventArgs.BaseEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.EventArgs.BaseEventArgs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.EventArgs.ChangedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.EventArgs.ChangedEventArgs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.EventArgs.DeletedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.EventArgs.DeletedEventArgs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.EventArgs.DeletingEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.EventArgs.DeletingEventArgs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.EventArgs.LoadedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.EventArgs.LoadedEventArgs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.EventArgs.LoadingEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.EventArgs.LoadingEventArgs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.EventArgs.OnEndEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.EventArgs.OnEndEventArgs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.EventArgs.OnErrorEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.EventArgs.OnErrorEventArgs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.EventArgs.OnStartEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.EventArgs.OnStartEventArgs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.EventArgs.SavedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.EventArgs.SavedEventArgs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.EventArgs.SavingEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.EventArgs.SavingEventArgs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.EventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.EventArgs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.ExtensionMethods.Utils.DefaultValueLookup.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.ExtensionMethods.Utils.DefaultValueLookup.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.ExtensionMethods.Utils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.ExtensionMethods.Utils.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.Formatters.GenericStringFormatter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.Formatters.GenericStringFormatter.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.Formatters.Interfaces.IStringFormatter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.Formatters.Interfaces.IStringFormatter.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.Formatters.Interfaces.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.Formatters.Interfaces.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.Formatters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.Formatters.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.Fraction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.Fraction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.Graph-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.Graph-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.IO.BitReader.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.IO.BitReader.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.IO.Converters.BaseClasses.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.IO.Converters.BaseClasses.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.IO.Converters.BigEndianBitConverter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.IO.Converters.BigEndianBitConverter.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.IO.Converters.LittleEndianBitConverter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.IO.Converters.LittleEndianBitConverter.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.IO.Converters.Structs.IntFloatUnion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.IO.Converters.Structs.IntFloatUnion.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.IO.Converters.Structs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.IO.Converters.Structs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.IO.Converters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.IO.Converters.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.IO.EndianBinaryReader.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.IO.EndianBinaryReader.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.IO.EndianBinaryWriter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.IO.EndianBinaryWriter.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.IO.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.IO.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.LazyAsync-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.LazyAsync-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.ListMapping-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.ListMapping-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.ManyToManyIndex-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.ManyToManyIndex-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.Matrix.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.Matrix.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.MinificationType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.MinificationType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.ObservableList-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.ObservableList-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.Patterns.BaseClasses.SafeDisposableBaseClass.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.Patterns.BaseClasses.SafeDisposableBaseClass.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.Patterns.BaseClasses.Singleton-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.Patterns.BaseClasses.Singleton-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.Patterns.BaseClasses.StringEnumBaseClass-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.Patterns.BaseClasses.StringEnumBaseClass-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.Patterns.BaseClasses.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.Patterns.BaseClasses.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.Patterns.Factory-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.Patterns.Factory-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.Patterns.IFluentInterface.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.Patterns.IFluentInterface.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.Patterns.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.Patterns.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.PriorityQueue-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.PriorityQueue-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.Queryable.BaseClasses.QueryProviderBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.Queryable.BaseClasses.QueryProviderBase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.Queryable.BaseClasses.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.Queryable.BaseClasses.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.Queryable.Query-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.Queryable.Query-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.Queryable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.Queryable.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.Reflection.TypeCacheFor-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.Reflection.TypeCacheFor-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.Reflection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.Reflection.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.RingBuffer-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.RingBuffer-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.Row.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.Row.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.Set-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.Set-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.StringCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.StringCase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.StringCompare.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.StringCompare.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.StringFilter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.StringFilter.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.StringTrie.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.StringTrie.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.Table.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.Table.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.TagDictionary-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.TagDictionary-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.TaskQueue-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.TaskQueue-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.TimeFrame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.TimeFrame.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.TreeNode-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.TreeNode-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.Trie-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.Trie-2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.Vector3.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.Vector3.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.VersionInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.VersionInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.Vertex-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.Vertex-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Microsoft.Extensions.DependencyInjection.BigBookCanisterExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Microsoft.Extensions.DependencyInjection.BigBookCanisterExtensions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Microsoft.Extensions.DependencyInjection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Microsoft.Extensions.DependencyInjection.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/example2.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/example2.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/example3.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/example3.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/icon.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/icon.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

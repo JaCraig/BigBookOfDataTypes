@@ -1,0 +1,2437 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class EndianBitConverterBase
+ | Big Book of DataTypes API Reference </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class EndianBitConverterBase
+ | Big Book of DataTypes API Reference ">
+      <meta name="generator" content="docfx ">
+  
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/night-owl.min.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" integrity="sha384-EvBWSlnoFgZlXJvpzS+MAUEjvN7+gcCwH+qh7GRFOGgZO0PuwOFro7qPOJnLfe7l" crossorigin="anonymous">
+      <link rel="stylesheet" href="../styles/config.css">
+      <link rel="stylesheet" href="../styles/discord.css">
+      <link rel="stylesheet" href="../styles/singulink.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+  
+  <meta property="docfx:rel" content="../">
+  <meta property="docfx:newtab" content="true">
+    </head>
+    <body>
+        <div class="top-navbar">
+            <a class="burger-icon" onclick="toggleMenu()">
+                <svg name="Hamburger" style="vertical-align: middle;" width="34" height="34" viewbox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M20 6H4V9H20V6ZM4 10.999H20V13.999H4V10.999ZM4 15.999H20V18.999H4V15.999Z"></path></svg>
+            </a>
+
+
+            <a class="brand" href="../index.html">
+              <img src="../images/icon.png" alt="BigBook" class="logomark">
+              <span class="brand-title">BigBook</span>
+            </a>        </div>
+
+        <div class="body-content">
+            <div id="blackout" class="blackout" onclick="toggleMenu()"></div>
+
+            <nav id="sidebar" role="navigation">
+                <div class="sidebar">
+
+                    <div>
+                      <div class="mobile-hide">
+
+                        <a class="brand" href="../index.html">
+                          <img src="../images/icon.png" alt="BigBook" class="logomark">
+                          <span class="brand-title">BigBook</span>
+                        </a>                      </div>
+
+                      <div class="sidesearch">
+                        <form id="search" role="search" class="search">
+                            <i class="bi bi-search search-icon"></i>
+                            <input type="text" id="search-query" placeholder="Search" autocomplete="off">
+                        </form>
+                      </div>
+
+                      <div id="navbar">
+                      </div>
+                    </div>                    <div class="sidebar-item-separator"></div>
+
+                        <div id="sidetoggle">
+                          <div id="sidetoc"></div>
+                        </div>
+                </div>
+                <div class="footer">
+  <strong><a href='https://github.com/JaCraig/BigBookOfDataTypes'>Open in Github</a></strong>
+  
+                </div>            </nav>
+
+            <main class="main-panel">
+
+                <div id="search-results" style="display: none;">
+                  <h1 class="search-list">Search Results for <span></span></h1>
+                  <div class="sr-items">
+                    <p><i class="bi bi-hourglass-split index-loading"></i></p>
+                  </div>
+                  <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+                </div>
+ 
+
+                <div role="main" class="hide-when-search">
+
+                        <div class="subnav navbar navbar-default">
+                          <div class="container hide-when-search" id="breadcrumb">
+                            <ul class="breadcrumb">
+                              <li></li>
+                            </ul>
+                          </div>
+                        </div>
+
+                         <div id="contribution">
+                               <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                         </div>
+
+                    <article class="content wrap" id="_content" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase">
+
+
+
+  <h1 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase" class="text-break">Class EndianBitConverterBase
+</h1>
+  <div class="markdown level0 summary"><p>Endian bit converter base class</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><span class="xref">EndianBitConverterBase</span></div>
+      <div class="level2"><a class="xref" href="BigBook.IO.Converters.BigEndianBitConverter.html">BigEndianBitConverter</a></div>
+      <div class="level2"><a class="xref" href="BigBook.IO.Converters.LittleEndianBitConverter.html">LittleEndianBitConverter</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="BigBook.html">BigBook</a>.<a class="xref" href="BigBook.IO.html">IO</a>.<a class="xref" href="BigBook.IO.Converters.html">Converters</a>.<a class="xref" href="BigBook.IO.Converters.BaseClasses.html">BaseClasses</a></h6>
+  <h6><strong>Assembly</strong>: BigBook.dll</h6>
+  <h5 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class EndianBitConverterBase</code></pre>
+  </div>
+  <h3 id="properties">Properties
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_BigEndian.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.BigEndian%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L31">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_BigEndian_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.BigEndian*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_BigEndian" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.BigEndian">BigEndian</h4>
+  <div class="markdown level1 summary"><p>Gets the big endian bit converter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static EndianBitConverterBase BigEndian { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.html">EndianBitConverterBase</a></td>
+        <td><p>The big endian bit converter.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_IsLittleEndian.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.IsLittleEndian%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L43">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_IsLittleEndian_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.IsLittleEndian*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_IsLittleEndian" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.IsLittleEndian">IsLittleEndian</h4>
+  <div class="markdown level1 summary"><p>Gets a value indicating whether this instance is little endian.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract bool IsLittleEndian { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p><code>true</code> if this instance is little endian; otherwise, <code>false</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_LittleEndian.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.LittleEndian%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L37">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_LittleEndian_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.LittleEndian*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_LittleEndian" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.LittleEndian">LittleEndian</h4>
+  <div class="markdown level1 summary"><p>Gets the little endian bit converter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static EndianBitConverterBase LittleEndian { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.html">EndianBitConverterBase</a></td>
+        <td><p>The little endian bit converter.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_CopyBytes_System_Boolean_System_Byte___System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.CopyBytes(System.Boolean%2CSystem.Byte%5B%5D%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L143">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_CopyBytes_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.CopyBytes*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_CopyBytes_System_Boolean_System_Byte___System_Int32_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.CopyBytes(System.Boolean,System.Byte[],System.Int32)">CopyBytes(bool, byte[], int)</h4>
+  <div class="markdown level1 summary"><p>Copies the bytes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CopyBytes(bool value, byte[] buffer, int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>if set to <code>true</code> [value].</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">buffer</span></td>
+        <td><p>The buffer.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_CopyBytes_System_Char_System_Byte___System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.CopyBytes(System.Char%2CSystem.Byte%5B%5D%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L151">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_CopyBytes_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.CopyBytes*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_CopyBytes_System_Char_System_Byte___System_Int32_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.CopyBytes(System.Char,System.Byte[],System.Int32)">CopyBytes(char, byte[], int)</h4>
+  <div class="markdown level1 summary"><p>Copies the bytes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CopyBytes(char value, byte[] buffer, int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">buffer</span></td>
+        <td><p>The buffer.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_CopyBytes_System_Decimal_System_Byte___System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.CopyBytes(System.Decimal%2CSystem.Byte%5B%5D%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L128">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_CopyBytes_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.CopyBytes*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_CopyBytes_System_Decimal_System_Byte___System_Int32_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.CopyBytes(System.Decimal,System.Byte[],System.Int32)">CopyBytes(decimal, byte[], int)</h4>
+  <div class="markdown level1 summary"><p>Copies the bytes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CopyBytes(decimal value, byte[] buffer, int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.decimal">decimal</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">buffer</span></td>
+        <td><p>The buffer.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_CopyBytes_System_Double_System_Byte___System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.CopyBytes(System.Double%2CSystem.Byte%5B%5D%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L159">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_CopyBytes_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.CopyBytes*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_CopyBytes_System_Double_System_Byte___System_Int32_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.CopyBytes(System.Double,System.Byte[],System.Int32)">CopyBytes(double, byte[], int)</h4>
+  <div class="markdown level1 summary"><p>Copies the bytes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CopyBytes(double value, byte[] buffer, int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">buffer</span></td>
+        <td><p>The buffer.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_CopyBytes_System_Int16_System_Byte___System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.CopyBytes(System.Int16%2CSystem.Byte%5B%5D%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L167">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_CopyBytes_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.CopyBytes*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_CopyBytes_System_Int16_System_Byte___System_Int32_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.CopyBytes(System.Int16,System.Byte[],System.Int32)">CopyBytes(short, byte[], int)</h4>
+  <div class="markdown level1 summary"><p>Copies the bytes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CopyBytes(short value, byte[] buffer, int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int16">short</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">buffer</span></td>
+        <td><p>The buffer.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_CopyBytes_System_Int32_System_Byte___System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.CopyBytes(System.Int32%2CSystem.Byte%5B%5D%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L175">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_CopyBytes_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.CopyBytes*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_CopyBytes_System_Int32_System_Byte___System_Int32_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.CopyBytes(System.Int32,System.Byte[],System.Int32)">CopyBytes(int, byte[], int)</h4>
+  <div class="markdown level1 summary"><p>Copies the bytes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CopyBytes(int value, byte[] buffer, int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">buffer</span></td>
+        <td><p>The buffer.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_CopyBytes_System_Int64_System_Byte___System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.CopyBytes(System.Int64%2CSystem.Byte%5B%5D%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L183">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_CopyBytes_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.CopyBytes*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_CopyBytes_System_Int64_System_Byte___System_Int32_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.CopyBytes(System.Int64,System.Byte[],System.Int32)">CopyBytes(long, byte[], int)</h4>
+  <div class="markdown level1 summary"><p>Copies the bytes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CopyBytes(long value, byte[] buffer, int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">buffer</span></td>
+        <td><p>The buffer.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_CopyBytes_System_Single_System_Byte___System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.CopyBytes(System.Single%2CSystem.Byte%5B%5D%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L191">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_CopyBytes_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.CopyBytes*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_CopyBytes_System_Single_System_Byte___System_Int32_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.CopyBytes(System.Single,System.Byte[],System.Int32)">CopyBytes(float, byte[], int)</h4>
+  <div class="markdown level1 summary"><p>Copies the bytes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CopyBytes(float value, byte[] buffer, int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">buffer</span></td>
+        <td><p>The buffer.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_CopyBytes_System_UInt16_System_Byte___System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.CopyBytes(System.UInt16%2CSystem.Byte%5B%5D%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L199">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_CopyBytes_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.CopyBytes*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_CopyBytes_System_UInt16_System_Byte___System_Int32_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.CopyBytes(System.UInt16,System.Byte[],System.Int32)">CopyBytes(ushort, byte[], int)</h4>
+  <div class="markdown level1 summary"><p>Copies the bytes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CopyBytes(ushort value, byte[] buffer, int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint16">ushort</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">buffer</span></td>
+        <td><p>The buffer.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_CopyBytes_System_UInt32_System_Byte___System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.CopyBytes(System.UInt32%2CSystem.Byte%5B%5D%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L207">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_CopyBytes_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.CopyBytes*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_CopyBytes_System_UInt32_System_Byte___System_Int32_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.CopyBytes(System.UInt32,System.Byte[],System.Int32)">CopyBytes(uint, byte[], int)</h4>
+  <div class="markdown level1 summary"><p>Copies the bytes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CopyBytes(uint value, byte[] buffer, int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">buffer</span></td>
+        <td><p>The buffer.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_CopyBytes_System_UInt64_System_Byte___System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.CopyBytes(System.UInt64%2CSystem.Byte%5B%5D%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L215">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_CopyBytes_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.CopyBytes*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_CopyBytes_System_UInt64_System_Byte___System_Int32_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.CopyBytes(System.UInt64,System.Byte[],System.Int32)">CopyBytes(ulong, byte[], int)</h4>
+  <div class="markdown level1 summary"><p>Copies the bytes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CopyBytes(ulong value, byte[] buffer, int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">buffer</span></td>
+        <td><p>The buffer.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_CopyBytesImpl_System_Int64_System_Int32_System_Byte___System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.CopyBytesImpl(System.Int64%2CSystem.Int32%2CSystem.Byte%5B%5D%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L393">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_CopyBytesImpl_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.CopyBytesImpl*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_CopyBytesImpl_System_Int64_System_Int32_System_Byte___System_Int32_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.CopyBytesImpl(System.Int64,System.Int32,System.Byte[],System.Int32)">CopyBytesImpl(long, int, byte[], int)</h4>
+  <div class="markdown level1 summary"><p>Copies the bytes implementation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected abstract void CopyBytesImpl(long value, int bytes, byte[] buffer, int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">bytes</span></td>
+        <td><p>The bytes.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">buffer</span></td>
+        <td><p>The buffer.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_DoubleToLong_System_Double_.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.DoubleToLong(System.Double)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L50">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_DoubleToLong_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.DoubleToLong*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_DoubleToLong_System_Double_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.DoubleToLong(System.Double)">DoubleToLong(double)</h4>
+  <div class="markdown level1 summary"><p>Converts a double to a long.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static long DoubleToLong(double value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></td>
+        <td><p>The resulting long.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_FloatToInt_System_Single_.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.FloatToInt(System.Single)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L57">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_FloatToInt_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.FloatToInt*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_FloatToInt_System_Single_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.FloatToInt(System.Single)">FloatToInt(float)</h4>
+  <div class="markdown level1 summary"><p>Converts a float to an integer</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int FloatToInt(float value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>Float value</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><p>The integer equivalent.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_FromBytes_System_Byte___System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.FromBytes(System.Byte%5B%5D%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L402">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_FromBytes_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.FromBytes*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_FromBytes_System_Byte___System_Int32_System_Int32_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.FromBytes(System.Byte[],System.Int32,System.Int32)">FromBytes(byte[], int, int)</h4>
+  <div class="markdown level1 summary"><p>Converts a byte array to a long.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected abstract long FromBytes(byte[] value, int startIndex, int bytesToConvert)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">startIndex</span></td>
+        <td><p>The start index.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">bytesToConvert</span></td>
+        <td><p>The bytes to convert.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></td>
+        <td><p>The resulting long.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_GetBytes_System_Boolean_.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.GetBytes(System.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L64">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_GetBytes_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.GetBytes*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_GetBytes_System_Boolean_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.GetBytes(System.Boolean)">GetBytes(bool)</h4>
+  <div class="markdown level1 summary"><p>Gets the bytes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static byte[] GetBytes(bool value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>if set to <code>true</code> [value].</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><p>Gets the resulting byte array.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_GetBytes_System_Char_.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.GetBytes(System.Char)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L239">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_GetBytes_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.GetBytes*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_GetBytes_System_Char_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.GetBytes(System.Char)">GetBytes(char)</h4>
+  <div class="markdown level1 summary"><p>Gets the bytes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte[] GetBytes(char value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><p>The resulting byte array.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_GetBytes_System_Decimal_.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.GetBytes(System.Decimal)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L222">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_GetBytes_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.GetBytes*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_GetBytes_System_Decimal_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.GetBytes(System.Decimal)">GetBytes(decimal)</h4>
+  <div class="markdown level1 summary"><p>Gets the bytes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte[] GetBytes(decimal value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.decimal">decimal</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><p>The resulting byte array.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_GetBytes_System_Double_.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.GetBytes(System.Double)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L246">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_GetBytes_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.GetBytes*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_GetBytes_System_Double_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.GetBytes(System.Double)">GetBytes(double)</h4>
+  <div class="markdown level1 summary"><p>Gets the bytes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte[] GetBytes(double value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><p>The resulting byte array.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_GetBytes_System_Int16_.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.GetBytes(System.Int16)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L253">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_GetBytes_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.GetBytes*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_GetBytes_System_Int16_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.GetBytes(System.Int16)">GetBytes(short)</h4>
+  <div class="markdown level1 summary"><p>Gets the bytes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte[] GetBytes(short value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int16">short</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><p>The resulting byte array.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_GetBytes_System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.GetBytes(System.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L260">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_GetBytes_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.GetBytes*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_GetBytes_System_Int32_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.GetBytes(System.Int32)">GetBytes(int)</h4>
+  <div class="markdown level1 summary"><p>Gets the bytes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte[] GetBytes(int value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><p>The resulting byte array.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_GetBytes_System_Int64_.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.GetBytes(System.Int64)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L267">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_GetBytes_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.GetBytes*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_GetBytes_System_Int64_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.GetBytes(System.Int64)">GetBytes(long)</h4>
+  <div class="markdown level1 summary"><p>Gets the bytes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte[] GetBytes(long value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><p>The resulting byte array.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_GetBytes_System_Single_.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.GetBytes(System.Single)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L274">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_GetBytes_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.GetBytes*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_GetBytes_System_Single_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.GetBytes(System.Single)">GetBytes(float)</h4>
+  <div class="markdown level1 summary"><p>Gets the bytes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte[] GetBytes(float value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><p>The resulting byte array.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_GetBytes_System_UInt16_.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.GetBytes(System.UInt16)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L281">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_GetBytes_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.GetBytes*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_GetBytes_System_UInt16_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.GetBytes(System.UInt16)">GetBytes(ushort)</h4>
+  <div class="markdown level1 summary"><p>Gets the bytes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte[] GetBytes(ushort value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint16">ushort</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><p>The resulting byte array.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_GetBytes_System_UInt32_.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.GetBytes(System.UInt32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L288">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_GetBytes_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.GetBytes*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_GetBytes_System_UInt32_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.GetBytes(System.UInt32)">GetBytes(uint)</h4>
+  <div class="markdown level1 summary"><p>Gets the bytes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte[] GetBytes(uint value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><p>The resulting byte array.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_GetBytes_System_UInt64_.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.GetBytes(System.UInt64)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L295">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_GetBytes_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.GetBytes*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_GetBytes_System_UInt64_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.GetBytes(System.UInt64)">GetBytes(ulong)</h4>
+  <div class="markdown level1 summary"><p>Gets the bytes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte[] GetBytes(ulong value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><p>The resulting byte array.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_IntToFloat_System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.IntToFloat(System.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L71">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_IntToFloat_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.IntToFloat*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_IntToFloat_System_Int32_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.IntToFloat(System.Int32)">IntToFloat(int)</h4>
+  <div class="markdown level1 summary"><p>Converts an integer to a float.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float IntToFloat(int value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The integer value</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td><p>The float value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_LongToDouble_System_Int64_.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.LongToDouble(System.Int64)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L78">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_LongToDouble_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.LongToDouble*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_LongToDouble_System_Int64_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.LongToDouble(System.Int64)">LongToDouble(long)</h4>
+  <div class="markdown level1 summary"><p>Converts a long to a double.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double LongToDouble(long value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></td>
+        <td><p>The resulting double.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToBoolean_System_Byte___System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToBoolean(System.Byte%5B%5D%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L87">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToBoolean_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToBoolean*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToBoolean_System_Byte___System_Int32_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToBoolean(System.Byte[],System.Int32)">ToBoolean(byte[], int)</h4>
+  <div class="markdown level1 summary"><p>To the boolean.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool ToBoolean(byte[] value, int startIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">startIndex</span></td>
+        <td><p>The start index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p>The resulting boolean.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToChar_System_Byte___System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToChar(System.Byte%5B%5D%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L303">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToChar_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToChar*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToChar_System_Byte___System_Int32_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToChar(System.Byte[],System.Int32)">ToChar(byte[], int)</h4>
+  <div class="markdown level1 summary"><p>To the character.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public char ToChar(byte[] value, int startIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">startIndex</span></td>
+        <td><p>The start index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></td>
+        <td><p>The resulting character.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToDecimal_System_Byte___System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToDecimal(System.Byte%5B%5D%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L311">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToDecimal_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToDecimal*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToDecimal_System_Byte___System_Int32_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToDecimal(System.Byte[],System.Int32)">ToDecimal(byte[], int)</h4>
+  <div class="markdown level1 summary"><p>To the decimal.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public decimal ToDecimal(byte[] value, int startIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">startIndex</span></td>
+        <td><p>The start index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.decimal">decimal</a></td>
+        <td><p>The resulting decimal value</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToDouble_System_Byte___System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToDouble(System.Byte%5B%5D%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L328">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToDouble_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToDouble*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToDouble_System_Byte___System_Int32_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToDouble(System.Byte[],System.Int32)">ToDouble(byte[], int)</h4>
+  <div class="markdown level1 summary"><p>To the double.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double ToDouble(byte[] value, int startIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">startIndex</span></td>
+        <td><p>The start index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></td>
+        <td><p>The resulting double.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToFloat_System_Byte___System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToFloat(System.Byte%5B%5D%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L336">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToFloat_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToFloat*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToFloat_System_Byte___System_Int32_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToFloat(System.Byte[],System.Int32)">ToFloat(byte[], int)</h4>
+  <div class="markdown level1 summary"><p>To the float.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float ToFloat(byte[] value, int startIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">startIndex</span></td>
+        <td><p>The start index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
+        <td><p>The resulting float.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToInt_System_Byte___System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToInt(System.Byte%5B%5D%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L344">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToInt_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToInt*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToInt_System_Byte___System_Int32_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToInt(System.Byte[],System.Int32)">ToInt(byte[], int)</h4>
+  <div class="markdown level1 summary"><p>Converts the string representation of a number to an integer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ToInt(byte[] value, int startIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">startIndex</span></td>
+        <td><p>The start index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><p>The resulting integer.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToLong_System_Byte___System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToLong(System.Byte%5B%5D%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L352">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToLong_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToLong*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToLong_System_Byte___System_Int32_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToLong(System.Byte[],System.Int32)">ToLong(byte[], int)</h4>
+  <div class="markdown level1 summary"><p>To the long.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public long ToLong(byte[] value, int startIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">startIndex</span></td>
+        <td><p>The start index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></td>
+        <td><p>The resulting long.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToShort_System_Byte___System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToShort(System.Byte%5B%5D%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L360">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToShort_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToShort*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToShort_System_Byte___System_Int32_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToShort(System.Byte[],System.Int32)">ToShort(byte[], int)</h4>
+  <div class="markdown level1 summary"><p>To the short.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public short ToShort(byte[] value, int startIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">startIndex</span></td>
+        <td><p>The start index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int16">short</a></td>
+        <td><p>The resulting short.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToString_System_Byte___.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToString(System.Byte%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L103">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToString_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToString*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToString_System_Byte___" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToString(System.Byte[])">ToString(byte[])</h4>
+  <div class="markdown level1 summary"><p>Returns a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> that represents this instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string ToString(byte[] value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> that represents this instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToString_System_Byte___System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToString(System.Byte%5B%5D%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L111">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToString_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToString*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToString_System_Byte___System_Int32_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToString(System.Byte[],System.Int32)">ToString(byte[], int)</h4>
+  <div class="markdown level1 summary"><p>Returns a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> that represents this instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string ToString(byte[] value, int startIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">startIndex</span></td>
+        <td><p>The start index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> that represents this instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToString_System_Byte___System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToString(System.Byte%5B%5D%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L120">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToString_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToString*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToString_System_Byte___System_Int32_System_Int32_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToString(System.Byte[],System.Int32,System.Int32)">ToString(byte[], int, int)</h4>
+  <div class="markdown level1 summary"><p>Returns a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> that represents this instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string ToString(byte[] value, int startIndex, int length)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">startIndex</span></td>
+        <td><p>The start index.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">length</span></td>
+        <td><p>The length.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a> that represents this instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToUnsignedInteger_System_Byte___System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToUnsignedInteger(System.Byte%5B%5D%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L368">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToUnsignedInteger_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToUnsignedInteger*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToUnsignedInteger_System_Byte___System_Int32_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToUnsignedInteger(System.Byte[],System.Int32)">ToUnsignedInteger(byte[], int)</h4>
+  <div class="markdown level1 summary"><p>To the unsigned integer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint ToUnsignedInteger(byte[] value, int startIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">startIndex</span></td>
+        <td><p>The start index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></td>
+        <td><p>The resulting unsigned integer</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToUnsignedLong_System_Byte___System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToUnsignedLong(System.Byte%5B%5D%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L376">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToUnsignedLong_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToUnsignedLong*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToUnsignedLong_System_Byte___System_Int32_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToUnsignedLong(System.Byte[],System.Int32)">ToUnsignedLong(byte[], int)</h4>
+  <div class="markdown level1 summary"><p>To the unsigned long.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong ToUnsignedLong(byte[] value, int startIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">startIndex</span></td>
+        <td><p>The start index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></td>
+        <td><p>The resulting unsigned long.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToUnsignedShort_System_Byte___System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToUnsignedShort(System.Byte%5B%5D%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/Converters/BaseClasses/EndianBitConverterBase.cs/#L384">View Source</a>
+  </span>
+  <a id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToUnsignedShort_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToUnsignedShort*"></a>
+  <h4 id="BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToUnsignedShort_System_Byte___System_Int32_" data-uid="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToUnsignedShort(System.Byte[],System.Int32)">ToUnsignedShort(byte[], int)</h4>
+  <div class="markdown level1 summary"><p>To the unsigned short.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ushort ToUnsignedShort(byte[] value, int startIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">startIndex</span></td>
+        <td><p>The start index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint16">ushort</a></td>
+        <td><p>The resulting unsigned short.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+</article>
+                </div>
+
+                <div class="copyright-footer">
+                    <span>&#169; James Craig. All rights reserved.</span>
+                </div>
+            </main>
+        </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+        <script type="text/javascript" src="../styles/jquery.twbsPagination.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/jquery.mark.min.js"></script>
+        <script type="text/javascript" src="../styles/url.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/anchor-js@5.0.0/anchor.min.js"></script>
+        <script type="text/javascript" src="../styles/docfx.js"></script>
+        <script type="text/javascript" src="../styles/main.js"></script>
+        <script type="text/javascript" src="../styles/singulink.js"></script>    </body>
+</html>

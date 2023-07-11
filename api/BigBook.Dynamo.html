@@ -1,0 +1,2163 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class Dynamo
+ | Big Book of DataTypes API Reference </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class Dynamo
+ | Big Book of DataTypes API Reference ">
+      <meta name="generator" content="docfx ">
+  
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/night-owl.min.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" integrity="sha384-EvBWSlnoFgZlXJvpzS+MAUEjvN7+gcCwH+qh7GRFOGgZO0PuwOFro7qPOJnLfe7l" crossorigin="anonymous">
+      <link rel="stylesheet" href="../styles/config.css">
+      <link rel="stylesheet" href="../styles/discord.css">
+      <link rel="stylesheet" href="../styles/singulink.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+  
+  <meta property="docfx:rel" content="../">
+  <meta property="docfx:newtab" content="true">
+    </head>
+    <body>
+        <div class="top-navbar">
+            <a class="burger-icon" onclick="toggleMenu()">
+                <svg name="Hamburger" style="vertical-align: middle;" width="34" height="34" viewbox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M20 6H4V9H20V6ZM4 10.999H20V13.999H4V10.999ZM4 15.999H20V18.999H4V15.999Z"></path></svg>
+            </a>
+
+
+            <a class="brand" href="../index.html">
+              <img src="../images/icon.png" alt="BigBook" class="logomark">
+              <span class="brand-title">BigBook</span>
+            </a>        </div>
+
+        <div class="body-content">
+            <div id="blackout" class="blackout" onclick="toggleMenu()"></div>
+
+            <nav id="sidebar" role="navigation">
+                <div class="sidebar">
+
+                    <div>
+                      <div class="mobile-hide">
+
+                        <a class="brand" href="../index.html">
+                          <img src="../images/icon.png" alt="BigBook" class="logomark">
+                          <span class="brand-title">BigBook</span>
+                        </a>                      </div>
+
+                      <div class="sidesearch">
+                        <form id="search" role="search" class="search">
+                            <i class="bi bi-search search-icon"></i>
+                            <input type="text" id="search-query" placeholder="Search" autocomplete="off">
+                        </form>
+                      </div>
+
+                      <div id="navbar">
+                      </div>
+                    </div>                    <div class="sidebar-item-separator"></div>
+
+                        <div id="sidetoggle">
+                          <div id="sidetoc"></div>
+                        </div>
+                </div>
+                <div class="footer">
+  <strong><a href='https://github.com/JaCraig/BigBookOfDataTypes'>Open in Github</a></strong>
+  
+                </div>            </nav>
+
+            <main class="main-panel">
+
+                <div id="search-results" style="display: none;">
+                  <h1 class="search-list">Search Results for <span></span></h1>
+                  <div class="sr-items">
+                    <p><i class="bi bi-hourglass-split index-loading"></i></p>
+                  </div>
+                  <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+                </div>
+ 
+
+                <div role="main" class="hide-when-search">
+
+                        <div class="subnav navbar navbar-default">
+                          <div class="container hide-when-search" id="breadcrumb">
+                            <ul class="breadcrumb">
+                              <li></li>
+                            </ul>
+                          </div>
+                        </div>
+
+                         <div id="contribution">
+                               <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Dynamo.md&amp;value=---%0Auid%3A%20BigBook.Dynamo%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                         </div>
+
+                    <article class="content wrap" id="_content" data-uid="BigBook.Dynamo">
+
+
+
+  <h1 id="BigBook_Dynamo" data-uid="BigBook.Dynamo" class="text-break">Class Dynamo
+</h1>
+  <div class="markdown level0 summary"><p>Dynamic object implementation</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.dynamic.dynamicobject">DynamicObject</a></div>
+    <div class="level2"><span class="xref">Dynamo</span></div>
+      <div class="level3"><a class="xref" href="BigBook.Dynamo-1.html">Dynamo&lt;TClass&gt;</a></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.dynamic.idynamicmetaobjectprovider">IDynamicMetaObjectProvider</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;</div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;&gt;</div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;&gt;</div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerable">IEnumerable</a></div>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanged">INotifyPropertyChanged</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.dynamic.dynamicobject.getmetaobject">DynamicObject.GetMetaObject(Expression)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.dynamic.dynamicobject.trybinaryoperation">DynamicObject.TryBinaryOperation(BinaryOperationBinder, object, out object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.dynamic.dynamicobject.trycreateinstance">DynamicObject.TryCreateInstance(CreateInstanceBinder, object[], out object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.dynamic.dynamicobject.trydeleteindex">DynamicObject.TryDeleteIndex(DeleteIndexBinder, object[])</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.dynamic.dynamicobject.trydeletemember">DynamicObject.TryDeleteMember(DeleteMemberBinder)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.dynamic.dynamicobject.trygetindex">DynamicObject.TryGetIndex(GetIndexBinder, object[], out object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.dynamic.dynamicobject.tryinvoke">DynamicObject.TryInvoke(InvokeBinder, object[], out object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.dynamic.dynamicobject.tryinvokemember">DynamicObject.TryInvokeMember(InvokeMemberBinder, object[], out object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.dynamic.dynamicobject.trysetindex">DynamicObject.TrySetIndex(SetIndexBinder, object[], object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.dynamic.dynamicobject.tryunaryoperation">DynamicObject.TryUnaryOperation(UnaryOperationBinder, out object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="BigBook.html">BigBook</a></h6>
+  <h6><strong>Assembly</strong>: BigBook.dll</h6>
+  <h5 id="BigBook_Dynamo_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class Dynamo : DynamicObject, IDynamicMetaObjectProvider, IDictionary&lt;string, object?&gt;, ICollection&lt;KeyValuePair&lt;string, object?&gt;&gt;, IEnumerable&lt;KeyValuePair&lt;string, object?&gt;&gt;, IEnumerable, INotifyPropertyChanged</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Dynamo__ctor.md&amp;value=---%0Auid%3A%20BigBook.Dynamo.%23ctor%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Dynamo.cs/#L112">View Source</a>
+  </span>
+  <a id="BigBook_Dynamo__ctor_" data-uid="BigBook.Dynamo.#ctor*"></a>
+  <h4 id="BigBook_Dynamo__ctor" data-uid="BigBook.Dynamo.#ctor">Dynamo()</h4>
+  <div class="markdown level1 summary"><p>Creates a new ExpandoObject with no members.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Dynamo()</code></pre>
+  </div>
+  <h5 id="BigBook_Dynamo__ctor_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="BigBook.Dynamo.html">Dynamo</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Dynamo__ctor_System_Boolean_.md&amp;value=---%0Auid%3A%20BigBook.Dynamo.%23ctor(System.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Dynamo.cs/#L135">View Source</a>
+  </span>
+  <a id="BigBook_Dynamo__ctor_" data-uid="BigBook.Dynamo.#ctor*"></a>
+  <h4 id="BigBook_Dynamo__ctor_System_Boolean_" data-uid="BigBook.Dynamo.#ctor(System.Boolean)">Dynamo(bool)</h4>
+  <div class="markdown level1 summary"><p>Constructor</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Dynamo(bool useChangeLog)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><span class="parametername">useChangeLog</span></td>
+        <td><p>if set to <code>true</code> [use change log].</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_Dynamo__ctor_System_Boolean__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="BigBook.Dynamo.html">Dynamo</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Dynamo__ctor_System_Object_System_Boolean_.md&amp;value=---%0Auid%3A%20BigBook.Dynamo.%23ctor(System.Object%2CSystem.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Dynamo.cs/#L125">View Source</a>
+  </span>
+  <a id="BigBook_Dynamo__ctor_" data-uid="BigBook.Dynamo.#ctor*"></a>
+  <h4 id="BigBook_Dynamo__ctor_System_Object_System_Boolean_" data-uid="BigBook.Dynamo.#ctor(System.Object,System.Boolean)">Dynamo(object?, bool)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="BigBook.Dynamo.html">Dynamo</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Dynamo(object? item, bool useChangeLog = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
+        <td><span class="parametername">item</span></td>
+        <td><p>The item.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><span class="parametername">useChangeLog</span></td>
+        <td><p>if set to <code>true</code> [use change log].</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_Dynamo__ctor_System_Object_System_Boolean__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="BigBook.Dynamo.html">Dynamo</a></div>
+  </div>
+  <h3 id="properties">Properties
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Dynamo_ChangeLog.md&amp;value=---%0Auid%3A%20BigBook.Dynamo.ChangeLog%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Dynamo.cs/#L145">View Source</a>
+  </span>
+  <a id="BigBook_Dynamo_ChangeLog_" data-uid="BigBook.Dynamo.ChangeLog*"></a>
+  <h4 id="BigBook_Dynamo_ChangeLog" data-uid="BigBook.Dynamo.ChangeLog">ChangeLog</h4>
+  <div class="markdown level1 summary"><p>Gets the change log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ConcurrentDictionary&lt;string, Change&gt;? ChangeLog { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.concurrent.concurrentdictionary-2">ConcurrentDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="BigBook.Change.html">Change</a>&gt;</td>
+        <td><p>The change log.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_Dynamo_ChangeLog_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="BigBook.Dynamo.html">Dynamo</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Dynamo_Count.md&amp;value=---%0Auid%3A%20BigBook.Dynamo.Count%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Dynamo.cs/#L150">View Source</a>
+  </span>
+  <a id="BigBook_Dynamo_Count_" data-uid="BigBook.Dynamo.Count*"></a>
+  <h4 id="BigBook_Dynamo_Count" data-uid="BigBook.Dynamo.Count">Count</h4>
+  <div class="markdown level1 summary"><p>Gets the number of elements contained in the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Count { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_Dynamo_Count_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="BigBook.Dynamo.html">Dynamo</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Dynamo_IsReadOnly.md&amp;value=---%0Auid%3A%20BigBook.Dynamo.IsReadOnly%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Dynamo.cs/#L162">View Source</a>
+  </span>
+  <a id="BigBook_Dynamo_IsReadOnly_" data-uid="BigBook.Dynamo.IsReadOnly*"></a>
+  <h4 id="BigBook_Dynamo_IsReadOnly" data-uid="BigBook.Dynamo.IsReadOnly">IsReadOnly</h4>
+  <div class="markdown level1 summary"><p>Gets a value indicating whether the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a> is read-only.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsReadOnly { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_Dynamo_IsReadOnly_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="BigBook.Dynamo.html">Dynamo</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Dynamo_Item_System_String_.md&amp;value=---%0Auid%3A%20BigBook.Dynamo.Item(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Dynamo.cs/#L256">View Source</a>
+  </span>
+  <a id="BigBook_Dynamo_Item_" data-uid="BigBook.Dynamo.Item*"></a>
+  <h4 id="BigBook_Dynamo_Item_System_String_" data-uid="BigBook.Dynamo.Item(System.String)">this[string]</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a> with the specified key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public object? this[string key] { get; set; }</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>The key.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
+        <td><p>The <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_Dynamo_Item_System_String__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="BigBook.Dynamo.html">Dynamo</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Dynamo_Keys.md&amp;value=---%0Auid%3A%20BigBook.Dynamo.Keys%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Dynamo.cs/#L168">View Source</a>
+  </span>
+  <a id="BigBook_Dynamo_Keys_" data-uid="BigBook.Dynamo.Keys*"></a>
+  <h4 id="BigBook_Dynamo_Keys" data-uid="BigBook.Dynamo.Keys">Keys</h4>
+  <div class="markdown level1 summary"><p>Gets an <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a> containing the keys of
+the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary&lt;TKey, TValue&gt;</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual ICollection&lt;string&gt; Keys { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_Dynamo_Keys_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="BigBook.Dynamo.html">Dynamo</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Dynamo_Values.md&amp;value=---%0Auid%3A%20BigBook.Dynamo.Values%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Dynamo.cs/#L187">View Source</a>
+  </span>
+  <a id="BigBook_Dynamo_Values_" data-uid="BigBook.Dynamo.Values*"></a>
+  <h4 id="BigBook_Dynamo_Values" data-uid="BigBook.Dynamo.Values">Values</h4>
+  <div class="markdown level1 summary"><p>Gets an <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a> containing the values
+in the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary&lt;TKey, TValue&gt;</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual ICollection&lt;object?&gt; Values { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_Dynamo_Values_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="BigBook.Dynamo.html">Dynamo</a></div>
+  </div>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Dynamo_Add_System_Collections_Generic_KeyValuePair_System_String_System_Object__.md&amp;value=---%0Auid%3A%20BigBook.Dynamo.Add(System.Collections.Generic.KeyValuePair%7BSystem.String%2CSystem.Object%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Dynamo.cs/#L335">View Source</a>
+  </span>
+  <a id="BigBook_Dynamo_Add_" data-uid="BigBook.Dynamo.Add*"></a>
+  <h4 id="BigBook_Dynamo_Add_System_Collections_Generic_KeyValuePair_System_String_System_Object__" data-uid="BigBook.Dynamo.Add(System.Collections.Generic.KeyValuePair{System.String,System.Object})">Add(KeyValuePair&lt;string, object?&gt;)</h4>
+  <div class="markdown level1 summary"><p>Adds an item to the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Add(KeyValuePair&lt;string, object?&gt; item)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;</td>
+        <td><span class="parametername">item</span></td>
+        <td><p>The object to add to the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_Dynamo_Add_System_Collections_Generic_KeyValuePair_System_String_System_Object___seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="BigBook.Dynamo.html">Dynamo</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Dynamo_Add_System_String_System_Object_.md&amp;value=---%0Auid%3A%20BigBook.Dynamo.Add(System.String%2CSystem.Object)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Dynamo.cs/#L326">View Source</a>
+  </span>
+  <a id="BigBook_Dynamo_Add_" data-uid="BigBook.Dynamo.Add*"></a>
+  <h4 id="BigBook_Dynamo_Add_System_String_System_Object_" data-uid="BigBook.Dynamo.Add(System.String,System.Object)">Add(string, object?)</h4>
+  <div class="markdown level1 summary"><p>Adds an element with the provided key and value to the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary&lt;TKey, TValue&gt;</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Add(string key, object? value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>The object to use as the key of the element to add.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The object to use as the value of the element to add.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_Dynamo_Add_System_String_System_Object__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="BigBook.Dynamo.html">Dynamo</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Dynamo_Clear.md&amp;value=---%0Auid%3A%20BigBook.Dynamo.Clear%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Dynamo.cs/#L343">View Source</a>
+  </span>
+  <a id="BigBook_Dynamo_Clear_" data-uid="BigBook.Dynamo.Clear*"></a>
+  <h4 id="BigBook_Dynamo_Clear" data-uid="BigBook.Dynamo.Clear">Clear()</h4>
+  <div class="markdown level1 summary"><p>Removes all items from the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Clear()</code></pre>
+  </div>
+  <h5 id="BigBook_Dynamo_Clear_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="BigBook.Dynamo.html">Dynamo</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Dynamo_Contains_System_Collections_Generic_KeyValuePair_System_String_System_Object__.md&amp;value=---%0Auid%3A%20BigBook.Dynamo.Contains(System.Collections.Generic.KeyValuePair%7BSystem.String%2CSystem.Object%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Dynamo.cs/#L370">View Source</a>
+  </span>
+  <a id="BigBook_Dynamo_Contains_" data-uid="BigBook.Dynamo.Contains*"></a>
+  <h4 id="BigBook_Dynamo_Contains_System_Collections_Generic_KeyValuePair_System_String_System_Object__" data-uid="BigBook.Dynamo.Contains(System.Collections.Generic.KeyValuePair{System.String,System.Object})">Contains(KeyValuePair&lt;string, object?&gt;)</h4>
+  <div class="markdown level1 summary"><p>Determines whether this instance contains the object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Contains(KeyValuePair&lt;string, object?&gt; item)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;</td>
+        <td><span class="parametername">item</span></td>
+        <td><p>The object to locate in the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if <code class="paramref">item</code> is found in the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_Dynamo_Contains_System_Collections_Generic_KeyValuePair_System_String_System_Object___seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="BigBook.Dynamo.html">Dynamo</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Dynamo_ContainsKey_System_String_.md&amp;value=---%0Auid%3A%20BigBook.Dynamo.ContainsKey(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Dynamo.cs/#L384">View Source</a>
+  </span>
+  <a id="BigBook_Dynamo_ContainsKey_" data-uid="BigBook.Dynamo.ContainsKey*"></a>
+  <h4 id="BigBook_Dynamo_ContainsKey_System_String_" data-uid="BigBook.Dynamo.ContainsKey(System.String)">ContainsKey(string)</h4>
+  <div class="markdown level1 summary"><p>Determines whether the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary&lt;TKey, TValue&gt;</a> contains
+an element with the specified key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ContainsKey(string key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>The key to locate in the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary&lt;TKey, TValue&gt;</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary&lt;TKey, TValue&gt;</a>
+contains an element with the key; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_Dynamo_ContainsKey_System_String__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="BigBook.Dynamo.html">Dynamo</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Dynamo_Copy_System_Object_.md&amp;value=---%0Auid%3A%20BigBook.Dynamo.Copy(System.Object)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Dynamo.cs/#L395">View Source</a>
+  </span>
+  <a id="BigBook_Dynamo_Copy_" data-uid="BigBook.Dynamo.Copy*"></a>
+  <h4 id="BigBook_Dynamo_Copy_System_Object_" data-uid="BigBook.Dynamo.Copy(System.Object)">Copy(object?)</h4>
+  <div class="markdown level1 summary"><p>Copies the properties from an item</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Copy(object? item)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
+        <td><span class="parametername">item</span></td>
+        <td><p>Item to copy from</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_Dynamo_Copy_System_Object__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="BigBook.Dynamo.html">Dynamo</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Dynamo_CopyTo_System_Collections_Generic_KeyValuePair_System_String_System_Object____System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.Dynamo.CopyTo(System.Collections.Generic.KeyValuePair%7BSystem.String%2CSystem.Object%7D%5B%5D%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Dynamo.cs/#L437">View Source</a>
+  </span>
+  <a id="BigBook_Dynamo_CopyTo_" data-uid="BigBook.Dynamo.CopyTo*"></a>
+  <h4 id="BigBook_Dynamo_CopyTo_System_Collections_Generic_KeyValuePair_System_String_System_Object____System_Int32_" data-uid="BigBook.Dynamo.CopyTo(System.Collections.Generic.KeyValuePair{System.String,System.Object}[],System.Int32)">CopyTo(KeyValuePair&lt;string, object?&gt;[], int)</h4>
+  <div class="markdown level1 summary"><p>Copies the elements of the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a> to
+an <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.array">Array</a>, starting at a particular <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.array">Array</a> index.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CopyTo(KeyValuePair&lt;string, object?&gt;[] array, int arrayIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;[]</td>
+        <td><span class="parametername">array</span></td>
+        <td><p>The one-dimensional <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.array">Array</a> that is the destination of the elements
+copied from <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>. The <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.array">Array</a> must have zero-based indexing.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><span class="parametername">arrayIndex</span></td>
+        <td><p>The zero-based index in <code class="paramref">array</code> at which copying begins.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></td>
+        <td><p>arrayIndex</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_Dynamo_CopyTo_System_Collections_Generic_KeyValuePair_System_String_System_Object____System_Int32__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="BigBook.Dynamo.html">Dynamo</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Dynamo_CopyTo_System_Object_.md&amp;value=---%0Auid%3A%20BigBook.Dynamo.CopyTo(System.Object)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Dynamo.cs/#L460">View Source</a>
+  </span>
+  <a id="BigBook_Dynamo_CopyTo_" data-uid="BigBook.Dynamo.CopyTo*"></a>
+  <h4 id="BigBook_Dynamo_CopyTo_System_Object_" data-uid="BigBook.Dynamo.CopyTo(System.Object)">CopyTo(object?)</h4>
+  <div class="markdown level1 summary"><p>Copies data from here to another object</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CopyTo(object? result)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
+        <td><span class="parametername">result</span></td>
+        <td><p>Result</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_Dynamo_CopyTo_System_Object__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="BigBook.Dynamo.html">Dynamo</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Dynamo_Equals_System_Object_.md&amp;value=---%0Auid%3A%20BigBook.Dynamo.Equals(System.Object)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Dynamo.cs/#L474">View Source</a>
+  </span>
+  <a id="BigBook_Dynamo_Equals_" data-uid="BigBook.Dynamo.Equals*"></a>
+  <h4 id="BigBook_Dynamo_Equals_System_Object_" data-uid="BigBook.Dynamo.Equals(System.Object)">Equals(object?)</h4>
+  <div class="markdown level1 summary"><p>Determines if two objects are equal</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Equals(object? obj)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
+        <td><span class="parametername">obj</span></td>
+        <td><p>Object to compare to</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p>True if they're equal, false otherwise</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a></div>
+  <h5 id="BigBook_Dynamo_Equals_System_Object__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="BigBook.Dynamo.html">Dynamo</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Dynamo_GetDynamicMemberNames.md&amp;value=---%0Auid%3A%20BigBook.Dynamo.GetDynamicMemberNames%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Dynamo.cs/#L480">View Source</a>
+  </span>
+  <a id="BigBook_Dynamo_GetDynamicMemberNames_" data-uid="BigBook.Dynamo.GetDynamicMemberNames*"></a>
+  <h4 id="BigBook_Dynamo_GetDynamicMemberNames" data-uid="BigBook.Dynamo.GetDynamicMemberNames">GetDynamicMemberNames()</h4>
+  <div class="markdown level1 summary"><p>Gets the dynamic member names</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override IEnumerable&lt;string&gt; GetDynamicMemberNames()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</td>
+        <td><p>The keys used internally</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.dynamic.dynamicobject.getdynamicmembernames">DynamicObject.GetDynamicMemberNames()</a></div>
+  <h5 id="BigBook_Dynamo_GetDynamicMemberNames_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="BigBook.Dynamo.html">Dynamo</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Dynamo_GetEnumerator.md&amp;value=---%0Auid%3A%20BigBook.Dynamo.GetEnumerator%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Dynamo.cs/#L486">View Source</a>
+  </span>
+  <a id="BigBook_Dynamo_GetEnumerator_" data-uid="BigBook.Dynamo.GetEnumerator*"></a>
+  <h4 id="BigBook_Dynamo_GetEnumerator" data-uid="BigBook.Dynamo.GetEnumerator">GetEnumerator()</h4>
+  <div class="markdown level1 summary"><p>Returns an enumerator that iterates through the collection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerator&lt;KeyValuePair&lt;string, object?&gt;&gt; GetEnumerator()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1">IEnumerator</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;&gt;</td>
+        <td><p>An enumerator that can be used to iterate through the collection.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_Dynamo_GetEnumerator_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="BigBook.Dynamo.html">Dynamo</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Dynamo_GetHashCode.md&amp;value=---%0Auid%3A%20BigBook.Dynamo.GetHashCode%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Dynamo.cs/#L515">View Source</a>
+  </span>
+  <a id="BigBook_Dynamo_GetHashCode_" data-uid="BigBook.Dynamo.GetHashCode*"></a>
+  <h4 id="BigBook_Dynamo_GetHashCode" data-uid="BigBook.Dynamo.GetHashCode">GetHashCode()</h4>
+  <div class="markdown level1 summary"><p>Gets the hash code</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td><p>The hash code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a></div>
+  <h5 id="BigBook_Dynamo_GetHashCode_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="BigBook.Dynamo.html">Dynamo</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Dynamo_GetSchema.md&amp;value=---%0Auid%3A%20BigBook.Dynamo.GetSchema%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Dynamo.cs/#L521">View Source</a>
+  </span>
+  <a id="BigBook_Dynamo_GetSchema_" data-uid="BigBook.Dynamo.GetSchema*"></a>
+  <h4 id="BigBook_Dynamo_GetSchema" data-uid="BigBook.Dynamo.GetSchema">GetSchema()</h4>
+  <div class="markdown level1 summary"><p>Not used</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public XmlSchema? GetSchema()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.xml.schema.xmlschema">XmlSchema</a></td>
+        <td><p>Null</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_Dynamo_GetSchema_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="BigBook.Dynamo.html">Dynamo</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Dynamo_GetValue_System_String_System_Type_.md&amp;value=---%0Auid%3A%20BigBook.Dynamo.GetValue(System.String%2CSystem.Type)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Dynamo.cs/#L758">View Source</a>
+  </span>
+  <a id="BigBook_Dynamo_GetValue_" data-uid="BigBook.Dynamo.GetValue*"></a>
+  <h4 id="BigBook_Dynamo_GetValue_System_String_System_Type_" data-uid="BigBook.Dynamo.GetValue(System.String,System.Type)">GetValue(string, Type)</h4>
+  <div class="markdown level1 summary"><p>Gets a value</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected object? GetValue(string name, Type returnType)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>Name of the item</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></td>
+        <td><span class="parametername">returnType</span></td>
+        <td><p>Return value type</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
+        <td><p>The returned value</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_Dynamo_GetValue_System_String_System_Type__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="BigBook.Dynamo.html">Dynamo</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Dynamo_RaiseGetValueEnd_System_String_System_Object_.md&amp;value=---%0Auid%3A%20BigBook.Dynamo.RaiseGetValueEnd(System.String%2CSystem.Object)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Dynamo.cs/#L785">View Source</a>
+  </span>
+  <a id="BigBook_Dynamo_RaiseGetValueEnd_" data-uid="BigBook.Dynamo.RaiseGetValueEnd*"></a>
+  <h4 id="BigBook_Dynamo_RaiseGetValueEnd_System_String_System_Object_" data-uid="BigBook.Dynamo.RaiseGetValueEnd(System.String,System.Object)">RaiseGetValueEnd(string, object?)</h4>
+  <div class="markdown level1 summary"><p>Raises the get value end event</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected object? RaiseGetValueEnd(string propertyName, object? value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">propertyName</span></td>
+        <td><p>Property name</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>Value initially being returned</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
+        <td><p>Returns null if the function should continue, any other value should be immediately
+returned to the user</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_Dynamo_RaiseGetValueEnd_System_String_System_Object__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="BigBook.Dynamo.html">Dynamo</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Dynamo_RaiseGetValueStart_System_String_.md&amp;value=---%0Auid%3A%20BigBook.Dynamo.RaiseGetValueStart(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Dynamo.cs/#L802">View Source</a>
+  </span>
+  <a id="BigBook_Dynamo_RaiseGetValueStart_" data-uid="BigBook.Dynamo.RaiseGetValueStart*"></a>
+  <h4 id="BigBook_Dynamo_RaiseGetValueStart_System_String_" data-uid="BigBook.Dynamo.RaiseGetValueStart(System.String)">RaiseGetValueStart(string)</h4>
+  <div class="markdown level1 summary"><p>Raises the get value start event</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected object? RaiseGetValueStart(string propertyName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">propertyName</span></td>
+        <td><p>Property name</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
+        <td><p>Returns null if the function should continue, any other value should be immediately
+returned to the user</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_Dynamo_RaiseGetValueStart_System_String__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="BigBook.Dynamo.html">Dynamo</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Dynamo_RaisePropertyChanged_System_String_System_Object_System_Object_.md&amp;value=---%0Auid%3A%20BigBook.Dynamo.RaisePropertyChanged(System.String%2CSystem.Object%2CSystem.Object)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Dynamo.cs/#L817">View Source</a>
+  </span>
+  <a id="BigBook_Dynamo_RaisePropertyChanged_" data-uid="BigBook.Dynamo.RaisePropertyChanged*"></a>
+  <h4 id="BigBook_Dynamo_RaisePropertyChanged_System_String_System_Object_System_Object_" data-uid="BigBook.Dynamo.RaisePropertyChanged(System.String,System.Object,System.Object)">RaisePropertyChanged(string, object?, object?)</h4>
+  <div class="markdown level1 summary"><p>Raises the property changed event</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void RaisePropertyChanged(string propertyName, object? oldValue, object? newValue)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">propertyName</span></td>
+        <td><p>Property name</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
+        <td><span class="parametername">oldValue</span></td>
+        <td><p>The old value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
+        <td><span class="parametername">newValue</span></td>
+        <td><p>New value for the property</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_Dynamo_RaisePropertyChanged_System_String_System_Object_System_Object__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="BigBook.Dynamo.html">Dynamo</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Dynamo_ReadXml_System_Xml_XmlReader_.md&amp;value=---%0Auid%3A%20BigBook.Dynamo.ReadXml(System.Xml.XmlReader)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Dynamo.cs/#L527">View Source</a>
+  </span>
+  <a id="BigBook_Dynamo_ReadXml_" data-uid="BigBook.Dynamo.ReadXml*"></a>
+  <h4 id="BigBook_Dynamo_ReadXml_System_Xml_XmlReader_" data-uid="BigBook.Dynamo.ReadXml(System.Xml.XmlReader)">ReadXml(XmlReader)</h4>
+  <div class="markdown level1 summary"><p>Reads the data from an XML doc</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void ReadXml(XmlReader reader)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.xml.xmlreader">XmlReader</a></td>
+        <td><span class="parametername">reader</span></td>
+        <td><p>XML reader</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_Dynamo_ReadXml_System_Xml_XmlReader__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="BigBook.Dynamo.html">Dynamo</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Dynamo_Remove_System_Collections_Generic_KeyValuePair_System_String_System_Object__.md&amp;value=---%0Auid%3A%20BigBook.Dynamo.Remove(System.Collections.Generic.KeyValuePair%7BSystem.String%2CSystem.Object%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Dynamo.cs/#L577">View Source</a>
+  </span>
+  <a id="BigBook_Dynamo_Remove_" data-uid="BigBook.Dynamo.Remove*"></a>
+  <h4 id="BigBook_Dynamo_Remove_System_Collections_Generic_KeyValuePair_System_String_System_Object__" data-uid="BigBook.Dynamo.Remove(System.Collections.Generic.KeyValuePair{System.String,System.Object})">Remove(KeyValuePair&lt;string, object?&gt;)</h4>
+  <div class="markdown level1 summary"><p>Removes the first occurrence of a specific object from the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Remove(KeyValuePair&lt;string, object?&gt; item)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;</td>
+        <td><span class="parametername">item</span></td>
+        <td><p>The object to remove from the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if <code class="paramref">item</code> was successfully removed from the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.
+This method also returns <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a> if <code class="paramref">item</code> is not found
+in the original <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_Dynamo_Remove_System_Collections_Generic_KeyValuePair_System_String_System_Object___seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="BigBook.Dynamo.html">Dynamo</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Dynamo_Remove_System_String_.md&amp;value=---%0Auid%3A%20BigBook.Dynamo.Remove(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Dynamo.cs/#L547">View Source</a>
+  </span>
+  <a id="BigBook_Dynamo_Remove_" data-uid="BigBook.Dynamo.Remove*"></a>
+  <h4 id="BigBook_Dynamo_Remove_System_String_" data-uid="BigBook.Dynamo.Remove(System.String)">Remove(string)</h4>
+  <div class="markdown level1 summary"><p>Removes the element with the specified key from the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary&lt;TKey, TValue&gt;</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Remove(string key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>The key of the element to remove.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the element is successfully removed; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>. This method also returns <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a> if <code class="paramref">key</code> was not found in the original <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary&lt;TKey, TValue&gt;</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_Dynamo_Remove_System_String__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="BigBook.Dynamo.html">Dynamo</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Dynamo_SubSet_System_String___.md&amp;value=---%0Auid%3A%20BigBook.Dynamo.SubSet(System.String%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Dynamo.cs/#L587">View Source</a>
+  </span>
+  <a id="BigBook_Dynamo_SubSet_" data-uid="BigBook.Dynamo.SubSet*"></a>
+  <h4 id="BigBook_Dynamo_SubSet_System_String___" data-uid="BigBook.Dynamo.SubSet(System.String[])">SubSet(params string[])</h4>
+  <div class="markdown level1 summary"><p>Returns a subset of the current Dynamo object</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public dynamic SubSet(params string[] keys)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</td>
+        <td><span class="parametername">keys</span></td>
+        <td><p>Property keys to return</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">dynamic</span></td>
+        <td><p>A new Dynamo object containing only the keys specified</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_Dynamo_SubSet_System_String____seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="BigBook.Dynamo.html">Dynamo</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Dynamo_To_System_Object_System_Type_.md&amp;value=---%0Auid%3A%20BigBook.Dynamo.To(System.Object%2CSystem.Type)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Dynamo.cs/#L616">View Source</a>
+  </span>
+  <a id="BigBook_Dynamo_To_" data-uid="BigBook.Dynamo.To*"></a>
+  <h4 id="BigBook_Dynamo_To_System_Object_System_Type_" data-uid="BigBook.Dynamo.To(System.Object,System.Type)">To(object?, Type)</h4>
+  <div class="markdown level1 summary"><p>Converts the object to the type specified</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public object To(object? defaultObject, Type ObjectType)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
+        <td><span class="parametername">defaultObject</span></td>
+        <td><p>The default object.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></td>
+        <td><span class="parametername">ObjectType</span></td>
+        <td><p>Object type</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
+        <td><p>The object converted to the type specified</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_Dynamo_To_System_Object_System_Type__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="BigBook.Dynamo.html">Dynamo</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Dynamo_ToString.md&amp;value=---%0Auid%3A%20BigBook.Dynamo.ToString%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Dynamo.cs/#L629">View Source</a>
+  </span>
+  <a id="BigBook_Dynamo_ToString_" data-uid="BigBook.Dynamo.ToString*"></a>
+  <h4 id="BigBook_Dynamo_ToString" data-uid="BigBook.Dynamo.ToString">ToString()</h4>
+  <div class="markdown level1 summary"><p>Outputs the object graph</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><p>The string version of the object</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a></div>
+  <h5 id="BigBook_Dynamo_ToString_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="BigBook.Dynamo.html">Dynamo</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Dynamo_To__1___0_.md&amp;value=---%0Auid%3A%20BigBook.Dynamo.To%60%601(%60%600)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Dynamo.cs/#L608">View Source</a>
+  </span>
+  <a id="BigBook_Dynamo_To_" data-uid="BigBook.Dynamo.To*"></a>
+  <h4 id="BigBook_Dynamo_To__1___0_" data-uid="BigBook.Dynamo.To``1(``0)">To&lt;TObject&gt;(TObject)</h4>
+  <div class="markdown level1 summary"><p>Converts the object to the type specified</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TObject To&lt;TObject&gt;(TObject defaultObject = default)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TObject</span></td>
+        <td><span class="parametername">defaultObject</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TObject</span></td>
+        <td><p>The object converted to the type specified</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TObject</span></td>
+        <td><p>Object type</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_Dynamo_To__1___0__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="BigBook.Dynamo.html">Dynamo</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Dynamo_TryConvert_System_Dynamic_ConvertBinder_System_Object__.md&amp;value=---%0Auid%3A%20BigBook.Dynamo.TryConvert(System.Dynamic.ConvertBinder%2CSystem.Object%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Dynamo.cs/#L654">View Source</a>
+  </span>
+  <a id="BigBook_Dynamo_TryConvert_" data-uid="BigBook.Dynamo.TryConvert*"></a>
+  <h4 id="BigBook_Dynamo_TryConvert_System_Dynamic_ConvertBinder_System_Object__" data-uid="BigBook.Dynamo.TryConvert(System.Dynamic.ConvertBinder,System.Object@)">TryConvert(ConvertBinder, out object?)</h4>
+  <div class="markdown level1 summary"><p>Attempts to convert the object</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool TryConvert(ConvertBinder binder, out object? result)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.dynamic.convertbinder">ConvertBinder</a></td>
+        <td><span class="parametername">binder</span></td>
+        <td><p>Convert binder</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
+        <td><span class="parametername">result</span></td>
+        <td><p>Result</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p>True if it is converted, false otherwise</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.dynamic.dynamicobject.tryconvert">DynamicObject.TryConvert(ConvertBinder, out object)</a></div>
+  <h5 id="BigBook_Dynamo_TryConvert_System_Dynamic_ConvertBinder_System_Object___seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="BigBook.Dynamo.html">Dynamo</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Dynamo_TryGetMember_System_Dynamic_GetMemberBinder_System_Object__.md&amp;value=---%0Auid%3A%20BigBook.Dynamo.TryGetMember(System.Dynamic.GetMemberBinder%2CSystem.Object%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Dynamo.cs/#L671">View Source</a>
+  </span>
+  <a id="BigBook_Dynamo_TryGetMember_" data-uid="BigBook.Dynamo.TryGetMember*"></a>
+  <h4 id="BigBook_Dynamo_TryGetMember_System_Dynamic_GetMemberBinder_System_Object__" data-uid="BigBook.Dynamo.TryGetMember(System.Dynamic.GetMemberBinder,System.Object@)">TryGetMember(GetMemberBinder, out object?)</h4>
+  <div class="markdown level1 summary"><p>Attempts to get a member</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool TryGetMember(GetMemberBinder binder, out object? result)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.dynamic.getmemberbinder">GetMemberBinder</a></td>
+        <td><span class="parametername">binder</span></td>
+        <td><p>GetMemberBinder object</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
+        <td><span class="parametername">result</span></td>
+        <td><p>Result</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p>True if it gets the member, false otherwise</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.dynamic.dynamicobject.trygetmember">DynamicObject.TryGetMember(GetMemberBinder, out object)</a></div>
+  <h5 id="BigBook_Dynamo_TryGetMember_System_Dynamic_GetMemberBinder_System_Object___seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="BigBook.Dynamo.html">Dynamo</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Dynamo_TryGetValue_System_String_System_Object__.md&amp;value=---%0Auid%3A%20BigBook.Dynamo.TryGetValue(System.String%2CSystem.Object%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Dynamo.cs/#L696">View Source</a>
+  </span>
+  <a id="BigBook_Dynamo_TryGetValue_" data-uid="BigBook.Dynamo.TryGetValue*"></a>
+  <h4 id="BigBook_Dynamo_TryGetValue_System_String_System_Object__" data-uid="BigBook.Dynamo.TryGetValue(System.String,System.Object@)">TryGetValue(string, out object?)</h4>
+  <div class="markdown level1 summary"><p>Gets the value associated with the specified key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryGetValue(string key, out object? value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>The key whose value to get.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>When this method returns, the value associated with the specified key, if the key is
+found; otherwise, the default value for the type of the <code class="paramref">value</code>
+parameter. This parameter is passed uninitialized.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the object that implements <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary&lt;TKey, TValue&gt;</a> contains an element with the
+specified key; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_Dynamo_TryGetValue_System_String_System_Object___seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="BigBook.Dynamo.html">Dynamo</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Dynamo_TrySetMember_System_Dynamic_SetMemberBinder_System_Object_.md&amp;value=---%0Auid%3A%20BigBook.Dynamo.TrySetMember(System.Dynamic.SetMemberBinder%2CSystem.Object)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Dynamo.cs/#L708">View Source</a>
+  </span>
+  <a id="BigBook_Dynamo_TrySetMember_" data-uid="BigBook.Dynamo.TrySetMember*"></a>
+  <h4 id="BigBook_Dynamo_TrySetMember_System_Dynamic_SetMemberBinder_System_Object_" data-uid="BigBook.Dynamo.TrySetMember(System.Dynamic.SetMemberBinder,System.Object)">TrySetMember(SetMemberBinder, object)</h4>
+  <div class="markdown level1 summary"><p>Attempts to set the member</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool TrySetMember(SetMemberBinder binder, object value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.dynamic.setmemberbinder">SetMemberBinder</a></td>
+        <td><span class="parametername">binder</span></td>
+        <td><p>Member binder</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>Value</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p>True if it is set, false otherwise</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.dynamic.dynamicobject.trysetmember">DynamicObject.TrySetMember(SetMemberBinder, object)</a></div>
+  <h5 id="BigBook_Dynamo_TrySetMember_System_Dynamic_SetMemberBinder_System_Object__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="BigBook.Dynamo.html">Dynamo</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Dynamo_TrySetValue_System_String_System_Object_.md&amp;value=---%0Auid%3A%20BigBook.Dynamo.TrySetValue(System.String%2CSystem.Object)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Dynamo.cs/#L722">View Source</a>
+  </span>
+  <a id="BigBook_Dynamo_TrySetValue_" data-uid="BigBook.Dynamo.TrySetValue*"></a>
+  <h4 id="BigBook_Dynamo_TrySetValue_System_String_System_Object_" data-uid="BigBook.Dynamo.TrySetValue(System.String,System.Object)">TrySetValue(string, object?)</h4>
+  <div class="markdown level1 summary"><p>Tries to set the value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TrySetValue(string key, object? value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>The key.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><p>True if it is set, false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_Dynamo_TrySetValue_System_String_System_Object__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="BigBook.Dynamo.html">Dynamo</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Dynamo_WriteXml_System_Xml_XmlWriter_.md&amp;value=---%0Auid%3A%20BigBook.Dynamo.WriteXml(System.Xml.XmlWriter)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Dynamo.cs/#L742">View Source</a>
+  </span>
+  <a id="BigBook_Dynamo_WriteXml_" data-uid="BigBook.Dynamo.WriteXml*"></a>
+  <h4 id="BigBook_Dynamo_WriteXml_System_Xml_XmlWriter_" data-uid="BigBook.Dynamo.WriteXml(System.Xml.XmlWriter)">WriteXml(XmlWriter)</h4>
+  <div class="markdown level1 summary"><p>Writes the data to an XML doc</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void WriteXml(XmlWriter writer)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.xml.xmlwriter">XmlWriter</a></td>
+        <td><span class="parametername">writer</span></td>
+        <td><p>XML writer</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_Dynamo_WriteXml_System_Xml_XmlWriter__seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="BigBook.Dynamo.html">Dynamo</a></div>
+  </div>
+  <h3 id="events">Events
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Dynamo_GetValueEnd.md&amp;value=---%0Auid%3A%20BigBook.Dynamo.GetValueEnd%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Dynamo.cs/#L272">View Source</a>
+  </span>
+  <h4 id="BigBook_Dynamo_GetValueEnd" data-uid="BigBook.Dynamo.GetValueEnd">GetValueEnd</h4>
+  <div class="markdown level1 summary"><p>Called when the value/property is found but before it is returned to the caller Sends
+(this, PropertyName, EventArgs) to items attached to the event</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event Action&lt;Dynamo, string, OnEndEventArgs&gt; GetValueEnd</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-3">Action</a>&lt;<a class="xref" href="BigBook.Dynamo.html">Dynamo</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="BigBook.EventArgs.OnEndEventArgs.html">OnEndEventArgs</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_Dynamo_GetValueEnd_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="BigBook.Dynamo.html">Dynamo</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Dynamo_GetValueStart.md&amp;value=---%0Auid%3A%20BigBook.Dynamo.GetValueStart%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Dynamo.cs/#L289">View Source</a>
+  </span>
+  <h4 id="BigBook_Dynamo_GetValueStart" data-uid="BigBook.Dynamo.GetValueStart">GetValueStart</h4>
+  <div class="markdown level1 summary"><p>Called when beginning to get a value/property Sends (this, EventArgs) to items attached
+to the event</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event Action&lt;Dynamo, OnStartEventArgs&gt; GetValueStart</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-2">Action</a>&lt;<a class="xref" href="BigBook.Dynamo.html">Dynamo</a>, <a class="xref" href="BigBook.EventArgs.OnStartEventArgs.html">OnStartEventArgs</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_Dynamo_GetValueStart_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="BigBook.Dynamo.html">Dynamo</a></div>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Dynamo_PropertyChanged.md&amp;value=---%0Auid%3A%20BigBook.Dynamo.PropertyChanged%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Dynamo.cs/#L308">View Source</a>
+  </span>
+  <h4 id="BigBook_Dynamo_PropertyChanged" data-uid="BigBook.Dynamo.PropertyChanged">PropertyChanged</h4>
+  <div class="markdown level1 summary"><p>Occurs when a property value changes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event PropertyChangedEventHandler PropertyChanged</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.componentmodel.propertychangedeventhandler">PropertyChangedEventHandler</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="BigBook_Dynamo_PropertyChanged_seealso">See Also</h5>
+  <div class="seealso">
+      <div><a class="xref" href="BigBook.Dynamo.html">Dynamo</a></div>
+  </div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.dynamic.idynamicmetaobjectprovider">IDynamicMetaObjectProvider</a>
+  </div>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary&lt;TKey, TValue&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable&lt;T&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerable">IEnumerable</a>
+  </div>
+  <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanged">INotifyPropertyChanged</a>
+  </div>
+  <h3 id="seealso">See Also</h3>
+  <div class="seealso">
+      <div><a class="xref" href="BigBook.Dynamo.html">Dynamo</a></div>
+  </div>
+
+</article>
+                </div>
+
+                <div class="copyright-footer">
+                    <span>&#169; James Craig. All rights reserved.</span>
+                </div>
+            </main>
+        </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+        <script type="text/javascript" src="../styles/jquery.twbsPagination.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/jquery.mark.min.js"></script>
+        <script type="text/javascript" src="../styles/url.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/anchor-js@5.0.0/anchor.min.js"></script>
+        <script type="text/javascript" src="../styles/docfx.js"></script>
+        <script type="text/javascript" src="../styles/main.js"></script>
+        <script type="text/javascript" src="../styles/singulink.js"></script>    </body>
+</html>
