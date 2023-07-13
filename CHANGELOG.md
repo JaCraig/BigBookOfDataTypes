@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [versionize](https://github.com/versionize/versionize) for commit guidelines.
 
+<a name="5.0.5"></a>
+## [5.0.5](https://www.github.com/JaCraig/BigBookOfDataTypes/releases/tag/v5.0.5) (2023-7-13)
+
+### Bug Fixes
+
+* bump Aspectus from 5.0.4 to 5.0.5 ([4b154c2](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/4b154c27b9d02199deffabea12afc14a738e8a77))
+* bump ObjectCartographer.SQL from 3.0.8 to 3.0.9 ([cfedc60](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/cfedc60e5daaa82c443fd56d81ac0a9b729549fb))
+
+### Other
+
+* Merge pull request #3 from JaCraig/dependabot/nuget/Aspectus-5.0.5 ([0d2fb5c](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/0d2fb5cfdd54c1353ed269b5e2ac7b268325e182))
+* Merge pull request #4 from JaCraig/dependabot/nuget/ObjectCartographer.SQL-3.0.9 ([ccc65b1](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/ccc65b129c7c9e952b1b90950f00511f40800c2c))
+* Update README.md ([b93bf8e](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/b93bf8efa267088233a44d2610a0bb3029b54bf3))
+
 <a name="5.0.4"></a>
 ## [5.0.4](https://www.github.com/JaCraig/BigBookOfDataTypes/releases/tag/v5.0.4) (2023-7-11)
 
