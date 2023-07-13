@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <Description>Big Book of Data Types is a collection of various data types including Vector3, Set, RingBuffer, PriorityQueue, Fractions, and DateSpan. It also includes a number of extension methods for types found already in .Net.</Description>
@@ -70,7 +70,7 @@
     <PackageReference Include="System.Runtime" Version="4.3.1" />
     <PackageReference Include="System.Threading.Tasks.Parallel" Version="4.3.0" />
     <PackageReference Include="System.Threading.Thread" Version="4.3.0" />
-    <PackageReference Include="Aspectus" Version="5.0.4" />
+    <PackageReference Include="Aspectus" Version="5.0.5" />
 	  <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
   </ItemGroup>
 
