@@ -15,7 +15,7 @@ namespace BigBook.Tests
         [Fact]
         public void FindAll()
         {
-            var TestString = "The quick brown fox jumps over the lazy dog";
+            const string TestString = "The quick brown fox jumps over the lazy dog";
             var TestObject = new StringTrie();
             TestObject.Add("jumps", "dog")
                 .Build();
@@ -29,7 +29,7 @@ namespace BigBook.Tests
         [Fact]
         public void FindAllSpan()
         {
-            var TestString = "The quick brown fox jumps over the lazy dog";
+            const string TestString = "The quick brown fox jumps over the lazy dog";
             var TestObject = new StringTrie();
             TestObject.Add("jumps", "dog")
                 .Build();
@@ -43,7 +43,7 @@ namespace BigBook.Tests
         [Fact]
         public void FindAny()
         {
-            var TestString = "The quick brown fox jumps over the lazy dog";
+            const string TestString = "The quick brown fox jumps over the lazy dog";
             var TestObject = new StringTrie();
             TestObject.Add("jumps", "dog", "brown")
                 .Build();
@@ -55,7 +55,7 @@ namespace BigBook.Tests
         [Fact]
         public void FindLonger()
         {
-            var TestString = "The quick brown fox jumps over the lazy dog";
+            const string TestString = "The quick brown fox jumps over the lazy dog";
             var TestObject = new StringTrie();
             TestObject.Add("brown", "brown fox")
                 .Build();

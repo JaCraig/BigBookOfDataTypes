@@ -77,18 +77,18 @@ namespace BigBook.Tests.ExtensionMethods
         public void RemoveRange()
         {
             var TestObject = new int[] { 1, 2, 3, 4, 5, 6 }.ToList();
-            Assert.Equal(0, TestObject.Remove(new int[] { 1, 2, 3, 4, 5, 6, 7, 8 }).Count);
+            Assert.Empty(TestObject.Remove(new int[] { 1, 2, 3, 4, 5, 6, 7, 8 }));
         }
 
         [Fact]
         public void RemoveRange2()
         {
             int[] TestObject = { 1, 2, 3, 4, 5, 6 };
-            Assert.Equal(0, TestObject.Remove(new int[] { 1, 2, 3, 4, 5, 6, 7, 8 }).Count);
+            Assert.Empty(TestObject.Remove(new int[] { 1, 2, 3, 4, 5, 6, 7, 8 }));
             TestObject = new int[] { 1, 2, 3, 4, 5, 6 };
-            Assert.Equal(1, TestObject.Remove(new int[] { 1, 2, 3, 4, 5 }).Count);
+            Assert.Single(TestObject.Remove(new int[] { 1, 2, 3, 4, 5 }));
             TestObject = new int[] { 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6 };
-            Assert.Equal(1, TestObject.Remove(new int[] { 1, 2, 3, 4, 5 }).Count);
+            Assert.Single(TestObject.Remove(new int[] { 1, 2, 3, 4, 5 }));
         }
 
         [Fact]

@@ -44,7 +44,8 @@ namespace BigBook.Tests
             {
                 lock (LockObject)
                 {
-                    Builder.Append(x); return true;
+                    Builder.Append(x);
+                    return true;
                 }
             });
             for (var x = 0; x < Temp.Length; ++x)

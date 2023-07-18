@@ -104,8 +104,8 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void HTMLMinify()
         {
-            var FileContent = ReadFile(@"../../../../../Data/Web/HanselmanSite.html");
-            var MinifiedFileContent = ReadFile(@"../../../../../Data/Web/HanselmanSite.html").Minify(MinificationType.HTML);
+            var FileContent = ReadFile("../../../../../Data/Web/HanselmanSite.html");
+            var MinifiedFileContent = ReadFile("../../../../../Data/Web/HanselmanSite.html").Minify(MinificationType.HTML);
             Assert.NotEqual(FileContent.Length, MinifiedFileContent.Length);
             Assert.True(FileContent.Length > MinifiedFileContent.Length);
         }
@@ -197,15 +197,15 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void ReplaceAll()
         {
-            var replacements = new char[] { '1', '2', '3' };
-            var newChar = 'B';
+            var Replacements = new char[] { '1', '2', '3' };
+            const char NewChar = 'B';
             var Value = 255.Times(x => ((char)x).ToString()).ToString(x => x);
             var Expected = Value;
-            foreach (var Replacement in replacements)
+            foreach (var Replacement in Replacements)
             {
-                Expected = Expected.Replace(Replacement, newChar);
+                Expected = Expected.Replace(Replacement, NewChar);
             }
-            Assert.Equal(Expected, Value.ReplaceAll(replacements, newChar));
+            Assert.Equal(Expected, Value.ReplaceAll(Replacements, NewChar));
         }
 
         [Fact]
@@ -217,7 +217,7 @@ namespace BigBook.Tests.ExtensionMethods
                 ["2"] = "ABC",
                 ["3"] = "CAB"
             };
-            var Value = "321123132213231312";
+            const string Value = "321123132213231312";
             var Expected = Value;
             foreach (var Replacement in Replacements)
             {
@@ -252,8 +252,8 @@ namespace BigBook.Tests.ExtensionMethods
         [Fact]
         public void StripHTML()
         {
-            var FileContent = ReadFile(@"../../../../../Data/Web/HanselmanSite.html");
-            var MinifiedFileContent = ReadFile(@"../../../../../Data/Web/HanselmanSite.html").StripHTML();
+            var FileContent = ReadFile("../../../../../Data/Web/HanselmanSite.html");
+            var MinifiedFileContent = ReadFile("../../../../../Data/Web/HanselmanSite.html").StripHTML();
             Assert.NotEqual(FileContent.Length, MinifiedFileContent.Length);
             Assert.True(FileContent.Length > MinifiedFileContent.Length);
         }

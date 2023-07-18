@@ -24,7 +24,7 @@ namespace BigBook.Tests.ExtensionMethods
             Assert.Equal("Test", new StringBuilder("Test  ").Trim().ToString());
             Assert.Equal("Test", new StringBuilder("Test").Trim().ToString());
             Assert.Equal("", new StringBuilder().Trim().ToString());
-            Assert.Equal(null, ((StringBuilder)null).Trim());
+            Assert.Null(((StringBuilder)null).Trim());
         }
 
         [Fact]
@@ -33,7 +33,7 @@ namespace BigBook.Tests.ExtensionMethods
             Assert.Equal("  Test", new StringBuilder("  Test  ").TrimEnd().ToString());
             Assert.Equal("Test", new StringBuilder("Test").TrimEnd().ToString());
             Assert.Equal("", new StringBuilder().TrimEnd().ToString());
-            Assert.Equal(null, ((StringBuilder)null).TrimEnd());
+            Assert.Null(((StringBuilder)null).TrimEnd());
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace BigBook.Tests.ExtensionMethods
             Assert.Equal("Test  ", new StringBuilder("  Test  ").TrimStart().ToString());
             Assert.Equal("Test", new StringBuilder("Test").TrimStart().ToString());
             Assert.Equal("", new StringBuilder().TrimStart().ToString());
-            Assert.Equal(null, ((StringBuilder)null).TrimStart());
+            Assert.Null(((StringBuilder)null).TrimStart());
         }
     }
 }

@@ -62,11 +62,16 @@ namespace BigBook
         {
             var Result = "";
             var Splitter = "";
-            if (input.Years() > 0) { Result += input.Years() + " year" + (input.Years() > 1 ? "s" : ""); Splitter = ", "; }
-            if (input.Months() > 0) { Result += Splitter + input.Months() + " month" + (input.Months() > 1 ? "s" : ""); Splitter = ", "; }
-            if (input.DaysRemainder() > 0) { Result += Splitter + input.DaysRemainder() + " day" + (input.DaysRemainder() > 1 ? "s" : ""); Splitter = ", "; }
-            if (input.Hours > 0) { Result += Splitter + input.Hours + " hour" + (input.Hours > 1 ? "s" : ""); Splitter = ", "; }
-            if (input.Minutes > 0) { Result += Splitter + input.Minutes + " minute" + (input.Minutes > 1 ? "s" : ""); Splitter = ", "; }
+            if (input.Years() > 0)
+            { Result += input.Years() + " year" + (input.Years() > 1 ? "s" : ""); Splitter = ", "; }
+            if (input.Months() > 0)
+            { Result += Splitter + input.Months() + " month" + (input.Months() > 1 ? "s" : ""); Splitter = ", "; }
+            if (input.DaysRemainder() > 0)
+            { Result += Splitter + input.DaysRemainder() + " day" + (input.DaysRemainder() > 1 ? "s" : ""); Splitter = ", "; }
+            if (input.Hours > 0)
+            { Result += Splitter + input.Hours + " hour" + (input.Hours > 1 ? "s" : ""); Splitter = ", "; }
+            if (input.Minutes > 0)
+            { Result += Splitter + input.Minutes + " minute" + (input.Minutes > 1 ? "s" : ""); Splitter = ", "; }
             if (input.Seconds > 0)
             {
                 Result += Splitter + input.Seconds + " second" + (input.Seconds > 1 ? "s" : "");

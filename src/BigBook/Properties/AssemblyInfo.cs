@@ -18,4 +18,4 @@ using System.Runtime.InteropServices;
 [assembly: Guid("ba2b2595-cd55-4639-9e5d-be4bdacca1ab")]
 [assembly: NeutralResourcesLanguage("en-US")]
 [assembly: InternalsVisibleToAttribute("BigBook.Tests")]
-[assembly: InternalsVisibleToAttribute("BigBook.Benchmarks")] 
+[assembly: InternalsVisibleToAttribute("BigBook.Benchmarks")]

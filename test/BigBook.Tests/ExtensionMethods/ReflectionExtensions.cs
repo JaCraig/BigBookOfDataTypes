@@ -278,7 +278,8 @@ namespace BigBook.Tests.ExtensionMethods
     {
         public TestClass()
         {
-            Value = 1; Value2 = 2;
+            Value = 1;
+            Value2 = 2;
         }
 
         public string Value3 = "ASDF";
