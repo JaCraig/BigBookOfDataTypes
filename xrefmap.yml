@@ -489,25 +489,6 @@ references:
   fullName.vb: BigBook.BinaryTree(Of T).NumberOfNodes
   nameWithType: BinaryTree<T>.NumberOfNodes
   nameWithType.vb: BinaryTree(Of T).NumberOfNodes
-- uid: BigBook.BinaryTree`1.op_Implicit(BigBook.BinaryTree{`0})~System.String
-  name: implicit operator string(BinaryTree<T>?)
-  href: api/BigBook.BinaryTree-1.html#BigBook_BinaryTree_1_op_Implicit_BigBook_BinaryTree__0___System_String
-  commentId: M:BigBook.BinaryTree`1.op_Implicit(BigBook.BinaryTree{`0})~System.String
-  name.vb: CType(BinaryTree(Of T))
-  fullName: BigBook.BinaryTree<T>.implicit operator string(BigBook.BinaryTree<T>?)
-  fullName.vb: BigBook.BinaryTree(Of T).CType(BigBook.BinaryTree(Of T))
-  nameWithType: BinaryTree<T>.implicit operator string(BinaryTree<T>?)
-  nameWithType.vb: BinaryTree(Of T).CType(BinaryTree(Of T))
-- uid: BigBook.BinaryTree`1.op_Implicit*
-  name: implicit operator
-  href: api/BigBook.BinaryTree-1.html#BigBook_BinaryTree_1_op_Implicit_
-  commentId: Overload:BigBook.BinaryTree`1.op_Implicit
-  isSpec: "True"
-  name.vb: CType
-  fullName: BigBook.BinaryTree<T>.implicit operator
-  fullName.vb: BigBook.BinaryTree(Of T).CType
-  nameWithType: BinaryTree<T>.implicit operator
-  nameWithType.vb: BinaryTree(Of T).CType
 - uid: BigBook.BinaryTree`1.Remove(`0)
   name: Remove(T)
   href: api/BigBook.BinaryTree-1.html#BigBook_BinaryTree_1_Remove__0_
@@ -577,6 +558,25 @@ references:
   fullName.vb: BigBook.BinaryTree(Of T).Traversal
   nameWithType: BinaryTree<T>.Traversal
   nameWithType.vb: BinaryTree(Of T).Traversal
+- uid: BigBook.BinaryTree`1.op_Implicit(BigBook.BinaryTree{`0})~System.String
+  name: implicit operator string(BinaryTree<T>?)
+  href: api/BigBook.BinaryTree-1.html#BigBook_BinaryTree_1_op_Implicit_BigBook_BinaryTree__0___System_String
+  commentId: M:BigBook.BinaryTree`1.op_Implicit(BigBook.BinaryTree{`0})~System.String
+  name.vb: CType(BinaryTree(Of T))
+  fullName: BigBook.BinaryTree<T>.implicit operator string(BigBook.BinaryTree<T>?)
+  fullName.vb: BigBook.BinaryTree(Of T).CType(BigBook.BinaryTree(Of T))
+  nameWithType: BinaryTree<T>.implicit operator string(BinaryTree<T>?)
+  nameWithType.vb: BinaryTree(Of T).CType(BinaryTree(Of T))
+- uid: BigBook.BinaryTree`1.op_Implicit*
+  name: implicit operator
+  href: api/BigBook.BinaryTree-1.html#BigBook_BinaryTree_1_op_Implicit_
+  commentId: Overload:BigBook.BinaryTree`1.op_Implicit
+  isSpec: "True"
+  name.vb: CType
+  fullName: BigBook.BinaryTree<T>.implicit operator
+  fullName.vb: BigBook.BinaryTree(Of T).CType
+  nameWithType: BinaryTree<T>.implicit operator
+  nameWithType.vb: BinaryTree(Of T).CType
 - uid: BigBook.BloomFilter`1
   name: BloomFilter<TObject>
   href: api/BigBook.BloomFilter-1.html
@@ -586,42 +586,6 @@ references:
   fullName.vb: BigBook.BloomFilter(Of TObject)
   nameWithType: BloomFilter<TObject>
   nameWithType.vb: BloomFilter(Of TObject)
-- uid: BigBook.BloomFilter`1.#ctor(System.Int32,BigBook.BloomFilter{`0}.HashFunction)
-  name: BloomFilter(int, HashFunction?)
-  href: api/BigBook.BloomFilter-1.html#BigBook_BloomFilter_1__ctor_System_Int32_BigBook_BloomFilter__0__HashFunction_
-  commentId: M:BigBook.BloomFilter`1.#ctor(System.Int32,BigBook.BloomFilter{`0}.HashFunction)
-  name.vb: New(Integer, HashFunction)
-  fullName: BigBook.BloomFilter<TObject>.BloomFilter(int, BigBook.BloomFilter<TObject>.HashFunction?)
-  fullName.vb: BigBook.BloomFilter(Of TObject).New(Integer, BigBook.BloomFilter(Of TObject).HashFunction)
-  nameWithType: BloomFilter<TObject>.BloomFilter(int, BloomFilter<TObject>.HashFunction?)
-  nameWithType.vb: BloomFilter(Of TObject).New(Integer, BloomFilter(Of TObject).HashFunction)
-- uid: BigBook.BloomFilter`1.#ctor(System.Int32,System.Single,BigBook.BloomFilter{`0}.HashFunction,System.Int32,System.Int32)
-  name: BloomFilter(int, float, HashFunction?, int, int)
-  href: api/BigBook.BloomFilter-1.html#BigBook_BloomFilter_1__ctor_System_Int32_System_Single_BigBook_BloomFilter__0__HashFunction_System_Int32_System_Int32_
-  commentId: M:BigBook.BloomFilter`1.#ctor(System.Int32,System.Single,BigBook.BloomFilter{`0}.HashFunction,System.Int32,System.Int32)
-  name.vb: New(Integer, Single, HashFunction, Integer, Integer)
-  fullName: BigBook.BloomFilter<TObject>.BloomFilter(int, float, BigBook.BloomFilter<TObject>.HashFunction?, int, int)
-  fullName.vb: BigBook.BloomFilter(Of TObject).New(Integer, Single, BigBook.BloomFilter(Of TObject).HashFunction, Integer, Integer)
-  nameWithType: BloomFilter<TObject>.BloomFilter(int, float, BloomFilter<TObject>.HashFunction?, int, int)
-  nameWithType.vb: BloomFilter(Of TObject).New(Integer, Single, BloomFilter(Of TObject).HashFunction, Integer, Integer)
-- uid: BigBook.BloomFilter`1.#ctor(System.Int32,System.Single,BigBook.BloomFilter{`0}.HashFunction)
-  name: BloomFilter(int, float, HashFunction?)
-  href: api/BigBook.BloomFilter-1.html#BigBook_BloomFilter_1__ctor_System_Int32_System_Single_BigBook_BloomFilter__0__HashFunction_
-  commentId: M:BigBook.BloomFilter`1.#ctor(System.Int32,System.Single,BigBook.BloomFilter{`0}.HashFunction)
-  name.vb: New(Integer, Single, HashFunction)
-  fullName: BigBook.BloomFilter<TObject>.BloomFilter(int, float, BigBook.BloomFilter<TObject>.HashFunction?)
-  fullName.vb: BigBook.BloomFilter(Of TObject).New(Integer, Single, BigBook.BloomFilter(Of TObject).HashFunction)
-  nameWithType: BloomFilter<TObject>.BloomFilter(int, float, BloomFilter<TObject>.HashFunction?)
-  nameWithType.vb: BloomFilter(Of TObject).New(Integer, Single, BloomFilter(Of TObject).HashFunction)
-- uid: BigBook.BloomFilter`1.#ctor(System.Int32,System.Single)
-  name: BloomFilter(int, float)
-  href: api/BigBook.BloomFilter-1.html#BigBook_BloomFilter_1__ctor_System_Int32_System_Single_
-  commentId: M:BigBook.BloomFilter`1.#ctor(System.Int32,System.Single)
-  name.vb: New(Integer, Single)
-  fullName: BigBook.BloomFilter<TObject>.BloomFilter(int, float)
-  fullName.vb: BigBook.BloomFilter(Of TObject).New(Integer, Single)
-  nameWithType: BloomFilter<TObject>.BloomFilter(int, float)
-  nameWithType.vb: BloomFilter(Of TObject).New(Integer, Single)
 - uid: BigBook.BloomFilter`1.#ctor(System.Int32)
   name: BloomFilter(int)
   href: api/BigBook.BloomFilter-1.html#BigBook_BloomFilter_1__ctor_System_Int32_
@@ -631,6 +595,42 @@ references:
   fullName.vb: BigBook.BloomFilter(Of TObject).New(Integer)
   nameWithType: BloomFilter<TObject>.BloomFilter(int)
   nameWithType.vb: BloomFilter(Of TObject).New(Integer)
+- uid: BigBook.BloomFilter`1.#ctor(System.Int32,BigBook.BloomFilter{`0}.HashFunction)
+  name: BloomFilter(int, HashFunction?)
+  href: api/BigBook.BloomFilter-1.html#BigBook_BloomFilter_1__ctor_System_Int32_BigBook_BloomFilter__0__HashFunction_
+  commentId: M:BigBook.BloomFilter`1.#ctor(System.Int32,BigBook.BloomFilter{`0}.HashFunction)
+  name.vb: New(Integer, HashFunction)
+  fullName: BigBook.BloomFilter<TObject>.BloomFilter(int, BigBook.BloomFilter<TObject>.HashFunction?)
+  fullName.vb: BigBook.BloomFilter(Of TObject).New(Integer, BigBook.BloomFilter(Of TObject).HashFunction)
+  nameWithType: BloomFilter<TObject>.BloomFilter(int, BloomFilter<TObject>.HashFunction?)
+  nameWithType.vb: BloomFilter(Of TObject).New(Integer, BloomFilter(Of TObject).HashFunction)
+- uid: BigBook.BloomFilter`1.#ctor(System.Int32,System.Single)
+  name: BloomFilter(int, float)
+  href: api/BigBook.BloomFilter-1.html#BigBook_BloomFilter_1__ctor_System_Int32_System_Single_
+  commentId: M:BigBook.BloomFilter`1.#ctor(System.Int32,System.Single)
+  name.vb: New(Integer, Single)
+  fullName: BigBook.BloomFilter<TObject>.BloomFilter(int, float)
+  fullName.vb: BigBook.BloomFilter(Of TObject).New(Integer, Single)
+  nameWithType: BloomFilter<TObject>.BloomFilter(int, float)
+  nameWithType.vb: BloomFilter(Of TObject).New(Integer, Single)
+- uid: BigBook.BloomFilter`1.#ctor(System.Int32,System.Single,BigBook.BloomFilter{`0}.HashFunction)
+  name: BloomFilter(int, float, HashFunction?)
+  href: api/BigBook.BloomFilter-1.html#BigBook_BloomFilter_1__ctor_System_Int32_System_Single_BigBook_BloomFilter__0__HashFunction_
+  commentId: M:BigBook.BloomFilter`1.#ctor(System.Int32,System.Single,BigBook.BloomFilter{`0}.HashFunction)
+  name.vb: New(Integer, Single, HashFunction)
+  fullName: BigBook.BloomFilter<TObject>.BloomFilter(int, float, BigBook.BloomFilter<TObject>.HashFunction?)
+  fullName.vb: BigBook.BloomFilter(Of TObject).New(Integer, Single, BigBook.BloomFilter(Of TObject).HashFunction)
+  nameWithType: BloomFilter<TObject>.BloomFilter(int, float, BloomFilter<TObject>.HashFunction?)
+  nameWithType.vb: BloomFilter(Of TObject).New(Integer, Single, BloomFilter(Of TObject).HashFunction)
+- uid: BigBook.BloomFilter`1.#ctor(System.Int32,System.Single,BigBook.BloomFilter{`0}.HashFunction,System.Int32,System.Int32)
+  name: BloomFilter(int, float, HashFunction?, int, int)
+  href: api/BigBook.BloomFilter-1.html#BigBook_BloomFilter_1__ctor_System_Int32_System_Single_BigBook_BloomFilter__0__HashFunction_System_Int32_System_Int32_
+  commentId: M:BigBook.BloomFilter`1.#ctor(System.Int32,System.Single,BigBook.BloomFilter{`0}.HashFunction,System.Int32,System.Int32)
+  name.vb: New(Integer, Single, HashFunction, Integer, Integer)
+  fullName: BigBook.BloomFilter<TObject>.BloomFilter(int, float, BigBook.BloomFilter<TObject>.HashFunction?, int, int)
+  fullName.vb: BigBook.BloomFilter(Of TObject).New(Integer, Single, BigBook.BloomFilter(Of TObject).HashFunction, Integer, Integer)
+  nameWithType: BloomFilter<TObject>.BloomFilter(int, float, BloomFilter<TObject>.HashFunction?, int, int)
+  nameWithType.vb: BloomFilter(Of TObject).New(Integer, Single, BloomFilter(Of TObject).HashFunction, Integer, Integer)
 - uid: BigBook.BloomFilter`1.#ctor*
   name: BloomFilter
   href: api/BigBook.BloomFilter-1.html#BigBook_BloomFilter_1__ctor_
@@ -798,6 +798,19 @@ references:
   isSpec: "True"
   fullName: BigBook.Change.NewValue
   nameWithType: Change.NewValue
+- uid: BigBook.Change.OriginalValue
+  name: OriginalValue
+  href: api/BigBook.Change.html#BigBook_Change_OriginalValue
+  commentId: P:BigBook.Change.OriginalValue
+  fullName: BigBook.Change.OriginalValue
+  nameWithType: Change.OriginalValue
+- uid: BigBook.Change.OriginalValue*
+  name: OriginalValue
+  href: api/BigBook.Change.html#BigBook_Change_OriginalValue_
+  commentId: Overload:BigBook.Change.OriginalValue
+  isSpec: "True"
+  fullName: BigBook.Change.OriginalValue
+  nameWithType: Change.OriginalValue
 - uid: BigBook.Change.op_Equality(BigBook.Change,BigBook.Change)
   name: operator ==(Change, Change)
   href: api/BigBook.Change.html#BigBook_Change_op_Equality_BigBook_Change_BigBook_Change_
@@ -836,19 +849,6 @@ references:
   fullName.vb: BigBook.Change.<>
   nameWithType: Change.operator !=
   nameWithType.vb: Change.<>
-- uid: BigBook.Change.OriginalValue
-  name: OriginalValue
-  href: api/BigBook.Change.html#BigBook_Change_OriginalValue
-  commentId: P:BigBook.Change.OriginalValue
-  fullName: BigBook.Change.OriginalValue
-  nameWithType: Change.OriginalValue
-- uid: BigBook.Change.OriginalValue*
-  name: OriginalValue
-  href: api/BigBook.Change.html#BigBook_Change_OriginalValue_
-  commentId: Overload:BigBook.Change.OriginalValue
-  isSpec: "True"
-  fullName: BigBook.Change.OriginalValue
-  nameWithType: Change.OriginalValue
 - uid: BigBook.CharIs
   name: CharIs
   href: api/BigBook.CharIs.html
@@ -885,18 +885,18 @@ references:
   commentId: F:BigBook.CharIs.LetterOrDigit
   fullName: BigBook.CharIs.LetterOrDigit
   nameWithType: CharIs.LetterOrDigit
-- uid: BigBook.CharIs.Lower
-  name: Lower
-  href: api/BigBook.CharIs.html#BigBook_CharIs_Lower
-  commentId: F:BigBook.CharIs.Lower
-  fullName: BigBook.CharIs.Lower
-  nameWithType: CharIs.Lower
 - uid: BigBook.CharIs.LowSurrogate
   name: LowSurrogate
   href: api/BigBook.CharIs.html#BigBook_CharIs_LowSurrogate
   commentId: F:BigBook.CharIs.LowSurrogate
   fullName: BigBook.CharIs.LowSurrogate
   nameWithType: CharIs.LowSurrogate
+- uid: BigBook.CharIs.Lower
+  name: Lower
+  href: api/BigBook.CharIs.html#BigBook_CharIs_Lower
+  commentId: F:BigBook.CharIs.Lower
+  fullName: BigBook.CharIs.Lower
+  nameWithType: CharIs.Lower
 - uid: BigBook.CharIs.None
   name: None
   href: api/BigBook.CharIs.html#BigBook_CharIs_None
@@ -1412,6 +1412,74 @@ references:
   isSpec: "True"
   fullName: BigBook.DateSpan.Months
   nameWithType: DateSpan.Months
+- uid: BigBook.DateSpan.Overlap(BigBook.DateSpan)
+  name: Overlap(DateSpan?)
+  href: api/BigBook.DateSpan.html#BigBook_DateSpan_Overlap_BigBook_DateSpan_
+  commentId: M:BigBook.DateSpan.Overlap(BigBook.DateSpan)
+  name.vb: Overlap(DateSpan)
+  fullName: BigBook.DateSpan.Overlap(BigBook.DateSpan?)
+  fullName.vb: BigBook.DateSpan.Overlap(BigBook.DateSpan)
+  nameWithType: DateSpan.Overlap(DateSpan?)
+  nameWithType.vb: DateSpan.Overlap(DateSpan)
+- uid: BigBook.DateSpan.Overlap*
+  name: Overlap
+  href: api/BigBook.DateSpan.html#BigBook_DateSpan_Overlap_
+  commentId: Overload:BigBook.DateSpan.Overlap
+  isSpec: "True"
+  fullName: BigBook.DateSpan.Overlap
+  nameWithType: DateSpan.Overlap
+- uid: BigBook.DateSpan.Seconds
+  name: Seconds
+  href: api/BigBook.DateSpan.html#BigBook_DateSpan_Seconds
+  commentId: P:BigBook.DateSpan.Seconds
+  fullName: BigBook.DateSpan.Seconds
+  nameWithType: DateSpan.Seconds
+- uid: BigBook.DateSpan.Seconds*
+  name: Seconds
+  href: api/BigBook.DateSpan.html#BigBook_DateSpan_Seconds_
+  commentId: Overload:BigBook.DateSpan.Seconds
+  isSpec: "True"
+  fullName: BigBook.DateSpan.Seconds
+  nameWithType: DateSpan.Seconds
+- uid: BigBook.DateSpan.Start
+  name: Start
+  href: api/BigBook.DateSpan.html#BigBook_DateSpan_Start
+  commentId: P:BigBook.DateSpan.Start
+  fullName: BigBook.DateSpan.Start
+  nameWithType: DateSpan.Start
+- uid: BigBook.DateSpan.Start*
+  name: Start
+  href: api/BigBook.DateSpan.html#BigBook_DateSpan_Start_
+  commentId: Overload:BigBook.DateSpan.Start
+  isSpec: "True"
+  fullName: BigBook.DateSpan.Start
+  nameWithType: DateSpan.Start
+- uid: BigBook.DateSpan.ToString
+  name: ToString()
+  href: api/BigBook.DateSpan.html#BigBook_DateSpan_ToString
+  commentId: M:BigBook.DateSpan.ToString
+  fullName: BigBook.DateSpan.ToString()
+  nameWithType: DateSpan.ToString()
+- uid: BigBook.DateSpan.ToString*
+  name: ToString
+  href: api/BigBook.DateSpan.html#BigBook_DateSpan_ToString_
+  commentId: Overload:BigBook.DateSpan.ToString
+  isSpec: "True"
+  fullName: BigBook.DateSpan.ToString
+  nameWithType: DateSpan.ToString
+- uid: BigBook.DateSpan.Years
+  name: Years
+  href: api/BigBook.DateSpan.html#BigBook_DateSpan_Years
+  commentId: P:BigBook.DateSpan.Years
+  fullName: BigBook.DateSpan.Years
+  nameWithType: DateSpan.Years
+- uid: BigBook.DateSpan.Years*
+  name: Years
+  href: api/BigBook.DateSpan.html#BigBook_DateSpan_Years_
+  commentId: Overload:BigBook.DateSpan.Years
+  isSpec: "True"
+  fullName: BigBook.DateSpan.Years
+  nameWithType: DateSpan.Years
 - uid: BigBook.DateSpan.op_Addition(BigBook.DateSpan,BigBook.DateSpan)
   name: operator +(DateSpan?, DateSpan?)
   href: api/BigBook.DateSpan.html#BigBook_DateSpan_op_Addition_BigBook_DateSpan_BigBook_DateSpan_
@@ -1488,74 +1556,6 @@ references:
   fullName.vb: BigBook.DateSpan.<>
   nameWithType: DateSpan.operator !=
   nameWithType.vb: DateSpan.<>
-- uid: BigBook.DateSpan.Overlap(BigBook.DateSpan)
-  name: Overlap(DateSpan?)
-  href: api/BigBook.DateSpan.html#BigBook_DateSpan_Overlap_BigBook_DateSpan_
-  commentId: M:BigBook.DateSpan.Overlap(BigBook.DateSpan)
-  name.vb: Overlap(DateSpan)
-  fullName: BigBook.DateSpan.Overlap(BigBook.DateSpan?)
-  fullName.vb: BigBook.DateSpan.Overlap(BigBook.DateSpan)
-  nameWithType: DateSpan.Overlap(DateSpan?)
-  nameWithType.vb: DateSpan.Overlap(DateSpan)
-- uid: BigBook.DateSpan.Overlap*
-  name: Overlap
-  href: api/BigBook.DateSpan.html#BigBook_DateSpan_Overlap_
-  commentId: Overload:BigBook.DateSpan.Overlap
-  isSpec: "True"
-  fullName: BigBook.DateSpan.Overlap
-  nameWithType: DateSpan.Overlap
-- uid: BigBook.DateSpan.Seconds
-  name: Seconds
-  href: api/BigBook.DateSpan.html#BigBook_DateSpan_Seconds
-  commentId: P:BigBook.DateSpan.Seconds
-  fullName: BigBook.DateSpan.Seconds
-  nameWithType: DateSpan.Seconds
-- uid: BigBook.DateSpan.Seconds*
-  name: Seconds
-  href: api/BigBook.DateSpan.html#BigBook_DateSpan_Seconds_
-  commentId: Overload:BigBook.DateSpan.Seconds
-  isSpec: "True"
-  fullName: BigBook.DateSpan.Seconds
-  nameWithType: DateSpan.Seconds
-- uid: BigBook.DateSpan.Start
-  name: Start
-  href: api/BigBook.DateSpan.html#BigBook_DateSpan_Start
-  commentId: P:BigBook.DateSpan.Start
-  fullName: BigBook.DateSpan.Start
-  nameWithType: DateSpan.Start
-- uid: BigBook.DateSpan.Start*
-  name: Start
-  href: api/BigBook.DateSpan.html#BigBook_DateSpan_Start_
-  commentId: Overload:BigBook.DateSpan.Start
-  isSpec: "True"
-  fullName: BigBook.DateSpan.Start
-  nameWithType: DateSpan.Start
-- uid: BigBook.DateSpan.ToString
-  name: ToString()
-  href: api/BigBook.DateSpan.html#BigBook_DateSpan_ToString
-  commentId: M:BigBook.DateSpan.ToString
-  fullName: BigBook.DateSpan.ToString()
-  nameWithType: DateSpan.ToString()
-- uid: BigBook.DateSpan.ToString*
-  name: ToString
-  href: api/BigBook.DateSpan.html#BigBook_DateSpan_ToString_
-  commentId: Overload:BigBook.DateSpan.ToString
-  isSpec: "True"
-  fullName: BigBook.DateSpan.ToString
-  nameWithType: DateSpan.ToString
-- uid: BigBook.DateSpan.Years
-  name: Years
-  href: api/BigBook.DateSpan.html#BigBook_DateSpan_Years
-  commentId: P:BigBook.DateSpan.Years
-  fullName: BigBook.DateSpan.Years
-  nameWithType: DateSpan.Years
-- uid: BigBook.DateSpan.Years*
-  name: Years
-  href: api/BigBook.DateSpan.html#BigBook_DateSpan_Years_
-  commentId: Overload:BigBook.DateSpan.Years
-  isSpec: "True"
-  fullName: BigBook.DateSpan.Years
-  nameWithType: DateSpan.Years
 - uid: BigBook.Dynamo
   name: Dynamo
   href: api/BigBook.Dynamo.html
@@ -2001,15 +2001,6 @@ references:
   isSpec: "True"
   fullName: BigBook.Dynamo.To
   nameWithType: Dynamo.To
-- uid: BigBook.Dynamo.To``1(``0)
-  name: To<TObject>(TObject)
-  href: api/BigBook.Dynamo.html#BigBook_Dynamo_To__1___0_
-  commentId: M:BigBook.Dynamo.To``1(``0)
-  name.vb: To(Of TObject)(TObject)
-  fullName: BigBook.Dynamo.To<TObject>(TObject)
-  fullName.vb: BigBook.Dynamo.To(Of TObject)(TObject)
-  nameWithType: Dynamo.To<TObject>(TObject)
-  nameWithType.vb: Dynamo.To(Of TObject)(TObject)
 - uid: BigBook.Dynamo.ToString
   name: ToString()
   href: api/BigBook.Dynamo.html#BigBook_Dynamo_ToString
@@ -2023,6 +2014,15 @@ references:
   isSpec: "True"
   fullName: BigBook.Dynamo.ToString
   nameWithType: Dynamo.ToString
+- uid: BigBook.Dynamo.To``1(``0)
+  name: To<TObject>(TObject)
+  href: api/BigBook.Dynamo.html#BigBook_Dynamo_To__1___0_
+  commentId: M:BigBook.Dynamo.To``1(``0)
+  name.vb: To(Of TObject)(TObject)
+  fullName: BigBook.Dynamo.To<TObject>(TObject)
+  fullName.vb: BigBook.Dynamo.To(Of TObject)(TObject)
+  nameWithType: Dynamo.To<TObject>(TObject)
+  nameWithType.vb: Dynamo.To(Of TObject)(TObject)
 - uid: BigBook.Dynamo.TryConvert(System.Dynamic.ConvertBinder,System.Object@)
   name: TryConvert(ConvertBinder, out object?)
   href: api/BigBook.Dynamo.html#BigBook_Dynamo_TryConvert_System_Dynamic_ConvertBinder_System_Object__
@@ -2753,6 +2753,136 @@ references:
   isSpec: "True"
   fullName: BigBook.Fraction.Numerator
   nameWithType: Fraction.Numerator
+- uid: BigBook.Fraction.Reduce
+  name: Reduce()
+  href: api/BigBook.Fraction.html#BigBook_Fraction_Reduce
+  commentId: M:BigBook.Fraction.Reduce
+  fullName: BigBook.Fraction.Reduce()
+  nameWithType: Fraction.Reduce()
+- uid: BigBook.Fraction.Reduce*
+  name: Reduce
+  href: api/BigBook.Fraction.html#BigBook_Fraction_Reduce_
+  commentId: Overload:BigBook.Fraction.Reduce
+  isSpec: "True"
+  fullName: BigBook.Fraction.Reduce
+  nameWithType: Fraction.Reduce
+- uid: BigBook.Fraction.Subtract(BigBook.Fraction,BigBook.Fraction)
+  name: Subtract(Fraction, Fraction)
+  href: api/BigBook.Fraction.html#BigBook_Fraction_Subtract_BigBook_Fraction_BigBook_Fraction_
+  commentId: M:BigBook.Fraction.Subtract(BigBook.Fraction,BigBook.Fraction)
+  fullName: BigBook.Fraction.Subtract(BigBook.Fraction, BigBook.Fraction)
+  nameWithType: Fraction.Subtract(Fraction, Fraction)
+- uid: BigBook.Fraction.Subtract*
+  name: Subtract
+  href: api/BigBook.Fraction.html#BigBook_Fraction_Subtract_
+  commentId: Overload:BigBook.Fraction.Subtract
+  isSpec: "True"
+  fullName: BigBook.Fraction.Subtract
+  nameWithType: Fraction.Subtract
+- uid: BigBook.Fraction.ToDecimal
+  name: ToDecimal()
+  href: api/BigBook.Fraction.html#BigBook_Fraction_ToDecimal
+  commentId: M:BigBook.Fraction.ToDecimal
+  fullName: BigBook.Fraction.ToDecimal()
+  nameWithType: Fraction.ToDecimal()
+- uid: BigBook.Fraction.ToDecimal*
+  name: ToDecimal
+  href: api/BigBook.Fraction.html#BigBook_Fraction_ToDecimal_
+  commentId: Overload:BigBook.Fraction.ToDecimal
+  isSpec: "True"
+  fullName: BigBook.Fraction.ToDecimal
+  nameWithType: Fraction.ToDecimal
+- uid: BigBook.Fraction.ToDouble
+  name: ToDouble()
+  href: api/BigBook.Fraction.html#BigBook_Fraction_ToDouble
+  commentId: M:BigBook.Fraction.ToDouble
+  fullName: BigBook.Fraction.ToDouble()
+  nameWithType: Fraction.ToDouble()
+- uid: BigBook.Fraction.ToDouble*
+  name: ToDouble
+  href: api/BigBook.Fraction.html#BigBook_Fraction_ToDouble_
+  commentId: Overload:BigBook.Fraction.ToDouble
+  isSpec: "True"
+  fullName: BigBook.Fraction.ToDouble
+  nameWithType: Fraction.ToDouble
+- uid: BigBook.Fraction.ToFraction(System.Decimal)
+  name: ToFraction(decimal)
+  href: api/BigBook.Fraction.html#BigBook_Fraction_ToFraction_System_Decimal_
+  commentId: M:BigBook.Fraction.ToFraction(System.Decimal)
+  name.vb: ToFraction(Decimal)
+  fullName: BigBook.Fraction.ToFraction(decimal)
+  fullName.vb: BigBook.Fraction.ToFraction(Decimal)
+  nameWithType: Fraction.ToFraction(decimal)
+  nameWithType.vb: Fraction.ToFraction(Decimal)
+- uid: BigBook.Fraction.ToFraction(System.Double)
+  name: ToFraction(double)
+  href: api/BigBook.Fraction.html#BigBook_Fraction_ToFraction_System_Double_
+  commentId: M:BigBook.Fraction.ToFraction(System.Double)
+  name.vb: ToFraction(Double)
+  fullName: BigBook.Fraction.ToFraction(double)
+  fullName.vb: BigBook.Fraction.ToFraction(Double)
+  nameWithType: Fraction.ToFraction(double)
+  nameWithType.vb: Fraction.ToFraction(Double)
+- uid: BigBook.Fraction.ToFraction(System.Int32)
+  name: ToFraction(int)
+  href: api/BigBook.Fraction.html#BigBook_Fraction_ToFraction_System_Int32_
+  commentId: M:BigBook.Fraction.ToFraction(System.Int32)
+  name.vb: ToFraction(Integer)
+  fullName: BigBook.Fraction.ToFraction(int)
+  fullName.vb: BigBook.Fraction.ToFraction(Integer)
+  nameWithType: Fraction.ToFraction(int)
+  nameWithType.vb: Fraction.ToFraction(Integer)
+- uid: BigBook.Fraction.ToFraction(System.Single)
+  name: ToFraction(float)
+  href: api/BigBook.Fraction.html#BigBook_Fraction_ToFraction_System_Single_
+  commentId: M:BigBook.Fraction.ToFraction(System.Single)
+  name.vb: ToFraction(Single)
+  fullName: BigBook.Fraction.ToFraction(float)
+  fullName.vb: BigBook.Fraction.ToFraction(Single)
+  nameWithType: Fraction.ToFraction(float)
+  nameWithType.vb: Fraction.ToFraction(Single)
+- uid: BigBook.Fraction.ToFraction(System.UInt32)
+  name: ToFraction(uint)
+  href: api/BigBook.Fraction.html#BigBook_Fraction_ToFraction_System_UInt32_
+  commentId: M:BigBook.Fraction.ToFraction(System.UInt32)
+  name.vb: ToFraction(UInteger)
+  fullName: BigBook.Fraction.ToFraction(uint)
+  fullName.vb: BigBook.Fraction.ToFraction(UInteger)
+  nameWithType: Fraction.ToFraction(uint)
+  nameWithType.vb: Fraction.ToFraction(UInteger)
+- uid: BigBook.Fraction.ToFraction*
+  name: ToFraction
+  href: api/BigBook.Fraction.html#BigBook_Fraction_ToFraction_
+  commentId: Overload:BigBook.Fraction.ToFraction
+  isSpec: "True"
+  fullName: BigBook.Fraction.ToFraction
+  nameWithType: Fraction.ToFraction
+- uid: BigBook.Fraction.ToSingle
+  name: ToSingle()
+  href: api/BigBook.Fraction.html#BigBook_Fraction_ToSingle
+  commentId: M:BigBook.Fraction.ToSingle
+  fullName: BigBook.Fraction.ToSingle()
+  nameWithType: Fraction.ToSingle()
+- uid: BigBook.Fraction.ToSingle*
+  name: ToSingle
+  href: api/BigBook.Fraction.html#BigBook_Fraction_ToSingle_
+  commentId: Overload:BigBook.Fraction.ToSingle
+  isSpec: "True"
+  fullName: BigBook.Fraction.ToSingle
+  nameWithType: Fraction.ToSingle
+- uid: BigBook.Fraction.ToString
+  name: ToString()
+  href: api/BigBook.Fraction.html#BigBook_Fraction_ToString
+  commentId: M:BigBook.Fraction.ToString
+  fullName: BigBook.Fraction.ToString()
+  nameWithType: Fraction.ToString()
+- uid: BigBook.Fraction.ToString*
+  name: ToString
+  href: api/BigBook.Fraction.html#BigBook_Fraction_ToString_
+  commentId: Overload:BigBook.Fraction.ToString
+  isSpec: "True"
+  fullName: BigBook.Fraction.ToString
+  nameWithType: Fraction.ToString
 - uid: BigBook.Fraction.op_Addition(BigBook.Fraction,BigBook.Fraction)
   name: operator +(Fraction?, Fraction?)
   href: api/BigBook.Fraction.html#BigBook_Fraction_op_Addition_BigBook_Fraction_BigBook_Fraction_
@@ -3013,136 +3143,6 @@ references:
   fullName.vb: BigBook.Fraction.-
   nameWithType: Fraction.operator -
   nameWithType.vb: Fraction.-
-- uid: BigBook.Fraction.Reduce
-  name: Reduce()
-  href: api/BigBook.Fraction.html#BigBook_Fraction_Reduce
-  commentId: M:BigBook.Fraction.Reduce
-  fullName: BigBook.Fraction.Reduce()
-  nameWithType: Fraction.Reduce()
-- uid: BigBook.Fraction.Reduce*
-  name: Reduce
-  href: api/BigBook.Fraction.html#BigBook_Fraction_Reduce_
-  commentId: Overload:BigBook.Fraction.Reduce
-  isSpec: "True"
-  fullName: BigBook.Fraction.Reduce
-  nameWithType: Fraction.Reduce
-- uid: BigBook.Fraction.Subtract(BigBook.Fraction,BigBook.Fraction)
-  name: Subtract(Fraction, Fraction)
-  href: api/BigBook.Fraction.html#BigBook_Fraction_Subtract_BigBook_Fraction_BigBook_Fraction_
-  commentId: M:BigBook.Fraction.Subtract(BigBook.Fraction,BigBook.Fraction)
-  fullName: BigBook.Fraction.Subtract(BigBook.Fraction, BigBook.Fraction)
-  nameWithType: Fraction.Subtract(Fraction, Fraction)
-- uid: BigBook.Fraction.Subtract*
-  name: Subtract
-  href: api/BigBook.Fraction.html#BigBook_Fraction_Subtract_
-  commentId: Overload:BigBook.Fraction.Subtract
-  isSpec: "True"
-  fullName: BigBook.Fraction.Subtract
-  nameWithType: Fraction.Subtract
-- uid: BigBook.Fraction.ToDecimal
-  name: ToDecimal()
-  href: api/BigBook.Fraction.html#BigBook_Fraction_ToDecimal
-  commentId: M:BigBook.Fraction.ToDecimal
-  fullName: BigBook.Fraction.ToDecimal()
-  nameWithType: Fraction.ToDecimal()
-- uid: BigBook.Fraction.ToDecimal*
-  name: ToDecimal
-  href: api/BigBook.Fraction.html#BigBook_Fraction_ToDecimal_
-  commentId: Overload:BigBook.Fraction.ToDecimal
-  isSpec: "True"
-  fullName: BigBook.Fraction.ToDecimal
-  nameWithType: Fraction.ToDecimal
-- uid: BigBook.Fraction.ToDouble
-  name: ToDouble()
-  href: api/BigBook.Fraction.html#BigBook_Fraction_ToDouble
-  commentId: M:BigBook.Fraction.ToDouble
-  fullName: BigBook.Fraction.ToDouble()
-  nameWithType: Fraction.ToDouble()
-- uid: BigBook.Fraction.ToDouble*
-  name: ToDouble
-  href: api/BigBook.Fraction.html#BigBook_Fraction_ToDouble_
-  commentId: Overload:BigBook.Fraction.ToDouble
-  isSpec: "True"
-  fullName: BigBook.Fraction.ToDouble
-  nameWithType: Fraction.ToDouble
-- uid: BigBook.Fraction.ToFraction(System.Decimal)
-  name: ToFraction(decimal)
-  href: api/BigBook.Fraction.html#BigBook_Fraction_ToFraction_System_Decimal_
-  commentId: M:BigBook.Fraction.ToFraction(System.Decimal)
-  name.vb: ToFraction(Decimal)
-  fullName: BigBook.Fraction.ToFraction(decimal)
-  fullName.vb: BigBook.Fraction.ToFraction(Decimal)
-  nameWithType: Fraction.ToFraction(decimal)
-  nameWithType.vb: Fraction.ToFraction(Decimal)
-- uid: BigBook.Fraction.ToFraction(System.Double)
-  name: ToFraction(double)
-  href: api/BigBook.Fraction.html#BigBook_Fraction_ToFraction_System_Double_
-  commentId: M:BigBook.Fraction.ToFraction(System.Double)
-  name.vb: ToFraction(Double)
-  fullName: BigBook.Fraction.ToFraction(double)
-  fullName.vb: BigBook.Fraction.ToFraction(Double)
-  nameWithType: Fraction.ToFraction(double)
-  nameWithType.vb: Fraction.ToFraction(Double)
-- uid: BigBook.Fraction.ToFraction(System.Int32)
-  name: ToFraction(int)
-  href: api/BigBook.Fraction.html#BigBook_Fraction_ToFraction_System_Int32_
-  commentId: M:BigBook.Fraction.ToFraction(System.Int32)
-  name.vb: ToFraction(Integer)
-  fullName: BigBook.Fraction.ToFraction(int)
-  fullName.vb: BigBook.Fraction.ToFraction(Integer)
-  nameWithType: Fraction.ToFraction(int)
-  nameWithType.vb: Fraction.ToFraction(Integer)
-- uid: BigBook.Fraction.ToFraction(System.Single)
-  name: ToFraction(float)
-  href: api/BigBook.Fraction.html#BigBook_Fraction_ToFraction_System_Single_
-  commentId: M:BigBook.Fraction.ToFraction(System.Single)
-  name.vb: ToFraction(Single)
-  fullName: BigBook.Fraction.ToFraction(float)
-  fullName.vb: BigBook.Fraction.ToFraction(Single)
-  nameWithType: Fraction.ToFraction(float)
-  nameWithType.vb: Fraction.ToFraction(Single)
-- uid: BigBook.Fraction.ToFraction(System.UInt32)
-  name: ToFraction(uint)
-  href: api/BigBook.Fraction.html#BigBook_Fraction_ToFraction_System_UInt32_
-  commentId: M:BigBook.Fraction.ToFraction(System.UInt32)
-  name.vb: ToFraction(UInteger)
-  fullName: BigBook.Fraction.ToFraction(uint)
-  fullName.vb: BigBook.Fraction.ToFraction(UInteger)
-  nameWithType: Fraction.ToFraction(uint)
-  nameWithType.vb: Fraction.ToFraction(UInteger)
-- uid: BigBook.Fraction.ToFraction*
-  name: ToFraction
-  href: api/BigBook.Fraction.html#BigBook_Fraction_ToFraction_
-  commentId: Overload:BigBook.Fraction.ToFraction
-  isSpec: "True"
-  fullName: BigBook.Fraction.ToFraction
-  nameWithType: Fraction.ToFraction
-- uid: BigBook.Fraction.ToSingle
-  name: ToSingle()
-  href: api/BigBook.Fraction.html#BigBook_Fraction_ToSingle
-  commentId: M:BigBook.Fraction.ToSingle
-  fullName: BigBook.Fraction.ToSingle()
-  nameWithType: Fraction.ToSingle()
-- uid: BigBook.Fraction.ToSingle*
-  name: ToSingle
-  href: api/BigBook.Fraction.html#BigBook_Fraction_ToSingle_
-  commentId: Overload:BigBook.Fraction.ToSingle
-  isSpec: "True"
-  fullName: BigBook.Fraction.ToSingle
-  nameWithType: Fraction.ToSingle
-- uid: BigBook.Fraction.ToString
-  name: ToString()
-  href: api/BigBook.Fraction.html#BigBook_Fraction_ToString
-  commentId: M:BigBook.Fraction.ToString
-  fullName: BigBook.Fraction.ToString()
-  nameWithType: Fraction.ToString()
-- uid: BigBook.Fraction.ToString*
-  name: ToString
-  href: api/BigBook.Fraction.html#BigBook_Fraction_ToString_
-  commentId: Overload:BigBook.Fraction.ToString
-  isSpec: "True"
-  fullName: BigBook.Fraction.ToString
-  nameWithType: Fraction.ToString
 - uid: BigBook.Graph`1
   name: Graph<T>
   href: api/BigBook.Graph-1.html
@@ -3862,24 +3862,6 @@ references:
   isSpec: "True"
   fullName: BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToShort
   nameWithType: EndianBitConverterBase.ToShort
-- uid: BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToString(System.Byte[],System.Int32,System.Int32)
-  name: ToString(byte[], int, int)
-  href: api/BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.html#BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToString_System_Byte___System_Int32_System_Int32_
-  commentId: M:BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToString(System.Byte[],System.Int32,System.Int32)
-  name.vb: ToString(Byte(), Integer, Integer)
-  fullName: BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToString(byte[], int, int)
-  fullName.vb: BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToString(Byte(), Integer, Integer)
-  nameWithType: EndianBitConverterBase.ToString(byte[], int, int)
-  nameWithType.vb: EndianBitConverterBase.ToString(Byte(), Integer, Integer)
-- uid: BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToString(System.Byte[],System.Int32)
-  name: ToString(byte[], int)
-  href: api/BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.html#BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToString_System_Byte___System_Int32_
-  commentId: M:BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToString(System.Byte[],System.Int32)
-  name.vb: ToString(Byte(), Integer)
-  fullName: BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToString(byte[], int)
-  fullName.vb: BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToString(Byte(), Integer)
-  nameWithType: EndianBitConverterBase.ToString(byte[], int)
-  nameWithType.vb: EndianBitConverterBase.ToString(Byte(), Integer)
 - uid: BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToString(System.Byte[])
   name: ToString(byte[])
   href: api/BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.html#BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToString_System_Byte___
@@ -3889,6 +3871,24 @@ references:
   fullName.vb: BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToString(Byte())
   nameWithType: EndianBitConverterBase.ToString(byte[])
   nameWithType.vb: EndianBitConverterBase.ToString(Byte())
+- uid: BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToString(System.Byte[],System.Int32)
+  name: ToString(byte[], int)
+  href: api/BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.html#BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToString_System_Byte___System_Int32_
+  commentId: M:BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToString(System.Byte[],System.Int32)
+  name.vb: ToString(Byte(), Integer)
+  fullName: BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToString(byte[], int)
+  fullName.vb: BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToString(Byte(), Integer)
+  nameWithType: EndianBitConverterBase.ToString(byte[], int)
+  nameWithType.vb: EndianBitConverterBase.ToString(Byte(), Integer)
+- uid: BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToString(System.Byte[],System.Int32,System.Int32)
+  name: ToString(byte[], int, int)
+  href: api/BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.html#BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToString_System_Byte___System_Int32_System_Int32_
+  commentId: M:BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToString(System.Byte[],System.Int32,System.Int32)
+  name.vb: ToString(Byte(), Integer, Integer)
+  fullName: BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToString(byte[], int, int)
+  fullName.vb: BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToString(Byte(), Integer, Integer)
+  nameWithType: EndianBitConverterBase.ToString(byte[], int, int)
+  nameWithType.vb: EndianBitConverterBase.ToString(Byte(), Integer, Integer)
 - uid: BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.ToString*
   name: ToString
   href: api/BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.html#BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_ToString_
@@ -4177,15 +4177,6 @@ references:
   commentId: T:BigBook.IO.EndianBinaryReader
   fullName: BigBook.IO.EndianBinaryReader
   nameWithType: EndianBinaryReader
-- uid: BigBook.IO.EndianBinaryReader.#ctor(BigBook.IO.Converters.BaseClasses.EndianBitConverterBase,System.IO.Stream,System.Text.Encoding)
-  name: EndianBinaryReader(EndianBitConverterBase, Stream, Encoding)
-  href: api/BigBook.IO.EndianBinaryReader.html#BigBook_IO_EndianBinaryReader__ctor_BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_System_IO_Stream_System_Text_Encoding_
-  commentId: M:BigBook.IO.EndianBinaryReader.#ctor(BigBook.IO.Converters.BaseClasses.EndianBitConverterBase,System.IO.Stream,System.Text.Encoding)
-  name.vb: New(EndianBitConverterBase, Stream, Encoding)
-  fullName: BigBook.IO.EndianBinaryReader.EndianBinaryReader(BigBook.IO.Converters.BaseClasses.EndianBitConverterBase, System.IO.Stream, System.Text.Encoding)
-  fullName.vb: BigBook.IO.EndianBinaryReader.New(BigBook.IO.Converters.BaseClasses.EndianBitConverterBase, System.IO.Stream, System.Text.Encoding)
-  nameWithType: EndianBinaryReader.EndianBinaryReader(EndianBitConverterBase, Stream, Encoding)
-  nameWithType.vb: EndianBinaryReader.New(EndianBitConverterBase, Stream, Encoding)
 - uid: BigBook.IO.EndianBinaryReader.#ctor(BigBook.IO.Converters.BaseClasses.EndianBitConverterBase,System.IO.Stream)
   name: EndianBinaryReader(EndianBitConverterBase, Stream)
   href: api/BigBook.IO.EndianBinaryReader.html#BigBook_IO_EndianBinaryReader__ctor_BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_System_IO_Stream_
@@ -4195,6 +4186,15 @@ references:
   fullName.vb: BigBook.IO.EndianBinaryReader.New(BigBook.IO.Converters.BaseClasses.EndianBitConverterBase, System.IO.Stream)
   nameWithType: EndianBinaryReader.EndianBinaryReader(EndianBitConverterBase, Stream)
   nameWithType.vb: EndianBinaryReader.New(EndianBitConverterBase, Stream)
+- uid: BigBook.IO.EndianBinaryReader.#ctor(BigBook.IO.Converters.BaseClasses.EndianBitConverterBase,System.IO.Stream,System.Text.Encoding)
+  name: EndianBinaryReader(EndianBitConverterBase, Stream, Encoding)
+  href: api/BigBook.IO.EndianBinaryReader.html#BigBook_IO_EndianBinaryReader__ctor_BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_System_IO_Stream_System_Text_Encoding_
+  commentId: M:BigBook.IO.EndianBinaryReader.#ctor(BigBook.IO.Converters.BaseClasses.EndianBitConverterBase,System.IO.Stream,System.Text.Encoding)
+  name.vb: New(EndianBitConverterBase, Stream, Encoding)
+  fullName: BigBook.IO.EndianBinaryReader.EndianBinaryReader(BigBook.IO.Converters.BaseClasses.EndianBitConverterBase, System.IO.Stream, System.Text.Encoding)
+  fullName.vb: BigBook.IO.EndianBinaryReader.New(BigBook.IO.Converters.BaseClasses.EndianBitConverterBase, System.IO.Stream, System.Text.Encoding)
+  nameWithType: EndianBinaryReader.EndianBinaryReader(EndianBitConverterBase, Stream, Encoding)
+  nameWithType.vb: EndianBinaryReader.New(EndianBitConverterBase, Stream, Encoding)
 - uid: BigBook.IO.EndianBinaryReader.#ctor*
   name: EndianBinaryReader
   href: api/BigBook.IO.EndianBinaryReader.html#BigBook_IO_EndianBinaryReader__ctor_
@@ -4559,15 +4559,6 @@ references:
   commentId: T:BigBook.IO.EndianBinaryWriter
   fullName: BigBook.IO.EndianBinaryWriter
   nameWithType: EndianBinaryWriter
-- uid: BigBook.IO.EndianBinaryWriter.#ctor(BigBook.IO.Converters.BaseClasses.EndianBitConverterBase,System.IO.Stream,System.Text.Encoding)
-  name: EndianBinaryWriter(EndianBitConverterBase, Stream, Encoding)
-  href: api/BigBook.IO.EndianBinaryWriter.html#BigBook_IO_EndianBinaryWriter__ctor_BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_System_IO_Stream_System_Text_Encoding_
-  commentId: M:BigBook.IO.EndianBinaryWriter.#ctor(BigBook.IO.Converters.BaseClasses.EndianBitConverterBase,System.IO.Stream,System.Text.Encoding)
-  name.vb: New(EndianBitConverterBase, Stream, Encoding)
-  fullName: BigBook.IO.EndianBinaryWriter.EndianBinaryWriter(BigBook.IO.Converters.BaseClasses.EndianBitConverterBase, System.IO.Stream, System.Text.Encoding)
-  fullName.vb: BigBook.IO.EndianBinaryWriter.New(BigBook.IO.Converters.BaseClasses.EndianBitConverterBase, System.IO.Stream, System.Text.Encoding)
-  nameWithType: EndianBinaryWriter.EndianBinaryWriter(EndianBitConverterBase, Stream, Encoding)
-  nameWithType.vb: EndianBinaryWriter.New(EndianBitConverterBase, Stream, Encoding)
 - uid: BigBook.IO.EndianBinaryWriter.#ctor(BigBook.IO.Converters.BaseClasses.EndianBitConverterBase,System.IO.Stream)
   name: EndianBinaryWriter(EndianBitConverterBase, Stream)
   href: api/BigBook.IO.EndianBinaryWriter.html#BigBook_IO_EndianBinaryWriter__ctor_BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_System_IO_Stream_
@@ -4577,6 +4568,15 @@ references:
   fullName.vb: BigBook.IO.EndianBinaryWriter.New(BigBook.IO.Converters.BaseClasses.EndianBitConverterBase, System.IO.Stream)
   nameWithType: EndianBinaryWriter.EndianBinaryWriter(EndianBitConverterBase, Stream)
   nameWithType.vb: EndianBinaryWriter.New(EndianBitConverterBase, Stream)
+- uid: BigBook.IO.EndianBinaryWriter.#ctor(BigBook.IO.Converters.BaseClasses.EndianBitConverterBase,System.IO.Stream,System.Text.Encoding)
+  name: EndianBinaryWriter(EndianBitConverterBase, Stream, Encoding)
+  href: api/BigBook.IO.EndianBinaryWriter.html#BigBook_IO_EndianBinaryWriter__ctor_BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_System_IO_Stream_System_Text_Encoding_
+  commentId: M:BigBook.IO.EndianBinaryWriter.#ctor(BigBook.IO.Converters.BaseClasses.EndianBitConverterBase,System.IO.Stream,System.Text.Encoding)
+  name.vb: New(EndianBitConverterBase, Stream, Encoding)
+  fullName: BigBook.IO.EndianBinaryWriter.EndianBinaryWriter(BigBook.IO.Converters.BaseClasses.EndianBitConverterBase, System.IO.Stream, System.Text.Encoding)
+  fullName.vb: BigBook.IO.EndianBinaryWriter.New(BigBook.IO.Converters.BaseClasses.EndianBitConverterBase, System.IO.Stream, System.Text.Encoding)
+  nameWithType: EndianBinaryWriter.EndianBinaryWriter(EndianBitConverterBase, Stream, Encoding)
+  nameWithType.vb: EndianBinaryWriter.New(EndianBitConverterBase, Stream, Encoding)
 - uid: BigBook.IO.EndianBinaryWriter.#ctor*
   name: EndianBinaryWriter
   href: api/BigBook.IO.EndianBinaryWriter.html#BigBook_IO_EndianBinaryWriter__ctor_
@@ -4708,15 +4708,6 @@ references:
   fullName.vb: BigBook.IO.EndianBinaryWriter.Write(Byte)
   nameWithType: EndianBinaryWriter.Write(byte)
   nameWithType.vb: EndianBinaryWriter.Write(Byte)
-- uid: BigBook.IO.EndianBinaryWriter.Write(System.Byte[],System.Int32,System.Int32)
-  name: Write(byte[], int, int)
-  href: api/BigBook.IO.EndianBinaryWriter.html#BigBook_IO_EndianBinaryWriter_Write_System_Byte___System_Int32_System_Int32_
-  commentId: M:BigBook.IO.EndianBinaryWriter.Write(System.Byte[],System.Int32,System.Int32)
-  name.vb: Write(Byte(), Integer, Integer)
-  fullName: BigBook.IO.EndianBinaryWriter.Write(byte[], int, int)
-  fullName.vb: BigBook.IO.EndianBinaryWriter.Write(Byte(), Integer, Integer)
-  nameWithType: EndianBinaryWriter.Write(byte[], int, int)
-  nameWithType.vb: EndianBinaryWriter.Write(Byte(), Integer, Integer)
 - uid: BigBook.IO.EndianBinaryWriter.Write(System.Byte[])
   name: Write(byte[])
   href: api/BigBook.IO.EndianBinaryWriter.html#BigBook_IO_EndianBinaryWriter_Write_System_Byte___
@@ -4726,6 +4717,15 @@ references:
   fullName.vb: BigBook.IO.EndianBinaryWriter.Write(Byte())
   nameWithType: EndianBinaryWriter.Write(byte[])
   nameWithType.vb: EndianBinaryWriter.Write(Byte())
+- uid: BigBook.IO.EndianBinaryWriter.Write(System.Byte[],System.Int32,System.Int32)
+  name: Write(byte[], int, int)
+  href: api/BigBook.IO.EndianBinaryWriter.html#BigBook_IO_EndianBinaryWriter_Write_System_Byte___System_Int32_System_Int32_
+  commentId: M:BigBook.IO.EndianBinaryWriter.Write(System.Byte[],System.Int32,System.Int32)
+  name.vb: Write(Byte(), Integer, Integer)
+  fullName: BigBook.IO.EndianBinaryWriter.Write(byte[], int, int)
+  fullName.vb: BigBook.IO.EndianBinaryWriter.Write(Byte(), Integer, Integer)
+  nameWithType: EndianBinaryWriter.Write(byte[], int, int)
+  nameWithType.vb: EndianBinaryWriter.Write(Byte(), Integer, Integer)
 - uid: BigBook.IO.EndianBinaryWriter.Write(System.Char)
   name: Write(char)
   href: api/BigBook.IO.EndianBinaryWriter.html#BigBook_IO_EndianBinaryWriter_Write_System_Char_
@@ -4875,15 +4875,6 @@ references:
   fullName.vb: BigBook.LazyAsync(Of T)
   nameWithType: LazyAsync<T>
   nameWithType.vb: LazyAsync(Of T)
-- uid: BigBook.LazyAsync`1.#ctor(System.Func{`0})
-  name: LazyAsync(Func<T>)
-  href: api/BigBook.LazyAsync-1.html#BigBook_LazyAsync_1__ctor_System_Func__0__
-  commentId: M:BigBook.LazyAsync`1.#ctor(System.Func{`0})
-  name.vb: New(Func(Of T))
-  fullName: BigBook.LazyAsync<T>.LazyAsync(System.Func<T>)
-  fullName.vb: BigBook.LazyAsync(Of T).New(System.Func(Of T))
-  nameWithType: LazyAsync<T>.LazyAsync(Func<T>)
-  nameWithType.vb: LazyAsync(Of T).New(Func(Of T))
 - uid: BigBook.LazyAsync`1.#ctor(System.Func{System.Threading.Tasks.Task{`0}})
   name: LazyAsync(Func<Task<T>>)
   href: api/BigBook.LazyAsync-1.html#BigBook_LazyAsync_1__ctor_System_Func_System_Threading_Tasks_Task__0___
@@ -4893,6 +4884,15 @@ references:
   fullName.vb: BigBook.LazyAsync(Of T).New(System.Func(Of System.Threading.Tasks.Task(Of T)))
   nameWithType: LazyAsync<T>.LazyAsync(Func<Task<T>>)
   nameWithType.vb: LazyAsync(Of T).New(Func(Of Task(Of T)))
+- uid: BigBook.LazyAsync`1.#ctor(System.Func{`0})
+  name: LazyAsync(Func<T>)
+  href: api/BigBook.LazyAsync-1.html#BigBook_LazyAsync_1__ctor_System_Func__0__
+  commentId: M:BigBook.LazyAsync`1.#ctor(System.Func{`0})
+  name.vb: New(Func(Of T))
+  fullName: BigBook.LazyAsync<T>.LazyAsync(System.Func<T>)
+  fullName.vb: BigBook.LazyAsync(Of T).New(System.Func(Of T))
+  nameWithType: LazyAsync<T>.LazyAsync(Func<T>)
+  nameWithType.vb: LazyAsync(Of T).New(Func(Of T))
 - uid: BigBook.LazyAsync`1.#ctor*
   name: LazyAsync
   href: api/BigBook.LazyAsync-1.html#BigBook_LazyAsync_1__ctor_
@@ -4929,23 +4929,6 @@ references:
   fullName.vb: BigBook.ListMapping(Of T1, T2)
   nameWithType: ListMapping<T1, T2>
   nameWithType.vb: ListMapping(Of T1, T2)
-- uid: BigBook.ListMapping`2.Add(`0,`1)
-  name: Add(T1, T2)
-  href: api/BigBook.ListMapping-2.html#BigBook_ListMapping_2_Add__0__1_
-  commentId: M:BigBook.ListMapping`2.Add(`0,`1)
-  fullName: BigBook.ListMapping<T1, T2>.Add(T1, T2)
-  fullName.vb: BigBook.ListMapping(Of T1, T2).Add(T1, T2)
-  nameWithType: ListMapping<T1, T2>.Add(T1, T2)
-  nameWithType.vb: ListMapping(Of T1, T2).Add(T1, T2)
-- uid: BigBook.ListMapping`2.Add(`0,System.Collections.Generic.IEnumerable{`1})
-  name: Add(T1, IEnumerable<T2>)
-  href: api/BigBook.ListMapping-2.html#BigBook_ListMapping_2_Add__0_System_Collections_Generic_IEnumerable__1__
-  commentId: M:BigBook.ListMapping`2.Add(`0,System.Collections.Generic.IEnumerable{`1})
-  name.vb: Add(T1, IEnumerable(Of T2))
-  fullName: BigBook.ListMapping<T1, T2>.Add(T1, System.Collections.Generic.IEnumerable<T2>)
-  fullName.vb: BigBook.ListMapping(Of T1, T2).Add(T1, System.Collections.Generic.IEnumerable(Of T2))
-  nameWithType: ListMapping<T1, T2>.Add(T1, IEnumerable<T2>)
-  nameWithType.vb: ListMapping(Of T1, T2).Add(T1, IEnumerable(Of T2))
 - uid: BigBook.ListMapping`2.Add(System.Collections.Generic.KeyValuePair{`0,System.Collections.Generic.IEnumerable{`1}})
   name: Add(KeyValuePair<T1, IEnumerable<T2>>)
   href: api/BigBook.ListMapping-2.html#BigBook_ListMapping_2_Add_System_Collections_Generic_KeyValuePair__0_System_Collections_Generic_IEnumerable__1___
@@ -4955,6 +4938,23 @@ references:
   fullName.vb: BigBook.ListMapping(Of T1, T2).Add(System.Collections.Generic.KeyValuePair(Of T1, System.Collections.Generic.IEnumerable(Of T2)))
   nameWithType: ListMapping<T1, T2>.Add(KeyValuePair<T1, IEnumerable<T2>>)
   nameWithType.vb: ListMapping(Of T1, T2).Add(KeyValuePair(Of T1, IEnumerable(Of T2)))
+- uid: BigBook.ListMapping`2.Add(`0,System.Collections.Generic.IEnumerable{`1})
+  name: Add(T1, IEnumerable<T2>)
+  href: api/BigBook.ListMapping-2.html#BigBook_ListMapping_2_Add__0_System_Collections_Generic_IEnumerable__1__
+  commentId: M:BigBook.ListMapping`2.Add(`0,System.Collections.Generic.IEnumerable{`1})
+  name.vb: Add(T1, IEnumerable(Of T2))
+  fullName: BigBook.ListMapping<T1, T2>.Add(T1, System.Collections.Generic.IEnumerable<T2>)
+  fullName.vb: BigBook.ListMapping(Of T1, T2).Add(T1, System.Collections.Generic.IEnumerable(Of T2))
+  nameWithType: ListMapping<T1, T2>.Add(T1, IEnumerable<T2>)
+  nameWithType.vb: ListMapping(Of T1, T2).Add(T1, IEnumerable(Of T2))
+- uid: BigBook.ListMapping`2.Add(`0,`1)
+  name: Add(T1, T2)
+  href: api/BigBook.ListMapping-2.html#BigBook_ListMapping_2_Add__0__1_
+  commentId: M:BigBook.ListMapping`2.Add(`0,`1)
+  fullName: BigBook.ListMapping<T1, T2>.Add(T1, T2)
+  fullName.vb: BigBook.ListMapping(Of T1, T2).Add(T1, T2)
+  nameWithType: ListMapping<T1, T2>.Add(T1, T2)
+  nameWithType.vb: ListMapping(Of T1, T2).Add(T1, T2)
 - uid: BigBook.ListMapping`2.Add*
   name: Add
   href: api/BigBook.ListMapping-2.html#BigBook_ListMapping_2_Add_
@@ -4981,23 +4981,6 @@ references:
   fullName.vb: BigBook.ListMapping(Of T1, T2).Clear
   nameWithType: ListMapping<T1, T2>.Clear
   nameWithType.vb: ListMapping(Of T1, T2).Clear
-- uid: BigBook.ListMapping`2.Contains(`0,`1)
-  name: Contains(T1, T2)
-  href: api/BigBook.ListMapping-2.html#BigBook_ListMapping_2_Contains__0__1_
-  commentId: M:BigBook.ListMapping`2.Contains(`0,`1)
-  fullName: BigBook.ListMapping<T1, T2>.Contains(T1, T2)
-  fullName.vb: BigBook.ListMapping(Of T1, T2).Contains(T1, T2)
-  nameWithType: ListMapping<T1, T2>.Contains(T1, T2)
-  nameWithType.vb: ListMapping(Of T1, T2).Contains(T1, T2)
-- uid: BigBook.ListMapping`2.Contains(`0,System.Collections.Generic.IEnumerable{`1})
-  name: Contains(T1, IEnumerable<T2>)
-  href: api/BigBook.ListMapping-2.html#BigBook_ListMapping_2_Contains__0_System_Collections_Generic_IEnumerable__1__
-  commentId: M:BigBook.ListMapping`2.Contains(`0,System.Collections.Generic.IEnumerable{`1})
-  name.vb: Contains(T1, IEnumerable(Of T2))
-  fullName: BigBook.ListMapping<T1, T2>.Contains(T1, System.Collections.Generic.IEnumerable<T2>)
-  fullName.vb: BigBook.ListMapping(Of T1, T2).Contains(T1, System.Collections.Generic.IEnumerable(Of T2))
-  nameWithType: ListMapping<T1, T2>.Contains(T1, IEnumerable<T2>)
-  nameWithType.vb: ListMapping(Of T1, T2).Contains(T1, IEnumerable(Of T2))
 - uid: BigBook.ListMapping`2.Contains(System.Collections.Generic.KeyValuePair{`0,System.Collections.Generic.IEnumerable{`1}})
   name: Contains(KeyValuePair<T1, IEnumerable<T2>>)
   href: api/BigBook.ListMapping-2.html#BigBook_ListMapping_2_Contains_System_Collections_Generic_KeyValuePair__0_System_Collections_Generic_IEnumerable__1___
@@ -5007,6 +4990,23 @@ references:
   fullName.vb: BigBook.ListMapping(Of T1, T2).Contains(System.Collections.Generic.KeyValuePair(Of T1, System.Collections.Generic.IEnumerable(Of T2)))
   nameWithType: ListMapping<T1, T2>.Contains(KeyValuePair<T1, IEnumerable<T2>>)
   nameWithType.vb: ListMapping(Of T1, T2).Contains(KeyValuePair(Of T1, IEnumerable(Of T2)))
+- uid: BigBook.ListMapping`2.Contains(`0,System.Collections.Generic.IEnumerable{`1})
+  name: Contains(T1, IEnumerable<T2>)
+  href: api/BigBook.ListMapping-2.html#BigBook_ListMapping_2_Contains__0_System_Collections_Generic_IEnumerable__1__
+  commentId: M:BigBook.ListMapping`2.Contains(`0,System.Collections.Generic.IEnumerable{`1})
+  name.vb: Contains(T1, IEnumerable(Of T2))
+  fullName: BigBook.ListMapping<T1, T2>.Contains(T1, System.Collections.Generic.IEnumerable<T2>)
+  fullName.vb: BigBook.ListMapping(Of T1, T2).Contains(T1, System.Collections.Generic.IEnumerable(Of T2))
+  nameWithType: ListMapping<T1, T2>.Contains(T1, IEnumerable<T2>)
+  nameWithType.vb: ListMapping(Of T1, T2).Contains(T1, IEnumerable(Of T2))
+- uid: BigBook.ListMapping`2.Contains(`0,`1)
+  name: Contains(T1, T2)
+  href: api/BigBook.ListMapping-2.html#BigBook_ListMapping_2_Contains__0__1_
+  commentId: M:BigBook.ListMapping`2.Contains(`0,`1)
+  fullName: BigBook.ListMapping<T1, T2>.Contains(T1, T2)
+  fullName.vb: BigBook.ListMapping(Of T1, T2).Contains(T1, T2)
+  nameWithType: ListMapping<T1, T2>.Contains(T1, T2)
+  nameWithType.vb: ListMapping(Of T1, T2).Contains(T1, T2)
 - uid: BigBook.ListMapping`2.Contains*
   name: Contains
   href: api/BigBook.ListMapping-2.html#BigBook_ListMapping_2_Contains_
@@ -5155,22 +5155,6 @@ references:
   fullName.vb: BigBook.ListMapping(Of T1, T2).Keys
   nameWithType: ListMapping<T1, T2>.Keys
   nameWithType.vb: ListMapping(Of T1, T2).Keys
-- uid: BigBook.ListMapping`2.Remove(`0,`1)
-  name: Remove(T1, T2)
-  href: api/BigBook.ListMapping-2.html#BigBook_ListMapping_2_Remove__0__1_
-  commentId: M:BigBook.ListMapping`2.Remove(`0,`1)
-  fullName: BigBook.ListMapping<T1, T2>.Remove(T1, T2)
-  fullName.vb: BigBook.ListMapping(Of T1, T2).Remove(T1, T2)
-  nameWithType: ListMapping<T1, T2>.Remove(T1, T2)
-  nameWithType.vb: ListMapping(Of T1, T2).Remove(T1, T2)
-- uid: BigBook.ListMapping`2.Remove(`0)
-  name: Remove(T1)
-  href: api/BigBook.ListMapping-2.html#BigBook_ListMapping_2_Remove__0_
-  commentId: M:BigBook.ListMapping`2.Remove(`0)
-  fullName: BigBook.ListMapping<T1, T2>.Remove(T1)
-  fullName.vb: BigBook.ListMapping(Of T1, T2).Remove(T1)
-  nameWithType: ListMapping<T1, T2>.Remove(T1)
-  nameWithType.vb: ListMapping(Of T1, T2).Remove(T1)
 - uid: BigBook.ListMapping`2.Remove(System.Collections.Generic.KeyValuePair{`0,System.Collections.Generic.IEnumerable{`1}})
   name: Remove(KeyValuePair<T1, IEnumerable<T2>>)
   href: api/BigBook.ListMapping-2.html#BigBook_ListMapping_2_Remove_System_Collections_Generic_KeyValuePair__0_System_Collections_Generic_IEnumerable__1___
@@ -5180,6 +5164,22 @@ references:
   fullName.vb: BigBook.ListMapping(Of T1, T2).Remove(System.Collections.Generic.KeyValuePair(Of T1, System.Collections.Generic.IEnumerable(Of T2)))
   nameWithType: ListMapping<T1, T2>.Remove(KeyValuePair<T1, IEnumerable<T2>>)
   nameWithType.vb: ListMapping(Of T1, T2).Remove(KeyValuePair(Of T1, IEnumerable(Of T2)))
+- uid: BigBook.ListMapping`2.Remove(`0)
+  name: Remove(T1)
+  href: api/BigBook.ListMapping-2.html#BigBook_ListMapping_2_Remove__0_
+  commentId: M:BigBook.ListMapping`2.Remove(`0)
+  fullName: BigBook.ListMapping<T1, T2>.Remove(T1)
+  fullName.vb: BigBook.ListMapping(Of T1, T2).Remove(T1)
+  nameWithType: ListMapping<T1, T2>.Remove(T1)
+  nameWithType.vb: ListMapping(Of T1, T2).Remove(T1)
+- uid: BigBook.ListMapping`2.Remove(`0,`1)
+  name: Remove(T1, T2)
+  href: api/BigBook.ListMapping-2.html#BigBook_ListMapping_2_Remove__0__1_
+  commentId: M:BigBook.ListMapping`2.Remove(`0,`1)
+  fullName: BigBook.ListMapping<T1, T2>.Remove(T1, T2)
+  fullName.vb: BigBook.ListMapping(Of T1, T2).Remove(T1, T2)
+  nameWithType: ListMapping<T1, T2>.Remove(T1, T2)
+  nameWithType.vb: ListMapping(Of T1, T2).Remove(T1, T2)
 - uid: BigBook.ListMapping`2.Remove*
   name: Remove
   href: api/BigBook.ListMapping-2.html#BigBook_ListMapping_2_Remove_
@@ -5250,15 +5250,6 @@ references:
   fullName.vb: BigBook.ManyToManyIndex(Of TFirst, TSecond)
   nameWithType: ManyToManyIndex<TFirst, TSecond>
   nameWithType.vb: ManyToManyIndex(Of TFirst, TSecond)
-- uid: BigBook.ManyToManyIndex`2.Add(`0,`1[])
-  name: Add(TFirst, params TSecond[])
-  href: api/BigBook.ManyToManyIndex-2.html#BigBook_ManyToManyIndex_2_Add__0__1___
-  commentId: M:BigBook.ManyToManyIndex`2.Add(`0,`1[])
-  name.vb: Add(TFirst, ParamArray TSecond())
-  fullName: BigBook.ManyToManyIndex<TFirst, TSecond>.Add(TFirst, params TSecond[])
-  fullName.vb: BigBook.ManyToManyIndex(Of TFirst, TSecond).Add(TFirst, ParamArray TSecond())
-  nameWithType: ManyToManyIndex<TFirst, TSecond>.Add(TFirst, params TSecond[])
-  nameWithType.vb: ManyToManyIndex(Of TFirst, TSecond).Add(TFirst, ParamArray TSecond())
 - uid: BigBook.ManyToManyIndex`2.Add(`0,System.Collections.Generic.IEnumerable{`1})
   name: Add(TFirst, IEnumerable<TSecond>)
   href: api/BigBook.ManyToManyIndex-2.html#BigBook_ManyToManyIndex_2_Add__0_System_Collections_Generic_IEnumerable__1__
@@ -5268,15 +5259,15 @@ references:
   fullName.vb: BigBook.ManyToManyIndex(Of TFirst, TSecond).Add(TFirst, System.Collections.Generic.IEnumerable(Of TSecond))
   nameWithType: ManyToManyIndex<TFirst, TSecond>.Add(TFirst, IEnumerable<TSecond>)
   nameWithType.vb: ManyToManyIndex(Of TFirst, TSecond).Add(TFirst, IEnumerable(Of TSecond))
-- uid: BigBook.ManyToManyIndex`2.Add(`1,`0[])
-  name: Add(TSecond, params TFirst[])
-  href: api/BigBook.ManyToManyIndex-2.html#BigBook_ManyToManyIndex_2_Add__1__0___
-  commentId: M:BigBook.ManyToManyIndex`2.Add(`1,`0[])
-  name.vb: Add(TSecond, ParamArray TFirst())
-  fullName: BigBook.ManyToManyIndex<TFirst, TSecond>.Add(TSecond, params TFirst[])
-  fullName.vb: BigBook.ManyToManyIndex(Of TFirst, TSecond).Add(TSecond, ParamArray TFirst())
-  nameWithType: ManyToManyIndex<TFirst, TSecond>.Add(TSecond, params TFirst[])
-  nameWithType.vb: ManyToManyIndex(Of TFirst, TSecond).Add(TSecond, ParamArray TFirst())
+- uid: BigBook.ManyToManyIndex`2.Add(`0,`1[])
+  name: Add(TFirst, params TSecond[])
+  href: api/BigBook.ManyToManyIndex-2.html#BigBook_ManyToManyIndex_2_Add__0__1___
+  commentId: M:BigBook.ManyToManyIndex`2.Add(`0,`1[])
+  name.vb: Add(TFirst, ParamArray TSecond())
+  fullName: BigBook.ManyToManyIndex<TFirst, TSecond>.Add(TFirst, params TSecond[])
+  fullName.vb: BigBook.ManyToManyIndex(Of TFirst, TSecond).Add(TFirst, ParamArray TSecond())
+  nameWithType: ManyToManyIndex<TFirst, TSecond>.Add(TFirst, params TSecond[])
+  nameWithType.vb: ManyToManyIndex(Of TFirst, TSecond).Add(TFirst, ParamArray TSecond())
 - uid: BigBook.ManyToManyIndex`2.Add(`1,System.Collections.Generic.IEnumerable{`0})
   name: Add(TSecond, IEnumerable<TFirst>)
   href: api/BigBook.ManyToManyIndex-2.html#BigBook_ManyToManyIndex_2_Add__1_System_Collections_Generic_IEnumerable__0__
@@ -5286,6 +5277,15 @@ references:
   fullName.vb: BigBook.ManyToManyIndex(Of TFirst, TSecond).Add(TSecond, System.Collections.Generic.IEnumerable(Of TFirst))
   nameWithType: ManyToManyIndex<TFirst, TSecond>.Add(TSecond, IEnumerable<TFirst>)
   nameWithType.vb: ManyToManyIndex(Of TFirst, TSecond).Add(TSecond, IEnumerable(Of TFirst))
+- uid: BigBook.ManyToManyIndex`2.Add(`1,`0[])
+  name: Add(TSecond, params TFirst[])
+  href: api/BigBook.ManyToManyIndex-2.html#BigBook_ManyToManyIndex_2_Add__1__0___
+  commentId: M:BigBook.ManyToManyIndex`2.Add(`1,`0[])
+  name.vb: Add(TSecond, ParamArray TFirst())
+  fullName: BigBook.ManyToManyIndex<TFirst, TSecond>.Add(TSecond, params TFirst[])
+  fullName.vb: BigBook.ManyToManyIndex(Of TFirst, TSecond).Add(TSecond, ParamArray TFirst())
+  nameWithType: ManyToManyIndex<TFirst, TSecond>.Add(TSecond, params TFirst[])
+  nameWithType.vb: ManyToManyIndex(Of TFirst, TSecond).Add(TSecond, ParamArray TFirst())
 - uid: BigBook.ManyToManyIndex`2.Add*
   name: Add
   href: api/BigBook.ManyToManyIndex-2.html#BigBook_ManyToManyIndex_2_Add_
@@ -5552,6 +5552,71 @@ references:
   isSpec: "True"
   fullName: BigBook.Matrix.Negate
   nameWithType: Matrix.Negate
+- uid: BigBook.Matrix.Subtract(BigBook.Matrix,BigBook.Matrix)
+  name: Subtract(Matrix, Matrix)
+  href: api/BigBook.Matrix.html#BigBook_Matrix_Subtract_BigBook_Matrix_BigBook_Matrix_
+  commentId: M:BigBook.Matrix.Subtract(BigBook.Matrix,BigBook.Matrix)
+  fullName: BigBook.Matrix.Subtract(BigBook.Matrix, BigBook.Matrix)
+  nameWithType: Matrix.Subtract(Matrix, Matrix)
+- uid: BigBook.Matrix.Subtract*
+  name: Subtract
+  href: api/BigBook.Matrix.html#BigBook_Matrix_Subtract_
+  commentId: Overload:BigBook.Matrix.Subtract
+  isSpec: "True"
+  fullName: BigBook.Matrix.Subtract
+  nameWithType: Matrix.Subtract
+- uid: BigBook.Matrix.ToString
+  name: ToString()
+  href: api/BigBook.Matrix.html#BigBook_Matrix_ToString
+  commentId: M:BigBook.Matrix.ToString
+  fullName: BigBook.Matrix.ToString()
+  nameWithType: Matrix.ToString()
+- uid: BigBook.Matrix.ToString*
+  name: ToString
+  href: api/BigBook.Matrix.html#BigBook_Matrix_ToString_
+  commentId: Overload:BigBook.Matrix.ToString
+  isSpec: "True"
+  fullName: BigBook.Matrix.ToString
+  nameWithType: Matrix.ToString
+- uid: BigBook.Matrix.Transpose
+  name: Transpose()
+  href: api/BigBook.Matrix.html#BigBook_Matrix_Transpose
+  commentId: M:BigBook.Matrix.Transpose
+  fullName: BigBook.Matrix.Transpose()
+  nameWithType: Matrix.Transpose()
+- uid: BigBook.Matrix.Transpose*
+  name: Transpose
+  href: api/BigBook.Matrix.html#BigBook_Matrix_Transpose_
+  commentId: Overload:BigBook.Matrix.Transpose
+  isSpec: "True"
+  fullName: BigBook.Matrix.Transpose
+  nameWithType: Matrix.Transpose
+- uid: BigBook.Matrix.Values
+  name: Values
+  href: api/BigBook.Matrix.html#BigBook_Matrix_Values
+  commentId: P:BigBook.Matrix.Values
+  fullName: BigBook.Matrix.Values
+  nameWithType: Matrix.Values
+- uid: BigBook.Matrix.Values*
+  name: Values
+  href: api/BigBook.Matrix.html#BigBook_Matrix_Values_
+  commentId: Overload:BigBook.Matrix.Values
+  isSpec: "True"
+  fullName: BigBook.Matrix.Values
+  nameWithType: Matrix.Values
+- uid: BigBook.Matrix.Width
+  name: Width
+  href: api/BigBook.Matrix.html#BigBook_Matrix_Width
+  commentId: P:BigBook.Matrix.Width
+  fullName: BigBook.Matrix.Width
+  nameWithType: Matrix.Width
+- uid: BigBook.Matrix.Width*
+  name: Width
+  href: api/BigBook.Matrix.html#BigBook_Matrix_Width_
+  commentId: Overload:BigBook.Matrix.Width
+  isSpec: "True"
+  fullName: BigBook.Matrix.Width
+  nameWithType: Matrix.Width
 - uid: BigBook.Matrix.op_Addition(BigBook.Matrix,BigBook.Matrix)
   name: operator +(Matrix, Matrix)
   href: api/BigBook.Matrix.html#BigBook_Matrix_op_Addition_BigBook_Matrix_BigBook_Matrix_
@@ -5712,71 +5777,6 @@ references:
   fullName.vb: BigBook.Matrix.-
   nameWithType: Matrix.operator -
   nameWithType.vb: Matrix.-
-- uid: BigBook.Matrix.Subtract(BigBook.Matrix,BigBook.Matrix)
-  name: Subtract(Matrix, Matrix)
-  href: api/BigBook.Matrix.html#BigBook_Matrix_Subtract_BigBook_Matrix_BigBook_Matrix_
-  commentId: M:BigBook.Matrix.Subtract(BigBook.Matrix,BigBook.Matrix)
-  fullName: BigBook.Matrix.Subtract(BigBook.Matrix, BigBook.Matrix)
-  nameWithType: Matrix.Subtract(Matrix, Matrix)
-- uid: BigBook.Matrix.Subtract*
-  name: Subtract
-  href: api/BigBook.Matrix.html#BigBook_Matrix_Subtract_
-  commentId: Overload:BigBook.Matrix.Subtract
-  isSpec: "True"
-  fullName: BigBook.Matrix.Subtract
-  nameWithType: Matrix.Subtract
-- uid: BigBook.Matrix.ToString
-  name: ToString()
-  href: api/BigBook.Matrix.html#BigBook_Matrix_ToString
-  commentId: M:BigBook.Matrix.ToString
-  fullName: BigBook.Matrix.ToString()
-  nameWithType: Matrix.ToString()
-- uid: BigBook.Matrix.ToString*
-  name: ToString
-  href: api/BigBook.Matrix.html#BigBook_Matrix_ToString_
-  commentId: Overload:BigBook.Matrix.ToString
-  isSpec: "True"
-  fullName: BigBook.Matrix.ToString
-  nameWithType: Matrix.ToString
-- uid: BigBook.Matrix.Transpose
-  name: Transpose()
-  href: api/BigBook.Matrix.html#BigBook_Matrix_Transpose
-  commentId: M:BigBook.Matrix.Transpose
-  fullName: BigBook.Matrix.Transpose()
-  nameWithType: Matrix.Transpose()
-- uid: BigBook.Matrix.Transpose*
-  name: Transpose
-  href: api/BigBook.Matrix.html#BigBook_Matrix_Transpose_
-  commentId: Overload:BigBook.Matrix.Transpose
-  isSpec: "True"
-  fullName: BigBook.Matrix.Transpose
-  nameWithType: Matrix.Transpose
-- uid: BigBook.Matrix.Values
-  name: Values
-  href: api/BigBook.Matrix.html#BigBook_Matrix_Values
-  commentId: P:BigBook.Matrix.Values
-  fullName: BigBook.Matrix.Values
-  nameWithType: Matrix.Values
-- uid: BigBook.Matrix.Values*
-  name: Values
-  href: api/BigBook.Matrix.html#BigBook_Matrix_Values_
-  commentId: Overload:BigBook.Matrix.Values
-  isSpec: "True"
-  fullName: BigBook.Matrix.Values
-  nameWithType: Matrix.Values
-- uid: BigBook.Matrix.Width
-  name: Width
-  href: api/BigBook.Matrix.html#BigBook_Matrix_Width
-  commentId: P:BigBook.Matrix.Width
-  fullName: BigBook.Matrix.Width
-  nameWithType: Matrix.Width
-- uid: BigBook.Matrix.Width*
-  name: Width
-  href: api/BigBook.Matrix.html#BigBook_Matrix_Width_
-  commentId: Overload:BigBook.Matrix.Width
-  isSpec: "True"
-  fullName: BigBook.Matrix.Width
-  nameWithType: Matrix.Width
 - uid: BigBook.MinificationType
   name: MinificationType
   href: api/BigBook.MinificationType.html
@@ -5847,14 +5847,6 @@ references:
   fullName.vb: BigBook.ObservableList(Of T).New
   nameWithType: ObservableList<T>.ObservableList
   nameWithType.vb: ObservableList(Of T).New
-- uid: BigBook.ObservableList`1.Add(`0)
-  name: Add(T)
-  href: api/BigBook.ObservableList-1.html#BigBook_ObservableList_1_Add__0_
-  commentId: M:BigBook.ObservableList`1.Add(`0)
-  fullName: BigBook.ObservableList<T>.Add(T)
-  fullName.vb: BigBook.ObservableList(Of T).Add(T)
-  nameWithType: ObservableList<T>.Add(T)
-  nameWithType.vb: ObservableList(Of T).Add(T)
 - uid: BigBook.ObservableList`1.Add(System.Object)
   name: Add(object)
   href: api/BigBook.ObservableList-1.html#BigBook_ObservableList_1_Add_System_Object_
@@ -5864,6 +5856,14 @@ references:
   fullName.vb: BigBook.ObservableList(Of T).Add(Object)
   nameWithType: ObservableList<T>.Add(object)
   nameWithType.vb: ObservableList(Of T).Add(Object)
+- uid: BigBook.ObservableList`1.Add(`0)
+  name: Add(T)
+  href: api/BigBook.ObservableList-1.html#BigBook_ObservableList_1_Add__0_
+  commentId: M:BigBook.ObservableList`1.Add(`0)
+  fullName: BigBook.ObservableList<T>.Add(T)
+  fullName.vb: BigBook.ObservableList(Of T).Add(T)
+  nameWithType: ObservableList<T>.Add(T)
+  nameWithType.vb: ObservableList(Of T).Add(T)
 - uid: BigBook.ObservableList`1.Add*
   name: Add
   href: api/BigBook.ObservableList-1.html#BigBook_ObservableList_1_Add_
@@ -5933,14 +5933,6 @@ references:
   fullName.vb: BigBook.ObservableList(Of T).CollectionChanged
   nameWithType: ObservableList<T>.CollectionChanged
   nameWithType.vb: ObservableList(Of T).CollectionChanged
-- uid: BigBook.ObservableList`1.Contains(`0)
-  name: Contains(T)
-  href: api/BigBook.ObservableList-1.html#BigBook_ObservableList_1_Contains__0_
-  commentId: M:BigBook.ObservableList`1.Contains(`0)
-  fullName: BigBook.ObservableList<T>.Contains(T)
-  fullName.vb: BigBook.ObservableList(Of T).Contains(T)
-  nameWithType: ObservableList<T>.Contains(T)
-  nameWithType.vb: ObservableList(Of T).Contains(T)
 - uid: BigBook.ObservableList`1.Contains(System.Object)
   name: Contains(object)
   href: api/BigBook.ObservableList-1.html#BigBook_ObservableList_1_Contains_System_Object_
@@ -5950,6 +5942,14 @@ references:
   fullName.vb: BigBook.ObservableList(Of T).Contains(Object)
   nameWithType: ObservableList<T>.Contains(object)
   nameWithType.vb: ObservableList(Of T).Contains(Object)
+- uid: BigBook.ObservableList`1.Contains(`0)
+  name: Contains(T)
+  href: api/BigBook.ObservableList-1.html#BigBook_ObservableList_1_Contains__0_
+  commentId: M:BigBook.ObservableList`1.Contains(`0)
+  fullName: BigBook.ObservableList<T>.Contains(T)
+  fullName.vb: BigBook.ObservableList(Of T).Contains(T)
+  nameWithType: ObservableList<T>.Contains(T)
+  nameWithType.vb: ObservableList(Of T).Contains(T)
 - uid: BigBook.ObservableList`1.Contains*
   name: Contains
   href: api/BigBook.ObservableList-1.html#BigBook_ObservableList_1_Contains_
@@ -5959,15 +5959,6 @@ references:
   fullName.vb: BigBook.ObservableList(Of T).Contains
   nameWithType: ObservableList<T>.Contains
   nameWithType.vb: ObservableList(Of T).Contains
-- uid: BigBook.ObservableList`1.CopyTo(`0[],System.Int32)
-  name: CopyTo(T[], int)
-  href: api/BigBook.ObservableList-1.html#BigBook_ObservableList_1_CopyTo__0___System_Int32_
-  commentId: M:BigBook.ObservableList`1.CopyTo(`0[],System.Int32)
-  name.vb: CopyTo(T(), Integer)
-  fullName: BigBook.ObservableList<T>.CopyTo(T[], int)
-  fullName.vb: BigBook.ObservableList(Of T).CopyTo(T(), Integer)
-  nameWithType: ObservableList<T>.CopyTo(T[], int)
-  nameWithType.vb: ObservableList(Of T).CopyTo(T(), Integer)
 - uid: BigBook.ObservableList`1.CopyTo(System.Array,System.Int32)
   name: CopyTo(Array, int)
   href: api/BigBook.ObservableList-1.html#BigBook_ObservableList_1_CopyTo_System_Array_System_Int32_
@@ -5977,6 +5968,15 @@ references:
   fullName.vb: BigBook.ObservableList(Of T).CopyTo(System.Array, Integer)
   nameWithType: ObservableList<T>.CopyTo(Array, int)
   nameWithType.vb: ObservableList(Of T).CopyTo(Array, Integer)
+- uid: BigBook.ObservableList`1.CopyTo(`0[],System.Int32)
+  name: CopyTo(T[], int)
+  href: api/BigBook.ObservableList-1.html#BigBook_ObservableList_1_CopyTo__0___System_Int32_
+  commentId: M:BigBook.ObservableList`1.CopyTo(`0[],System.Int32)
+  name.vb: CopyTo(T(), Integer)
+  fullName: BigBook.ObservableList<T>.CopyTo(T[], int)
+  fullName.vb: BigBook.ObservableList(Of T).CopyTo(T(), Integer)
+  nameWithType: ObservableList<T>.CopyTo(T[], int)
+  nameWithType.vb: ObservableList(Of T).CopyTo(T(), Integer)
 - uid: BigBook.ObservableList`1.CopyTo*
   name: CopyTo
   href: api/BigBook.ObservableList-1.html#BigBook_ObservableList_1_CopyTo_
@@ -6020,14 +6020,6 @@ references:
   fullName.vb: BigBook.ObservableList(Of T).GetEnumerator
   nameWithType: ObservableList<T>.GetEnumerator
   nameWithType.vb: ObservableList(Of T).GetEnumerator
-- uid: BigBook.ObservableList`1.IndexOf(`0)
-  name: IndexOf(T)
-  href: api/BigBook.ObservableList-1.html#BigBook_ObservableList_1_IndexOf__0_
-  commentId: M:BigBook.ObservableList`1.IndexOf(`0)
-  fullName: BigBook.ObservableList<T>.IndexOf(T)
-  fullName.vb: BigBook.ObservableList(Of T).IndexOf(T)
-  nameWithType: ObservableList<T>.IndexOf(T)
-  nameWithType.vb: ObservableList(Of T).IndexOf(T)
 - uid: BigBook.ObservableList`1.IndexOf(System.Object)
   name: IndexOf(object)
   href: api/BigBook.ObservableList-1.html#BigBook_ObservableList_1_IndexOf_System_Object_
@@ -6037,6 +6029,14 @@ references:
   fullName.vb: BigBook.ObservableList(Of T).IndexOf(Object)
   nameWithType: ObservableList<T>.IndexOf(object)
   nameWithType.vb: ObservableList(Of T).IndexOf(Object)
+- uid: BigBook.ObservableList`1.IndexOf(`0)
+  name: IndexOf(T)
+  href: api/BigBook.ObservableList-1.html#BigBook_ObservableList_1_IndexOf__0_
+  commentId: M:BigBook.ObservableList`1.IndexOf(`0)
+  fullName: BigBook.ObservableList<T>.IndexOf(T)
+  fullName.vb: BigBook.ObservableList(Of T).IndexOf(T)
+  nameWithType: ObservableList<T>.IndexOf(T)
+  nameWithType.vb: ObservableList(Of T).IndexOf(T)
 - uid: BigBook.ObservableList`1.IndexOf*
   name: IndexOf
   href: api/BigBook.ObservableList-1.html#BigBook_ObservableList_1_IndexOf_
@@ -6046,15 +6046,6 @@ references:
   fullName.vb: BigBook.ObservableList(Of T).IndexOf
   nameWithType: ObservableList<T>.IndexOf
   nameWithType.vb: ObservableList(Of T).IndexOf
-- uid: BigBook.ObservableList`1.Insert(System.Int32,`0)
-  name: Insert(int, T)
-  href: api/BigBook.ObservableList-1.html#BigBook_ObservableList_1_Insert_System_Int32__0_
-  commentId: M:BigBook.ObservableList`1.Insert(System.Int32,`0)
-  name.vb: Insert(Integer, T)
-  fullName: BigBook.ObservableList<T>.Insert(int, T)
-  fullName.vb: BigBook.ObservableList(Of T).Insert(Integer, T)
-  nameWithType: ObservableList<T>.Insert(int, T)
-  nameWithType.vb: ObservableList(Of T).Insert(Integer, T)
 - uid: BigBook.ObservableList`1.Insert(System.Int32,System.Object)
   name: Insert(int, object)
   href: api/BigBook.ObservableList-1.html#BigBook_ObservableList_1_Insert_System_Int32_System_Object_
@@ -6064,6 +6055,15 @@ references:
   fullName.vb: BigBook.ObservableList(Of T).Insert(Integer, Object)
   nameWithType: ObservableList<T>.Insert(int, object)
   nameWithType.vb: ObservableList(Of T).Insert(Integer, Object)
+- uid: BigBook.ObservableList`1.Insert(System.Int32,`0)
+  name: Insert(int, T)
+  href: api/BigBook.ObservableList-1.html#BigBook_ObservableList_1_Insert_System_Int32__0_
+  commentId: M:BigBook.ObservableList`1.Insert(System.Int32,`0)
+  name.vb: Insert(Integer, T)
+  fullName: BigBook.ObservableList<T>.Insert(int, T)
+  fullName.vb: BigBook.ObservableList(Of T).Insert(Integer, T)
+  nameWithType: ObservableList<T>.Insert(int, T)
+  nameWithType.vb: ObservableList(Of T).Insert(Integer, T)
 - uid: BigBook.ObservableList`1.Insert*
   name: Insert
   href: api/BigBook.ObservableList-1.html#BigBook_ObservableList_1_Insert_
@@ -6222,14 +6222,6 @@ references:
   fullName.vb: BigBook.ObservableList(Of T).PropertyChanged
   nameWithType: ObservableList<T>.PropertyChanged
   nameWithType.vb: ObservableList(Of T).PropertyChanged
-- uid: BigBook.ObservableList`1.Remove(`0)
-  name: Remove(T)
-  href: api/BigBook.ObservableList-1.html#BigBook_ObservableList_1_Remove__0_
-  commentId: M:BigBook.ObservableList`1.Remove(`0)
-  fullName: BigBook.ObservableList<T>.Remove(T)
-  fullName.vb: BigBook.ObservableList(Of T).Remove(T)
-  nameWithType: ObservableList<T>.Remove(T)
-  nameWithType.vb: ObservableList(Of T).Remove(T)
 - uid: BigBook.ObservableList`1.Remove(System.Object)
   name: Remove(object)
   href: api/BigBook.ObservableList-1.html#BigBook_ObservableList_1_Remove_System_Object_
@@ -6239,6 +6231,14 @@ references:
   fullName.vb: BigBook.ObservableList(Of T).Remove(Object)
   nameWithType: ObservableList<T>.Remove(object)
   nameWithType.vb: ObservableList(Of T).Remove(Object)
+- uid: BigBook.ObservableList`1.Remove(`0)
+  name: Remove(T)
+  href: api/BigBook.ObservableList-1.html#BigBook_ObservableList_1_Remove__0_
+  commentId: M:BigBook.ObservableList`1.Remove(`0)
+  fullName: BigBook.ObservableList<T>.Remove(T)
+  fullName.vb: BigBook.ObservableList(Of T).Remove(T)
+  nameWithType: ObservableList<T>.Remove(T)
+  nameWithType.vb: ObservableList(Of T).Remove(T)
 - uid: BigBook.ObservableList`1.Remove*
   name: Remove
   href: api/BigBook.ObservableList-1.html#BigBook_ObservableList_1_Remove_
@@ -6484,34 +6484,6 @@ references:
   fullName.vb: BigBook.Patterns.BaseClasses.StringEnumBaseClass(Of TClass).Name
   nameWithType: StringEnumBaseClass<TClass>.Name
   nameWithType.vb: StringEnumBaseClass(Of TClass).Name
-- uid: BigBook.Patterns.BaseClasses.StringEnumBaseClass`1.op_Implicit(BigBook.Patterns.BaseClasses.StringEnumBaseClass{`0})~System.String
-  name: implicit operator string(StringEnumBaseClass<TClass>?)
-  href: api/BigBook.Patterns.BaseClasses.StringEnumBaseClass-1.html#BigBook_Patterns_BaseClasses_StringEnumBaseClass_1_op_Implicit_BigBook_Patterns_BaseClasses_StringEnumBaseClass__0___System_String
-  commentId: M:BigBook.Patterns.BaseClasses.StringEnumBaseClass`1.op_Implicit(BigBook.Patterns.BaseClasses.StringEnumBaseClass{`0})~System.String
-  name.vb: CType(StringEnumBaseClass(Of TClass))
-  fullName: BigBook.Patterns.BaseClasses.StringEnumBaseClass<TClass>.implicit operator string(BigBook.Patterns.BaseClasses.StringEnumBaseClass<TClass>?)
-  fullName.vb: BigBook.Patterns.BaseClasses.StringEnumBaseClass(Of TClass).CType(BigBook.Patterns.BaseClasses.StringEnumBaseClass(Of TClass))
-  nameWithType: StringEnumBaseClass<TClass>.implicit operator string(StringEnumBaseClass<TClass>?)
-  nameWithType.vb: StringEnumBaseClass(Of TClass).CType(StringEnumBaseClass(Of TClass))
-- uid: BigBook.Patterns.BaseClasses.StringEnumBaseClass`1.op_Implicit(System.String)~BigBook.Patterns.BaseClasses.StringEnumBaseClass{`0}
-  name: implicit operator StringEnumBaseClass<TClass>(string?)
-  href: api/BigBook.Patterns.BaseClasses.StringEnumBaseClass-1.html#BigBook_Patterns_BaseClasses_StringEnumBaseClass_1_op_Implicit_System_String__BigBook_Patterns_BaseClasses_StringEnumBaseClass__0_
-  commentId: M:BigBook.Patterns.BaseClasses.StringEnumBaseClass`1.op_Implicit(System.String)~BigBook.Patterns.BaseClasses.StringEnumBaseClass{`0}
-  name.vb: CType(String)
-  fullName: BigBook.Patterns.BaseClasses.StringEnumBaseClass<TClass>.implicit operator BigBook.Patterns.BaseClasses.StringEnumBaseClass<TClass>(string?)
-  fullName.vb: BigBook.Patterns.BaseClasses.StringEnumBaseClass(Of TClass).CType(String)
-  nameWithType: StringEnumBaseClass<TClass>.implicit operator StringEnumBaseClass<TClass>(string?)
-  nameWithType.vb: StringEnumBaseClass(Of TClass).CType(String)
-- uid: BigBook.Patterns.BaseClasses.StringEnumBaseClass`1.op_Implicit*
-  name: implicit operator
-  href: api/BigBook.Patterns.BaseClasses.StringEnumBaseClass-1.html#BigBook_Patterns_BaseClasses_StringEnumBaseClass_1_op_Implicit_
-  commentId: Overload:BigBook.Patterns.BaseClasses.StringEnumBaseClass`1.op_Implicit
-  isSpec: "True"
-  name.vb: CType
-  fullName: BigBook.Patterns.BaseClasses.StringEnumBaseClass<TClass>.implicit operator
-  fullName.vb: BigBook.Patterns.BaseClasses.StringEnumBaseClass(Of TClass).CType
-  nameWithType: StringEnumBaseClass<TClass>.implicit operator
-  nameWithType.vb: StringEnumBaseClass(Of TClass).CType
 - uid: BigBook.Patterns.BaseClasses.StringEnumBaseClass`1.ToString
   name: ToString()
   href: api/BigBook.Patterns.BaseClasses.StringEnumBaseClass-1.html#BigBook_Patterns_BaseClasses_StringEnumBaseClass_1_ToString
@@ -6547,6 +6519,34 @@ references:
   fullName.vb: BigBook.Patterns.BaseClasses.StringEnumBaseClass(Of TClass).ToStringEnumBaseClass
   nameWithType: StringEnumBaseClass<TClass>.ToStringEnumBaseClass
   nameWithType.vb: StringEnumBaseClass(Of TClass).ToStringEnumBaseClass
+- uid: BigBook.Patterns.BaseClasses.StringEnumBaseClass`1.op_Implicit(BigBook.Patterns.BaseClasses.StringEnumBaseClass{`0})~System.String
+  name: implicit operator string(StringEnumBaseClass<TClass>?)
+  href: api/BigBook.Patterns.BaseClasses.StringEnumBaseClass-1.html#BigBook_Patterns_BaseClasses_StringEnumBaseClass_1_op_Implicit_BigBook_Patterns_BaseClasses_StringEnumBaseClass__0___System_String
+  commentId: M:BigBook.Patterns.BaseClasses.StringEnumBaseClass`1.op_Implicit(BigBook.Patterns.BaseClasses.StringEnumBaseClass{`0})~System.String
+  name.vb: CType(StringEnumBaseClass(Of TClass))
+  fullName: BigBook.Patterns.BaseClasses.StringEnumBaseClass<TClass>.implicit operator string(BigBook.Patterns.BaseClasses.StringEnumBaseClass<TClass>?)
+  fullName.vb: BigBook.Patterns.BaseClasses.StringEnumBaseClass(Of TClass).CType(BigBook.Patterns.BaseClasses.StringEnumBaseClass(Of TClass))
+  nameWithType: StringEnumBaseClass<TClass>.implicit operator string(StringEnumBaseClass<TClass>?)
+  nameWithType.vb: StringEnumBaseClass(Of TClass).CType(StringEnumBaseClass(Of TClass))
+- uid: BigBook.Patterns.BaseClasses.StringEnumBaseClass`1.op_Implicit(System.String)~BigBook.Patterns.BaseClasses.StringEnumBaseClass{`0}
+  name: implicit operator StringEnumBaseClass<TClass>(string?)
+  href: api/BigBook.Patterns.BaseClasses.StringEnumBaseClass-1.html#BigBook_Patterns_BaseClasses_StringEnumBaseClass_1_op_Implicit_System_String__BigBook_Patterns_BaseClasses_StringEnumBaseClass__0_
+  commentId: M:BigBook.Patterns.BaseClasses.StringEnumBaseClass`1.op_Implicit(System.String)~BigBook.Patterns.BaseClasses.StringEnumBaseClass{`0}
+  name.vb: CType(String)
+  fullName: BigBook.Patterns.BaseClasses.StringEnumBaseClass<TClass>.implicit operator BigBook.Patterns.BaseClasses.StringEnumBaseClass<TClass>(string?)
+  fullName.vb: BigBook.Patterns.BaseClasses.StringEnumBaseClass(Of TClass).CType(String)
+  nameWithType: StringEnumBaseClass<TClass>.implicit operator StringEnumBaseClass<TClass>(string?)
+  nameWithType.vb: StringEnumBaseClass(Of TClass).CType(String)
+- uid: BigBook.Patterns.BaseClasses.StringEnumBaseClass`1.op_Implicit*
+  name: implicit operator
+  href: api/BigBook.Patterns.BaseClasses.StringEnumBaseClass-1.html#BigBook_Patterns_BaseClasses_StringEnumBaseClass_1_op_Implicit_
+  commentId: Overload:BigBook.Patterns.BaseClasses.StringEnumBaseClass`1.op_Implicit
+  isSpec: "True"
+  name.vb: CType
+  fullName: BigBook.Patterns.BaseClasses.StringEnumBaseClass<TClass>.implicit operator
+  fullName.vb: BigBook.Patterns.BaseClasses.StringEnumBaseClass(Of TClass).CType
+  nameWithType: StringEnumBaseClass<TClass>.implicit operator
+  nameWithType.vb: StringEnumBaseClass(Of TClass).CType
 - uid: BigBook.Patterns.Factory`2
   name: Factory<TKey, TClass>
   href: api/BigBook.Patterns.Factory-2.html
@@ -6626,14 +6626,6 @@ references:
   fullName.vb: BigBook.Patterns.Factory(Of TKey, TClass).Exists
   nameWithType: Factory<TKey, TClass>.Exists
   nameWithType.vb: Factory(Of TKey, TClass).Exists
-- uid: BigBook.Patterns.Factory`2.Register(`0,`1)
-  name: Register(TKey, TClass)
-  href: api/BigBook.Patterns.Factory-2.html#BigBook_Patterns_Factory_2_Register__0__1_
-  commentId: M:BigBook.Patterns.Factory`2.Register(`0,`1)
-  fullName: BigBook.Patterns.Factory<TKey, TClass>.Register(TKey, TClass)
-  fullName.vb: BigBook.Patterns.Factory(Of TKey, TClass).Register(TKey, TClass)
-  nameWithType: Factory<TKey, TClass>.Register(TKey, TClass)
-  nameWithType.vb: Factory(Of TKey, TClass).Register(TKey, TClass)
 - uid: BigBook.Patterns.Factory`2.Register(`0,System.Func{`1})
   name: Register(TKey, Func<TClass>)
   href: api/BigBook.Patterns.Factory-2.html#BigBook_Patterns_Factory_2_Register__0_System_Func__1__
@@ -6643,6 +6635,14 @@ references:
   fullName.vb: BigBook.Patterns.Factory(Of TKey, TClass).Register(TKey, System.Func(Of TClass))
   nameWithType: Factory<TKey, TClass>.Register(TKey, Func<TClass>)
   nameWithType.vb: Factory(Of TKey, TClass).Register(TKey, Func(Of TClass))
+- uid: BigBook.Patterns.Factory`2.Register(`0,`1)
+  name: Register(TKey, TClass)
+  href: api/BigBook.Patterns.Factory-2.html#BigBook_Patterns_Factory_2_Register__0__1_
+  commentId: M:BigBook.Patterns.Factory`2.Register(`0,`1)
+  fullName: BigBook.Patterns.Factory<TKey, TClass>.Register(TKey, TClass)
+  fullName.vb: BigBook.Patterns.Factory(Of TKey, TClass).Register(TKey, TClass)
+  nameWithType: Factory<TKey, TClass>.Register(TKey, TClass)
+  nameWithType.vb: Factory(Of TKey, TClass).Register(TKey, TClass)
 - uid: BigBook.Patterns.Factory`2.Register*
   name: Register
   href: api/BigBook.Patterns.Factory-2.html#BigBook_Patterns_Factory_2_Register_
@@ -6695,15 +6695,6 @@ references:
   fullName.vb: BigBook.PriorityQueue(Of T).Add(System.Collections.Generic.KeyValuePair(Of Integer, System.Collections.Generic.ICollection(Of T)))
   nameWithType: PriorityQueue<T>.Add(KeyValuePair<int, ICollection<T>>)
   nameWithType.vb: PriorityQueue(Of T).Add(KeyValuePair(Of Integer, ICollection(Of T)))
-- uid: BigBook.PriorityQueue`1.Add(System.Int32,`0)
-  name: Add(int, T)
-  href: api/BigBook.PriorityQueue-1.html#BigBook_PriorityQueue_1_Add_System_Int32__0_
-  commentId: M:BigBook.PriorityQueue`1.Add(System.Int32,`0)
-  name.vb: Add(Integer, T)
-  fullName: BigBook.PriorityQueue<T>.Add(int, T)
-  fullName.vb: BigBook.PriorityQueue(Of T).Add(Integer, T)
-  nameWithType: PriorityQueue<T>.Add(int, T)
-  nameWithType.vb: PriorityQueue(Of T).Add(Integer, T)
 - uid: BigBook.PriorityQueue`1.Add(System.Int32,System.Collections.Generic.ICollection{`0})
   name: Add(int, ICollection<T>)
   href: api/BigBook.PriorityQueue-1.html#BigBook_PriorityQueue_1_Add_System_Int32_System_Collections_Generic_ICollection__0__
@@ -6713,6 +6704,15 @@ references:
   fullName.vb: BigBook.PriorityQueue(Of T).Add(Integer, System.Collections.Generic.ICollection(Of T))
   nameWithType: PriorityQueue<T>.Add(int, ICollection<T>)
   nameWithType.vb: PriorityQueue(Of T).Add(Integer, ICollection(Of T))
+- uid: BigBook.PriorityQueue`1.Add(System.Int32,`0)
+  name: Add(int, T)
+  href: api/BigBook.PriorityQueue-1.html#BigBook_PriorityQueue_1_Add_System_Int32__0_
+  commentId: M:BigBook.PriorityQueue`1.Add(System.Int32,`0)
+  name.vb: Add(Integer, T)
+  fullName: BigBook.PriorityQueue<T>.Add(int, T)
+  fullName.vb: BigBook.PriorityQueue(Of T).Add(Integer, T)
+  nameWithType: PriorityQueue<T>.Add(int, T)
+  nameWithType.vb: PriorityQueue(Of T).Add(Integer, T)
 - uid: BigBook.PriorityQueue`1.Add*
   name: Add
   href: api/BigBook.PriorityQueue-1.html#BigBook_PriorityQueue_1_Add_
@@ -6748,15 +6748,6 @@ references:
   fullName.vb: BigBook.PriorityQueue(Of T).Contains(System.Collections.Generic.KeyValuePair(Of Integer, System.Collections.Generic.ICollection(Of T)))
   nameWithType: PriorityQueue<T>.Contains(KeyValuePair<int, ICollection<T>>)
   nameWithType.vb: PriorityQueue(Of T).Contains(KeyValuePair(Of Integer, ICollection(Of T)))
-- uid: BigBook.PriorityQueue`1.Contains(System.Int32,`0)
-  name: Contains(int, T)
-  href: api/BigBook.PriorityQueue-1.html#BigBook_PriorityQueue_1_Contains_System_Int32__0_
-  commentId: M:BigBook.PriorityQueue`1.Contains(System.Int32,`0)
-  name.vb: Contains(Integer, T)
-  fullName: BigBook.PriorityQueue<T>.Contains(int, T)
-  fullName.vb: BigBook.PriorityQueue(Of T).Contains(Integer, T)
-  nameWithType: PriorityQueue<T>.Contains(int, T)
-  nameWithType.vb: PriorityQueue(Of T).Contains(Integer, T)
 - uid: BigBook.PriorityQueue`1.Contains(System.Int32,System.Collections.Generic.ICollection{`0})
   name: Contains(int, ICollection<T>)
   href: api/BigBook.PriorityQueue-1.html#BigBook_PriorityQueue_1_Contains_System_Int32_System_Collections_Generic_ICollection__0__
@@ -6766,6 +6757,15 @@ references:
   fullName.vb: BigBook.PriorityQueue(Of T).Contains(Integer, System.Collections.Generic.ICollection(Of T))
   nameWithType: PriorityQueue<T>.Contains(int, ICollection<T>)
   nameWithType.vb: PriorityQueue(Of T).Contains(Integer, ICollection(Of T))
+- uid: BigBook.PriorityQueue`1.Contains(System.Int32,`0)
+  name: Contains(int, T)
+  href: api/BigBook.PriorityQueue-1.html#BigBook_PriorityQueue_1_Contains_System_Int32__0_
+  commentId: M:BigBook.PriorityQueue`1.Contains(System.Int32,`0)
+  name.vb: Contains(Integer, T)
+  fullName: BigBook.PriorityQueue<T>.Contains(int, T)
+  fullName.vb: BigBook.PriorityQueue(Of T).Contains(Integer, T)
+  nameWithType: PriorityQueue<T>.Contains(int, T)
+  nameWithType.vb: PriorityQueue(Of T).Contains(Integer, T)
 - uid: BigBook.PriorityQueue`1.Contains*
   name: Contains
   href: api/BigBook.PriorityQueue-1.html#BigBook_PriorityQueue_1_Contains_
@@ -6975,15 +6975,6 @@ references:
   fullName.vb: BigBook.PriorityQueue(Of T).Remove(System.Collections.Generic.KeyValuePair(Of Integer, System.Collections.Generic.ICollection(Of T)))
   nameWithType: PriorityQueue<T>.Remove(KeyValuePair<int, ICollection<T>>)
   nameWithType.vb: PriorityQueue(Of T).Remove(KeyValuePair(Of Integer, ICollection(Of T)))
-- uid: BigBook.PriorityQueue`1.Remove(System.Int32,`0)
-  name: Remove(int, T)
-  href: api/BigBook.PriorityQueue-1.html#BigBook_PriorityQueue_1_Remove_System_Int32__0_
-  commentId: M:BigBook.PriorityQueue`1.Remove(System.Int32,`0)
-  name.vb: Remove(Integer, T)
-  fullName: BigBook.PriorityQueue<T>.Remove(int, T)
-  fullName.vb: BigBook.PriorityQueue(Of T).Remove(Integer, T)
-  nameWithType: PriorityQueue<T>.Remove(int, T)
-  nameWithType.vb: PriorityQueue(Of T).Remove(Integer, T)
 - uid: BigBook.PriorityQueue`1.Remove(System.Int32)
   name: Remove(int)
   href: api/BigBook.PriorityQueue-1.html#BigBook_PriorityQueue_1_Remove_System_Int32_
@@ -6993,6 +6984,15 @@ references:
   fullName.vb: BigBook.PriorityQueue(Of T).Remove(Integer)
   nameWithType: PriorityQueue<T>.Remove(int)
   nameWithType.vb: PriorityQueue(Of T).Remove(Integer)
+- uid: BigBook.PriorityQueue`1.Remove(System.Int32,`0)
+  name: Remove(int, T)
+  href: api/BigBook.PriorityQueue-1.html#BigBook_PriorityQueue_1_Remove_System_Int32__0_
+  commentId: M:BigBook.PriorityQueue`1.Remove(System.Int32,`0)
+  name.vb: Remove(Integer, T)
+  fullName: BigBook.PriorityQueue<T>.Remove(int, T)
+  fullName.vb: BigBook.PriorityQueue(Of T).Remove(Integer, T)
+  nameWithType: PriorityQueue<T>.Remove(int, T)
+  nameWithType.vb: PriorityQueue(Of T).Remove(Integer, T)
 - uid: BigBook.PriorityQueue`1.Remove*
   name: Remove
   href: api/BigBook.PriorityQueue-1.html#BigBook_PriorityQueue_1_Remove_
@@ -7140,15 +7140,6 @@ references:
   fullName.vb: BigBook.Queryable.Query(Of T)
   nameWithType: Query<T>
   nameWithType.vb: Query(Of T)
-- uid: BigBook.Queryable.Query`1.#ctor(BigBook.Queryable.BaseClasses.QueryProviderBase,System.Linq.Expressions.Expression)
-  name: Query(QueryProviderBase, Expression)
-  href: api/BigBook.Queryable.Query-1.html#BigBook_Queryable_Query_1__ctor_BigBook_Queryable_BaseClasses_QueryProviderBase_System_Linq_Expressions_Expression_
-  commentId: M:BigBook.Queryable.Query`1.#ctor(BigBook.Queryable.BaseClasses.QueryProviderBase,System.Linq.Expressions.Expression)
-  name.vb: New(QueryProviderBase, Expression)
-  fullName: BigBook.Queryable.Query<T>.Query(BigBook.Queryable.BaseClasses.QueryProviderBase, System.Linq.Expressions.Expression)
-  fullName.vb: BigBook.Queryable.Query(Of T).New(BigBook.Queryable.BaseClasses.QueryProviderBase, System.Linq.Expressions.Expression)
-  nameWithType: Query<T>.Query(QueryProviderBase, Expression)
-  nameWithType.vb: Query(Of T).New(QueryProviderBase, Expression)
 - uid: BigBook.Queryable.Query`1.#ctor(BigBook.Queryable.BaseClasses.QueryProviderBase)
   name: Query(QueryProviderBase)
   href: api/BigBook.Queryable.Query-1.html#BigBook_Queryable_Query_1__ctor_BigBook_Queryable_BaseClasses_QueryProviderBase_
@@ -7158,6 +7149,15 @@ references:
   fullName.vb: BigBook.Queryable.Query(Of T).New(BigBook.Queryable.BaseClasses.QueryProviderBase)
   nameWithType: Query<T>.Query(QueryProviderBase)
   nameWithType.vb: Query(Of T).New(QueryProviderBase)
+- uid: BigBook.Queryable.Query`1.#ctor(BigBook.Queryable.BaseClasses.QueryProviderBase,System.Linq.Expressions.Expression)
+  name: Query(QueryProviderBase, Expression)
+  href: api/BigBook.Queryable.Query-1.html#BigBook_Queryable_Query_1__ctor_BigBook_Queryable_BaseClasses_QueryProviderBase_System_Linq_Expressions_Expression_
+  commentId: M:BigBook.Queryable.Query`1.#ctor(BigBook.Queryable.BaseClasses.QueryProviderBase,System.Linq.Expressions.Expression)
+  name.vb: New(QueryProviderBase, Expression)
+  fullName: BigBook.Queryable.Query<T>.Query(BigBook.Queryable.BaseClasses.QueryProviderBase, System.Linq.Expressions.Expression)
+  fullName.vb: BigBook.Queryable.Query(Of T).New(BigBook.Queryable.BaseClasses.QueryProviderBase, System.Linq.Expressions.Expression)
+  nameWithType: Query<T>.Query(QueryProviderBase, Expression)
+  nameWithType.vb: Query(Of T).New(QueryProviderBase, Expression)
 - uid: BigBook.Queryable.Query`1.#ctor*
   name: Query
   href: api/BigBook.Queryable.Query-1.html#BigBook_Queryable_Query_1__ctor_
@@ -7336,6 +7336,15 @@ references:
   fullName.vb: BigBook.RingBuffer(Of T).New
   nameWithType: RingBuffer<T>.RingBuffer
   nameWithType.vb: RingBuffer(Of T).New
+- uid: BigBook.RingBuffer`1.Add(System.Collections.Generic.IEnumerable{`0})
+  name: Add(IEnumerable<T>)
+  href: api/BigBook.RingBuffer-1.html#BigBook_RingBuffer_1_Add_System_Collections_Generic_IEnumerable__0__
+  commentId: M:BigBook.RingBuffer`1.Add(System.Collections.Generic.IEnumerable{`0})
+  name.vb: Add(IEnumerable(Of T))
+  fullName: BigBook.RingBuffer<T>.Add(System.Collections.Generic.IEnumerable<T>)
+  fullName.vb: BigBook.RingBuffer(Of T).Add(System.Collections.Generic.IEnumerable(Of T))
+  nameWithType: RingBuffer<T>.Add(IEnumerable<T>)
+  nameWithType.vb: RingBuffer(Of T).Add(IEnumerable(Of T))
 - uid: BigBook.RingBuffer`1.Add(`0)
   name: Add(T)
   href: api/BigBook.RingBuffer-1.html#BigBook_RingBuffer_1_Add__0_
@@ -7353,15 +7362,6 @@ references:
   fullName.vb: BigBook.RingBuffer(Of T).Add(T(), Integer, Integer)
   nameWithType: RingBuffer<T>.Add(T[], int, int)
   nameWithType.vb: RingBuffer(Of T).Add(T(), Integer, Integer)
-- uid: BigBook.RingBuffer`1.Add(System.Collections.Generic.IEnumerable{`0})
-  name: Add(IEnumerable<T>)
-  href: api/BigBook.RingBuffer-1.html#BigBook_RingBuffer_1_Add_System_Collections_Generic_IEnumerable__0__
-  commentId: M:BigBook.RingBuffer`1.Add(System.Collections.Generic.IEnumerable{`0})
-  name.vb: Add(IEnumerable(Of T))
-  fullName: BigBook.RingBuffer<T>.Add(System.Collections.Generic.IEnumerable<T>)
-  fullName.vb: BigBook.RingBuffer(Of T).Add(System.Collections.Generic.IEnumerable(Of T))
-  nameWithType: RingBuffer<T>.Add(IEnumerable<T>)
-  nameWithType.vb: RingBuffer(Of T).Add(IEnumerable(Of T))
 - uid: BigBook.RingBuffer`1.Add*
   name: Add
   href: api/BigBook.RingBuffer-1.html#BigBook_RingBuffer_1_Add_
@@ -7439,15 +7439,6 @@ references:
   fullName.vb: BigBook.RingBuffer(Of T).Contains
   nameWithType: RingBuffer<T>.Contains
   nameWithType.vb: RingBuffer(Of T).Contains
-- uid: BigBook.RingBuffer`1.CopyTo(`0[],System.Int32)
-  name: CopyTo(T[], int)
-  href: api/BigBook.RingBuffer-1.html#BigBook_RingBuffer_1_CopyTo__0___System_Int32_
-  commentId: M:BigBook.RingBuffer`1.CopyTo(`0[],System.Int32)
-  name.vb: CopyTo(T(), Integer)
-  fullName: BigBook.RingBuffer<T>.CopyTo(T[], int)
-  fullName.vb: BigBook.RingBuffer(Of T).CopyTo(T(), Integer)
-  nameWithType: RingBuffer<T>.CopyTo(T[], int)
-  nameWithType.vb: RingBuffer(Of T).CopyTo(T(), Integer)
 - uid: BigBook.RingBuffer`1.CopyTo(System.Array,System.Int32)
   name: CopyTo(Array, int)
   href: api/BigBook.RingBuffer-1.html#BigBook_RingBuffer_1_CopyTo_System_Array_System_Int32_
@@ -7457,6 +7448,15 @@ references:
   fullName.vb: BigBook.RingBuffer(Of T).CopyTo(System.Array, Integer)
   nameWithType: RingBuffer<T>.CopyTo(Array, int)
   nameWithType.vb: RingBuffer(Of T).CopyTo(Array, Integer)
+- uid: BigBook.RingBuffer`1.CopyTo(`0[],System.Int32)
+  name: CopyTo(T[], int)
+  href: api/BigBook.RingBuffer-1.html#BigBook_RingBuffer_1_CopyTo__0___System_Int32_
+  commentId: M:BigBook.RingBuffer`1.CopyTo(`0[],System.Int32)
+  name.vb: CopyTo(T(), Integer)
+  fullName: BigBook.RingBuffer<T>.CopyTo(T[], int)
+  fullName.vb: BigBook.RingBuffer(Of T).CopyTo(T(), Integer)
+  nameWithType: RingBuffer<T>.CopyTo(T[], int)
+  nameWithType.vb: RingBuffer(Of T).CopyTo(T(), Integer)
 - uid: BigBook.RingBuffer`1.CopyTo*
   name: CopyTo
   href: api/BigBook.RingBuffer-1.html#BigBook_RingBuffer_1_CopyTo_
@@ -7570,25 +7570,6 @@ references:
   fullName.vb: BigBook.RingBuffer(Of T).MaxCapacity
   nameWithType: RingBuffer<T>.MaxCapacity
   nameWithType.vb: RingBuffer(Of T).MaxCapacity
-- uid: BigBook.RingBuffer`1.op_Implicit(BigBook.RingBuffer{`0})~System.String
-  name: implicit operator string(RingBuffer<T>)
-  href: api/BigBook.RingBuffer-1.html#BigBook_RingBuffer_1_op_Implicit_BigBook_RingBuffer__0___System_String
-  commentId: M:BigBook.RingBuffer`1.op_Implicit(BigBook.RingBuffer{`0})~System.String
-  name.vb: CType(RingBuffer(Of T))
-  fullName: BigBook.RingBuffer<T>.implicit operator string(BigBook.RingBuffer<T>)
-  fullName.vb: BigBook.RingBuffer(Of T).CType(BigBook.RingBuffer(Of T))
-  nameWithType: RingBuffer<T>.implicit operator string(RingBuffer<T>)
-  nameWithType.vb: RingBuffer(Of T).CType(RingBuffer(Of T))
-- uid: BigBook.RingBuffer`1.op_Implicit*
-  name: implicit operator
-  href: api/BigBook.RingBuffer-1.html#BigBook_RingBuffer_1_op_Implicit_
-  commentId: Overload:BigBook.RingBuffer`1.op_Implicit
-  isSpec: "True"
-  name.vb: CType
-  fullName: BigBook.RingBuffer<T>.implicit operator
-  fullName.vb: BigBook.RingBuffer(Of T).CType
-  nameWithType: RingBuffer<T>.implicit operator
-  nameWithType.vb: RingBuffer(Of T).CType
 - uid: BigBook.RingBuffer`1.ReadPosition
   name: ReadPosition
   href: api/BigBook.RingBuffer-1.html#BigBook_RingBuffer_1_ReadPosition
@@ -7614,6 +7595,15 @@ references:
   fullName.vb: BigBook.RingBuffer(Of T).Remove()
   nameWithType: RingBuffer<T>.Remove()
   nameWithType.vb: RingBuffer(Of T).Remove()
+- uid: BigBook.RingBuffer`1.Remove(System.Int32)
+  name: Remove(int)
+  href: api/BigBook.RingBuffer-1.html#BigBook_RingBuffer_1_Remove_System_Int32_
+  commentId: M:BigBook.RingBuffer`1.Remove(System.Int32)
+  name.vb: Remove(Integer)
+  fullName: BigBook.RingBuffer<T>.Remove(int)
+  fullName.vb: BigBook.RingBuffer(Of T).Remove(Integer)
+  nameWithType: RingBuffer<T>.Remove(int)
+  nameWithType.vb: RingBuffer(Of T).Remove(Integer)
 - uid: BigBook.RingBuffer`1.Remove(`0)
   name: Remove(T)
   href: api/BigBook.RingBuffer-1.html#BigBook_RingBuffer_1_Remove__0_
@@ -7631,15 +7621,6 @@ references:
   fullName.vb: BigBook.RingBuffer(Of T).Remove(T(), Integer, Integer)
   nameWithType: RingBuffer<T>.Remove(T[], int, int)
   nameWithType.vb: RingBuffer(Of T).Remove(T(), Integer, Integer)
-- uid: BigBook.RingBuffer`1.Remove(System.Int32)
-  name: Remove(int)
-  href: api/BigBook.RingBuffer-1.html#BigBook_RingBuffer_1_Remove_System_Int32_
-  commentId: M:BigBook.RingBuffer`1.Remove(System.Int32)
-  name.vb: Remove(Integer)
-  fullName: BigBook.RingBuffer<T>.Remove(int)
-  fullName.vb: BigBook.RingBuffer(Of T).Remove(Integer)
-  nameWithType: RingBuffer<T>.Remove(int)
-  nameWithType.vb: RingBuffer(Of T).Remove(Integer)
 - uid: BigBook.RingBuffer`1.Remove*
   name: Remove
   href: api/BigBook.RingBuffer-1.html#BigBook_RingBuffer_1_Remove_
@@ -7718,6 +7699,25 @@ references:
   fullName.vb: BigBook.RingBuffer(Of T).WritePosition
   nameWithType: RingBuffer<T>.WritePosition
   nameWithType.vb: RingBuffer(Of T).WritePosition
+- uid: BigBook.RingBuffer`1.op_Implicit(BigBook.RingBuffer{`0})~System.String
+  name: implicit operator string(RingBuffer<T>)
+  href: api/BigBook.RingBuffer-1.html#BigBook_RingBuffer_1_op_Implicit_BigBook_RingBuffer__0___System_String
+  commentId: M:BigBook.RingBuffer`1.op_Implicit(BigBook.RingBuffer{`0})~System.String
+  name.vb: CType(RingBuffer(Of T))
+  fullName: BigBook.RingBuffer<T>.implicit operator string(BigBook.RingBuffer<T>)
+  fullName.vb: BigBook.RingBuffer(Of T).CType(BigBook.RingBuffer(Of T))
+  nameWithType: RingBuffer<T>.implicit operator string(RingBuffer<T>)
+  nameWithType.vb: RingBuffer(Of T).CType(RingBuffer(Of T))
+- uid: BigBook.RingBuffer`1.op_Implicit*
+  name: implicit operator
+  href: api/BigBook.RingBuffer-1.html#BigBook_RingBuffer_1_op_Implicit_
+  commentId: Overload:BigBook.RingBuffer`1.op_Implicit
+  isSpec: "True"
+  name.vb: CType
+  fullName: BigBook.RingBuffer<T>.implicit operator
+  fullName.vb: BigBook.RingBuffer(Of T).CType
+  nameWithType: RingBuffer<T>.implicit operator
+  nameWithType.vb: RingBuffer(Of T).CType
 - uid: BigBook.Row
   name: Row
   href: api/BigBook.Row.html
@@ -7972,6 +7972,41 @@ references:
   fullName.vb: BigBook.Set(Of T).IsSubset
   nameWithType: Set<T>.IsSubset
   nameWithType.vb: Set(Of T).IsSubset
+- uid: BigBook.Set`1.Subtract(BigBook.Set{`0},BigBook.Set{`0})
+  name: Subtract(Set<T>, Set<T>)
+  href: api/BigBook.Set-1.html#BigBook_Set_1_Subtract_BigBook_Set__0__BigBook_Set__0__
+  commentId: M:BigBook.Set`1.Subtract(BigBook.Set{`0},BigBook.Set{`0})
+  name.vb: Subtract(Set(Of T), Set(Of T))
+  fullName: BigBook.Set<T>.Subtract(BigBook.Set<T>, BigBook.Set<T>)
+  fullName.vb: BigBook.Set(Of T).Subtract(BigBook.Set(Of T), BigBook.Set(Of T))
+  nameWithType: Set<T>.Subtract(Set<T>, Set<T>)
+  nameWithType.vb: Set(Of T).Subtract(Set(Of T), Set(Of T))
+- uid: BigBook.Set`1.Subtract*
+  name: Subtract
+  href: api/BigBook.Set-1.html#BigBook_Set_1_Subtract_
+  commentId: Overload:BigBook.Set`1.Subtract
+  isSpec: "True"
+  fullName: BigBook.Set<T>.Subtract
+  fullName.vb: BigBook.Set(Of T).Subtract
+  nameWithType: Set<T>.Subtract
+  nameWithType.vb: Set(Of T).Subtract
+- uid: BigBook.Set`1.ToString
+  name: ToString()
+  href: api/BigBook.Set-1.html#BigBook_Set_1_ToString
+  commentId: M:BigBook.Set`1.ToString
+  fullName: BigBook.Set<T>.ToString()
+  fullName.vb: BigBook.Set(Of T).ToString()
+  nameWithType: Set<T>.ToString()
+  nameWithType.vb: Set(Of T).ToString()
+- uid: BigBook.Set`1.ToString*
+  name: ToString
+  href: api/BigBook.Set-1.html#BigBook_Set_1_ToString_
+  commentId: Overload:BigBook.Set`1.ToString
+  isSpec: "True"
+  fullName: BigBook.Set<T>.ToString
+  fullName.vb: BigBook.Set(Of T).ToString
+  nameWithType: Set<T>.ToString
+  nameWithType.vb: Set(Of T).ToString
 - uid: BigBook.Set`1.op_Addition(BigBook.Set{`0},BigBook.Set{`0})
   name: operator +(Set<T>, Set<T>)
   href: api/BigBook.Set-1.html#BigBook_Set_1_op_Addition_BigBook_Set__0__BigBook_Set__0__
@@ -8048,41 +8083,6 @@ references:
   fullName.vb: BigBook.Set(Of T).-
   nameWithType: Set<T>.operator -
   nameWithType.vb: Set(Of T).-
-- uid: BigBook.Set`1.Subtract(BigBook.Set{`0},BigBook.Set{`0})
-  name: Subtract(Set<T>, Set<T>)
-  href: api/BigBook.Set-1.html#BigBook_Set_1_Subtract_BigBook_Set__0__BigBook_Set__0__
-  commentId: M:BigBook.Set`1.Subtract(BigBook.Set{`0},BigBook.Set{`0})
-  name.vb: Subtract(Set(Of T), Set(Of T))
-  fullName: BigBook.Set<T>.Subtract(BigBook.Set<T>, BigBook.Set<T>)
-  fullName.vb: BigBook.Set(Of T).Subtract(BigBook.Set(Of T), BigBook.Set(Of T))
-  nameWithType: Set<T>.Subtract(Set<T>, Set<T>)
-  nameWithType.vb: Set(Of T).Subtract(Set(Of T), Set(Of T))
-- uid: BigBook.Set`1.Subtract*
-  name: Subtract
-  href: api/BigBook.Set-1.html#BigBook_Set_1_Subtract_
-  commentId: Overload:BigBook.Set`1.Subtract
-  isSpec: "True"
-  fullName: BigBook.Set<T>.Subtract
-  fullName.vb: BigBook.Set(Of T).Subtract
-  nameWithType: Set<T>.Subtract
-  nameWithType.vb: Set(Of T).Subtract
-- uid: BigBook.Set`1.ToString
-  name: ToString()
-  href: api/BigBook.Set-1.html#BigBook_Set_1_ToString
-  commentId: M:BigBook.Set`1.ToString
-  fullName: BigBook.Set<T>.ToString()
-  fullName.vb: BigBook.Set(Of T).ToString()
-  nameWithType: Set<T>.ToString()
-  nameWithType.vb: Set(Of T).ToString()
-- uid: BigBook.Set`1.ToString*
-  name: ToString
-  href: api/BigBook.Set-1.html#BigBook_Set_1_ToString_
-  commentId: Overload:BigBook.Set`1.ToString
-  isSpec: "True"
-  fullName: BigBook.Set<T>.ToString
-  fullName.vb: BigBook.Set(Of T).ToString
-  nameWithType: Set<T>.ToString
-  nameWithType.vb: Set(Of T).ToString
 - uid: BigBook.StringCase
   name: StringCase
   href: api/BigBook.StringCase.html
@@ -8331,6 +8331,15 @@ references:
   fullName.vb: BigBook.TagDictionary(Of TKey, TValue).New
   nameWithType: TagDictionary<TKey, TValue>.TagDictionary
   nameWithType.vb: TagDictionary(Of TKey, TValue).New
+- uid: BigBook.TagDictionary`2.Add(System.Collections.Generic.KeyValuePair{`0,System.Collections.Generic.IEnumerable{`1}})
+  name: Add(KeyValuePair<TKey, IEnumerable<TValue>>)
+  href: api/BigBook.TagDictionary-2.html#BigBook_TagDictionary_2_Add_System_Collections_Generic_KeyValuePair__0_System_Collections_Generic_IEnumerable__1___
+  commentId: M:BigBook.TagDictionary`2.Add(System.Collections.Generic.KeyValuePair{`0,System.Collections.Generic.IEnumerable{`1}})
+  name.vb: Add(KeyValuePair(Of TKey, IEnumerable(Of TValue)))
+  fullName: BigBook.TagDictionary<TKey, TValue>.Add(System.Collections.Generic.KeyValuePair<TKey, System.Collections.Generic.IEnumerable<TValue>>)
+  fullName.vb: BigBook.TagDictionary(Of TKey, TValue).Add(System.Collections.Generic.KeyValuePair(Of TKey, System.Collections.Generic.IEnumerable(Of TValue)))
+  nameWithType: TagDictionary<TKey, TValue>.Add(KeyValuePair<TKey, IEnumerable<TValue>>)
+  nameWithType.vb: TagDictionary(Of TKey, TValue).Add(KeyValuePair(Of TKey, IEnumerable(Of TValue)))
 - uid: BigBook.TagDictionary`2.Add(`0,System.Collections.Generic.IEnumerable{`1})
   name: Add(TKey, IEnumerable<TValue>)
   href: api/BigBook.TagDictionary-2.html#BigBook_TagDictionary_2_Add__0_System_Collections_Generic_IEnumerable__1__
@@ -8349,15 +8358,6 @@ references:
   fullName.vb: BigBook.TagDictionary(Of TKey, TValue).Add(TValue, ParamArray TKey())
   nameWithType: TagDictionary<TKey, TValue>.Add(TValue, params TKey[])
   nameWithType.vb: TagDictionary(Of TKey, TValue).Add(TValue, ParamArray TKey())
-- uid: BigBook.TagDictionary`2.Add(System.Collections.Generic.KeyValuePair{`0,System.Collections.Generic.IEnumerable{`1}})
-  name: Add(KeyValuePair<TKey, IEnumerable<TValue>>)
-  href: api/BigBook.TagDictionary-2.html#BigBook_TagDictionary_2_Add_System_Collections_Generic_KeyValuePair__0_System_Collections_Generic_IEnumerable__1___
-  commentId: M:BigBook.TagDictionary`2.Add(System.Collections.Generic.KeyValuePair{`0,System.Collections.Generic.IEnumerable{`1}})
-  name.vb: Add(KeyValuePair(Of TKey, IEnumerable(Of TValue)))
-  fullName: BigBook.TagDictionary<TKey, TValue>.Add(System.Collections.Generic.KeyValuePair<TKey, System.Collections.Generic.IEnumerable<TValue>>)
-  fullName.vb: BigBook.TagDictionary(Of TKey, TValue).Add(System.Collections.Generic.KeyValuePair(Of TKey, System.Collections.Generic.IEnumerable(Of TValue)))
-  nameWithType: TagDictionary<TKey, TValue>.Add(KeyValuePair<TKey, IEnumerable<TValue>>)
-  nameWithType.vb: TagDictionary(Of TKey, TValue).Add(KeyValuePair(Of TKey, IEnumerable(Of TValue)))
 - uid: BigBook.TagDictionary`2.Add*
   name: Add
   href: api/BigBook.TagDictionary-2.html#BigBook_TagDictionary_2_Add_
@@ -8524,14 +8524,6 @@ references:
   fullName.vb: BigBook.TagDictionary(Of TKey, TValue).Keys
   nameWithType: TagDictionary<TKey, TValue>.Keys
   nameWithType.vb: TagDictionary(Of TKey, TValue).Keys
-- uid: BigBook.TagDictionary`2.Remove(`0)
-  name: Remove(TKey)
-  href: api/BigBook.TagDictionary-2.html#BigBook_TagDictionary_2_Remove__0_
-  commentId: M:BigBook.TagDictionary`2.Remove(`0)
-  fullName: BigBook.TagDictionary<TKey, TValue>.Remove(TKey)
-  fullName.vb: BigBook.TagDictionary(Of TKey, TValue).Remove(TKey)
-  nameWithType: TagDictionary<TKey, TValue>.Remove(TKey)
-  nameWithType.vb: TagDictionary(Of TKey, TValue).Remove(TKey)
 - uid: BigBook.TagDictionary`2.Remove(System.Collections.Generic.KeyValuePair{`0,System.Collections.Generic.IEnumerable{`1}})
   name: Remove(KeyValuePair<TKey, IEnumerable<TValue>>)
   href: api/BigBook.TagDictionary-2.html#BigBook_TagDictionary_2_Remove_System_Collections_Generic_KeyValuePair__0_System_Collections_Generic_IEnumerable__1___
@@ -8541,6 +8533,14 @@ references:
   fullName.vb: BigBook.TagDictionary(Of TKey, TValue).Remove(System.Collections.Generic.KeyValuePair(Of TKey, System.Collections.Generic.IEnumerable(Of TValue)))
   nameWithType: TagDictionary<TKey, TValue>.Remove(KeyValuePair<TKey, IEnumerable<TValue>>)
   nameWithType.vb: TagDictionary(Of TKey, TValue).Remove(KeyValuePair(Of TKey, IEnumerable(Of TValue)))
+- uid: BigBook.TagDictionary`2.Remove(`0)
+  name: Remove(TKey)
+  href: api/BigBook.TagDictionary-2.html#BigBook_TagDictionary_2_Remove__0_
+  commentId: M:BigBook.TagDictionary`2.Remove(`0)
+  fullName: BigBook.TagDictionary<TKey, TValue>.Remove(TKey)
+  fullName.vb: BigBook.TagDictionary(Of TKey, TValue).Remove(TKey)
+  nameWithType: TagDictionary<TKey, TValue>.Remove(TKey)
+  nameWithType.vb: TagDictionary(Of TKey, TValue).Remove(TKey)
 - uid: BigBook.TagDictionary`2.Remove*
   name: Remove
   href: api/BigBook.TagDictionary-2.html#BigBook_TagDictionary_2_Remove_
@@ -8980,15 +8980,6 @@ references:
   fullName.vb: BigBook.Trie(Of TObject, TReturn).Build
   nameWithType: Trie<TObject, TReturn>.Build
   nameWithType.vb: Trie(Of TObject, TReturn).Build
-- uid: BigBook.Trie`2.FindAll(`0[])
-  name: FindAll(TObject[])
-  href: api/BigBook.Trie-2.html#BigBook_Trie_2_FindAll__0___
-  commentId: M:BigBook.Trie`2.FindAll(`0[])
-  name.vb: FindAll(TObject())
-  fullName: BigBook.Trie<TObject, TReturn>.FindAll(TObject[])
-  fullName.vb: BigBook.Trie(Of TObject, TReturn).FindAll(TObject())
-  nameWithType: Trie<TObject, TReturn>.FindAll(TObject[])
-  nameWithType.vb: Trie(Of TObject, TReturn).FindAll(TObject())
 - uid: BigBook.Trie`2.FindAll(System.Collections.Generic.List{`0})
   name: FindAll(List<TObject>)
   href: api/BigBook.Trie-2.html#BigBook_Trie_2_FindAll_System_Collections_Generic_List__0__
@@ -9016,6 +9007,15 @@ references:
   fullName.vb: BigBook.Trie(Of TObject, TReturn).FindAll(System.Span(Of TObject))
   nameWithType: Trie<TObject, TReturn>.FindAll(Span<TObject>)
   nameWithType.vb: Trie(Of TObject, TReturn).FindAll(Span(Of TObject))
+- uid: BigBook.Trie`2.FindAll(`0[])
+  name: FindAll(TObject[])
+  href: api/BigBook.Trie-2.html#BigBook_Trie_2_FindAll__0___
+  commentId: M:BigBook.Trie`2.FindAll(`0[])
+  name.vb: FindAll(TObject())
+  fullName: BigBook.Trie<TObject, TReturn>.FindAll(TObject[])
+  fullName.vb: BigBook.Trie(Of TObject, TReturn).FindAll(TObject())
+  nameWithType: Trie<TObject, TReturn>.FindAll(TObject[])
+  nameWithType.vb: Trie(Of TObject, TReturn).FindAll(TObject())
 - uid: BigBook.Trie`2.FindAll*
   name: FindAll
   href: api/BigBook.Trie-2.html#BigBook_Trie_2_FindAll_
@@ -9025,15 +9025,6 @@ references:
   fullName.vb: BigBook.Trie(Of TObject, TReturn).FindAll
   nameWithType: Trie<TObject, TReturn>.FindAll
   nameWithType.vb: Trie(Of TObject, TReturn).FindAll
-- uid: BigBook.Trie`2.FindAny(`0[])
-  name: FindAny(TObject[])
-  href: api/BigBook.Trie-2.html#BigBook_Trie_2_FindAny__0___
-  commentId: M:BigBook.Trie`2.FindAny(`0[])
-  name.vb: FindAny(TObject())
-  fullName: BigBook.Trie<TObject, TReturn>.FindAny(TObject[])
-  fullName.vb: BigBook.Trie(Of TObject, TReturn).FindAny(TObject())
-  nameWithType: Trie<TObject, TReturn>.FindAny(TObject[])
-  nameWithType.vb: Trie(Of TObject, TReturn).FindAny(TObject())
 - uid: BigBook.Trie`2.FindAny(System.Collections.Generic.List{`0})
   name: FindAny(List<TObject>)
   href: api/BigBook.Trie-2.html#BigBook_Trie_2_FindAny_System_Collections_Generic_List__0__
@@ -9061,6 +9052,15 @@ references:
   fullName.vb: BigBook.Trie(Of TObject, TReturn).FindAny(System.Span(Of TObject))
   nameWithType: Trie<TObject, TReturn>.FindAny(Span<TObject>)
   nameWithType.vb: Trie(Of TObject, TReturn).FindAny(Span(Of TObject))
+- uid: BigBook.Trie`2.FindAny(`0[])
+  name: FindAny(TObject[])
+  href: api/BigBook.Trie-2.html#BigBook_Trie_2_FindAny__0___
+  commentId: M:BigBook.Trie`2.FindAny(`0[])
+  name.vb: FindAny(TObject())
+  fullName: BigBook.Trie<TObject, TReturn>.FindAny(TObject[])
+  fullName.vb: BigBook.Trie(Of TObject, TReturn).FindAny(TObject())
+  nameWithType: Trie<TObject, TReturn>.FindAny(TObject[])
+  nameWithType.vb: Trie(Of TObject, TReturn).FindAny(TObject())
 - uid: BigBook.Trie`2.FindAny*
   name: FindAny
   href: api/BigBook.Trie-2.html#BigBook_Trie_2_FindAny_
@@ -9286,6 +9286,71 @@ references:
   isSpec: "True"
   fullName: BigBook.Vector3.Normalize
   nameWithType: Vector3.Normalize
+- uid: BigBook.Vector3.Subtract(BigBook.Vector3,BigBook.Vector3)
+  name: Subtract(Vector3, Vector3)
+  href: api/BigBook.Vector3.html#BigBook_Vector3_Subtract_BigBook_Vector3_BigBook_Vector3_
+  commentId: M:BigBook.Vector3.Subtract(BigBook.Vector3,BigBook.Vector3)
+  fullName: BigBook.Vector3.Subtract(BigBook.Vector3, BigBook.Vector3)
+  nameWithType: Vector3.Subtract(Vector3, Vector3)
+- uid: BigBook.Vector3.Subtract*
+  name: Subtract
+  href: api/BigBook.Vector3.html#BigBook_Vector3_Subtract_
+  commentId: Overload:BigBook.Vector3.Subtract
+  isSpec: "True"
+  fullName: BigBook.Vector3.Subtract
+  nameWithType: Vector3.Subtract
+- uid: BigBook.Vector3.ToString
+  name: ToString()
+  href: api/BigBook.Vector3.html#BigBook_Vector3_ToString
+  commentId: M:BigBook.Vector3.ToString
+  fullName: BigBook.Vector3.ToString()
+  nameWithType: Vector3.ToString()
+- uid: BigBook.Vector3.ToString*
+  name: ToString
+  href: api/BigBook.Vector3.html#BigBook_Vector3_ToString_
+  commentId: Overload:BigBook.Vector3.ToString
+  isSpec: "True"
+  fullName: BigBook.Vector3.ToString
+  nameWithType: Vector3.ToString
+- uid: BigBook.Vector3.X
+  name: X
+  href: api/BigBook.Vector3.html#BigBook_Vector3_X
+  commentId: P:BigBook.Vector3.X
+  fullName: BigBook.Vector3.X
+  nameWithType: Vector3.X
+- uid: BigBook.Vector3.X*
+  name: X
+  href: api/BigBook.Vector3.html#BigBook_Vector3_X_
+  commentId: Overload:BigBook.Vector3.X
+  isSpec: "True"
+  fullName: BigBook.Vector3.X
+  nameWithType: Vector3.X
+- uid: BigBook.Vector3.Y
+  name: Y
+  href: api/BigBook.Vector3.html#BigBook_Vector3_Y
+  commentId: P:BigBook.Vector3.Y
+  fullName: BigBook.Vector3.Y
+  nameWithType: Vector3.Y
+- uid: BigBook.Vector3.Y*
+  name: Y
+  href: api/BigBook.Vector3.html#BigBook_Vector3_Y_
+  commentId: Overload:BigBook.Vector3.Y
+  isSpec: "True"
+  fullName: BigBook.Vector3.Y
+  nameWithType: Vector3.Y
+- uid: BigBook.Vector3.Z
+  name: Z
+  href: api/BigBook.Vector3.html#BigBook_Vector3_Z
+  commentId: P:BigBook.Vector3.Z
+  fullName: BigBook.Vector3.Z
+  nameWithType: Vector3.Z
+- uid: BigBook.Vector3.Z*
+  name: Z
+  href: api/BigBook.Vector3.html#BigBook_Vector3_Z_
+  commentId: Overload:BigBook.Vector3.Z
+  isSpec: "True"
+  fullName: BigBook.Vector3.Z
+  nameWithType: Vector3.Z
 - uid: BigBook.Vector3.op_Addition(BigBook.Vector3,BigBook.Vector3)
   name: operator +(Vector3, Vector3)
   href: api/BigBook.Vector3.html#BigBook_Vector3_op_Addition_BigBook_Vector3_BigBook_Vector3_
@@ -9513,71 +9578,6 @@ references:
   fullName.vb: BigBook.Vector3.-
   nameWithType: Vector3.operator -
   nameWithType.vb: Vector3.-
-- uid: BigBook.Vector3.Subtract(BigBook.Vector3,BigBook.Vector3)
-  name: Subtract(Vector3, Vector3)
-  href: api/BigBook.Vector3.html#BigBook_Vector3_Subtract_BigBook_Vector3_BigBook_Vector3_
-  commentId: M:BigBook.Vector3.Subtract(BigBook.Vector3,BigBook.Vector3)
-  fullName: BigBook.Vector3.Subtract(BigBook.Vector3, BigBook.Vector3)
-  nameWithType: Vector3.Subtract(Vector3, Vector3)
-- uid: BigBook.Vector3.Subtract*
-  name: Subtract
-  href: api/BigBook.Vector3.html#BigBook_Vector3_Subtract_
-  commentId: Overload:BigBook.Vector3.Subtract
-  isSpec: "True"
-  fullName: BigBook.Vector3.Subtract
-  nameWithType: Vector3.Subtract
-- uid: BigBook.Vector3.ToString
-  name: ToString()
-  href: api/BigBook.Vector3.html#BigBook_Vector3_ToString
-  commentId: M:BigBook.Vector3.ToString
-  fullName: BigBook.Vector3.ToString()
-  nameWithType: Vector3.ToString()
-- uid: BigBook.Vector3.ToString*
-  name: ToString
-  href: api/BigBook.Vector3.html#BigBook_Vector3_ToString_
-  commentId: Overload:BigBook.Vector3.ToString
-  isSpec: "True"
-  fullName: BigBook.Vector3.ToString
-  nameWithType: Vector3.ToString
-- uid: BigBook.Vector3.X
-  name: X
-  href: api/BigBook.Vector3.html#BigBook_Vector3_X
-  commentId: P:BigBook.Vector3.X
-  fullName: BigBook.Vector3.X
-  nameWithType: Vector3.X
-- uid: BigBook.Vector3.X*
-  name: X
-  href: api/BigBook.Vector3.html#BigBook_Vector3_X_
-  commentId: Overload:BigBook.Vector3.X
-  isSpec: "True"
-  fullName: BigBook.Vector3.X
-  nameWithType: Vector3.X
-- uid: BigBook.Vector3.Y
-  name: Y
-  href: api/BigBook.Vector3.html#BigBook_Vector3_Y
-  commentId: P:BigBook.Vector3.Y
-  fullName: BigBook.Vector3.Y
-  nameWithType: Vector3.Y
-- uid: BigBook.Vector3.Y*
-  name: Y
-  href: api/BigBook.Vector3.html#BigBook_Vector3_Y_
-  commentId: Overload:BigBook.Vector3.Y
-  isSpec: "True"
-  fullName: BigBook.Vector3.Y
-  nameWithType: Vector3.Y
-- uid: BigBook.Vector3.Z
-  name: Z
-  href: api/BigBook.Vector3.html#BigBook_Vector3_Z
-  commentId: P:BigBook.Vector3.Z
-  fullName: BigBook.Vector3.Z
-  nameWithType: Vector3.Z
-- uid: BigBook.Vector3.Z*
-  name: Z
-  href: api/BigBook.Vector3.html#BigBook_Vector3_Z_
-  commentId: Overload:BigBook.Vector3.Z
-  isSpec: "True"
-  fullName: BigBook.Vector3.Z
-  nameWithType: Vector3.Z
 - uid: BigBook.VersionInfo
   name: VersionInfo
   href: api/BigBook.VersionInfo.html
