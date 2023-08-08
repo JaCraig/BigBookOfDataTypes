@@ -9,7 +9,7 @@
   <ItemGroup>
     <PackageReference Include="BenchmarkDotNet" Version="0.13.7" />
     <PackageReference Include="LazyCache" Version="2.4.0" />
-    <PackageReference Include="Microsoft.Extensions.ObjectPool" Version="7.0.9" />
+    <PackageReference Include="Microsoft.Extensions.ObjectPool" Version="7.0.10" />
   </ItemGroup>
 
   <ItemGroup>
