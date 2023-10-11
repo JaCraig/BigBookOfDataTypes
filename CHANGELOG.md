@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [versionize](https://github.com/versionize/versionize) for commit guidelines.
 
+<a name="5.0.28"></a>
+## [5.0.28](https://www.github.com/JaCraig/BigBookOfDataTypes/releases/tag/v5.0.28) (2023-10-11)
+
+### Bug Fixes
+
+* bump the dependencies group with 2 updates ([0305ceb](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/0305ceba6c3d7f3aa78ca5fa81f16abeb808cb84))
+
+### Other
+
+* Merge pull request #58 from JaCraig/dependabot/nuget/test/BigBook.Tests/dependencies-3a16073cfc ([d76a39c](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/d76a39c6235804cbb1598fcef35c3193e04975ac))
+* Merge pull request #59 from JaCraig/dependabot/nuget/test/BigBook.Tests/dependencies-ca3e3b579c ([1d6099b](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/1d6099b8556ea90aa878277fa30acf5fdf75a877))
+* Merge pull request #60 from JaCraig/dependabot/nuget/test/BigBook.Tests/dependencies-02c2d82278 ([5d913fc](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/5d913fc0a0e72c295faaa89ebf33fdbba72a95f7))
+* Merge pull request #61 from JaCraig/dependabot/github_actions/dependencies-4c9eee5d7b ([c250351](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/c2503516729faa18018b9a03826fccbff6e0ccaa))
+* Merge pull request #62 from JaCraig/dependabot/nuget/dependencies-5de8e87481 ([234c81f](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/234c81f144cc6c7e8c23061e6401b42a67e7b816))
+* bump the dependencies group in /test/BigBook.Tests with 1 update ([95acd60](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/95acd60bc6aac6ab0ce6b9a336a19aa75232fadd))
+* bump the dependencies group in /test/BigBook.Tests with 1 update ([a6765bd](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/a6765bde38b7e4195d55840ca8b761bb87a7e732))
+* bump the dependencies group in /test/BigBook.Tests with 1 update ([04661ec](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/04661ec69b46e139947b17176c45a8ac579709cd))
+* bump the dependencies group with 1 update ([fcfcda5](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/fcfcda58e98b45bde1a585667fbd855e35edc7d9))
+
 <a name="5.0.27"></a>
 ## [5.0.27](https://www.github.com/JaCraig/BigBookOfDataTypes/releases/tag/v5.0.27) (2023-09-25)
 
