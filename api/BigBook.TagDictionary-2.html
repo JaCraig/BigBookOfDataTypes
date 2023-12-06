@@ -1,125 +1,146 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-
-    <head>
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <head>
+    <meta charset="utf-8">
       <title>Class TagDictionary&lt;TKey, TValue&gt;
  | Big Book of DataTypes API Reference </title>
-      <meta name="viewport" content="width=device-width">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class TagDictionary&lt;TKey, TValue&gt;
  | Big Book of DataTypes API Reference ">
-      <meta name="generator" content="docfx ">
-  
-      <link rel="shortcut icon" href="../favicon.ico">
-      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/night-owl.min.css">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" integrity="sha384-EvBWSlnoFgZlXJvpzS+MAUEjvN7+gcCwH+qh7GRFOGgZO0PuwOFro7qPOJnLfe7l" crossorigin="anonymous">
-      <link rel="stylesheet" href="../styles/config.css">
-      <link rel="stylesheet" href="../styles/discord.css">
-      <link rel="stylesheet" href="../styles/singulink.css">
-      <link rel="stylesheet" href="../styles/main.css">
-      <meta property="docfx:navrel" content="../toc.json">
-      <meta property="docfx:tocrel" content="toc.json">
-  
-  <meta property="docfx:rel" content="../">
-  <meta property="docfx:newtab" content="true">
-    </head>
-    <body>
-        <div class="top-navbar">
-            <a class="burger-icon" onclick="toggleMenu()">
-                <svg name="Hamburger" style="vertical-align: middle;" width="34" height="34" viewbox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M20 6H4V9H20V6ZM4 10.999H20V13.999H4V10.999ZM4 15.999H20V18.999H4V15.999Z"></path></svg>
-            </a>
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_TagDictionary_2.md&amp;value=---%0Auid%3A%20BigBook.TagDictionary%602%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
 
 
-            <a class="brand" href="../index.html">
-              <img src="../images/icon.png" alt="BigBook" class="logomark">
-              <span class="brand-title">BigBook</span>
-            </a>        </div>
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/icon.png" alt="BigBook">
+            BigBook
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
 
-        <div class="body-content">
-            <div id="blackout" class="blackout" onclick="toggleMenu()"></div>
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
 
-            <nav id="sidebar" role="navigation">
-                <div class="sidebar">
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
 
-                    <div>
-                      <div class="mobile-hide">
+          <nav id="breadcrumb"></nav>
+        </div>
 
-                        <a class="brand" href="../index.html">
-                          <img src="../images/icon.png" alt="BigBook" class="logomark">
-                          <span class="brand-title">BigBook</span>
-                        </a>                      </div>
-
-                      <div class="sidesearch">
-                        <form id="search" role="search" class="search">
-                            <i class="bi bi-search search-icon"></i>
-                            <input type="text" id="search-query" placeholder="Search" autocomplete="off">
-                        </form>
-                      </div>
-
-                      <div id="navbar">
-                      </div>
-                    </div>                    <div class="sidebar-item-separator"></div>
-
-                        <div id="sidetoggle">
-                          <div id="sidetoc"></div>
-                        </div>
-                </div>
-                <div class="footer">
-  <strong><a href='https://github.com/JaCraig/BigBookOfDataTypes'>Open in Github</a></strong>
-  
-                </div>            </nav>
-
-            <main class="main-panel">
-
-                <div id="search-results" style="display: none;">
-                  <h1 class="search-list">Search Results for <span></span></h1>
-                  <div class="sr-items">
-                    <p><i class="bi bi-hourglass-split index-loading"></i></p>
-                  </div>
-                  <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
-                </div>
- 
-
-                <div role="main" class="hide-when-search">
-
-                        <div class="subnav navbar navbar-default">
-                          <div class="container hide-when-search" id="breadcrumb">
-                            <ul class="breadcrumb">
-                              <li></li>
-                            </ul>
-                          </div>
-                        </div>
-
-                         <div id="contribution">
-                               <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_TagDictionary_2.md&amp;value=---%0Auid%3A%20BigBook.TagDictionary%602%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
-                         </div>
-
-                    <article class="content wrap" id="_content" data-uid="BigBook.TagDictionary`2">
+        <article data-uid="BigBook.TagDictionary`2">
 
 
 
-  <h1 id="BigBook_TagDictionary_2" data-uid="BigBook.TagDictionary`2" class="text-break">Class TagDictionary&lt;TKey, TValue&gt;
-</h1>
-  <div class="markdown level0 summary"><p>Dictionary that matches multiple keys to each value</p>
+  <h1 id="BigBook_TagDictionary_2" data-uid="BigBook.TagDictionary`2" class="text-break">
+    Class TagDictionary&lt;TKey, TValue&gt;
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/TagDictionary.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="BigBook.html">BigBook</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>BigBook.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Dictionary that matches multiple keys to each value</p>
 </div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-    <div class="level1"><span class="xref">TagDictionary&lt;TKey, TValue&gt;</span></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class TagDictionary&lt;TKey, TValue&gt; : IDictionary&lt;TKey, IEnumerable&lt;TValue&gt;&gt;, ICollection&lt;KeyValuePair&lt;TKey, IEnumerable&lt;TValue&gt;&gt;&gt;, IEnumerable&lt;KeyValuePair&lt;TKey, IEnumerable&lt;TValue&gt;&gt;&gt;, IEnumerable</code></pre>
   </div>
-  <div class="implements">
-    <h5>Implements</h5>
-    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;TKey, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;TValue&gt;&gt;</div>
-    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;TKey, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;TValue&gt;&gt;&gt;</div>
-    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;TKey, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;TValue&gt;&gt;&gt;</div>
-    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerable">IEnumerable</a></div>
-  </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
+
+
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>TKey</code></dt>
+    <dd><p>Key type</p>
+</dd>
+    <dt><code>TValue</code></dt>
+    <dd><p>Value type</p>
+</dd>
+  </dl>
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">TagDictionary&lt;TKey, TValue&gt;</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;TKey, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;TValue&gt;&gt;</div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;TKey, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;TValue&gt;&gt;&gt;</div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;TKey, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;TValue&gt;&gt;&gt;</div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerable">IEnumerable</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
@@ -141,721 +162,641 @@
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
     </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="BigBook.html">BigBook</a></h6>
-  <h6><strong>Assembly</strong>: BigBook.dll</h6>
-  <h5 id="BigBook_TagDictionary_2_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class TagDictionary&lt;TKey, TValue&gt; : IDictionary&lt;TKey, IEnumerable&lt;TValue&gt;&gt;, ICollection&lt;KeyValuePair&lt;TKey, IEnumerable&lt;TValue&gt;&gt;&gt;, IEnumerable&lt;KeyValuePair&lt;TKey, IEnumerable&lt;TValue&gt;&gt;&gt;, IEnumerable</code></pre>
-  </div>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">TKey</span></td>
-        <td><p>Key type</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="parametername">TValue</span></td>
-        <td><p>Value type</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="constructors">Constructors
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_TagDictionary_2__ctor.md&amp;value=---%0Auid%3A%20BigBook.TagDictionary%602.%23ctor%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/TagDictionary.cs/#L34">View Source</a>
-  </span>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
   <a id="BigBook_TagDictionary_2__ctor_" data-uid="BigBook.TagDictionary`2.#ctor*"></a>
-  <h4 id="BigBook_TagDictionary_2__ctor" data-uid="BigBook.TagDictionary`2.#ctor">TagDictionary()</h4>
+
+  <h3 id="BigBook_TagDictionary_2__ctor" data-uid="BigBook.TagDictionary`2.#ctor">
+  TagDictionary()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/TagDictionary.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Constructor</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public TagDictionary()</code></pre>
   </div>
-  <h3 id="properties">Properties
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_TagDictionary_2_Count.md&amp;value=---%0Auid%3A%20BigBook.TagDictionary%602.Count%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/TagDictionary.cs/#L43">View Source</a>
-  </span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
   <a id="BigBook_TagDictionary_2_Count_" data-uid="BigBook.TagDictionary`2.Count*"></a>
-  <h4 id="BigBook_TagDictionary_2_Count" data-uid="BigBook.TagDictionary`2.Count">Count</h4>
+
+  <h3 id="BigBook_TagDictionary_2_Count" data-uid="BigBook.TagDictionary`2.Count">
+  Count
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/TagDictionary.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Number of items in the dictionary</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public int Count { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_TagDictionary_2_IsReadOnly.md&amp;value=---%0Auid%3A%20BigBook.TagDictionary%602.IsReadOnly%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/TagDictionary.cs/#L48">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="BigBook_TagDictionary_2_IsReadOnly_" data-uid="BigBook.TagDictionary`2.IsReadOnly*"></a>
-  <h4 id="BigBook_TagDictionary_2_IsReadOnly" data-uid="BigBook.TagDictionary`2.IsReadOnly">IsReadOnly</h4>
+
+  <h3 id="BigBook_TagDictionary_2_IsReadOnly" data-uid="BigBook.TagDictionary`2.IsReadOnly">
+  IsReadOnly
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/TagDictionary.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Always false</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool IsReadOnly { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_TagDictionary_2_Item__0_.md&amp;value=---%0Auid%3A%20BigBook.TagDictionary%602.Item(%600)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/TagDictionary.cs/#L75">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="BigBook_TagDictionary_2_Item_" data-uid="BigBook.TagDictionary`2.Item*"></a>
-  <h4 id="BigBook_TagDictionary_2_Item__0_" data-uid="BigBook.TagDictionary`2.Item(`0)">this[TKey]</h4>
+
+  <h3 id="BigBook_TagDictionary_2_Item__0_" data-uid="BigBook.TagDictionary`2.Item(`0)">
+  this[TKey]
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/TagDictionary.cs/#L75"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Gets the values based on a key</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public IEnumerable&lt;TValue&gt; this[TKey key] { get; set; }</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">TKey</span></td>
-        <td><span class="parametername">key</span></td>
-        <td><p>Key to get the values of</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;TValue&gt;</td>
-        <td><p>The values associated with the key</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_TagDictionary_2_Keys.md&amp;value=---%0Auid%3A%20BigBook.TagDictionary%602.Keys%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/TagDictionary.cs/#L53">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <span class="xref">TKey</span></dt>
+    <dd><p>Key to get the values of</p>
+</dd>
+  </dl>
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;TValue&gt;</dt>
+    <dd><p>The values associated with the key</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="BigBook_TagDictionary_2_Keys_" data-uid="BigBook.TagDictionary`2.Keys*"></a>
-  <h4 id="BigBook_TagDictionary_2_Keys" data-uid="BigBook.TagDictionary`2.Keys">Keys</h4>
+
+  <h3 id="BigBook_TagDictionary_2_Keys" data-uid="BigBook.TagDictionary`2.Keys">
+  Keys
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/TagDictionary.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Gets the keys found in the dictionary</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public ICollection&lt;TKey&gt; Keys { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;TKey&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_TagDictionary_2_Values.md&amp;value=---%0Auid%3A%20BigBook.TagDictionary%602.Values%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/TagDictionary.cs/#L58">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;TKey&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="BigBook_TagDictionary_2_Values_" data-uid="BigBook.TagDictionary`2.Values*"></a>
-  <h4 id="BigBook_TagDictionary_2_Values" data-uid="BigBook.TagDictionary`2.Values">Values</h4>
+
+  <h3 id="BigBook_TagDictionary_2_Values" data-uid="BigBook.TagDictionary`2.Values">
+  Values
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/TagDictionary.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Gets the values found in the dictionary</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public ICollection&lt;IEnumerable&lt;TValue&gt;&gt; Values { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;TValue&gt;&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_TagDictionary_2_Add_System_Collections_Generic_KeyValuePair__0_System_Collections_Generic_IEnumerable__1___.md&amp;value=---%0Auid%3A%20BigBook.TagDictionary%602.Add(System.Collections.Generic.KeyValuePair%7B%600%2CSystem.Collections.Generic.IEnumerable%7B%601%7D%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/TagDictionary.cs/#L108">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;TValue&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
   <a id="BigBook_TagDictionary_2_Add_" data-uid="BigBook.TagDictionary`2.Add*"></a>
-  <h4 id="BigBook_TagDictionary_2_Add_System_Collections_Generic_KeyValuePair__0_System_Collections_Generic_IEnumerable__1___" data-uid="BigBook.TagDictionary`2.Add(System.Collections.Generic.KeyValuePair{`0,System.Collections.Generic.IEnumerable{`1}})">Add(KeyValuePair&lt;TKey, IEnumerable&lt;TValue&gt;&gt;)</h4>
+
+  <h3 id="BigBook_TagDictionary_2_Add_System_Collections_Generic_KeyValuePair__0_System_Collections_Generic_IEnumerable__1___" data-uid="BigBook.TagDictionary`2.Add(System.Collections.Generic.KeyValuePair{`0,System.Collections.Generic.IEnumerable{`1}})">
+  Add(KeyValuePair&lt;TKey, IEnumerable&lt;TValue&gt;&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/TagDictionary.cs/#L108"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Adds an item to the dictionary</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Add(KeyValuePair&lt;TKey, IEnumerable&lt;TValue&gt;&gt; item)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;TKey, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;TValue&gt;&gt;</td>
-        <td><span class="parametername">item</span></td>
-        <td><p>item to add</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_TagDictionary_2_Add__0_System_Collections_Generic_IEnumerable__1__.md&amp;value=---%0Auid%3A%20BigBook.TagDictionary%602.Add(%600%2CSystem.Collections.Generic.IEnumerable%7B%601%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/TagDictionary.cs/#L86">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>item</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;TKey, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;TValue&gt;&gt;</dt>
+    <dd><p>item to add</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_TagDictionary_2_Add_" data-uid="BigBook.TagDictionary`2.Add*"></a>
-  <h4 id="BigBook_TagDictionary_2_Add__0_System_Collections_Generic_IEnumerable__1__" data-uid="BigBook.TagDictionary`2.Add(`0,System.Collections.Generic.IEnumerable{`1})">Add(TKey, IEnumerable&lt;TValue&gt;)</h4>
+
+  <h3 id="BigBook_TagDictionary_2_Add__0_System_Collections_Generic_IEnumerable__1__" data-uid="BigBook.TagDictionary`2.Add(`0,System.Collections.Generic.IEnumerable{`1})">
+  Add(TKey, IEnumerable&lt;TValue&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/TagDictionary.cs/#L86"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Adds a list of values to the key</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Add(TKey key, IEnumerable&lt;TValue&gt; value)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">TKey</span></td>
-        <td><span class="parametername">key</span></td>
-        <td><p>Key</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;TValue&gt;</td>
-        <td><span class="parametername">value</span></td>
-        <td><p>Values to add</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_TagDictionary_2_Add__1__0___.md&amp;value=---%0Auid%3A%20BigBook.TagDictionary%602.Add(%601%2C%600%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/TagDictionary.cs/#L97">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <span class="xref">TKey</span></dt>
+    <dd><p>Key</p>
+</dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;TValue&gt;</dt>
+    <dd><p>Values to add</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_TagDictionary_2_Add_" data-uid="BigBook.TagDictionary`2.Add*"></a>
-  <h4 id="BigBook_TagDictionary_2_Add__1__0___" data-uid="BigBook.TagDictionary`2.Add(`1,`0[])">Add(TValue, params TKey[])</h4>
+
+  <h3 id="BigBook_TagDictionary_2_Add__1__0___" data-uid="BigBook.TagDictionary`2.Add(`1,`0[])">
+  Add(TValue, params TKey[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/TagDictionary.cs/#L97"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Adds a value to the dicionary</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Add(TValue value, params TKey[] keys)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">TValue</span></td>
-        <td><span class="parametername">value</span></td>
-        <td><p>Value to add</p>
-</td>
-      </tr>
-      <tr>
-        <td>TKey[]</td>
-        <td><span class="parametername">keys</span></td>
-        <td><p>Keys to associate the value with</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_TagDictionary_2_Clear.md&amp;value=---%0Auid%3A%20BigBook.TagDictionary%602.Clear%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/TagDictionary.cs/#L113">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <span class="xref">TValue</span></dt>
+    <dd><p>Value to add</p>
+</dd>
+    <dt><code>keys</code> TKey[]</dt>
+    <dd><p>Keys to associate the value with</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_TagDictionary_2_Clear_" data-uid="BigBook.TagDictionary`2.Clear*"></a>
-  <h4 id="BigBook_TagDictionary_2_Clear" data-uid="BigBook.TagDictionary`2.Clear">Clear()</h4>
+
+  <h3 id="BigBook_TagDictionary_2_Clear" data-uid="BigBook.TagDictionary`2.Clear">
+  Clear()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/TagDictionary.cs/#L113"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Clears the dictionary</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Clear()</code></pre>
   </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_TagDictionary_2_Contains_System_Collections_Generic_KeyValuePair__0_System_Collections_Generic_IEnumerable__1___.md&amp;value=---%0Auid%3A%20BigBook.TagDictionary%602.Contains(System.Collections.Generic.KeyValuePair%7B%600%2CSystem.Collections.Generic.IEnumerable%7B%601%7D%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/TagDictionary.cs/#L120">View Source</a>
-  </span>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_TagDictionary_2_Contains_" data-uid="BigBook.TagDictionary`2.Contains*"></a>
-  <h4 id="BigBook_TagDictionary_2_Contains_System_Collections_Generic_KeyValuePair__0_System_Collections_Generic_IEnumerable__1___" data-uid="BigBook.TagDictionary`2.Contains(System.Collections.Generic.KeyValuePair{`0,System.Collections.Generic.IEnumerable{`1}})">Contains(KeyValuePair&lt;TKey, IEnumerable&lt;TValue&gt;&gt;)</h4>
+
+  <h3 id="BigBook_TagDictionary_2_Contains_System_Collections_Generic_KeyValuePair__0_System_Collections_Generic_IEnumerable__1___" data-uid="BigBook.TagDictionary`2.Contains(System.Collections.Generic.KeyValuePair{`0,System.Collections.Generic.IEnumerable{`1}})">
+  Contains(KeyValuePair&lt;TKey, IEnumerable&lt;TValue&gt;&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/TagDictionary.cs/#L120"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Determines if the dictionary contains the key/value pair</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool Contains(KeyValuePair&lt;TKey, IEnumerable&lt;TValue&gt;&gt; item)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;TKey, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;TValue&gt;&gt;</td>
-        <td><span class="parametername">item</span></td>
-        <td><p>item to check</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><p>True if it is, false otherwise</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_TagDictionary_2_ContainsKey__0_.md&amp;value=---%0Auid%3A%20BigBook.TagDictionary%602.ContainsKey(%600)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/TagDictionary.cs/#L127">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>item</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;TKey, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;TValue&gt;&gt;</dt>
+    <dd><p>item to check</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if it is, false otherwise</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_TagDictionary_2_ContainsKey_" data-uid="BigBook.TagDictionary`2.ContainsKey*"></a>
-  <h4 id="BigBook_TagDictionary_2_ContainsKey__0_" data-uid="BigBook.TagDictionary`2.ContainsKey(`0)">ContainsKey(TKey)</h4>
+
+  <h3 id="BigBook_TagDictionary_2_ContainsKey__0_" data-uid="BigBook.TagDictionary`2.ContainsKey(`0)">
+  ContainsKey(TKey)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/TagDictionary.cs/#L127"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Determines if a key is in the dictionary</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool ContainsKey(TKey key)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">TKey</span></td>
-        <td><span class="parametername">key</span></td>
-        <td><p>Key to check</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><p>True if it exists, false otherwise</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_TagDictionary_2_CopyTo_System_Collections_Generic_KeyValuePair__0_System_Collections_Generic_IEnumerable__1_____System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.TagDictionary%602.CopyTo(System.Collections.Generic.KeyValuePair%7B%600%2CSystem.Collections.Generic.IEnumerable%7B%601%7D%7D%5B%5D%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/TagDictionary.cs/#L134">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <span class="xref">TKey</span></dt>
+    <dd><p>Key to check</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if it exists, false otherwise</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_TagDictionary_2_CopyTo_" data-uid="BigBook.TagDictionary`2.CopyTo*"></a>
-  <h4 id="BigBook_TagDictionary_2_CopyTo_System_Collections_Generic_KeyValuePair__0_System_Collections_Generic_IEnumerable__1_____System_Int32_" data-uid="BigBook.TagDictionary`2.CopyTo(System.Collections.Generic.KeyValuePair{`0,System.Collections.Generic.IEnumerable{`1}}[],System.Int32)">CopyTo(KeyValuePair&lt;TKey, IEnumerable&lt;TValue&gt;&gt;[], int)</h4>
+
+  <h3 id="BigBook_TagDictionary_2_CopyTo_System_Collections_Generic_KeyValuePair__0_System_Collections_Generic_IEnumerable__1_____System_Int32_" data-uid="BigBook.TagDictionary`2.CopyTo(System.Collections.Generic.KeyValuePair{`0,System.Collections.Generic.IEnumerable{`1}}[],System.Int32)">
+  CopyTo(KeyValuePair&lt;TKey, IEnumerable&lt;TValue&gt;&gt;[], int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/TagDictionary.cs/#L134"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Copies itself to an array</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void CopyTo(KeyValuePair&lt;TKey, IEnumerable&lt;TValue&gt;&gt;[] array, int arrayIndex)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;TKey, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;TValue&gt;&gt;[]</td>
-        <td><span class="parametername">array</span></td>
-        <td><p>Array</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">arrayIndex</span></td>
-        <td><p>Array index</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_TagDictionary_2_GetEnumerator.md&amp;value=---%0Auid%3A%20BigBook.TagDictionary%602.GetEnumerator%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/TagDictionary.cs/#L150">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>array</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;TKey, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;TValue&gt;&gt;[]</dt>
+    <dd><p>Array</p>
+</dd>
+    <dt><code>arrayIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Array index</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_TagDictionary_2_GetEnumerator_" data-uid="BigBook.TagDictionary`2.GetEnumerator*"></a>
-  <h4 id="BigBook_TagDictionary_2_GetEnumerator" data-uid="BigBook.TagDictionary`2.GetEnumerator">GetEnumerator()</h4>
+
+  <h3 id="BigBook_TagDictionary_2_GetEnumerator" data-uid="BigBook.TagDictionary`2.GetEnumerator">
+  GetEnumerator()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/TagDictionary.cs/#L150"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Gets the enumerator</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public IEnumerator&lt;KeyValuePair&lt;TKey, IEnumerable&lt;TValue&gt;&gt;&gt; GetEnumerator()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1">IEnumerator</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;TKey, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;TValue&gt;&gt;&gt;</td>
-        <td><p>The enumerator</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_TagDictionary_2_Remove_System_Collections_Generic_KeyValuePair__0_System_Collections_Generic_IEnumerable__1___.md&amp;value=---%0Auid%3A%20BigBook.TagDictionary%602.Remove(System.Collections.Generic.KeyValuePair%7B%600%2CSystem.Collections.Generic.IEnumerable%7B%601%7D%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/TagDictionary.cs/#L188">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1">IEnumerator</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;TKey, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;TValue&gt;&gt;&gt;</dt>
+    <dd><p>The enumerator</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_TagDictionary_2_Remove_" data-uid="BigBook.TagDictionary`2.Remove*"></a>
-  <h4 id="BigBook_TagDictionary_2_Remove_System_Collections_Generic_KeyValuePair__0_System_Collections_Generic_IEnumerable__1___" data-uid="BigBook.TagDictionary`2.Remove(System.Collections.Generic.KeyValuePair{`0,System.Collections.Generic.IEnumerable{`1}})">Remove(KeyValuePair&lt;TKey, IEnumerable&lt;TValue&gt;&gt;)</h4>
+
+  <h3 id="BigBook_TagDictionary_2_Remove_System_Collections_Generic_KeyValuePair__0_System_Collections_Generic_IEnumerable__1___" data-uid="BigBook.TagDictionary`2.Remove(System.Collections.Generic.KeyValuePair{`0,System.Collections.Generic.IEnumerable{`1}})">
+  Remove(KeyValuePair&lt;TKey, IEnumerable&lt;TValue&gt;&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/TagDictionary.cs/#L188"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Removes a specific key/value pair</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool Remove(KeyValuePair&lt;TKey, IEnumerable&lt;TValue&gt;&gt; item)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;TKey, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;TValue&gt;&gt;</td>
-        <td><span class="parametername">item</span></td>
-        <td><p>item to remove</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><p>True if it is removed, false otherwise</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_TagDictionary_2_Remove__0_.md&amp;value=---%0Auid%3A%20BigBook.TagDictionary%602.Remove(%600)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/TagDictionary.cs/#L175">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>item</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;TKey, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;TValue&gt;&gt;</dt>
+    <dd><p>item to remove</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if it is removed, false otherwise</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_TagDictionary_2_Remove_" data-uid="BigBook.TagDictionary`2.Remove*"></a>
-  <h4 id="BigBook_TagDictionary_2_Remove__0_" data-uid="BigBook.TagDictionary`2.Remove(`0)">Remove(TKey)</h4>
+
+  <h3 id="BigBook_TagDictionary_2_Remove__0_" data-uid="BigBook.TagDictionary`2.Remove(`0)">
+  Remove(TKey)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/TagDictionary.cs/#L175"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Removes all items that are associated with a key</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool Remove(TKey key)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">TKey</span></td>
-        <td><span class="parametername">key</span></td>
-        <td><p>Key</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><p>Returns true if the key was found, false otherwise</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_TagDictionary_2_TryGetValue__0_System_Collections_Generic_IEnumerable__1___.md&amp;value=---%0Auid%3A%20BigBook.TagDictionary%602.TryGetValue(%600%2CSystem.Collections.Generic.IEnumerable%7B%601%7D%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/TagDictionary.cs/#L196">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <span class="xref">TKey</span></dt>
+    <dd><p>Key</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Returns true if the key was found, false otherwise</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_TagDictionary_2_TryGetValue_" data-uid="BigBook.TagDictionary`2.TryGetValue*"></a>
-  <h4 id="BigBook_TagDictionary_2_TryGetValue__0_System_Collections_Generic_IEnumerable__1___" data-uid="BigBook.TagDictionary`2.TryGetValue(`0,System.Collections.Generic.IEnumerable{`1}@)">TryGetValue(TKey, out IEnumerable&lt;TValue&gt;)</h4>
+
+  <h3 id="BigBook_TagDictionary_2_TryGetValue__0_System_Collections_Generic_IEnumerable__1___" data-uid="BigBook.TagDictionary`2.TryGetValue(`0,System.Collections.Generic.IEnumerable{`1}@)">
+  TryGetValue(TKey, out IEnumerable&lt;TValue&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/TagDictionary.cs/#L196"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Attempts to get the values associated with a key</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool TryGetValue(TKey key, out IEnumerable&lt;TValue&gt; value)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">TKey</span></td>
-        <td><span class="parametername">key</span></td>
-        <td><p>Key</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;TValue&gt;</td>
-        <td><span class="parametername">value</span></td>
-        <td><p>Values associated with a key</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><p>True if something is returned, false otherwise</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary&lt;TKey, TValue&gt;</a>
-  </div>
-  <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>
-  </div>
-  <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable&lt;T&gt;</a>
-  </div>
-  <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerable">IEnumerable</a>
-  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <span class="xref">TKey</span></dt>
+    <dd><p>Key</p>
+</dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;TValue&gt;</dt>
+    <dd><p>Values associated with a key</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if something is returned, false otherwise</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
 
 </article>
-                </div>
 
-                <div class="copyright-footer">
-                    <span>&#169; James Craig. All rights reserved.</span>
-                </div>
-            </main>
+        <div class="contribution d-print-none">
+          <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/TagDictionary.cs/#L29" class="edit-link">Edit this page</a>
         </div>
 
 
-        <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
-        <script type="text/javascript" src="../styles/jquery.twbsPagination.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/jquery.mark.min.js"></script>
-        <script type="text/javascript" src="../styles/url.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/anchor-js@5.0.0/anchor.min.js"></script>
-        <script type="text/javascript" src="../styles/docfx.js"></script>
-        <script type="text/javascript" src="../styles/main.js"></script>
-        <script type="text/javascript" src="../styles/singulink.js"></script>    </body>
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <strong><a href='https://github.com/JaCraig/BigBookOfDataTypes'>Open in Github</a></strong>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>

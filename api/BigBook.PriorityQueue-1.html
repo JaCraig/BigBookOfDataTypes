@@ -1,125 +1,143 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-
-    <head>
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <head>
+    <meta charset="utf-8">
       <title>Class PriorityQueue&lt;T&gt;
  | Big Book of DataTypes API Reference </title>
-      <meta name="viewport" content="width=device-width">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class PriorityQueue&lt;T&gt;
  | Big Book of DataTypes API Reference ">
-      <meta name="generator" content="docfx ">
-  
-      <link rel="shortcut icon" href="../favicon.ico">
-      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/night-owl.min.css">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" integrity="sha384-EvBWSlnoFgZlXJvpzS+MAUEjvN7+gcCwH+qh7GRFOGgZO0PuwOFro7qPOJnLfe7l" crossorigin="anonymous">
-      <link rel="stylesheet" href="../styles/config.css">
-      <link rel="stylesheet" href="../styles/discord.css">
-      <link rel="stylesheet" href="../styles/singulink.css">
-      <link rel="stylesheet" href="../styles/main.css">
-      <meta property="docfx:navrel" content="../toc.json">
-      <meta property="docfx:tocrel" content="toc.json">
-  
-  <meta property="docfx:rel" content="../">
-  <meta property="docfx:newtab" content="true">
-    </head>
-    <body>
-        <div class="top-navbar">
-            <a class="burger-icon" onclick="toggleMenu()">
-                <svg name="Hamburger" style="vertical-align: middle;" width="34" height="34" viewbox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M20 6H4V9H20V6ZM4 10.999H20V13.999H4V10.999ZM4 15.999H20V18.999H4V15.999Z"></path></svg>
-            </a>
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_PriorityQueue_1.md&amp;value=---%0Auid%3A%20BigBook.PriorityQueue%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
 
 
-            <a class="brand" href="../index.html">
-              <img src="../images/icon.png" alt="BigBook" class="logomark">
-              <span class="brand-title">BigBook</span>
-            </a>        </div>
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/icon.png" alt="BigBook">
+            BigBook
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
 
-        <div class="body-content">
-            <div id="blackout" class="blackout" onclick="toggleMenu()"></div>
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
 
-            <nav id="sidebar" role="navigation">
-                <div class="sidebar">
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
 
-                    <div>
-                      <div class="mobile-hide">
+          <nav id="breadcrumb"></nav>
+        </div>
 
-                        <a class="brand" href="../index.html">
-                          <img src="../images/icon.png" alt="BigBook" class="logomark">
-                          <span class="brand-title">BigBook</span>
-                        </a>                      </div>
-
-                      <div class="sidesearch">
-                        <form id="search" role="search" class="search">
-                            <i class="bi bi-search search-icon"></i>
-                            <input type="text" id="search-query" placeholder="Search" autocomplete="off">
-                        </form>
-                      </div>
-
-                      <div id="navbar">
-                      </div>
-                    </div>                    <div class="sidebar-item-separator"></div>
-
-                        <div id="sidetoggle">
-                          <div id="sidetoc"></div>
-                        </div>
-                </div>
-                <div class="footer">
-  <strong><a href='https://github.com/JaCraig/BigBookOfDataTypes'>Open in Github</a></strong>
-  
-                </div>            </nav>
-
-            <main class="main-panel">
-
-                <div id="search-results" style="display: none;">
-                  <h1 class="search-list">Search Results for <span></span></h1>
-                  <div class="sr-items">
-                    <p><i class="bi bi-hourglass-split index-loading"></i></p>
-                  </div>
-                  <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
-                </div>
- 
-
-                <div role="main" class="hide-when-search">
-
-                        <div class="subnav navbar navbar-default">
-                          <div class="container hide-when-search" id="breadcrumb">
-                            <ul class="breadcrumb">
-                              <li></li>
-                            </ul>
-                          </div>
-                        </div>
-
-                         <div id="contribution">
-                               <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_PriorityQueue_1.md&amp;value=---%0Auid%3A%20BigBook.PriorityQueue%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
-                         </div>
-
-                    <article class="content wrap" id="_content" data-uid="BigBook.PriorityQueue`1">
+        <article data-uid="BigBook.PriorityQueue`1">
 
 
 
-  <h1 id="BigBook_PriorityQueue_1" data-uid="BigBook.PriorityQueue`1" class="text-break">Class PriorityQueue&lt;T&gt;
-</h1>
-  <div class="markdown level0 summary"><p>Helper class that implements a priority queue</p>
+  <h1 id="BigBook_PriorityQueue_1" data-uid="BigBook.PriorityQueue`1" class="text-break">
+    Class PriorityQueue&lt;T&gt;
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="BigBook.html">BigBook</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>BigBook.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Helper class that implements a priority queue</p>
 </div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-    <div class="level1"><span class="xref">PriorityQueue&lt;T&gt;</span></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class PriorityQueue&lt;T&gt; : IDictionary&lt;int, ICollection&lt;T&gt;&gt;, ICollection&lt;KeyValuePair&lt;int, ICollection&lt;T&gt;&gt;&gt;, IEnumerable&lt;KeyValuePair&lt;int, ICollection&lt;T&gt;&gt;&gt;, IEnumerable</code></pre>
   </div>
-  <div class="implements">
-    <h5>Implements</h5>
-    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;T&gt;&gt;</div>
-    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;T&gt;&gt;&gt;</div>
-    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;T&gt;&gt;&gt;</div>
-    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerable">IEnumerable</a></div>
-  </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
+
+
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of the values placed in the queue</p>
+</dd>
+  </dl>
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">PriorityQueue&lt;T&gt;</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;T&gt;&gt;</div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;T&gt;&gt;&gt;</div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;T&gt;&gt;&gt;</div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerable">IEnumerable</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
@@ -141,1010 +159,897 @@
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
     </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="BigBook.html">BigBook</a></h6>
-  <h6><strong>Assembly</strong>: BigBook.dll</h6>
-  <h5 id="BigBook_PriorityQueue_1_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class PriorityQueue&lt;T&gt; : IDictionary&lt;int, ICollection&lt;T&gt;&gt;, ICollection&lt;KeyValuePair&lt;int, ICollection&lt;T&gt;&gt;&gt;, IEnumerable&lt;KeyValuePair&lt;int, ICollection&lt;T&gt;&gt;&gt;, IEnumerable</code></pre>
-  </div>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">T</span></td>
-        <td><p>The type of the values placed in the queue</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="constructors">Constructors
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_PriorityQueue_1__ctor.md&amp;value=---%0Auid%3A%20BigBook.PriorityQueue%601.%23ctor%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L32">View Source</a>
-  </span>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
   <a id="BigBook_PriorityQueue_1__ctor_" data-uid="BigBook.PriorityQueue`1.#ctor*"></a>
-  <h4 id="BigBook_PriorityQueue_1__ctor" data-uid="BigBook.PriorityQueue`1.#ctor">PriorityQueue()</h4>
+
+  <h3 id="BigBook_PriorityQueue_1__ctor" data-uid="BigBook.PriorityQueue`1.#ctor">
+  PriorityQueue()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Constructor</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public PriorityQueue()</code></pre>
   </div>
-  <h3 id="properties">Properties
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_PriorityQueue_1_Count.md&amp;value=---%0Auid%3A%20BigBook.PriorityQueue%601.Count%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L41">View Source</a>
-  </span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
   <a id="BigBook_PriorityQueue_1_Count_" data-uid="BigBook.PriorityQueue`1.Count*"></a>
-  <h4 id="BigBook_PriorityQueue_1_Count" data-uid="BigBook.PriorityQueue`1.Count">Count</h4>
+
+  <h3 id="BigBook_PriorityQueue_1_Count" data-uid="BigBook.PriorityQueue`1.Count">
+  Count
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>The number of items in the listing</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public int Count { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_PriorityQueue_1_HighestKey.md&amp;value=---%0Auid%3A%20BigBook.PriorityQueue%601.HighestKey%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L61">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="BigBook_PriorityQueue_1_HighestKey_" data-uid="BigBook.PriorityQueue`1.HighestKey*"></a>
-  <h4 id="BigBook_PriorityQueue_1_HighestKey" data-uid="BigBook.PriorityQueue`1.HighestKey">HighestKey</h4>
+
+  <h3 id="BigBook_PriorityQueue_1_HighestKey" data-uid="BigBook.PriorityQueue`1.HighestKey">
+  HighestKey
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L61"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Highest value key</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected int HighestKey { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_PriorityQueue_1_IsReadOnly.md&amp;value=---%0Auid%3A%20BigBook.PriorityQueue%601.IsReadOnly%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L46">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="BigBook_PriorityQueue_1_IsReadOnly_" data-uid="BigBook.PriorityQueue`1.IsReadOnly*"></a>
-  <h4 id="BigBook_PriorityQueue_1_IsReadOnly" data-uid="BigBook.PriorityQueue`1.IsReadOnly">IsReadOnly</h4>
+
+  <h3 id="BigBook_PriorityQueue_1_IsReadOnly" data-uid="BigBook.PriorityQueue`1.IsReadOnly">
+  IsReadOnly
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L46"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Not read only</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool IsReadOnly { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_PriorityQueue_1_Item_System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.PriorityQueue%601.Item(System.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L73">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="BigBook_PriorityQueue_1_Item_" data-uid="BigBook.PriorityQueue`1.Item*"></a>
-  <h4 id="BigBook_PriorityQueue_1_Item_System_Int32_" data-uid="BigBook.PriorityQueue`1.Item(System.Int32)">this[int]</h4>
+
+  <h3 id="BigBook_PriorityQueue_1_Item_System_Int32_" data-uid="BigBook.PriorityQueue`1.Item(System.Int32)">
+  this[int]
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L73"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Gets a list of values associated with a key</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public ICollection&lt;T&gt; this[int key] { get; set; }</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">key</span></td>
-        <td><p>Key to look for</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;T&gt;</td>
-        <td><p>The list of values</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_PriorityQueue_1_Items.md&amp;value=---%0Auid%3A%20BigBook.PriorityQueue%601.Items%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L66">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Key to look for</p>
+</dd>
+  </dl>
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;T&gt;</dt>
+    <dd><p>The list of values</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="BigBook_PriorityQueue_1_Items_" data-uid="BigBook.PriorityQueue`1.Items*"></a>
-  <h4 id="BigBook_PriorityQueue_1_Items" data-uid="BigBook.PriorityQueue`1.Items">Items</h4>
+
+  <h3 id="BigBook_PriorityQueue_1_Items" data-uid="BigBook.PriorityQueue`1.Items">
+  Items
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Container holding the data</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected IDictionary&lt;int, ICollection&lt;T&gt;&gt; Items { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;T&gt;&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_PriorityQueue_1_Keys.md&amp;value=---%0Auid%3A%20BigBook.PriorityQueue%601.Keys%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L51">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;T&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="BigBook_PriorityQueue_1_Keys_" data-uid="BigBook.PriorityQueue`1.Keys*"></a>
-  <h4 id="BigBook_PriorityQueue_1_Keys" data-uid="BigBook.PriorityQueue`1.Keys">Keys</h4>
+
+  <h3 id="BigBook_PriorityQueue_1_Keys" data-uid="BigBook.PriorityQueue`1.Keys">
+  Keys
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L51"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>The list of keys within the mapping</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public ICollection&lt;int&gt; Keys { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_PriorityQueue_1_Values.md&amp;value=---%0Auid%3A%20BigBook.PriorityQueue%601.Values%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L56">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="BigBook_PriorityQueue_1_Values_" data-uid="BigBook.PriorityQueue`1.Values*"></a>
-  <h4 id="BigBook_PriorityQueue_1_Values" data-uid="BigBook.PriorityQueue`1.Values">Values</h4>
+
+  <h3 id="BigBook_PriorityQueue_1_Values" data-uid="BigBook.PriorityQueue`1.Values">
+  Values
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L56"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>List that contains the list of values</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public ICollection&lt;ICollection&lt;T&gt;&gt; Values { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;T&gt;&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_PriorityQueue_1_Add_System_Collections_Generic_KeyValuePair_System_Int32_System_Collections_Generic_ICollection__0___.md&amp;value=---%0Auid%3A%20BigBook.PriorityQueue%601.Add(System.Collections.Generic.KeyValuePair%7BSystem.Int32%2CSystem.Collections.Generic.ICollection%7B%600%7D%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L94">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;T&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
   <a id="BigBook_PriorityQueue_1_Add_" data-uid="BigBook.PriorityQueue`1.Add*"></a>
-  <h4 id="BigBook_PriorityQueue_1_Add_System_Collections_Generic_KeyValuePair_System_Int32_System_Collections_Generic_ICollection__0___" data-uid="BigBook.PriorityQueue`1.Add(System.Collections.Generic.KeyValuePair{System.Int32,System.Collections.Generic.ICollection{`0}})">Add(KeyValuePair&lt;int, ICollection&lt;T&gt;&gt;)</h4>
+
+  <h3 id="BigBook_PriorityQueue_1_Add_System_Collections_Generic_KeyValuePair_System_Int32_System_Collections_Generic_ICollection__0___" data-uid="BigBook.PriorityQueue`1.Add(System.Collections.Generic.KeyValuePair{System.Int32,System.Collections.Generic.ICollection{`0}})">
+  Add(KeyValuePair&lt;int, ICollection&lt;T&gt;&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L94"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Adds a key value pair</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Add(KeyValuePair&lt;int, ICollection&lt;T&gt;&gt; item)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;T&gt;&gt;</td>
-        <td><span class="parametername">item</span></td>
-        <td><p>Key value pair to add</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_PriorityQueue_1_Add_System_Int32_System_Collections_Generic_ICollection__0__.md&amp;value=---%0Auid%3A%20BigBook.PriorityQueue%601.Add(System.Int32%2CSystem.Collections.Generic.ICollection%7B%600%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L105">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>item</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;T&gt;&gt;</dt>
+    <dd><p>Key value pair to add</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_PriorityQueue_1_Add_" data-uid="BigBook.PriorityQueue`1.Add*"></a>
-  <h4 id="BigBook_PriorityQueue_1_Add_System_Int32_System_Collections_Generic_ICollection__0__" data-uid="BigBook.PriorityQueue`1.Add(System.Int32,System.Collections.Generic.ICollection{`0})">Add(int, ICollection&lt;T&gt;)</h4>
+
+  <h3 id="BigBook_PriorityQueue_1_Add_System_Int32_System_Collections_Generic_ICollection__0__" data-uid="BigBook.PriorityQueue`1.Add(System.Int32,System.Collections.Generic.ICollection{`0})">
+  Add(int, ICollection&lt;T&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L105"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Adds a list of items to the mapping</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Add(int key, ICollection&lt;T&gt; value)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">key</span></td>
-        <td><p>Key value</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;T&gt;</td>
-        <td><span class="parametername">value</span></td>
-        <td><p>The values to add</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_PriorityQueue_1_Add_System_Int32__0_.md&amp;value=---%0Auid%3A%20BigBook.PriorityQueue%601.Add(System.Int32%2C%600)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L84">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Key value</p>
+</dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;T&gt;</dt>
+    <dd><p>The values to add</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_PriorityQueue_1_Add_" data-uid="BigBook.PriorityQueue`1.Add*"></a>
-  <h4 id="BigBook_PriorityQueue_1_Add_System_Int32__0_" data-uid="BigBook.PriorityQueue`1.Add(System.Int32,`0)">Add(int, T)</h4>
+
+  <h3 id="BigBook_PriorityQueue_1_Add_System_Int32__0_" data-uid="BigBook.PriorityQueue`1.Add(System.Int32,`0)">
+  Add(int, T)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L84"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Adds an item to the mapping</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Add(int key, T value)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">key</span></td>
-        <td><p>Key value</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">T</span></td>
-        <td><span class="parametername">value</span></td>
-        <td><p>The value to add</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_PriorityQueue_1_Clear.md&amp;value=---%0Auid%3A%20BigBook.PriorityQueue%601.Clear%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L114">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Key value</p>
+</dd>
+    <dt><code>value</code> <span class="xref">T</span></dt>
+    <dd><p>The value to add</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_PriorityQueue_1_Clear_" data-uid="BigBook.PriorityQueue`1.Clear*"></a>
-  <h4 id="BigBook_PriorityQueue_1_Clear" data-uid="BigBook.PriorityQueue`1.Clear">Clear()</h4>
+
+  <h3 id="BigBook_PriorityQueue_1_Clear" data-uid="BigBook.PriorityQueue`1.Clear">
+  Clear()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L114"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Clears all items from the listing</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Clear()</code></pre>
   </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_PriorityQueue_1_Contains_System_Collections_Generic_KeyValuePair_System_Int32_System_Collections_Generic_ICollection__0___.md&amp;value=---%0Auid%3A%20BigBook.PriorityQueue%601.Contains(System.Collections.Generic.KeyValuePair%7BSystem.Int32%2CSystem.Collections.Generic.ICollection%7B%600%7D%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L125">View Source</a>
-  </span>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_PriorityQueue_1_Contains_" data-uid="BigBook.PriorityQueue`1.Contains*"></a>
-  <h4 id="BigBook_PriorityQueue_1_Contains_System_Collections_Generic_KeyValuePair_System_Int32_System_Collections_Generic_ICollection__0___" data-uid="BigBook.PriorityQueue`1.Contains(System.Collections.Generic.KeyValuePair{System.Int32,System.Collections.Generic.ICollection{`0}})">Contains(KeyValuePair&lt;int, ICollection&lt;T&gt;&gt;)</h4>
+
+  <h3 id="BigBook_PriorityQueue_1_Contains_System_Collections_Generic_KeyValuePair_System_Int32_System_Collections_Generic_ICollection__0___" data-uid="BigBook.PriorityQueue`1.Contains(System.Collections.Generic.KeyValuePair{System.Int32,System.Collections.Generic.ICollection{`0}})">
+  Contains(KeyValuePair&lt;int, ICollection&lt;T&gt;&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L125"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Does this contain the key value pairs?</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool Contains(KeyValuePair&lt;int, ICollection&lt;T&gt;&gt; item)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;T&gt;&gt;</td>
-        <td><span class="parametername">item</span></td>
-        <td><p>Key value pair to check</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><p>True if it exists, false otherwise</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_PriorityQueue_1_Contains_System_Int32_System_Collections_Generic_ICollection__0__.md&amp;value=---%0Auid%3A%20BigBook.PriorityQueue%601.Contains(System.Int32%2CSystem.Collections.Generic.ICollection%7B%600%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L133">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>item</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;T&gt;&gt;</dt>
+    <dd><p>Key value pair to check</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if it exists, false otherwise</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_PriorityQueue_1_Contains_" data-uid="BigBook.PriorityQueue`1.Contains*"></a>
-  <h4 id="BigBook_PriorityQueue_1_Contains_System_Int32_System_Collections_Generic_ICollection__0__" data-uid="BigBook.PriorityQueue`1.Contains(System.Int32,System.Collections.Generic.ICollection{`0})">Contains(int, ICollection&lt;T&gt;)</h4>
+
+  <h3 id="BigBook_PriorityQueue_1_Contains_System_Int32_System_Collections_Generic_ICollection__0__" data-uid="BigBook.PriorityQueue`1.Contains(System.Int32,System.Collections.Generic.ICollection{`0})">
+  Contains(int, ICollection&lt;T&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L133"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Does the list mapping contain the key value pairs?</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool Contains(int key, ICollection&lt;T&gt; values)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">key</span></td>
-        <td><p>Key value</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;T&gt;</td>
-        <td><span class="parametername">values</span></td>
-        <td><p>Value</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><p>True if it exists, false otherwise</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_PriorityQueue_1_Contains_System_Int32__0_.md&amp;value=---%0Auid%3A%20BigBook.PriorityQueue%601.Contains(System.Int32%2C%600)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L157">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Key value</p>
+</dd>
+    <dt><code>values</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;T&gt;</dt>
+    <dd><p>Value</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if it exists, false otherwise</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_PriorityQueue_1_Contains_" data-uid="BigBook.PriorityQueue`1.Contains*"></a>
-  <h4 id="BigBook_PriorityQueue_1_Contains_System_Int32__0_" data-uid="BigBook.PriorityQueue`1.Contains(System.Int32,`0)">Contains(int, T)</h4>
+
+  <h3 id="BigBook_PriorityQueue_1_Contains_System_Int32__0_" data-uid="BigBook.PriorityQueue`1.Contains(System.Int32,`0)">
+  Contains(int, T)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L157"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Does the list mapping contain the key value pair?</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool Contains(int key, T value)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">key</span></td>
-        <td><p>Key</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">T</span></td>
-        <td><span class="parametername">value</span></td>
-        <td><p>Value</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><p>True if it exists, false otherwise</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_PriorityQueue_1_ContainsKey_System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.PriorityQueue%601.ContainsKey(System.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L164">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Key</p>
+</dd>
+    <dt><code>value</code> <span class="xref">T</span></dt>
+    <dd><p>Value</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if it exists, false otherwise</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_PriorityQueue_1_ContainsKey_" data-uid="BigBook.PriorityQueue`1.ContainsKey*"></a>
-  <h4 id="BigBook_PriorityQueue_1_ContainsKey_System_Int32_" data-uid="BigBook.PriorityQueue`1.ContainsKey(System.Int32)">ContainsKey(int)</h4>
+
+  <h3 id="BigBook_PriorityQueue_1_ContainsKey_System_Int32_" data-uid="BigBook.PriorityQueue`1.ContainsKey(System.Int32)">
+  ContainsKey(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L164"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Determines if a key exists</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool ContainsKey(int key)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">key</span></td>
-        <td><p>Key to check on</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><p>True if it exists, false otherwise</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_PriorityQueue_1_CopyTo_System_Collections_Generic_KeyValuePair_System_Int32_System_Collections_Generic_ICollection__0_____System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.PriorityQueue%601.CopyTo(System.Collections.Generic.KeyValuePair%7BSystem.Int32%2CSystem.Collections.Generic.ICollection%7B%600%7D%7D%5B%5D%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L171">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Key to check on</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if it exists, false otherwise</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_PriorityQueue_1_CopyTo_" data-uid="BigBook.PriorityQueue`1.CopyTo*"></a>
-  <h4 id="BigBook_PriorityQueue_1_CopyTo_System_Collections_Generic_KeyValuePair_System_Int32_System_Collections_Generic_ICollection__0_____System_Int32_" data-uid="BigBook.PriorityQueue`1.CopyTo(System.Collections.Generic.KeyValuePair{System.Int32,System.Collections.Generic.ICollection{`0}}[],System.Int32)">CopyTo(KeyValuePair&lt;int, ICollection&lt;T&gt;&gt;[], int)</h4>
+
+  <h3 id="BigBook_PriorityQueue_1_CopyTo_System_Collections_Generic_KeyValuePair_System_Int32_System_Collections_Generic_ICollection__0_____System_Int32_" data-uid="BigBook.PriorityQueue`1.CopyTo(System.Collections.Generic.KeyValuePair{System.Int32,System.Collections.Generic.ICollection{`0}}[],System.Int32)">
+  CopyTo(KeyValuePair&lt;int, ICollection&lt;T&gt;&gt;[], int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L171"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Not implemented</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void CopyTo(KeyValuePair&lt;int, ICollection&lt;T&gt;&gt;[] array, int arrayIndex)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;T&gt;&gt;[]</td>
-        <td><span class="parametername">array</span></td>
-        <td><p>Array to copy to</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">arrayIndex</span></td>
-        <td><p>array index</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_PriorityQueue_1_GetEnumerator.md&amp;value=---%0Auid%3A%20BigBook.PriorityQueue%601.GetEnumerator%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L179">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>array</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;T&gt;&gt;[]</dt>
+    <dd><p>Array to copy to</p>
+</dd>
+    <dt><code>arrayIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>array index</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_PriorityQueue_1_GetEnumerator_" data-uid="BigBook.PriorityQueue`1.GetEnumerator*"></a>
-  <h4 id="BigBook_PriorityQueue_1_GetEnumerator" data-uid="BigBook.PriorityQueue`1.GetEnumerator">GetEnumerator()</h4>
+
+  <h3 id="BigBook_PriorityQueue_1_GetEnumerator" data-uid="BigBook.PriorityQueue`1.GetEnumerator">
+  GetEnumerator()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L179"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Gets the enumerator</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public IEnumerator&lt;KeyValuePair&lt;int, ICollection&lt;T&gt;&gt;&gt; GetEnumerator()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1">IEnumerator</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;T&gt;&gt;&gt;</td>
-        <td><p>The enumerator for this object</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_PriorityQueue_1_Peek.md&amp;value=---%0Auid%3A%20BigBook.PriorityQueue%601.Peek%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L203">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1">IEnumerator</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;T&gt;&gt;&gt;</dt>
+    <dd><p>The enumerator for this object</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_PriorityQueue_1_Peek_" data-uid="BigBook.PriorityQueue`1.Peek*"></a>
-  <h4 id="BigBook_PriorityQueue_1_Peek" data-uid="BigBook.PriorityQueue`1.Peek">Peek()</h4>
+
+  <h3 id="BigBook_PriorityQueue_1_Peek" data-uid="BigBook.PriorityQueue`1.Peek">
+  Peek()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L203"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Peek at the next thing in the queue</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public T Peek()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">T</span></td>
-        <td><p>The next item in queue or default(T) if it is empty</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_PriorityQueue_1_Pop.md&amp;value=---%0Auid%3A%20BigBook.PriorityQueue%601.Pop%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L210">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">T</span></dt>
+    <dd><p>The next item in queue or default(T) if it is empty</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_PriorityQueue_1_Pop_" data-uid="BigBook.PriorityQueue`1.Pop*"></a>
-  <h4 id="BigBook_PriorityQueue_1_Pop" data-uid="BigBook.PriorityQueue`1.Pop">Pop()</h4>
+
+  <h3 id="BigBook_PriorityQueue_1_Pop" data-uid="BigBook.PriorityQueue`1.Pop">
+  Pop()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L210"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Removes an item from the queue and returns it</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public T Pop()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">T</span></td>
-        <td><p>The next item in the queue</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_PriorityQueue_1_Remove_System_Collections_Generic_KeyValuePair_System_Int32_System_Collections_Generic_ICollection__0___.md&amp;value=---%0Auid%3A%20BigBook.PriorityQueue%601.Remove(System.Collections.Generic.KeyValuePair%7BSystem.Int32%2CSystem.Collections.Generic.ICollection%7B%600%7D%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L243">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">T</span></dt>
+    <dd><p>The next item in the queue</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_PriorityQueue_1_Remove_" data-uid="BigBook.PriorityQueue`1.Remove*"></a>
-  <h4 id="BigBook_PriorityQueue_1_Remove_System_Collections_Generic_KeyValuePair_System_Int32_System_Collections_Generic_ICollection__0___" data-uid="BigBook.PriorityQueue`1.Remove(System.Collections.Generic.KeyValuePair{System.Int32,System.Collections.Generic.ICollection{`0}})">Remove(KeyValuePair&lt;int, ICollection&lt;T&gt;&gt;)</h4>
+
+  <h3 id="BigBook_PriorityQueue_1_Remove_System_Collections_Generic_KeyValuePair_System_Int32_System_Collections_Generic_ICollection__0___" data-uid="BigBook.PriorityQueue`1.Remove(System.Collections.Generic.KeyValuePair{System.Int32,System.Collections.Generic.ICollection{`0}})">
+  Remove(KeyValuePair&lt;int, ICollection&lt;T&gt;&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L243"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Removes a key value pair from the list mapping</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool Remove(KeyValuePair&lt;int, ICollection&lt;T&gt;&gt; item)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;T&gt;&gt;</td>
-        <td><span class="parametername">item</span></td>
-        <td><p>items to remove</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><p>True if it is removed, false otherwise</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_PriorityQueue_1_Remove_System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.PriorityQueue%601.Remove(System.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L236">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>item</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2">KeyValuePair</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;T&gt;&gt;</dt>
+    <dd><p>items to remove</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if it is removed, false otherwise</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_PriorityQueue_1_Remove_" data-uid="BigBook.PriorityQueue`1.Remove*"></a>
-  <h4 id="BigBook_PriorityQueue_1_Remove_System_Int32_" data-uid="BigBook.PriorityQueue`1.Remove(System.Int32)">Remove(int)</h4>
+
+  <h3 id="BigBook_PriorityQueue_1_Remove_System_Int32_" data-uid="BigBook.PriorityQueue`1.Remove(System.Int32)">
+  Remove(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L236"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Remove a list of items associated with a key</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool Remove(int key)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">key</span></td>
-        <td><p>Key to use</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><p>True if the key is found, false otherwise</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_PriorityQueue_1_Remove_System_Int32__0_.md&amp;value=---%0Auid%3A%20BigBook.PriorityQueue%601.Remove(System.Int32%2C%600)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L267">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Key to use</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if the key is found, false otherwise</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_PriorityQueue_1_Remove_" data-uid="BigBook.PriorityQueue`1.Remove*"></a>
-  <h4 id="BigBook_PriorityQueue_1_Remove_System_Int32__0_" data-uid="BigBook.PriorityQueue`1.Remove(System.Int32,`0)">Remove(int, T)</h4>
+
+  <h3 id="BigBook_PriorityQueue_1_Remove_System_Int32__0_" data-uid="BigBook.PriorityQueue`1.Remove(System.Int32,`0)">
+  Remove(int, T)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L267"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Removes a key value pair from the list mapping</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool Remove(int key, T Value)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">key</span></td>
-        <td><p>Key to remove</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">T</span></td>
-        <td><span class="parametername">Value</span></td>
-        <td><p>Value to remove</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><p>True if it is removed, false otherwise</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_PriorityQueue_1_TryGetValue_System_Int32_System_Collections_Generic_ICollection__0___.md&amp;value=---%0Auid%3A%20BigBook.PriorityQueue%601.TryGetValue(System.Int32%2CSystem.Collections.Generic.ICollection%7B%600%7D%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L289">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Key to remove</p>
+</dd>
+    <dt><code>Value</code> <span class="xref">T</span></dt>
+    <dd><p>Value to remove</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if it is removed, false otherwise</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_PriorityQueue_1_TryGetValue_" data-uid="BigBook.PriorityQueue`1.TryGetValue*"></a>
-  <h4 id="BigBook_PriorityQueue_1_TryGetValue_System_Int32_System_Collections_Generic_ICollection__0___" data-uid="BigBook.PriorityQueue`1.TryGetValue(System.Int32,System.Collections.Generic.ICollection{`0}@)">TryGetValue(int, out ICollection&lt;T&gt;)</h4>
+
+  <h3 id="BigBook_PriorityQueue_1_TryGetValue_System_Int32_System_Collections_Generic_ICollection__0___" data-uid="BigBook.PriorityQueue`1.TryGetValue(System.Int32,System.Collections.Generic.ICollection{`0}@)">
+  TryGetValue(int, out ICollection&lt;T&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L289"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Tries to get the value associated with the key</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool TryGetValue(int key, out ICollection&lt;T&gt; value)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">key</span></td>
-        <td><p>Key value</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;T&gt;</td>
-        <td><span class="parametername">value</span></td>
-        <td><p>The values getting</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><p>True if it was able to get the value, false otherwise</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary&lt;TKey, TValue&gt;</a>
-  </div>
-  <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>
-  </div>
-  <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable&lt;T&gt;</a>
-  </div>
-  <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerable">IEnumerable</a>
-  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Key value</p>
+</dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;T&gt;</dt>
+    <dd><p>The values getting</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if it was able to get the value, false otherwise</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
 
 </article>
-                </div>
 
-                <div class="copyright-footer">
-                    <span>&#169; James Craig. All rights reserved.</span>
-                </div>
-            </main>
+        <div class="contribution d-print-none">
+          <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/PriorityQueue.cs/#L27" class="edit-link">Edit this page</a>
         </div>
 
 
-        <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
-        <script type="text/javascript" src="../styles/jquery.twbsPagination.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/jquery.mark.min.js"></script>
-        <script type="text/javascript" src="../styles/url.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/anchor-js@5.0.0/anchor.min.js"></script>
-        <script type="text/javascript" src="../styles/docfx.js"></script>
-        <script type="text/javascript" src="../styles/main.js"></script>
-        <script type="text/javascript" src="../styles/singulink.js"></script>    </body>
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <strong><a href='https://github.com/JaCraig/BigBookOfDataTypes'>Open in Github</a></strong>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>

@@ -1,122 +1,134 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-
-    <head>
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <head>
+    <meta charset="utf-8">
       <title>Class EndianBinaryReader
  | Big Book of DataTypes API Reference </title>
-      <meta name="viewport" content="width=device-width">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class EndianBinaryReader
  | Big Book of DataTypes API Reference ">
-      <meta name="generator" content="docfx ">
-  
-      <link rel="shortcut icon" href="../favicon.ico">
-      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/night-owl.min.css">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" integrity="sha384-EvBWSlnoFgZlXJvpzS+MAUEjvN7+gcCwH+qh7GRFOGgZO0PuwOFro7qPOJnLfe7l" crossorigin="anonymous">
-      <link rel="stylesheet" href="../styles/config.css">
-      <link rel="stylesheet" href="../styles/discord.css">
-      <link rel="stylesheet" href="../styles/singulink.css">
-      <link rel="stylesheet" href="../styles/main.css">
-      <meta property="docfx:navrel" content="../toc.json">
-      <meta property="docfx:tocrel" content="toc.json">
-  
-  <meta property="docfx:rel" content="../">
-  <meta property="docfx:newtab" content="true">
-    </head>
-    <body>
-        <div class="top-navbar">
-            <a class="burger-icon" onclick="toggleMenu()">
-                <svg name="Hamburger" style="vertical-align: middle;" width="34" height="34" viewbox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M20 6H4V9H20V6ZM4 10.999H20V13.999H4V10.999ZM4 15.999H20V18.999H4V15.999Z"></path></svg>
-            </a>
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryReader.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryReader%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
 
 
-            <a class="brand" href="../index.html">
-              <img src="../images/icon.png" alt="BigBook" class="logomark">
-              <span class="brand-title">BigBook</span>
-            </a>        </div>
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/icon.png" alt="BigBook">
+            BigBook
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
 
-        <div class="body-content">
-            <div id="blackout" class="blackout" onclick="toggleMenu()"></div>
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
 
-            <nav id="sidebar" role="navigation">
-                <div class="sidebar">
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
 
-                    <div>
-                      <div class="mobile-hide">
+          <nav id="breadcrumb"></nav>
+        </div>
 
-                        <a class="brand" href="../index.html">
-                          <img src="../images/icon.png" alt="BigBook" class="logomark">
-                          <span class="brand-title">BigBook</span>
-                        </a>                      </div>
-
-                      <div class="sidesearch">
-                        <form id="search" role="search" class="search">
-                            <i class="bi bi-search search-icon"></i>
-                            <input type="text" id="search-query" placeholder="Search" autocomplete="off">
-                        </form>
-                      </div>
-
-                      <div id="navbar">
-                      </div>
-                    </div>                    <div class="sidebar-item-separator"></div>
-
-                        <div id="sidetoggle">
-                          <div id="sidetoc"></div>
-                        </div>
-                </div>
-                <div class="footer">
-  <strong><a href='https://github.com/JaCraig/BigBookOfDataTypes'>Open in Github</a></strong>
-  
-                </div>            </nav>
-
-            <main class="main-panel">
-
-                <div id="search-results" style="display: none;">
-                  <h1 class="search-list">Search Results for <span></span></h1>
-                  <div class="sr-items">
-                    <p><i class="bi bi-hourglass-split index-loading"></i></p>
-                  </div>
-                  <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
-                </div>
- 
-
-                <div role="main" class="hide-when-search">
-
-                        <div class="subnav navbar navbar-default">
-                          <div class="container hide-when-search" id="breadcrumb">
-                            <ul class="breadcrumb">
-                              <li></li>
-                            </ul>
-                          </div>
-                        </div>
-
-                         <div id="contribution">
-                               <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryReader.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryReader%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
-                         </div>
-
-                    <article class="content wrap" id="_content" data-uid="BigBook.IO.EndianBinaryReader">
+        <article data-uid="BigBook.IO.EndianBinaryReader">
 
 
 
-  <h1 id="BigBook_IO_EndianBinaryReader" data-uid="BigBook.IO.EndianBinaryReader" class="text-break">Class EndianBinaryReader
-</h1>
-  <div class="markdown level0 summary"><p>Endian binary reader</p>
+  <h1 id="BigBook_IO_EndianBinaryReader" data-uid="BigBook.IO.EndianBinaryReader" class="text-break">
+    Class EndianBinaryReader
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="BigBook.html">BigBook</a>.<a class="xref" href="BigBook.IO.html">IO</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>BigBook.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Endian binary reader</p>
 </div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-    <div class="level1"><span class="xref">EndianBinaryReader</span></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class EndianBinaryReader : IDisposable</code></pre>
   </div>
-  <div class="implements">
-    <h5>Implements</h5>
-    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
-  </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">EndianBinaryReader</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
@@ -138,1296 +150,1096 @@
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
     </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="BigBook.html">BigBook</a>.<a class="xref" href="BigBook.IO.html">IO</a></h6>
-  <h6><strong>Assembly</strong>: BigBook.dll</h6>
-  <h5 id="BigBook_IO_EndianBinaryReader_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class EndianBinaryReader : IDisposable</code></pre>
-  </div>
-  <h3 id="constructors">Constructors
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryReader__ctor_BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_System_IO_Stream_.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryReader.%23ctor(BigBook.IO.Converters.BaseClasses.EndianBitConverterBase%2CSystem.IO.Stream)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L37">View Source</a>
-  </span>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
   <a id="BigBook_IO_EndianBinaryReader__ctor_" data-uid="BigBook.IO.EndianBinaryReader.#ctor*"></a>
-  <h4 id="BigBook_IO_EndianBinaryReader__ctor_BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_System_IO_Stream_" data-uid="BigBook.IO.EndianBinaryReader.#ctor(BigBook.IO.Converters.BaseClasses.EndianBitConverterBase,System.IO.Stream)">EndianBinaryReader(EndianBitConverterBase, Stream)</h4>
+
+  <h3 id="BigBook_IO_EndianBinaryReader__ctor_BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_System_IO_Stream_" data-uid="BigBook.IO.EndianBinaryReader.#ctor(BigBook.IO.Converters.BaseClasses.EndianBitConverterBase,System.IO.Stream)">
+  EndianBinaryReader(EndianBitConverterBase, Stream)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="BigBook.IO.EndianBinaryReader.html">EndianBinaryReader</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public EndianBinaryReader(EndianBitConverterBase bitConverter, Stream stream)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.html">EndianBitConverterBase</a></td>
-        <td><span class="parametername">bitConverter</span></td>
-        <td><p>The bit converter.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a></td>
-        <td><span class="parametername">stream</span></td>
-        <td><p>The stream.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="BigBook_IO_EndianBinaryReader__ctor_BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_System_IO_Stream__seealso">See Also</h5>
-  <div class="seealso">
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryReader__ctor_BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_System_IO_Stream_System_Text_Encoding_.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryReader.%23ctor(BigBook.IO.Converters.BaseClasses.EndianBitConverterBase%2CSystem.IO.Stream%2CSystem.Text.Encoding)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L49">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>bitConverter</code> <a class="xref" href="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.html">EndianBitConverterBase</a></dt>
+    <dd><p>The bit converter.</p>
+</dd>
+    <dt><code>stream</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a></dt>
+    <dd><p>The stream.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_IO_EndianBinaryReader__ctor_" data-uid="BigBook.IO.EndianBinaryReader.#ctor*"></a>
-  <h4 id="BigBook_IO_EndianBinaryReader__ctor_BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_System_IO_Stream_System_Text_Encoding_" data-uid="BigBook.IO.EndianBinaryReader.#ctor(BigBook.IO.Converters.BaseClasses.EndianBitConverterBase,System.IO.Stream,System.Text.Encoding)">EndianBinaryReader(EndianBitConverterBase, Stream, Encoding)</h4>
+
+  <h3 id="BigBook_IO_EndianBinaryReader__ctor_BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_System_IO_Stream_System_Text_Encoding_" data-uid="BigBook.IO.EndianBinaryReader.#ctor(BigBook.IO.Converters.BaseClasses.EndianBitConverterBase,System.IO.Stream,System.Text.Encoding)">
+  EndianBinaryReader(EndianBitConverterBase, Stream, Encoding)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L49"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="BigBook.IO.EndianBinaryReader.html">EndianBinaryReader</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public EndianBinaryReader(EndianBitConverterBase bitConverter, Stream stream, Encoding encoding)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.html">EndianBitConverterBase</a></td>
-        <td><span class="parametername">bitConverter</span></td>
-        <td><p>The bit converter.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a></td>
-        <td><span class="parametername">stream</span></td>
-        <td><p>The stream.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.encoding">Encoding</a></td>
-        <td><span class="parametername">encoding</span></td>
-        <td><p>The encoding.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="exceptions">Exceptions</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Condition</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></td>
-        <td><p>Stream is not readable</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="BigBook_IO_EndianBinaryReader__ctor_BigBook_IO_Converters_BaseClasses_EndianBitConverterBase_System_IO_Stream_System_Text_Encoding__seealso">See Also</h5>
-  <div class="seealso">
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
-  </div>
-  <h3 id="properties">Properties
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryReader_BaseStream.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryReader.BaseStream%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L74">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>bitConverter</code> <a class="xref" href="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.html">EndianBitConverterBase</a></dt>
+    <dd><p>The bit converter.</p>
+</dd>
+    <dt><code>stream</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a></dt>
+    <dd><p>The stream.</p>
+</dd>
+    <dt><code>encoding</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.encoding">Encoding</a></dt>
+    <dd><p>The encoding.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></dt>
+    <dd><p>Stream is not readable</p>
+</dd>
+  </dl>
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
   <a id="BigBook_IO_EndianBinaryReader_BaseStream_" data-uid="BigBook.IO.EndianBinaryReader.BaseStream*"></a>
-  <h4 id="BigBook_IO_EndianBinaryReader_BaseStream" data-uid="BigBook.IO.EndianBinaryReader.BaseStream">BaseStream</h4>
+
+  <h3 id="BigBook_IO_EndianBinaryReader_BaseStream" data-uid="BigBook.IO.EndianBinaryReader.BaseStream">
+  BaseStream
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L74"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Gets the underlying stream of the EndianBinaryReader.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Stream? BaseStream { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="BigBook_IO_EndianBinaryReader_BaseStream_seealso">See Also</h5>
-  <div class="seealso">
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryReader_BitConverter.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryReader.BitConverter%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L79">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="BigBook_IO_EndianBinaryReader_BitConverter_" data-uid="BigBook.IO.EndianBinaryReader.BitConverter*"></a>
-  <h4 id="BigBook_IO_EndianBinaryReader_BitConverter" data-uid="BigBook.IO.EndianBinaryReader.BitConverter">BitConverter</h4>
+
+  <h3 id="BigBook_IO_EndianBinaryReader_BitConverter" data-uid="BigBook.IO.EndianBinaryReader.BitConverter">
+  BitConverter
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L79"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Gets the bit converter used to read values from the stream.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public EndianBitConverterBase BitConverter { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.html">EndianBitConverterBase</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="BigBook_IO_EndianBinaryReader_BitConverter_seealso">See Also</h5>
-  <div class="seealso">
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryReader_Encoding.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryReader.Encoding%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L84">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.html">EndianBitConverterBase</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="BigBook_IO_EndianBinaryReader_Encoding_" data-uid="BigBook.IO.EndianBinaryReader.Encoding*"></a>
-  <h4 id="BigBook_IO_EndianBinaryReader_Encoding" data-uid="BigBook.IO.EndianBinaryReader.Encoding">Encoding</h4>
+
+  <h3 id="BigBook_IO_EndianBinaryReader_Encoding" data-uid="BigBook.IO.EndianBinaryReader.Encoding">
+  Encoding
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L84"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Gets the encoding used to read strings</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Encoding Encoding { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.encoding">Encoding</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="BigBook_IO_EndianBinaryReader_Encoding_seealso">See Also</h5>
-  <div class="seealso">
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
-  </div>
-  <h3 id="methods">Methods
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryReader_Close.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryReader.Close%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L109">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.encoding">Encoding</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
   <a id="BigBook_IO_EndianBinaryReader_Close_" data-uid="BigBook.IO.EndianBinaryReader.Close*"></a>
-  <h4 id="BigBook_IO_EndianBinaryReader_Close" data-uid="BigBook.IO.EndianBinaryReader.Close">Close()</h4>
+
+  <h3 id="BigBook_IO_EndianBinaryReader_Close" data-uid="BigBook.IO.EndianBinaryReader.Close">
+  Close()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L109"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Closes the reader, including the underlying stream.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Close()</code></pre>
   </div>
-  <h5 id="BigBook_IO_EndianBinaryReader_Close_seealso">See Also</h5>
-  <div class="seealso">
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryReader_Dispose.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryReader.Dispose%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L114">View Source</a>
-  </span>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_IO_EndianBinaryReader_Dispose_" data-uid="BigBook.IO.EndianBinaryReader.Dispose*"></a>
-  <h4 id="BigBook_IO_EndianBinaryReader_Dispose" data-uid="BigBook.IO.EndianBinaryReader.Dispose">Dispose()</h4>
+
+  <h3 id="BigBook_IO_EndianBinaryReader_Dispose" data-uid="BigBook.IO.EndianBinaryReader.Dispose">
+  Dispose()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L114"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Disposes of the underlying stream.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
   </div>
-  <h5 id="BigBook_IO_EndianBinaryReader_Dispose_seealso">See Also</h5>
-  <div class="seealso">
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryReader_Dispose_System_Boolean_.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryReader.Dispose(System.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L517">View Source</a>
-  </span>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_IO_EndianBinaryReader_Dispose_" data-uid="BigBook.IO.EndianBinaryReader.Dispose*"></a>
-  <h4 id="BigBook_IO_EndianBinaryReader_Dispose_System_Boolean_" data-uid="BigBook.IO.EndianBinaryReader.Dispose(System.Boolean)">Dispose(bool)</h4>
+
+  <h3 id="BigBook_IO_EndianBinaryReader_Dispose_System_Boolean_" data-uid="BigBook.IO.EndianBinaryReader.Dispose(System.Boolean)">
+  Dispose(bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L517"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Releases unmanaged and - optionally - managed resources.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected virtual void Dispose(bool managed)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><span class="parametername">managed</span></td>
-        <td><p><code>true</code> to release both managed and unmanaged resources; <code>false</code> to release
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>managed</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><code>true</code> to release both managed and unmanaged resources; <code>false</code> to release
 only unmanaged resources.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="BigBook_IO_EndianBinaryReader_Dispose_System_Boolean__seealso">See Also</h5>
-  <div class="seealso">
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryReader_Read.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryReader.Read%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L124">View Source</a>
-  </span>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_IO_EndianBinaryReader_Read_" data-uid="BigBook.IO.EndianBinaryReader.Read*"></a>
-  <h4 id="BigBook_IO_EndianBinaryReader_Read" data-uid="BigBook.IO.EndianBinaryReader.Read">Read()</h4>
+
+  <h3 id="BigBook_IO_EndianBinaryReader_Read" data-uid="BigBook.IO.EndianBinaryReader.Read">
+  Read()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L124"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Reads this instance.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public int Read()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><p>The resulting int.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="BigBook_IO_EndianBinaryReader_Read_seealso">See Also</h5>
-  <div class="seealso">
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryReader_Read_System_Byte___System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryReader.Read(System.Byte%5B%5D%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L206">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The resulting int.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_IO_EndianBinaryReader_Read_" data-uid="BigBook.IO.EndianBinaryReader.Read*"></a>
-  <h4 id="BigBook_IO_EndianBinaryReader_Read_System_Byte___System_Int32_System_Int32_" data-uid="BigBook.IO.EndianBinaryReader.Read(System.Byte[],System.Int32,System.Int32)">Read(byte[], int, int)</h4>
+
+  <h3 id="BigBook_IO_EndianBinaryReader_Read_System_Byte___System_Int32_System_Int32_" data-uid="BigBook.IO.EndianBinaryReader.Read(System.Byte[],System.Int32,System.Int32)">
+  Read(byte[], int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L206"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Reads the specified buffer.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public int Read(byte[] buffer, int index, int count)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
-        <td><span class="parametername">buffer</span></td>
-        <td><p>The buffer.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">index</span></td>
-        <td><p>The index.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">count</span></td>
-        <td><p>The count.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><p>The resulting integer.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="exceptions">Exceptions</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Condition</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullreferenceexception">NullReferenceException</a></td>
-        <td><p>Base stream is currently null.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="BigBook_IO_EndianBinaryReader_Read_System_Byte___System_Int32_System_Int32__seealso">See Also</h5>
-  <div class="seealso">
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryReader_Read_System_Char___System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryReader.Read(System.Char%5B%5D%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L138">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>buffer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd><p>The buffer.</p>
+</dd>
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The index.</p>
+</dd>
+    <dt><code>count</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The count.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The resulting integer.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullreferenceexception">NullReferenceException</a></dt>
+    <dd><p>Base stream is currently null.</p>
+</dd>
+  </dl>
+
+
+
   <a id="BigBook_IO_EndianBinaryReader_Read_" data-uid="BigBook.IO.EndianBinaryReader.Read*"></a>
-  <h4 id="BigBook_IO_EndianBinaryReader_Read_System_Char___System_Int32_System_Int32_" data-uid="BigBook.IO.EndianBinaryReader.Read(System.Char[],System.Int32,System.Int32)">Read(char[], int, int)</h4>
+
+  <h3 id="BigBook_IO_EndianBinaryReader_Read_System_Char___System_Int32_System_Int32_" data-uid="BigBook.IO.EndianBinaryReader.Read(System.Char[],System.Int32,System.Int32)">
+  Read(char[], int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L138"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Reads the specified data.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public int Read(char[] data, int index, int count)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a>[]</td>
-        <td><span class="parametername">data</span></td>
-        <td><p>The data.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">index</span></td>
-        <td><p>The index.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">count</span></td>
-        <td><p>The count.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><p>The resulting integer</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="exceptions">Exceptions</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Condition</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullreferenceexception">NullReferenceException</a></td>
-        <td><p>Base stream is currently null.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="BigBook_IO_EndianBinaryReader_Read_System_Char___System_Int32_System_Int32__seealso">See Also</h5>
-  <div class="seealso">
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryReader_Read7BitEncodedInt.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryReader.Read7BitEncodedInt%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L249">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>data</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a>[]</dt>
+    <dd><p>The data.</p>
+</dd>
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The index.</p>
+</dd>
+    <dt><code>count</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The count.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The resulting integer</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullreferenceexception">NullReferenceException</a></dt>
+    <dd><p>Base stream is currently null.</p>
+</dd>
+  </dl>
+
+
+
   <a id="BigBook_IO_EndianBinaryReader_Read7BitEncodedInt_" data-uid="BigBook.IO.EndianBinaryReader.Read7BitEncodedInt*"></a>
-  <h4 id="BigBook_IO_EndianBinaryReader_Read7BitEncodedInt" data-uid="BigBook.IO.EndianBinaryReader.Read7BitEncodedInt">Read7BitEncodedInt()</h4>
+
+  <h3 id="BigBook_IO_EndianBinaryReader_Read7BitEncodedInt" data-uid="BigBook.IO.EndianBinaryReader.Read7BitEncodedInt">
+  Read7BitEncodedInt()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L249"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Read7s the bit encoded int.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public int Read7BitEncodedInt()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><p>The resulting int.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="exceptions">Exceptions</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Condition</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullreferenceexception">NullReferenceException</a></td>
-        <td><p>Base stream is currently null.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.endofstreamexception">EndOfStreamException</a></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.ioexception">IOException</a></td>
-        <td><p>Invalid 7-bit encoded integer in stream.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="BigBook_IO_EndianBinaryReader_Read7BitEncodedInt_seealso">See Also</h5>
-  <div class="seealso">
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryReader_ReadBigEndian7BitEncodedInt.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryReader.ReadBigEndian7BitEncodedInt%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L281">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The resulting int.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullreferenceexception">NullReferenceException</a></dt>
+    <dd><p>Base stream is currently null.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.endofstreamexception">EndOfStreamException</a></dt>
+    <dd></dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.ioexception">IOException</a></dt>
+    <dd><p>Invalid 7-bit encoded integer in stream.</p>
+</dd>
+  </dl>
+
+
+
   <a id="BigBook_IO_EndianBinaryReader_ReadBigEndian7BitEncodedInt_" data-uid="BigBook.IO.EndianBinaryReader.ReadBigEndian7BitEncodedInt*"></a>
-  <h4 id="BigBook_IO_EndianBinaryReader_ReadBigEndian7BitEncodedInt" data-uid="BigBook.IO.EndianBinaryReader.ReadBigEndian7BitEncodedInt">ReadBigEndian7BitEncodedInt()</h4>
+
+  <h3 id="BigBook_IO_EndianBinaryReader_ReadBigEndian7BitEncodedInt" data-uid="BigBook.IO.EndianBinaryReader.ReadBigEndian7BitEncodedInt">
+  ReadBigEndian7BitEncodedInt()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L281"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Reads the big endian7 bit encoded int.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public int ReadBigEndian7BitEncodedInt()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><p>The resulting int.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="exceptions">Exceptions</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Condition</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullreferenceexception">NullReferenceException</a></td>
-        <td><p>Base stream is currently null.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.endofstreamexception">EndOfStreamException</a></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.ioexception">IOException</a></td>
-        <td><p>Invalid 7-bit encoded integer in stream.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="BigBook_IO_EndianBinaryReader_ReadBigEndian7BitEncodedInt_seealso">See Also</h5>
-  <div class="seealso">
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryReader_ReadBoolean.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryReader.ReadBoolean%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L310">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The resulting int.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullreferenceexception">NullReferenceException</a></dt>
+    <dd><p>Base stream is currently null.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.endofstreamexception">EndOfStreamException</a></dt>
+    <dd></dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.ioexception">IOException</a></dt>
+    <dd><p>Invalid 7-bit encoded integer in stream.</p>
+</dd>
+  </dl>
+
+
+
   <a id="BigBook_IO_EndianBinaryReader_ReadBoolean_" data-uid="BigBook.IO.EndianBinaryReader.ReadBoolean*"></a>
-  <h4 id="BigBook_IO_EndianBinaryReader_ReadBoolean" data-uid="BigBook.IO.EndianBinaryReader.ReadBoolean">ReadBoolean()</h4>
+
+  <h3 id="BigBook_IO_EndianBinaryReader_ReadBoolean" data-uid="BigBook.IO.EndianBinaryReader.ReadBoolean">
+  ReadBoolean()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L310"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Reads the boolean.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool ReadBoolean()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><p>The resulting boolean</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="BigBook_IO_EndianBinaryReader_ReadBoolean_seealso">See Also</h5>
-  <div class="seealso">
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryReader_ReadByte.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryReader.ReadByte%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L320">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>The resulting boolean</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_IO_EndianBinaryReader_ReadByte_" data-uid="BigBook.IO.EndianBinaryReader.ReadByte*"></a>
-  <h4 id="BigBook_IO_EndianBinaryReader_ReadByte" data-uid="BigBook.IO.EndianBinaryReader.ReadByte">ReadByte()</h4>
+
+  <h3 id="BigBook_IO_EndianBinaryReader_ReadByte" data-uid="BigBook.IO.EndianBinaryReader.ReadByte">
+  ReadByte()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L320"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Reads a single byte from the stream.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public byte ReadByte()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a></td>
-        <td><p>The byte read</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="BigBook_IO_EndianBinaryReader_ReadByte_seealso">See Also</h5>
-  <div class="seealso">
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryReader_ReadBytes_System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryReader.ReadBytes(System.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L332">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a></dt>
+    <dd><p>The byte read</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_IO_EndianBinaryReader_ReadBytes_" data-uid="BigBook.IO.EndianBinaryReader.ReadBytes*"></a>
-  <h4 id="BigBook_IO_EndianBinaryReader_ReadBytes_System_Int32_" data-uid="BigBook.IO.EndianBinaryReader.ReadBytes(System.Int32)">ReadBytes(int)</h4>
+
+  <h3 id="BigBook_IO_EndianBinaryReader_ReadBytes_System_Int32_" data-uid="BigBook.IO.EndianBinaryReader.ReadBytes(System.Int32)">
+  ReadBytes(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L332"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Reads the specified number of bytes, returning them in a new byte array. If not enough
 bytes are available before the end of the stream, this method will return what is available.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public byte[] ReadBytes(int count)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">count</span></td>
-        <td><p>The number of bytes to read</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
-        <td><p>The bytes read</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="BigBook_IO_EndianBinaryReader_ReadBytes_System_Int32__seealso">See Also</h5>
-  <div class="seealso">
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryReader_ReadBytesOrThrow_System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryReader.ReadBytesOrThrow(System.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L364">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>count</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The number of bytes to read</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd><p>The bytes read</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_IO_EndianBinaryReader_ReadBytesOrThrow_" data-uid="BigBook.IO.EndianBinaryReader.ReadBytesOrThrow*"></a>
-  <h4 id="BigBook_IO_EndianBinaryReader_ReadBytesOrThrow_System_Int32_" data-uid="BigBook.IO.EndianBinaryReader.ReadBytesOrThrow(System.Int32)">ReadBytesOrThrow(int)</h4>
+
+  <h3 id="BigBook_IO_EndianBinaryReader_ReadBytesOrThrow_System_Int32_" data-uid="BigBook.IO.EndianBinaryReader.ReadBytesOrThrow(System.Int32)">
+  ReadBytesOrThrow(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L364"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Reads the specified number of bytes, returning them in a new byte array. If not enough
 bytes are available before the end of the stream, this method will throw an IOException.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public byte[] ReadBytesOrThrow(int count)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">count</span></td>
-        <td><p>The number of bytes to read</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</td>
-        <td><p>The bytes read</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="BigBook_IO_EndianBinaryReader_ReadBytesOrThrow_System_Int32__seealso">See Also</h5>
-  <div class="seealso">
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryReader_ReadDecimal.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryReader.ReadDecimal%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L376">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>count</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The number of bytes to read</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd><p>The bytes read</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_IO_EndianBinaryReader_ReadDecimal_" data-uid="BigBook.IO.EndianBinaryReader.ReadDecimal*"></a>
-  <h4 id="BigBook_IO_EndianBinaryReader_ReadDecimal" data-uid="BigBook.IO.EndianBinaryReader.ReadDecimal">ReadDecimal()</h4>
+
+  <h3 id="BigBook_IO_EndianBinaryReader_ReadDecimal" data-uid="BigBook.IO.EndianBinaryReader.ReadDecimal">
+  ReadDecimal()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L376"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Reads a decimal value from the stream, using the bit converter for this reader. 16 bytes
 are read.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public decimal ReadDecimal()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.decimal">decimal</a></td>
-        <td><p>The decimal value read</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="BigBook_IO_EndianBinaryReader_ReadDecimal_seealso">See Also</h5>
-  <div class="seealso">
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryReader_ReadDouble.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryReader.ReadDouble%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L387">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.decimal">decimal</a></dt>
+    <dd><p>The decimal value read</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_IO_EndianBinaryReader_ReadDouble_" data-uid="BigBook.IO.EndianBinaryReader.ReadDouble*"></a>
-  <h4 id="BigBook_IO_EndianBinaryReader_ReadDouble" data-uid="BigBook.IO.EndianBinaryReader.ReadDouble">ReadDouble()</h4>
+
+  <h3 id="BigBook_IO_EndianBinaryReader_ReadDouble" data-uid="BigBook.IO.EndianBinaryReader.ReadDouble">
+  ReadDouble()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L387"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Reads a double-precision floating-point value from the stream, using the bit converter
 for this reader. 8 bytes are read.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public double ReadDouble()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></td>
-        <td><p>The floating point value read</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="BigBook_IO_EndianBinaryReader_ReadDouble_seealso">See Also</h5>
-  <div class="seealso">
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryReader_ReadFloat.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryReader.ReadFloat%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L398">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The floating point value read</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_IO_EndianBinaryReader_ReadFloat_" data-uid="BigBook.IO.EndianBinaryReader.ReadFloat*"></a>
-  <h4 id="BigBook_IO_EndianBinaryReader_ReadFloat" data-uid="BigBook.IO.EndianBinaryReader.ReadFloat">ReadFloat()</h4>
+
+  <h3 id="BigBook_IO_EndianBinaryReader_ReadFloat" data-uid="BigBook.IO.EndianBinaryReader.ReadFloat">
+  ReadFloat()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L398"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Reads a single-precision floating-point value from the stream, using the bit converter
 for this reader. 4 bytes are read.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public float ReadFloat()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
-        <td><p>The floating point value read</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="BigBook_IO_EndianBinaryReader_ReadFloat_seealso">See Also</h5>
-  <div class="seealso">
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryReader_ReadInt.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryReader.ReadInt%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L409">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>The floating point value read</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_IO_EndianBinaryReader_ReadInt_" data-uid="BigBook.IO.EndianBinaryReader.ReadInt*"></a>
-  <h4 id="BigBook_IO_EndianBinaryReader_ReadInt" data-uid="BigBook.IO.EndianBinaryReader.ReadInt">ReadInt()</h4>
+
+  <h3 id="BigBook_IO_EndianBinaryReader_ReadInt" data-uid="BigBook.IO.EndianBinaryReader.ReadInt">
+  ReadInt()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L409"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Reads a 32-bit signed integer from the stream, using the bit converter for this reader.
 4 bytes are read.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public int ReadInt()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><p>The 32-bit integer read</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="BigBook_IO_EndianBinaryReader_ReadInt_seealso">See Also</h5>
-  <div class="seealso">
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryReader_ReadLong.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryReader.ReadLong%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L420">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The 32-bit integer read</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_IO_EndianBinaryReader_ReadLong_" data-uid="BigBook.IO.EndianBinaryReader.ReadLong*"></a>
-  <h4 id="BigBook_IO_EndianBinaryReader_ReadLong" data-uid="BigBook.IO.EndianBinaryReader.ReadLong">ReadLong()</h4>
+
+  <h3 id="BigBook_IO_EndianBinaryReader_ReadLong" data-uid="BigBook.IO.EndianBinaryReader.ReadLong">
+  ReadLong()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L420"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Reads a 64-bit signed integer from the stream, using the bit converter for this reader.
 8 bytes are read.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public long ReadLong()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></td>
-        <td><p>The 64-bit integer read</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="BigBook_IO_EndianBinaryReader_ReadLong_seealso">See Also</h5>
-  <div class="seealso">
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryReader_ReadShort.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryReader.ReadShort%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L431">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>The 64-bit integer read</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_IO_EndianBinaryReader_ReadShort_" data-uid="BigBook.IO.EndianBinaryReader.ReadShort*"></a>
-  <h4 id="BigBook_IO_EndianBinaryReader_ReadShort" data-uid="BigBook.IO.EndianBinaryReader.ReadShort">ReadShort()</h4>
+
+  <h3 id="BigBook_IO_EndianBinaryReader_ReadShort" data-uid="BigBook.IO.EndianBinaryReader.ReadShort">
+  ReadShort()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L431"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Reads a 16-bit signed integer from the stream, using the bit converter for this reader.
 2 bytes are read.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public short ReadShort()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int16">short</a></td>
-        <td><p>The 16-bit integer read</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="BigBook_IO_EndianBinaryReader_ReadShort_seealso">See Also</h5>
-  <div class="seealso">
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryReader_ReadSignedByte.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryReader.ReadSignedByte%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L441">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int16">short</a></dt>
+    <dd><p>The 16-bit integer read</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_IO_EndianBinaryReader_ReadSignedByte_" data-uid="BigBook.IO.EndianBinaryReader.ReadSignedByte*"></a>
-  <h4 id="BigBook_IO_EndianBinaryReader_ReadSignedByte" data-uid="BigBook.IO.EndianBinaryReader.ReadSignedByte">ReadSignedByte()</h4>
+
+  <h3 id="BigBook_IO_EndianBinaryReader_ReadSignedByte" data-uid="BigBook.IO.EndianBinaryReader.ReadSignedByte">
+  ReadSignedByte()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L441"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Reads a single signed byte from the stream.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public sbyte ReadSignedByte()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.sbyte">sbyte</a></td>
-        <td><p>The byte read</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="BigBook_IO_EndianBinaryReader_ReadSignedByte_seealso">See Also</h5>
-  <div class="seealso">
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryReader_ReadString.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryReader.ReadString%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L453">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.sbyte">sbyte</a></dt>
+    <dd><p>The byte read</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_IO_EndianBinaryReader_ReadString_" data-uid="BigBook.IO.EndianBinaryReader.ReadString*"></a>
-  <h4 id="BigBook_IO_EndianBinaryReader_ReadString" data-uid="BigBook.IO.EndianBinaryReader.ReadString">ReadString()</h4>
+
+  <h3 id="BigBook_IO_EndianBinaryReader_ReadString" data-uid="BigBook.IO.EndianBinaryReader.ReadString">
+  ReadString()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L453"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Reads a length-prefixed string from the stream, using the encoding for this reader. A
 7-bit encoded integer is first read, which specifies the number of bytes to read from
 the stream. These bytes are then converted into a string with the encoding for this reader.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public string ReadString()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><p>The string read from the stream.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="BigBook_IO_EndianBinaryReader_ReadString_seealso">See Also</h5>
-  <div class="seealso">
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryReader_ReadUnsignedInt.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryReader.ReadUnsignedInt%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L467">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The string read from the stream.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_IO_EndianBinaryReader_ReadUnsignedInt_" data-uid="BigBook.IO.EndianBinaryReader.ReadUnsignedInt*"></a>
-  <h4 id="BigBook_IO_EndianBinaryReader_ReadUnsignedInt" data-uid="BigBook.IO.EndianBinaryReader.ReadUnsignedInt">ReadUnsignedInt()</h4>
+
+  <h3 id="BigBook_IO_EndianBinaryReader_ReadUnsignedInt" data-uid="BigBook.IO.EndianBinaryReader.ReadUnsignedInt">
+  ReadUnsignedInt()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L467"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Reads a 32-bit unsigned integer from the stream, using the bit converter for this
 reader. 4 bytes are read.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public uint ReadUnsignedInt()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></td>
-        <td><p>The 32-bit unsigned integer read</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="BigBook_IO_EndianBinaryReader_ReadUnsignedInt_seealso">See Also</h5>
-  <div class="seealso">
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryReader_ReadUnsignedLong.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryReader.ReadUnsignedLong%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L478">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd><p>The 32-bit unsigned integer read</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_IO_EndianBinaryReader_ReadUnsignedLong_" data-uid="BigBook.IO.EndianBinaryReader.ReadUnsignedLong*"></a>
-  <h4 id="BigBook_IO_EndianBinaryReader_ReadUnsignedLong" data-uid="BigBook.IO.EndianBinaryReader.ReadUnsignedLong">ReadUnsignedLong()</h4>
+
+  <h3 id="BigBook_IO_EndianBinaryReader_ReadUnsignedLong" data-uid="BigBook.IO.EndianBinaryReader.ReadUnsignedLong">
+  ReadUnsignedLong()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L478"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Reads a 64-bit unsigned integer from the stream, using the bit converter for this
 reader. 8 bytes are read.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public ulong ReadUnsignedLong()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></td>
-        <td><p>The 64-bit unsigned integer read</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="BigBook_IO_EndianBinaryReader_ReadUnsignedLong_seealso">See Also</h5>
-  <div class="seealso">
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryReader_ReadUnsignedShort.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryReader.ReadUnsignedShort%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L489">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd><p>The 64-bit unsigned integer read</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_IO_EndianBinaryReader_ReadUnsignedShort_" data-uid="BigBook.IO.EndianBinaryReader.ReadUnsignedShort*"></a>
-  <h4 id="BigBook_IO_EndianBinaryReader_ReadUnsignedShort" data-uid="BigBook.IO.EndianBinaryReader.ReadUnsignedShort">ReadUnsignedShort()</h4>
+
+  <h3 id="BigBook_IO_EndianBinaryReader_ReadUnsignedShort" data-uid="BigBook.IO.EndianBinaryReader.ReadUnsignedShort">
+  ReadUnsignedShort()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L489"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Reads a 16-bit unsigned integer from the stream, using the bit converter for this
 reader. 2 bytes are read.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public ushort ReadUnsignedShort()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint16">ushort</a></td>
-        <td><p>The 16-bit unsigned integer read</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="BigBook_IO_EndianBinaryReader_ReadUnsignedShort_seealso">See Also</h5>
-  <div class="seealso">
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_IO_EndianBinaryReader_Seek_System_Int32_System_IO_SeekOrigin_.md&amp;value=---%0Auid%3A%20BigBook.IO.EndianBinaryReader.Seek(System.Int32%2CSystem.IO.SeekOrigin)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L500">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint16">ushort</a></dt>
+    <dd><p>The 16-bit unsigned integer read</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_IO_EndianBinaryReader_Seek_" data-uid="BigBook.IO.EndianBinaryReader.Seek*"></a>
-  <h4 id="BigBook_IO_EndianBinaryReader_Seek_System_Int32_System_IO_SeekOrigin_" data-uid="BigBook.IO.EndianBinaryReader.Seek(System.Int32,System.IO.SeekOrigin)">Seek(int, SeekOrigin)</h4>
+
+  <h3 id="BigBook_IO_EndianBinaryReader_Seek_System_Int32_System_IO_SeekOrigin_" data-uid="BigBook.IO.EndianBinaryReader.Seek(System.Int32,System.IO.SeekOrigin)">
+  Seek(int, SeekOrigin)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L500"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Seeks within the stream.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Seek(int offset, SeekOrigin origin)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">offset</span></td>
-        <td><p>Offset to seek to.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.seekorigin">SeekOrigin</a></td>
-        <td><span class="parametername">origin</span></td>
-        <td><p>Origin of seek operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="BigBook_IO_EndianBinaryReader_Seek_System_Int32_System_IO_SeekOrigin__seealso">See Also</h5>
-  <div class="seealso">
-      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
-  </div>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a>
-  </div>
-  <h3 id="seealso">See Also</h3>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>offset</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Offset to seek to.</p>
+</dd>
+    <dt><code>origin</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.seekorigin">SeekOrigin</a></dt>
+    <dd><p>Origin of seek operation.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 id="seealso">See Also</h2>
   <div class="seealso">
       <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
   </div>
 
 </article>
-                </div>
 
-                <div class="copyright-footer">
-                    <span>&#169; James Craig. All rights reserved.</span>
-                </div>
-            </main>
+        <div class="contribution d-print-none">
+          <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/IO/EndianBinaryReader.cs/#L30" class="edit-link">Edit this page</a>
         </div>
 
 
-        <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
-        <script type="text/javascript" src="../styles/jquery.twbsPagination.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/jquery.mark.min.js"></script>
-        <script type="text/javascript" src="../styles/url.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/anchor-js@5.0.0/anchor.min.js"></script>
-        <script type="text/javascript" src="../styles/docfx.js"></script>
-        <script type="text/javascript" src="../styles/main.js"></script>
-        <script type="text/javascript" src="../styles/singulink.js"></script>    </body>
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <strong><a href='https://github.com/JaCraig/BigBookOfDataTypes'>Open in Github</a></strong>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>

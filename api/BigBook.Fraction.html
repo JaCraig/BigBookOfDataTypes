@@ -1,118 +1,128 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-
-    <head>
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <head>
+    <meta charset="utf-8">
       <title>Class Fraction
  | Big Book of DataTypes API Reference </title>
-      <meta name="viewport" content="width=device-width">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class Fraction
  | Big Book of DataTypes API Reference ">
-      <meta name="generator" content="docfx ">
-  
-      <link rel="shortcut icon" href="../favicon.ico">
-      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/night-owl.min.css">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" integrity="sha384-EvBWSlnoFgZlXJvpzS+MAUEjvN7+gcCwH+qh7GRFOGgZO0PuwOFro7qPOJnLfe7l" crossorigin="anonymous">
-      <link rel="stylesheet" href="../styles/config.css">
-      <link rel="stylesheet" href="../styles/discord.css">
-      <link rel="stylesheet" href="../styles/singulink.css">
-      <link rel="stylesheet" href="../styles/main.css">
-      <meta property="docfx:navrel" content="../toc.json">
-      <meta property="docfx:tocrel" content="toc.json">
-  
-  <meta property="docfx:rel" content="../">
-  <meta property="docfx:newtab" content="true">
-    </head>
-    <body>
-        <div class="top-navbar">
-            <a class="burger-icon" onclick="toggleMenu()">
-                <svg name="Hamburger" style="vertical-align: middle;" width="34" height="34" viewbox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M20 6H4V9H20V6ZM4 10.999H20V13.999H4V10.999ZM4 15.999H20V18.999H4V15.999Z"></path></svg>
-            </a>
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction.md&amp;value=---%0Auid%3A%20BigBook.Fraction%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
 
 
-            <a class="brand" href="../index.html">
-              <img src="../images/icon.png" alt="BigBook" class="logomark">
-              <span class="brand-title">BigBook</span>
-            </a>        </div>
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/icon.png" alt="BigBook">
+            BigBook
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
 
-        <div class="body-content">
-            <div id="blackout" class="blackout" onclick="toggleMenu()"></div>
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
 
-            <nav id="sidebar" role="navigation">
-                <div class="sidebar">
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
 
-                    <div>
-                      <div class="mobile-hide">
+          <nav id="breadcrumb"></nav>
+        </div>
 
-                        <a class="brand" href="../index.html">
-                          <img src="../images/icon.png" alt="BigBook" class="logomark">
-                          <span class="brand-title">BigBook</span>
-                        </a>                      </div>
-
-                      <div class="sidesearch">
-                        <form id="search" role="search" class="search">
-                            <i class="bi bi-search search-icon"></i>
-                            <input type="text" id="search-query" placeholder="Search" autocomplete="off">
-                        </form>
-                      </div>
-
-                      <div id="navbar">
-                      </div>
-                    </div>                    <div class="sidebar-item-separator"></div>
-
-                        <div id="sidetoggle">
-                          <div id="sidetoc"></div>
-                        </div>
-                </div>
-                <div class="footer">
-  <strong><a href='https://github.com/JaCraig/BigBookOfDataTypes'>Open in Github</a></strong>
-  
-                </div>            </nav>
-
-            <main class="main-panel">
-
-                <div id="search-results" style="display: none;">
-                  <h1 class="search-list">Search Results for <span></span></h1>
-                  <div class="sr-items">
-                    <p><i class="bi bi-hourglass-split index-loading"></i></p>
-                  </div>
-                  <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
-                </div>
- 
-
-                <div role="main" class="hide-when-search">
-
-                        <div class="subnav navbar navbar-default">
-                          <div class="container hide-when-search" id="breadcrumb">
-                            <ul class="breadcrumb">
-                              <li></li>
-                            </ul>
-                          </div>
-                        </div>
-
-                         <div id="contribution">
-                               <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction.md&amp;value=---%0Auid%3A%20BigBook.Fraction%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
-                         </div>
-
-                    <article class="content wrap" id="_content" data-uid="BigBook.Fraction">
+        <article data-uid="BigBook.Fraction">
 
 
 
-  <h1 id="BigBook_Fraction" data-uid="BigBook.Fraction" class="text-break">Class Fraction
-</h1>
-  <div class="markdown level0 summary"><p>Represents a fraction</p>
-</div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-    <div class="level1"><span class="xref">Fraction</span></div>
+  <h1 id="BigBook_Fraction" data-uid="BigBook.Fraction" class="text-break">
+    Class Fraction
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="BigBook.html">BigBook</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>BigBook.dll</dd></dl>
   </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
+
+  <div class="markdown summary"><p>Represents a fraction</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class Fraction</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">Fraction</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
     </div>
@@ -125,2123 +135,1738 @@
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
     </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="BigBook.html">BigBook</a></h6>
-  <h6><strong>Assembly</strong>: BigBook.dll</h6>
-  <h5 id="BigBook_Fraction_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class Fraction</code></pre>
-  </div>
-  <h3 id="constructors">Constructors
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction__ctor_System_Decimal_System_Decimal_.md&amp;value=---%0Auid%3A%20BigBook.Fraction.%23ctor(System.Decimal%2CSystem.Decimal)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L65">View Source</a>
-  </span>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
   <a id="BigBook_Fraction__ctor_" data-uid="BigBook.Fraction.#ctor*"></a>
-  <h4 id="BigBook_Fraction__ctor_System_Decimal_System_Decimal_" data-uid="BigBook.Fraction.#ctor(System.Decimal,System.Decimal)">Fraction(decimal, decimal)</h4>
+
+  <h3 id="BigBook_Fraction__ctor_System_Decimal_System_Decimal_" data-uid="BigBook.Fraction.#ctor(System.Decimal,System.Decimal)">
+  Fraction(decimal, decimal)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L65"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Constructor</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Fraction(decimal numerator, decimal denominator)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.decimal">decimal</a></td>
-        <td><span class="parametername">numerator</span></td>
-        <td><p>Numerator</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.decimal">decimal</a></td>
-        <td><span class="parametername">denominator</span></td>
-        <td><p>Denominator</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction__ctor_System_Double_System_Double_.md&amp;value=---%0Auid%3A%20BigBook.Fraction.%23ctor(System.Double%2CSystem.Double)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L42">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>numerator</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.decimal">decimal</a></dt>
+    <dd><p>Numerator</p>
+</dd>
+    <dt><code>denominator</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.decimal">decimal</a></dt>
+    <dd><p>Denominator</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_Fraction__ctor_" data-uid="BigBook.Fraction.#ctor*"></a>
-  <h4 id="BigBook_Fraction__ctor_System_Double_System_Double_" data-uid="BigBook.Fraction.#ctor(System.Double,System.Double)">Fraction(double, double)</h4>
+
+  <h3 id="BigBook_Fraction__ctor_System_Double_System_Double_" data-uid="BigBook.Fraction.#ctor(System.Double,System.Double)">
+  Fraction(double, double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L42"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Constructor</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Fraction(double numerator, double denominator)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></td>
-        <td><span class="parametername">numerator</span></td>
-        <td><p>Numerator</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></td>
-        <td><span class="parametername">denominator</span></td>
-        <td><p>Denominator</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction__ctor_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.Fraction.%23ctor(System.Int32%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L31">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>numerator</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>Numerator</p>
+</dd>
+    <dt><code>denominator</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>Denominator</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_Fraction__ctor_" data-uid="BigBook.Fraction.#ctor*"></a>
-  <h4 id="BigBook_Fraction__ctor_System_Int32_System_Int32_" data-uid="BigBook.Fraction.#ctor(System.Int32,System.Int32)">Fraction(int, int)</h4>
+
+  <h3 id="BigBook_Fraction__ctor_System_Int32_System_Int32_" data-uid="BigBook.Fraction.#ctor(System.Int32,System.Int32)">
+  Fraction(int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Constructor</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Fraction(int numerator, int denominator)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">numerator</span></td>
-        <td><p>Numerator</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">denominator</span></td>
-        <td><p>Denominator</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction__ctor_System_Single_System_Single_.md&amp;value=---%0Auid%3A%20BigBook.Fraction.%23ctor(System.Single%2CSystem.Single)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L92">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>numerator</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Numerator</p>
+</dd>
+    <dt><code>denominator</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Denominator</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_Fraction__ctor_" data-uid="BigBook.Fraction.#ctor*"></a>
-  <h4 id="BigBook_Fraction__ctor_System_Single_System_Single_" data-uid="BigBook.Fraction.#ctor(System.Single,System.Single)">Fraction(float, float)</h4>
+
+  <h3 id="BigBook_Fraction__ctor_System_Single_System_Single_" data-uid="BigBook.Fraction.#ctor(System.Single,System.Single)">
+  Fraction(float, float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L92"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Constructor</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Fraction(float numerator, float denominator)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
-        <td><span class="parametername">numerator</span></td>
-        <td><p>Numerator</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
-        <td><span class="parametername">denominator</span></td>
-        <td><p>Denominator</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="exceptions">Exceptions</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Condition</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></td>
-        <td><p>denominator</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="properties">Properties
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction_Denominator.md&amp;value=---%0Auid%3A%20BigBook.Fraction.Denominator%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L117">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>numerator</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Numerator</p>
+</dd>
+    <dt><code>denominator</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Denominator</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></dt>
+    <dd><p>denominator</p>
+</dd>
+  </dl>
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
   <a id="BigBook_Fraction_Denominator_" data-uid="BigBook.Fraction.Denominator*"></a>
-  <h4 id="BigBook_Fraction_Denominator" data-uid="BigBook.Fraction.Denominator">Denominator</h4>
+
+  <h3 id="BigBook_Fraction_Denominator" data-uid="BigBook.Fraction.Denominator">
+  Denominator
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L117"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Denominator of the fraction</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public int Denominator { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction_Numerator.md&amp;value=---%0Auid%3A%20BigBook.Fraction.Numerator%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L122">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="BigBook_Fraction_Numerator_" data-uid="BigBook.Fraction.Numerator*"></a>
-  <h4 id="BigBook_Fraction_Numerator" data-uid="BigBook.Fraction.Numerator">Numerator</h4>
+
+  <h3 id="BigBook_Fraction_Numerator" data-uid="BigBook.Fraction.Numerator">
+  Numerator
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L122"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Numerator of the faction</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public int Numerator { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction_Add_BigBook_Fraction_BigBook_Fraction_.md&amp;value=---%0Auid%3A%20BigBook.Fraction.Add(BigBook.Fraction%2CBigBook.Fraction)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L136">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
   <a id="BigBook_Fraction_Add_" data-uid="BigBook.Fraction.Add*"></a>
-  <h4 id="BigBook_Fraction_Add_BigBook_Fraction_BigBook_Fraction_" data-uid="BigBook.Fraction.Add(BigBook.Fraction,BigBook.Fraction)">Add(Fraction, Fraction)</h4>
+
+  <h3 id="BigBook_Fraction_Add_BigBook_Fraction_BigBook_Fraction_" data-uid="BigBook.Fraction.Add(BigBook.Fraction,BigBook.Fraction)">
+  Add(Fraction, Fraction)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L136"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Adds the specified values.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static Fraction Add(Fraction left, Fraction right)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><span class="parametername">left</span></td>
-        <td><p>The left.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><span class="parametername">right</span></td>
-        <td><p>The right.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><p>The result</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction_Divide_BigBook_Fraction_BigBook_Fraction_.md&amp;value=---%0Auid%3A%20BigBook.Fraction.Divide(BigBook.Fraction%2CBigBook.Fraction)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L156">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>left</code> <a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>The left.</p>
+</dd>
+    <dt><code>right</code> <a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>The right.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>The result</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_Fraction_Divide_" data-uid="BigBook.Fraction.Divide*"></a>
-  <h4 id="BigBook_Fraction_Divide_BigBook_Fraction_BigBook_Fraction_" data-uid="BigBook.Fraction.Divide(BigBook.Fraction,BigBook.Fraction)">Divide(Fraction, Fraction)</h4>
+
+  <h3 id="BigBook_Fraction_Divide_BigBook_Fraction_BigBook_Fraction_" data-uid="BigBook.Fraction.Divide(BigBook.Fraction,BigBook.Fraction)">
+  Divide(Fraction, Fraction)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L156"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Divides the specified values.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static Fraction Divide(Fraction left, Fraction right)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><span class="parametername">left</span></td>
-        <td><p>The left.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><span class="parametername">right</span></td>
-        <td><p>The right.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><p>The result</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction_Equals_System_Object_.md&amp;value=---%0Auid%3A%20BigBook.Fraction.Equals(System.Object)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L548">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>left</code> <a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>The left.</p>
+</dd>
+    <dt><code>right</code> <a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>The right.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>The result</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_Fraction_Equals_" data-uid="BigBook.Fraction.Equals*"></a>
-  <h4 id="BigBook_Fraction_Equals_System_Object_" data-uid="BigBook.Fraction.Equals(System.Object)">Equals(object?)</h4>
+
+  <h3 id="BigBook_Fraction_Equals_System_Object_" data-uid="BigBook.Fraction.Equals(System.Object)">
+  Equals(object?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L548"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Determines if the fractions are equal</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override bool Equals(object? obj)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
-        <td><span class="parametername">obj</span></td>
-        <td><p>object to check</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><p>True if they are, false otherwise</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction_GetHashCode.md&amp;value=---%0Auid%3A%20BigBook.Fraction.GetHashCode%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L564">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>obj</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>object to check</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if they are, false otherwise</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_Fraction_GetHashCode_" data-uid="BigBook.Fraction.GetHashCode*"></a>
-  <h4 id="BigBook_Fraction_GetHashCode" data-uid="BigBook.Fraction.GetHashCode">GetHashCode()</h4>
+
+  <h3 id="BigBook_Fraction_GetHashCode" data-uid="BigBook.Fraction.GetHashCode">
+  GetHashCode()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L564"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Gets the hash code of the fraction</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><p>The hash code of the fraction</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction_Inverse.md&amp;value=---%0Auid%3A%20BigBook.Fraction.Inverse%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L573">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The hash code of the fraction</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_Fraction_Inverse_" data-uid="BigBook.Fraction.Inverse*"></a>
-  <h4 id="BigBook_Fraction_Inverse" data-uid="BigBook.Fraction.Inverse">Inverse()</h4>
+
+  <h3 id="BigBook_Fraction_Inverse" data-uid="BigBook.Fraction.Inverse">
+  Inverse()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L573"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Returns the inverse of the fraction</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Fraction Inverse()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><p>The inverse</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction_Multiply_BigBook_Fraction_BigBook_Fraction_.md&amp;value=---%0Auid%3A%20BigBook.Fraction.Multiply(BigBook.Fraction%2CBigBook.Fraction)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L278">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>The inverse</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_Fraction_Multiply_" data-uid="BigBook.Fraction.Multiply*"></a>
-  <h4 id="BigBook_Fraction_Multiply_BigBook_Fraction_BigBook_Fraction_" data-uid="BigBook.Fraction.Multiply(BigBook.Fraction,BigBook.Fraction)">Multiply(Fraction, Fraction)</h4>
+
+  <h3 id="BigBook_Fraction_Multiply_BigBook_Fraction_BigBook_Fraction_" data-uid="BigBook.Fraction.Multiply(BigBook.Fraction,BigBook.Fraction)">
+  Multiply(Fraction, Fraction)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L278"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Multiplies the specified values.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static Fraction Multiply(Fraction left, Fraction right)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><span class="parametername">left</span></td>
-        <td><p>The left.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><span class="parametername">right</span></td>
-        <td><p>The right.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><p>The result</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction_Negate_BigBook_Fraction_.md&amp;value=---%0Auid%3A%20BigBook.Fraction.Negate(BigBook.Fraction)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L297">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>left</code> <a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>The left.</p>
+</dd>
+    <dt><code>right</code> <a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>The right.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>The result</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_Fraction_Negate_" data-uid="BigBook.Fraction.Negate*"></a>
-  <h4 id="BigBook_Fraction_Negate_BigBook_Fraction_" data-uid="BigBook.Fraction.Negate(BigBook.Fraction)">Negate(Fraction)</h4>
+
+  <h3 id="BigBook_Fraction_Negate_BigBook_Fraction_" data-uid="BigBook.Fraction.Negate(BigBook.Fraction)">
+  Negate(Fraction)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L297"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Negates the specified item.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static Fraction Negate(Fraction item)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><span class="parametername">item</span></td>
-        <td><p>The item.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><p>The result</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction_Reduce.md&amp;value=---%0Auid%3A%20BigBook.Fraction.Reduce%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L579">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>item</code> <a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>The item.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>The result</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_Fraction_Reduce_" data-uid="BigBook.Fraction.Reduce*"></a>
-  <h4 id="BigBook_Fraction_Reduce" data-uid="BigBook.Fraction.Reduce">Reduce()</h4>
+
+  <h3 id="BigBook_Fraction_Reduce" data-uid="BigBook.Fraction.Reduce">
+  Reduce()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L579"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Reduces the fraction (finds the greatest common denominator and divides the
 numerator/denominator by it).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Reduce()</code></pre>
   </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction_Subtract_BigBook_Fraction_BigBook_Fraction_.md&amp;value=---%0Auid%3A%20BigBook.Fraction.Subtract(BigBook.Fraction%2CBigBook.Fraction)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L499">View Source</a>
-  </span>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_Fraction_Subtract_" data-uid="BigBook.Fraction.Subtract*"></a>
-  <h4 id="BigBook_Fraction_Subtract_BigBook_Fraction_BigBook_Fraction_" data-uid="BigBook.Fraction.Subtract(BigBook.Fraction,BigBook.Fraction)">Subtract(Fraction, Fraction)</h4>
+
+  <h3 id="BigBook_Fraction_Subtract_BigBook_Fraction_BigBook_Fraction_" data-uid="BigBook.Fraction.Subtract(BigBook.Fraction,BigBook.Fraction)">
+  Subtract(Fraction, Fraction)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L499"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Subtracts the specified values.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static Fraction Subtract(Fraction left, Fraction right)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><span class="parametername">left</span></td>
-        <td><p>The left.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><span class="parametername">right</span></td>
-        <td><p>The right.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><p>The result</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction_ToDecimal.md&amp;value=---%0Auid%3A%20BigBook.Fraction.ToDecimal%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L603">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>left</code> <a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>The left.</p>
+</dd>
+    <dt><code>right</code> <a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>The right.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>The result</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_Fraction_ToDecimal_" data-uid="BigBook.Fraction.ToDecimal*"></a>
-  <h4 id="BigBook_Fraction_ToDecimal" data-uid="BigBook.Fraction.ToDecimal">ToDecimal()</h4>
+
+  <h3 id="BigBook_Fraction_ToDecimal" data-uid="BigBook.Fraction.ToDecimal">
+  ToDecimal()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L603"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Converts to decimal.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public decimal ToDecimal()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.decimal">decimal</a></td>
-        <td><p>The decimal value.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction_ToDouble.md&amp;value=---%0Auid%3A%20BigBook.Fraction.ToDouble%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L609">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.decimal">decimal</a></dt>
+    <dd><p>The decimal value.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_Fraction_ToDouble_" data-uid="BigBook.Fraction.ToDouble*"></a>
-  <h4 id="BigBook_Fraction_ToDouble" data-uid="BigBook.Fraction.ToDouble">ToDouble()</h4>
+
+  <h3 id="BigBook_Fraction_ToDouble" data-uid="BigBook.Fraction.ToDouble">
+  ToDouble()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L609"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Converts to double.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public double ToDouble()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></td>
-        <td><p>The value as a double</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction_ToFraction_System_Decimal_.md&amp;value=---%0Auid%3A%20BigBook.Fraction.ToFraction(System.Decimal)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L529">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The value as a double</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_Fraction_ToFraction_" data-uid="BigBook.Fraction.ToFraction*"></a>
-  <h4 id="BigBook_Fraction_ToFraction_System_Decimal_" data-uid="BigBook.Fraction.ToFraction(System.Decimal)">ToFraction(decimal)</h4>
+
+  <h3 id="BigBook_Fraction_ToFraction_System_Decimal_" data-uid="BigBook.Fraction.ToFraction(System.Decimal)">
+  ToFraction(decimal)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L529"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Converts to fraction.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static Fraction ToFraction(decimal value)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.decimal">decimal</a></td>
-        <td><span class="parametername">value</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><p>The value as a fraction.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction_ToFraction_System_Double_.md&amp;value=---%0Auid%3A%20BigBook.Fraction.ToFraction(System.Double)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L517">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.decimal">decimal</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>The value as a fraction.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_Fraction_ToFraction_" data-uid="BigBook.Fraction.ToFraction*"></a>
-  <h4 id="BigBook_Fraction_ToFraction_System_Double_" data-uid="BigBook.Fraction.ToFraction(System.Double)">ToFraction(double)</h4>
+
+  <h3 id="BigBook_Fraction_ToFraction_System_Double_" data-uid="BigBook.Fraction.ToFraction(System.Double)">
+  ToFraction(double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L517"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Converts to fraction.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static Fraction ToFraction(double value)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></td>
-        <td><span class="parametername">value</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><p>The value as a fraction.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction_ToFraction_System_Int32_.md&amp;value=---%0Auid%3A%20BigBook.Fraction.ToFraction(System.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L535">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>The value as a fraction.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_Fraction_ToFraction_" data-uid="BigBook.Fraction.ToFraction*"></a>
-  <h4 id="BigBook_Fraction_ToFraction_System_Int32_" data-uid="BigBook.Fraction.ToFraction(System.Int32)">ToFraction(int)</h4>
+
+  <h3 id="BigBook_Fraction_ToFraction_System_Int32_" data-uid="BigBook.Fraction.ToFraction(System.Int32)">
+  ToFraction(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L535"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Converts to fraction.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static Fraction ToFraction(int value)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">value</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><p>The value as a fraction.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction_ToFraction_System_Single_.md&amp;value=---%0Auid%3A%20BigBook.Fraction.ToFraction(System.Single)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L523">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>The value as a fraction.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_Fraction_ToFraction_" data-uid="BigBook.Fraction.ToFraction*"></a>
-  <h4 id="BigBook_Fraction_ToFraction_System_Single_" data-uid="BigBook.Fraction.ToFraction(System.Single)">ToFraction(float)</h4>
+
+  <h3 id="BigBook_Fraction_ToFraction_System_Single_" data-uid="BigBook.Fraction.ToFraction(System.Single)">
+  ToFraction(float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L523"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Converts to fraction.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static Fraction ToFraction(float value)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
-        <td><span class="parametername">value</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><p>The value as a fraction.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction_ToFraction_System_UInt32_.md&amp;value=---%0Auid%3A%20BigBook.Fraction.ToFraction(System.UInt32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L541">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>The value as a fraction.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_Fraction_ToFraction_" data-uid="BigBook.Fraction.ToFraction*"></a>
-  <h4 id="BigBook_Fraction_ToFraction_System_UInt32_" data-uid="BigBook.Fraction.ToFraction(System.UInt32)">ToFraction(uint)</h4>
+
+  <h3 id="BigBook_Fraction_ToFraction_System_UInt32_" data-uid="BigBook.Fraction.ToFraction(System.UInt32)">
+  ToFraction(uint)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L541"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Converts to fraction.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static Fraction ToFraction(uint value)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></td>
-        <td><span class="parametername">value</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><p>The value as a fraction.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction_ToSingle.md&amp;value=---%0Auid%3A%20BigBook.Fraction.ToSingle%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L615">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>The value as a fraction.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_Fraction_ToSingle_" data-uid="BigBook.Fraction.ToSingle*"></a>
-  <h4 id="BigBook_Fraction_ToSingle" data-uid="BigBook.Fraction.ToSingle">ToSingle()</h4>
+
+  <h3 id="BigBook_Fraction_ToSingle" data-uid="BigBook.Fraction.ToSingle">
+  ToSingle()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L615"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Converts to single.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public float ToSingle()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
-        <td><p>The value as a single.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction_ToString.md&amp;value=---%0Auid%3A%20BigBook.Fraction.ToString%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L621">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>The value as a single.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_Fraction_ToString_" data-uid="BigBook.Fraction.ToString*"></a>
-  <h4 id="BigBook_Fraction_ToString" data-uid="BigBook.Fraction.ToString">ToString()</h4>
+
+  <h3 id="BigBook_Fraction_ToString" data-uid="BigBook.Fraction.ToString">
+  ToString()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L621"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Displays the fraction as a string</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><p>The fraction as a string</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a></div>
-  <h3 id="operators">Operators
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction_op_Addition_BigBook_Fraction_BigBook_Fraction_.md&amp;value=---%0Auid%3A%20BigBook.Fraction.op_Addition(BigBook.Fraction%2CBigBook.Fraction)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L429">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The fraction as a string</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="operators">Operators
+</h2>
+
+
   <a id="BigBook_Fraction_op_Addition_" data-uid="BigBook.Fraction.op_Addition*"></a>
-  <h4 id="BigBook_Fraction_op_Addition_BigBook_Fraction_BigBook_Fraction_" data-uid="BigBook.Fraction.op_Addition(BigBook.Fraction,BigBook.Fraction)">operator +(Fraction?, Fraction?)</h4>
+
+  <h3 id="BigBook_Fraction_op_Addition_BigBook_Fraction_BigBook_Fraction_" data-uid="BigBook.Fraction.op_Addition(BigBook.Fraction,BigBook.Fraction)">
+  operator +(Fraction?, Fraction?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L429"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Addition</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static Fraction operator +(Fraction? first, Fraction? second)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><span class="parametername">first</span></td>
-        <td><p>First fraction</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><span class="parametername">second</span></td>
-        <td><p>Second fraction</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><p>The added fraction</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction_op_Division_BigBook_Fraction_BigBook_Fraction_.md&amp;value=---%0Auid%3A%20BigBook.Fraction.op_Division(BigBook.Fraction%2CBigBook.Fraction)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L408">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>first</code> <a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>First fraction</p>
+</dd>
+    <dt><code>second</code> <a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>Second fraction</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>The added fraction</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_Fraction_op_Division_" data-uid="BigBook.Fraction.op_Division*"></a>
-  <h4 id="BigBook_Fraction_op_Division_BigBook_Fraction_BigBook_Fraction_" data-uid="BigBook.Fraction.op_Division(BigBook.Fraction,BigBook.Fraction)">operator /(Fraction, Fraction)</h4>
+
+  <h3 id="BigBook_Fraction_op_Division_BigBook_Fraction_BigBook_Fraction_" data-uid="BigBook.Fraction.op_Division(BigBook.Fraction,BigBook.Fraction)">
+  operator /(Fraction, Fraction)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L408"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Division</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static Fraction operator /(Fraction first, Fraction second)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><span class="parametername">first</span></td>
-        <td><p>First item</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><span class="parametername">second</span></td>
-        <td><p>Second item</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><p>The divided fraction</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction_op_Equality_BigBook_Fraction_BigBook_Fraction_.md&amp;value=---%0Auid%3A%20BigBook.Fraction.op_Equality(BigBook.Fraction%2CBigBook.Fraction)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L454">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>first</code> <a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>First item</p>
+</dd>
+    <dt><code>second</code> <a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>Second item</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>The divided fraction</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_Fraction_op_Equality_" data-uid="BigBook.Fraction.op_Equality*"></a>
-  <h4 id="BigBook_Fraction_op_Equality_BigBook_Fraction_BigBook_Fraction_" data-uid="BigBook.Fraction.op_Equality(BigBook.Fraction,BigBook.Fraction)">operator ==(Fraction?, Fraction?)</h4>
+
+  <h3 id="BigBook_Fraction_op_Equality_BigBook_Fraction_BigBook_Fraction_" data-uid="BigBook.Fraction.op_Equality(BigBook.Fraction,BigBook.Fraction)">
+  operator ==(Fraction?, Fraction?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L454"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Equals operator</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static bool operator ==(Fraction? first, Fraction? second)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><span class="parametername">first</span></td>
-        <td><p>First item</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><span class="parametername">second</span></td>
-        <td><p>Second item</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><p>True if they are, false otherwise</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction_op_Equality_BigBook_Fraction_System_Double_.md&amp;value=---%0Auid%3A%20BigBook.Fraction.op_Equality(BigBook.Fraction%2CSystem.Double)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L471">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>first</code> <a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>First item</p>
+</dd>
+    <dt><code>second</code> <a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>Second item</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if they are, false otherwise</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_Fraction_op_Equality_" data-uid="BigBook.Fraction.op_Equality*"></a>
-  <h4 id="BigBook_Fraction_op_Equality_BigBook_Fraction_System_Double_" data-uid="BigBook.Fraction.op_Equality(BigBook.Fraction,System.Double)">operator ==(Fraction?, double)</h4>
+
+  <h3 id="BigBook_Fraction_op_Equality_BigBook_Fraction_System_Double_" data-uid="BigBook.Fraction.op_Equality(BigBook.Fraction,System.Double)">
+  operator ==(Fraction?, double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L471"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Equals operator</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static bool operator ==(Fraction? first, double second)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><span class="parametername">first</span></td>
-        <td><p>First item</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></td>
-        <td><span class="parametername">second</span></td>
-        <td><p>Second item</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><p>True if they are, false otherwise</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction_op_Equality_System_Double_BigBook_Fraction_.md&amp;value=---%0Auid%3A%20BigBook.Fraction.op_Equality(System.Double%2CBigBook.Fraction)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L485">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>first</code> <a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>First item</p>
+</dd>
+    <dt><code>second</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>Second item</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if they are, false otherwise</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_Fraction_op_Equality_" data-uid="BigBook.Fraction.op_Equality*"></a>
-  <h4 id="BigBook_Fraction_op_Equality_System_Double_BigBook_Fraction_" data-uid="BigBook.Fraction.op_Equality(System.Double,BigBook.Fraction)">operator ==(double, Fraction)</h4>
+
+  <h3 id="BigBook_Fraction_op_Equality_System_Double_BigBook_Fraction_" data-uid="BigBook.Fraction.op_Equality(System.Double,BigBook.Fraction)">
+  operator ==(double, Fraction)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L485"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Equals operator</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static bool operator ==(double first, Fraction second)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></td>
-        <td><span class="parametername">first</span></td>
-        <td><p>First item</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><span class="parametername">second</span></td>
-        <td><p>Second item</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><p>True if they are, false otherwise</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction_op_Implicit_BigBook_Fraction__System_Decimal.md&amp;value=---%0Auid%3A%20BigBook.Fraction.op_Implicit(BigBook.Fraction)~System.Decimal%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L175">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>first</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>First item</p>
+</dd>
+    <dt><code>second</code> <a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>Second item</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if they are, false otherwise</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_Fraction_op_Implicit_" data-uid="BigBook.Fraction.op_Implicit*"></a>
-  <h4 id="BigBook_Fraction_op_Implicit_BigBook_Fraction__System_Decimal" data-uid="BigBook.Fraction.op_Implicit(BigBook.Fraction)~System.Decimal">implicit operator decimal(Fraction?)</h4>
+
+  <h3 id="BigBook_Fraction_op_Implicit_BigBook_Fraction__System_Decimal" data-uid="BigBook.Fraction.op_Implicit(BigBook.Fraction)~System.Decimal">
+  implicit operator decimal(Fraction?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L175"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Converts the fraction to a decimal</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static implicit operator decimal(Fraction? fraction)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><span class="parametername">fraction</span></td>
-        <td><p>Fraction</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.decimal">decimal</a></td>
-        <td><p>The fraction as a decimal</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction_op_Implicit_BigBook_Fraction__System_Double.md&amp;value=---%0Auid%3A%20BigBook.Fraction.op_Implicit(BigBook.Fraction)~System.Double%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L189">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>fraction</code> <a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>Fraction</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.decimal">decimal</a></dt>
+    <dd><p>The fraction as a decimal</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_Fraction_op_Implicit_" data-uid="BigBook.Fraction.op_Implicit*"></a>
-  <h4 id="BigBook_Fraction_op_Implicit_BigBook_Fraction__System_Double" data-uid="BigBook.Fraction.op_Implicit(BigBook.Fraction)~System.Double">implicit operator double(Fraction?)</h4>
+
+  <h3 id="BigBook_Fraction_op_Implicit_BigBook_Fraction__System_Double" data-uid="BigBook.Fraction.op_Implicit(BigBook.Fraction)~System.Double">
+  implicit operator double(Fraction?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L189"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Converts the fraction to a double</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static implicit operator double(Fraction? fraction)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><span class="parametername">fraction</span></td>
-        <td><p>Fraction</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></td>
-        <td><p>The fraction as a double</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction_op_Implicit_BigBook_Fraction__System_Single.md&amp;value=---%0Auid%3A%20BigBook.Fraction.op_Implicit(BigBook.Fraction)~System.Single%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L203">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>fraction</code> <a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>Fraction</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>The fraction as a double</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_Fraction_op_Implicit_" data-uid="BigBook.Fraction.op_Implicit*"></a>
-  <h4 id="BigBook_Fraction_op_Implicit_BigBook_Fraction__System_Single" data-uid="BigBook.Fraction.op_Implicit(BigBook.Fraction)~System.Single">implicit operator float(Fraction)</h4>
+
+  <h3 id="BigBook_Fraction_op_Implicit_BigBook_Fraction__System_Single" data-uid="BigBook.Fraction.op_Implicit(BigBook.Fraction)~System.Single">
+  implicit operator float(Fraction)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L203"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Converts the fraction to a float</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static implicit operator float(Fraction fraction)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><span class="parametername">fraction</span></td>
-        <td><p>Fraction</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
-        <td><p>The fraction as a float</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction_op_Implicit_BigBook_Fraction__System_String.md&amp;value=---%0Auid%3A%20BigBook.Fraction.op_Implicit(BigBook.Fraction)~System.String%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L267">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>fraction</code> <a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>Fraction</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>The fraction as a float</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_Fraction_op_Implicit_" data-uid="BigBook.Fraction.op_Implicit*"></a>
-  <h4 id="BigBook_Fraction_op_Implicit_BigBook_Fraction__System_String" data-uid="BigBook.Fraction.op_Implicit(BigBook.Fraction)~System.String">implicit operator string(Fraction)</h4>
+
+  <h3 id="BigBook_Fraction_op_Implicit_BigBook_Fraction__System_String" data-uid="BigBook.Fraction.op_Implicit(BigBook.Fraction)~System.String">
+  implicit operator string(Fraction)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L267"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Converts the fraction to a string</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static implicit operator string(Fraction fraction)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><span class="parametername">fraction</span></td>
-        <td><p>Fraction</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><p>The fraction as a string</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction_op_Implicit_System_Decimal__BigBook_Fraction.md&amp;value=---%0Auid%3A%20BigBook.Fraction.op_Implicit(System.Decimal)~BigBook.Fraction%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L227">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>fraction</code> <a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>Fraction</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The fraction as a string</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_Fraction_op_Implicit_" data-uid="BigBook.Fraction.op_Implicit*"></a>
-  <h4 id="BigBook_Fraction_op_Implicit_System_Decimal__BigBook_Fraction" data-uid="BigBook.Fraction.op_Implicit(System.Decimal)~BigBook.Fraction">implicit operator Fraction(decimal)</h4>
+
+  <h3 id="BigBook_Fraction_op_Implicit_System_Decimal__BigBook_Fraction" data-uid="BigBook.Fraction.op_Implicit(System.Decimal)~BigBook.Fraction">
+  implicit operator Fraction(decimal)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L227"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Converts the decimal to a fraction</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static implicit operator Fraction(decimal fraction)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.decimal">decimal</a></td>
-        <td><span class="parametername">fraction</span></td>
-        <td><p>Fraction</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><p>The decimal as a fraction</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction_op_Implicit_System_Double__BigBook_Fraction.md&amp;value=---%0Auid%3A%20BigBook.Fraction.op_Implicit(System.Double)~BigBook.Fraction%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L217">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>fraction</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.decimal">decimal</a></dt>
+    <dd><p>Fraction</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>The decimal as a fraction</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_Fraction_op_Implicit_" data-uid="BigBook.Fraction.op_Implicit*"></a>
-  <h4 id="BigBook_Fraction_op_Implicit_System_Double__BigBook_Fraction" data-uid="BigBook.Fraction.op_Implicit(System.Double)~BigBook.Fraction">implicit operator Fraction(double)</h4>
+
+  <h3 id="BigBook_Fraction_op_Implicit_System_Double__BigBook_Fraction" data-uid="BigBook.Fraction.op_Implicit(System.Double)~BigBook.Fraction">
+  implicit operator Fraction(double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L217"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Converts the double to a fraction</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static implicit operator Fraction(double fraction)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></td>
-        <td><span class="parametername">fraction</span></td>
-        <td><p>Fraction</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><p>The double as a fraction</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction_op_Implicit_System_Int32__BigBook_Fraction.md&amp;value=---%0Auid%3A%20BigBook.Fraction.op_Implicit(System.Int32)~BigBook.Fraction%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L247">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>fraction</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>Fraction</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>The double as a fraction</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_Fraction_op_Implicit_" data-uid="BigBook.Fraction.op_Implicit*"></a>
-  <h4 id="BigBook_Fraction_op_Implicit_System_Int32__BigBook_Fraction" data-uid="BigBook.Fraction.op_Implicit(System.Int32)~BigBook.Fraction">implicit operator Fraction(int)</h4>
+
+  <h3 id="BigBook_Fraction_op_Implicit_System_Int32__BigBook_Fraction" data-uid="BigBook.Fraction.op_Implicit(System.Int32)~BigBook.Fraction">
+  implicit operator Fraction(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L247"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Converts the int to a fraction</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static implicit operator Fraction(int fraction)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">fraction</span></td>
-        <td><p>Fraction</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><p>The int as a fraction</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction_op_Implicit_System_Single__BigBook_Fraction.md&amp;value=---%0Auid%3A%20BigBook.Fraction.op_Implicit(System.Single)~BigBook.Fraction%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L237">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>fraction</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Fraction</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>The int as a fraction</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_Fraction_op_Implicit_" data-uid="BigBook.Fraction.op_Implicit*"></a>
-  <h4 id="BigBook_Fraction_op_Implicit_System_Single__BigBook_Fraction" data-uid="BigBook.Fraction.op_Implicit(System.Single)~BigBook.Fraction">implicit operator Fraction(float)</h4>
+
+  <h3 id="BigBook_Fraction_op_Implicit_System_Single__BigBook_Fraction" data-uid="BigBook.Fraction.op_Implicit(System.Single)~BigBook.Fraction">
+  implicit operator Fraction(float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L237"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Converts the float to a fraction</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static implicit operator Fraction(float fraction)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
-        <td><span class="parametername">fraction</span></td>
-        <td><p>Fraction</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><p>The float as a fraction</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction_op_Implicit_System_UInt32__BigBook_Fraction.md&amp;value=---%0Auid%3A%20BigBook.Fraction.op_Implicit(System.UInt32)~BigBook.Fraction%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L257">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>fraction</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>Fraction</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>The float as a fraction</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_Fraction_op_Implicit_" data-uid="BigBook.Fraction.op_Implicit*"></a>
-  <h4 id="BigBook_Fraction_op_Implicit_System_UInt32__BigBook_Fraction" data-uid="BigBook.Fraction.op_Implicit(System.UInt32)~BigBook.Fraction">implicit operator Fraction(uint)</h4>
+
+  <h3 id="BigBook_Fraction_op_Implicit_System_UInt32__BigBook_Fraction" data-uid="BigBook.Fraction.op_Implicit(System.UInt32)~BigBook.Fraction">
+  implicit operator Fraction(uint)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L257"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Converts the uint to a fraction</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static implicit operator Fraction(uint fraction)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></td>
-        <td><span class="parametername">fraction</span></td>
-        <td><p>Fraction</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><p>The uint as a fraction</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction_op_Inequality_BigBook_Fraction_BigBook_Fraction_.md&amp;value=---%0Auid%3A%20BigBook.Fraction.op_Inequality(BigBook.Fraction%2CBigBook.Fraction)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L352">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>fraction</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd><p>Fraction</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>The uint as a fraction</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_Fraction_op_Inequality_" data-uid="BigBook.Fraction.op_Inequality*"></a>
-  <h4 id="BigBook_Fraction_op_Inequality_BigBook_Fraction_BigBook_Fraction_" data-uid="BigBook.Fraction.op_Inequality(BigBook.Fraction,BigBook.Fraction)">operator !=(Fraction, Fraction)</h4>
+
+  <h3 id="BigBook_Fraction_op_Inequality_BigBook_Fraction_BigBook_Fraction_" data-uid="BigBook.Fraction.op_Inequality(BigBook.Fraction,BigBook.Fraction)">
+  operator !=(Fraction, Fraction)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L352"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Not equals operator</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static bool operator !=(Fraction first, Fraction second)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><span class="parametername">first</span></td>
-        <td><p>First item</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><span class="parametername">second</span></td>
-        <td><p>Second item</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><p>True if they are, false otherwise</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction_op_Inequality_BigBook_Fraction_System_Double_.md&amp;value=---%0Auid%3A%20BigBook.Fraction.op_Inequality(BigBook.Fraction%2CSystem.Double)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L363">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>first</code> <a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>First item</p>
+</dd>
+    <dt><code>second</code> <a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>Second item</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if they are, false otherwise</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_Fraction_op_Inequality_" data-uid="BigBook.Fraction.op_Inequality*"></a>
-  <h4 id="BigBook_Fraction_op_Inequality_BigBook_Fraction_System_Double_" data-uid="BigBook.Fraction.op_Inequality(BigBook.Fraction,System.Double)">operator !=(Fraction, double)</h4>
+
+  <h3 id="BigBook_Fraction_op_Inequality_BigBook_Fraction_System_Double_" data-uid="BigBook.Fraction.op_Inequality(BigBook.Fraction,System.Double)">
+  operator !=(Fraction, double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L363"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Not equals operator</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static bool operator !=(Fraction first, double second)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><span class="parametername">first</span></td>
-        <td><p>First item</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></td>
-        <td><span class="parametername">second</span></td>
-        <td><p>Second item</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><p>True if they are, false otherwise</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction_op_Inequality_System_Double_BigBook_Fraction_.md&amp;value=---%0Auid%3A%20BigBook.Fraction.op_Inequality(System.Double%2CBigBook.Fraction)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L374">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>first</code> <a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>First item</p>
+</dd>
+    <dt><code>second</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>Second item</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if they are, false otherwise</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_Fraction_op_Inequality_" data-uid="BigBook.Fraction.op_Inequality*"></a>
-  <h4 id="BigBook_Fraction_op_Inequality_System_Double_BigBook_Fraction_" data-uid="BigBook.Fraction.op_Inequality(System.Double,BigBook.Fraction)">operator !=(double, Fraction)</h4>
+
+  <h3 id="BigBook_Fraction_op_Inequality_System_Double_BigBook_Fraction_" data-uid="BigBook.Fraction.op_Inequality(System.Double,BigBook.Fraction)">
+  operator !=(double, Fraction)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L374"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Not equals operator</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static bool operator !=(double first, Fraction second)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></td>
-        <td><span class="parametername">first</span></td>
-        <td><p>First item</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><span class="parametername">second</span></td>
-        <td><p>Second item</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><p>True if they are, false otherwise</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction_op_Multiply_BigBook_Fraction_BigBook_Fraction_.md&amp;value=---%0Auid%3A%20BigBook.Fraction.op_Multiply(BigBook.Fraction%2CBigBook.Fraction)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L385">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>first</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>First item</p>
+</dd>
+    <dt><code>second</code> <a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>Second item</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if they are, false otherwise</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_Fraction_op_Multiply_" data-uid="BigBook.Fraction.op_Multiply*"></a>
-  <h4 id="BigBook_Fraction_op_Multiply_BigBook_Fraction_BigBook_Fraction_" data-uid="BigBook.Fraction.op_Multiply(BigBook.Fraction,BigBook.Fraction)">operator *(Fraction, Fraction)</h4>
+
+  <h3 id="BigBook_Fraction_op_Multiply_BigBook_Fraction_BigBook_Fraction_" data-uid="BigBook.Fraction.op_Multiply(BigBook.Fraction,BigBook.Fraction)">
+  operator *(Fraction, Fraction)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L385"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Multiplication</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static Fraction operator *(Fraction first, Fraction second)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><span class="parametername">first</span></td>
-        <td><p>First fraction</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><span class="parametername">second</span></td>
-        <td><p>Second fraction</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><p>The resulting fraction</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction_op_Subtraction_BigBook_Fraction_BigBook_Fraction_.md&amp;value=---%0Auid%3A%20BigBook.Fraction.op_Subtraction(BigBook.Fraction%2CBigBook.Fraction)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L312">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>first</code> <a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>First fraction</p>
+</dd>
+    <dt><code>second</code> <a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>Second fraction</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>The resulting fraction</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_Fraction_op_Subtraction_" data-uid="BigBook.Fraction.op_Subtraction*"></a>
-  <h4 id="BigBook_Fraction_op_Subtraction_BigBook_Fraction_BigBook_Fraction_" data-uid="BigBook.Fraction.op_Subtraction(BigBook.Fraction,BigBook.Fraction)">operator -(Fraction, Fraction)</h4>
+
+  <h3 id="BigBook_Fraction_op_Subtraction_BigBook_Fraction_BigBook_Fraction_" data-uid="BigBook.Fraction.op_Subtraction(BigBook.Fraction,BigBook.Fraction)">
+  operator -(Fraction, Fraction)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L312"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Subtraction</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static Fraction operator -(Fraction first, Fraction second)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><span class="parametername">first</span></td>
-        <td><p>First fraction</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><span class="parametername">second</span></td>
-        <td><p>Second fraction</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><p>The subtracted fraction</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_Fraction_op_UnaryNegation_BigBook_Fraction_.md&amp;value=---%0Auid%3A%20BigBook.Fraction.op_UnaryNegation(BigBook.Fraction)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L336">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>first</code> <a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>First fraction</p>
+</dd>
+    <dt><code>second</code> <a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>Second fraction</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>The subtracted fraction</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="BigBook_Fraction_op_UnaryNegation_" data-uid="BigBook.Fraction.op_UnaryNegation*"></a>
-  <h4 id="BigBook_Fraction_op_UnaryNegation_BigBook_Fraction_" data-uid="BigBook.Fraction.op_UnaryNegation(BigBook.Fraction)">operator -(Fraction)</h4>
+
+  <h3 id="BigBook_Fraction_op_UnaryNegation_BigBook_Fraction_" data-uid="BigBook.Fraction.op_UnaryNegation(BigBook.Fraction)">
+  operator -(Fraction)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L336"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Negation of the fraction</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static Fraction operator -(Fraction first)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><span class="parametername">first</span></td>
-        <td><p>Fraction to negate</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="BigBook.Fraction.html">Fraction</a></td>
-        <td><p>The negated fraction</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>first</code> <a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>Fraction to negate</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="BigBook.Fraction.html">Fraction</a></dt>
+    <dd><p>The negated fraction</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
 
 </article>
-                </div>
 
-                <div class="copyright-footer">
-                    <span>&#169; James Craig. All rights reserved.</span>
-                </div>
-            </main>
+        <div class="contribution d-print-none">
+          <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/src/BigBook/Fraction.cs/#L24" class="edit-link">Edit this page</a>
         </div>
 
 
-        <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
-        <script type="text/javascript" src="../styles/jquery.twbsPagination.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/jquery.mark.min.js"></script>
-        <script type="text/javascript" src="../styles/url.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/anchor-js@5.0.0/anchor.min.js"></script>
-        <script type="text/javascript" src="../styles/docfx.js"></script>
-        <script type="text/javascript" src="../styles/main.js"></script>
-        <script type="text/javascript" src="../styles/singulink.js"></script>    </body>
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <strong><a href='https://github.com/JaCraig/BigBookOfDataTypes'>Open in Github</a></strong>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>
