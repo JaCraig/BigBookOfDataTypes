@@ -4,7 +4,7 @@
     <Description>Big Book of Data Types is a collection of various data types including Vector3, Set, RingBuffer, PriorityQueue, Fractions, and DateSpan. It also includes a number of extension methods for types found already in .Net.</Description>
     <AssemblyTitle>Big Book of Data Types</AssemblyTitle>
     <Authors>James Craig</Authors>
-	  <TargetFrameworks>net6.0</TargetFrameworks>
+	  <TargetFrameworks>net6.0;net8.0</TargetFrameworks>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <AssemblyName>BigBook</AssemblyName>
     <PackageId>BigBook</PackageId>
@@ -54,16 +54,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="7.0.4">
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="8.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.ObjectPool" Version="8.0.1" />
-    <PackageReference Include="ObjectCartographer.SQL" Version="3.0.30" />
+    <PackageReference Include="ObjectCartographer.SQL" Version="3.0.31" />
     <PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
     <PackageReference Include="System.ComponentModel.TypeConverter" Version="4.3.0" />
     <PackageReference Include="System.Data.Common" Version="4.3.0" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
     <PackageReference Include="System.Diagnostics.Process" Version="4.3.0" />
     <PackageReference Include="System.Diagnostics.StackTrace" Version="4.3.0" />
     <PackageReference Include="System.Reflection.TypeExtensions" Version="4.7.0" />
