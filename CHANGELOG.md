@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [versionize](https://github.com/versionize/versionize) for commit guidelines.
 
+<a name="5.1.5"></a>
+## [5.1.5](https://www.github.com/JaCraig/BigBookOfDataTypes/releases/tag/v5.1.5) (2024-02-05)
+
+### Bug Fixes
+
+* bump the dependencies group with 2 updates ([8e2c48d](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/8e2c48d9aae9d066a6225ff838a6e4b8b12cb4e3))
+
+### Other
+
+* Merge pull request #135 from JaCraig/dependabot/nuget/test/BigBook.Tests/dependencies-c383803938 ([28ecd19](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/28ecd19eb6820a255e493bd6be997d07ddd16241))
+* Merge pull request #136 from JaCraig/dependabot/nuget/test/BigBook.Tests/dependencies-50e7fead40 ([9d96f64](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/9d96f6427872fb7ee250d75d8e8919ede37f28b1))
+* Merge pull request #137 from JaCraig/dependabot/nuget/test/BigBook.Tests/dependencies-c3142a55c3 ([978bcda](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/978bcdac39da114df08cbf1e5250d229cebfa516))
+* Merge pull request #138 from JaCraig/dependabot/nuget/dependencies-fecf3e0ff5 ([273a817](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/273a81716c9a6e821cf06c4ff1ea110c9886b96e))
+* bump the dependencies group in /test/BigBook.Tests with 1 update ([2c55558](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/2c555588e1f5469b49e24466274cd17948b9c300))
+* bump the dependencies group in /test/BigBook.Tests with 1 update ([e805da5](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/e805da5c07bb3e43fce3e1dcddc0738a5287f976))
+* bump the dependencies group in /test/BigBook.Tests with 1 update ([28cb68e](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/28cb68ecd6474eef6dd3c8f1b74fd88cce0535f0))
+* Update dependabot-reviewer.yml ([38ba618](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/38ba6189c153ad486098e7524debd7392a9e59c3))
+
 <a name="5.1.4"></a>
 ## [5.1.4](https://www.github.com/JaCraig/BigBookOfDataTypes/releases/tag/v5.1.4) (2024-01-31)
 
