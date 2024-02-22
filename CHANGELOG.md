@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [versionize](https://github.com/versionize/versionize) for commit guidelines.
 
+<a name="5.1.12"></a>
+## [5.1.12](https://www.github.com/JaCraig/BigBookOfDataTypes/releases/tag/v5.1.12) (2024-02-22)
+
+### Bug Fixes
+
+* bump the dependencies group with 2 updates ([c9f6901](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/c9f6901bce03fbad6ec8ac48b09917d8377a85fd))
+
+### Other
+
+* Merge pull request #156 from JaCraig/dependabot/nuget/test/BigBook.Tests/dependencies-69d41b035d ([aea76c1](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/aea76c1db20536242a60f0b437829929ed3a5cd5))
+* Merge pull request #157 from JaCraig/dependabot/nuget/test/BigBook.Tests/dependencies-cbee89840c ([f9e4979](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/f9e4979cf606c62e8ab3a6ad0ad9943792e1f2a0))
+* Merge pull request #158 from JaCraig/dependabot/nuget/dependencies-bbb7cc35fb ([ef6aa11](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/ef6aa115904b03a265ab201376cb9a498804403e))
+* bump the dependencies group in /test/BigBook.Tests with 1 update ([5490124](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/549012473759838541dbf3f605ec893adfd3361c))
+* bump the dependencies group in /test/BigBook.Tests with 1 update ([5e0de53](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/5e0de533823cc144026d6e53a7f050b26c687b9e))
+
 <a name="5.1.11"></a>
 ## [5.1.11](https://www.github.com/JaCraig/BigBookOfDataTypes/releases/tag/v5.1.11) (2024-02-21)
 
