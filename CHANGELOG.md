@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [versionize](https://github.com/versionize/versionize) for commit guidelines.
 
+<a name="5.1.27"></a>
+## [5.1.27](https://www.github.com/JaCraig/BigBookOfDataTypes/releases/tag/v5.1.27) (2024-04-11)
+
+### Bug Fixes
+
+* bump Aspectus from 5.0.43 to 5.0.44 in the dependencies group ([c10bb9a](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/c10bb9a251d02d2954a875410500c378c7787c84))
+
+### Other
+
+* Merge pull request #198 from JaCraig/dependabot/nuget/dependencies-339ca09bf8 ([a5ff0ee](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/a5ff0eea390e20484a96407c3afd160159d7981d))
+
 <a name="5.1.26"></a>
 ## [5.1.26](https://www.github.com/JaCraig/BigBookOfDataTypes/releases/tag/v5.1.26) (2024-04-10)
 
