@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [versionize](https://github.com/versionize/versionize) for commit guidelines.
 
+<a name="5.1.40"></a>
+## [5.1.40](https://www.github.com/JaCraig/BigBookOfDataTypes/releases/tag/v5.1.40) (2024-06-13)
+
+### Bug Fixes
+
+* package update ([a3750b5](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/a3750b5a7da1de9c042d129157af222bfcba8f22))
+
 <a name="5.1.39"></a>
 ## [5.1.39](https://www.github.com/JaCraig/BigBookOfDataTypes/releases/tag/v5.1.39) (2024-06-12)
 
