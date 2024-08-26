@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [versionize](https://github.com/versionize/versionize) for commit guidelines.
 
+<a name="5.1.52"></a>
+## [5.1.52](https://www.github.com/JaCraig/BigBookOfDataTypes/releases/tag/v5.1.52) (2024-08-26)
+
+### Bug Fixes
+
+* bump ObjectCartographer.SQL in the dependencies group ([173b8b6](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/173b8b6e6d995d4b1b406e6594871e5d477a0dd3))
+
+### Other
+
+* Merge pull request #272 from JaCraig/dependabot/nuget/test/BigBook.Tests/dependencies-179c4a69ad ([6a97060](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/6a970606870f307d30fc25aaddbd5990f62c85a9))
+* Merge pull request #273 from JaCraig/dependabot/nuget/test/BigBook.Tests/dependencies-85934dc443 ([33a7073](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/33a707371078ccca92829dff5b43b71d449a8af8))
+* Merge pull request #274 from JaCraig/dependabot/nuget/dependencies-42feb1297c ([d5f390e](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/d5f390e45081e255316f034212c3d27a0ba195f7))
+* bump Mecha.xUnit in /test/BigBook.Tests in the dependencies group ([18719bc](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/18719bc3b8c7e3a5c29d6e1b864d186ed30ad0fc))
+* bump Mecha.xUnit in /test/BigBook.Tests in the dependencies group ([7182f74](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/7182f749ec1f85113b33e093b42d9a0832f51ab2))
+
 <a name="5.1.51"></a>
 ## [5.1.51](https://www.github.com/JaCraig/BigBookOfDataTypes/releases/tag/v5.1.51) (2024-08-23)
 
