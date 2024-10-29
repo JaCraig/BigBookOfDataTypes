@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [versionize](https://github.com/versionize/versionize) for commit guidelines.
 
+<a name="5.1.57"></a>
+## [5.1.57](https://www.github.com/JaCraig/BigBookOfDataTypes/releases/tag/v5.1.57) (2024-10-29)
+
+### Bug Fixes
+
+* bump versionize from 1.27.0 to 2.0.0 in the dependencies group ([9dd3509](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/9dd35095924a7929f59e5b503390bdf070344fa3))
+* bump versionize from 2.0.0 to 2.1.0 in the dependencies group ([2b10302](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/2b1030268c79d16f78a66a5a396cb2e5a0462d40))
+
+### Other
+
+* Merge pull request #295 from JaCraig/dependabot/nuget/dependencies-9c36df7c76 ([f7394d0](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/f7394d01f19b9486b8f85202fe76adff51db43fa))
+* Merge pull request #296 from JaCraig/dependabot/nuget/dependencies-3894128c1d ([38a08db](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/38a08db044899efd43d4b12377f82486eaead0e8))
+* Merge pull request #297 from JaCraig/dependabot/github_actions/dependencies-18190d55f2 ([c0b0759](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/c0b0759c512bad01ec0ec5cc553beb82e60568de))
+* bump actions/setup-dotnet in the dependencies group ([a67bf75](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/a67bf757828af0bebaabf3dd8b97a88e008348a7))
+* Refactor versionize command in dotnet-publish workflow ([b94445b](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/b94445b9a484a8289f7c6398dee4dd1aa65511e1))
+
 <a name="5.1.56"></a>
 ## [5.1.56](https://www.github.com/JaCraig/BigBookOfDataTypes/releases/tag/v5.1.56) (2024-10-15)
 
