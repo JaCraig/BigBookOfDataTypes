@@ -1,4 +1,6 @@
-﻿namespace BigBook.Example
+﻿using BigBook.ExtensionMethods;
+
+namespace BigBook.Example
 {
     /// <summary>
     /// Example 1. This example shows how to use some of the string extensions.

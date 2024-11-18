@@ -1,4 +1,5 @@
-﻿using BigBook.Formatters;
+﻿using BigBook.ExtensionMethods;
+using BigBook.Formatters;
 using BigBook.Tests.BaseClasses;
 using System.Collections.Generic;
 using System.Text;

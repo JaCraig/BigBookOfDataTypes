@@ -1,4 +1,5 @@
-﻿using BigBook.Tests.BaseClasses;
+﻿using BigBook.ExtensionMethods;
+using BigBook.Tests.BaseClasses;
 using System.IO;
 using System.Threading.Tasks;
 using Xunit;
@@ -29,7 +30,7 @@ namespace BigBook.Tests.ExtensionMethods
             WriteToFile(@".\Testing\Test.txt", "This is a test");
             var File = new System.IO.FileInfo(@".\Testing\Test.txt");
             using var Test = File.OpenRead();
-            Assert.Equal("This is a test", await Test.ReadAllAsync().ConfigureAwait(false));
+            Assert.Equal("This is a test", await Test.ReadAllAsync());
         }
 
         [Fact]
@@ -56,7 +57,7 @@ namespace BigBook.Tests.ExtensionMethods
         {
             using var Test = new System.IO.MemoryStream();
             Test.Write("This is a test".ToByteArray(), 0, "This is a test".Length);
-            var Content = await Test.ReadAllBinaryAsync().ConfigureAwait(false);
+            var Content = await Test.ReadAllBinaryAsync();
             Assert.Equal("This is a test", System.Text.Encoding.ASCII.GetString(Content, 0, Content.Length));
         }
 
@@ -66,7 +67,7 @@ namespace BigBook.Tests.ExtensionMethods
             WriteToFile(@".\Testing\Test.txt", "This is a test");
             var File = new System.IO.FileInfo(@".\Testing\Test.txt");
             using var Test = File.OpenRead();
-            var Content = await Test.ReadAllBinaryAsync().ConfigureAwait(false);
+            var Content = await Test.ReadAllBinaryAsync();
             Assert.Equal("This is a test", System.Text.Encoding.ASCII.GetString(Content, 0, Content.Length));
         }
     }

@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using BigBook.Comparison;
+using BigBook.ExtensionMethods;
 using ObjectCartographer;
 using System;
 using System.Buffers;

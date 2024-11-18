@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using BigBook.ExtensionMethods;
+using System.Text;
 using Xunit;
 
 namespace BigBook.Tests.ExtensionMethods
