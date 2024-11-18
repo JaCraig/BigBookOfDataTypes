@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -54,7 +54,7 @@
             <div id="navbar">
               <form class="search" role="search" id="search">
                 <i class="bi bi-search"></i>
-                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
@@ -76,11 +76,13 @@
 <p><a href="https://github.com/JaCraig/BigBookOfDataTypes/actions/workflows/dotnet-publish.yml"><img src="https://github.com/JaCraig/BigBookOfDataTypes/actions/workflows/dotnet-publish.yml/badge.svg" alt=".NET Publish"></a></p>
 <p>Big Book of Data Types is a set of classes and extension methods to help with data. This includes classes for caching, data comparison, data conversion, data mapping, string formatting, as well as various data types that are missing from .Net.</p>
 <h2 id="setting-up-the-library">Setting Up the Library</h2>
-<p>Depending on the features you use in Big Book of Data Types, you may need to register <a href="https://github.com/JaCraig/Canister">Canister</a> modules as the Dynamo class requires it in order to hook itself up. In order for this to work, you must do the following at startup:</p>
-<pre><code>services.AddCanisterModules();
-				
+<p>Depending on the features you use in Big Book of Data Types, you may need to register it with your ServiceCollection as the Dynamo class requires it in order to hook itself up. In order for this to work, you must do the following at startup:</p>
+<pre><code class="lang-csharp">    services.RegisterBigBookOfDataTypes();
 </code></pre>
-<p>The AddCanisterModules function is an extension method on your app's ServiceCollection. When this is done, the Dynamo class is ready to use. If you are not using that class, you should be able to go without registration.</p>
+<p>or</p>
+<pre><code class="lang-csharp">    services.AddCanisterModules();
+</code></pre>
+<p>As the library supports <a href="https://github.com/JaCraig/Canister">Canister Modules</a>. The RegisterBigBookOfDataTypes function is an extension method on your app's ServiceCollection. When this is done, the Dynamo class is ready to use. If you are not using that class, you should be able to go without registration.</p>
 <h2 id="basic-usage">Basic usage</h2>
 <p>Most of the library is simply data types that can be used fairly easily. These include:</p>
 <ol>
@@ -100,16 +102,16 @@
 <li>Vector3</li>
 </ol>
 <p>Similarly the extension methods for various types can be found by adding:</p>
-<pre><code>using BigBook;
+<pre><code class="lang-csharp">    using BigBook;
 </code></pre>
 <p>To your list of usings. From there a number of extension methods should be available for arrays, IEnumerable, string, ConcurrentBag, ConcurrentDictionary, DateTime, Exception, ICollection, IComparable, IDictionary, MatchCollection, Process, Stream, TimeSpan, etc. There are a couple hundred extension methods and I suggest you just take a look at them to see what they do. Another portion of the library that might be of some interest and yet not completely intuitive is the Dynamo class.</p>
 <p>Dynamo is a true dynamic type for .Net. ExpandoObject is generally great for basic work that requires a dynamic, however it is not easy to convert to other data types. For instance you can't do this:</p>
-<pre><code>dynamic MyDynamicValue=new ExpandoObject();
-SomeClass FinalObject=MyDynamicValue;
+<pre><code class="lang-csharp">    dynamic MyDynamicValue=new ExpandoObject();
+    SomeClass FinalObject=MyDynamicValue;
 </code></pre>
 <p>Dynamo, on the other hand, has no issues with this:</p>
-<pre><code>dynamic MyDynamicValue=new Dynamo();
-SomeClass FinalObject=MyDynamicValue;
+<pre><code class="lang-csharp">    dynamic MyDynamicValue=new Dynamo();
+    SomeClass FinalObject=MyDynamicValue;
 </code></pre>
 <p>The class handles conversion to and from class types, can convert properties from one type to another, and comes with a set of built in functionality. The class implements INotifyPropertyChanged, has a built in change log, and is thread safe. It can also be added as a base class for other classes to add this functionality automatically.</p>
 <h2 id="installation">Installation</h2>
@@ -118,7 +120,7 @@ SomeClass FinalObject=MyDynamicValue;
 <h2 id="build-process">Build Process</h2>
 <p>In order to build the library you will require the following:</p>
 <ol>
-<li>Visual Studio 2019</li>
+<li>Visual Studio 2022</li>
 </ol>
 <p>Other than that, just clone the project and you should be able to load the solution and build without too much effort.</p>
 
