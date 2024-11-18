@@ -1,4 +1,5 @@
 ﻿using BigBook;
+using BigBook.Registration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace TestSize

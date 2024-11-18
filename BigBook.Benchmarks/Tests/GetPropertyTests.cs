@@ -1,5 +1,6 @@
 ﻿using BenchmarkDotNet.Attributes;
 using BigBook.Reflection;
+using BigBook.Registration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 

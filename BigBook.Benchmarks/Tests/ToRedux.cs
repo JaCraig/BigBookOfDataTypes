@@ -1,5 +1,6 @@
 ﻿using BenchmarkDotNet.Attributes;
 using BigBook.ExtensionMethods.Utils;
+using BigBook.Registration;
 using Fast.Activator;
 using Microsoft.Extensions.DependencyInjection;
 using ObjectCartographer;

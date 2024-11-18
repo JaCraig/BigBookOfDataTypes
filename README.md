@@ -6,11 +6,11 @@ Big Book of Data Types is a set of classes and extension methods to help with da
 
 ## Setting Up the Library
 
-Depending on the features you use in Big Book of Data Types, you may need to register [Canister](https://github.com/JaCraig/Canister) modules as the Dynamo class requires it in order to hook itself up. In order for this to work, you must do the following at startup:
+Depending on the features you use in Big Book of Data Types, you may need to register it with your ServiceCollection as the Dynamo class requires it in order to hook itself up. In order for this to work, you must do the following at startup:
 
-    services.AddCanisterModules();
+    services.RegisterBigBookOfDataTypes();
 					
-The AddCanisterModules function is an extension method on your app's ServiceCollection. When this is done, the Dynamo class is ready to use. If you are not using that class, you should be able to go without registration.
+The RegisterBigBookOfDataTypes function is an extension method on your app's ServiceCollection. When this is done, the Dynamo class is ready to use. If you are not using that class, you should be able to go without registration.
 
 ## Basic usage
 

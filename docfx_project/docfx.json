@@ -3,13 +3,13 @@
     {
       "src": [
         {
-          "files": ["src/BigBook/BigBook.csproj"],
+          "files": ["BigBook/BigBook.csproj"],
           "src": "../"
         }
       ],
       "dest": "api",
       "properties": {
-        "TargetFramework": "net6.0"
+        "TargetFramework": "net8.0"
       },
       "includePrivateMembers": false,
       "disableGitFeatures": false,

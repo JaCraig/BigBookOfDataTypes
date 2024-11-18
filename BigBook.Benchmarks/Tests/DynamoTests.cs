@@ -1,5 +1,6 @@
 ﻿using BenchmarkDotNet.Attributes;
 using BigBook.Benchmarks.Tests.TestClasses;
+using BigBook.Registration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Concurrent;
 using System.Dynamic;

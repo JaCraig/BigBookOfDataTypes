@@ -1,4 +1,5 @@
 ﻿using BenchmarkDotNet.Attributes;
+using BigBook.Registration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace BigBook.Benchmarks.Tests

@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-	  <TargetFrameworks>net6.0;net8.0</TargetFrameworks>
+	  <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
@@ -12,6 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\BigBook\BigBook.csproj" />
+    <ProjectReference Include="..\BigBook\BigBook.csproj" />
   </ItemGroup>
 </Project>
