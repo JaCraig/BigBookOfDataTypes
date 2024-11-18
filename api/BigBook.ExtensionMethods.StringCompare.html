@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Enum CharIs | Big Book of DataTypes API Reference </title>
+      <title>Enum StringCompare | Big Book of DataTypes API Reference </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Enum CharIs | Big Book of DataTypes API Reference ">
+      <meta name="title" content="Enum StringCompare | Big Book of DataTypes API Reference ">
       
-      <meta name="description" content="What type of character is this">
+      <meta name="description" content="What type of string comparison are we doing?">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_CharIs.md&amp;value=---%0Auid%3A%20BigBook.CharIs%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="docfx:docurl" content="https://github.com/JaCraig/BigBookOfDataTypes/new/master/apiSpec/new?filename=BigBook_ExtensionMethods_StringCompare.md&amp;value=---%0Auid%3A%20BigBook.ExtensionMethods.StringCompare%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -84,27 +84,26 @@
           <nav id="breadcrumb"></nav>
         </div>
 
-        <article data-uid="BigBook.CharIs">
+        <article data-uid="BigBook.ExtensionMethods.StringCompare">
 
 
 
 
-  <h1 id="BigBook_CharIs" data-uid="BigBook.CharIs" class="text-break">
-Enum CharIs  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/BigBook/ExtensionMethods/ValueTypeExtensions.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  <h1 id="BigBook_ExtensionMethods_StringCompare" data-uid="BigBook.ExtensionMethods.StringCompare" class="text-break">
+Enum StringCompare  <a class="header-action link-secondary" title="View source" href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/BigBook/ExtensionMethods/StringExtensions.cs/#L922"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
-    <dl><dt>Namespace</dt><dd><a class="xref" href="BigBook.html">BigBook</a></dd></dl>
+    <dl><dt>Namespace</dt><dd><a class="xref" href="BigBook.html">BigBook</a>.<a class="xref" href="BigBook.ExtensionMethods.html">ExtensionMethods</a></dd></dl>
   <dl><dt>Assembly</dt><dd>BigBook.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>What type of character is this</p>
+  <div class="markdown summary"><p>What type of string comparison are we doing?</p>
 </div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Flags]
-public enum CharIs</code></pre>
+    <pre><code class="lang-csharp hljs">public enum StringCompare</code></pre>
   </div>
 
 
@@ -118,47 +117,14 @@ public enum CharIs</code></pre>
   <h2 id="fields">Fields
 </h2>
   <dl class="parameters">
-    <dt id="BigBook_CharIs_Control"><code>Control = 4096</code></dt>
-    <dd><p>Control</p>
+    <dt id="BigBook_ExtensionMethods_StringCompare_Anagram"><code>Anagram = 1</code></dt>
+    <dd><p>Is this an anagram?</p>
 </dd>
-    <dt id="BigBook_CharIs_Digit"><code>Digit = 2048</code></dt>
-    <dd><p>Digit</p>
+    <dt id="BigBook_ExtensionMethods_StringCompare_CreditCard"><code>CreditCard = 0</code></dt>
+    <dd><p>Is this a credit card number?</p>
 </dd>
-    <dt id="BigBook_CharIs_HighSurrogate"><code>HighSurrogate = 1024</code></dt>
-    <dd><p>High surrogate</p>
-</dd>
-    <dt id="BigBook_CharIs_Letter"><code>Letter = 512</code></dt>
-    <dd><p>Letter</p>
-</dd>
-    <dt id="BigBook_CharIs_LetterOrDigit"><code>LetterOrDigit = 256</code></dt>
-    <dd><p>letter or digit</p>
-</dd>
-    <dt id="BigBook_CharIs_LowSurrogate"><code>LowSurrogate = 64</code></dt>
-    <dd><p>Low surrogate</p>
-</dd>
-    <dt id="BigBook_CharIs_Lower"><code>Lower = 128</code></dt>
-    <dd><p>Lower</p>
-</dd>
-    <dt id="BigBook_CharIs_None"><code>None = 0</code></dt>
-    <dd><p>The none</p>
-</dd>
-    <dt id="BigBook_CharIs_Number"><code>Number = 32</code></dt>
-    <dd><p>Number</p>
-</dd>
-    <dt id="BigBook_CharIs_Punctuation"><code>Punctuation = 16</code></dt>
-    <dd><p>Punctuation</p>
-</dd>
-    <dt id="BigBook_CharIs_Surrogate"><code>Surrogate = 8</code></dt>
-    <dd><p>Surrogate</p>
-</dd>
-    <dt id="BigBook_CharIs_Symbol"><code>Symbol = 4</code></dt>
-    <dd><p>Symbol</p>
-</dd>
-    <dt id="BigBook_CharIs_Upper"><code>Upper = 2</code></dt>
-    <dd><p>Upper case</p>
-</dd>
-    <dt id="BigBook_CharIs_WhiteSpace"><code>WhiteSpace = 1</code></dt>
-    <dd><p>White space</p>
+    <dt id="BigBook_ExtensionMethods_StringCompare_Unicode"><code>Unicode = 2</code></dt>
+    <dd><p>Is this Unicode</p>
 </dd>
   </dl>
 
@@ -167,7 +133,7 @@ public enum CharIs</code></pre>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/BigBook/ExtensionMethods/ValueTypeExtensions.cs/#L27" class="edit-link">Edit this page</a>
+          <a href="https://github.com/JaCraig/BigBookOfDataTypes/blob/master/BigBook/ExtensionMethods/StringExtensions.cs/#L922" class="edit-link">Edit this page</a>
         </div>
 
 

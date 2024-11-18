@@ -322,6 +322,46 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.ExtensionMethods.MinificationType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.ExtensionMethods.MinificationType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.ExtensionMethods.StringCase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.ExtensionMethods.StringCase.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.ExtensionMethods.StringCompare.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.ExtensionMethods.StringCompare.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.ExtensionMethods.StringFilter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.ExtensionMethods.StringFilter.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/BigBook.ExtensionMethods.Utils.DefaultValueLookup.yml",
       "output": {
         ".html": {
@@ -336,6 +376,16 @@
       "output": {
         ".html": {
           "relative_path": "api/BigBook.ExtensionMethods.Utils.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/BigBook.ExtensionMethods.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/BigBook.ExtensionMethods.html"
         }
       },
       "version": ""
@@ -552,16 +602,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/BigBook.MinificationType.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/BigBook.MinificationType.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/BigBook.ObservableList-1.yml",
       "output": {
         ".html": {
@@ -756,36 +796,6 @@
       "output": {
         ".html": {
           "relative_path": "api/BigBook.Set-1.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/BigBook.StringCase.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/BigBook.StringCase.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/BigBook.StringCompare.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/BigBook.StringCompare.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/BigBook.StringFilter.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/BigBook.StringFilter.html"
         }
       },
       "version": ""
