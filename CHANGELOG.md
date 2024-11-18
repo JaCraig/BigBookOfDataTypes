@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [versionize](https://github.com/versionize/versionize) for commit guidelines.
 
+<a name="6.0.0"></a>
+## [6.0.0](https://www.github.com/JaCraig/BigBookOfDataTypes/releases/tag/v6.0.0) (2024-11-18)
+
+### Features
+
+* Fixing setup to work with the new .Net 9 libraries ([da927cb](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/da927cbd359169225c32c441dee10c947d96a89b))
+
+### Bug Fixes
+
+* bump the dependencies group across 1 directory with 3 updates ([d515be3](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/d515be344a4056ab2380ffb6500beee81a5e91cf))
+* Fixing HTMLMinify extension method ([6280513](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/628051388808d10edd52c6081d03a429f746faa3))
+
+### Breaking Changes
+
+* Fixing setup to work with the new .Net 9 libraries ([da927cb](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/da927cbd359169225c32c441dee10c947d96a89b))
+
+### Other
+
+* Merge pull request #308 from JaCraig/dependabot/nuget/test/BigBook.Tests/dependencies-23db35b6a2 ([0099d14](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/0099d14bd2f05599a3db6c132edcf7f27159d90d))
+* Merge pull request #309 from JaCraig/dependabot/nuget/test/BigBook.Tests/dependencies-956fc5c724 ([a513249](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/a5132492ae3eee4208627206942517eb130d6934))
+* Merge pull request #311 from JaCraig/dependabot/nuget/dependencies-a4c338e4ff ([ab6b058](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/ab6b058ed87a8e92d07429de2eb190f317547960))
+* Add code coverage tools to test project ([e1b1362](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/e1b1362b6ed3c6fa76869d237f7e1847c27efe74))
+* bump Mecha.xUnit in /test/BigBook.Tests in the dependencies group ([843b5e8](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/843b5e8aa00840f4b4dfb5d959974777bf0125a2))
+* bump Mecha.xUnit in /test/BigBook.Tests in the dependencies group ([153eece](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/153eece965588c242c111234373d20cc08d2f2b4))
+* Update README.md with setup instructions and examples ([ba056a9](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/ba056a994a1b35fffebfc6d8653004b31b099d37))
+
 <a name="5.1.63"></a>
 ## [5.1.63](https://www.github.com/JaCraig/BigBookOfDataTypes/releases/tag/v5.1.63) (2024-11-12)
 
