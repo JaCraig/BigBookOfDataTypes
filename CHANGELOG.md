@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [versionize](https://github.com/versionize/versionize) for commit guidelines.
 
+<a name="6.0.1"></a>
+## [6.0.1](https://www.github.com/JaCraig/BigBookOfDataTypes/releases/tag/v6.0.1) (2024-11-24)
+
+### Bug Fixes
+
+* Update package versions and refactor registration methods ([4b6dad8](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/4b6dad8a52ac7ae87377f474e61ad33c2a548cfc))
+
+### Other
+
+* Merge pull request #312 from JaCraig/dependabot/nuget/TestSize/dependencies-6ae944291e ([c5846e4](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/c5846e4963c194b1a5846b2381cc8191c0cac1cb))
+* Merge pull request #313 from JaCraig/dependabot/nuget/BigBook.Tests/dependencies-617062173c ([9aa5f2d](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/9aa5f2dc89a2a1bdd476bb9f356317783d4f7960))
+* bump Microsoft.NET.Test.Sdk ([6dfb652](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/6dfb652824fffadd68f91a5bdcd2843f9f4f211f))
+* bump the dependencies group in /TestSize with 2 updates ([acd73b1](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/acd73b133edb6f1b74875cdef3c16dbb7fd1fb63))
+
 <a name="6.0.0"></a>
 ## [6.0.0](https://www.github.com/JaCraig/BigBookOfDataTypes/releases/tag/v6.0.0) (2024-11-18)
 
