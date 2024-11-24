@@ -34,12 +34,7 @@ namespace BigBook.Registration
         /// </summary>
         /// <param name="bootstrapper">The bootstrapper.</param>
         /// <returns>The bootstrapper</returns>
-        public static ICanisterConfiguration? RegisterBigBookOfDataTypes(this ICanisterConfiguration? bootstrapper)
-        {
-            return bootstrapper?.AddAssembly(typeof(BigBookCanisterExtensions).Assembly)
-                               .RegisterAspectus()
-                               .RegisterObjectCartographer();
-        }
+        public static ICanisterConfiguration? RegisterBigBookOfDataTypes(this ICanisterConfiguration? bootstrapper) => bootstrapper?.AddAssembly(typeof(BigBookCanisterExtensions).Assembly);
 
         /// <summary>
         /// Registers the big book of data types with the specified service collection.
@@ -48,6 +43,8 @@ namespace BigBook.Registration
         /// <returns>The service collection with the registered data types.</returns>
         public static IServiceCollection? RegisterBigBookOfDataTypes(this IServiceCollection? services)
         {
+            if (services.Exists<DynamoTypes>())
+                return services;
             var ObjectPoolProvider = new DefaultObjectPoolProvider();
             return services?.AddSingleton(typeof(GenericComparer<>))
                          .AddSingleton(typeof(GenericEqualityComparer<>))
