@@ -23,6 +23,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -34,6 +35,25 @@ namespace BigBook.ExtensionMethods
     [EditorBrowsable(EditorBrowsableState.Never)]
     public static class StringExtensions
     {
+        /// <summary>
+        /// The HTML replacements
+        /// </summary>
+        private static readonly Dictionary<string, string> HtmlReplacements = new()
+        {
+            // convert br to new line
+            { "br", "\n" },
+            // convert p to new line
+            { "p", "\n" },
+            // convert div to new line
+            { "div", "\n" },
+            // convert li to *
+            { "li", "* " },
+            // convert ul to new line
+            { "ul", "\n" },
+            // convert ol to new line
+            { "ol", "\n" }
+        };
+
         /// <summary>
         /// The strip HTML regex
         /// </summary>
@@ -497,9 +517,36 @@ namespace BigBook.ExtensionMethods
             if (string.IsNullOrEmpty(html))
                 return string.Empty;
 
-            html = STRIP_HTML_REGEX.Replace(html, string.Empty);
-            return html.Replace("&nbsp;", " ", StringComparison.OrdinalIgnoreCase)
-                       .Replace("&#160;", string.Empty, StringComparison.Ordinal);
+            foreach (KeyValuePair<string, string> Item in HtmlReplacements)
+            {
+                // Replace opening tags
+                html = Regex.Replace(html, $@"<\s*{Item.Key}[^>]*>", Item.Value, RegexOptions.IgnoreCase);
+                // Replace closing tags
+                html = Regex.Replace(html, $@"<\s*/\s*{Item.Key}\s*>", "\n", RegexOptions.IgnoreCase);
+            }
+            // remove all other html tags
+            html = STRIP_HTML_REGEX.Replace(html, " ");
+            // replace &nbsp; with space
+            html = html.Replace("&nbsp;", " ", StringComparison.OrdinalIgnoreCase);
+            // replace &#160; with space
+            html = html.Replace("&#160;", "", StringComparison.Ordinal);
+            // replace all other html entities with their character
+            html = WebUtility.HtmlDecode(html);
+            // Convert tabs to spaces
+            html = html.Replace("\t", " ", StringComparison.Ordinal);
+            // replace multiple spaces with single space
+            while (html.Contains("  "))
+                html = html.Replace("  ", " ", StringComparison.Ordinal);
+            // Normalize new lines
+            html = html.Replace("\r", "\n", StringComparison.Ordinal);
+
+            // Preserve double new lines for paragraphs
+            html = Regex.Replace(html, @"\n\s*\n", "\n\n", RegexOptions.Multiline);
+
+            // Trim spaces at the beginning and end of lines
+            html = Regex.Replace(html, @"^[ ]+|[ ]+$", string.Empty, RegexOptions.Multiline);
+
+            return html.Trim();
         }
 
         /// <summary>
