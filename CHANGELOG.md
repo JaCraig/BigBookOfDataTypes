@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [versionize](https://github.com/versionize/versionize) for commit guidelines.
 
+<a name="6.0.2"></a>
+## [6.0.2](https://www.github.com/JaCraig/BigBookOfDataTypes/releases/tag/v6.0.2) (2024-12-06)
+
+### Bug Fixes
+
+* **StringExtensions:** Enhance HTML stripping in StringExtensions ([a62731d](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/a62731d22f052322256b9c097efbf16649b6cfe5))
+
+### Other
+
+* Merge pull request #314 from JaCraig/dependabot/nuget/BigBook.Tests/dependencies-6c34fbe01a ([ace5fec](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/ace5fec58a7d6ed36e40a7398aace37fdb848cf5))
+* Merge pull request #315 from JaCraig/dependabot/nuget/BigBook.Tests/dependencies-90bd9fcdcc ([ca0fecb](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/ca0fecbf39e1d91ad216ceb68afe7d7e168f3fef))
+* bump Mecha.xUnit in /BigBook.Tests in the dependencies group ([ef814c4](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/ef814c4b5f2df8ff2914eda4859c3ad6c33c5809))
+* bump the dependencies group in /BigBook.Tests with 2 updates ([f984f42](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/f984f42f7a16c539ed0fee21634a64450035802b))
+
 <a name="6.0.1"></a>
 ## [6.0.1](https://www.github.com/JaCraig/BigBookOfDataTypes/releases/tag/v6.0.1) (2024-11-24)
 
