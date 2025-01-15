@@ -58,7 +58,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.ObjectPool" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.ObjectPool" Version="9.0.1" />
     <PackageReference Include="ObjectCartographer.SQL" Version="4.0.2" />
     <PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
     <PackageReference Include="System.ComponentModel.TypeConverter" Version="4.3.0" />
