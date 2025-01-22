@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file. See [versionize](https://github.com/versionize/versionize) for commit guidelines.
 
+<a name="6.0.4"></a>
+## [6.0.4](https://www.github.com/JaCraig/BigBookOfDataTypes/releases/tag/v6.0.4) (2025-01-22)
+
+### Bug Fixes
+
+* Small update to StringBuilder extensions ([f559817](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/f5598179b3c6567921e6478a6fd4a10e9684090a))
+
+### Other
+
+* Merge pull request #318 from JaCraig/dependabot/nuget/BigBook.Tests/dependencies-ae4dc51d69 ([3dd41a6](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/3dd41a686fc86bc57ac7a62cc4bab00e3e405958))
+* Merge pull request #319 from JaCraig/dependabot/nuget/BigBook.Tests/dependencies-637ad84d5b ([d01810d](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/d01810dd896485770f35318456195365ac150499))
+* Merge pull request #320 from JaCraig/dependabot/nuget/BigBook.Tests/dependencies-37a7915f86 ([1e3e4ec](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/1e3e4ec187591598fb2cabcefeca94e61341a414))
+* Merge pull request #321 from JaCraig/dependabot/nuget/BigBook.Tests/dependencies-dac939b906 ([26ce3db](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/26ce3db189777220e1dcfef6253fec01299e355a))
+* Merge pull request #322 from JaCraig/dependabot/nuget/BigBook.Tests/dependencies-ed63622fe2 ([f7c8e40](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/f7c8e40cb4b9a15fb350f236add2161e66d3d63a))
+* Merge pull request #323 from JaCraig/dependabot/nuget/BigBook.Benchmarks/dependencies-b359bcc668 ([c615bff](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/c615bffdfb81a29e59c281f0296f43249c77205b))
+* Merge pull request #324 from JaCraig/dependabot/nuget/BigBook.Tests/dependencies-a3eea154c6 ([763e88f](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/763e88f8725bad2e8d567e2d4592860884bbdee4))
+* Merge pull request #325 from JaCraig/dependabot/nuget/BigBook.Tests/dependencies-293c44675e ([3e0d1d5](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/3e0d1d5b855a515339de2b3c709a39560627b423))
+* Merge pull request #326 from JaCraig/dependabot/nuget/BigBook.Tests/dependencies-8e84d5e7c4 ([219606d](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/219606d73bcaf8019c6075f00e2fe9a0368e609d))
+* bump Mecha.xUnit in /BigBook.Tests in the dependencies group ([b396a5c](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/b396a5cee8ae5c5aa15e391ae570453eb4fb78a4))
+* bump Mecha.xUnit in /BigBook.Tests in the dependencies group ([f7488d9](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/f7488d9e36bad63e1bf95f5c27340ad142321b40))
+* bump Mecha.xUnit in /BigBook.Tests in the dependencies group ([ee4454c](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/ee4454c7e2e8ca98ba06b7927e03d87e0f09e8d5))
+* bump Microsoft.Extensions.ObjectPool ([4c19775](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/4c197758180f5be04b0846c0049cd768a153b0fc))
+* bump the dependencies group in /BigBook.Tests with 2 updates ([fd2085b](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/fd2085bd7eddd16892f4a5b41f5210e52e3bbb59))
+* bump the dependencies group in /BigBook.Tests with 2 updates ([605108f](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/605108f51de077487da327008fb393bbfe58d243))
+* bump the dependencies group in /BigBook.Tests with 2 updates ([baecef6](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/baecef67ef7f89869df7dd0713b08bcbb82882fc))
+* bump xunit in /BigBook.Tests in the dependencies group ([dda8853](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/dda88534f578334c5cc9737e79ca172efa30dddb))
+* bump xunit.runner.visualstudio ([9f931e9](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/9f931e9ca1d6ba09c7fb29e7574a1f4eb4014928))
+* **deps:** update ObjectCartographer.SQL to 4.1.0 ([5ba83ea](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/5ba83eaea5b60483d0849b66d64442fed8d20b8a))
+
 <a name="6.0.3"></a>
 ## [6.0.3](https://www.github.com/JaCraig/BigBookOfDataTypes/releases/tag/v6.0.3) (2024-12-09)
 
