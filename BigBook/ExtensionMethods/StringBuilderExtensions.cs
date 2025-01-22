@@ -24,11 +24,9 @@ namespace BigBook
         {
             builder ??= new StringBuilder();
             if (string.IsNullOrEmpty(format))
-            {
                 return builder;
-            }
 
-            objects ??= Array.Empty<object>();
+            objects ??= [];
             provider ??= CultureInfo.InvariantCulture;
             return builder.AppendFormat(provider, format, objects).AppendLine();
         }
@@ -77,7 +75,7 @@ namespace BigBook
             }
             if (x == builder.Length)
                 return builder;
-            builder.Remove(x, builder.Length - x);
+            _ = builder.Remove(x, builder.Length - x);
             return builder;
         }
 
@@ -101,7 +99,7 @@ namespace BigBook
             }
             if (x == 0)
                 return builder;
-            builder.Remove(0, x);
+            _ = builder.Remove(0, x);
             return builder;
         }
     }
