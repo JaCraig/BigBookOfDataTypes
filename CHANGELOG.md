@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [versionize](https://github.com/versionize/versionize) for commit guidelines.
 
+<a name="6.0.5"></a>
+## [6.0.5](https://www.github.com/JaCraig/BigBookOfDataTypes/releases/tag/v6.0.5) (2025-01-29)
+
+### Bug Fixes
+
+* bump the dependencies group in /BigBook with 3 updates ([f40f459](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/f40f459c5a8a07fbb28d76064276ce79b029d60c))
+
+### Other
+
+* Merge pull request #327 from JaCraig/dependabot/nuget/BigBook.Tests/dependencies-cdc5eca79b ([7897b6a](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/7897b6a6248b35bef3239c5f9c3ee72198991e5c))
+* Merge pull request #328 from JaCraig/dependabot/nuget/BigBook/dependencies-0e4070cf1b ([0677313](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/06773137a3ea2047a1e24ce38d6f7fe9e32a1913))
+* bump Mecha.xUnit in /BigBook.Tests in the dependencies group ([3003662](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/3003662910ddd828e07e97a64e1c6f94ccc04de7))
+
 <a name="6.0.4"></a>
 ## [6.0.4](https://www.github.com/JaCraig/BigBookOfDataTypes/releases/tag/v6.0.4) (2025-01-22)
 
