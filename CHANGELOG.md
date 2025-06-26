@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [versionize](https://github.com/versionize/versionize) for commit guidelines.
 
+<a name="6.0.6"></a>
+## [6.0.6](https://www.github.com/JaCraig/BigBookOfDataTypes/releases/tag/v6.0.6) (2025-06-26)
+
+### Bug Fixes
+
+* **project:** update dependencies and add tests ([0ec5833](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/0ec5833518677cf14388c4977235b7a9a94329fc))
+
+### Other
+
+* Merge pull request #329 from JaCraig/dependabot/nuget/BigBook.Tests/dependencies-d90f1eecb3 ([6f4daea](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/6f4daea80e2ba0192f4ee07312def425e45a147b))
+* Merge pull request #330 from JaCraig/dependabot/nuget/BigBook.Benchmarks/dependencies-b1c7867540 ([f69d504](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/f69d504d76eb20e644e60e21c19124ce461f448f))
+* Merge pull request #331 from JaCraig/dependabot/nuget/BigBook.Benchmarks/dependencies-87434df8f9 ([67c6352](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/67c63523c77b2e09ef25baf21394946c944bdae1))
+* bump Mecha.xUnit in /BigBook.Tests in the dependencies group ([4ff6d0d](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/4ff6d0d87460689f006eeb683c07abf88dc2b0fd))
+* bump Microsoft.Extensions.ObjectPool ([acdbdcb](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/acdbdcb42e3803d57fb7aff04943d0ef8f2234f3))
+* bump ObjectCartographer.SQL ([7c26d35](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/7c26d35cef0e5a7c3164df53cd4e26d13d2a6f70))
+
 <a name="6.0.5"></a>
 ## [6.0.5](https://www.github.com/JaCraig/BigBookOfDataTypes/releases/tag/v6.0.5) (2025-01-29)
 
