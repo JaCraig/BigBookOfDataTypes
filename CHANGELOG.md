@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [versionize](https://github.com/versionize/versionize) for commit guidelines.
 
+<a name="6.0.7"></a>
+## [6.0.7](https://www.github.com/JaCraig/BigBookOfDataTypes/releases/tag/v6.0.7) (2025-06-26)
+
+### Bug Fixes
+
+* **dependabot:** correct directory paths and formatting ([93f9fe5](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/93f9fe51b025d56b98738b2df3d72934b131cc5d))
+
+### Other
+
+* Merge branch 'master' of https://github.com/JaCraig/BigBookOfDataTypes ([6627f75](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/6627f75e72cf58d39b44ba977fea89825a967e7f))
+
 <a name="6.0.6"></a>
 ## [6.0.6](https://www.github.com/JaCraig/BigBookOfDataTypes/releases/tag/v6.0.6) (2025-06-26)
 
