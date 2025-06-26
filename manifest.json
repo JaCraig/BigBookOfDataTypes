@@ -18,7 +18,11 @@
           "relative_path": "api/BigBook.AsyncHelper.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.AsyncHelper",
+      "Summary": "<p sourcefile=\"api/BigBook.AsyncHelper.yml\" sourcestartlinenumber=\"1\">Async helper.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -28,7 +32,11 @@
           "relative_path": "api/BigBook.Bag-1.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.Bag<T>",
+      "Summary": "<p sourcefile=\"api/BigBook.Bag-1.yml\" sourcestartlinenumber=\"1\">Used to count the number of times something is added to the list</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -38,7 +46,11 @@
           "relative_path": "api/BigBook.BinaryTree-1.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.BinaryTree<T>",
+      "Summary": "<p sourcefile=\"api/BigBook.BinaryTree-1.yml\" sourcestartlinenumber=\"1\">Binary tree</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -48,7 +60,11 @@
           "relative_path": "api/BigBook.BloomFilter-1.HashFunction.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.BloomFilter<TObject>.HashFunction",
+      "Summary": "<p sourcefile=\"api/BigBook.BloomFilter-1.HashFunction.yml\" sourcestartlinenumber=\"1\">Hash function delegate</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -58,7 +74,11 @@
           "relative_path": "api/BigBook.BloomFilter-1.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.BloomFilter<TObject>",
+      "Summary": "<p sourcefile=\"api/BigBook.BloomFilter-1.yml\" sourcestartlinenumber=\"1\">Bloom filter</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -68,7 +88,11 @@
           "relative_path": "api/BigBook.CanisterModules.BigBookModule.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.CanisterModules.BigBookModule",
+      "Summary": "<p sourcefile=\"api/BigBook.CanisterModules.BigBookModule.yml\" sourcestartlinenumber=\"1\">Big book module</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -78,7 +102,11 @@
           "relative_path": "api/BigBook.CanisterModules.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.CanisterModules",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -88,7 +116,11 @@
           "relative_path": "api/BigBook.Change.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.Change",
+      "Summary": "<p sourcefile=\"api/BigBook.Change.yml\" sourcestartlinenumber=\"1\">Change class</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -98,7 +130,11 @@
           "relative_path": "api/BigBook.CharIs.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.CharIs",
+      "Summary": "<p sourcefile=\"api/BigBook.CharIs.yml\" sourcestartlinenumber=\"1\">What type of character is this</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -108,7 +144,11 @@
           "relative_path": "api/BigBook.Comparison.GenericComparer-1.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.Comparison.GenericComparer<TData>",
+      "Summary": "<p sourcefile=\"api/BigBook.Comparison.GenericComparer-1.yml\" sourcestartlinenumber=\"1\">Generic IComparable class</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -118,7 +158,11 @@
           "relative_path": "api/BigBook.Comparison.GenericEqualityComparer-1.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.Comparison.GenericEqualityComparer<TData>",
+      "Summary": "<p sourcefile=\"api/BigBook.Comparison.GenericEqualityComparer-1.yml\" sourcestartlinenumber=\"1\">Generic equality comparer</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -128,7 +172,11 @@
           "relative_path": "api/BigBook.Comparison.SimpleComparer-1.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.Comparison.SimpleComparer<TData>",
+      "Summary": "<p sourcefile=\"api/BigBook.Comparison.SimpleComparer-1.yml\" sourcestartlinenumber=\"1\">Simple IComparable class</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -138,7 +186,11 @@
           "relative_path": "api/BigBook.Comparison.SimpleEqualityComparer-1.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.Comparison.SimpleEqualityComparer<TData>",
+      "Summary": "<p sourcefile=\"api/BigBook.Comparison.SimpleEqualityComparer-1.yml\" sourcestartlinenumber=\"1\">Simple equality comparer</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -148,7 +200,11 @@
           "relative_path": "api/BigBook.Comparison.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.Comparison",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -158,7 +214,11 @@
           "relative_path": "api/BigBook.DateCompare.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.DateCompare",
+      "Summary": "<p sourcefile=\"api/BigBook.DateCompare.yml\" sourcestartlinenumber=\"1\">Date comparison type</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -168,7 +228,11 @@
           "relative_path": "api/BigBook.DateSpan.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.DateSpan",
+      "Summary": "<p sourcefile=\"api/BigBook.DateSpan.yml\" sourcestartlinenumber=\"1\">Represents a date span</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -178,7 +242,11 @@
           "relative_path": "api/BigBook.Dynamo-1.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.Dynamo<TClass>",
+      "Summary": "<p sourcefile=\"api/BigBook.Dynamo-1.yml\" sourcestartlinenumber=\"1\">Dynamic object implementation (used when inheriting)</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -188,7 +256,11 @@
           "relative_path": "api/BigBook.Dynamo.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.Dynamo",
+      "Summary": "<p sourcefile=\"api/BigBook.Dynamo.yml\" sourcestartlinenumber=\"1\">Dynamic object implementation</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -198,7 +270,11 @@
           "relative_path": "api/BigBook.Edge-1.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.Edge<T>",
+      "Summary": "<p sourcefile=\"api/BigBook.Edge-1.yml\" sourcestartlinenumber=\"1\">Edge pointing from vertex source to vertex sink</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -208,7 +284,11 @@
           "relative_path": "api/BigBook.EventArgs.BaseEventArgs.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.EventArgs.BaseEventArgs",
+      "Summary": "<p sourcefile=\"api/BigBook.EventArgs.BaseEventArgs.yml\" sourcestartlinenumber=\"1\">Base event args for the events used in the system</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -218,7 +298,11 @@
           "relative_path": "api/BigBook.EventArgs.ChangedEventArgs.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.EventArgs.ChangedEventArgs",
+      "Summary": "<p sourcefile=\"api/BigBook.EventArgs.ChangedEventArgs.yml\" sourcestartlinenumber=\"1\">Changed event args</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -228,7 +312,11 @@
           "relative_path": "api/BigBook.EventArgs.DeletedEventArgs.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.EventArgs.DeletedEventArgs",
+      "Summary": "<p sourcefile=\"api/BigBook.EventArgs.DeletedEventArgs.yml\" sourcestartlinenumber=\"1\">Deleted event args</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -238,7 +326,11 @@
           "relative_path": "api/BigBook.EventArgs.DeletingEventArgs.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.EventArgs.DeletingEventArgs",
+      "Summary": "<p sourcefile=\"api/BigBook.EventArgs.DeletingEventArgs.yml\" sourcestartlinenumber=\"1\">Deleting event args</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -248,7 +340,11 @@
           "relative_path": "api/BigBook.EventArgs.LoadedEventArgs.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.EventArgs.LoadedEventArgs",
+      "Summary": "<p sourcefile=\"api/BigBook.EventArgs.LoadedEventArgs.yml\" sourcestartlinenumber=\"1\">Loaded event args</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -258,7 +354,11 @@
           "relative_path": "api/BigBook.EventArgs.LoadingEventArgs.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.EventArgs.LoadingEventArgs",
+      "Summary": "<p sourcefile=\"api/BigBook.EventArgs.LoadingEventArgs.yml\" sourcestartlinenumber=\"1\">Loading event args</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -268,7 +368,11 @@
           "relative_path": "api/BigBook.EventArgs.OnEndEventArgs.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.EventArgs.OnEndEventArgs",
+      "Summary": "<p sourcefile=\"api/BigBook.EventArgs.OnEndEventArgs.yml\" sourcestartlinenumber=\"1\">On end event args</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -278,7 +382,11 @@
           "relative_path": "api/BigBook.EventArgs.OnErrorEventArgs.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.EventArgs.OnErrorEventArgs",
+      "Summary": "<p sourcefile=\"api/BigBook.EventArgs.OnErrorEventArgs.yml\" sourcestartlinenumber=\"1\">On error event args</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -288,7 +396,11 @@
           "relative_path": "api/BigBook.EventArgs.OnStartEventArgs.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.EventArgs.OnStartEventArgs",
+      "Summary": "<p sourcefile=\"api/BigBook.EventArgs.OnStartEventArgs.yml\" sourcestartlinenumber=\"1\">On start event args</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -298,7 +410,11 @@
           "relative_path": "api/BigBook.EventArgs.SavedEventArgs.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.EventArgs.SavedEventArgs",
+      "Summary": "<p sourcefile=\"api/BigBook.EventArgs.SavedEventArgs.yml\" sourcestartlinenumber=\"1\">Saved event args</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -308,7 +424,11 @@
           "relative_path": "api/BigBook.EventArgs.SavingEventArgs.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.EventArgs.SavingEventArgs",
+      "Summary": "<p sourcefile=\"api/BigBook.EventArgs.SavingEventArgs.yml\" sourcestartlinenumber=\"1\">Saving event args</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -318,7 +438,11 @@
           "relative_path": "api/BigBook.EventArgs.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.EventArgs",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -328,7 +452,11 @@
           "relative_path": "api/BigBook.ExtensionMethods.MinificationType.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.ExtensionMethods.MinificationType",
+      "Summary": "<p sourcefile=\"api/BigBook.ExtensionMethods.MinificationType.yml\" sourcestartlinenumber=\"1\">Minification type</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -338,7 +466,11 @@
           "relative_path": "api/BigBook.ExtensionMethods.StringCase.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.ExtensionMethods.StringCase",
+      "Summary": "<p sourcefile=\"api/BigBook.ExtensionMethods.StringCase.yml\" sourcestartlinenumber=\"1\">What sort of string capitalization should be used?</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -348,7 +480,11 @@
           "relative_path": "api/BigBook.ExtensionMethods.StringCompare.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.ExtensionMethods.StringCompare",
+      "Summary": "<p sourcefile=\"api/BigBook.ExtensionMethods.StringCompare.yml\" sourcestartlinenumber=\"1\">What type of string comparison are we doing?</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -358,7 +494,11 @@
           "relative_path": "api/BigBook.ExtensionMethods.StringFilter.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.ExtensionMethods.StringFilter",
+      "Summary": "<p sourcefile=\"api/BigBook.ExtensionMethods.StringFilter.yml\" sourcestartlinenumber=\"1\">Predefined filters</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -368,7 +508,11 @@
           "relative_path": "api/BigBook.ExtensionMethods.Utils.DefaultValueLookup.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.ExtensionMethods.Utils.DefaultValueLookup",
+      "Summary": "<p sourcefile=\"api/BigBook.ExtensionMethods.Utils.DefaultValueLookup.yml\" sourcestartlinenumber=\"1\">Default value lookup</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -378,7 +522,11 @@
           "relative_path": "api/BigBook.ExtensionMethods.Utils.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.ExtensionMethods.Utils",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -388,7 +536,11 @@
           "relative_path": "api/BigBook.ExtensionMethods.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.ExtensionMethods",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -398,7 +550,11 @@
           "relative_path": "api/BigBook.Formatters.GenericStringFormatter.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.Formatters.GenericStringFormatter",
+      "Summary": "<p sourcefile=\"api/BigBook.Formatters.GenericStringFormatter.yml\" sourcestartlinenumber=\"1\">Generic string formatter</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -408,7 +564,11 @@
           "relative_path": "api/BigBook.Formatters.Interfaces.IStringFormatter.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.Formatters.Interfaces.IStringFormatter",
+      "Summary": "<p sourcefile=\"api/BigBook.Formatters.Interfaces.IStringFormatter.yml\" sourcestartlinenumber=\"1\">String formatter</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -418,7 +578,11 @@
           "relative_path": "api/BigBook.Formatters.Interfaces.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.Formatters.Interfaces",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -428,7 +592,11 @@
           "relative_path": "api/BigBook.Formatters.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.Formatters",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -438,7 +606,11 @@
           "relative_path": "api/BigBook.Fraction.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.Fraction",
+      "Summary": "<p sourcefile=\"api/BigBook.Fraction.yml\" sourcestartlinenumber=\"1\">Represents a fraction</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -448,7 +620,11 @@
           "relative_path": "api/BigBook.Graph-1.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.Graph<T>",
+      "Summary": "<p sourcefile=\"api/BigBook.Graph-1.yml\" sourcestartlinenumber=\"1\">Class used to represent a graph</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -458,7 +634,11 @@
           "relative_path": "api/BigBook.IO.BitReader.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.IO.BitReader",
+      "Summary": "<p sourcefile=\"api/BigBook.IO.BitReader.yml\" sourcestartlinenumber=\"1\">Bit reader</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -468,7 +648,11 @@
           "relative_path": "api/BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.IO.Converters.BaseClasses.EndianBitConverterBase",
+      "Summary": "<p sourcefile=\"api/BigBook.IO.Converters.BaseClasses.EndianBitConverterBase.yml\" sourcestartlinenumber=\"1\">Endian bit converter base class</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -478,7 +662,11 @@
           "relative_path": "api/BigBook.IO.Converters.BaseClasses.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.IO.Converters.BaseClasses",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -488,7 +676,11 @@
           "relative_path": "api/BigBook.IO.Converters.BigEndianBitConverter.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.IO.Converters.BigEndianBitConverter",
+      "Summary": "<p sourcefile=\"api/BigBook.IO.Converters.BigEndianBitConverter.yml\" sourcestartlinenumber=\"1\">Big endian bit converter</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -498,7 +690,11 @@
           "relative_path": "api/BigBook.IO.Converters.LittleEndianBitConverter.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.IO.Converters.LittleEndianBitConverter",
+      "Summary": "<p sourcefile=\"api/BigBook.IO.Converters.LittleEndianBitConverter.yml\" sourcestartlinenumber=\"1\">Little endian bit converter</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -508,7 +704,11 @@
           "relative_path": "api/BigBook.IO.Converters.Structs.IntFloatUnion.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.IO.Converters.Structs.IntFloatUnion",
+      "Summary": "<p sourcefile=\"api/BigBook.IO.Converters.Structs.IntFloatUnion.yml\" sourcestartlinenumber=\"1\">Int/float union struct.</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -518,7 +718,11 @@
           "relative_path": "api/BigBook.IO.Converters.Structs.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.IO.Converters.Structs",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -528,7 +732,11 @@
           "relative_path": "api/BigBook.IO.Converters.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.IO.Converters",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -538,7 +746,11 @@
           "relative_path": "api/BigBook.IO.EndianBinaryReader.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.IO.EndianBinaryReader",
+      "Summary": "<p sourcefile=\"api/BigBook.IO.EndianBinaryReader.yml\" sourcestartlinenumber=\"1\">Endian binary reader</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -548,7 +760,11 @@
           "relative_path": "api/BigBook.IO.EndianBinaryWriter.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.IO.EndianBinaryWriter",
+      "Summary": "<p sourcefile=\"api/BigBook.IO.EndianBinaryWriter.yml\" sourcestartlinenumber=\"1\">Endian based binary writer</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -558,7 +774,11 @@
           "relative_path": "api/BigBook.IO.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.IO",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -568,7 +788,11 @@
           "relative_path": "api/BigBook.LazyAsync-1.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.LazyAsync<T>",
+      "Summary": "<p sourcefile=\"api/BigBook.LazyAsync-1.yml\" sourcestartlinenumber=\"1\">Lazy class that handles asyc</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -578,7 +802,11 @@
           "relative_path": "api/BigBook.ListMapping-2.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.ListMapping<T1, T2>",
+      "Summary": "<p sourcefile=\"api/BigBook.ListMapping-2.yml\" sourcestartlinenumber=\"1\">Maps a key to a list of data</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -588,7 +816,11 @@
           "relative_path": "api/BigBook.ManyToManyIndex-2.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.ManyToManyIndex<TFirst, TSecond>",
+      "Summary": "<p sourcefile=\"api/BigBook.ManyToManyIndex-2.yml\" sourcestartlinenumber=\"1\">Two way, many to many index</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -598,7 +830,11 @@
           "relative_path": "api/BigBook.Matrix.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.Matrix",
+      "Summary": "<p sourcefile=\"api/BigBook.Matrix.yml\" sourcestartlinenumber=\"1\">Matrix used in linear algebra</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -608,7 +844,11 @@
           "relative_path": "api/BigBook.ObservableList-1.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.ObservableList<T>",
+      "Summary": "<p sourcefile=\"api/BigBook.ObservableList-1.yml\" sourcestartlinenumber=\"1\">Observable List class</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -618,7 +858,11 @@
           "relative_path": "api/BigBook.Patterns.BaseClasses.SafeDisposableBaseClass.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.Patterns.BaseClasses.SafeDisposableBaseClass",
+      "Summary": "<p sourcefile=\"api/BigBook.Patterns.BaseClasses.SafeDisposableBaseClass.yml\" sourcestartlinenumber=\"1\">Base class used for disposable objects</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -628,7 +872,11 @@
           "relative_path": "api/BigBook.Patterns.BaseClasses.Singleton-1.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.Patterns.BaseClasses.Singleton<T>",
+      "Summary": "<p sourcefile=\"api/BigBook.Patterns.BaseClasses.Singleton-1.yml\" sourcestartlinenumber=\"1\">Base class used for singletons</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -638,7 +886,11 @@
           "relative_path": "api/BigBook.Patterns.BaseClasses.StringEnumBaseClass-1.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.Patterns.BaseClasses.StringEnumBaseClass<TClass>",
+      "Summary": "<p sourcefile=\"api/BigBook.Patterns.BaseClasses.StringEnumBaseClass-1.yml\" sourcestartlinenumber=\"1\">String enum base class</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -648,7 +900,11 @@
           "relative_path": "api/BigBook.Patterns.BaseClasses.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.Patterns.BaseClasses",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -658,7 +914,11 @@
           "relative_path": "api/BigBook.Patterns.Factory-2.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.Patterns.Factory<TKey, TClass>",
+      "Summary": "<p sourcefile=\"api/BigBook.Patterns.Factory-2.yml\" sourcestartlinenumber=\"1\">Factory class</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -668,7 +928,11 @@
           "relative_path": "api/BigBook.Patterns.IFluentInterface.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.Patterns.IFluentInterface",
+      "Summary": "<p sourcefile=\"api/BigBook.Patterns.IFluentInterface.yml\" sourcestartlinenumber=\"1\">Helps in fluent interface design to hide ToString, Equals, and GetHashCode</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -678,7 +942,11 @@
           "relative_path": "api/BigBook.Patterns.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.Patterns",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -688,7 +956,11 @@
           "relative_path": "api/BigBook.PriorityQueue-1.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.PriorityQueue<T>",
+      "Summary": "<p sourcefile=\"api/BigBook.PriorityQueue-1.yml\" sourcestartlinenumber=\"1\">Helper class that implements a priority queue</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -698,7 +970,11 @@
           "relative_path": "api/BigBook.Queryable.BaseClasses.QueryProviderBase.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.Queryable.BaseClasses.QueryProviderBase",
+      "Summary": "<p sourcefile=\"api/BigBook.Queryable.BaseClasses.QueryProviderBase.yml\" sourcestartlinenumber=\"1\">Query provider base class</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -708,7 +984,11 @@
           "relative_path": "api/BigBook.Queryable.BaseClasses.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.Queryable.BaseClasses",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -718,7 +998,11 @@
           "relative_path": "api/BigBook.Queryable.Query-1.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.Queryable.Query<T>",
+      "Summary": "<p sourcefile=\"api/BigBook.Queryable.Query-1.yml\" sourcestartlinenumber=\"1\">Reusable query class</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -728,7 +1012,11 @@
           "relative_path": "api/BigBook.Queryable.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.Queryable",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -738,7 +1026,11 @@
           "relative_path": "api/BigBook.Reflection.TypeCacheFor-1.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.Reflection.TypeCacheFor<T>",
+      "Summary": "<p sourcefile=\"api/BigBook.Reflection.TypeCacheFor-1.yml\" sourcestartlinenumber=\"1\">Type cache info</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -748,7 +1040,11 @@
           "relative_path": "api/BigBook.Reflection.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.Reflection",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -758,7 +1054,11 @@
           "relative_path": "api/BigBook.Registration.BigBookCanisterExtensions.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.Registration.BigBookCanisterExtensions",
+      "Summary": "<p sourcefile=\"api/BigBook.Registration.BigBookCanisterExtensions.yml\" sourcestartlinenumber=\"1\">Canister registration extension</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -768,7 +1068,11 @@
           "relative_path": "api/BigBook.Registration.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.Registration",
+      "Summary": null
     },
     {
       "type": "ManagedReference",
@@ -778,7 +1082,11 @@
           "relative_path": "api/BigBook.RingBuffer-1.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.RingBuffer<T>",
+      "Summary": "<p sourcefile=\"api/BigBook.RingBuffer-1.yml\" sourcestartlinenumber=\"1\">Implements a ring buffer</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -788,7 +1096,11 @@
           "relative_path": "api/BigBook.Row.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.Row",
+      "Summary": "<p sourcefile=\"api/BigBook.Row.yml\" sourcestartlinenumber=\"1\">Holds an individual row</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -798,7 +1110,11 @@
           "relative_path": "api/BigBook.Set-1.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.Set<T>",
+      "Summary": "<p sourcefile=\"api/BigBook.Set-1.yml\" sourcestartlinenumber=\"1\">Class to be used for sets of data</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -808,7 +1124,11 @@
           "relative_path": "api/BigBook.StringTrie.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.StringTrie",
+      "Summary": "<p sourcefile=\"api/BigBook.StringTrie.yml\" sourcestartlinenumber=\"1\">Special case</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -818,7 +1138,11 @@
           "relative_path": "api/BigBook.Table.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.Table",
+      "Summary": "<p sourcefile=\"api/BigBook.Table.yml\" sourcestartlinenumber=\"1\">Holds tabular information</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -828,7 +1152,11 @@
           "relative_path": "api/BigBook.TagDictionary-2.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.TagDictionary<TKey, TValue>",
+      "Summary": "<p sourcefile=\"api/BigBook.TagDictionary-2.yml\" sourcestartlinenumber=\"1\">Dictionary that matches multiple keys to each value</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -838,7 +1166,11 @@
           "relative_path": "api/BigBook.TaskQueue-1.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.TaskQueue<T>",
+      "Summary": "<p sourcefile=\"api/BigBook.TaskQueue-1.yml\" sourcestartlinenumber=\"1\">Class that helps with running tasks in parallel on a set of objects (that will come in on an\nongoing basis, think producer/consumer situations)</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -848,7 +1180,11 @@
           "relative_path": "api/BigBook.TimeFrame.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.TimeFrame",
+      "Summary": "<p sourcefile=\"api/BigBook.TimeFrame.yml\" sourcestartlinenumber=\"1\">Time frame</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -858,7 +1194,11 @@
           "relative_path": "api/BigBook.TreeNode-1.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.TreeNode<T>",
+      "Summary": "<p sourcefile=\"api/BigBook.TreeNode-1.yml\" sourcestartlinenumber=\"1\">Node class for the Binary tree</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -868,7 +1208,11 @@
           "relative_path": "api/BigBook.Trie-2.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.Trie<TObject, TReturn>",
+      "Summary": "<p sourcefile=\"api/BigBook.Trie-2.yml\" sourcestartlinenumber=\"1\">Trie class</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -878,7 +1222,11 @@
           "relative_path": "api/BigBook.Vector3.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.Vector3",
+      "Summary": "<p sourcefile=\"api/BigBook.Vector3.yml\" sourcestartlinenumber=\"1\">Vector class (holds three items)</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -888,7 +1236,11 @@
           "relative_path": "api/BigBook.VersionInfo.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.VersionInfo",
+      "Summary": "<p sourcefile=\"api/BigBook.VersionInfo.yml\" sourcestartlinenumber=\"1\">Version info</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -898,7 +1250,11 @@
           "relative_path": "api/BigBook.Vertex-1.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook.Vertex<T>",
+      "Summary": "<p sourcefile=\"api/BigBook.Vertex-1.yml\" sourcestartlinenumber=\"1\">Vertex within the graph</p>\n"
     },
     {
       "type": "ManagedReference",
@@ -908,7 +1264,11 @@
           "relative_path": "api/BigBook.html"
         }
       },
-      "version": ""
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "BigBook",
+      "Summary": null
     },
     {
       "type": "Conceptual",
