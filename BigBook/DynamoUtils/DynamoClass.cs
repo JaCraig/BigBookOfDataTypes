@@ -79,7 +79,7 @@ namespace BigBook.DynamoUtils
         /// <returns>The DynamoClass specified.</returns>
         public DynamoClass AddKey(string key)
         {
-            int TempHashCode = HashCode ^ key.GetHashCode(StringComparison.OrdinalIgnoreCase);
+            int TempHashCode = HashCode ^ key.GetHashCode(StringComparison.Ordinal);
             lock (this)
             {
                 var weakReferences = GetList(TempHashCode);
@@ -91,7 +91,7 @@ namespace BigBook.DynamoUtils
                         --x;
                         continue;
                     }
-                    if (string.Equals(@class.Keys[^1], key, StringComparison.OrdinalIgnoreCase))
+                    if (string.Equals(@class.Keys[^1], key, StringComparison.Ordinal))
                     {
                         return @class;
                     }

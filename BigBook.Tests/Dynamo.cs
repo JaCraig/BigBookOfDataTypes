@@ -155,6 +155,31 @@ namespace BigBook.Tests
         }
 
         [Fact]
+        public void DynamoKeysDuplicateIssue()
+        {
+            dynamic Temp1 = new Dynamo(false);
+            Temp1.property1 = "A";
+            var DictionaryTemp1 = (IDictionary<string, object>)Temp1;
+            Assert.Contains("property1", DictionaryTemp1.Keys);
+            dynamic Temp2 = new Dynamo(false);
+            Temp2.Property1 = "B";
+            var DictionaryTemp2 = (IDictionary<string, object>)Temp2;
+            Assert.Contains("Property1", DictionaryTemp2.Keys);
+        }
+
+        [Fact]
+        public void EqualIgnorePropertyCase()
+        {
+            dynamic Temp = new Dynamo(false);
+            dynamic Temp2 = new Dynamo(false);
+            Temp.A = "Testing";
+            Temp.B = 1;
+            Temp2.a = "Testing";
+            Temp2.b = 1;
+            Assert.True(Temp.Equals(Temp2));
+        }
+
+        [Fact]
         public void EqualValues()
         {
             dynamic Temp = new TestClass();
@@ -172,6 +197,15 @@ namespace BigBook.Tests
             dynamic Temp = new BigBook.Dynamo(new { A = "Testing", B = 1 }, false);
             Temp.C = null;
             Temp.GetHashCode();
+        }
+
+        [Fact]
+        public void GetValueIgnoreCase()
+        {
+            dynamic Temp = new Dynamo(false);
+            Temp.A = "Testing";
+
+            Assert.Equal("Testing", Temp.a);
         }
 
         [Fact]
