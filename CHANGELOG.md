@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [versionize](https://github.com/versionize/versionize) for commit guidelines.
 
+<a name="6.0.8"></a>
+## [6.0.8](https://www.github.com/JaCraig/BigBookOfDataTypes/releases/tag/v6.0.8) (2025-06-27)
+
+### Bug Fixes
+
+* Bump the dependencies group with 1 update ([62862e5](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/62862e5f984d3b1f23f53115d30fc565224b3543))
+
+### Other
+
+* Merge pull request #332 from JaCraig/dependabot/nuget/BigBook/dependencies-535e594dee ([7075b70](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/7075b70b55b6561307cd9ef23068acc2333c9030))
+
 <a name="6.0.7"></a>
 ## [6.0.7](https://www.github.com/JaCraig/BigBookOfDataTypes/releases/tag/v6.0.7) (2025-06-26)
 
