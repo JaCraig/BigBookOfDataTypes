@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [versionize](https://github.com/versionize/versionize) for commit guidelines.
 
+<a name="6.1.3"></a>
+## [6.1.3](https://www.github.com/JaCraig/BigBookOfDataTypes/releases/tag/v6.1.3) (2025-12-10)
+
+### Bug Fixes
+
+* Bump the dependencies group with 2 updates ([ee281b4](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/ee281b43220a61545a4f081459646cf524f22e5e))
+
+### Other
+
+* Merge pull request #383 from JaCraig/dependabot/nuget/dot-config/dependencies-3fa20c5cc5 ([cefbd6e](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/cefbd6e1a821ce40543b1fd070b73235fdc7bfcd))
+* Merge pull request #384 from JaCraig/dependabot/nuget/BigBook.Tests/dependencies-0ef3dd6468 ([5816f93](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/5816f933f5e82d78c6877bc509b83c5278a49727))
+* Merge pull request #385 from JaCraig/dependabot/nuget/BigBook.Tests/dependencies-f4b6243359 ([b88a75e](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/b88a75e8bf5cfaa4f725cb8f89e9778047710fdb))
+* Merge pull request #386 from JaCraig/dependabot/nuget/BigBook.Benchmarks/dependencies-a20d8bb7a8 ([baba337](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/baba3375ed7e913c41662385c152159dfb92f840))
+* Merge pull request #387 from JaCraig/dependabot/nuget/BigBook/dependencies-acdda2b07e ([7eab8cc](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/7eab8ccc50c109499f69a76da9e493f604a78d30))
+* Bump the dependencies group with 1 update ([9503dbd](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/9503dbdd11a15dfbd8602cbae8dbaa32091f8cbc))
+* Bump the dependencies group with 1 update ([54db456](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/54db456ae4a7ecc2da045c461bce52eb4a009fe6))
+* Bump the dependencies group with 1 update ([a700600](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/a700600926f3a7fb978e20375c06db1928c9663d))
+* Bump the dependencies group with 3 updates ([326dae1](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/326dae1726519cfc5f7268269eb61bfedc04f7d7))
+
 <a name="6.1.2"></a>
 ## [6.1.2](https://www.github.com/JaCraig/BigBookOfDataTypes/releases/tag/v6.1.2) (2025-11-14)
 
