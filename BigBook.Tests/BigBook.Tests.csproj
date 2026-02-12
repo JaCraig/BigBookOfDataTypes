@@ -4,7 +4,7 @@
     <Description>Tests for BigBook</Description>
     <AssemblyTitle>BigBook.Tests</AssemblyTitle>
     <Authors>James Craig</Authors>
-	  <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+	  <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
     <DebugType>portable</DebugType>
     <AssemblyName>BigBook.Tests</AssemblyName>
     <PackageId>BigBook.Tests</PackageId>
@@ -46,7 +46,7 @@
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 	  </PackageReference>
-	  <PackageReference Include="Mecha.xUnit" Version="3.2.11" />
+	  <PackageReference Include="Mecha.xUnit" Version="3.3.0" />
 	  <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.1" />
 	  <PackageReference Include="xunit" Version="2.9.3" />
 	  <PackageReference Include="xunit.runner.visualstudio" Version="3.1.5">
