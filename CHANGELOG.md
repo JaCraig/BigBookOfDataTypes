@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [versionize](https://github.com/versionize/versionize) for commit guidelines.
 
+<a name="6.2.0"></a>
+## [6.2.0](https://www.github.com/JaCraig/BigBookOfDataTypes/releases/tag/v6.2.0) (2026-02-12)
+
+### Features
+
+* **project:** add net10.0 support and update packages ([a376db8](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/a376db8b1c3a33a9dc98e844ceb8a6dc81fb77cb))
+
 <a name="6.1.8"></a>
 ## [6.1.8](https://www.github.com/JaCraig/BigBookOfDataTypes/releases/tag/v6.1.8) (2026-02-11)
 
