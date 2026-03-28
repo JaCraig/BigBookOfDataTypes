@@ -5,8 +5,8 @@ name: .NET Test Pull Requests
 
 on:
   pull_request:
-    branches: [ "master" ]
+    branches: ["master"]
 
 jobs:
   build:
-    uses: 'JaCraig/Centralized-Workflows/.github/workflows/dotnet-test.yml@main'
+    uses: "JaCraig/Centralized-Workflows/.github/workflows/dotnet-test.yml@main"
