@@ -59,7 +59,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.ObjectPool" Version="10.0.6" />
-    <PackageReference Include="ObjectCartographer.SQL" Version="4.3.3" />
+    <PackageReference Include="ObjectCartographer.SQL" Version="4.3.5" />
     <PackageReference Include="System.Data.SqlClient" Version="4.9.1" />
     <PackageReference Include="System.Reflection.TypeExtensions" Version="4.7.0" />
     <PackageReference Include="Aspectus" Version="6.2.7" />
