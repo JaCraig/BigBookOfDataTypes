@@ -62,7 +62,7 @@
     <PackageReference Include="ObjectCartographer.SQL" Version="4.3.5" />
     <PackageReference Include="System.Data.SqlClient" Version="4.9.1" />
     <PackageReference Include="System.Reflection.TypeExtensions" Version="4.7.0" />
-    <PackageReference Include="Aspectus" Version="6.2.8" />
+    <PackageReference Include="Aspectus" Version="6.2.12" />
 	  <PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.203" PrivateAssets="All" />
   </ItemGroup>
 
