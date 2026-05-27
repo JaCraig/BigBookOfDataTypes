@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [versionize](https://github.com/versionize/versionize) for commit guidelines.
 
+<a name="6.2.16"></a>
+## [6.2.16](https://www.github.com/JaCraig/BigBookOfDataTypes/releases/tag/v6.2.16) (2026-05-27)
+
+### Bug Fixes
+
+* **workflows:** remove PERSONAL_ACCESS_TOKEN from workflows ([b575760](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/b57576094e4cb7bc9e04bb5f4578f69eda80ca9c))
+
+### Other
+
+* Merge pull request #454 from JaCraig/dependabot/nuget/BigBook.Tests/dependencies-4b47ae212b ([e024b2d](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/e024b2d2ba15c7e1299b61bf8ef6b3504d5c061a))
+* Bump the dependencies group with 3 updates ([d4e7de5](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/d4e7de5100302d0455ad8a59976643a2374de3cb))
+
 <a name="6.2.15"></a>
 ## [6.2.15](https://www.github.com/JaCraig/BigBookOfDataTypes/releases/tag/v6.2.15) (2026-05-19)
 
