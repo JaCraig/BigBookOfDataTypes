@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [versionize](https://github.com/versionize/versionize) for commit guidelines.
 
+<a name="7.0.0"></a>
+## [7.0.0](https://www.github.com/JaCraig/BigBookOfDataTypes/releases/tag/v7.0.0) (2026-11-12)
+
+### Features
+
+* **framework:** target .NET 10 and 11 ([c4b063a](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/c4b063ae92af33e42717bc22fc0945d97c7a3afc))
+
+### Bug Fixes
+
+* Bump the dependencies group with 2 updates ([23b2a5e](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/23b2a5efd6a07417b4e7604d4150b036b868b5af))
+
+### Breaking Changes
+
+* **framework:** target .NET 10 and 11 ([c4b063a](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/c4b063ae92af33e42717bc22fc0945d97c7a3afc))
+
+### Other
+
+* Merge pull request #483 from JaCraig/dependabot/nuget/BigBook/dependencies-c4b85a6106 ([0f348aa](https://www.github.com/JaCraig/BigBookOfDataTypes/commit/0f348aa9b3b1ae191dd73ad952be1c12a04653c0))
+
 <a name="6.2.18"></a>
 ## [6.2.18](https://www.github.com/JaCraig/BigBookOfDataTypes/releases/tag/v6.2.18) (2026-11-08)
 
