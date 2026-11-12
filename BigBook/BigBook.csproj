@@ -4,7 +4,7 @@
     <Description>Big Book of Data Types is a collection of various data types including Vector3, Set, RingBuffer, PriorityQueue, Fractions, and DateSpan. It also includes a number of extension methods for types found already in .Net.</Description>
     <AssemblyTitle>Big Book of Data Types</AssemblyTitle>
     <Authors>James Craig</Authors>
-	  <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
+	  <TargetFrameworks>net10.0;net11.0</TargetFrameworks>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <AssemblyName>BigBook</AssemblyName>
     <PackageId>BigBook</PackageId>
@@ -54,16 +54,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="10.0.403">
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="11.0.100">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.ObjectPool" Version="10.0.14" />
+    <PackageReference Include="Microsoft.Extensions.ObjectPool" Version="11.0.0" />
     <PackageReference Include="ObjectCartographer.SQL" Version="4.3.12" />
     <PackageReference Include="System.Data.SqlClient" Version="4.9.1" />
     <PackageReference Include="System.Reflection.TypeExtensions" Version="4.7.0" />
-    <PackageReference Include="Aspectus" Version="6.2.23" />
-	  <PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.403" PrivateAssets="All" />
+    <PackageReference Include="Aspectus" Version="7.0.0" />
+	  <PackageReference Include="Microsoft.SourceLink.GitHub" Version="11.0.100" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup>
